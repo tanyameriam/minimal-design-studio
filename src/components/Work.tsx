@@ -2,28 +2,32 @@ import ProjectCard from './ProjectCard';
 
 const projects = [
   {
-    title: "Minimal Banking App",
-    category: "UI/UX Design • Mobile",
+    title: "Curateus Plugin",
+    category: "UX Research • Browser Extension",
     year: "2024",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    slug: "curateus-plugin"
   },
   {
     title: "E-Commerce Redesign",
     category: "Web Design • Branding",
     year: "2024",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+    slug: null
   },
   {
     title: "Health & Wellness",
     category: "Product Design • App",
     year: "2023",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80"
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
+    slug: null
   },
   {
     title: "Creative Studio",
     category: "Brand Identity • Web",
     year: "2023",
-    image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800&q=80"
+    image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800&q=80",
+    slug: null
   }
 ];
 
@@ -49,7 +53,11 @@ const Work = () => {
           {projects.map((project, index) => (
             <ProjectCard 
               key={project.title}
-              {...project}
+              title={project.title}
+              category={project.category}
+              year={project.year}
+              image={project.image}
+              slug={project.slug}
               index={index}
             />
           ))}
