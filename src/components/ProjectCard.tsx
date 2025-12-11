@@ -1,13 +1,16 @@
+import { Link } from 'react-router-dom';
+
 interface ProjectCardProps {
   title: string;
   category: string;
   year: string;
   image: string;
+  slug: string | null;
   index: number;
 }
 
-const ProjectCard = ({ title, category, year, image, index }: ProjectCardProps) => {
-  return (
+const ProjectCard = ({ title, category, year, image, slug, index }: ProjectCardProps) => {
+  const content = (
     <article 
       className="group cursor-pointer"
       style={{ animationDelay: `${index * 0.1}s` }}
@@ -38,6 +41,12 @@ const ProjectCard = ({ title, category, year, image, index }: ProjectCardProps) 
       </div>
     </article>
   );
+
+  if (slug) {
+    return <Link to={`/case-study/${slug}`}>{content}</Link>;
+  }
+
+  return content;
 };
 
 export default ProjectCard;
