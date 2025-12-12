@@ -9,11 +9,11 @@ const projects = [
     slug: "curateus-plugin"
   },
   {
-    title: "E-Commerce Redesign",
-    category: "Web Design • Branding",
+    title: "Food Waste Solution",
+    category: "UX Design • Social Impact",
     year: "2024",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-    slug: null
+    image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80",
+    slug: "food-waste-ngo"
   },
   {
     title: "Health & Wellness",
