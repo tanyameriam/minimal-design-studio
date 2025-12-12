@@ -13,19 +13,19 @@ const Hero = () => {
       <div className="container mx-auto">
         <div className="max-w-4xl">
           <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6 animate-fade-up">
-            UI/UX Designer
+            Product Designer
           </p>
           
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-medium leading-[1.1] mb-8 animate-fade-up-delay-1">
-            Crafting digital
+          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-medium leading-[1.15] mb-8 animate-fade-up-delay-1">
+            Where systems thinking
             <br />
-            <span className="italic">experiences</span>
+            meets <span className="italic">UX</span>—solving
             <br />
-            with purpose
+            complexity with clarity
           </h1>
           
-          <p className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed animate-fade-up-delay-2">
-            I design intuitive interfaces and meaningful experiences that connect brands with their audiences.
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed animate-fade-up-delay-2">
+            Specializing in designing end-to-end systems that bring alignment, usability, and operational efficiency to everyday workflows.
           </p>
         </div>
         
