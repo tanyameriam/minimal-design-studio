@@ -48,6 +48,7 @@ interface CaseStudyData {
   keyInsights?: CaseStudySection[];
   userGoals?: { primary?: string; motivations?: string[]; challenges?: string[] };
   personaDescription?: string;
+  personaImage?: string;
   productStrategy?: CaseStudySection[];
   sosSystem?: CaseStudySection[];
   usabilityFindings?: string[];
@@ -578,7 +579,8 @@ const caseStudies: Record<string, CaseStudyData> = {
         "Recovery from user error"
       ]
     },
-    personaDescription: "Our persona represents a working woman in an Indian metro city, living independently. She uses shared cabs, autos, and metro; works late hours; shares routes with roommates; trusts WhatsApp + Google Maps; wants control without feeling monitored; and is rarely without her phone.",
+    personaDescription: "Alayah is an 18-year-old student who wants to settle far from home to live independently. She is looking forward to her studies in Bangalore, she is a self-motivated woman who is confident enough to face challenges that come her way, also is very practical about life. She does not like patriarchal society and wants the judicial system to take serious actions towards those who misbehave with women.",
+    personaImage: "/assets/stree-persona.png",
     productStrategy: [
       {
         title: "Feedback & Iteration",
@@ -1682,6 +1684,15 @@ const CaseStudy = () => {
         <section className="px-6 lg:px-12 py-16 bg-card">
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Persona</h2>
+            {study.personaImage && (
+              <div className="mb-8">
+                <img 
+                  src={study.personaImage} 
+                  alt="User Persona" 
+                  className="w-full rounded-lg border border-border"
+                />
+              </div>
+            )}
             <p className="text-lg leading-relaxed">{study.personaDescription}</p>
           </div>
         </section>
