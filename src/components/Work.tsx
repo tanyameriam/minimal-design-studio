@@ -9,6 +9,13 @@ const projects = [
     slug: "curateus-plugin"
   },
   {
+    title: "Curateus App",
+    category: "UI Design • Content Platform",
+    year: "2024",
+    image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=80",
+    slug: "curateus-app"
+  },
+  {
     title: "Food Waste Solution",
     category: "UX Design • Social Impact",
     year: "2024",
@@ -20,13 +27,6 @@ const projects = [
     category: "Product Design • App",
     year: "2023",
     image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
-    slug: null
-  },
-  {
-    title: "Creative Studio",
-    category: "Brand Identity • Web",
-    year: "2023",
-    image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800&q=80",
     slug: null
   }
 ];
