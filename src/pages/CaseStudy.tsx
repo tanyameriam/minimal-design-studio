@@ -40,6 +40,20 @@ interface CaseStudyData {
   uiDesign?: CaseStudySection[];
   colorSystem?: CaseStudySection[];
   outcome?: string[];
+  // STREE specific sections
+  projectDuration?: string;
+  briefPoints?: string[];
+  researchMethods?: string[];
+  keyInsights?: CaseStudySection[];
+  userGoals?: { primary?: string; motivations?: string[]; challenges?: string[] };
+  personaDescription?: string;
+  productStrategy?: CaseStudySection[];
+  sosSystem?: CaseStudySection[];
+  usabilityFindings?: string[];
+  finalDesignChanges?: CaseStudySection[];
+  finalUISummary?: CaseStudySection[];
+  functionalImpact?: string[];
+  emotionalImpact?: string[];
 }
 
 const caseStudies: Record<string, CaseStudyData> = {
@@ -308,6 +322,178 @@ const caseStudies: Record<string, CaseStudyData> = {
       "Working directly with a founder/PO sharpens prioritization and product reasoning.",
       "Thoughtful UI can elevate a brand built on trust, expertise, and meaningful content discovery."
     ]
+  },
+  'stree-safety-app': {
+    title: "STREE",
+    subtitle: "A Streetwise Smart Mobile App for the Independent Indian Woman",
+    overview: "Safety is a fundamental right, yet for millions of women in India, navigating public spaces comes with constant risk, uncertainty, and emotional vigilance. STREE was conceptualized as a street-smart ally—a mobile safety product that helps women feel safer, stay connected, and make informed decisions during travel. This case study documents the research depth, design thinking process, and the product decisions that shaped STREE from early hypotheses to final design.",
+    role: "UX Research • Interaction Design • UI Design • Usability Testing • Prototyping",
+    projectDuration: "3 Iterations • 26 Screens • Countless cups of coffee",
+    heroImage: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=1200&q=80",
+    briefPoints: [
+      "Poor usability in existing safety apps",
+      "High friction during emergencies",
+      "Lack of real-time actionable support",
+      "Overly complex onboarding",
+      "No meaningful situational feedback"
+    ],
+    researchMethods: [
+      "15 in-depth interviews with working women across urban India (Bangalore, Delhi, Pune, Mumbai)",
+      "Field observations studying commute patterns during late hours, transitions between auto/cab/bus, interactions with strangers",
+      "Social listening & desk research including news reports, crime statistics, feminist safety studies, online communities",
+      "Affinity mapping using Miro to cluster insights into behavioral, emotional, and functional themes"
+    ],
+    keyInsights: [
+      {
+        title: "1. Independence is deeply important",
+        content: "Women do not want a system that makes them feel dependent or monitored excessively. \"I want safety without feeling controlled.\""
+      },
+      {
+        title: "2. Safety needs are contextual and time-sensitive",
+        content: "What feels unsafe at 2 PM feels very different at 11 PM. Time = critical factor."
+      },
+      {
+        title: "3. Awareness improves preparedness",
+        content: "Users want visibility into route safety, nearby help, how long a journey should take, and what to expect around each corner."
+      },
+      {
+        title: "4. Existing safety apps are poor solutions",
+        content: "Common issues included cluttered UI, hidden emergency buttons, slow onboarding, too many permissions upfront, and lack of trust in data handling."
+      },
+      {
+        title: "5. SOS must be frictionless",
+        content: "Women need one tap activation, confirmation feedback, and minimal cognitive load during panic."
+      },
+      {
+        title: "6. Support systems matter",
+        content: "Women often rely heavily on friends, roommates, family, and co-workers. They want these people notified instantly, reliably, and transparently."
+      }
+    ],
+    userGoals: {
+      primary: "Feel safe while traveling alone—especially at night or in unfamiliar environments.",
+      motivations: ["Freedom", "Independence", "Confidence", "Reliability"],
+      challenges: [
+        "Quick navigation during panic",
+        "Ability to recover from user error",
+        "Visibility of system states (Is SOS active? Who got notified?)",
+        "Avoiding cognitive overload",
+        "Ensuring clarity of journey progress",
+        "Preventing confusion between private contacts vs app contacts"
+      ]
+    },
+    personaDescription: "Our persona represents a working woman in an Indian metro city, living independently. She uses shared cabs, autos, and metro; works late hours; shares routes with roommates; trusts WhatsApp + Google Maps; wants control without feeling monitored; and is rarely without her phone. Her emotional journey deeply shaped the product direction.",
+    productStrategy: [
+      {
+        title: "A. Low-Friction Safety Activation",
+        content: "SOS should work even with locked screen, poor network, and high stress situations."
+      },
+      {
+        title: "B. Continuous Context Awareness",
+        content: "Provide real-time visibility into location, transport mode, route progress, and expected travel time."
+      },
+      {
+        title: "C. Trusted Connections",
+        content: "Emergency contacts should receive start notification, real-time mode updates, and end-of-journey confirmation."
+      },
+      {
+        title: "D. Female-centered usability",
+        content: "Fast, minimal, clutter-free interface with zero ambiguity."
+      }
+    ],
+    sosSystem: [
+      {
+        title: "Offline Mode (No Network Available)",
+        content: "Shows last live location, last updated time, destination & transport type, closest police station, and contact details. Reasoning: Network unreliability should not compromise safety."
+      },
+      {
+        title: "Live Mode (Network Available)",
+        content: "Provides video stream, current location, real-time route deviation detection, contact + official notifications, visible journey status, and estimated arrival time updates. Reasoning: Real-time visibility reduces uncertainty and enables timely intervention."
+      }
+    ],
+    informationArchitecture: [
+      {
+        title: "Discovery",
+        content: "App Store → Install → Sign In/Create Account"
+      },
+      {
+        title: "Onboarding",
+        content: "Walkthrough → Profile → Permissions → Emergency Contacts → Locations. Reasoning: Make onboarding progressive, not overwhelming. Give users a sense of control and transparency."
+      },
+      {
+        title: "App Structure",
+        content: "Home, Maps, SOS, Profile, Contacts, Settings. Reasoning: All safety actions centered around Home + SOS for minimal thought during emergencies."
+      }
+    ],
+    usabilityFindings: [
+      "Users wanted profile pictures for quicker identification",
+      "Lockscreen SOS drastically improved perceived safety",
+      "Emergency contacts must receive start + end notifications",
+      "Users needed feedback after pressing SOS",
+      "Confusion around journey start/end indicators",
+      "Need for clarity around what information contacts receive",
+      "Users expected a dynamic ETA update"
+    ],
+    finalDesignChanges: [
+      {
+        title: "1. Full-Width SOS Button",
+        content: "High visibility under stress, easy thumb reach."
+      },
+      {
+        title: "2. Journey Card with ETA + Route + Contact Visibility",
+        content: "Reduces cognitive load; reassures the user."
+      },
+      {
+        title: "3. Emergency Contacts Section Redesign",
+        content: "Improve trust & transparency around data shared."
+      },
+      {
+        title: "4. First-Time User Flow Simplified",
+        content: "Reduce abandonment; build trust gradually."
+      },
+      {
+        title: "5. Color System Updated",
+        content: "Soft purples + neutrals → safe, calm, non-threatening palette. Safety apps must avoid alarming/triggering aesthetics."
+      },
+      {
+        title: "6. Icons & microcopy refined",
+        content: "Provide clarity during panic situations."
+      },
+      {
+        title: "7. Lock Screen Shortcut for SOS",
+        content: "Instant activation in real emergencies."
+      }
+    ],
+    finalUISummary: [
+      {
+        title: "UI Characteristics",
+        content: "Calm, clean, and minimal; safety-first hierarchy; large interactive areas; progressive disclosure for complex details; high contrast for night use; intuitive for first-time users."
+      },
+      {
+        title: "Screens Delivered",
+        content: "Login / Sign Up, Permissions, Emergency Contacts, Preferred Locations, Live Map, SOS Mode (Live & Offline), SOS End Flow, Settings & Profile."
+      }
+    ],
+    functionalImpact: [
+      "Faster SOS activation",
+      "Increased clarity in journey status",
+      "Transparent communication with contacts",
+      "Reduced hesitation in using safety features"
+    ],
+    emotionalImpact: [
+      "Women reported feeling more in control",
+      "Families felt reassured",
+      "Overall anxiety during commutes reduced",
+      "Trust in the app increased through transparency"
+    ],
+    learnings: [
+      "Safety design must balance urgency + calmness.",
+      "Women's safety is tied to emotion, culture, and daily lived experiences.",
+      "Complex flows must still feel effortless.",
+      "Transparency builds trust.",
+      "Real-world testing reveals needs that wireframes cannot.",
+      "A good safety app must work even under worst-case conditions.",
+      "Good design can directly impact real-world safety and empowerment."
+    ]
   }
 };
 
@@ -379,6 +565,12 @@ const CaseStudy = () => {
                 <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Role</h3>
                 <p className="text-sm">{study.role}</p>
               </div>
+              {study.projectDuration && (
+                <div>
+                  <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Duration</h3>
+                  <p className="text-sm">{study.projectDuration}</p>
+                </div>
+              )}
               {study.timeline && (
                 <div>
                   <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Timeline</h3>
@@ -728,6 +920,232 @@ const CaseStudy = () => {
                   <p className="text-muted-foreground leading-relaxed">{step.content}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Brief Points (for STREE) */}
+      {study.briefPoints && (
+        <section className="px-6 lg:px-12 py-16 bg-card">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">The Brief</h2>
+            <p className="text-lg mb-8">Women across India lack a reliable digital tool that supports them during commutes. The existing safety apps fail due to:</p>
+            <ul className="space-y-3 mb-8">
+              {study.briefPoints.map((point, i) => (
+                <li key={i} className="flex gap-4">
+                  <span className="text-muted-foreground">•</span>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="font-serif text-xl text-muted-foreground italic">The core intent: Create a smart, reliable, low-friction safety companion that women can depend on during vulnerable moments.</p>
+          </div>
+        </section>
+      )}
+
+      {/* Research Methods (for STREE) */}
+      {study.researchMethods && (
+        <section className="px-6 lg:px-12 py-16">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Research Phase</h2>
+            <p className="text-lg text-muted-foreground mb-8">Understanding Safety from Women's Lived Experiences</p>
+            <ul className="space-y-4">
+              {study.researchMethods.map((method, i) => (
+                <li key={i} className="flex gap-4">
+                  <span className="text-muted-foreground">•</span>
+                  <span>{method}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      {/* Key Insights (for STREE) */}
+      {study.keyInsights && (
+        <section className="px-6 lg:px-12 py-16 bg-card">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-12">Key Insights from Research</h2>
+            <div className="space-y-10">
+              {study.keyInsights.map((insight, i) => (
+                <div key={i}>
+                  <h3 className="font-serif text-xl mb-4">{insight.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{insight.content}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* User Goals (for STREE) */}
+      {study.userGoals && (
+        <section className="px-6 lg:px-12 py-16">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">User Goals & Challenges</h2>
+            {study.userGoals.primary && (
+              <div className="mb-8">
+                <h3 className="font-serif text-xl mb-4">Primary Goal</h3>
+                <p className="text-lg">{study.userGoals.primary}</p>
+              </div>
+            )}
+            {study.userGoals.motivations && (
+              <div className="mb-8">
+                <h3 className="font-serif text-xl mb-4">Motivations</h3>
+                <div className="flex flex-wrap gap-3">
+                  {study.userGoals.motivations.map((m, i) => (
+                    <span key={i} className="px-4 py-2 border border-border text-sm">{m}</span>
+                  ))}
+                </div>
+              </div>
+            )}
+            {study.userGoals.challenges && (
+              <div>
+                <h3 className="font-serif text-xl mb-4">Challenges Identified</h3>
+                <ul className="space-y-3">
+                  {study.userGoals.challenges.map((c, i) => (
+                    <li key={i} className="flex gap-4">
+                      <span className="text-muted-foreground">•</span>
+                      <span>{c}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* Persona Description (for STREE) */}
+      {study.personaDescription && (
+        <section className="px-6 lg:px-12 py-16 bg-card">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Persona</h2>
+            <p className="text-lg leading-relaxed">{study.personaDescription}</p>
+          </div>
+        </section>
+      )}
+
+      {/* Product Strategy (for STREE) */}
+      {study.productStrategy && (
+        <section className="px-6 lg:px-12 py-16">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Core Product Strategy</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              {study.productStrategy.map((item, i) => (
+                <div key={i} className="p-6 border border-border">
+                  <h3 className="font-serif text-lg mb-3">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground">{item.content}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* SOS System (for STREE) */}
+      {study.sosSystem && (
+        <section className="px-6 lg:px-12 py-16 bg-card">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">SOS System Design</h2>
+            <p className="text-lg text-muted-foreground mb-12">The SOS system was designed to operate intelligently in two modes</p>
+            <div className="space-y-10">
+              {study.sosSystem.map((mode, i) => (
+                <div key={i}>
+                  <h3 className="font-serif text-xl mb-4">{mode.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{mode.content}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Usability Findings (for STREE) */}
+      {study.usabilityFindings && (
+        <section className="px-6 lg:px-12 py-16">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Usability Testing</h2>
+            <p className="text-lg text-muted-foreground mb-8">Key findings from observational tests with women simulating real journey actions:</p>
+            <ul className="space-y-3">
+              {study.usabilityFindings.map((finding, i) => (
+                <li key={i} className="flex gap-4">
+                  <span className="text-muted-foreground">•</span>
+                  <span>{finding}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      {/* Final Design Changes (for STREE) */}
+      {study.finalDesignChanges && (
+        <section className="px-6 lg:px-12 py-16 bg-card">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Final Design — What Changed</h2>
+            <div className="space-y-8">
+              {study.finalDesignChanges.map((change, i) => (
+                <div key={i}>
+                  <h3 className="font-serif text-xl mb-3">{change.title}</h3>
+                  <p className="text-muted-foreground">{change.content}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Final UI Summary (for STREE) */}
+      {study.finalUISummary && (
+        <section className="px-6 lg:px-12 py-16">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-12">Final UI Summary</h2>
+            <div className="grid md:grid-cols-2 gap-12">
+              {study.finalUISummary.map((item, i) => (
+                <div key={i}>
+                  <h3 className="font-serif text-xl mb-4">{item.title}</h3>
+                  <p className="text-muted-foreground">{item.content}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Functional & Emotional Impact (for STREE) */}
+      {(study.functionalImpact || study.emotionalImpact) && (
+        <section className="px-6 lg:px-12 py-16 bg-card">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-12">Impact</h2>
+            <div className="grid md:grid-cols-2 gap-12">
+              {study.functionalImpact && (
+                <div>
+                  <h3 className="font-serif text-xl mb-6">Functional Impact</h3>
+                  <ul className="space-y-3">
+                    {study.functionalImpact.map((item, i) => (
+                      <li key={i} className="flex gap-4">
+                        <span className="text-muted-foreground">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {study.emotionalImpact && (
+                <div>
+                  <h3 className="font-serif text-xl mb-6">Emotional Impact</h3>
+                  <ul className="space-y-3">
+                    {study.emotionalImpact.map((item, i) => (
+                      <li key={i} className="flex gap-4">
+                        <span className="text-muted-foreground">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         </section>
