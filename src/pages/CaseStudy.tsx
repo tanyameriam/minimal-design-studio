@@ -32,6 +32,14 @@ interface CaseStudyData {
   processFlow?: CaseStudySection[];
   informationArchitecture?: CaseStudySection[];
   impact?: string[];
+  // Curateus App specific sections
+  problemSpace?: CaseStudySection[];
+  researchFoundations?: CaseStudySection[];
+  designGoals?: string[];
+  earlyExplorations?: CaseStudySection[];
+  uiDesign?: CaseStudySection[];
+  colorSystem?: CaseStudySection[];
+  outcome?: string[];
 }
 
 const caseStudies: Record<string, CaseStudyData> = {
@@ -178,6 +186,127 @@ const caseStudies: Record<string, CaseStudyData> = {
       "Technology can transform humanitarian workflows when designed around real user capacities.",
       "Hunger is not caused by scarcity, but by broken distribution systems.",
       "Thoughtful UX can directly contribute to social impact."
+    ]
+  },
+  'curateus-app': {
+    title: "Curateus v2.0",
+    subtitle: "Transforming content discovery through human curation",
+    overview: "Curateus is a content discovery platform built on a simple idea: human recommendations lead to deeper, more meaningful consumption than algorithmic feeds. In a digital world where people are overwhelmed by choice, misinformation, and algorithm fatigue, Curateus aims to help users find what truly matters—through expert curation, community recommendations, and interest-driven discovery. This case study documents the transformation of Curateus from an MVP into a scalable v2.0 application with a refined content experience, dual user modes (curators + subscribers), and an updated UI system.",
+    role: "UI Designer (working closely with the Founder & Product Owner)",
+    tools: ["Figma", "Illustrator", "Invision", "Zeplin"],
+    heroImage: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=1200&q=80",
+    problemSpace: [
+      {
+        title: "1. Information Overload",
+        content: "There is too much content and too little time. Users struggle to cut through noise to find high-quality material."
+      },
+      {
+        title: "2. Algorithm-Driven Bubbles",
+        content: "Recommendation engines prioritize engagement, not quality. This leads to repetitive suggestions, mainstream bias, and missing out on niche, long-tail content."
+      },
+      {
+        title: "3. Fragmentation",
+        content: "Content is spread across many apps. Users constantly switch contexts, save links across multiple devices, and lose track of what they want to consume. The deeper issue: People no longer trust that the content they are shown is the best content available."
+      }
+    ],
+    researchFoundations: [
+      {
+        title: "Content Producers (Netflix, Medium, Spotify)",
+        content: "Issues: Recommendations restricted to internal catalogs, engagement-driven not satisfaction-driven, no unified discovery across mediums."
+      },
+      {
+        title: "Recommendation Apps (Pocket, Instapaper, JustWatch)",
+        content: "Issues: Lacks serendipity, focus on mainstream content, poor support for multi-format discovery, fragmented workflows for reading/watching/listening."
+      },
+      {
+        title: "Social Media Platforms",
+        content: "Issues: Not designed for intentional curation, recommendations disappear in noisy feeds, public recommendations ≠ personal recommendations."
+      },
+      {
+        title: "Human Curation Platforms (Letterboxd, Beyond, Curateus MVP)",
+        content: "Strengths: Intention-first discovery, trust built through human gatekeepers, community-led curation, increased satisfaction vs algorithmic feeds. This category validated Curateus' business vision and potential."
+      }
+    ],
+    designGoals: [
+      "Build Trust Through Human Curation — Shift from algorithm-first to intention-first content discovery.",
+      "Support Both Curators and Subscribers — The MVP only supported curators. v2.0 needed a dual-experience model: Curators → publish, draft, manage content; Subscribers → discover, save, follow, personalize.",
+      "Create a Unified Visual System — The existing UI lacked hierarchy, consistency, and scalability.",
+      "Simplify Content Workflows — Saving, drafting, curating, searching, bookmarking — all needed clarity and predictability."
+    ],
+    earlyExplorations: [
+      {
+        title: "Why Sketch First?",
+        content: "Sketching allowed rapid exploration before committing to UI direction. It ensured all business requirements were represented early. Sketches explored homefeed layouts, metadata card variations, preference selection workflows, save-for-later interactions, draft creation vs publishing, curator public vs private view, and search & no-results states."
+      },
+      {
+        title: "Key Insights",
+        content: "Users needed a clear separation between 'saving content' and 'recommending content.' Curators required private and public states for their recommendations. Subscribers needed strong onboarding to personalize their feed."
+      }
+    ],
+    informationArchitecture: [
+      {
+        title: "Core Modules",
+        content: "The app was divided based on mental models: Homefeed → personalized discovery, Discover → explore new curators/topics, My Preferences → personalize interests, Bookmarks → save content privately, Drafts → work-in-progress recommendations, Curator Public Profile → trust-building identity, Search → find topics, curators, and content."
+      },
+      {
+        title: "Save for Later",
+        content: "Users gather content before deciding whether to recommend. This flow needed to be low-friction and device-friendly."
+      },
+      {
+        title: "Metadata Page",
+        content: "Curators need context (title, description, tags, source), and users must evaluate credibility quickly."
+      },
+      {
+        title: "Draft to Publish",
+        content: "Curators often iterate. Drafts must be accessible, editable, and clearly distinguished from public recommendations."
+      },
+      {
+        title: "Onboarding Preferences",
+        content: "Subscribers only trust human curation when it aligns with their interests. Personalization was essential to early engagement."
+      }
+    ],
+    uiDesign: [
+      {
+        title: "Content Above Interface",
+        content: "UI elements intentionally stay neutral to let curated content shine."
+      },
+      {
+        title: "Trust Through Simplicity",
+        content: "Minimalistic layouts communicate transparency and editorial integrity."
+      },
+      {
+        title: "Warm, Approachable Typography",
+        content: "Nunito was chosen for high readability, rounded forms (friendly, modern), and versatile weights for hierarchy."
+      }
+    ],
+    colorSystem: [
+      {
+        title: "Primary Colors (Turquoise Family)",
+        content: "Represents freshness, curiosity, discovery, and calmness. Chosen to differentiate Curateus from algorithm-heavy tech platforms that use darker, more aggressive palettes."
+      },
+      {
+        title: "Neutrals (#181818 & #CECECE)",
+        content: "Provide high readability, focus on content, and balanced UI elements."
+      },
+      {
+        title: "Semantic Colors",
+        content: "Used sparingly to convey feedback, support interactive states, and improve accessibility."
+      }
+    ],
+    outcome: [
+      "A scalable dual-experience model — Curators and subscribers now have distinct, intuitive workflows.",
+      "A refined UI language — Consistent typography, spacing, colors, and components.",
+      "Improved discoverability — Personalized onboarding and structured feeds.",
+      "Reduced friction for curators — Draft management, metadata entry, save-for-later workflow.",
+      "Stronger brand identity — A unified visual system aligned with Curateus' positioning as a premium curation platform."
+    ],
+    learnings: [
+      "Designing for both creators and consumers requires balancing complexity.",
+      "Even UI-driven projects benefit significantly from research.",
+      "Human-curated systems demand interfaces that clearly communicate trust.",
+      "Establishing a design system early prevents screen-level inconsistencies.",
+      "Working directly with a founder/PO sharpens prioritization and product reasoning.",
+      "Thoughtful UI can elevate a brand built on trust, expertise, and meaningful content discovery."
     ]
   }
 };
@@ -370,12 +499,82 @@ const CaseStudy = () => {
         </section>
       )}
 
-      {/* Information Architecture (for food waste project) */}
-      {study.informationArchitecture && (
+      {/* Problem Space (for Curateus App) */}
+      {study.problemSpace && (
+        <section className="px-6 lg:px-12 py-16 bg-card">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">The Problem Space</h2>
+            <p className="text-lg text-muted-foreground mb-12">The Modern Content Dilemma</p>
+            <div className="space-y-10">
+              {study.problemSpace.map((item, i) => (
+                <div key={i}>
+                  <h3 className="font-serif text-xl mb-4">{item.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{item.content}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Research Foundations (for Curateus App) */}
+      {study.researchFoundations && (
         <section className="px-6 lg:px-12 py-16">
           <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Research Foundations</h2>
+            <p className="text-lg text-muted-foreground mb-12">Competitive Audit Across Content Ecosystems</p>
+            <div className="space-y-10">
+              {study.researchFoundations.map((item, i) => (
+                <div key={i} className="p-6 border border-border">
+                  <h3 className="font-serif text-xl mb-4">{item.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{item.content}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Design Goals (for Curateus App) */}
+      {study.designGoals && (
+        <section className="px-6 lg:px-12 py-16 bg-card">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Design Goals for v2.0</h2>
+            <div className="space-y-6">
+              {study.designGoals.map((goal, i) => (
+                <div key={i} className="flex gap-4">
+                  <span className="font-serif text-2xl text-muted-foreground">{i + 1}.</span>
+                  <p className="text-lg leading-relaxed">{goal}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Early Explorations (for Curateus App) */}
+      {study.earlyExplorations && (
+        <section className="px-6 lg:px-12 py-16">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-12">Early Explorations</h2>
+            <div className="space-y-12">
+              {study.earlyExplorations.map((item, i) => (
+                <div key={i}>
+                  <h3 className="font-serif text-xl mb-4">{item.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{item.content}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Information Architecture */}
+      {study.informationArchitecture && (
+        <section className="px-6 lg:px-12 py-16 bg-card">
+          <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Information Architecture</h2>
-            <p className="text-lg text-muted-foreground mb-12">Sitemaps — Reasoning & Structure</p>
+            <p className="text-lg text-muted-foreground mb-12">Workflow Logic & Reasoning</p>
             <div className="space-y-12">
               {study.informationArchitecture.map((item, i) => (
                 <div key={i}>
@@ -384,6 +583,58 @@ const CaseStudy = () => {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* UI Design Principles (for Curateus App) */}
+      {study.uiDesign && (
+        <section className="px-6 lg:px-12 py-16">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">UI Design Principles</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              {study.uiDesign.map((item, i) => (
+                <div key={i} className="space-y-3">
+                  <h3 className="font-serif text-lg">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{item.content}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Color System (for Curateus App) */}
+      {study.colorSystem && (
+        <section className="px-6 lg:px-12 py-16 bg-card">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-12">Color System</h2>
+            <div className="space-y-10">
+              {study.colorSystem.map((item, i) => (
+                <div key={i}>
+                  <h3 className="font-serif text-xl mb-4">{item.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{item.content}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Outcome (for Curateus App) */}
+      {study.outcome && (
+        <section className="px-6 lg:px-12 py-16">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Outcome</h2>
+            <p className="text-lg text-muted-foreground mb-8">Curateus v2.0 delivered:</p>
+            <ul className="space-y-4">
+              {study.outcome.map((item, i) => (
+                <li key={i} className="flex gap-4">
+                  <span className="text-muted-foreground">•</span>
+                  <span className="text-lg">{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       )}
