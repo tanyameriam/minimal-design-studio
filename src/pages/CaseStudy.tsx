@@ -250,18 +250,22 @@ const CaseStudy = () => {
                 <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Role</h3>
                 <p className="text-sm">{study.role}</p>
               </div>
-              <div>
-                <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Timeline</h3>
-                <ul className="text-sm space-y-1">
-                  {study.timeline.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Tools</h3>
-                <p className="text-sm">{study.tools.join(', ')}</p>
-              </div>
+              {study.timeline && (
+                <div>
+                  <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Timeline</h3>
+                  <ul className="text-sm space-y-1">
+                    {study.timeline.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {study.tools && (
+                <div>
+                  <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Tools</h3>
+                  <p className="text-sm">{study.tools.join(', ')}</p>
+                </div>
+              )}
             </div>
           </div>
         </div>
