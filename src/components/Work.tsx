@@ -16,6 +16,30 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: "STREE Safety App",
+    category: "UX Research • Mobile App",
+    year: "2023",
+    image: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=800&q=80",
+    slug: "stree-safety-app",
+    tags: ['UX', 'Research']
+  },
+  {
+    title: "BrynQ Platform",
+    category: "Product Design • B2B iPaaS",
+    year: "2021-2024",
+    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80",
+    slug: "brynq",
+    tags: ['UX', 'Research', 'UI']
+  },
+  {
+    title: "Food Waste Solution",
+    category: "UX Design • Social Impact",
+    year: "2024",
+    image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80",
+    slug: "food-waste-ngo",
+    tags: ['UX', 'Research', 'UI']
+  },
+  {
     title: "Merry Health",
     category: "Systems Design • Healthcare",
     year: "2024",
@@ -40,36 +64,12 @@ const projects: Project[] = [
     tags: ['UI', 'UX']
   },
   {
-    title: "Food Waste Solution",
-    category: "UX Design • Social Impact",
-    year: "2024",
-    image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80",
-    slug: "food-waste-ngo",
-    tags: ['UX', 'Research', 'UI']
-  },
-  {
-    title: "STREE Safety App",
-    category: "UX Research • Mobile App",
-    year: "2023",
-    image: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=800&q=80",
-    slug: "stree-safety-app",
-    tags: ['UX', 'Research']
-  },
-  {
     title: "AlHub App",
     category: "UI Redesign • Lifestyle Platform",
     year: "2023",
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
     slug: "alhub-app",
     tags: ['UI']
-  },
-  {
-    title: "BrynQ Platform",
-    category: "Product Design • B2B iPaaS",
-    year: "2021-2024",
-    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80",
-    slug: "brynq",
-    tags: ['UX', 'Research', 'UI']
   }
 ];
 
