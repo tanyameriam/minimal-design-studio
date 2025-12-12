@@ -71,9 +71,166 @@ interface CaseStudyData {
   businessOutcomes?: string[];
   skillsStrengthened?: CaseStudySection[];
   closingReflection?: string;
+  // Merry Health specific sections
+  contextPoints?: string[];
+  problemDefinition?: CaseStudySection[];
+  systemModules?: CaseStudySection[];
+  designSolutions?: CaseStudySection[];
+  edgeCases?: CaseStudySection[];
+  deliverables?: string[];
 }
 
 const caseStudies: Record<string, CaseStudyData> = {
+  'merry-health': {
+    title: "Redesigning India's Hospital Dispatch System",
+    subtitle: "for Speed, Clarity & Operational Reliability",
+    overview: "Emergency ambulance coordination in India happens under extreme pressure. Hospital admins must make rapid decisions while navigating unpredictable emergencies, limited information, high message volume, and multi-stakeholder communication. At Merry Health, these challenges were amplified by a dispatch process that depended heavily on manual phone calls, WhatsApp chats, and inconsistent data capture. This case study captures how we redesigned Merry Health into a multi-channel, integrated dispatch ecosystem.",
+    role: "Research & Discovery, Strategy & Systems Thinking, Design Execution, Collaboration & Delivery",
+    tools: ["Figma", "Miro", "Prototyping tools"],
+    heroImage: "https://images.unsplash.com/photo-1587745416684-47953f16f02f?w=1200&q=80",
+    contextPoints: [
+      "Unpredictable emergencies",
+      "Limited information",
+      "High message volume",
+      "Multi-stakeholder communication",
+      "Low digital maturity",
+      "Unreliable networks",
+      "Fragmented workflows"
+    ],
+    problemDefinition: [
+      {
+        title: "01 — WhatsApp was the real operating system",
+        content: "Hospital admins trusted WhatsApp more than the dashboard. However, chats were unstructured, free-text, missing key data, dependent on human memory, and impossible to audit."
+      },
+      {
+        title: "02 — The dashboard was not designed for emergency scenarios",
+        content: "Admins found it slow, overwhelming, missing essential fields, and not aligned with their real workflow. They reverted to WhatsApp—even though it created data loss."
+      },
+      {
+        title: "03 — Ride information was fragmented",
+        content: "Admins jumped between WhatsApp, phone calls, verbal confirmation, Excel sheets, and their own memory. This produced inaccurate records, delays, and unclear handover."
+      },
+      {
+        title: "04 — No real-time visibility or unified timeline",
+        content: "Hospitals had no reliable way to see whether the driver accepted, ETA changes, driver movement, pickup confirmation, or drop confirmation."
+      },
+      {
+        title: "05 — No system could handle peak-load situations",
+        content: "When multiple emergencies came in minutes apart: messages overlapped, drivers got confused, admins lost track, and trips were duplicated or missed."
+      },
+      {
+        title: "06 — No structured handover process",
+        content: "Hospitals needed a verifiable sequence: driver confirms, hospital receiving staff confirms, MHA closes the ride. But the old system left these steps scattered and inconsistent."
+      }
+    ],
+    designGoals: [
+      "Make emergency intake lightning-fast",
+      "Standardize communication across channels",
+      "Provide real-time visibility across the entire ride",
+      "Create a structured, audit-ready Record Model",
+      "Reduce manual coordination and increase operational reliability",
+      "Design a system that works even with poor networks, low literacy, and inconsistent behavior"
+    ],
+    systemModules: [
+      {
+        title: "1. WhatsApp Integration (Primary Intake & Communication)",
+        content: "For Hospital Admin, Drivers, Patient Party, and Read-only Hospital Group. Each message flow was explicitly mapped, structured, and linked to system Milestones."
+      },
+      {
+        title: "2. Web-based Dispatch System (Dashboard)",
+        content: "Redesigned for Add Ride, Tracking, Ride Lists, Ride Details & Timeline, Handover Process, and Reports & KPIs. This dashboard becomes the single source of truth."
+      },
+      {
+        title: "3. Telematics + Routing Engine",
+        content: "GPS ingestion at regular intervals, ETA prediction, automatic milestone detection, and fallback to coarse mode when GPS fails. The system never leaves the admin without visibility."
+      },
+      {
+        title: "4. Patient Communication Layer",
+        content: "Real-time tracking link, IVR confirmation in regional language, and SMS fallback. Designed for accessibility and trust."
+      }
+    ],
+    designSolutions: [
+      {
+        title: "Solution 1: Emergency-Ready Add Ride Flow",
+        content: "Reduced the Add Ride experience from minutes to seconds. Key enhancements: map-based pickup selection, minimal priority-first fields, auto-adjusting form based on request type, tappable ambulance and facility selection, required field indicators, and mobile-first layout."
+      },
+      {
+        title: "Solution 2: Structured WhatsApp Experience",
+        content: "Hospital Admin sees: case confirmation, driver assigned, en route updates, live location, pickup & drop updates, ride closed. Driver receives: one-tap Accept/Reject, pickup navigation, automated prompts for milestones. Patient party receives: tracking link, driver details, IVR comfort call."
+      },
+      {
+        title: "Solution 3: A Unified Ride Timeline",
+        content: "Created a linear, event-driven timeline showing: request received, driver assignment, movement events, pickup, drop, handover checks, and ride closure. This transforms Merry Health into a true operations platform."
+      },
+      {
+        title: "Solution 4: Intelligent Live Tracking Module",
+        content: "Designed for high-pressure environments: status-based map markers, filters for case type/patient name/status, driver + vehicle cards, ETA updates, smooth transitions between multiple rides. Admins get an air-traffic-control view of all ambulances."
+      },
+      {
+        title: "Solution 5: Structured Handover Workflow",
+        content: "Introduced a 3-step verification: Hospital staff acknowledgment, Driver acknowledgment, MHA final closure. Each step is timestamped—solving disputes and strengthening auditability."
+      },
+      {
+        title: "Solution 6: Reporting & KPIs",
+        content: "The new Reporting module provides: trip volumes, billing summaries, response times, TAT patterns, case severity patterns, and export options (CSV, Excel, PDF). Hospitals move from chaotic data to actionable insights."
+      }
+    ],
+    edgeCases: [
+      {
+        title: "When WhatsApp fails",
+        content: "SMS fallback and Dashboard intake ensure continuity."
+      },
+      {
+        title: "When GPS fails",
+        content: "Coarse ETA calculation and manual milestone prompts keep operations running."
+      },
+      {
+        title: "When information is unclear",
+        content: "Bot/MHA prompts for missing fields ensure data completeness."
+      },
+      {
+        title: "Driver unreachable",
+        content: "Automatic escalation to next available driver."
+      },
+      {
+        title: "Duplicate bookings",
+        content: "Automatically merged to prevent confusion."
+      },
+      {
+        title: "Hospital group not reachable",
+        content: "Message diverted to individual admin as fallback."
+      }
+    ],
+    businessOutcomes: [
+      "Faster Emergency Handling — Admins can intake requests instantly with minimal data entry",
+      "Higher Ride Success & Completion Rates — Real-time visibility prevents miscommunication and delays",
+      "Significant Drop in Manual Calls — Automatic updates replace follow-up calls",
+      "Improved Hospital Trust — Clear timelines and standardized updates build confidence",
+      "Better Reporting & Data Accuracy — The dashboard now acts as a complete, verifiable record",
+      "Operational Efficiency — The system supports high-volume emergencies without overwhelming staff",
+      "Higher Dashboard Adoption — Hospitals now see clear value in the platform—not just WhatsApp"
+    ],
+    learnings: [
+      "Real-world emergency systems need resilience, not perfection. Design must survive low network, broken workflows, and human unpredictability.",
+      "WhatsApp is India's most adopted enterprise tool. Designing around WhatsApp—rather than replacing it—was critical.",
+      "A system is only as strong as its fallback modes. Every workflow required a Plan B, C, and D.",
+      "Mobile-first is not optional. Hospital admins coordinate while walking, talking, and multitasking.",
+      "UI is only 30% of the solution. The other 70% is workflow logic, integrations, and system constraints.",
+      "Collaboration across tech and operations shaped the final output. Design was deeply integrated with technical feasibility and real constraints."
+    ],
+    deliverables: [
+      "Full system workflows",
+      "User journey maps",
+      "Low-fidelity wireframes",
+      "High-fidelity UI (web + mobile)",
+      "WhatsApp message flow screens",
+      "Android module UI",
+      "Complete prototype",
+      "Redesign strategy",
+      "System specification documents",
+      "Final presentation deck"
+    ]
+  },
   'curateus-plugin': {
     title: "The hidden drop-off problem I found in Curateus",
     subtitle: "and how a plugin solved it",
@@ -1723,6 +1880,106 @@ const CaseStudy = () => {
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Closing Reflection</h2>
             <p className="font-serif text-xl leading-relaxed">{study.closingReflection}</p>
+          </div>
+        </section>
+      )}
+
+      {/* Context Points (for Merry Health) */}
+      {study.contextPoints && (
+        <section className="px-6 lg:px-12 py-16">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Context & Challenges</h2>
+            <p className="text-lg text-muted-foreground mb-8">Hospital admins must navigate:</p>
+            <div className="flex flex-wrap gap-3">
+              {study.contextPoints.map((point, i) => (
+                <span key={i} className="px-4 py-2 border border-border text-sm">{point}</span>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Problem Definition (for Merry Health) */}
+      {study.problemDefinition && (
+        <section className="px-6 lg:px-12 py-16 bg-card">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Problem Definition</h2>
+            <p className="text-lg text-muted-foreground mb-12">Our discovery phase revealed systemic issues:</p>
+            <div className="space-y-10">
+              {study.problemDefinition.map((problem, i) => (
+                <div key={i}>
+                  <h3 className="font-serif text-xl mb-4">{problem.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{problem.content}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* System Modules (for Merry Health) */}
+      {study.systemModules && (
+        <section className="px-6 lg:px-12 py-16">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Systems Thinking: End-to-End Dispatch Ecosystem</h2>
+            <p className="text-lg text-muted-foreground mb-12">We reframed the system from a dashboard redesign to a full dispatch system redesign:</p>
+            <div className="grid md:grid-cols-2 gap-8">
+              {study.systemModules.map((module, i) => (
+                <div key={i} className="p-6 border border-border">
+                  <h3 className="font-serif text-lg mb-4">{module.title}</h3>
+                  <p className="text-sm text-muted-foreground">{module.content}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Design Solutions (for Merry Health) */}
+      {study.designSolutions && (
+        <section className="px-6 lg:px-12 py-16 bg-card">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Key Design Solutions</h2>
+            <div className="space-y-12">
+              {study.designSolutions.map((solution, i) => (
+                <div key={i}>
+                  <h3 className="font-serif text-xl mb-4">{solution.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{solution.content}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Edge Cases (for Merry Health) */}
+      {study.edgeCases && (
+        <section className="px-6 lg:px-12 py-16">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Edge Cases & Fallback Logic</h2>
+            <p className="text-lg text-muted-foreground mb-8">Designed for real-world unpredictability:</p>
+            <div className="grid md:grid-cols-2 gap-6">
+              {study.edgeCases.map((edge, i) => (
+                <div key={i} className="p-4 border border-border">
+                  <h3 className="font-medium mb-2">{edge.title}</h3>
+                  <p className="text-sm text-muted-foreground">{edge.content}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Deliverables (for Merry Health) */}
+      {study.deliverables && (
+        <section className="px-6 lg:px-12 py-16 bg-card">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Final Deliverables</h2>
+            <div className="flex flex-wrap gap-3">
+              {study.deliverables.map((deliverable, i) => (
+                <span key={i} className="px-4 py-2 border border-border text-sm">{deliverable}</span>
+              ))}
+            </div>
           </div>
         </section>
       )}
