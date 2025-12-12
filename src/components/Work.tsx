@@ -23,6 +23,13 @@ const projects = [
     slug: "food-waste-ngo"
   },
   {
+    title: "STREE Safety App",
+    category: "UX Research • Mobile App",
+    year: "2023",
+    image: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=800&q=80",
+    slug: "stree-safety-app"
+  },
+  {
     title: "Health & Wellness",
     category: "Product Design • App",
     year: "2023",
