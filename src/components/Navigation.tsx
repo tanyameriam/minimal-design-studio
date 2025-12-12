@@ -40,6 +40,12 @@ const Navigation = () => {
             Work
           </button>
           <button 
+            onClick={() => scrollToSection('explorations')}
+            className="text-sm font-sans tracking-wide link-underline"
+          >
+            Explorations
+          </button>
+          <button 
             onClick={() => scrollToSection('about')}
             className="text-sm font-sans tracking-wide link-underline"
           >
