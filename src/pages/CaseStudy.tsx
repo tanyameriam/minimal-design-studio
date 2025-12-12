@@ -54,6 +54,13 @@ interface CaseStudyData {
   finalUISummary?: CaseStudySection[];
   functionalImpact?: string[];
   emotionalImpact?: string[];
+  // AlHub specific sections
+  projectScope?: string[];
+  redesignGoals?: CaseStudySection[];
+  constraints?: string[];
+  redesignApproach?: CaseStudySection[];
+  keyScreens?: string[];
+  beforeAfter?: { before: string[]; after: string[] };
 }
 
 const caseStudies: Record<string, CaseStudyData> = {
@@ -493,6 +500,104 @@ const caseStudies: Record<string, CaseStudyData> = {
       "Real-world testing reveals needs that wireframes cannot.",
       "A good safety app must work even under worst-case conditions.",
       "Good design can directly impact real-world safety and empowerment."
+    ]
+  },
+  'alhub-app': {
+    title: "AlHub",
+    subtitle: "Mobile App UI Redesign for a Lifestyle & Voucher Platform",
+    overview: "AlHub is a lifestyle platform available in the UAE and Gulf countries, offering users access to retail vouchers, deals, and redeemable offers across fashion, lifestyle, food, and entertainment brands. The founders wanted a complete visual overhaul of the app's UI while retaining the existing user flows, all app interactions, and the current app structure. This was strictly a UI redesign project, not UX restructuring.",
+    role: "Freelance UI Designer (Working directly with the founders and development team)",
+    tools: ["Figma", "Illustrator", "Zeplin"],
+    heroImage: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80",
+    projectScope: [
+      "UI redesign for the entire mobile app",
+      "Updated visual language",
+      "Style consistency across screens",
+      "Enhanced clarity, spacing, typography, and brand alignment",
+      "Delivery-ready developer handoff"
+    ],
+    redesignGoals: [
+      {
+        title: "1. Modernize the Visual Identity",
+        content: "The existing interface felt dated and inconsistent. The goal was to adopt a cleaner, more premium look that aligns with lifestyle brands in the UAE."
+      },
+      {
+        title: "2. Improve Visual Hierarchy & Readability",
+        content: "Since users mainly scroll through offers and vouchers, the interface needed better spacing, clearer card structures, hierarchy-driven layouts, and strong contrast for readability in bright outdoor environments."
+      },
+      {
+        title: "3. Maintain Existing UX & Workflows",
+        content: "The founders were explicit: no changes to layout, navigation, or features. Only visual refinement was allowed, ensuring current users would not experience disruption."
+      },
+      {
+        title: "4. Enhance Brand Appeal for Partnerships",
+        content: "A polished UI helps strengthen the app's credibility with partner brands, retailers, and influencers."
+      }
+    ],
+    constraints: [
+      "No altering user journeys",
+      "No modifying screen flow or navigation",
+      "No adding or removing features",
+      "No changing core layouts or component placement",
+      "All enhancements had to be visual only"
+    ],
+    redesignApproach: [
+      {
+        title: "1. Establish a Consistent Visual Language",
+        content: "I audited the existing screens to identify inconsistencies in typography, spacing, icon styles, colors, card shapes, and alignment. Then I created a refined, consistent UI system that could be applied across all screens."
+      },
+      {
+        title: "2. Modern Typography",
+        content: "A new font pairing was introduced to reflect a lifestyle & premium feel while still being highly readable."
+      },
+      {
+        title: "3. Refined Color Palette",
+        content: "Colors were adjusted to feel more modern, energetic, and balanced—aligned with lifestyle brands in Dubai. The palette supports vouchers, price highlights, call-to-actions, and categories."
+      },
+      {
+        title: "4. Component Cleanup",
+        content: "Buttons, cards, input fields, icons, and voucher elements were redesigned for consistency, clarity, minimalism, and developer-friendliness."
+      },
+      {
+        title: "5. Enhancing the Voucher Experience",
+        content: "Since voucher redemption is the core of AlHub, emphasis was placed on clean card layout, clear voucher value, bold CTA visibility, easy scannability, and brand-aligned look for partners."
+      },
+      {
+        title: "6. Developer Collaboration",
+        content: "I worked closely with the dev team to ensure all designs were feasible, visuals aligned with the existing architecture, and component specs, spacing, and interactions were documented in Zeplin."
+      }
+    ],
+    keyScreens: [
+      "Home page (voucher categories, featured offers)",
+      "Voucher detail page",
+      "Redemption screen",
+      "Transaction history",
+      "Login/Signup",
+      "Wallet & Rewards",
+      "Profile & Settings"
+    ],
+    beforeAfter: {
+      before: [
+        "UI felt outdated and cluttered",
+        "Spacing and contrast issues affected readability",
+        "Inconsistent elements created a visually fragmented experience",
+        "Voucher cards lacked hierarchy and premium appeal"
+      ],
+      after: [
+        "Polished, modern lifestyle aesthetic",
+        "Better clarity and readability",
+        "More professional and credible brand image",
+        "Consistent visual language across all screens",
+        "Developers able to implement the redesign seamlessly"
+      ]
+    },
+    learnings: [
+      "UI-only redesigns require deep respect for existing UX decisions.",
+      "Working within strict constraints sharpens design discipline.",
+      "Visual consistency is foundational to brand credibility.",
+      "Developer collaboration early in the process prevents handoff issues.",
+      "Premium aesthetics can be achieved through spacing, typography, and restraint.",
+      "A polished UI directly impacts partnership opportunities and brand trust."
     ]
   }
 };
@@ -1165,6 +1270,124 @@ const CaseStudy = () => {
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+      )}
+
+      {/* Project Scope (for AlHub) */}
+      {study.projectScope && (
+        <section className="px-6 lg:px-12 py-16 bg-card">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Project Scope</h2>
+            <ul className="space-y-3">
+              {study.projectScope.map((item, i) => (
+                <li key={i} className="flex gap-4">
+                  <span className="text-muted-foreground">•</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      {/* Redesign Goals (for AlHub) */}
+      {study.redesignGoals && (
+        <section className="px-6 lg:px-12 py-16">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-12">Goals of the Redesign</h2>
+            <div className="space-y-10">
+              {study.redesignGoals.map((goal, i) => (
+                <div key={i}>
+                  <h3 className="font-serif text-xl mb-4">{goal.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{goal.content}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Constraints (for AlHub) */}
+      {study.constraints && (
+        <section className="px-6 lg:px-12 py-16 bg-card">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Understanding the Constraints</h2>
+            <p className="text-lg text-muted-foreground mb-8">Because this was not a UX redesign, the following constraints shaped the work:</p>
+            <ul className="space-y-3">
+              {study.constraints.map((item, i) => (
+                <li key={i} className="flex gap-4">
+                  <span className="text-muted-foreground">•</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-8 font-serif text-lg text-muted-foreground italic">This required a design approach focused on elevating what already exists rather than solving structural issues.</p>
+          </div>
+        </section>
+      )}
+
+      {/* Redesign Approach (for AlHub) */}
+      {study.redesignApproach && (
+        <section className="px-6 lg:px-12 py-16">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-12">UI Redesign Approach</h2>
+            <div className="space-y-10">
+              {study.redesignApproach.map((item, i) => (
+                <div key={i}>
+                  <h3 className="font-serif text-xl mb-4">{item.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{item.content}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Key Screens (for AlHub) */}
+      {study.keyScreens && (
+        <section className="px-6 lg:px-12 py-16 bg-card">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Key Screens Refined</h2>
+            <div className="flex flex-wrap gap-3">
+              {study.keyScreens.map((screen, i) => (
+                <span key={i} className="px-4 py-2 border border-border text-sm">{screen}</span>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Before/After (for AlHub) */}
+      {study.beforeAfter && (
+        <section className="px-6 lg:px-12 py-16">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-12">Impact</h2>
+            <div className="grid md:grid-cols-2 gap-12">
+              <div>
+                <h3 className="font-serif text-xl mb-6">Before the Redesign</h3>
+                <ul className="space-y-3">
+                  {study.beforeAfter.before.map((item, i) => (
+                    <li key={i} className="flex gap-4">
+                      <span className="text-muted-foreground">•</span>
+                      <span className="text-muted-foreground">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-serif text-xl mb-6">After the Redesign</h3>
+                <ul className="space-y-3">
+                  {study.beforeAfter.after.map((item, i) => (
+                    <li key={i} className="flex gap-4">
+                      <span className="text-muted-foreground">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <p className="mt-8 text-lg">The updated app is now live on the Play Store, reflecting the new UI.</p>
           </div>
         </section>
       )}

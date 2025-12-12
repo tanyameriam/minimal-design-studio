@@ -30,11 +30,11 @@ const projects = [
     slug: "stree-safety-app"
   },
   {
-    title: "Health & Wellness",
-    category: "Product Design • App",
+    title: "AlHub App",
+    category: "UI Redesign • Lifestyle Platform",
     year: "2023",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
-    slug: null
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
+    slug: "alhub-app"
   }
 ];
 
