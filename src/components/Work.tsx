@@ -35,6 +35,13 @@ const projects = [
     year: "2023",
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
     slug: "alhub-app"
+  },
+  {
+    title: "BrynQ Platform",
+    category: "Product Design • B2B iPaaS",
+    year: "2021-2024",
+    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80",
+    slug: "brynq"
   }
 ];
 
