@@ -517,48 +517,54 @@ const caseStudies: Record<string, CaseStudyData> = {
   },
   'stree-safety-app': {
     title: "STREE",
-    subtitle: "A Streetwise Smart Mobile App for the Independent Indian Woman",
-    overview: "Safety is a fundamental right, yet for millions of women in India, navigating public spaces comes with constant risk, uncertainty, and emotional vigilance. STREE was conceptualized as a street-smart ally—a mobile safety product that helps women feel safer, stay connected, and make informed decisions during travel. This case study documents the research depth, design thinking process, and the product decisions that shaped STREE from early hypotheses to final design.",
+    subtitle: "Designing a Virtual Safety Assistant for Women in India",
+    overview: "Sexual harassment and violence in public spaces are a daily reality for women and girls across the world. These experiences occur on streets, in public transport, educational institutions, workplaces, parks, and even near homes. Beyond physical harm, the constant fear of harassment restricts women's freedom of movement, participation in public life, access to education and work, and overall mental wellbeing.\n\nWhile domestic and workplace violence are increasingly recognised as human rights violations, harassment in public spaces often remains neglected. Reporting mechanisms are unclear, slow, or intimidating, and many women are left to manage safety on their own. This gap highlighted the need for tools that support women not only during emergencies, but also before and after unsafe experiences.\n\nProject Stree explores how design can contribute to this space—by creating a digital product that supports awareness, action, and recovery in women's everyday lives.",
     role: "UX Research • Interaction Design • UI Design • Usability Testing • Prototyping",
-    projectDuration: "3 Iterations • 26 Screens • Countless cups of coffee",
+    projectDuration: "3 Iterations • 26 Screens",
     heroImage: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=1200&q=80",
+    problemSpace: [
+      {
+        title: "The Problem Space",
+        content: "Women's safety is not only about crime statistics; it is deeply tied to perception. Fear is influenced by location, time of day, social context, and cultural attitudes. Even when no incident occurs, the anticipation of risk shapes behaviour—choosing longer routes, avoiding certain places, travelling in groups, or limiting mobility altogether.\n\nExisting systems largely focus on reaction after harm has occurred. Very few tools help women anticipate risk, feel supported during moments of uncertainty, or process emotional trauma afterwards. Reporting crime is often seen as ineffective, leading many women to stop reporting incidents altogether.\n\nThe challenge, therefore, was not to design a panic button alone—but to design a holistic safety experience that fits into women's daily lives without increasing fear or judgement."
+      }
+    ],
     briefPoints: [
-      "Poor usability in existing safety apps",
-      "High friction during emergencies",
-      "Lack of real-time actionable support",
-      "Overly complex onboarding",
-      "No meaningful situational feedback"
+      "Support women before an incident by helping them make informed decisions",
+      "Enable quick and reliable action during an incident",
+      "Support reporting and emotional recovery after an incident",
+      "Prioritise accessibility, privacy, and emotional sensitivity",
+      "Design for urban and rural contexts, age groups, and varying tech comfort levels"
     ],
     researchMethods: [
-      "15 in-depth interviews with working women across urban India (Bangalore, Delhi, Pune, Mumbai)",
-      "Field observations studying commute patterns during late hours, transitions between auto/cab/bus, interactions with strangers",
-      "Social listening & desk research including news reports, crime statistics, feminist safety studies, online communities",
-      "Affinity mapping using Miro to cluster insights into behavioral, emotional, and functional themes"
+      "15 in-depth interviews with women from ages 19 to 85, across urban and rural contexts",
+      "Open-ended conversations with informed consent and protected identities",
+      "Focus on how women define safety, past experiences, safety concerns across spaces, precautions taken, and current technology use",
+      "Affinity mapping to cluster insights into behavioural, emotional, and functional themes"
     ],
     keyInsights: [
       {
-        title: "1. Independence is deeply important",
-        content: "Women do not want a system that makes them feel dependent or monitored excessively. \"I want safety without feeling controlled.\""
+        title: "Synthesis & Key Insights",
+        content: "After conducting the interviews, all responses were translated into affinity notes and clustered to identify recurring patterns. This synthesis revealed that safety is experienced as a continuous emotional state rather than a single moment of danger."
       },
       {
-        title: "2. Safety needs are contextual and time-sensitive",
-        content: "What feels unsafe at 2 PM feels very different at 11 PM. Time = critical factor."
+        title: "Safety means independence",
+        content: "One of the strongest insights was that safety, for women, means being independent and living without fear. \"I want safety without feeling controlled.\""
       },
       {
-        title: "3. Awareness improves preparedness",
-        content: "Users want visibility into route safety, nearby help, how long a journey should take, and what to expect around each corner."
+        title: "Harassment is not limited to strangers",
+        content: "Offenders are often known people, which complicates reporting and response. During incidents, many women freeze rather than react immediately, often questioning whether their discomfort is justified."
       },
       {
-        title: "4. Existing safety apps are poor solutions",
-        content: "Common issues included cluttered UI, hidden emergency buttons, slow onboarding, too many permissions upfront, and lack of trust in data handling."
+        title: "Bystanders rarely intervene",
+        content: "Especially in public spaces. Reporting systems are perceived as slow or ineffective, leading many women to stop reporting incidents entirely."
       },
       {
-        title: "5. SOS must be frictionless",
-        content: "Women need one tap activation, confirmation feedback, and minimal cognitive load during panic."
+        title: "Emotional recovery is long-lasting",
+        content: "Experiences are usually shared only within close circles due to shame or fear of judgement. Post-incident emotional impact lingers for long periods."
       },
       {
-        title: "6. Support systems matter",
-        content: "Women often rely heavily on friends, roommates, family, and co-workers. They want these people notified instantly, reliably, and transparently."
+        title: "Safety perception is contextual",
+        content: "What feels unsafe at 2 PM feels very different at 11 PM. Women adapt behaviour constantly—avoiding places, changing routes, or travelling only in groups."
       }
     ],
     userGoals: {
@@ -566,54 +572,53 @@ const caseStudies: Record<string, CaseStudyData> = {
       motivations: ["Freedom", "Independence", "Confidence", "Reliability"],
       challenges: [
         "Quick navigation during panic",
-        "Ability to recover from user error",
         "Visibility of system states (Is SOS active? Who got notified?)",
         "Avoiding cognitive overload",
-        "Ensuring clarity of journey progress",
-        "Preventing confusion between private contacts vs app contacts"
+        "Clarity around what information contacts receive",
+        "Recovery from user error"
       ]
     },
-    personaDescription: "Our persona represents a working woman in an Indian metro city, living independently. She uses shared cabs, autos, and metro; works late hours; shares routes with roommates; trusts WhatsApp + Google Maps; wants control without feeling monitored; and is rarely without her phone. Her emotional journey deeply shaped the product direction.",
+    personaDescription: "Our persona represents a working woman in an Indian metro city, living independently. She uses shared cabs, autos, and metro; works late hours; shares routes with roommates; trusts WhatsApp + Google Maps; wants control without feeling monitored; and is rarely without her phone.",
     productStrategy: [
       {
-        title: "A. Low-Friction Safety Activation",
-        content: "SOS should work even with locked screen, poor network, and high stress situations."
+        title: "Feedback & Iteration",
+        content: "Mentor feedback played a critical role in refining the project. We were challenged on the breadth of demographics, the clarity between insights and solutions, and the potential risks of labelling areas as unsafe. In response, insights were prioritised and clearly separated from design ideas. Safety maps were reframed as contextual and time-sensitive rather than absolute labels."
       },
       {
-        title: "B. Continuous Context Awareness",
-        content: "Provide real-time visibility into location, transport mode, route progress, and expected travel time."
+        title: "Before an incident",
+        content: "The product provides contextual awareness through crowdsourced safety maps and nearby safe spaces such as police stations and NGOs."
       },
       {
-        title: "C. Trusted Connections",
-        content: "Emergency contacts should receive start notification, real-time mode updates, and end-of-journey confirmation."
+        title: "During an incident",
+        content: "Quick actions like location sharing, emergency alerts, and passive evidence capture reduce the burden on the user. SOS works even with locked screen, poor network, and high stress."
       },
       {
-        title: "D. Female-centered usability",
-        content: "Fast, minimal, clutter-free interface with zero ambiguity."
+        title: "After an incident",
+        content: "Anonymous sharing, support groups, and simplified reporting flows help women process experiences and seek accountability."
       }
     ],
     sosSystem: [
       {
-        title: "Offline Mode (No Network Available)",
-        content: "Shows last live location, last updated time, destination & transport type, closest police station, and contact details. Reasoning: Network unreliability should not compromise safety."
+        title: "Storyboard: A Lived Experience",
+        content: "To ground the product in reality, a storyboard was created following a young woman moving cities for education, navigating unfamiliar spaces, experiencing harassment, and gradually finding support through the platform. This narrative helped ensure the design addressed emotional states—fear, isolation, hesitation, and recovery—not just functional tasks."
       },
       {
-        title: "Live Mode (Network Available)",
-        content: "Provides video stream, current location, real-time route deviation detection, contact + official notifications, visible journey status, and estimated arrival time updates. Reasoning: Real-time visibility reduces uncertainty and enables timely intervention."
+        title: "Offline Mode",
+        content: "Shows last live location, last updated time, destination & transport type, closest police station, and contact details. Network unreliability should not compromise safety."
+      },
+      {
+        title: "Live Mode",
+        content: "Provides video stream, current location, real-time route deviation detection, contact + official notifications, visible journey status, and estimated arrival time updates."
       }
     ],
     informationArchitecture: [
       {
-        title: "Discovery",
-        content: "App Store → Install → Sign In/Create Account"
+        title: "App Structure",
+        content: "Home, Maps, SOS, Profile, Contacts, Settings. All safety actions centered around Home + SOS for minimal thought during emergencies."
       },
       {
         title: "Onboarding",
-        content: "Walkthrough → Profile → Permissions → Emergency Contacts → Locations. Reasoning: Make onboarding progressive, not overwhelming. Give users a sense of control and transparency."
-      },
-      {
-        title: "App Structure",
-        content: "Home, Maps, SOS, Profile, Contacts, Settings. Reasoning: All safety actions centered around Home + SOS for minimal thought during emergencies."
+        content: "Progressive onboarding—not overwhelming. Walkthrough → Profile → Permissions → Emergency Contacts → Locations. Give users a sense of control and transparency."
       }
     ],
     usabilityFindings: [
@@ -621,44 +626,35 @@ const caseStudies: Record<string, CaseStudyData> = {
       "Lockscreen SOS drastically improved perceived safety",
       "Emergency contacts must receive start + end notifications",
       "Users needed feedback after pressing SOS",
-      "Confusion around journey start/end indicators",
       "Need for clarity around what information contacts receive",
-      "Users expected a dynamic ETA update"
+      "Users expected dynamic ETA updates"
     ],
     finalDesignChanges: [
       {
-        title: "1. Full-Width SOS Button",
+        title: "Full-Width SOS Button",
         content: "High visibility under stress, easy thumb reach."
       },
       {
-        title: "2. Journey Card with ETA + Route + Contact Visibility",
+        title: "Journey Card with ETA + Route + Contact Visibility",
         content: "Reduces cognitive load; reassures the user."
       },
       {
-        title: "3. Emergency Contacts Section Redesign",
-        content: "Improve trust & transparency around data shared."
+        title: "Calm Color System",
+        content: "Soft purples + neutrals → safe, calm, non-threatening palette. Safety apps must avoid alarming aesthetics."
       },
       {
-        title: "4. First-Time User Flow Simplified",
-        content: "Reduce abandonment; build trust gradually."
+        title: "Lock Screen Shortcut",
+        content: "Instant SOS activation in real emergencies."
       },
       {
-        title: "5. Color System Updated",
-        content: "Soft purples + neutrals → safe, calm, non-threatening palette. Safety apps must avoid alarming/triggering aesthetics."
-      },
-      {
-        title: "6. Icons & microcopy refined",
+        title: "Refined Icons & Microcopy",
         content: "Provide clarity during panic situations."
-      },
-      {
-        title: "7. Lock Screen Shortcut for SOS",
-        content: "Instant activation in real emergencies."
       }
     ],
     finalUISummary: [
       {
         title: "UI Characteristics",
-        content: "Calm, clean, and minimal; safety-first hierarchy; large interactive areas; progressive disclosure for complex details; high contrast for night use; intuitive for first-time users."
+        content: "Calm, clean, and minimal; safety-first hierarchy; large interactive areas; progressive disclosure; high contrast for night use; intuitive for first-time users."
       },
       {
         title: "Screens Delivered",
@@ -678,13 +674,12 @@ const caseStudies: Record<string, CaseStudyData> = {
       "Trust in the app increased through transparency"
     ],
     learnings: [
-      "Safety design must balance urgency + calmness.",
-      "Women's safety is tied to emotion, culture, and daily lived experiences.",
-      "Complex flows must still feel effortless.",
-      "Transparency builds trust.",
-      "Real-world testing reveals needs that wireframes cannot.",
+      "Designing for safety is as much about emotional design as it is about functionality.",
+      "Fear, doubt, and social conditioning play a significant role in how women experience risk.",
+      "Separating assumptions from lived realities is essential.",
+      "Design with restraint and consider unintended consequences in sensitive domains.",
       "A good safety app must work even under worst-case conditions.",
-      "Good design can directly impact real-world safety and empowerment."
+      "With more time: focused testing with specific user segments, exploring low-tech alternatives (SMS/IVR), and validating safety perception tools."
     ],
     hasDetailedVersion: true,
     detailedVersion: {
