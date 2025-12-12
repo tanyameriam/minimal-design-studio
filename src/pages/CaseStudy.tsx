@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
@@ -78,6 +79,23 @@ interface CaseStudyData {
   designSolutions?: CaseStudySection[];
   edgeCases?: CaseStudySection[];
   deliverables?: string[];
+  // STREE detailed version sections
+  hasDetailedVersion?: boolean;
+  detailedVersion?: {
+    whyMattered: string;
+    researchIntent: string;
+    methodology: string;
+    affinityMapping: string;
+    insightGeneration: CaseStudySection[];
+    problemReframing: string;
+    ideation: CaseStudySection[];
+    storyboarding: string;
+    informationArchitecture: string;
+    wireframing: string;
+    outcomes: string;
+    reflection: string;
+    closingLine: string;
+  };
 }
 
 const caseStudies: Record<string, CaseStudyData> = {
@@ -667,7 +685,49 @@ const caseStudies: Record<string, CaseStudyData> = {
       "Real-world testing reveals needs that wireframes cannot.",
       "A good safety app must work even under worst-case conditions.",
       "Good design can directly impact real-world safety and empowerment."
-    ]
+    ],
+    hasDetailedVersion: true,
+    detailedVersion: {
+      whyMattered: "This project started with a fundamental question: What does safety actually mean to women in their everyday lives?\n\nMost existing safety products focus on emergencies—panic buttons, SOS calls, or post-incident reporting. However, early desk research and lived experiences suggested that fear often exists long before an incident occurs and continues long after it ends. Safety, therefore, is not a moment—it is a continuous state shaped by perception, environment, social behaviour, and systemic response.\n\nUnderstanding this required moving beyond assumptions and into lived experiences. This framing directly informed our decision to prioritise qualitative research as the foundation of the project.",
+      researchIntent: "The primary goal of the research phase was not to validate a predefined solution, but to understand how women experience, interpret, and respond to safety concerns in their daily lives.\n\nWe wanted to uncover:\n• How women define \"feeling safe\"\n• How fear influences behaviour and decision-making\n• What happens psychologically during and after harassment\n• Why existing reporting and safety mechanisms often go unused\n• Where technology helps—and where it fails\n\nBecause safety is deeply personal and contextual, a qualitative approach was chosen over surveys or quantitative methods. This decision directly shaped our methodology.",
+      methodology: "We conducted in-depth interviews with 15 women across a wide demographic range, spanning ages 19 to 85, and including participants from both urban and rural contexts. The wide range was intentional—it allowed us to observe patterns that cut across age and geography, while also noting contextual differences.\n\nGiven the sensitivity of the topic, ethical considerations were central to the research design. Participants were informed about the purpose of the study, consent was obtained before proceeding, and identities were safeguarded. Interviews were structured as open-ended conversations rather than rigid questionnaires, allowing participants to share experiences at their own pace and comfort level.\n\nA small set of quantitative and contextual questions was included only to capture baseline demographic information. The focus remained on lived experiences rather than measurable frequency.\n\nThis approach allowed us to collect emotionally rich data—but it also meant we needed a robust synthesis method to make sense of it.",
+      affinityMapping: "After completing the interviews, all notes were broken down into individual observations and transferred onto an affinity mapping board. This step was critical because the raw data was emotionally dense, fragmented, and often overlapping.\n\nThe goal here was not to jump to conclusions, but to externalise patterns. By clustering observations repeatedly, we were able to distinguish between:\n• What participants explicitly said\n• What they felt but struggled to articulate\n• What behaviours emerged across multiple interviews\n\nWe iterated on the affinity board multiple times, cleaning and regrouping clusters to reduce noise and surface stronger themes. This process revealed that many experiences were not isolated incidents but recurring emotional and behavioural patterns.\n\nThis synthesis directly enabled the next step: forming insights.",
+      insightGeneration: [
+        {
+          title: "Separating Signals from Noise",
+          content: "One of the challenges at this stage was avoiding insight overload. Early drafts contained too many \"insights\" that were actually observations or early solution ideas. Mentor feedback helped us refine this by clearly separating:\n\n• Observations (what we saw)\n• Insights (why it mattered)\n• Implications (what it suggested for design)"
+        },
+        {
+          title: "Key Insights Emerged",
+          content: "Women described safety as the ability to live independently without fear. Harassment was not limited to strangers—known people were often involved, making response and reporting more complex. During incidents, many women experienced a freeze response rather than immediate action, often compounded by self-doubt and fear of misinterpreting the situation.\n\nPost-incident, emotional impact lingered for long periods. Many women shared experiences only within close circles due to shame or social judgement. Reporting systems were perceived as slow, unclear, or ineffective, leading to disengagement over time.\n\nCrucially, safety perception varied heavily by location and time. Women adapted behaviour constantly—changing routes, avoiding spaces, travelling in groups—often without conscious planning.\n\nThese insights reframed the problem from \"How do we respond to emergencies?\" to \"How do we support women across the entire safety journey?\""
+        }
+      ],
+      problemReframing: "Based on research insights, we reframed the design challenge.\n\nInstead of designing a single feature or tool, we asked:\nHow might we design a system that supports women before, during, and after safety incidents—without increasing fear or judgement?\n\nThis reframing justified a broader product vision and directly influenced ideation. It also helped us evaluate ideas more critically, especially when mentor feedback raised concerns about unintended consequences, such as labelling places as unsafe and reinforcing fear.\n\nThis led to a more nuanced design direction.",
+      ideation: [
+        {
+          title: "Before an Incident",
+          content: "Women needed awareness without alarm. This led to concepts like time-sensitive safety maps and nearby safe spaces, framed as contextual guidance rather than absolute warnings."
+        },
+        {
+          title: "During Incidents",
+          content: "Women needed simplicity and speed. This justified features that reduce cognitive load—single-tap actions that trigger multiple outcomes such as location sharing, alerts, and passive evidence capture."
+        },
+        {
+          title: "After Incidents",
+          content: "Women needed validation, recovery, and accountability. This informed ideas around anonymous sharing, support groups, and simplified reporting with visibility into what happens next."
+        },
+        {
+          title: "System Boundaries",
+          content: "Importantly, solutions were grouped into what the app could realistically support versus what required collaboration with external systems such as authorities, NGOs, and institutions. This distinction addressed mentor feedback and grounded the concept in feasibility."
+        }
+      ],
+      storyboarding: "To test whether our ideas worked together as a system, we created a storyboard following a realistic user journey. The storyboard traced a woman moving to a new city, navigating unfamiliar spaces, experiencing harassment, hesitating to react, and eventually finding support.\n\nThis step exposed gaps that feature lists often hide. It revealed moments of loneliness, doubt, and emotional fatigue that required design attention. The storyboard ensured the product did not only activate during emergencies but remained relevant throughout everyday life.\n\nThis directly informed the structure of the application.",
+      informationArchitecture: "With a clearer understanding of user journeys, we organised features into a simple, discoverable structure. The architecture prioritised quick access to safety actions while keeping supportive and reflective spaces available without overwhelming the user.\n\nAccessibility was considered throughout, including vernacular language support, minimal text, and icon-based navigation. This addressed earlier concerns about inclusivity and tech comfort levels.\n\nThis structure became the foundation for wireframing.",
+      wireframing: "Wireframes focused on reducing friction and cognitive effort, especially in high-stress moments. Core flows were designed so that critical actions could be completed with minimal taps and clear feedback.\n\nVisual hierarchy prioritised calmness and trust over urgency when not needed, recognising that constant alarm can increase anxiety. Feedback states were clearly defined so users always knew what action had been taken and what would happen next.\n\nWireframes acted as a validation checkpoint, ensuring that insights translated into usable interactions rather than conceptual features.",
+      outcomes: "The final outcome was a cohesive product concept that treated women's safety as a continuous experience rather than a single event. Project Stree demonstrated how qualitative research can uncover emotional and behavioural dimensions that traditional safety tools often overlook.\n\nWhile the project remained conceptual, it achieved its primary goal: translating deep research insights into a thoughtful, human-centred design system that balances awareness, action, and recovery.",
+      reflection: "This project reinforced the importance of restraint when designing for sensitive domains. Not every insight demands a feature, and not every problem can—or should—be solved through technology alone.\n\nI learned to navigate ambiguity, accept feedback that challenged assumptions, and design with empathy rather than urgency. Most importantly, I learned how to tell a clear, compelling research story—connecting evidence to decisions and decisions to outcomes.",
+      closingLine: "Project Stree reflects my approach to UX research and design: grounded in lived experiences, guided by evidence, and shaped by responsibility."
+    }
   },
   'alhub-app': {
     title: "AlHub",
@@ -945,6 +1005,7 @@ const caseStudies: Record<string, CaseStudyData> = {
 const CaseStudy = () => {
   const { slug } = useParams();
   const study = slug ? caseStudies[slug] : null;
+  const [isDetailedVersion, setIsDetailedVersion] = useState(false);
 
   if (!study) {
     return (
@@ -997,7 +1058,166 @@ const CaseStudy = () => {
         </div>
       </div>
 
-      {/* Overview */}
+      {/* Version Toggle for STREE */}
+      {study.hasDetailedVersion && (
+        <div className="px-6 lg:px-12 mb-12">
+          <div className="container mx-auto max-w-4xl">
+            <div className="flex items-center justify-center gap-4">
+              <span className="text-sm text-muted-foreground">Choose version:</span>
+              <div className="flex border border-border rounded-sm overflow-hidden">
+                <button
+                  onClick={() => setIsDetailedVersion(false)}
+                  className={`px-6 py-3 text-sm font-medium transition-colors ${
+                    !isDetailedVersion 
+                      ? 'bg-foreground text-background' 
+                      : 'bg-background text-foreground hover:bg-muted'
+                  }`}
+                >
+                  Quick Overview
+                </button>
+                <button
+                  onClick={() => setIsDetailedVersion(true)}
+                  className={`px-6 py-3 text-sm font-medium transition-colors ${
+                    isDetailedVersion 
+                      ? 'bg-foreground text-background' 
+                      : 'bg-background text-foreground hover:bg-muted'
+                  }`}
+                >
+                  Detailed Process
+                </button>
+              </div>
+            </div>
+            <p className="text-center text-sm text-muted-foreground mt-4">
+              {isDetailedVersion 
+                ? "A comprehensive look at the research methodology, synthesis, and design decisions."
+                : "A condensed overview highlighting key insights and outcomes."
+              }
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Detailed Version Content for STREE */}
+      {study.hasDetailedVersion && isDetailedVersion && study.detailedVersion && (
+        <>
+          {/* Why This Project Mattered */}
+          <section className="px-6 lg:px-12 py-16 border-t border-border">
+            <div className="container mx-auto max-w-4xl">
+              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Why This Project Mattered</h2>
+              <p className="text-lg leading-relaxed whitespace-pre-line">{study.detailedVersion.whyMattered}</p>
+            </div>
+          </section>
+
+          {/* Research Intent */}
+          <section className="px-6 lg:px-12 py-16 bg-card">
+            <div className="container mx-auto max-w-4xl">
+              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Research Intent</h2>
+              <p className="text-lg leading-relaxed whitespace-pre-line">{study.detailedVersion.researchIntent}</p>
+            </div>
+          </section>
+
+          {/* Research Methodology */}
+          <section className="px-6 lg:px-12 py-16">
+            <div className="container mx-auto max-w-4xl">
+              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Research Methodology & Ethics</h2>
+              <p className="text-lg leading-relaxed whitespace-pre-line">{study.detailedVersion.methodology}</p>
+            </div>
+          </section>
+
+          {/* Affinity Mapping */}
+          <section className="px-6 lg:px-12 py-16 bg-card">
+            <div className="container mx-auto max-w-4xl">
+              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">From Raw Data to Meaning: Affinity Mapping</h2>
+              <p className="text-lg leading-relaxed whitespace-pre-line">{study.detailedVersion.affinityMapping}</p>
+            </div>
+          </section>
+
+          {/* Insight Generation */}
+          <section className="px-6 lg:px-12 py-16">
+            <div className="container mx-auto max-w-4xl">
+              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Insight Generation</h2>
+              <div className="space-y-10">
+                {study.detailedVersion.insightGeneration.map((item, i) => (
+                  <div key={i}>
+                    <h3 className="font-serif text-xl mb-4">{item.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed whitespace-pre-line">{item.content}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Problem Reframing */}
+          <section className="px-6 lg:px-12 py-16 bg-card">
+            <div className="container mx-auto max-w-4xl">
+              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Reframing the Problem</h2>
+              <p className="text-lg leading-relaxed whitespace-pre-line">{study.detailedVersion.problemReframing}</p>
+            </div>
+          </section>
+
+          {/* Ideation */}
+          <section className="px-6 lg:px-12 py-16">
+            <div className="container mx-auto max-w-4xl">
+              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Ideation: Translating Insights into Solutions</h2>
+              <p className="text-lg text-muted-foreground mb-12">Ideation focused on mapping insights to moments in a woman's safety journey:</p>
+              <div className="grid md:grid-cols-2 gap-8">
+                {study.detailedVersion.ideation.map((item, i) => (
+                  <div key={i} className="p-6 border border-border">
+                    <h3 className="font-serif text-lg mb-3">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground">{item.content}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Storyboarding */}
+          <section className="px-6 lg:px-12 py-16 bg-card">
+            <div className="container mx-auto max-w-4xl">
+              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Storyboarding</h2>
+              <p className="text-lg leading-relaxed whitespace-pre-line">{study.detailedVersion.storyboarding}</p>
+            </div>
+          </section>
+
+          {/* Information Architecture - Detailed */}
+          <section className="px-6 lg:px-12 py-16">
+            <div className="container mx-auto max-w-4xl">
+              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Structuring the Experience</h2>
+              <p className="text-lg leading-relaxed whitespace-pre-line">{study.detailedVersion.informationArchitecture}</p>
+            </div>
+          </section>
+
+          {/* Wireframing - Detailed */}
+          <section className="px-6 lg:px-12 py-16 bg-card">
+            <div className="container mx-auto max-w-4xl">
+              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Wireframing</h2>
+              <p className="text-lg leading-relaxed whitespace-pre-line">{study.detailedVersion.wireframing}</p>
+            </div>
+          </section>
+
+          {/* Outcomes */}
+          <section className="px-6 lg:px-12 py-16">
+            <div className="container mx-auto max-w-4xl">
+              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Outcomes & Impact</h2>
+              <p className="text-lg leading-relaxed whitespace-pre-line">{study.detailedVersion.outcomes}</p>
+            </div>
+          </section>
+
+          {/* Reflection */}
+          <section className="px-6 lg:px-12 py-16 bg-card">
+            <div className="container mx-auto max-w-4xl">
+              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Reflection</h2>
+              <p className="text-lg leading-relaxed whitespace-pre-line mb-8">{study.detailedVersion.reflection}</p>
+              <p className="font-serif text-xl italic text-muted-foreground">{study.detailedVersion.closingLine}</p>
+            </div>
+          </section>
+        </>
+      )}
+
+      {/* Quick Version Content - Only show for STREE when not in detailed mode, or for all other projects */}
+      {(!study.hasDetailedVersion || !isDetailedVersion) && (
+        <>
+          {/* Overview */}
       <section className="px-6 lg:px-12 py-16 border-t border-border">
         <div className="container mx-auto max-w-4xl">
           <div className="grid md:grid-cols-3 gap-12">
@@ -2008,6 +2228,8 @@ const CaseStudy = () => {
           </ul>
         </div>
       </section>
+        </>
+      )}
 
       {/* Footer Navigation */}
       <footer className="px-6 lg:px-12 py-16 border-t border-border">
