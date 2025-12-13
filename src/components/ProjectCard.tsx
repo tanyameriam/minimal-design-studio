@@ -25,15 +25,15 @@ const ProjectCard = ({ title, category, year, image, slug, tags, index }: Projec
       className="group cursor-pointer"
       style={{ animationDelay: `${index * 0.1}s` }}
     >
-      <div className="relative overflow-hidden bg-card mb-6 rounded-lg shadow-lg group-hover:shadow-xl transition-shadow duration-500">
-        <div className="aspect-[4/3] overflow-hidden">
+      <div className="relative overflow-hidden bg-muted mb-6 rounded-lg shadow-lg group-hover:shadow-xl transition-shadow duration-500">
+        <div className="aspect-[16/9] overflow-hidden flex items-center justify-center">
           <img 
             src={image} 
             alt={title}
-            className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:brightness-110"
+            className="w-full h-full object-contain transition-all duration-700 group-hover:scale-105 group-hover:brightness-110"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-t from-foreground/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         <div className="absolute inset-0 ring-1 ring-inset ring-foreground/5 rounded-lg" />
       </div>
       
