@@ -3208,7 +3208,7 @@ const CaseStudy = () => {
             
             <div className="space-y-6 text-muted-foreground leading-relaxed mb-12">
               <p>
-                The flow begins when an NGO logs into the system and checks whether the required food is already available according to their current needs. This initial decision determines whether the NGO can proceed immediately or needs to source food externally. If the required food is present—through previously listed surplus or ongoing restaurant partnerships—the NGO adds it to their cart and proceeds to delivery method selection. If the food is unavailable, the NGO creates a requirement request that is sent to restaurants and caterers, enabling on-demand sourcing rather than passive availability.
+                The flow begins when an NGO logs into the system and checks whether the required food is already available according to their current needs. This initial decision determines whether the NGO can proceed immediately or needs to source food externally. If the required food is present, through previously listed surplus or ongoing restaurant partnerships, the NGO adds it to their cart and proceeds to delivery method selection. If the food is unavailable, the NGO creates a requirement request that is sent to restaurants and caterers, enabling on-demand sourcing rather than passive availability.
               </p>
               
               <p>
