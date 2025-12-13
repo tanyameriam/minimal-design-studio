@@ -2271,10 +2271,6 @@ const CaseStudy = () => {
                           <span className="px-1.5 py-0.5 bg-destructive/10 text-destructive rounded text-[10px]">High</span>
                         </li>
                         <li className="text-xs text-muted-foreground flex justify-between items-center">
-                          <span className="flex gap-2"><span className="text-primary">→</span>Driver app integration</span>
-                          <span className="px-1.5 py-0.5 bg-destructive/10 text-destructive rounded text-[10px]">High</span>
-                        </li>
-                        <li className="text-xs text-muted-foreground flex justify-between items-center">
                           <span className="flex gap-2"><span className="text-primary">→</span>Structured data capture</span>
                           <span className="px-1.5 py-0.5 bg-primary/10 text-primary rounded text-[10px]">Med</span>
                         </li>
