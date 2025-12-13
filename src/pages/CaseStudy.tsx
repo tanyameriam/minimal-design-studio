@@ -2843,10 +2843,29 @@ const CaseStudy = () => {
             </div>
             <p className="text-muted-foreground mb-10">After identifying the required modules, we created wireframes for all key flows in the web application—covering dashboard, ride management, live tracking, and reporting.</p>
 
-            <div className="rounded-xl border border-border bg-background overflow-hidden cursor-pointer hover:shadow-lg transition-shadow" onClick={() => setLightboxImage(merryWireframes)}>
-              <img src={merryWireframes} alt="Merry Health wireframes showing active rides, ride details, and map view screens" className="w-full object-contain" />
-              <div className="p-4 bg-muted/20 border-t border-border">
-                <span className="text-xs text-muted-foreground">Click to view wireframe details • Covers Active Rides, Ride Details, Map View, and Mobile flows</span>
+            <div className="space-y-6">
+              <div className="rounded-xl border border-border bg-background overflow-hidden cursor-pointer hover:shadow-lg transition-shadow" onClick={() => setLightboxImage(merryWireframes)}>
+                <img src={merryWireframes} alt="Merry Health wireframes showing active rides, ride details, and map view screens" className="w-full object-contain" />
+                <div className="p-4 bg-muted/20 border-t border-border">
+                  <span className="text-xs text-muted-foreground">Click to view wireframe details • Covers Active Rides, Ride Details, Map View, and Mobile flows</span>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="rounded-xl border border-border bg-background overflow-hidden cursor-pointer hover:shadow-lg transition-shadow" onClick={() => setLightboxImage(merryHifiDashboard)}>
+                  <img src={merryHifiDashboard} alt="Merry Health dashboard wireframe" className="w-full object-cover aspect-video" />
+                  <div className="p-4 border-t border-border">
+                    <h4 className="text-sm font-medium mb-1">Dashboard Wireframe</h4>
+                    <p className="text-xs text-muted-foreground">Overview with KPIs, quick actions, and ride list structure</p>
+                  </div>
+                </div>
+                <div className="rounded-xl border border-border bg-background overflow-hidden cursor-pointer hover:shadow-lg transition-shadow" onClick={() => setLightboxImage(merryHifiReports)}>
+                  <img src={merryHifiReports} alt="Merry Health reporting module wireframe" className="w-full object-cover aspect-video" />
+                  <div className="p-4 border-t border-border">
+                    <h4 className="text-sm font-medium mb-1">Reporting Module Wireframe</h4>
+                    <p className="text-xs text-muted-foreground">Analytics dashboard with filters, charts, and export options</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -2858,35 +2877,22 @@ const CaseStudy = () => {
             <div className="flex items-center gap-4 mb-6">
               <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">8</span>
               <h2 className="font-serif text-2xl">High-Fidelity Screens</h2>
-              <a href="https://www.figma.com/proto/yH9NNuzOQov4XIgkz5D2jo/Project-Merry-Health?node-id=15-36521&t=31Fmb4tJRbqNkLny-1&scaling=min-zoom&content-scaling=fixed&page-id=14%3A5438&starting-point-node-id=15%3A36521" target="_blank" rel="noopener noreferrer" className="ml-auto flex items-center gap-2 text-xs text-primary hover:underline">
-                <svg className="w-3.5 h-3.5" viewBox="0 0 38 57" fill="currentColor">
-                  <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" />
-                  <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" />
-                  <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" />
-                  <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" />
-                  <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" />
-                </svg>
-                View Prototype
-              </a>
             </div>
-            <p className="text-muted-foreground mb-10">The final high-fidelity designs bring together all research insights into a polished, production-ready interface for the Merry Health Admin platform.</p>
+            <p className="text-muted-foreground mb-6">The final high-fidelity designs bring together all research insights into a polished, production-ready interface for the Merry Health Admin platform.</p>
 
-            <div className="grid md:grid-cols-2 gap-6 mb-8">
-              <div className="rounded-xl border border-border bg-background overflow-hidden cursor-pointer hover:shadow-lg transition-shadow" onClick={() => setLightboxImage(merryHifiDashboard)}>
-                <img src={merryHifiDashboard} alt="Merry Health dashboard with KPIs, quick actions, and ride list" className="w-full object-cover aspect-video" />
-                <div className="p-4 border-t border-border">
-                  <h4 className="text-sm font-medium mb-1">Dashboard</h4>
-                  <p className="text-xs text-muted-foreground">Overview with KPIs, quick actions, and real-time ride list</p>
-                </div>
+            <a href="https://www.figma.com/proto/yH9NNuzOQov4XIgkz5D2jo/Project-Merry-Health?node-id=15-36521&t=31Fmb4tJRbqNkLny-1&scaling=min-zoom&content-scaling=fixed&page-id=14%3A5438&starting-point-node-id=15%3A36521" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-6 py-4 rounded-xl border border-primary/20 bg-primary/5 hover:bg-primary/10 transition-colors">
+              <svg className="w-5 h-5 text-primary" viewBox="0 0 38 57" fill="currentColor">
+                <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" />
+                <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" />
+                <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" />
+                <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" />
+                <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" />
+              </svg>
+              <div>
+                <span className="text-sm font-medium text-primary">View Hi-Fi Prototype in Figma</span>
+                <p className="text-xs text-muted-foreground">Interactive prototype with all screens and flows</p>
               </div>
-              <div className="rounded-xl border border-border bg-background overflow-hidden cursor-pointer hover:shadow-lg transition-shadow" onClick={() => setLightboxImage(merryHifiReports)}>
-                <img src={merryHifiReports} alt="Merry Health analytics and reporting module" className="w-full object-cover aspect-video" />
-                <div className="p-4 border-t border-border">
-                  <h4 className="text-sm font-medium mb-1">Reporting Module</h4>
-                  <p className="text-xs text-muted-foreground">Analytics dashboard with filters, charts, and export options</p>
-                </div>
-              </div>
-            </div>
+            </a>
           </div>
         </section>}
 
