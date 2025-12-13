@@ -3256,32 +3256,57 @@ const CaseStudy = () => {
       {/* Research Insights (for food waste project) */}
       {study.researchInsights && <section className="px-6 lg:px-12 py-16">
           <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-12">Research Insights</h2>
+            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Research & Insights</p>
+            <h2 className="font-serif text-3xl md:text-4xl mb-6">Understanding the NGO Ecosystem</h2>
+            <p className="text-xl text-muted-foreground mb-12 max-w-3xl">Through interviews with NGO representatives, we uncovered the following key insights:</p>
             
-            {/* What is the role of NGOs? */}
-            {study.researchInsights.ngoRole && <div className="mb-16">
-                <h3 className="font-serif text-3xl mb-6">What is the role of NGOs?</h3>
-                <p className="text-lg leading-relaxed text-foreground/80">
-                  {study.researchInsights.ngoRole.split('**').map((part, i) => i % 2 === 1 ? <strong key={i} className="font-semibold text-foreground">{part}</strong> : part)}
+            {/* Insight Cards */}
+            <div className="space-y-6 mb-16">
+              {/* Insight 1 - NGO Role */}
+              <div className="relative p-8 rounded-2xl bg-muted/30 border-l-4 border-primary/40 overflow-hidden">
+                <span className="absolute bottom-0 right-4 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">01</span>
+                <h3 className="font-serif text-2xl mb-4 relative z-10">The Role of NGOs</h3>
+                <p className="text-muted-foreground mb-4 relative z-10">
+                  {study.researchInsights.ngoRole && study.researchInsights.ngoRole.split('**').map((part, i) => i % 2 === 1 ? <strong key={i} className="font-semibold text-foreground">{part}</strong> : part)}
                 </p>
-              </div>}
-            
-            {/* NGO Quotes */}
-            {study.researchInsights.ngoQuotes && <div className="mb-16">
-                <h3 className="font-serif text-3xl mb-8 text-center">What does the NGOs say?</h3>
-                <div className="grid md:grid-cols-3 gap-6">
-                  {study.researchInsights.ngoQuotes.map((quote, i) => <div key={i} className="relative">
-                      <p className="text-lg leading-relaxed text-foreground/80">
-                        "{quote}"
-                      </p>
-                    </div>)}
-                </div>
-              </div>}
+              </div>
+
+              {/* Insight 2 - Notification Delays */}
+              <div className="relative p-8 rounded-2xl bg-muted/30 border-l-4 border-primary/40 overflow-hidden">
+                <span className="absolute bottom-0 right-4 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">02</span>
+                <h3 className="font-serif text-2xl mb-4 relative z-10">Irregular & Late Notifications</h3>
+                <p className="text-muted-foreground mb-4 relative z-10">
+                  NGOs receive food availability notifications at unpredictable times, often too late to arrange collection. This leads to missed opportunities and wasted surplus food.
+                </p>
+                <p className="text-lg italic text-foreground/80 relative z-10">"There have been a lot of instances when we couldn't collect food from parties because they were informed at odd timings."</p>
+              </div>
+
+              {/* Insight 3 - Logistics Challenges */}
+              <div className="relative p-8 rounded-2xl bg-muted/30 border-l-4 border-primary/40 overflow-hidden">
+                <span className="absolute bottom-0 right-4 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">03</span>
+                <h3 className="font-serif text-2xl mb-4 relative z-10">Logistics & Transportation Burden</h3>
+                <p className="text-muted-foreground mb-4 relative z-10">
+                  High transportation costs, lack of manpower, and difficulty coordinating pickups from multiple locations create a fragile logistics network that breaks under pressure.
+                </p>
+                <p className="text-lg italic text-foreground/80 relative z-10">"The logistics in transporting the food on time to reach the hunger hotspots was very difficult to arrange and manage."</p>
+              </div>
+
+              {/* Insight 4 - Coordination Struggles */}
+              <div className="relative p-8 rounded-2xl bg-muted/30 border-l-4 border-primary/40 overflow-hidden">
+                <span className="absolute bottom-0 right-4 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">04</span>
+                <h3 className="font-serif text-2xl mb-4 relative z-10">Coordination & Communication Gaps</h3>
+                <p className="text-muted-foreground mb-4 relative z-10">
+                  Without a centralized system, NGOs struggle to connect with food sources and coordinate simultaneous pickups, leading to spoilage and missed donations.
+                </p>
+                <p className="text-lg italic text-foreground/80 relative z-10">"Leftover food at marriage functions or company events is going down the sewer when there are a lot of hungry stomachs on the street. Logistics and reaching out to them simultaneously has been a huge struggle."</p>
+              </div>
+            </div>
             
             {/* Opportunity */}
-            {study.researchInsights.opportunity && <div className="p-8 border-l-4 border-foreground bg-muted/30">
-                <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-4">The Opportunity</h3>
-                <p className="font-serif text-xl leading-relaxed">
+            {study.researchInsights.opportunity && <div className="relative p-8 rounded-2xl bg-primary/5 border-l-4 border-primary overflow-hidden">
+                <span className="absolute bottom-0 right-4 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">→</span>
+                <h3 className="text-sm uppercase tracking-[0.2em] text-primary mb-4 relative z-10">The Opportunity</h3>
+                <p className="font-serif text-xl leading-relaxed relative z-10">
                   {study.researchInsights.opportunity}
                 </p>
               </div>}
