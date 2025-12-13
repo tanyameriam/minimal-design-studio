@@ -3066,35 +3066,26 @@ const CaseStudy = () => {
             </div>
 
             {/* WhatsApp Chat Examples */}
-            <div className="mt-16">
-              <h3 className="font-serif text-xl mb-4">WhatsApp Chat Examples</h3>
-              <p className="text-sm text-muted-foreground mb-8">Examples of the WhatsApp message flows for each user type, demonstrating the end-to-end communication system.</p>
+            <div className="mt-12">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-serif text-lg">WhatsApp Chat Examples</h3>
+                <p className="text-xs text-muted-foreground">Click to view</p>
+              </div>
               
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="cursor-pointer group" onClick={() => setLightboxImage(merryWhatsappDriver)}>
-                  <div className="overflow-hidden rounded-xl border border-border bg-muted/20">
-                    <img src={merryWhatsappDriver} alt="Driver WhatsApp experience" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300" />
+              <div className="flex gap-3">
+                {[
+                  { src: merryWhatsappDriver, alt: "Driver WhatsApp experience", label: "Driver" },
+                  { src: merryWhatsappPatient, alt: "Patient Party WhatsApp experience", label: "Patient" },
+                  { src: merryWhatsappHospital, alt: "Hospital Announcement Group experience", label: "Hospital" },
+                  { src: merryWhatsappAdmin, alt: "Hospital Admin WhatsApp experience", label: "Admin" }
+                ].map((item, i) => (
+                  <div key={i} className="cursor-pointer group" onClick={() => setLightboxImage(item.src)}>
+                    <div className="w-16 h-20 overflow-hidden rounded-lg border border-border bg-muted/20">
+                      <img src={item.src} alt={item.alt} className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300" />
+                    </div>
+                    <p className="text-[10px] text-muted-foreground mt-1 text-center">{item.label}</p>
                   </div>
-                  <p className="text-xs text-muted-foreground mt-2 text-center">Driver</p>
-                </div>
-                <div className="cursor-pointer group" onClick={() => setLightboxImage(merryWhatsappPatient)}>
-                  <div className="overflow-hidden rounded-xl border border-border bg-muted/20">
-                    <img src={merryWhatsappPatient} alt="Patient Party WhatsApp experience" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300" />
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-2 text-center">Patient Party</p>
-                </div>
-                <div className="cursor-pointer group" onClick={() => setLightboxImage(merryWhatsappHospital)}>
-                  <div className="overflow-hidden rounded-xl border border-border bg-muted/20">
-                    <img src={merryWhatsappHospital} alt="Hospital Announcement Group experience" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300" />
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-2 text-center">Hospital Group</p>
-                </div>
-                <div className="cursor-pointer group" onClick={() => setLightboxImage(merryWhatsappAdmin)}>
-                  <div className="overflow-hidden rounded-xl border border-border bg-muted/20">
-                    <img src={merryWhatsappAdmin} alt="Hospital Admin WhatsApp experience" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300" />
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-2 text-center">Hospital Admin</p>
-                </div>
+                ))}
               </div>
             </div>
           </div>
