@@ -3160,9 +3160,7 @@ const CaseStudy = () => {
             {study.researchInsights.ngoRole && <div className="mb-16">
                 <h3 className="font-serif text-3xl mb-6">What is the role of NGOs?</h3>
                 <p className="text-lg leading-relaxed text-foreground/80">
-                  {study.researchInsights.ngoRole.split('**').map((part, i) => 
-                    i % 2 === 1 ? <strong key={i} className="font-semibold text-foreground">{part}</strong> : part
-                  )}
+                  {study.researchInsights.ngoRole.split('**').map((part, i) => i % 2 === 1 ? <strong key={i} className="font-semibold text-foreground">{part}</strong> : part)}
                 </p>
               </div>}
             
@@ -3170,13 +3168,11 @@ const CaseStudy = () => {
             {study.researchInsights.ngoQuotes && <div className="mb-16">
                 <h3 className="font-serif text-3xl mb-8 text-center">What does the NGOs say?</h3>
                 <div className="grid md:grid-cols-3 gap-6">
-                  {study.researchInsights.ngoQuotes.map((quote, i) => (
-                    <div key={i} className="relative">
+                  {study.researchInsights.ngoQuotes.map((quote, i) => <div key={i} className="relative">
                       <p className="text-lg leading-relaxed text-foreground/80">
                         "{quote}"
                       </p>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </div>}
             
@@ -3210,12 +3206,7 @@ const CaseStudy = () => {
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Suggested Solution</h2>
             <h3 className="font-serif text-3xl mb-8">System Flow</h3>
             <div className="bg-background border border-border rounded-lg p-4">
-              <img 
-                src={foodWasteSystemFlow} 
-                alt="Food Waste Solution System Flow Diagram" 
-                className="w-full h-auto cursor-pointer"
-                onClick={() => setLightboxImage(foodWasteSystemFlow)}
-              />
+              <img src={foodWasteSystemFlow} alt="Food Waste Solution System Flow Diagram" className="w-full h-auto cursor-pointer" onClick={() => setLightboxImage(foodWasteSystemFlow)} />
             </div>
           </div>
         </section>}
@@ -3297,29 +3288,15 @@ const CaseStudy = () => {
             <div className="space-y-12">
               {study.informationArchitecture.map((item, i) => <div key={i}>
                   <h3 className="font-serif text-xl mb-4">{item.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed mb-6">{item.content}</p>
+                  
                   {/* Show restaurant sitemap for first IA item in food waste project */}
-                  {slug === 'food-waste-ngo' && i === 0 && (
-                    <div className="bg-background border border-border rounded-lg p-4 mt-6">
-                      <img 
-                        src={foodWasteRestaurantSitemap} 
-                        alt="Restaurant App Sitemap" 
-                        className="w-full h-auto cursor-pointer"
-                        onClick={() => setLightboxImage(foodWasteRestaurantSitemap)}
-                      />
-                    </div>
-                  )}
+                  {slug === 'food-waste-ngo' && i === 0 && <div className="bg-background border border-border rounded-lg p-4 mt-6">
+                      <img src={foodWasteRestaurantSitemap} alt="Restaurant App Sitemap" className="w-full h-auto cursor-pointer" onClick={() => setLightboxImage(foodWasteRestaurantSitemap)} />
+                    </div>}
                   {/* Show NGO sitemap for second IA item in food waste project */}
-                  {slug === 'food-waste-ngo' && i === 1 && (
-                    <div className="bg-background border border-border rounded-lg p-4 mt-6">
-                      <img 
-                        src={foodWasteNgoSitemap} 
-                        alt="NGO App Sitemap" 
-                        className="w-full h-auto cursor-pointer"
-                        onClick={() => setLightboxImage(foodWasteNgoSitemap)}
-                      />
-                    </div>
-                  )}
+                  {slug === 'food-waste-ngo' && i === 1 && <div className="bg-background border border-border rounded-lg p-4 mt-6">
+                      <img src={foodWasteNgoSitemap} alt="NGO App Sitemap" className="w-full h-auto cursor-pointer" onClick={() => setLightboxImage(foodWasteNgoSitemap)} />
+                    </div>}
                 </div>)}
             </div>
           </div>
@@ -3435,60 +3412,68 @@ const CaseStudy = () => {
                 </div>)}
             </div>
             {/* NGO App Wireframes for food waste project */}
-            {slug === 'food-waste-ngo' && (
-              <div className="mt-12">
+            {slug === 'food-waste-ngo' && <div className="mt-12">
                 <h3 className="font-serif text-2xl mb-8">NGO App Wireframes</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                  {[
-                    { src: foodWasteWireframeHome, label: 'Home Screen' },
-                    { src: foodWasteWireframeCart, label: 'Cart' },
-                    { src: foodWasteWireframeConfirm, label: 'Order Confirm' },
-                    { src: foodWasteWireframeTrack, label: 'Track Order' },
-                    { src: foodWasteWireframeAccount, label: 'Account' },
-                    { src: foodWasteWireframeOrders, label: 'All Orders' },
-                  ].map((wireframe, i) => (
-                    <div key={i} className="flex flex-col items-center">
+                  {[{
+              src: foodWasteWireframeHome,
+              label: 'Home Screen'
+            }, {
+              src: foodWasteWireframeCart,
+              label: 'Cart'
+            }, {
+              src: foodWasteWireframeConfirm,
+              label: 'Order Confirm'
+            }, {
+              src: foodWasteWireframeTrack,
+              label: 'Track Order'
+            }, {
+              src: foodWasteWireframeAccount,
+              label: 'Account'
+            }, {
+              src: foodWasteWireframeOrders,
+              label: 'All Orders'
+            }].map((wireframe, i) => <div key={i} className="flex flex-col items-center">
                       <div className="bg-background border border-border rounded-lg overflow-hidden cursor-pointer" onClick={() => setLightboxImage(wireframe.src)}>
-                        <img 
-                          src={wireframe.src} 
-                          alt={wireframe.label} 
-                          className="w-full h-auto"
-                        />
+                        <img src={wireframe.src} alt={wireframe.label} className="w-full h-auto" />
                       </div>
                       <p className="mt-3 text-sm text-muted-foreground text-center">{wireframe.label}</p>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
-              </div>
-            )}
+              </div>}
             {/* Restaurant App Wireframes for food waste project */}
-            {slug === 'food-waste-ngo' && (
-              <div className="mt-12">
+            {slug === 'food-waste-ngo' && <div className="mt-12">
                 <h3 className="font-serif text-2xl mb-8">Restaurant App Wireframes</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                  {[
-                    { src: foodWasteRestWireframeMyorders, label: 'My Orders' },
-                    { src: foodWasteRestWireframeOrderdetail, label: 'Order Details' },
-                    { src: foodWasteRestWireframeHandoff, label: 'Order Handoff' },
-                    { src: foodWasteRestWireframeListings, label: 'My Listings' },
-                    { src: foodWasteRestWireframeAddlisting, label: 'Add Listing' },
-                    { src: foodWasteRestWireframeAccount, label: 'Account' },
-                    { src: foodWasteRestWireframeInsights, label: 'Insights' },
-                  ].map((wireframe, i) => (
-                    <div key={i} className="flex flex-col items-center">
+                  {[{
+              src: foodWasteRestWireframeMyorders,
+              label: 'My Orders'
+            }, {
+              src: foodWasteRestWireframeOrderdetail,
+              label: 'Order Details'
+            }, {
+              src: foodWasteRestWireframeHandoff,
+              label: 'Order Handoff'
+            }, {
+              src: foodWasteRestWireframeListings,
+              label: 'My Listings'
+            }, {
+              src: foodWasteRestWireframeAddlisting,
+              label: 'Add Listing'
+            }, {
+              src: foodWasteRestWireframeAccount,
+              label: 'Account'
+            }, {
+              src: foodWasteRestWireframeInsights,
+              label: 'Insights'
+            }].map((wireframe, i) => <div key={i} className="flex flex-col items-center">
                       <div className="bg-background border border-border rounded-lg overflow-hidden cursor-pointer" onClick={() => setLightboxImage(wireframe.src)}>
-                        <img 
-                          src={wireframe.src} 
-                          alt={wireframe.label} 
-                          className="w-full h-auto"
-                        />
+                        <img src={wireframe.src} alt={wireframe.label} className="w-full h-auto" />
                       </div>
                       <p className="mt-3 text-sm text-muted-foreground text-center">{wireframe.label}</p>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
-              </div>
-            )}
+              </div>}
           </div>
         </section>}
 
@@ -3948,16 +3933,14 @@ const CaseStudy = () => {
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-8">Impact</h2>
             <p className="font-serif text-xl text-foreground/80 mb-10">The designed system helps:</p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {study.impact.map((item, i) => (
-                <div key={i} className="group p-6 bg-background border border-border rounded-lg hover:border-primary/30 transition-all duration-300">
+              {study.impact.map((item, i) => <div key={i} className="group p-6 bg-background border border-border rounded-lg hover:border-primary/30 transition-all duration-300">
                   <div className="flex items-start gap-4">
                     <span className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-medium text-sm">
                       {i + 1}
                     </span>
                     <p className="text-foreground/80 leading-relaxed">{item}</p>
                   </div>
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
         </section>}
@@ -4196,26 +4179,17 @@ const CaseStudy = () => {
       <footer className="px-6 lg:px-12 py-16 border-t border-border">
         <div className="container mx-auto max-w-4xl flex flex-col gap-8">
           <div className="flex justify-between items-center">
-            <a 
-              href="/#work" 
-              onClick={(e) => {
-                e.preventDefault();
-                window.location.href = '/#work';
-              }}
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-            >
+            <a href="/#work" onClick={e => {
+            e.preventDefault();
+            window.location.href = '/#work';
+          }} className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
               <ArrowLeft className="w-4 h-4" />
               All projects
             </a>
           </div>
           <div className="p-6 bg-primary/5 border border-primary/20 rounded-lg text-center">
             <p className="text-muted-foreground mb-3">Interested in working together?</p>
-            <a 
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=tanyameriamsunny@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-lg font-medium text-primary hover:text-primary/80 transition-colors"
-            >
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=tanyameriamsunny@gmail.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-lg font-medium text-primary hover:text-primary/80 transition-colors">
               Get in touch
               <ArrowRight className="w-5 h-5" />
             </a>
