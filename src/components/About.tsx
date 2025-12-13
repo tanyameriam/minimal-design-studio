@@ -24,7 +24,7 @@ const About = () => {
             
             <div className="pt-8 grid grid-cols-2 gap-8">
               <div>
-                <p className="text-3xl font-serif mb-2">5+</p>
+                <p className="text-3xl font-serif mb-2">5</p>
                 <p className="text-sm text-muted-foreground">Years Design Experience</p>
               </div>
               <div>
