@@ -1165,7 +1165,7 @@ const caseStudies: Record<string, CaseStudyData> = {
     title: "Turning wasted food into meals",
     subtitle: "A Solution for NGOs and Restaurants",
     overview: "India produces enough food to nourish its population, yet millions still experience hunger daily. A large portion of edible food is lost at restaurants, events, and distribution centers due to overproduction, spoilage, or lack of timely coordination. NGOs working to redistribute surplus food face severe challenges in collecting it consistently. This project focuses on designing a digital platform that synchronizes restaurants, NGOs, and delivery partners to build an efficient food donation and redistribution ecosystem.",
-    role: "UX research, UX design, UI design, Information Architecture",
+    role: "Personal project | UX research, UX design, UI design, Information Architecture",
     heroImage: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1200&q=80",
     currentScenario: [{
       title: "1. Fragmented and Unpredictable Communication",
