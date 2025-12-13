@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, X, ChevronDown } from 'lucide-react';
+import CaseStudySidebar from '@/components/CaseStudySidebar';
 import streeAffinity1 from '@/assets/stree-affinity-1.png';
 import streeAffinity2 from '@/assets/stree-affinity-2.png';
 import streeAffinity3 from '@/assets/stree-affinity-3.png';
@@ -1585,6 +1586,21 @@ const CaseStudy = () => {
         </Link>
       </nav>
 
+      {/* Merry Health Sidebar Navigation */}
+      {slug === 'merry-health' && (
+        <CaseStudySidebar
+          sections={[
+            { id: 'merry-context', label: 'Context' },
+            { id: 'merry-problem', label: 'Problem' },
+            { id: 'merry-research', label: 'Research' },
+            { id: 'merry-process', label: 'Process' },
+            { id: 'merry-solution', label: 'Solution' },
+            { id: 'merry-impact', label: 'Impact' },
+            { id: 'merry-reflection', label: 'Reflection' },
+          ]}
+        />
+      )}
+
       {/* Hero */}
       <header className="pt-32 pb-20 px-6 lg:px-12">
         <div className="container mx-auto max-w-4xl">
@@ -1599,8 +1615,8 @@ const CaseStudy = () => {
 
       {/* Hero Image */}
 
-      {/* Overview */}
-      <section className="px-6 lg:px-12 py-16 border-t border-border">
+      {/* Overview / Context */}
+      <section id={slug === 'merry-health' ? 'merry-context' : undefined} className="px-6 lg:px-12 py-16 border-t border-border scroll-mt-20">
         <div className="container mx-auto max-w-4xl">
           <div className="grid md:grid-cols-3 gap-12">
             <div className="md:col-span-2">
@@ -1871,7 +1887,7 @@ const CaseStudy = () => {
       {study.brynqNdaNote && <section className="px-6 lg:px-12 py-8 bg-muted/30 border-y border-border"><div className="container mx-auto max-w-4xl text-center"><p className="text-sm text-muted-foreground italic">{study.brynqNdaNote}</p></div></section>}
 
       {/* Merry Health Background & Problem Statement */}
-      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16">
+      {slug === 'merry-health' && <section id="merry-problem" className="px-6 lg:px-12 py-16 scroll-mt-20">
           <div className="container mx-auto max-w-5xl">
 
             {/* What are we trying to build */}
@@ -2037,7 +2053,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* Merry Health UX Approach Principles */}
-      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16 bg-card">
+      {slug === 'merry-health' && <section id="merry-research" className="px-6 lg:px-12 py-16 bg-card scroll-mt-20">
           <div className="container mx-auto max-w-5xl">
             <h2 className="font-serif text-3xl md:text-4xl text-center mb-4">The 3 Principles Guiding Our UX Approach</h2>
             <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">We identified three core problems in the current system and defined principles to address each one.</p>
@@ -2095,7 +2111,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* Merry Health Solution Phases - Horizontal Tabs */}
-      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16">
+      {slug === 'merry-health' && <section id="merry-process" className="px-6 lg:px-12 py-16 scroll-mt-20">
           <div className="container mx-auto max-w-5xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">The Solution</h2>
             <p className="text-lg text-muted-foreground mb-10">Our approach was structured into six key phases:</p>
@@ -2915,7 +2931,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* Merry Health Wireframes */}
-      {slug === 'merry-health' && <section id="merry-design" className="px-6 lg:px-12 py-16 scroll-mt-20">
+      {slug === 'merry-health' && <section id="merry-solution" className="px-6 lg:px-12 py-16 scroll-mt-20">
           <div className="container mx-auto max-w-6xl">
             <div className="flex items-center gap-4 mb-6">
               <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">6</span>
@@ -4186,10 +4202,31 @@ const CaseStudy = () => {
           </div>
         </section>}
 
-      {/* Learnings */}
-      <section className="px-6 lg:px-12 py-16">
+      {/* Merry Health Impact Section */}
+      {slug === 'merry-health' && study.businessOutcomes && (
+        <section id="merry-impact" className="px-6 lg:px-12 py-16 bg-card scroll-mt-20">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Impact</h2>
+            <p className="text-lg text-muted-foreground mb-8">Expected outcomes from the redesign:</p>
+            <div className="grid md:grid-cols-2 gap-4">
+              {study.businessOutcomes.map((outcome, i) => {
+                const [title, description] = outcome.split(': ');
+                return (
+                  <div key={i} className="p-4 rounded-lg border border-border bg-background">
+                    <h4 className="text-sm font-medium mb-1">{title}</h4>
+                    <p className="text-xs text-muted-foreground">{description}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Learnings / Reflection */}
+      <section id={slug === 'merry-health' ? 'merry-reflection' : undefined} className={`px-6 lg:px-12 py-16 ${slug === 'merry-health' ? 'scroll-mt-20' : ''}`}>
         <div className="container mx-auto max-w-4xl">
-          <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Learnings</h2>
+          <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">{slug === 'merry-health' ? 'Reflection' : 'Learnings'}</h2>
           <div className="space-y-4">
             {study.learnings.map((learning, i) => <p key={i} className="text-lg text-muted-foreground leading-relaxed">{learning}</p>)}
           </div>
