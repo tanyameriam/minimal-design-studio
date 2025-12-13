@@ -733,29 +733,13 @@ const CaseStudy = () => {
   }
   return <main className="min-h-screen bg-background text-foreground">
       {/* Lightbox Modal */}
-      {lightboxImage && (
-        <div 
-          className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 animate-fade-in cursor-pointer"
-          onClick={() => setLightboxImage(null)}
-          onKeyDown={(e) => e.key === 'Escape' && setLightboxImage(null)}
-          tabIndex={0}
-          ref={(el) => el?.focus()}
-        >
-          <button 
-            className="absolute top-6 right-6 text-white/80 hover:text-white transition-colors"
-            onClick={() => setLightboxImage(null)}
-          >
+      {lightboxImage && <div className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 animate-fade-in cursor-pointer" onClick={() => setLightboxImage(null)} onKeyDown={e => e.key === 'Escape' && setLightboxImage(null)} tabIndex={0} ref={el => el?.focus()}>
+          <button className="absolute top-6 right-6 text-white/80 hover:text-white transition-colors" onClick={() => setLightboxImage(null)}>
             <X className="w-8 h-8" />
           </button>
-          <img 
-            src={lightboxImage} 
-            alt="Enlarged view" 
-            className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          />
+          <img src={lightboxImage} alt="Enlarged view" className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl" onClick={e => e.stopPropagation()} />
           <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/60 text-sm">Press ESC or click outside to close</p>
-        </div>
-      )}
+        </div>}
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 px-6 lg:px-12 py-6 bg-background/80 backdrop-blur-sm">
         <Link to="/#work" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
@@ -1131,8 +1115,7 @@ const CaseStudy = () => {
             </div>
 
             {/* Interview Documentation for STREE */}
-            {slug === 'stree-safety-app' && (
-              <div className="mt-8">
+            {slug === 'stree-safety-app' && <div className="mt-8">
                 <h4 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">Interview Analysis</h4>
                 <p className="text-sm text-muted-foreground mb-6">
                   Each interview was documented and coded using a structured framework to identify key patterns:
@@ -1163,8 +1146,7 @@ const CaseStudy = () => {
                     <img src={streeInterview5} alt="Interview analysis with observation coding" className="w-full rounded" />
                   </div>
                 </div>
-              </div>
-            )}
+              </div>}
 
             {/* Placeholder for non-STREE projects */}
             {slug !== 'stree-safety-app' && study.research.imagePlaceholder && <div className="mt-8 aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
@@ -1174,8 +1156,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* STREE: Cultural Model Section */}
-      {slug === 'stree-safety-app' && study.research && (
-        <section className="px-6 lg:px-12 py-12 border-t border-border">
+      {slug === 'stree-safety-app' && study.research && <section className="px-6 lg:px-12 py-12 border-t border-border">
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">Cultural Model</h2>
             <p className="text-sm text-muted-foreground mb-6">
@@ -1193,8 +1174,7 @@ const CaseStudy = () => {
               </div>
             </div>
           </div>
-        </section>
-      )}
+        </section>}
 
       {study.synthesis && <section className="px-6 lg:px-12 py-12">
           <div className="container mx-auto max-w-4xl">
@@ -1202,8 +1182,7 @@ const CaseStudy = () => {
             <p className="text-muted-foreground mb-8">{study.synthesis.method}</p>
             
             {/* Affinity Mapping Images for STREE */}
-            {slug === 'stree-safety-app' && (
-              <>
+            {slug === 'stree-safety-app' && <>
                 <div className="columns-1 md:columns-2 lg:columns-3 gap-4 mb-8 space-y-4">
                   <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(streeAffinity1)}>
                     <img src={streeAffinity1} alt="Affinity mapping: Safety perceptions and offender types" className="w-full rounded" />
@@ -1229,8 +1208,7 @@ const CaseStudy = () => {
                     From the affinity mapping exercise, we identified recurring <span className="text-foreground font-medium">themes</span> across participant responses. These themes helped us understand the underlying patterns in women's safety experiences, which directly informed our <span className="text-foreground font-medium">user goals</span> and <span className="text-foreground font-medium">challenges</span> framework below.
                   </p>
                 </div>
-              </>
-            )}
+              </>}
             
             {/* Placeholder for non-STREE projects */}
             {slug !== 'stree-safety-app' && study.synthesis.imagePlaceholders && <div className="grid md:grid-cols-2 gap-4">
@@ -1342,8 +1320,7 @@ const CaseStudy = () => {
             </div>
 
             {/* Flow Diagrams for STREE */}
-            {slug === 'stree-safety-app' && (
-              <div className="mt-10 grid md:grid-cols-2 gap-6">
+            {slug === 'stree-safety-app' && <div className="mt-10 grid md:grid-cols-2 gap-6">
                 <div className="overflow-hidden rounded-lg border border-border bg-background shadow-sm">
                   <div className="px-4 py-3 border-b border-border bg-muted/30">
                     <h4 className="text-xs uppercase tracking-[0.2em] text-muted-foreground">SOS Mode Flow</h4>
@@ -1360,8 +1337,7 @@ const CaseStudy = () => {
                     <img src={streeUserFlow} alt="User journey flow: Discovery, Onboarding, and App navigation" className="w-full cursor-pointer" onClick={() => setLightboxImage(streeUserFlow)} />
                   </div>
                 </div>
-              </div>
-            )}
+              </div>}
 
             {/* Placeholder for non-STREE */}
             {slug !== 'stree-safety-app' && study.solutionPhase.imagePlaceholder && <div className="mt-8 aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
@@ -1399,28 +1375,22 @@ const CaseStudy = () => {
           </div>
           
           {/* Wireframe images for STREE - Marquee style */}
-          {slug === 'stree-safety-app' && (
-            <div className="relative overflow-x-auto">
+          {slug === 'stree-safety-app' && <div className="relative overflow-x-auto">
               <div className="flex gap-6 pb-4">
-                {[streeWireframe1, streeWireframe2, streeWireframe3, streeWireframe4, streeWireframe5, streeWireframe6, streeWireframe7, streeWireframe8, streeWireframe9, streeWireframe10, streeWireframe11, streeWireframe12, streeWireframe13, streeWireframe14].map((img, i) => (
-                  <div key={i} className="flex-shrink-0 w-40 md:w-48 bg-background rounded-xl border border-border shadow-sm overflow-hidden hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(img)}>
+                {[streeWireframe1, streeWireframe2, streeWireframe3, streeWireframe4, streeWireframe5, streeWireframe6, streeWireframe7, streeWireframe8, streeWireframe9, streeWireframe10, streeWireframe11, streeWireframe12, streeWireframe13, streeWireframe14].map((img, i) => <div key={i} className="flex-shrink-0 w-40 md:w-48 bg-background rounded-xl border border-border shadow-sm overflow-hidden hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(img)}>
                     <div className="aspect-[9/16] overflow-hidden">
                       <img src={img} alt={`Wireframe ${i + 1}`} className="w-full h-full object-cover object-top" />
                     </div>
-                  </div>
-                ))}
+                  </div>)}
               </div>
-            </div>
-          )}
+            </div>}
 
           {/* Placeholder for non-STREE */}
-          {slug !== 'stree-safety-app' && study.wireframing.imagePlaceholder && (
-            <div className="container mx-auto max-w-4xl">
+          {slug !== 'stree-safety-app' && study.wireframing.imagePlaceholder && <div className="container mx-auto max-w-4xl">
               <div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
                 <span className="text-sm text-muted-foreground">[ Wireframe Explorations ]</span>
               </div>
-            </div>
-          )}
+            </div>}
         </section>}
 
       {/* STREE: Usability Testing */}
@@ -1449,10 +1419,7 @@ const CaseStudy = () => {
                 </div>)}
             </div>
 
-            <div className="p-4 border border-border mb-8">
-              <h4 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2">Screens Delivered</h4>
-              <p className="text-sm text-muted-foreground">{study.finalDesign.screens}</p>
-            </div>
+            
 
             {study.finalDesign.imagePlaceholder && <div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
                 <span className="text-sm text-muted-foreground">[ Final UI Screenshots ]</span>
