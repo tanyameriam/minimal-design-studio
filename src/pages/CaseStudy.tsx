@@ -3205,6 +3205,33 @@ const CaseStudy = () => {
           <div className="container mx-auto max-w-5xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Suggested Solution</h2>
             <h3 className="font-serif text-3xl mb-8">System Flow</h3>
+            
+            <div className="space-y-6 text-muted-foreground leading-relaxed mb-12">
+              <p>
+                The flow begins when an NGO logs into the system and checks whether the required food is already available according to their current needs. This initial decision determines whether the NGO can proceed immediately or needs to source food externally. If the required food is present—through previously listed surplus or ongoing restaurant partnerships—the NGO adds it to their cart and proceeds to delivery method selection. If the food is unavailable, the NGO creates a requirement request that is sent to restaurants and caterers, enabling on-demand sourcing rather than passive availability.
+              </p>
+              
+              <p>
+                Restaurants and caterers receive notifications about NGO food requirements, reviewing the quantity and type needed. When they can fulfill a request, they upload surplus food details to the platform, specify pickup availability and time windows, and notify delivery partners about pickup timing—creating a synchronized handoff between supply and logistics.
+              </p>
+              
+              <p>
+                After food is added to the cart, the NGO chooses between pickup or delivery. With pickup, the NGO collects food directly from the restaurant at the prescribed time and delivers it to designated hotspots, reducing dependency on delivery partners. With delivery, the system checks whether the restaurant has already covered the delivery payment. If not, the NGO pays a nominal delivery fee before checkout, ensuring costs are accounted for regardless of who pays.
+              </p>
+              
+              <p>
+                Upon checkout completion, existing delivery partners are notified and the nearest available partner is assigned with pickup and delivery instructions, optimizing for speed, location efficiency, and resource usage. Delivery partners log in separately to check for notifications—if an order is assigned, they proceed; otherwise, they continue with their normal routine, avoiding idle time.
+              </p>
+              
+              <p>
+                The system monitors delivery execution as a critical accountability checkpoint. Successful deliveries result in food reaching the NGO, who then distributes it to hotspots. Failed deliveries trigger a donation equivalent to the food cost from the delivery partner, with the NGO notified about the compensation—ensuring accountability and transparency in failure handling. Regardless of the path taken, the system records fulfillment method, delivery completion or failure, and all payments or donations, creating a closed-loop system with full traceability.
+              </p>
+              
+              <p className="text-sm italic border-l-2 border-primary/30 pl-4 mt-8">
+                This flow demonstrates clear separation of roles and responsibilities, strong validation at every critical step, multiple fallback paths instead of dead ends, and built-in accountability mechanisms—representing a robust, real-world orchestration flow rather than a simplified happy path.
+              </p>
+            </div>
+            
             <div className="bg-background border border-border rounded-lg p-4">
               <img src={foodWasteSystemFlow} alt="Food Waste Solution System Flow Diagram" className="w-full h-auto cursor-pointer" onClick={() => setLightboxImage(foodWasteSystemFlow)} />
             </div>
