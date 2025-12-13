@@ -190,9 +190,6 @@ export function PlatformAuditPhase({
       >
         <div className="flex items-start justify-between gap-4">
           <div className="flex-1">
-            <div className="flex items-center gap-2 mb-2">
-              <span className={`text-xs font-medium ${severityColors[severity]}`}>⚠ Severity - {severity.charAt(0).toUpperCase() + severity.slice(1)}</span>
-            </div>
             <h3 className="font-serif text-2xl mb-3">{phase}: {title}</h3>
             
             {/* Collapsed View: Show Issue, Business Impact & Recommendations */}
