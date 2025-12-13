@@ -1237,7 +1237,7 @@ const caseStudies: Record<string, CaseStudyData> = {
       content: "Wireframes were developed to validate flows, simplify interactions, and ensure clarity for all user groups. Iterations focused on minimizing steps, prioritizing visibility of time-sensitive tasks, creating visual hierarchy for urgency, and supporting users with limited bandwidth or devices."
     }],
     impact: ["Reduce food wastage significantly", "Improve NGO efficiency and reach", "Leverage delivery networks for last-mile distribution", "Increase timely pickups", "Create a scalable, transparent food redistribution model"],
-    learnings: ["This project highlighted how systemic problems require systemic solutions.", "Logistics and UX cannot be separated in time-sensitive ecosystems.", "Small operational gaps multiply into large-scale failures.", "Technology can transform humanitarian workflows when designed around real user capacities.", "Hunger is not caused by scarcity, but by broken distribution systems.", "Thoughtful UX can directly contribute to social impact."]
+    learnings: ["Small things make a great difference.", "Speaking with NGOs, I learned that the food shortage faced in hunger hotspots is very critical. Today's wastage is tomorrow's shortage.", "If we can join hands to provide surplus food to hunger hotspots, it would make a big difference.", "Consolidating food and storing it without spoilage is a real challenge. This app helps solve logistics, connectivity, and storage issues to enable food donation at scale."]
   },
   'curateus-app': {
     title: "Curateus v2.0",
