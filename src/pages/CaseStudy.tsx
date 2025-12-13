@@ -3219,9 +3219,7 @@ const CaseStudy = () => {
                 After food is added to the cart, the NGO chooses between pickup or delivery. With pickup, the NGO collects food directly from the restaurant at the prescribed time and delivers it to designated hotspots, reducing dependency on delivery partners. With delivery, the system checks whether the restaurant has already covered the delivery payment. If not, the NGO pays a nominal delivery fee before checkout, ensuring costs are accounted for regardless of who pays.
               </p>
               
-              <p>
-                Upon checkout completion, existing delivery partners are notified and the nearest available partner is assigned with pickup and delivery instructions, optimizing for speed, location efficiency, and resource usage. Delivery partners log in separately to check for notifications , if an order is assigned, they proceed; otherwise, they continue with their normal routine, avoiding idle time.
-              </p>
+              <p>Upon checkout completion, existing delivery partners are notified and the nearest available partner is assigned with pickup and delivery instructions, optimizing for speed, location efficiency, and resource usage. Delivery partners(Existing apps like Uber/Ola etc) log in separately to check for notifications , if an order is assigned, they proceed; otherwise, they continue with their normal routine, avoiding idle time.</p>
               
               <p>The system monitors delivery execution as a critical accountability checkpoint. Successful deliveries result in food reaching the NGO, who then distributes it to hotspots. Failed deliveries trigger a donation equivalent to the food cost from the delivery partner, with the NGO notified about the compensation ensuring accountability and transparency in failure handling. Regardless of the path taken, the system records fulfillment method, delivery completion or failure, and all payments or donations, creating a closed-loop system with full traceability.</p>
               
