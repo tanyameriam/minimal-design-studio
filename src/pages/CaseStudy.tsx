@@ -2036,7 +2036,6 @@ const CaseStudy = () => {
 
             {/* Goals - Derived from Problems */}
             <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Problem</p>
               <h3 className="font-serif text-2xl md:text-3xl mb-6">Project Goals</h3>
               
               <div className="p-6 rounded-xl border border-primary/30 bg-primary/5 mb-8">
@@ -2146,7 +2145,6 @@ const CaseStudy = () => {
             </div>
 
             {/* Research Approach Steps */}
-            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Research</p>
             <h3 className="font-serif text-2xl md:text-3xl mb-8">Our Approach</h3>
             <p className="text-muted-foreground mb-8">Our research was structured into three key phases:</p>
             
