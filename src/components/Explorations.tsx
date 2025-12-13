@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
 import splineFrogs from '@/assets/spline-frogs.png';
 import spline3dRoom from '@/assets/spline-3d-room.png';
+import sketchDino1 from '@/assets/sketch-dino-1.png';
+import sketchDino2 from '@/assets/sketch-dino-2.png';
+import sketchDino3 from '@/assets/sketch-dino-3.png';
 
 interface ExplorationItem {
   id: number;
@@ -19,6 +22,30 @@ interface SplineProject {
   thumbnail: string;
   splineUrl: string;
 }
+
+interface SketchItem {
+  id: number;
+  title: string;
+  thumbnail: string;
+}
+
+const characterSketches: SketchItem[] = [
+  {
+    id: 1,
+    title: "Dino High Five",
+    thumbnail: sketchDino1
+  },
+  {
+    id: 2,
+    title: "Dino Roar",
+    thumbnail: sketchDino2
+  },
+  {
+    id: 3,
+    title: "Dino Cookie Monster",
+    thumbnail: sketchDino3
+  }
+];
 
 const explorations: ExplorationItem[] = [
   {
@@ -167,6 +194,47 @@ const Explorations = () => {
                 </div>
               </a>
             ))}
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="border-t border-border my-12" />
+
+        {/* Sketches Section */}
+        <div className="mb-20">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-8 h-8 rounded-full bg-foreground flex items-center justify-center">
+              <svg className="w-4 h-4 text-background" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+              </svg>
+            </div>
+            <h3 className="font-serif text-2xl">Sketches</h3>
+          </div>
+          
+          {/* Character Explorations */}
+          <div className="mb-8">
+            <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-6">Character Explorations</p>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {characterSketches.map((sketch) => (
+                <div
+                  key={sketch.id}
+                  className="group relative aspect-square overflow-hidden rounded-lg bg-muted"
+                >
+                  <img
+                    src={sketch.thumbnail}
+                    alt={sketch.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-foreground/70 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h4 className="text-background font-medium text-sm">
+                      {sketch.title}
+                    </h4>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
