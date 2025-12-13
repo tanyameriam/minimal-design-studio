@@ -62,6 +62,8 @@ import merryPhaseMapping from '@/assets/merry-phase-mapping.png';
 import merryOpportunityMapping from '@/assets/merry-opportunity-mapping.png';
 import merryOpportunityRefined from '@/assets/merry-opportunity-refined.png';
 // Merry Health user journey maps
+import merryPatientCurrentJourney from '@/assets/merry-patient-current-journey.jpg';
+import merryPatientIdealJourney from '@/assets/merry-patient-ideal-journey.jpg';
 import merryAdminCurrentJourney from '@/assets/merry-admin-current-journey.png';
 import merryAdminIdealJourney from '@/assets/merry-admin-ideal-journey.png';
 import merryHospitalCurrentJourney from '@/assets/merry-hospital-current-journey.png';
@@ -1791,7 +1793,7 @@ const CaseStudy = () => {
             </div>
             <p className="text-muted-foreground mb-12">We created current and ideal journey maps for all actors to validate if our identified opportunities would truly make a difference in their experience.</p>
 
-            {/* Patient Party Journey - Placeholder */}
+            {/* Patient Party Journey */}
             <div className="mb-16">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-sm font-medium">PP</div>
@@ -1802,7 +1804,7 @@ const CaseStudy = () => {
               </div>
               
               <div className="grid lg:grid-cols-2 gap-6 mb-6">
-                {/* Current Journey Placeholder */}
+                {/* Current Journey */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-destructive/60"></span>
@@ -1812,13 +1814,21 @@ const CaseStudy = () => {
                     <div className="bg-destructive/5 px-4 py-2 border-b border-destructive/20">
                       <span className="text-xs text-muted-foreground">High anxiety, multiple callback loops, unclear status</span>
                     </div>
-                    <div className="p-8 bg-background flex items-center justify-center min-h-[200px]">
-                      <p className="text-sm text-muted-foreground italic">Journey map to be added</p>
+                    <div className="p-4 bg-background">
+                      <img 
+                        src={merryPatientCurrentJourney} 
+                        alt="Patient Party current journey map showing pain points and emotional states across 6 phases: emergency occurrence, search for help, contact hospital, wait for response, ambulance arrival, and reaching hospital" 
+                        className="w-full object-contain cursor-pointer hover:opacity-90 transition-opacity"
+                        onClick={() => setLightboxImage(merryPatientCurrentJourney)}
+                      />
+                    </div>
+                    <div className="bg-destructive/5 px-4 py-2 border-t border-destructive/20 text-center">
+                      <span className="text-xs text-muted-foreground">Click to view full journey map</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Ideal Journey Placeholder */}
+                {/* Ideal Journey */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-primary"></span>
@@ -1828,8 +1838,16 @@ const CaseStudy = () => {
                     <div className="bg-primary/5 px-4 py-2 border-b border-primary/20">
                       <span className="text-xs text-muted-foreground">Proactive updates, clear visibility, reduced anxiety</span>
                     </div>
-                    <div className="p-8 bg-background flex items-center justify-center min-h-[200px]">
-                      <p className="text-sm text-muted-foreground italic">Journey map to be added</p>
+                    <div className="p-4 bg-background">
+                      <img 
+                        src={merryPatientIdealJourney} 
+                        alt="Patient Party ideal journey map with improved experience showing streamlined flow and better emotional states" 
+                        className="w-full object-contain cursor-pointer hover:opacity-90 transition-opacity"
+                        onClick={() => setLightboxImage(merryPatientIdealJourney)}
+                      />
+                    </div>
+                    <div className="bg-primary/5 px-4 py-2 border-t border-primary/20 text-center">
+                      <span className="text-xs text-muted-foreground">Click to view full journey map</span>
                     </div>
                   </div>
                 </div>
