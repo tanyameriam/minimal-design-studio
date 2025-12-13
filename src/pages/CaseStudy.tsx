@@ -4075,10 +4075,15 @@ const CaseStudy = () => {
           </div>
           <div className="p-6 bg-primary/5 border border-primary/20 rounded-lg text-center">
             <p className="text-muted-foreground mb-3">Interested in working together?</p>
-            <Link to="/#contact" className="inline-flex items-center gap-2 text-lg font-medium text-primary hover:text-primary/80 transition-colors">
+            <a 
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=tanyameriamsunny@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-lg font-medium text-primary hover:text-primary/80 transition-colors"
+            >
               Get in touch
               <ArrowRight className="w-5 h-5" />
-            </Link>
+            </a>
           </div>
         </div>
       </footer>
