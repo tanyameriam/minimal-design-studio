@@ -2103,39 +2103,43 @@ const CaseStudy = () => {
             {/* Insight Cards - Screenshot Style */}
             <div className="space-y-6 mb-16">
               {/* Insight 1 - From Audit */}
-              <div className="p-8 rounded-2xl bg-muted/30 border-l-4 border-primary/40">
-                <h3 className="font-serif text-2xl mb-4">Emergency-Mode Mismatch</h3>
-                <p className="text-muted-foreground mb-4">
+              <div className="relative p-8 rounded-2xl bg-muted/30 border-l-4 border-primary/40 overflow-hidden">
+                <span className="absolute bottom-0 right-4 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">01</span>
+                <h3 className="font-serif text-2xl mb-4 relative z-10">Emergency-Mode Mismatch</h3>
+                <p className="text-muted-foreground mb-4 relative z-10">
                   The intake workflow demands complete, structured data upfront, but staff operate in panic mode during emergencies. They rely on paper, memory, and WhatsApp — not the dashboard — leading to delayed dispatch and frequent errors.
                 </p>
-                <p className="text-lg italic text-foreground/80">"We just call because it's faster than logging in."</p>
+                <p className="text-lg italic text-foreground/80 relative z-10">"We just call because it's faster than logging in."</p>
               </div>
 
               {/* Insight 2 - From Mapping */}
-              <div className="p-8 rounded-2xl bg-muted/30 border-l-4 border-primary/40">
-                <h3 className="font-serif text-2xl mb-4">Manual Coordination Bottleneck</h3>
-                <p className="text-muted-foreground mb-4">
+              <div className="relative p-8 rounded-2xl bg-muted/30 border-l-4 border-primary/40 overflow-hidden">
+                <span className="absolute bottom-0 right-4 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">02</span>
+                <h3 className="font-serif text-2xl mb-4 relative z-10">Manual Coordination Bottleneck</h3>
+                <p className="text-muted-foreground mb-4 relative z-10">
                   Dispatch depends on manual driver coordination — MHAs must call and follow up with multiple drivers to confirm availability. This creates unpredictable delays and forces staff to rely on memory and guesswork during high-pressure moments.
                 </p>
-                <p className="text-lg italic text-foreground/80">"By the time we confirm, we've already made 3-4 calls."</p>
+                <p className="text-lg italic text-foreground/80 relative z-10">"By the time we confirm, we've already made 3-4 calls."</p>
               </div>
 
               {/* Insight 3 - From Findings */}
-              <div className="p-8 rounded-2xl bg-muted/30 border-l-4 border-primary/40">
-                <h3 className="font-serif text-2xl mb-4">Visibility Gaps Create Anxiety</h3>
-                <p className="text-muted-foreground mb-4">
+              <div className="relative p-8 rounded-2xl bg-muted/30 border-l-4 border-primary/40 overflow-hidden">
+                <span className="absolute bottom-0 right-4 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">03</span>
+                <h3 className="font-serif text-2xl mb-4 relative z-10">Visibility Gaps Create Anxiety</h3>
+                <p className="text-muted-foreground mb-4 relative z-10">
                   Active rides are visually buried, tracking links aren't consistently shared with patients, and there's no reliable real-time ETA. This triggers constant follow-up calls from families and breaks trust with hospital partners.
                 </p>
-                <p className="text-lg italic text-foreground/80">"Families keep calling to ask where the ambulance is."</p>
+                <p className="text-lg italic text-foreground/80 relative z-10">"Families keep calling to ask where the ambulance is."</p>
               </div>
 
               {/* Insight 4 - From Strategy */}
-              <div className="p-8 rounded-2xl bg-muted/30 border-l-4 border-primary/40">
-                <h3 className="font-serif text-2xl mb-4">Fragile Data, Weak Reporting</h3>
-                <p className="text-muted-foreground mb-4">
+              <div className="relative p-8 rounded-2xl bg-muted/30 border-l-4 border-primary/40 overflow-hidden">
+                <span className="absolute bottom-0 right-4 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">04</span>
+                <h3 className="font-serif text-2xl mb-4 relative z-10">Fragile Data, Weak Reporting</h3>
+                <p className="text-muted-foreground mb-4 relative z-10">
                   Information is duplicated, overwritten, or incomplete across systems. Manual arrival and closure entries result in incorrect timestamps, making SLA tracking unreliable and audits difficult.
                 </p>
-                <p className="text-lg italic text-foreground/80">"We don't have clear reports on what's working."</p>
+                <p className="text-lg italic text-foreground/80 relative z-10">"We don't have clear reports on what's working."</p>
               </div>
             </div>
 
