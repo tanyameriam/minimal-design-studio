@@ -83,6 +83,13 @@ import merryWhatsappAdmin from '@/assets/merry-whatsapp-admin.png';
 import foodWasteSystemFlow from '@/assets/food-waste-system-flow.png';
 import foodWasteRestaurantSitemap from '@/assets/food-waste-restaurant-sitemap.png';
 import foodWasteNgoSitemap from '@/assets/food-waste-ngo-sitemap.png';
+// Food Waste NGO wireframes
+import foodWasteWireframeHome from '@/assets/food-waste-wireframe-home.png';
+import foodWasteWireframeCart from '@/assets/food-waste-wireframe-cart.png';
+import foodWasteWireframeConfirm from '@/assets/food-waste-wireframe-confirm.png';
+import foodWasteWireframeTrack from '@/assets/food-waste-wireframe-track.png';
+import foodWasteWireframeAccount from '@/assets/food-waste-wireframe-account.png';
+import foodWasteWireframeOrders from '@/assets/food-waste-wireframe-orders.png';
 import { PlatformAuditPhase } from '@/components/ResearchPhaseCard';
 interface CaseStudySection {
   title: string;
@@ -3419,6 +3426,33 @@ const CaseStudy = () => {
                   <p className="text-muted-foreground leading-relaxed">{step.content}</p>
                 </div>)}
             </div>
+            {/* NGO App Wireframes for food waste project */}
+            {slug === 'food-waste-ngo' && (
+              <div className="mt-12">
+                <h3 className="font-serif text-2xl mb-8">NGO App Wireframes</h3>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                  {[
+                    { src: foodWasteWireframeHome, label: 'Home Screen' },
+                    { src: foodWasteWireframeCart, label: 'Cart' },
+                    { src: foodWasteWireframeConfirm, label: 'Order Confirm' },
+                    { src: foodWasteWireframeTrack, label: 'Track Order' },
+                    { src: foodWasteWireframeAccount, label: 'Account' },
+                    { src: foodWasteWireframeOrders, label: 'All Orders' },
+                  ].map((wireframe, i) => (
+                    <div key={i} className="flex flex-col items-center">
+                      <div className="bg-background border border-border rounded-lg overflow-hidden cursor-pointer" onClick={() => setLightboxImage(wireframe.src)}>
+                        <img 
+                          src={wireframe.src} 
+                          alt={wireframe.label} 
+                          className="w-full h-auto"
+                        />
+                      </div>
+                      <p className="mt-3 text-sm text-muted-foreground text-center">{wireframe.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </section>}
 
