@@ -447,7 +447,7 @@ const caseStudies: Record<string, CaseStudyData> = {
     overview: "Harassment in public spaces restricts women's freedom of movement, participation in public life, and overall wellbeing. While existing safety tools focus on post-incident response, fear often exists long before an incident and lingers long after. Project Stree explores how design can support women across the entire safety journey: before, during, and after unsafe experiences.",
     role: "UX Research • UX Design • UI Direction",
     projectDuration: "1 Month",
-    projectContext: "Final submission for PGP in UX Design, IDC IIT Bombay (2021–2022). Team of 5.",
+    projectContext: "Final submission for PGP in UX Design, IDC IIT Bombay (2021–2022)",
     heroImage: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=1200&q=80",
     problemSpace: {
       why: "Safety, for women, is not a single moment. It is a continuous state shaped by perception, environment, and systemic response. Most existing safety products focus only on emergencies. We wanted to understand what safety actually means in everyday life.",
