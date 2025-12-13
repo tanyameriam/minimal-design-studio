@@ -1621,6 +1621,11 @@ const CaseStudy = () => {
       {slug === 'merry-health' ? (
         <section id="merry-context" className="px-6 lg:px-12 xl:pl-48 pt-32 pb-16 border-t border-border scroll-mt-20">
           <div className="container mx-auto max-w-5xl">
+            {/* Background Content */}
+            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Context</p>
+            <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-6 max-w-3xl leading-tight">Streamlining Emergency Dispatch for 50+ Hospitals Across Tier 2 & 3 Cities</h1>
+            <p className="text-lg leading-relaxed text-muted-foreground mb-12 max-w-3xl">{study.overview}</p>
+
             {/* Meta Card - Combined with dividers */}
             <div className="rounded-xl border border-border bg-muted/30 mb-12">
               <div className="grid md:grid-cols-4">
@@ -1651,11 +1656,6 @@ const CaseStudy = () => {
                 </div>
               </div>
             </div>
-
-            {/* Background Content */}
-            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Context</p>
-            <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-6 max-w-3xl leading-tight">Streamlining Emergency Dispatch for 50+ Hospitals Across Tier 2 & 3 Cities</h1>
-            <p className="text-lg leading-relaxed text-muted-foreground mb-16 max-w-3xl">{study.overview}</p>
 
             {/* What Are We Building - Sub-section */}
             <div className="mb-16">
