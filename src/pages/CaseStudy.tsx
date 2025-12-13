@@ -2096,57 +2096,52 @@ const CaseStudy = () => {
       {slug === 'merry-health' && <section id="merry-research" className="px-6 lg:px-12 xl:pl-48 py-16 scroll-mt-20">
           <div className="container mx-auto max-w-5xl">
             {/* Section Header */}
-            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Research</p>
-            <h2 className="font-serif text-3xl md:text-4xl mb-8">Guiding Principles</h2>
-            <p className="text-muted-foreground mb-12 max-w-3xl">We identified three core problems in the current system and defined principles to address each one.</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Research & Insights</p>
+            <h2 className="font-serif text-3xl md:text-4xl mb-6">Understanding the Dispatch Ecosystem: Users Under Pressure</h2>
+            <p className="text-xl text-muted-foreground mb-12 max-w-3xl">Through platform audits, user journey mapping, and stakeholder analysis, we uncovered the following key insights:</p>
             
-            <div className="space-y-4 mb-16">
-              {/* Principle 1 */}
-              <div className="p-6 rounded-xl bg-primary/5 border-l-4 border-primary/30">
-                <div className="flex flex-col md:flex-row md:items-center gap-4">
-                  <div className="md:w-1/2">
-                    <p className="text-sm text-muted-foreground">Current workflows do not match how staff actually work</p>
-                  </div>
-                  <div className="hidden md:block text-muted-foreground">→</div>
-                  <div className="md:flex-1">
-                    <h3 className="font-serif text-lg text-foreground">Expand Hospital Adoption</h3>
-                    <p className="text-sm text-muted-foreground">Enable fast, mobile-friendly workflows that match how staff actually work.</p>
-                  </div>
-                </div>
+            {/* Insight Cards - Screenshot Style */}
+            <div className="space-y-6 mb-16">
+              {/* Insight 1 - From Audit */}
+              <div className="p-8 rounded-2xl bg-muted/30 border-l-4 border-primary/40">
+                <h3 className="font-serif text-2xl mb-4">Emergency-Mode Mismatch</h3>
+                <p className="text-muted-foreground mb-4">
+                  The intake workflow demands complete, structured data upfront, but staff operate in panic mode during emergencies. They rely on paper, memory, and WhatsApp — not the dashboard — leading to delayed dispatch and frequent errors.
+                </p>
+                <p className="text-lg italic text-foreground/80">"We just call because it's faster than logging in."</p>
               </div>
 
-              {/* Principle 2 */}
-              <div className="p-6 rounded-xl bg-primary/5 border-l-4 border-primary/30">
-                <div className="flex flex-col md:flex-row md:items-center gap-4">
-                  <div className="md:w-1/2">
-                    <p className="text-sm text-muted-foreground">Information is duplicated, overwritten, or incomplete</p>
-                  </div>
-                  <div className="hidden md:block text-muted-foreground">→</div>
-                  <div className="md:flex-1">
-                    <h3 className="font-serif text-lg text-foreground">Strengthen Data Quality</h3>
-                    <p className="text-sm text-muted-foreground">Ensure information is captured once and stays consistent across all systems.</p>
-                  </div>
-                </div>
+              {/* Insight 2 - From Mapping */}
+              <div className="p-8 rounded-2xl bg-muted/30 border-l-4 border-primary/40">
+                <h3 className="font-serif text-2xl mb-4">Manual Coordination Bottleneck</h3>
+                <p className="text-muted-foreground mb-4">
+                  Dispatch depends on manual driver coordination — MHAs must call and follow up with multiple drivers to confirm availability. This creates unpredictable delays and forces staff to rely on memory and guesswork during high-pressure moments.
+                </p>
+                <p className="text-lg italic text-foreground/80">"By the time we confirm, we've already made 3-4 calls."</p>
               </div>
 
-              {/* Principle 3 */}
-              <div className="p-6 rounded-xl bg-primary/5 border-l-4 border-primary/30">
-                <div className="flex flex-col md:flex-row md:items-center gap-4">
-                  <div className="md:w-1/2">
-                    <p className="text-sm text-muted-foreground">Heavy manual coordination slows dispatch, increases errors, and raises cost</p>
-                  </div>
-                  <div className="hidden md:block text-muted-foreground">→</div>
-                  <div className="md:flex-1">
-                    <h3 className="font-serif text-lg text-foreground">Improve Operational Efficiency</h3>
-                    <p className="text-sm text-muted-foreground">Reduce manual coordination, calls, and rework across stakeholders.</p>
-                  </div>
-                </div>
+              {/* Insight 3 - From Findings */}
+              <div className="p-8 rounded-2xl bg-muted/30 border-l-4 border-primary/40">
+                <h3 className="font-serif text-2xl mb-4">Visibility Gaps Create Anxiety</h3>
+                <p className="text-muted-foreground mb-4">
+                  Active rides are visually buried, tracking links aren't consistently shared with patients, and there's no reliable real-time ETA. This triggers constant follow-up calls from families and breaks trust with hospital partners.
+                </p>
+                <p className="text-lg italic text-foreground/80">"Families keep calling to ask where the ambulance is."</p>
+              </div>
+
+              {/* Insight 4 - From Strategy */}
+              <div className="p-8 rounded-2xl bg-muted/30 border-l-4 border-primary/40">
+                <h3 className="font-serif text-2xl mb-4">Fragile Data, Weak Reporting</h3>
+                <p className="text-muted-foreground mb-4">
+                  Information is duplicated, overwritten, or incomplete across systems. Manual arrival and closure entries result in incorrect timestamps, making SLA tracking unreliable and audits difficult.
+                </p>
+                <p className="text-lg italic text-foreground/80">"We don't have clear reports on what's working."</p>
               </div>
             </div>
 
             {/* Research Approach Steps */}
-            <h3 className="font-serif text-2xl md:text-3xl mb-8">Our Approach</h3>
-            <p className="text-muted-foreground mb-8">Our research was structured into three key phases:</p>
+            <h3 className="font-serif text-2xl md:text-3xl mb-6">Our Research Approach</h3>
+            <p className="text-muted-foreground mb-8">Our research was structured into four key phases:</p>
             
             <div className="flex items-center justify-start gap-2 overflow-x-auto pb-4">
               {[{
@@ -2161,6 +2156,10 @@ const CaseStudy = () => {
                 num: 3,
                 title: "Findings",
                 id: "merry-findings"
+              }, {
+                num: 4,
+                title: "Strategy",
+                id: "merry-strategy"
               }].map((phase, i, arr) => <div key={i} className="flex items-center flex-shrink-0">
                   <button onClick={() => document.getElementById(phase.id)?.scrollIntoView({
                     behavior: 'smooth',
