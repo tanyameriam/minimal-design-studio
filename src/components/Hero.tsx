@@ -16,7 +16,7 @@ const Hero = () => {
           </p>
           
           <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-medium leading-[1.15] mb-8 animate-fade-up-delay-1">
-            Solving complexity with clarity
+            Turning complexity into clarity
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed animate-fade-up-delay-2">
