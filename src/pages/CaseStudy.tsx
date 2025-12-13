@@ -1320,67 +1320,47 @@ const CaseStudy = () => {
         </section>}
 
       {/* STREE: Wireframing - placed before usability testing */}
-      {study.wireframing && 'approach' in study.wireframing && <section className="px-6 lg:px-12 py-12 bg-card">
-          <div className="container mx-auto max-w-4xl">
+      {study.wireframing && 'approach' in study.wireframing && <section className="px-6 lg:px-12 py-12 bg-card overflow-hidden">
+          <div className="container mx-auto max-w-4xl mb-8">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">Wireframing</h2>
-            <p className="text-muted-foreground text-sm mb-6">{study.wireframing.approach}</p>
-            {/* Wireframe images for STREE */}
-            {slug === 'stree-safety-app' && (
-              <>
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                  <div className="bg-background rounded-lg border border-border overflow-hidden">
-                    <img src={streeWireframe1} alt="Login wireframe" className="w-full" />
-                  </div>
-                  <div className="bg-background rounded-lg border border-border overflow-hidden">
-                    <img src={streeWireframe2} alt="Sign up wireframe" className="w-full" />
-                  </div>
-                  <div className="bg-background rounded-lg border border-border overflow-hidden">
-                    <img src={streeWireframe3} alt="Profile setup wireframe" className="w-full" />
-                  </div>
-                  <div className="bg-background rounded-lg border border-border overflow-hidden">
-                    <img src={streeWireframe8} alt="Permissions wireframe" className="w-full" />
-                  </div>
-                  <div className="bg-background rounded-lg border border-border overflow-hidden">
-                    <img src={streeWireframe9} alt="Emergency contacts wireframe" className="w-full" />
-                  </div>
-                  <div className="bg-background rounded-lg border border-border overflow-hidden">
-                    <img src={streeWireframe10} alt="Frequented places wireframe" className="w-full" />
-                  </div>
-                  <div className="bg-background rounded-lg border border-border overflow-hidden">
-                    <img src={streeWireframe7} alt="Home screen wireframe" className="w-full" />
-                  </div>
-                  <div className="bg-background rounded-lg border border-border overflow-hidden">
-                    <img src={streeWireframe4} alt="Reports wireframe" className="w-full" />
-                  </div>
-                  <div className="bg-background rounded-lg border border-border overflow-hidden">
-                    <img src={streeWireframe5} alt="All reports wireframe" className="w-full" />
-                  </div>
-                  <div className="bg-background rounded-lg border border-border overflow-hidden">
-                    <img src={streeWireframe6} alt="Settings wireframe" className="w-full" />
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-                  <div className="bg-background rounded-lg border border-border overflow-hidden">
-                    <img src={streeWireframe11} alt="Map screen wireframe" className="w-full" />
-                  </div>
-                  <div className="bg-background rounded-lg border border-border overflow-hidden">
-                    <img src={streeWireframe12} alt="Route planning wireframe" className="w-full" />
-                  </div>
-                  <div className="bg-background rounded-lg border border-border overflow-hidden">
-                    <img src={streeWireframe13} alt="Safety assistance wireframe" className="w-full" />
-                  </div>
-                  <div className="bg-background rounded-lg border border-border overflow-hidden">
-                    <img src={streeWireframe14} alt="SOS mode wireframe" className="w-full" />
-                  </div>
-                </div>
-              </>
-            )}
-
-            {/* Placeholder for non-STREE */}
-            {slug !== 'stree-safety-app' && study.wireframing.imagePlaceholder && <div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
-                <span className="text-sm text-muted-foreground">[ Wireframe Explorations ]</span>
-              </div>}
+            <p className="text-muted-foreground text-sm">{study.wireframing.approach}</p>
           </div>
+          
+          {/* Wireframe images for STREE - Marquee style */}
+          {slug === 'stree-safety-app' && (
+            <div className="relative">
+              {/* First row - scrolling left */}
+              <div className="flex animate-marquee-slow gap-6 mb-6">
+                {[streeWireframe1, streeWireframe2, streeWireframe3, streeWireframe8, streeWireframe9, streeWireframe10, streeWireframe7, streeWireframe1, streeWireframe2, streeWireframe3, streeWireframe8, streeWireframe9, streeWireframe10, streeWireframe7].map((img, i) => (
+                  <div key={i} className="flex-shrink-0 w-40 md:w-48 bg-background rounded-xl border border-border shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                    <div className="aspect-[9/16] overflow-hidden">
+                      <img src={img} alt={`Wireframe ${i + 1}`} className="w-full h-full object-cover object-top" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              {/* Second row - scrolling right */}
+              <div className="flex animate-marquee-slow-reverse gap-6">
+                {[streeWireframe4, streeWireframe5, streeWireframe6, streeWireframe11, streeWireframe12, streeWireframe13, streeWireframe14, streeWireframe4, streeWireframe5, streeWireframe6, streeWireframe11, streeWireframe12, streeWireframe13, streeWireframe14].map((img, i) => (
+                  <div key={i} className="flex-shrink-0 w-40 md:w-48 bg-background rounded-xl border border-border shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                    <div className="aspect-[9/16] overflow-hidden">
+                      <img src={img} alt={`Wireframe ${i + 8}`} className="w-full h-full object-cover object-top" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Placeholder for non-STREE */}
+          {slug !== 'stree-safety-app' && study.wireframing.imagePlaceholder && (
+            <div className="container mx-auto max-w-4xl">
+              <div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
+                <span className="text-sm text-muted-foreground">[ Wireframe Explorations ]</span>
+              </div>
+            </div>
+          )}
         </section>}
 
       {/* STREE: Usability Testing */}
