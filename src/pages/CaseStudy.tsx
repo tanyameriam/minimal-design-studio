@@ -444,10 +444,10 @@ const caseStudies: Record<string, CaseStudyData> = {
   'stree-safety-app': {
     title: "STREE",
     subtitle: "Designing a Virtual Safety Assistant for Women in India",
-    overview: "This project was the final submission for the Post Graduate Program in UX Design from IDC, IIT Bombay (2021–2022). Harassment in public spaces restricts women's freedom of movement, participation in public life, and overall wellbeing. While existing safety tools focus on post-incident response, fear often exists long before an incident and lingers long after. Project Stree explores how design can support women across the entire safety journey: before, during, and after unsafe experiences.",
+    overview: "Harassment in public spaces restricts women's freedom of movement, participation in public life, and overall wellbeing. While existing safety tools focus on post-incident response, fear often exists long before an incident and lingers long after. Project Stree explores how design can support women across the entire safety journey: before, during, and after unsafe experiences.",
     role: "UX Research • UX Design • UI Direction",
-    projectDuration: "3 Iterations • 26 Screens",
-    projectContext: "This project was completed as part of the IIT PG Diploma program, working with a team of 5 people. My responsibility was UX Research and UX Design, along with suggesting the direction for UI design.",
+    projectDuration: "1 Month",
+    projectContext: "Final submission for the Post Graduate Program in UX Design from IDC, IIT Bombay (2021–2022). Completed with a team of 5 people. My responsibility was UX Research and UX Design, along with suggesting the direction for UI design.",
     heroImage: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=1200&q=80",
     problemSpace: {
       why: "Safety, for women, is not a single moment. It is a continuous state shaped by perception, environment, and systemic response. Most existing safety products focus only on emergencies. We wanted to understand what safety actually means in everyday life.",
