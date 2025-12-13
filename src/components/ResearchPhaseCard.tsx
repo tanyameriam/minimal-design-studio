@@ -195,30 +195,55 @@ export function PlatformAuditPhase({
             </div>
             <h3 className="font-serif text-2xl mb-3">{phase}: {title}</h3>
             
-            {/* Collapsed View: Show key findings & recommendations summary */}
+            {/* Collapsed View: Show Issue, Business Impact & Recommendations */}
             {!isExpanded && (
-              <div className="space-y-3">
-                {/* Quick Recommendations Summary */}
-                <div className="p-3 rounded-lg bg-primary/5 border border-primary/20">
-                  <span className="text-xs font-medium text-primary uppercase tracking-wider">Key Recommendations</span>
-                  <ul className="mt-2 space-y-1">
-                    {recommendations.slice(0, 3).map((rec, i) => (
-                      <li key={i} className="text-xs text-muted-foreground flex gap-2">
-                        <span className="text-primary/60 shrink-0">→</span>
-                        <span>{rec}</span>
-                      </li>
-                    ))}
-                  </ul>
+              <div className="space-y-4 mt-4">
+                {/* Issues, Impact, Recommendations Grid - Compact */}
+                <div className="grid md:grid-cols-3 gap-3">
+                  {/* Issues */}
+                  <div className="p-3 rounded-lg bg-muted/20 border border-border/50">
+                    <h4 className="font-semibold mb-2 text-xs uppercase tracking-wider text-muted-foreground">Issue</h4>
+                    <ul className="space-y-1">
+                      {issues.map((issue, i) => (
+                        <li key={i} className="text-xs text-muted-foreground flex gap-2">
+                          <span className="text-muted-foreground/60 shrink-0">•</span>
+                          <span>{issue}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Business Impact */}
+                  <div className="p-3 rounded-lg bg-primary/10 border border-primary/20">
+                    <h4 className="font-semibold mb-2 text-xs uppercase tracking-wider text-primary">Business Impact</h4>
+                    <ul className="space-y-1">
+                      {businessImpact.map((impact, i) => (
+                        <li key={i} className="text-xs text-muted-foreground flex gap-2">
+                          <span className="text-primary/60 shrink-0">•</span>
+                          <span>{impact}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Recommendations */}
+                  <div className="p-3 rounded-lg bg-primary/5 border border-primary/20">
+                    <h4 className="font-semibold mb-2 text-xs uppercase tracking-wider text-primary">Recommendation</h4>
+                    <ul className="space-y-1">
+                      {recommendations.map((rec, i) => (
+                        <li key={i} className="text-xs text-muted-foreground flex gap-2">
+                          <span className="text-primary/60 shrink-0">→</span>
+                          <span>{rec}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
 
                 {/* Platform Findings Summary */}
                 {platformFindings && platformFindings.length > 0 && (
-                  <div className="flex flex-wrap gap-2">
-                    {platformFindings.map((finding, i) => (
-                      <span key={i} className="text-xs px-2 py-1 bg-muted/30 border border-border rounded text-muted-foreground">
-                        #{finding.number} {finding.title.length > 50 ? finding.title.slice(0, 50) + '...' : finding.title}
-                      </span>
-                    ))}
+                  <div className="text-xs text-muted-foreground">
+                    <span className="font-medium">{platformFindings.length} platform findings</span> — click to expand
                   </div>
                 )}
               </div>
