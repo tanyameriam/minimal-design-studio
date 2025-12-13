@@ -2229,8 +2229,8 @@ const CaseStudy = () => {
 
 
       {/* Merry Health Platform Audit - Phase-by-Phase Analysis */}
-      {slug === 'merry-health' && <section id="merry-audit" className="px-6 lg:px-12 py-16 scroll-mt-20">
-          <div className="container mx-auto max-w-6xl">
+      {slug === 'merry-health' && <section id="merry-audit" className="px-6 lg:px-12 xl:pl-48 py-16 scroll-mt-20">
+          <div className="container mx-auto max-w-5xl">
             <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2 block">Research</span>
             <h2 className="font-serif text-3xl mb-4">Deep-Dive Audit Across All Phases</h2>
             <p className="text-muted-foreground mb-10 max-w-3xl">We conducted a data and platform audit for each phase to understand exactly where we can align better with user needs and business goals.</p>
@@ -2358,8 +2358,8 @@ const CaseStudy = () => {
         </section>}
 
       {/* Merry Health System Flow & Opportunity Mapping */}
-      {slug === 'merry-health' && study.merrySystemFlow && <section id="merry-mapping" className="px-6 lg:px-12 py-16 bg-card scroll-mt-20">
-          <div className="container mx-auto max-w-6xl">
+      {slug === 'merry-health' && study.merrySystemFlow && <section id="merry-mapping" className="px-6 lg:px-12 xl:pl-48 py-16 bg-card scroll-mt-20">
+          <div className="container mx-auto max-w-5xl">
             <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2 block">Mapping</span>
             <h2 className="font-serif text-3xl mb-4">Understanding the System & Opportunities</h2>
             <p className="text-muted-foreground mb-10 max-w-3xl">{study.merrySystemFlow.intro}</p>
@@ -2564,8 +2564,8 @@ const CaseStudy = () => {
         </section>}
 
       {/* Merry Health User Journey & Findings */}
-      {slug === 'merry-health' && <section id="merry-findings" className="px-6 lg:px-12 py-16 scroll-mt-20">
-          <div className="container mx-auto max-w-6xl">
+      {slug === 'merry-health' && <section id="merry-findings" className="px-6 lg:px-12 xl:pl-48 py-16 scroll-mt-20">
+          <div className="container mx-auto max-w-5xl">
             <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2 block">Findings</span>
             <h2 className="font-serif text-3xl mb-4">Key Insights from User Journeys</h2>
             <p className="text-muted-foreground mb-10 max-w-3xl">We mapped current and ideal journeys for all actors to validate if our identified opportunities would truly make a difference.</p>
@@ -2792,8 +2792,8 @@ const CaseStudy = () => {
         </section>}
 
       {/* Merry Health Strategy & Recommendations */}
-      {slug === 'merry-health' && <section id="merry-strategy" className="px-6 lg:px-12 py-16 bg-card scroll-mt-20">
-          <div className="container mx-auto max-w-6xl">
+      {slug === 'merry-health' && <section id="merry-strategy" className="px-6 lg:px-12 xl:pl-48 py-16 bg-card scroll-mt-20">
+          <div className="container mx-auto max-w-5xl">
             <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2 block">Strategy</span>
             <h2 className="font-serif text-3xl mb-4">Recommendations to Improve Adoption</h2>
             <p className="text-muted-foreground mb-10 max-w-3xl">Based on our research, we identified four key strategic recommendations to address the system breakdown.</p>
@@ -2902,8 +2902,8 @@ const CaseStudy = () => {
 
 
       {/* Merry Health Proposed Workflow */}
-      {slug === 'merry-health' && <section id="merry-workflow" className="px-6 lg:px-12 py-16 scroll-mt-20">
-          <div className="container mx-auto max-w-6xl">
+      {slug === 'merry-health' && <section id="merry-workflow" className="px-6 lg:px-12 xl:pl-48 py-16 scroll-mt-20">
+          <div className="container mx-auto max-w-5xl">
             <div className="flex items-center gap-4 mb-6">
               <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">5</span>
               <h2 className="font-serif text-2xl">Proposed Workflow</h2>
@@ -3028,8 +3028,8 @@ const CaseStudy = () => {
         </section>}
 
       {/* Merry Health Scenario Mapping & Modules */}
-      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16 bg-card">
-          <div className="container mx-auto max-w-6xl">
+      {slug === 'merry-health' && <section className="px-6 lg:px-12 xl:pl-48 py-16 bg-card">
+          <div className="container mx-auto max-w-5xl">
             <div className="flex items-center gap-4 mb-6">
               <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">5</span>
               <h2 className="font-serif text-2xl">Scenario Mapping & Module Definition</h2>
@@ -3079,8 +3079,8 @@ const CaseStudy = () => {
         </section>}
 
       {/* Merry Health Wireframes */}
-      {slug === 'merry-health' && <section id="merry-solution" className="px-6 lg:px-12 py-16 scroll-mt-20">
-          <div className="container mx-auto max-w-6xl">
+      {slug === 'merry-health' && <section id="merry-solution" className="px-6 lg:px-12 xl:pl-48 py-16 scroll-mt-20">
+          <div className="container mx-auto max-w-5xl">
             <div className="flex items-center gap-4 mb-6">
               <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">6</span>
               <h2 className="font-serif text-2xl">Wireframing</h2>
@@ -3119,8 +3119,8 @@ const CaseStudy = () => {
         </section>}
 
       {/* Merry Health Hi-Fi Screens */}
-      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16 bg-card">
-          <div className="container mx-auto max-w-6xl">
+      {slug === 'merry-health' && <section className="px-6 lg:px-12 xl:pl-48 py-16 bg-card">
+          <div className="container mx-auto max-w-5xl">
             <div className="flex items-center gap-4 mb-6">
               <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">6</span>
               <h2 className="font-serif text-2xl">High-Fidelity Screens</h2>
@@ -3155,8 +3155,8 @@ const CaseStudy = () => {
         </section>}
 
       {/* Merry Health WhatsApp Integration */}
-      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16">
-          <div className="container mx-auto max-w-6xl">
+      {slug === 'merry-health' && <section className="px-6 lg:px-12 xl:pl-48 py-16">
+          <div className="container mx-auto max-w-5xl">
             <div className="flex items-center gap-4 mb-6">
               <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">6</span>
               <h2 className="font-serif text-2xl">WhatsApp Integration Design</h2>
