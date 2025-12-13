@@ -1051,6 +1051,18 @@ const CaseStudy = () => {
                 <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Role</h3>
                 <p className="text-sm">{study.role}</p>
               </div>
+              {slug === 'merry-health' && (
+                <div>
+                  <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Team</h3>
+                  <p className="text-sm">Team of 5 designers</p>
+                </div>
+              )}
+              {slug === 'merry-health' && (
+                <div>
+                  <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Academic Context</h3>
+                  <p className="text-sm">Part of Academic Practicum, MDes. JSAA</p>
+                </div>
+              )}
               {study.projectDuration && <div>
                   <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Duration</h3>
                   <p className="text-sm">{study.projectDuration}</p>
@@ -1300,6 +1312,181 @@ const CaseStudy = () => {
 
       {/* BrynQ: NDA Note */}
       {study.brynqNdaNote && <section className="px-6 lg:px-12 py-8 bg-muted/30 border-y border-border"><div className="container mx-auto max-w-4xl text-center"><p className="text-sm text-muted-foreground italic">{study.brynqNdaNote}</p></div></section>}
+
+      {/* Merry Health Background & Problem Statement */}
+      {slug === 'merry-health' && (
+        <section className="px-6 lg:px-12 py-16">
+          <div className="container mx-auto max-w-5xl">
+            {/* Background */}
+            <div className="mb-16">
+              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Background</h2>
+              <p className="text-lg leading-relaxed text-muted-foreground mb-6">
+                Merry Health is a hospital technology platform focused on emergency ambulance dispatch management. The system connects hospitals, drivers, and patients to ensure faster, reliable ambulance deployment especially in Tier 2 and Tier 3 cities, where hospitals rely heavily on phone calls and WhatsApp due to low digital adoption and staff shortages.
+              </p>
+            </div>
+
+            {/* What are we trying to build */}
+            <div className="mb-16">
+              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">What Are We Trying to Build?</h2>
+              <p className="text-lg leading-relaxed text-muted-foreground mb-8">
+                The project aims to explore how the ambulance dispatch process can be simplified and made more responsive by aligning with existing end-user communication behaviors and operational realities.
+              </p>
+              <div className="grid md:grid-cols-3 gap-4">
+                <div className="p-5 rounded-xl border border-border bg-card">
+                  <p className="text-sm text-muted-foreground">Simplify how hospital admins request and assign ambulances.</p>
+                </div>
+                <div className="p-5 rounded-xl border border-border bg-card">
+                  <p className="text-sm text-muted-foreground">Improve driver acknowledgment and communication reliability.</p>
+                </div>
+                <div className="p-5 rounded-xl border border-border bg-card">
+                  <p className="text-sm text-muted-foreground">Strengthen visibility, data capture, and reporting accuracy across all users.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Users & Primary Responsibility */}
+            <div className="mb-16">
+              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Users & Primary Responsibility</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="p-6 rounded-xl border border-border bg-card">
+                  <h3 className="font-serif text-lg mb-2">Hospital Admins</h3>
+                  <p className="text-xs text-muted-foreground mb-2">Receive emergency calls and initiate ambulance requests.</p>
+                  <p className="text-sm"><span className="font-medium text-primary">Goal:</span> Quickly assign an available ambulance with minimal manual effort and ensure timely patient pickup.</p>
+                </div>
+                <div className="p-6 rounded-xl border border-border bg-card">
+                  <h3 className="font-serif text-lg mb-2">Drivers</h3>
+                  <p className="text-xs text-muted-foreground mb-2">Receive and confirm ambulance requests from hospitals or Merry Health staff.</p>
+                  <p className="text-sm"><span className="font-medium text-primary">Goal:</span> Get clear trip details and confirm rides easily without delays or confusion.</p>
+                </div>
+                <div className="p-6 rounded-xl border border-border bg-card">
+                  <h3 className="font-serif text-lg mb-2">Patients / Families</h3>
+                  <p className="text-xs text-muted-foreground mb-2">Request ambulances via hospitals and receive live tracking updates.</p>
+                  <p className="text-sm"><span className="font-medium text-primary">Goal:</span> Access timely, transparent information to feel confident that help is on the way.</p>
+                </div>
+                <div className="p-6 rounded-xl border border-border bg-card">
+                  <h3 className="font-serif text-lg mb-2">Merry Health Admins</h3>
+                  <p className="text-xs text-muted-foreground mb-2">Oversee hospital and driver coordination, monitor SLAs, and manage data quality.</p>
+                  <p className="text-sm"><span className="font-medium text-primary">Goal:</span> Ensure fast, reliable dispatch operations and maintain accurate performance reporting.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Problems */}
+            <div className="mb-16">
+              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">The Problems</h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* User Problems */}
+                <div>
+                  <h3 className="font-serif text-lg mb-4 flex items-center gap-2">
+                    <span className="w-6 h-6 rounded bg-amber-500/20 flex items-center justify-center text-xs font-medium text-amber-600">UP</span>
+                    User Problems
+                  </h3>
+                  <div className="space-y-3">
+                    <div className="p-4 rounded-lg border border-border bg-card">
+                      <p className="text-sm text-muted-foreground"><span className="font-medium text-foreground">UP1:</span> Hospital admins rely on phone calls instead of the dashboard, leading to delays in ambulance assignment and loss of structured data for reporting.</p>
+                    </div>
+                    <div className="p-4 rounded-lg border border-border bg-card">
+                      <p className="text-sm text-muted-foreground"><span className="font-medium text-foreground">UP2:</span> Dispatch process takes 8–10 minutes due to manual entry.</p>
+                    </div>
+                    <div className="p-4 rounded-lg border border-border bg-card">
+                      <p className="text-sm text-muted-foreground"><span className="font-medium text-foreground">UP3:</span> Drivers ignore app messages or fail to confirm.</p>
+                    </div>
+                    <div className="p-4 rounded-lg border border-border bg-card">
+                      <p className="text-sm text-muted-foreground"><span className="font-medium text-foreground">UP4:</span> Tracking links not always shared with patients.</p>
+                    </div>
+                    <div className="p-4 rounded-lg border border-border bg-card">
+                      <p className="text-sm text-muted-foreground"><span className="font-medium text-foreground">UP5:</span> Low visibility of data quality and response metrics.</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Business Problems */}
+                <div>
+                  <h3 className="font-serif text-lg mb-4 flex items-center gap-2">
+                    <span className="w-6 h-6 rounded bg-primary/20 flex items-center justify-center text-xs font-medium text-primary">BP</span>
+                    Business Problems
+                  </h3>
+                  <div className="space-y-3">
+                    <div className="p-4 rounded-lg border border-border bg-card">
+                      <p className="text-sm text-muted-foreground"><span className="font-medium text-foreground">BP1:</span> Admins underuse the dashboard, lowering retention.</p>
+                    </div>
+                    <div className="p-4 rounded-lg border border-border bg-card">
+                      <p className="text-sm text-muted-foreground"><span className="font-medium text-foreground">BP2:</span> No centralized data for reporting or audits.</p>
+                    </div>
+                    <div className="p-4 rounded-lg border border-border bg-card">
+                      <p className="text-sm text-muted-foreground"><span className="font-medium text-foreground">BP3:</span> Delayed response time affects Merry Health's credibility.</p>
+                    </div>
+                    <div className="p-4 rounded-lg border border-border bg-card">
+                      <p className="text-sm text-muted-foreground"><span className="font-medium text-foreground">BP4:</span> Manual coordination between admin and driver adds cost.</p>
+                    </div>
+                    <div className="p-4 rounded-lg border border-border bg-card">
+                      <p className="text-sm text-muted-foreground"><span className="font-medium text-foreground">BP5:</span> Weak differentiation from competitors.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Goals */}
+            <div className="mb-8">
+              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Project Goal</h2>
+              <div className="p-6 rounded-xl border border-primary/30 bg-primary/5 mb-8">
+                <p className="font-serif text-lg text-center">
+                  To design a high-adoption, low-friction emergency dispatch system that reduces manual coordination time, structures operational data, and strengthens Merry Health's enterprise positioning with measurable value for hospitals.
+                </p>
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* Business Goals */}
+                <div>
+                  <h3 className="font-serif text-lg mb-4">Business Goals</h3>
+                  <ul className="space-y-3">
+                    <li className="text-sm text-muted-foreground flex gap-2">
+                      <span className="text-primary shrink-0">→</span>
+                      Increase platform adoption among Tier 2 and Tier 3 partner hospitals (target: ≥ 80%)
+                    </li>
+                    <li className="text-sm text-muted-foreground flex gap-2">
+                      <span className="text-primary shrink-0">→</span>
+                      Reduce dispatch coordination time from hospital request to driver confirmation (target: under 3 minutes)
+                    </li>
+                    <li className="text-sm text-muted-foreground flex gap-2">
+                      <span className="text-primary shrink-0">→</span>
+                      Improve data completeness and accuracy through WhatsApp–dashboard sync (target: ≥ 70% fewer manual entry errors)
+                    </li>
+                    <li className="text-sm text-muted-foreground flex gap-2">
+                      <span className="text-primary shrink-0">→</span>
+                      Increase repeat hospital usage and retention (+20%)
+                    </li>
+                  </ul>
+                </div>
+
+                {/* User Goals */}
+                <div>
+                  <h3 className="font-serif text-lg mb-4">User Goals</h3>
+                  <ul className="space-y-3">
+                    <li className="text-sm text-muted-foreground flex gap-2">
+                      <span className="text-primary shrink-0">→</span>
+                      Respond quickly to emergency calls with minimal manual steps
+                    </li>
+                    <li className="text-sm text-muted-foreground flex gap-2">
+                      <span className="text-primary shrink-0">→</span>
+                      Request and track ambulances through familiar, simple workflows
+                    </li>
+                    <li className="text-sm text-muted-foreground flex gap-2">
+                      <span className="text-primary shrink-0">→</span>
+                      Get instant visibility into ambulance location, availability, and ETA
+                    </li>
+                    <li className="text-sm text-muted-foreground flex gap-2">
+                      <span className="text-primary shrink-0">→</span>
+                      Track each trip automatically and receive live status updates without repeated calls
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Merry Health UX Approach Principles */}
       {slug === 'merry-health' && (
