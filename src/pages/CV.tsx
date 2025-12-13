@@ -61,7 +61,7 @@ const CV = () => {
 
           <div class="section profile">
             <h2>Profile</h2>
-            <p>UX/UI Designer with 5 years of professional design experience and a broader corporate background since 2018. Experienced in UI execution, UX auditing, and workflow design for digital products. Currently working on BrynQ, an HR–Payroll integration product, focusing on improving usability, clarity, and decision-making within complex system-driven flows. Strong technical foundation and academic focus on UX for AI-supported systems.</p>
+            <p>UX/UI Designer with 5 years of professional design experience and a broader corporate background since 2018. Experienced in UI execution, UX auditing, and workflow design for digital products. Currently working on BrynQ, an HR/Payroll integration product, focusing on improving usability, clarity, and decision-making within complex system-driven flows. Strong technical foundation and academic focus on UX for AI-supported systems.</p>
           </div>
 
           <div class="section">
@@ -82,7 +82,7 @@ const CV = () => {
             <div class="job">
               <div class="job-header">
                 <div>
-                  <span class="job-title">UX/UI Designer</span> · <span class="job-company">BrynQ — Netherlands</span>
+                  <span class="job-title">UX/UI Designer</span> · <span class="job-company">BrynQ, Netherlands</span>
                 </div>
                 <span class="job-date">2023 – Present</span>
               </div>
@@ -100,7 +100,7 @@ const CV = () => {
             <div class="job">
               <div class="job-header">
                 <div>
-                  <span class="job-title">UI Designer (Contract)</span> · <span class="job-company">Multiple Startups — India</span>
+                  <span class="job-title">UI Designer (Contract)</span> · <span class="job-company">Multiple Startups, India</span>
                 </div>
                 <span class="job-date">2022 – 2023</span>
               </div>
@@ -114,7 +114,7 @@ const CV = () => {
             <div class="job">
               <div class="job-header">
                 <div>
-                  <span class="job-title">UI Designer</span> · <span class="job-company">Segments Cloud LLC — Dubai, UAE</span>
+                  <span class="job-title">UI Designer</span> · <span class="job-company">Segments Cloud LLC, Dubai, UAE</span>
                 </div>
                 <span class="job-date">2021 – 2022</span>
               </div>
@@ -127,7 +127,7 @@ const CV = () => {
             <div class="job">
               <div class="job-header">
                 <div>
-                  <span class="job-title">UX/UI Intern</span> · <span class="job-company">Curateus — Bangalore, India</span>
+                  <span class="job-title">UX/UI Intern</span> · <span class="job-company">Curateus, Bangalore, India</span>
                 </div>
                 <span class="job-date">2021</span>
               </div>
@@ -140,7 +140,7 @@ const CV = () => {
             <div class="job">
               <div class="job-header">
                 <div>
-                  <span class="job-title">Technical Support Engineer</span> · <span class="job-company">SAP Ariba — Bangalore, India</span>
+                  <span class="job-title">Technical Support Engineer</span> · <span class="job-company">SAP Ariba, Bangalore, India</span>
                 </div>
                 <span class="job-date">2018 – 2021</span>
               </div>
@@ -155,16 +155,16 @@ const CV = () => {
           <div class="section">
             <h2>Education</h2>
             <div class="edu-item">
-              <div class="edu-title">Master's in UX (Specialization: AI) — Ongoing</div>
-              <div class="edu-school">Jindal School of Art & Architecture — 2025–2026</div>
+              <div class="edu-title">Master's in UX (Specialization: AI), Ongoing</div>
+              <div class="edu-school">Jindal School of Art & Architecture, 2025–2026</div>
             </div>
             <div class="edu-item">
               <div class="edu-title">Post Graduate Programme in UX Design</div>
-              <div class="edu-school">IDC, Indian Institute of Technology Bombay — 2021–2022</div>
+              <div class="edu-school">IDC, Indian Institute of Technology Bombay, 2021–2022</div>
             </div>
             <div class="edu-item">
               <div class="edu-title">Bachelor of Technology in Computer Science</div>
-              <div class="edu-school">University of Calicut — 2013–2017</div>
+              <div class="edu-school">University of Calicut, 2013–2017</div>
             </div>
           </div>
 
@@ -180,7 +180,7 @@ const CV = () => {
 
           <div class="section">
             <h2>Languages</h2>
-            <p>English — Fluent · Dutch — Beginner</p>
+            <p>English: Fluent · Dutch: Beginner</p>
           </div>
 
           <script>
@@ -252,7 +252,7 @@ const CV = () => {
             <p className="text-muted-foreground leading-relaxed">
               UX/UI Designer with 5 years of professional design experience and a broader corporate background since 2018. 
               Experienced in UI execution, UX auditing, and workflow design for digital products. Currently working on BrynQ, 
-              an HR–Payroll integration product, focusing on improving usability, clarity, and decision-making within complex 
+              an HR/Payroll integration product, focusing on improving usability, clarity, and decision-making within complex 
               system-driven flows. Strong technical foundation and academic focus on UX for AI-supported systems.
             </p>
           </section>
@@ -279,7 +279,7 @@ const CV = () => {
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
                   <div>
                     <h3 className="font-medium">UX/UI Designer</h3>
-                    <p className="text-muted-foreground text-sm">BrynQ — Netherlands</p>
+                    <p className="text-muted-foreground text-sm">BrynQ, Netherlands</p>
                   </div>
                   <span className="text-sm text-muted-foreground">2023 – Present</span>
                 </div>
@@ -299,7 +299,7 @@ const CV = () => {
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
                   <div>
                     <h3 className="font-medium">UI Designer (Contract)</h3>
-                    <p className="text-muted-foreground text-sm">Multiple Startups — India</p>
+                    <p className="text-muted-foreground text-sm">Multiple Startups, India</p>
                   </div>
                   <span className="text-sm text-muted-foreground">2022 – 2023</span>
                 </div>
@@ -315,7 +315,7 @@ const CV = () => {
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
                   <div>
                     <h3 className="font-medium">UI Designer</h3>
-                    <p className="text-muted-foreground text-sm">Segments Cloud LLC — Dubai, UAE</p>
+                    <p className="text-muted-foreground text-sm">Segments Cloud LLC, Dubai, UAE</p>
                   </div>
                   <span className="text-sm text-muted-foreground">2021 – 2022</span>
                 </div>
@@ -330,7 +330,7 @@ const CV = () => {
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
                   <div>
                     <h3 className="font-medium">UX/UI Intern</h3>
-                    <p className="text-muted-foreground text-sm">Curateus — Bangalore, India</p>
+                    <p className="text-muted-foreground text-sm">Curateus, Bangalore, India</p>
                   </div>
                   <span className="text-sm text-muted-foreground">2021</span>
                 </div>
@@ -345,7 +345,7 @@ const CV = () => {
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
                   <div>
                     <h3 className="font-medium">Technical Support Engineer</h3>
-                    <p className="text-muted-foreground text-sm">SAP Ariba — Bangalore, India</p>
+                    <p className="text-muted-foreground text-sm">SAP Ariba, Bangalore, India</p>
                   </div>
                   <span className="text-sm text-muted-foreground">2018 – 2021</span>
                 </div>
@@ -363,16 +363,16 @@ const CV = () => {
             <h2 className="font-serif text-lg mb-6 pb-2 border-b border-border">Education</h2>
             <div className="space-y-4">
               <div>
-                <h3 className="font-medium">Master's in UX (Specialization: AI) <span className="text-muted-foreground font-normal">— Ongoing</span></h3>
-                <p className="text-sm text-muted-foreground">Jindal School of Art & Architecture — 2025–2026</p>
+                <h3 className="font-medium">Master's in UX (Specialization: AI) <span className="text-muted-foreground font-normal">(Ongoing)</span></h3>
+                <p className="text-sm text-muted-foreground">Jindal School of Art & Architecture, 2025–2026</p>
               </div>
               <div>
                 <h3 className="font-medium">Post Graduate Programme in UX Design</h3>
-                <p className="text-sm text-muted-foreground">IDC, Indian Institute of Technology Bombay — 2021–2022</p>
+                <p className="text-sm text-muted-foreground">IDC, Indian Institute of Technology Bombay, 2021–2022</p>
               </div>
               <div>
                 <h3 className="font-medium">Bachelor of Technology in Computer Science</h3>
-                <p className="text-sm text-muted-foreground">University of Calicut — 2013–2017</p>
+                <p className="text-sm text-muted-foreground">University of Calicut, 2013–2017</p>
               </div>
             </div>
           </section>
@@ -393,8 +393,8 @@ const CV = () => {
           <section>
             <h2 className="font-serif text-lg mb-4 pb-2 border-b border-border">Languages</h2>
             <div className="flex flex-wrap gap-4 text-sm">
-              <span><strong>English</strong> — Fluent</span>
-              <span><strong>Dutch</strong> — Beginner</span>
+              <span><strong>English</strong>: Fluent</span>
+              <span><strong>Dutch</strong>: Beginner</span>
             </div>
           </section>
         </div>
