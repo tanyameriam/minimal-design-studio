@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, X, ChevronDown } from 'lucide-react';
 import streeAffinity1 from '@/assets/stree-affinity-1.png';
 import streeAffinity2 from '@/assets/stree-affinity-2.png';
@@ -4068,10 +4068,17 @@ const CaseStudy = () => {
       <footer className="px-6 lg:px-12 py-16 border-t border-border">
         <div className="container mx-auto max-w-4xl flex flex-col gap-8">
           <div className="flex justify-between items-center">
-            <Link to="/#work" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+            <a 
+              href="/#work" 
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = '/#work';
+              }}
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+            >
               <ArrowLeft className="w-4 h-4" />
               All projects
-            </Link>
+            </a>
           </div>
           <div className="p-6 bg-primary/5 border border-primary/20 rounded-lg text-center">
             <p className="text-muted-foreground mb-3">Interested in working together?</p>
