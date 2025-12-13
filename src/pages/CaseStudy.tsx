@@ -2979,148 +2979,140 @@ const CaseStudy = () => {
             <p className="text-muted-foreground mb-4">Given that 95% of hospital admins currently use WhatsApp for intake, we designed a structured WhatsApp experience that respects existing mental models while enabling automated workflows.</p>
             <p className="text-sm text-muted-foreground mb-10">The system parses incoming messages to extract required data points (as identified in our data audit), requests missing information, and pushes automated status updates to all stakeholders.</p>
 
-            <div className="space-y-8">
+            <div className="grid md:grid-cols-3 gap-4">
               {/* Hospital Admin WhatsApp */}
-              <div className="p-6 rounded-xl border border-border bg-background">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white text-sm font-medium">HA</div>
+              <div className="p-4 rounded-xl border border-border bg-background">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white text-xs font-medium">HA</div>
                     <div>
-                      <h3 className="font-serif text-lg">Hospital Admin Experience</h3>
-                      <p className="text-xs text-muted-foreground">Intake via WhatsApp with structured parsing</p>
+                      <h3 className="font-serif text-sm">Hospital Admin</h3>
+                      <p className="text-[10px] text-muted-foreground">WhatsApp intake</p>
                     </div>
                   </div>
                   <div className="cursor-pointer group" onClick={() => setLightboxImage(merryWhatsappAdmin)}>
-                    <div className="w-14 h-18 overflow-hidden rounded-lg border border-border bg-muted/20">
+                    <div className="w-10 h-14 overflow-hidden rounded border border-border bg-muted/20">
                       <img src={merryWhatsappAdmin} alt="Hospital Admin WhatsApp" className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300" />
                     </div>
                   </div>
                 </div>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <div className="p-4 rounded-lg bg-muted/20 border border-border/50">
-                      <h4 className="text-sm font-semibold mb-3">How It Works</h4>
-                      <ul className="space-y-2 text-xs text-muted-foreground">
-                        <li className="flex gap-2"><span className="text-primary">1.</span>Hospital admin sends request to Merry Health WhatsApp</li>
-                        <li className="flex gap-2"><span className="text-primary">2.</span>System parses message for required data points</li>
-                        <li className="flex gap-2"><span className="text-primary">3.</span>Missing data is requested via automated reply</li>
-                        <li className="flex gap-2"><span className="text-primary">4.</span>User confirms by replying to the message</li>
-                        <li className="flex gap-2"><span className="text-primary">5.</span>Each status update is communicated automatically</li>
-                      </ul>
-                    </div>
-                    <div className="p-4 rounded-lg bg-primary/5 border border-primary/20">
-                      <h4 className="text-xs uppercase tracking-wider text-primary font-medium mb-2">Benefits</h4>
-                      <ul className="space-y-1 text-xs text-muted-foreground">
-                        <li>• Consistent, standardized updates for every ride</li>
-                        <li>• Automatic status messages instead of manual follow-ups</li>
-                        <li>• Live location links and driver details pushed instantly</li>
-                        <li>• End-to-end ride visibility directly inside WhatsApp</li>
-                      </ul>
-                    </div>
+                <div className="space-y-2">
+                  <div className="p-2 rounded bg-muted/20 border border-border/50">
+                    <h4 className="text-[10px] font-semibold mb-1">How It Works</h4>
+                    <ul className="space-y-0.5 text-[10px] text-muted-foreground">
+                      <li><span className="text-primary">1.</span> Admin sends request to WhatsApp</li>
+                      <li><span className="text-primary">2.</span> System parses for data points</li>
+                      <li><span className="text-primary">3.</span> Missing data requested automatically</li>
+                      <li><span className="text-primary">4.</span> User confirms by reply</li>
+                      <li><span className="text-primary">5.</span> Status updates sent automatically</li>
+                    </ul>
                   </div>
-                  <div className="p-4 rounded-lg bg-emerald-500/5 border border-emerald-500/20">
-                    <div className="flex items-center justify-between mb-3">
-                      <h4 className="text-sm font-semibold">Announcement Group (Read-Only)</h4>
+                  <div className="p-2 rounded bg-primary/5 border border-primary/20">
+                    <h4 className="text-[10px] uppercase tracking-wider text-primary font-medium mb-1">Benefits</h4>
+                    <ul className="space-y-0.5 text-[10px] text-muted-foreground">
+                      <li>• Standardized updates for every ride</li>
+                      <li>• Automatic status messages</li>
+                      <li>• Live location links pushed instantly</li>
+                      <li>• End-to-end visibility in WhatsApp</li>
+                    </ul>
+                  </div>
+                  <div className="p-2 rounded bg-emerald-500/5 border border-emerald-500/20">
+                    <div className="flex items-center justify-between mb-1">
+                      <h4 className="text-[10px] font-semibold">Announcement Group</h4>
                       <div className="cursor-pointer group" onClick={() => setLightboxImage(merryWhatsappHospital)}>
-                        <div className="w-10 h-12 overflow-hidden rounded border border-border bg-muted/20">
-                          <img src={merryWhatsappHospital} alt="Hospital Announcement Group" className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300" />
+                        <div className="w-6 h-8 overflow-hidden rounded border border-border bg-muted/20">
+                          <img src={merryWhatsappHospital} alt="Hospital Announcement" className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300" />
                         </div>
                       </div>
                     </div>
-                    <p className="text-xs text-muted-foreground mb-3">Hospital managers can view all updates in a read-only community announcement channel for day-to-day operations visibility.</p>
-                    <ul className="space-y-1 text-xs text-muted-foreground">
-                      <li>• Single source of truth for all ride milestones</li>
-                      <li>• Consistent, system-generated messages</li>
-                      <li>• Real-time updates for trip statuses</li>
-                      <li>• Clutter-free experience (read-only)</li>
-                      <li>• Better coordination across departments</li>
+                    <ul className="space-y-0.5 text-[10px] text-muted-foreground">
+                      <li>• Read-only channel for managers</li>
+                      <li>• Single source of truth</li>
+                      <li>• Real-time trip updates</li>
                     </ul>
                   </div>
                 </div>
               </div>
 
-              <div className="p-6 rounded-xl border border-border bg-background">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center text-white text-sm font-medium">DR</div>
+              {/* Driver WhatsApp */}
+              <div className="p-4 rounded-xl border border-border bg-background">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center text-white text-xs font-medium">DR</div>
                     <div>
-                      <h3 className="font-serif text-lg">Driver Experience</h3>
-                      <p className="text-xs text-muted-foreground">Ride requests with SMS fallback for feature phones</p>
+                      <h3 className="font-serif text-sm">Driver</h3>
+                      <p className="text-[10px] text-muted-foreground">SMS fallback support</p>
                     </div>
                   </div>
                   <div className="cursor-pointer group" onClick={() => setLightboxImage(merryWhatsappDriver)}>
-                    <div className="w-14 h-18 overflow-hidden rounded-lg border border-border bg-muted/20">
+                    <div className="w-10 h-14 overflow-hidden rounded border border-border bg-muted/20">
                       <img src={merryWhatsappDriver} alt="Driver WhatsApp" className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300" />
                     </div>
                   </div>
                 </div>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <div className="p-4 rounded-lg bg-muted/20 border border-border/50">
-                      <h4 className="text-sm font-semibold mb-3">How It Works</h4>
-                      <ul className="space-y-2 text-xs text-muted-foreground">
-                        <li className="flex gap-2"><span className="text-amber-600">1.</span>Driver receives ride request via WhatsApp</li>
-                        <li className="flex gap-2"><span className="text-amber-600">2.</span>If no smartphone, SMS with response options is sent</li>
-                        <li className="flex gap-2"><span className="text-amber-600">3.</span>Driver responds to accept/decline</li>
-                        <li className="flex gap-2"><span className="text-amber-600">4.</span>Once confirmed, patient party receives updates</li>
-                        <li className="flex gap-2"><span className="text-amber-600">5.</span>All actions sync back to Merry Health database</li>
-                      </ul>
-                    </div>
+                <div className="space-y-2">
+                  <div className="p-2 rounded bg-muted/20 border border-border/50">
+                    <h4 className="text-[10px] font-semibold mb-1">How It Works</h4>
+                    <ul className="space-y-0.5 text-[10px] text-muted-foreground">
+                      <li><span className="text-amber-600">1.</span> Driver receives ride request</li>
+                      <li><span className="text-amber-600">2.</span> SMS fallback for feature phones</li>
+                      <li><span className="text-amber-600">3.</span> Accept/decline response</li>
+                      <li><span className="text-amber-600">4.</span> Patient party gets updates</li>
+                      <li><span className="text-amber-600">5.</span> Actions sync to database</li>
+                    </ul>
                   </div>
-                  <div className="p-4 rounded-lg bg-amber-500/5 border border-amber-500/20">
-                    <h4 className="text-xs uppercase tracking-wider text-amber-600 font-medium mb-2">Driver Benefits</h4>
-                    <ul className="space-y-1 text-xs text-muted-foreground">
-                      <li>• Clear, standardized ride requests with patient contact</li>
-                      <li>• One-tap Accept/Decline options reducing delays</li>
-                      <li>• Live pickup location links for instant navigation</li>
-                      <li>• Automated status prompts for pickup, drop, closure</li>
-                      <li>• Simplified, reliable workflow</li>
+                  <div className="p-2 rounded bg-amber-500/5 border border-amber-500/20">
+                    <h4 className="text-[10px] uppercase tracking-wider text-amber-600 font-medium mb-1">Benefits</h4>
+                    <ul className="space-y-0.5 text-[10px] text-muted-foreground">
+                      <li>• Clear, standardized requests</li>
+                      <li>• One-tap Accept/Decline</li>
+                      <li>• Live pickup location links</li>
+                      <li>• Automated status prompts</li>
+                      <li>• Simplified workflow</li>
                     </ul>
                   </div>
                 </div>
               </div>
 
-              <div className="p-6 rounded-xl border border-border bg-background">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-sm font-medium">PP</div>
+              {/* Patient Party WhatsApp */}
+              <div className="p-4 rounded-xl border border-border bg-background">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-xs font-medium">PP</div>
                     <div>
-                      <h3 className="font-serif text-lg">Patient Party Experience</h3>
-                      <p className="text-xs text-muted-foreground">Updates via WhatsApp, IVR calls, or SMS</p>
+                      <h3 className="font-serif text-sm">Patient Party</h3>
+                      <p className="text-[10px] text-muted-foreground">WhatsApp, IVR, SMS</p>
                     </div>
                   </div>
                   <div className="cursor-pointer group" onClick={() => setLightboxImage(merryWhatsappPatient)}>
-                    <div className="w-14 h-18 overflow-hidden rounded-lg border border-border bg-muted/20">
+                    <div className="w-10 h-14 overflow-hidden rounded border border-border bg-muted/20">
                       <img src={merryWhatsappPatient} alt="Patient Party WhatsApp" className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300" />
                     </div>
                   </div>
                 </div>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <div className="p-4 rounded-lg bg-muted/20 border border-border/50">
-                      <h4 className="text-sm font-semibold mb-3">Communication Channels</h4>
-                      <ul className="space-y-2 text-xs text-muted-foreground">
-                        <li className="flex gap-2"><span className="text-blue-600">•</span><strong>WhatsApp:</strong> Primary channel for real-time updates</li>
-                        <li className="flex gap-2"><span className="text-blue-600">•</span><strong>IVR Calls:</strong> Ambulance info in regional language</li>
-                        <li className="flex gap-2"><span className="text-blue-600">•</span><strong>SMS:</strong> Fallback for non-smartphone users</li>
-                      </ul>
-                    </div>
+                <div className="space-y-2">
+                  <div className="p-2 rounded bg-muted/20 border border-border/50">
+                    <h4 className="text-[10px] font-semibold mb-1">Channels</h4>
+                    <ul className="space-y-0.5 text-[10px] text-muted-foreground">
+                      <li><span className="text-blue-600">•</span> <strong>WhatsApp:</strong> Real-time updates</li>
+                      <li><span className="text-blue-600">•</span> <strong>IVR:</strong> Regional language info</li>
+                      <li><span className="text-blue-600">•</span> <strong>SMS:</strong> Feature phone fallback</li>
+                    </ul>
                   </div>
-                  <div className="p-4 rounded-lg bg-blue-500/5 border border-blue-500/20">
-                    <h4 className="text-xs uppercase tracking-wider text-blue-600 font-medium mb-2">Patient Party Benefits</h4>
-                    <ul className="space-y-1 text-xs text-muted-foreground">
-                      <li>• Instant confirmation that request is received</li>
-                      <li>• Ambulance and driver details shared automatically</li>
-                      <li>• Live tracking link to follow ambulance in real time</li>
-                      <li>• Clear updates for each milestone</li>
-                      <li>• Reduced uncertainty and anxiety during emergency</li>
-                      <li>• Transparent experience without back-and-forth calls</li>
+                  <div className="p-2 rounded bg-blue-500/5 border border-blue-500/20">
+                    <h4 className="text-[10px] uppercase tracking-wider text-blue-600 font-medium mb-1">Benefits</h4>
+                    <ul className="space-y-0.5 text-[10px] text-muted-foreground">
+                      <li>• Instant confirmation</li>
+                      <li>• Driver details shared automatically</li>
+                      <li>• Live tracking link</li>
+                      <li>• Clear milestone updates</li>
+                      <li>• Reduced anxiety</li>
+                      <li>• No back-and-forth calls</li>
                     </ul>
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
         </section>}
 
