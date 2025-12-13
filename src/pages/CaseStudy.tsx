@@ -13,6 +13,7 @@ import streeInterview3 from '@/assets/stree-interview-3.png';
 import streeInterview4 from '@/assets/stree-interview-4.png';
 import streeInterview5 from '@/assets/stree-interview-5.png';
 import streeSosFlow from '@/assets/stree-sos-flow.png';
+import streeUserFlow from '@/assets/stree-user-flow.png';
 interface CaseStudySection {
   title: string;
   content: string;
@@ -1258,6 +1259,7 @@ const CaseStudy = () => {
             {slug === 'stree-safety-app' && (
               <div className="mt-8">
                 <img src={streeSosFlow} alt="SOS Mode user flow showing interactions between user, officials, and contacts" className="w-full rounded border border-border" />
+                <img src={streeUserFlow} alt="User journey flow: Discovery, Onboarding, and App navigation" className="w-full rounded border-2 border-border shadow-sm bg-white p-4 mt-6" />
               </div>
             )}
 
