@@ -2,6 +2,8 @@ import { useState, useMemo } from 'react';
 import ProjectCard from './ProjectCard';
 import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
+import streeCover from '@/assets/stree-cover.png';
+
 type ProjectTag = 'UI' | 'UX' | 'Research';
 interface Project {
   title: string;
@@ -14,8 +16,8 @@ interface Project {
 const projects: Project[] = [{
   title: "STREE Safety App",
   category: "UX Research • Mobile App",
-  year: "2023",
-  image: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=800&q=80",
+  year: "2022",
+  image: streeCover,
   slug: "stree-safety-app",
   tags: ['UX', 'Research']
 }, {
