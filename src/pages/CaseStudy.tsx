@@ -2074,27 +2074,29 @@ const CaseStudy = () => {
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">The Solution</h2>
             <p className="text-lg text-muted-foreground mb-10">Our approach was structured into six key phases:</p>
             
-            {/* Horizontal Phase Tabs */}
-            <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3">
+            {/* Horizontal Phase Tabs - Compact Single Line */}
+            <div className="flex items-center justify-center gap-1 md:gap-2 overflow-x-auto pb-2">
               {[
-                { num: 1, title: "Audit", subtitle: "Data & Platform" },
-                { num: 2, title: "Mapping", subtitle: "Flows & Journeys" },
-                { num: 3, title: "Findings", subtitle: "Key Insights" },
-                { num: 4, title: "Strategy", subtitle: "Recommendations" },
-                { num: 5, title: "Workflow", subtitle: "Proposed System" },
-                { num: 6, title: "Design", subtitle: "Wireframes & Hi-Fi" }
+                { num: 1, title: "Audit", id: "merry-audit" },
+                { num: 2, title: "Mapping", id: "merry-mapping" },
+                { num: 3, title: "Findings", id: "merry-findings" },
+                { num: 4, title: "Strategy", id: "merry-strategy" },
+                { num: 5, title: "Workflow", id: "merry-workflow" },
+                { num: 6, title: "Design", id: "merry-design" }
               ].map((phase, i, arr) => (
-                <div key={i} className="flex items-center">
-                  <div className="flex flex-col items-center text-center px-3 py-3 md:px-5 md:py-4 rounded-xl bg-card border border-border hover:border-primary/40 hover:bg-primary/5 transition-all duration-200 min-w-[90px] md:min-w-[110px]">
-                    <span className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-primary/10 flex items-center justify-center text-xs md:text-sm font-semibold text-primary mb-2">
+                <div key={i} className="flex items-center flex-shrink-0">
+                  <button 
+                    onClick={() => document.getElementById(phase.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                    className="flex items-center gap-2 px-3 py-2 md:px-4 md:py-2.5 rounded-full bg-card border border-border hover:border-primary/50 hover:bg-primary/5 transition-all duration-200 cursor-pointer group"
+                  >
+                    <span className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-primary/10 group-hover:bg-primary/20 flex items-center justify-center text-[10px] md:text-xs font-semibold text-primary transition-colors">
                       {phase.num}
                     </span>
-                    <span className="font-serif text-sm md:text-base font-medium">{phase.title}</span>
-                    <span className="text-[10px] md:text-xs text-muted-foreground mt-0.5">{phase.subtitle}</span>
-                  </div>
+                    <span className="text-xs md:text-sm font-medium whitespace-nowrap">{phase.title}</span>
+                  </button>
                   {i < arr.length - 1 && (
-                    <div className="hidden md:block mx-2 text-muted-foreground/40">
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <div className="mx-1 text-muted-foreground/30">
+                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                       </svg>
                     </div>
@@ -2107,7 +2109,7 @@ const CaseStudy = () => {
 
 
       {/* Merry Health Platform Audit - Phase-by-Phase Analysis */}
-      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16">
+      {slug === 'merry-health' && <section id="merry-audit" className="px-6 lg:px-12 py-16 scroll-mt-20">
           <div className="container mx-auto max-w-6xl">
             <div className="flex items-center gap-4 mb-6">
               <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">1</span>
@@ -2195,7 +2197,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* Merry Health System Flow & Opportunity Mapping - Compact Card Layout */}
-      {slug === 'merry-health' && study.merrySystemFlow && <section className="px-6 lg:px-12 py-16 bg-card">
+      {slug === 'merry-health' && study.merrySystemFlow && <section id="merry-mapping" className="px-6 lg:px-12 py-16 bg-card scroll-mt-20">
           <div className="container mx-auto max-w-6xl">
             <div className="flex items-center gap-4 mb-6">
               <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">2</span>
@@ -2571,7 +2573,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* Merry Health Reasons for System Breakdown */}
-      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16 bg-card">
+      {slug === 'merry-health' && <section id="merry-findings" className="px-6 lg:px-12 py-16 bg-card scroll-mt-20">
           <div className="container mx-auto max-w-6xl">
             <div className="flex items-center gap-4 mb-6">
               <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">3</span>
@@ -2600,7 +2602,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* Merry Health Recommendations to Improve Adoption & Efficiency */}
-      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16">
+      {slug === 'merry-health' && <section id="merry-strategy" className="px-6 lg:px-12 py-16 scroll-mt-20">
           <div className="container mx-auto max-w-6xl">
             <div className="flex items-center gap-4 mb-6">
               <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">4</span>
@@ -2673,7 +2675,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* Merry Health Proposed Workflow */}
-      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16">
+      {slug === 'merry-health' && <section id="merry-workflow" className="px-6 lg:px-12 py-16 scroll-mt-20">
           <div className="container mx-auto max-w-6xl">
             <div className="flex items-center gap-4 mb-6">
               <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">5</span>
@@ -2850,7 +2852,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* Merry Health Wireframes */}
-      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16">
+      {slug === 'merry-health' && <section id="merry-design" className="px-6 lg:px-12 py-16 scroll-mt-20">
           <div className="container mx-auto max-w-6xl">
             <div className="flex items-center gap-4 mb-6">
               <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">6</span>
