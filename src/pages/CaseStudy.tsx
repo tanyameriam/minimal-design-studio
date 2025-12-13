@@ -544,14 +544,14 @@ const caseStudies: Record<string, CaseStudyData> = {
   'stree-safety-app': {
     title: "STREE",
     subtitle: "Designing a Virtual Safety Assistant for Women in India",
-    overview: "Harassment in public spaces restricts women's freedom of movement, participation in public life, and overall wellbeing. While existing safety tools focus on post-incident response, fear often exists long before an incident and lingers long after. Project Stree explores how design can support women across the entire safety journey—before, during, and after unsafe experiences.",
+    overview: "Harassment in public spaces restricts women's freedom of movement, participation in public life, and overall wellbeing. While existing safety tools focus on post-incident response, fear often exists long before an incident and lingers long after. Project Stree explores how design can support women across the entire safety journey: before, during, and after unsafe experiences.",
     role: "UX Research • UX Design • UI Direction",
     projectDuration: "3 Iterations • 26 Screens",
     projectContext: "This project was completed as part of the IIT PG Diploma program, working with a team of 5 people. My responsibility was UX Research and UX Design, along with suggesting the direction for UI design.",
     heroImage: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=1200&q=80",
     problemSpace: {
-      why: "Safety, for women, is not a single moment—it is a continuous state shaped by perception, environment, and systemic response. Most existing safety products focus only on emergencies. We wanted to understand what safety actually means in everyday life.",
-      context: "Fear is influenced by location, time of day, social context, and cultural attitudes. Even when no incident occurs, the anticipation of risk shapes behaviour—choosing longer routes, avoiding places, or limiting mobility altogether."
+      why: "Safety, for women, is not a single moment. It is a continuous state shaped by perception, environment, and systemic response. Most existing safety products focus only on emergencies. We wanted to understand what safety actually means in everyday life.",
+      context: "Fear is influenced by location, time of day, social context, and cultural attitudes. Even when no incident occurs, the anticipation of risk shapes behaviour: choosing longer routes, avoiding places, or limiting mobility altogether."
     },
     brief: {
       intro: "Women across India lack a reliable digital tool that supports them during commutes. The existing safety apps fail due to poor network reliability, complex interfaces during panic, and lack of emotional support after incidents.",
@@ -602,11 +602,11 @@ const caseStudies: Record<string, CaseStudyData> = {
       },
       {
         title: "Safety perception is contextual",
-        content: "What feels unsafe at 2 PM feels very different at 11 PM. Women adapted behaviour constantly—changing routes, avoiding spaces, travelling in groups."
+        content: "What feels unsafe at 2 PM feels very different at 11 PM. Women adapted behaviour constantly: changing routes, avoiding spaces, travelling in groups."
       }
     ],
     userGoals: {
-      primary: "Feel safe while traveling alone—especially at night or in unfamiliar environments.",
+      primary: "Feel safe while traveling alone, especially at night or in unfamiliar environments.",
       motivations: ["Freedom", "Independence", "Confidence", "Reliability"],
       challenges: [
         "Quick navigation during panic",
@@ -619,12 +619,12 @@ const caseStudies: Record<string, CaseStudyData> = {
     personaIntro: "We brought all research findings together into a persona representing the goals, motivations, and challenges of our target users.",
     personaImage: "/assets/stree-persona.png",
     productStrategy: {
-      reframe: "Based on research insights, we reframed the design challenge: How might we design a system that supports women before, during, and after safety incidents—without increasing fear or judgement?",
+      reframe: "Based on research insights, we reframed the design challenge: How might we design a system that supports women before, during, and after safety incidents, without increasing fear or judgement?",
       mentorFeedback: "Mentor feedback raised concerns about unintended consequences, such as labelling places as unsafe and reinforcing fear. This led to a more nuanced design direction where safety maps were reframed as contextual and time-sensitive rather than absolute labels.",
       phases: [
         {
           title: "Before an incident",
-          content: "Women needed awareness without alarm. Contextual awareness through crowdsourced safety maps and nearby safe spaces—framed as guidance rather than warnings."
+          content: "Women needed awareness without alarm. Contextual awareness through crowdsourced safety maps and nearby safe spaces, framed as guidance rather than warnings."
         },
         {
           title: "During an incident",
@@ -637,7 +637,7 @@ const caseStudies: Record<string, CaseStudyData> = {
       ]
     },
     solutionPhase: {
-      storyboard: "To test whether our ideas worked together as a system, we created a storyboard following a young woman moving cities for education, navigating unfamiliar spaces, experiencing harassment, and gradually finding support through the platform. This exposed gaps that feature lists often hide—moments of loneliness, doubt, and emotional fatigue.",
+      storyboard: "To test whether our ideas worked together as a system, we created a storyboard following a young woman moving cities for education, navigating unfamiliar spaces, experiencing harassment, and gradually finding support through the platform. This exposed gaps that feature lists often hide: moments of loneliness, doubt, and emotional fatigue.",
       modes: [
         {
           title: "Offline Mode",
@@ -651,18 +651,18 @@ const caseStudies: Record<string, CaseStudyData> = {
       imagePlaceholder: true
     },
     informationArchitecture: {
-      rationale: "The architecture prioritised quick access to safety actions while keeping supportive and reflective spaces available without overwhelming the user. Accessibility was considered throughout—vernacular language support, minimal text, and icon-based navigation.",
+      rationale: "The architecture prioritised quick access to safety actions while keeping supportive and reflective spaces available without overwhelming the user. Accessibility was considered throughout: vernacular language support, minimal text, and icon-based navigation.",
       structure: [
         { area: "Home + SOS", reason: "All safety actions centered here for minimal thought during emergencies" },
         { area: "Maps", reason: "Contextual safety information and nearby safe spaces" },
         { area: "Profile & Contacts", reason: "Emergency contact management and preferences" },
         { area: "Settings", reason: "Permissions and privacy controls" }
       ],
-      onboarding: "Progressive onboarding—not overwhelming. Walkthrough → Profile → Permissions → Emergency Contacts → Locations. Give users a sense of control and transparency.",
+      onboarding: "Progressive onboarding, not overwhelming. Walkthrough → Profile → Permissions → Emergency Contacts → Locations. Give users a sense of control and transparency.",
       imagePlaceholder: true
     },
     wireframing: {
-      approach: "We created wireframes around the ideas generated from affinity mapping and research synthesis. Each wireframe addressed specific insights—from quick SOS access to emotional support features.",
+      approach: "We created wireframes around the ideas generated from affinity mapping and research synthesis. Each wireframe addressed specific insights, from quick SOS access to emotional support features.",
       imagePlaceholder: true
     },
     usabilityTesting: {
@@ -716,9 +716,9 @@ const caseStudies: Record<string, CaseStudyData> = {
       "Fear, doubt, and social conditioning play a significant role in how women experience risk.",
       "Not every insight demands a feature, and not every problem can—or should—be solved through technology alone.",
       "I learned to navigate ambiguity, accept feedback that challenged assumptions, and design with empathy rather than urgency.",
-      "Most importantly, I learned how to tell a clear, compelling research story—connecting evidence to decisions and decisions to outcomes."
+      "Most importantly, I learned how to tell a clear, compelling research story: connecting evidence to decisions and decisions to outcomes."
     ],
-    closing: "Project Stree reflects my approach to UX research and design: grounded in lived experiences, guided by evidence, and shaped by responsibility. It demonstrated how thoughtful design can address sensitive, complex problems—not by providing all the answers, but by asking the right questions and designing with care."
+    closing: "Project Stree reflects my approach to UX research and design: grounded in lived experiences, guided by evidence, and shaped by responsibility. It demonstrated how thoughtful design can address sensitive, complex problems, not by providing all the answers, but by asking the right questions and designing with care."
   },
   'alhub-app': {
     title: "AlHub",
