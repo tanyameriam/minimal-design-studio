@@ -1601,23 +1601,25 @@ const CaseStudy = () => {
         />
       )}
 
-      {/* Hero */}
-      <header className="pt-32 pb-20 px-6 lg:px-12">
-        <div className="container mx-auto max-w-4xl">
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-4 animate-fade-up">
-            {study.title}
-          </h1>
-          <p className="font-serif text-2xl md:text-3xl text-muted-foreground italic animate-fade-up-delay-1">
-            {study.subtitle}
-          </p>
-        </div>
-      </header>
+      {/* Hero - Hidden for merry-health since context heading serves as main */}
+      {slug !== 'merry-health' && (
+        <header className="pt-32 pb-20 px-6 lg:px-12">
+          <div className="container mx-auto max-w-4xl">
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-4 animate-fade-up">
+              {study.title}
+            </h1>
+            <p className="font-serif text-2xl md:text-3xl text-muted-foreground italic animate-fade-up-delay-1">
+              {study.subtitle}
+            </p>
+          </div>
+        </header>
+      )}
 
       {/* Hero Image */}
 
       {/* Overview / Context - Merry Health specific layout */}
       {slug === 'merry-health' ? (
-        <section id="merry-context" className="px-6 lg:px-12 xl:pl-48 py-16 border-t border-border scroll-mt-20">
+        <section id="merry-context" className="px-6 lg:px-12 xl:pl-48 pt-32 pb-16 border-t border-border scroll-mt-20">
           <div className="container mx-auto max-w-5xl">
             {/* Meta Card - Combined with dividers */}
             <div className="rounded-xl border border-border bg-muted/30 mb-12">
@@ -1652,12 +1654,11 @@ const CaseStudy = () => {
 
             {/* Background Content */}
             <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Context</p>
-            <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl mb-6 max-w-3xl leading-tight">Streamlining Emergency Dispatch for 50+ Hospitals Across Tier 2 & 3 Cities</h2>
+            <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-6 max-w-3xl leading-tight">Streamlining Emergency Dispatch for 50+ Hospitals Across Tier 2 & 3 Cities</h1>
             <p className="text-lg leading-relaxed text-muted-foreground mb-16 max-w-3xl">{study.overview}</p>
 
             {/* What Are We Building - Sub-section */}
             <div className="mb-16">
-              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Context</p>
               <h3 className="font-serif text-2xl md:text-3xl mb-6">What Are We Trying to Build?</h3>
               <p className="text-lg leading-relaxed text-muted-foreground mb-8 max-w-3xl">
                 The project aims to explore how the ambulance dispatch process can be simplified and made more responsive by aligning with existing end-user communication behaviors and operational realities.
@@ -1677,7 +1678,6 @@ const CaseStudy = () => {
 
             {/* Identified Users */}
             <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Context</p>
               <h3 className="font-serif text-2xl md:text-3xl mb-6">Identified Users</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="p-6 rounded-xl border border-border bg-card">
