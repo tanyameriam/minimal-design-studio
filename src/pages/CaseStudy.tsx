@@ -58,9 +58,10 @@ import merryHealthMap from '@/assets/merry-health-map.png';
 import merryCurrentFlow from '@/assets/merry-current-flow.png';
 import merryIdealFlow from '@/assets/merry-ideal-flow.png';
 import merryPhaseMapping from '@/assets/merry-phase-mapping.png';
+// Merry Health opportunity mapping
+import merryOpportunityMapping from '@/assets/merry-opportunity-mapping.png';
+import merryOpportunityRefined from '@/assets/merry-opportunity-refined.png';
 // Merry Health user journey maps
-import merryPatientCurrentJourney from '@/assets/merry-patient-current-journey.png';
-import merryPatientIdealJourney from '@/assets/merry-patient-ideal-journey.png';
 import merryAdminCurrentJourney from '@/assets/merry-admin-current-journey.png';
 import merryAdminIdealJourney from '@/assets/merry-admin-ideal-journey.png';
 import merryHospitalCurrentJourney from '@/assets/merry-hospital-current-journey.png';
@@ -1659,72 +1660,39 @@ const CaseStudy = () => {
               <h3 className="font-serif text-xl mb-4">Opportunity Mapping</h3>
               <p className="text-sm text-muted-foreground mb-8">From the system flow analysis, we identified key opportunities for improvement and mapped them to their potential impact and success metrics.</p>
               
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-                <div className="p-5 rounded-lg border border-border bg-card">
-                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mb-3">
-                    <span className="text-primary text-sm font-bold">1</span>
-                  </div>
-                  <h4 className="font-medium text-sm mb-2">Automate Dispatch Assignment</h4>
-                  <p className="text-xs text-muted-foreground mb-3">Remove manual WhatsApp coordination by enabling direct ambulance assignment.</p>
-                  <div className="pt-3 border-t border-border">
-                    <span className="text-xs text-primary font-medium">Impact: </span>
-                    <span className="text-xs text-muted-foreground">↓ Response time, ↓ Human error</span>
-                  </div>
+              {/* Opportunity Mapping Image */}
+              <div className="mb-8 rounded-xl border-2 border-border/60 bg-gradient-to-b from-muted/20 to-background shadow-sm overflow-hidden">
+                <div className="bg-muted/30 px-4 py-2 border-b border-border/40">
+                  <span className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Opportunity Map with Impact Analysis</span>
                 </div>
-                <div className="p-5 rounded-lg border border-border bg-card">
-                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mb-3">
-                    <span className="text-primary text-sm font-bold">2</span>
-                  </div>
-                  <h4 className="font-medium text-sm mb-2">Real-time Status Tracking</h4>
-                  <p className="text-xs text-muted-foreground mb-3">Provide live tracking and status updates to reduce callback loops.</p>
-                  <div className="pt-3 border-t border-border">
-                    <span className="text-xs text-primary font-medium">Impact: </span>
-                    <span className="text-xs text-muted-foreground">↓ Callback volume, ↑ Trust</span>
-                  </div>
+                <div className="p-6 bg-background">
+                  <img 
+                    src={merryOpportunityMapping} 
+                    alt="Opportunity mapping showing identified opportunities and their potential impact" 
+                    className="w-full object-contain cursor-pointer hover:scale-[1.02] transition-transform duration-300"
+                    onClick={() => setLightboxImage(merryOpportunityMapping)}
+                  />
                 </div>
-                <div className="p-5 rounded-lg border border-border bg-card">
-                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mb-3">
-                    <span className="text-primary text-sm font-bold">3</span>
-                  </div>
-                  <h4 className="font-medium text-sm mb-2">Structured Data Capture</h4>
-                  <p className="text-xs text-muted-foreground mb-3">Replace freeform WhatsApp messages with structured forms for consistent data.</p>
-                  <div className="pt-3 border-t border-border">
-                    <span className="text-xs text-primary font-medium">Impact: </span>
-                    <span className="text-xs text-muted-foreground">↑ Data accuracy, ↓ Miscommunication</span>
-                  </div>
+                <div className="bg-muted/20 px-4 py-2 border-t border-border/40 text-center">
+                  <span className="text-xs text-muted-foreground">Click image to enlarge</span>
                 </div>
-                <div className="p-5 rounded-lg border border-border bg-card">
-                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mb-3">
-                    <span className="text-primary text-sm font-bold">4</span>
-                  </div>
-                  <h4 className="font-medium text-sm mb-2">Centralized Dashboard</h4>
-                  <p className="text-xs text-muted-foreground mb-3">Single view for all active rides, reducing context switching across platforms.</p>
-                  <div className="pt-3 border-t border-border">
-                    <span className="text-xs text-primary font-medium">Impact: </span>
-                    <span className="text-xs text-muted-foreground">↑ Operational efficiency</span>
-                  </div>
+              </div>
+
+              {/* Refined Opportunity Mapping Image */}
+              <div className="mb-8 rounded-xl border-2 border-primary/20 bg-gradient-to-b from-primary/5 to-background shadow-sm overflow-hidden">
+                <div className="bg-primary/10 px-4 py-2 border-b border-primary/20">
+                  <span className="text-xs uppercase tracking-wider text-primary font-medium">Refined Opportunities → Success Metrics Alignment</span>
                 </div>
-                <div className="p-5 rounded-lg border border-border bg-card">
-                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mb-3">
-                    <span className="text-primary text-sm font-bold">5</span>
-                  </div>
-                  <h4 className="font-medium text-sm mb-2">Driver App Integration</h4>
-                  <p className="text-xs text-muted-foreground mb-3">Enable drivers to update status directly, removing manual status relay.</p>
-                  <div className="pt-3 border-t border-border">
-                    <span className="text-xs text-primary font-medium">Impact: </span>
-                    <span className="text-xs text-muted-foreground">↓ Admin workload, ↑ Accuracy</span>
-                  </div>
+                <div className="p-6 bg-background">
+                  <img 
+                    src={merryOpportunityRefined} 
+                    alt="Refined opportunity mapping aligned with success metrics and impact" 
+                    className="w-full object-contain cursor-pointer hover:scale-[1.02] transition-transform duration-300"
+                    onClick={() => setLightboxImage(merryOpportunityRefined)}
+                  />
                 </div>
-                <div className="p-5 rounded-lg border border-border bg-card">
-                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mb-3">
-                    <span className="text-primary text-sm font-bold">6</span>
-                  </div>
-                  <h4 className="font-medium text-sm mb-2">Automated Notifications</h4>
-                  <p className="text-xs text-muted-foreground mb-3">Auto-send SMS/WhatsApp updates at key milestones to patient party.</p>
-                  <div className="pt-3 border-t border-border">
-                    <span className="text-xs text-primary font-medium">Impact: </span>
-                    <span className="text-xs text-muted-foreground">↓ Anxiety, ↓ Inbound calls</span>
-                  </div>
+                <div className="bg-primary/5 px-4 py-2 border-t border-primary/20 text-center">
+                  <span className="text-xs text-muted-foreground">Click image to enlarge</span>
                 </div>
               </div>
 
@@ -1823,7 +1791,7 @@ const CaseStudy = () => {
             </div>
             <p className="text-muted-foreground mb-12">We created current and ideal journey maps for all actors to validate if our identified opportunities would truly make a difference in their experience.</p>
 
-            {/* Patient Party Journey */}
+            {/* Patient Party Journey - Placeholder */}
             <div className="mb-16">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-sm font-medium">PP</div>
@@ -1834,7 +1802,7 @@ const CaseStudy = () => {
               </div>
               
               <div className="grid lg:grid-cols-2 gap-6 mb-6">
-                {/* Current Journey */}
+                {/* Current Journey Placeholder */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-destructive/60"></span>
@@ -1844,18 +1812,13 @@ const CaseStudy = () => {
                     <div className="bg-destructive/5 px-4 py-2 border-b border-destructive/20">
                       <span className="text-xs text-muted-foreground">High anxiety, multiple callback loops, unclear status</span>
                     </div>
-                    <div className="p-4 bg-background">
-                      <img 
-                        src={merryPatientCurrentJourney} 
-                        alt="Patient Party current journey map showing pain points and emotional states" 
-                        className="w-full object-contain cursor-pointer hover:opacity-90 transition-opacity"
-                        onClick={() => setLightboxImage(merryPatientCurrentJourney)}
-                      />
+                    <div className="p-8 bg-background flex items-center justify-center min-h-[200px]">
+                      <p className="text-sm text-muted-foreground italic">Journey map to be added</p>
                     </div>
                   </div>
                 </div>
 
-                {/* Ideal Journey */}
+                {/* Ideal Journey Placeholder */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-primary"></span>
@@ -1865,13 +1828,8 @@ const CaseStudy = () => {
                     <div className="bg-primary/5 px-4 py-2 border-b border-primary/20">
                       <span className="text-xs text-muted-foreground">Proactive updates, clear visibility, reduced anxiety</span>
                     </div>
-                    <div className="p-4 bg-background">
-                      <img 
-                        src={merryPatientIdealJourney} 
-                        alt="Patient Party ideal journey map with improved experience" 
-                        className="w-full object-contain cursor-pointer hover:opacity-90 transition-opacity"
-                        onClick={() => setLightboxImage(merryPatientIdealJourney)}
-                      />
+                    <div className="p-8 bg-background flex items-center justify-center min-h-[200px]">
+                      <p className="text-sm text-muted-foreground italic">Journey map to be added</p>
                     </div>
                   </div>
                 </div>
