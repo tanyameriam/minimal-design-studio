@@ -722,13 +722,7 @@ const CaseStudy = () => {
       </header>
 
       {/* Hero Image */}
-      <div className="px-6 lg:px-12 mb-20">
-        <div className="container mx-auto max-w-5xl">
-          <div className="aspect-[16/9] overflow-hidden bg-card animate-fade-up-delay-2">
-            <img src={study.heroImage} alt={study.title} className="w-full h-full object-cover" />
-          </div>
-        </div>
-      </div>
+      
 
 
       {/* Overview */}
