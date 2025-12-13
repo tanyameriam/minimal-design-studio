@@ -42,7 +42,7 @@ const Contact = () => {
                 >
                   Design Reimagined Utrecht
                 </a>
-                , a community for designers in the Netherlands. We host sessions on design learnings, case studies, and workshops — online or in-person at HU Utrecht.
+                , a community for designers in the Netherlands. We host sessions on design learnings, case studies, and workshops, online or in-person at HU Utrecht.
               </p>
               <p className="text-muted-foreground text-sm">
                 Interested in sharing your knowledge?{' '}
