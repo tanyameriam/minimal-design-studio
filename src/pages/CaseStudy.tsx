@@ -79,8 +79,9 @@ import merryWhatsappDriver from '@/assets/merry-whatsapp-driver.png';
 import merryWhatsappPatient from '@/assets/merry-whatsapp-patient.png';
 import merryWhatsappHospital from '@/assets/merry-whatsapp-hospital.png';
 import merryWhatsappAdmin from '@/assets/merry-whatsapp-admin.png';
-// Food Waste system flow
+// Food Waste system flow and sitemaps
 import foodWasteSystemFlow from '@/assets/food-waste-system-flow.png';
+import foodWasteRestaurantSitemap from '@/assets/food-waste-restaurant-sitemap.png';
 import { PlatformAuditPhase } from '@/components/ResearchPhaseCard';
 interface CaseStudySection {
   title: string;
@@ -3280,7 +3281,18 @@ const CaseStudy = () => {
             <div className="space-y-12">
               {study.informationArchitecture.map((item, i) => <div key={i}>
                   <h3 className="font-serif text-xl mb-4">{item.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{item.content}</p>
+                  <p className="text-muted-foreground leading-relaxed mb-6">{item.content}</p>
+                  {/* Show restaurant sitemap for first IA item in food waste project */}
+                  {slug === 'food-waste-ngo' && i === 0 && (
+                    <div className="bg-background border border-border rounded-lg p-4 mt-6">
+                      <img 
+                        src={foodWasteRestaurantSitemap} 
+                        alt="Restaurant App Sitemap" 
+                        className="w-full h-auto cursor-pointer"
+                        onClick={() => setLightboxImage(foodWasteRestaurantSitemap)}
+                      />
+                    </div>
+                  )}
                 </div>)}
             </div>
           </div>
