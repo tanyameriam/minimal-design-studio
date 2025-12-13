@@ -1851,7 +1851,17 @@ const CaseStudy = () => {
       {study.brynqResearch && <section className="px-6 lg:px-12 py-16"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Research & Understanding the Work</h2><p className="text-lg leading-relaxed text-muted-foreground mb-8">{study.brynqResearch}</p><div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center"><span className="text-sm text-muted-foreground italic">[ Research artifacts / process sketch ]</span></div></div></section>}
 
       {/* BrynQ: Key Insight */}
-      {study.brynqKeyInsight && <section className="px-6 lg:px-12 py-16 bg-primary/5"><div className="container mx-auto max-w-4xl text-center"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-8">Key Insight</h2><p className="font-serif text-2xl md:text-3xl leading-relaxed mb-6">{study.brynqKeyInsight.main}</p><p className="font-serif text-xl text-primary mb-8">{study.brynqKeyInsight.conclusion}</p><p className="text-muted-foreground italic">{study.brynqKeyInsight.reframe}</p></div></section>}
+      {study.brynqKeyInsight && <section className="px-6 lg:px-12 py-16 bg-card">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-8">Key Insight</h2>
+          <div className="relative p-8 rounded-2xl bg-muted/30 border-l-4 border-primary/40 overflow-hidden">
+            <span className="absolute bottom-0 right-4 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">01</span>
+            <p className="font-serif text-2xl md:text-3xl leading-relaxed mb-6 relative z-10">{study.brynqKeyInsight.main}</p>
+            <p className="text-lg italic text-foreground/80 relative z-10">{study.brynqKeyInsight.conclusion}</p>
+            <p className="text-muted-foreground mt-4 relative z-10">{study.brynqKeyInsight.reframe}</p>
+          </div>
+        </div>
+      </section>}
 
       {/* BrynQ: MVP Direction */}
       {study.brynqMvpDirection && <section className="px-6 lg:px-12 py-16"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Defining an MVP Direction</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqMvpDirection}</p></div></section>}
@@ -3818,10 +3828,11 @@ const CaseStudy = () => {
       {study.keyInsights && <section className="px-6 lg:px-12 py-12 bg-card">
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-8">Key Insights</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              {study.keyInsights.map((insight, i) => <div key={i} className="p-5 bg-background border border-border">
-                  <h3 className="font-serif text-base mb-2">{insight.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{insight.content}</p>
+            <div className="space-y-6">
+              {study.keyInsights.map((insight, i) => <div key={i} className="relative p-8 rounded-2xl bg-muted/30 border-l-4 border-primary/40 overflow-hidden">
+                  <span className="absolute bottom-0 right-4 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">{String(i + 1).padStart(2, '0')}</span>
+                  <h3 className="font-serif text-2xl mb-4 relative z-10">{insight.title}</h3>
+                  <p className="text-muted-foreground relative z-10">{insight.content}</p>
                 </div>)}
             </div>
           </div>
