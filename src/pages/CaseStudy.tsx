@@ -58,6 +58,13 @@ import merryHealthMap from '@/assets/merry-health-map.png';
 import merryCurrentFlow from '@/assets/merry-current-flow.png';
 import merryIdealFlow from '@/assets/merry-ideal-flow.png';
 import merryPhaseMapping from '@/assets/merry-phase-mapping.png';
+// Merry Health user journey maps
+import merryPatientCurrentJourney from '@/assets/merry-patient-current-journey.png';
+import merryPatientIdealJourney from '@/assets/merry-patient-ideal-journey.png';
+import merryAdminCurrentJourney from '@/assets/merry-admin-current-journey.png';
+import merryAdminIdealJourney from '@/assets/merry-admin-ideal-journey.png';
+import merryHospitalCurrentJourney from '@/assets/merry-hospital-current-journey.png';
+import merryHospitalIdealJourney from '@/assets/merry-hospital-ideal-journey.png';
 interface CaseStudySection {
   title: string;
   content: string;
@@ -1564,100 +1571,235 @@ const CaseStudy = () => {
             </div>
             <p className="text-muted-foreground mb-12">{study.merrySystemFlow.intro}</p>
 
-            {/* Current System Flow */}
-            <div className="mb-16">
-              <h3 className="font-serif text-xl mb-4 text-primary">Current System Flow</h3>
-              <p className="text-muted-foreground mb-6">{study.merrySystemFlow.currentFlow.description}</p>
-              
-              {/* Flow Diagram Image */}
-              <div className="mb-8 rounded-xl border-2 border-border/60 bg-gradient-to-b from-muted/20 to-background shadow-sm overflow-hidden">
-                <div className="bg-muted/30 px-4 py-2 border-b border-border/40">
-                  <span className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Flow Diagram</span>
+            {/* Side-by-side System Flows */}
+            <div className="grid lg:grid-cols-2 gap-8 mb-16">
+              {/* Current System Flow */}
+              <div className="space-y-6">
+                <div className="flex items-center gap-3">
+                  <span className="w-3 h-3 rounded-full bg-destructive/60"></span>
+                  <h3 className="font-serif text-xl">Current System Flow</h3>
                 </div>
-                <div className="p-6">
-                  <img 
-                    src={merryCurrentFlow} 
-                    alt="Current System Flow Diagram" 
-                    className="w-full max-h-[700px] object-contain cursor-pointer hover:scale-[1.02] transition-transform duration-300"
-                    onClick={() => setLightboxImage(merryCurrentFlow)}
-                  />
+                <p className="text-sm text-muted-foreground">{study.merrySystemFlow.currentFlow.description}</p>
+                
+                {/* Flow Diagram Image */}
+                <div className="rounded-xl border-2 border-destructive/20 bg-gradient-to-b from-destructive/5 to-background shadow-sm overflow-hidden">
+                  <div className="bg-destructive/10 px-4 py-2 border-b border-destructive/20">
+                    <span className="text-xs uppercase tracking-wider text-destructive font-medium">Current State</span>
+                  </div>
+                  <div className="p-4 bg-background min-h-[300px] flex items-center justify-center">
+                    <img 
+                      src={merryCurrentFlow} 
+                      alt="Current System Flow Diagram with identified loops and pain points" 
+                      className="w-full h-auto object-contain cursor-pointer hover:scale-[1.02] transition-transform duration-300"
+                      onClick={() => setLightboxImage(merryCurrentFlow)}
+                    />
+                  </div>
+                  <div className="bg-destructive/5 px-4 py-2 border-t border-destructive/20 text-center">
+                    <span className="text-xs text-muted-foreground">Click to view full diagram with all nodes</span>
+                  </div>
                 </div>
-                <div className="bg-muted/20 px-4 py-2 border-t border-border/40 text-center">
-                  <span className="text-xs text-muted-foreground">Click image to enlarge</span>
+
+                {/* Pain Points */}
+                <div className="rounded-lg bg-destructive/5 border border-destructive/20 p-4">
+                  <h4 className="text-xs font-semibold text-destructive mb-3 uppercase tracking-wider">Key Issues Identified</h4>
+                  <ul className="space-y-2">
+                    {study.merrySystemFlow.currentFlow.painPoints.map((point, i) => (
+                      <li key={i} className="text-xs text-muted-foreground flex gap-2">
+                        <span className="text-destructive font-bold mt-0.5">×</span>
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
 
-              {/* Pain Points */}
-              <div className="rounded-lg bg-destructive/5 border border-destructive/20 p-5">
-                <h4 className="text-sm font-semibold text-destructive mb-4 flex items-center gap-2">
-                  <span className="w-5 h-5 rounded-full bg-destructive/20 flex items-center justify-center text-xs">!</span>
-                  System Breakdown Reasons
-                </h4>
-                <ul className="space-y-3">
-                  {study.merrySystemFlow.currentFlow.painPoints.map((point, i) => (
-                    <li key={i} className="text-sm text-muted-foreground flex gap-3">
-                      <span className="text-destructive font-bold">•</span>
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
+              {/* Ideal System Flow */}
+              <div className="space-y-6">
+                <div className="flex items-center gap-3">
+                  <span className="w-3 h-3 rounded-full bg-primary"></span>
+                  <h3 className="font-serif text-xl">Ideal System Flow</h3>
+                </div>
+                <p className="text-sm text-muted-foreground">{study.merrySystemFlow.idealFlow.description}</p>
+                
+                {/* Flow Diagram Image */}
+                <div className="rounded-xl border-2 border-primary/20 bg-gradient-to-b from-primary/5 to-background shadow-sm overflow-hidden">
+                  <div className="bg-primary/10 px-4 py-2 border-b border-primary/20">
+                    <span className="text-xs uppercase tracking-wider text-primary font-medium">Optimized State</span>
+                  </div>
+                  <div className="p-4 bg-background min-h-[300px] flex items-center justify-center">
+                    <img 
+                      src={merryIdealFlow} 
+                      alt="Ideal System Flow Diagram with automations and removed loops" 
+                      className="w-full h-auto object-contain cursor-pointer hover:scale-[1.02] transition-transform duration-300"
+                      onClick={() => setLightboxImage(merryIdealFlow)}
+                    />
+                  </div>
+                  <div className="bg-primary/5 px-4 py-2 border-t border-primary/20 text-center">
+                    <span className="text-xs text-muted-foreground">Click to view full diagram with all nodes</span>
+                  </div>
+                </div>
+
+                {/* Improvements */}
+                <div className="rounded-lg bg-primary/5 border border-primary/20 p-4">
+                  <h4 className="text-xs font-semibold text-primary mb-3 uppercase tracking-wider">Key Improvements</h4>
+                  <ul className="space-y-2">
+                    {study.merrySystemFlow.idealFlow.improvements.map((point, i) => (
+                      <li key={i} className="text-xs text-muted-foreground flex gap-2">
+                        <span className="text-primary font-bold mt-0.5">✓</span>
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
 
-            {/* Ideal System Flow */}
+            {/* Opportunity Mapping */}
             <div className="mb-16">
-              <h3 className="font-serif text-xl mb-4 text-primary">Ideal System Flow</h3>
-              <p className="text-muted-foreground mb-6">{study.merrySystemFlow.idealFlow.description}</p>
+              <h3 className="font-serif text-xl mb-4">Opportunity Mapping</h3>
+              <p className="text-sm text-muted-foreground mb-8">From the system flow analysis, we identified key opportunities for improvement and mapped them to their potential impact and success metrics.</p>
               
-              {/* Flow Diagram Image */}
-              <div className="mb-8 rounded-xl border-2 border-primary/20 bg-gradient-to-b from-primary/5 to-background shadow-sm overflow-hidden">
-                <div className="bg-primary/10 px-4 py-2 border-b border-primary/20">
-                  <span className="text-xs uppercase tracking-wider text-primary font-medium">Optimized Flow</span>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <div className="p-5 rounded-lg border border-border bg-card">
+                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mb-3">
+                    <span className="text-primary text-sm font-bold">1</span>
+                  </div>
+                  <h4 className="font-medium text-sm mb-2">Automate Dispatch Assignment</h4>
+                  <p className="text-xs text-muted-foreground mb-3">Remove manual WhatsApp coordination by enabling direct ambulance assignment.</p>
+                  <div className="pt-3 border-t border-border">
+                    <span className="text-xs text-primary font-medium">Impact: </span>
+                    <span className="text-xs text-muted-foreground">↓ Response time, ↓ Human error</span>
+                  </div>
                 </div>
-                <div className="p-6">
-                  <img 
-                    src={merryIdealFlow} 
-                    alt="Ideal System Flow Diagram" 
-                    className="w-full max-h-[700px] object-contain cursor-pointer hover:scale-[1.02] transition-transform duration-300"
-                    onClick={() => setLightboxImage(merryIdealFlow)}
-                  />
+                <div className="p-5 rounded-lg border border-border bg-card">
+                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mb-3">
+                    <span className="text-primary text-sm font-bold">2</span>
+                  </div>
+                  <h4 className="font-medium text-sm mb-2">Real-time Status Tracking</h4>
+                  <p className="text-xs text-muted-foreground mb-3">Provide live tracking and status updates to reduce callback loops.</p>
+                  <div className="pt-3 border-t border-border">
+                    <span className="text-xs text-primary font-medium">Impact: </span>
+                    <span className="text-xs text-muted-foreground">↓ Callback volume, ↑ Trust</span>
+                  </div>
                 </div>
-                <div className="bg-primary/5 px-4 py-2 border-t border-primary/20 text-center">
-                  <span className="text-xs text-muted-foreground">Click image to enlarge</span>
+                <div className="p-5 rounded-lg border border-border bg-card">
+                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mb-3">
+                    <span className="text-primary text-sm font-bold">3</span>
+                  </div>
+                  <h4 className="font-medium text-sm mb-2">Structured Data Capture</h4>
+                  <p className="text-xs text-muted-foreground mb-3">Replace freeform WhatsApp messages with structured forms for consistent data.</p>
+                  <div className="pt-3 border-t border-border">
+                    <span className="text-xs text-primary font-medium">Impact: </span>
+                    <span className="text-xs text-muted-foreground">↑ Data accuracy, ↓ Miscommunication</span>
+                  </div>
+                </div>
+                <div className="p-5 rounded-lg border border-border bg-card">
+                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mb-3">
+                    <span className="text-primary text-sm font-bold">4</span>
+                  </div>
+                  <h4 className="font-medium text-sm mb-2">Centralized Dashboard</h4>
+                  <p className="text-xs text-muted-foreground mb-3">Single view for all active rides, reducing context switching across platforms.</p>
+                  <div className="pt-3 border-t border-border">
+                    <span className="text-xs text-primary font-medium">Impact: </span>
+                    <span className="text-xs text-muted-foreground">↑ Operational efficiency</span>
+                  </div>
+                </div>
+                <div className="p-5 rounded-lg border border-border bg-card">
+                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mb-3">
+                    <span className="text-primary text-sm font-bold">5</span>
+                  </div>
+                  <h4 className="font-medium text-sm mb-2">Driver App Integration</h4>
+                  <p className="text-xs text-muted-foreground mb-3">Enable drivers to update status directly, removing manual status relay.</p>
+                  <div className="pt-3 border-t border-border">
+                    <span className="text-xs text-primary font-medium">Impact: </span>
+                    <span className="text-xs text-muted-foreground">↓ Admin workload, ↑ Accuracy</span>
+                  </div>
+                </div>
+                <div className="p-5 rounded-lg border border-border bg-card">
+                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mb-3">
+                    <span className="text-primary text-sm font-bold">6</span>
+                  </div>
+                  <h4 className="font-medium text-sm mb-2">Automated Notifications</h4>
+                  <p className="text-xs text-muted-foreground mb-3">Auto-send SMS/WhatsApp updates at key milestones to patient party.</p>
+                  <div className="pt-3 border-t border-border">
+                    <span className="text-xs text-primary font-medium">Impact: </span>
+                    <span className="text-xs text-muted-foreground">↓ Anxiety, ↓ Inbound calls</span>
+                  </div>
                 </div>
               </div>
 
-              {/* Improvements */}
-              <div className="rounded-lg bg-primary/5 border border-primary/20 p-5">
-                <h4 className="text-sm font-semibold text-primary mb-4 flex items-center gap-2">
-                  <span className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center text-xs">✓</span>
-                  Key Improvements
-                </h4>
-                <ul className="space-y-3">
-                  {study.merrySystemFlow.idealFlow.improvements.map((point, i) => (
-                    <li key={i} className="text-sm text-muted-foreground flex gap-3">
-                      <span className="text-primary font-bold">✓</span>
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
+              {/* Refined Opportunity Mapping with Success Metrics */}
+              <div className="rounded-xl border border-border bg-card overflow-hidden">
+                <div className="bg-muted/30 px-5 py-3 border-b border-border">
+                  <h4 className="font-medium text-sm">Refined Opportunities → Success Metrics Alignment</h4>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-xs">
+                    <thead>
+                      <tr className="bg-muted/20">
+                        <th className="text-left p-3 border-b border-border font-medium">Opportunity</th>
+                        <th className="text-left p-3 border-b border-border font-medium">Expected Impact</th>
+                        <th className="text-left p-3 border-b border-border font-medium">Success Metric</th>
+                        <th className="text-center p-3 border-b border-border font-medium">Priority</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b border-border/50 hover:bg-muted/10">
+                        <td className="p-3 font-medium">Automate dispatch assignment</td>
+                        <td className="p-3 text-muted-foreground">Reduce manual coordination time</td>
+                        <td className="p-3 text-muted-foreground">Avg. dispatch time ↓ by 40%</td>
+                        <td className="p-3 text-center"><span className="px-2 py-1 bg-destructive/10 text-destructive rounded text-xs">High</span></td>
+                      </tr>
+                      <tr className="border-b border-border/50 hover:bg-muted/10">
+                        <td className="p-3 font-medium">Real-time status tracking</td>
+                        <td className="p-3 text-muted-foreground">Eliminate status inquiry calls</td>
+                        <td className="p-3 text-muted-foreground">Inbound calls ↓ by 60%</td>
+                        <td className="p-3 text-center"><span className="px-2 py-1 bg-destructive/10 text-destructive rounded text-xs">High</span></td>
+                      </tr>
+                      <tr className="border-b border-border/50 hover:bg-muted/10">
+                        <td className="p-3 font-medium">Structured data capture</td>
+                        <td className="p-3 text-muted-foreground">Improve data accuracy at intake</td>
+                        <td className="p-3 text-muted-foreground">Data error rate ↓ by 70%</td>
+                        <td className="p-3 text-center"><span className="px-2 py-1 bg-primary/10 text-primary rounded text-xs">Medium</span></td>
+                      </tr>
+                      <tr className="border-b border-border/50 hover:bg-muted/10">
+                        <td className="p-3 font-medium">Centralized dashboard</td>
+                        <td className="p-3 text-muted-foreground">Reduce context switching</td>
+                        <td className="p-3 text-muted-foreground">Time to find info ↓ by 50%</td>
+                        <td className="p-3 text-center"><span className="px-2 py-1 bg-primary/10 text-primary rounded text-xs">Medium</span></td>
+                      </tr>
+                      <tr className="border-b border-border/50 hover:bg-muted/10">
+                        <td className="p-3 font-medium">Driver app integration</td>
+                        <td className="p-3 text-muted-foreground">Real-time status from source</td>
+                        <td className="p-3 text-muted-foreground">Status accuracy ↑ to 95%</td>
+                        <td className="p-3 text-center"><span className="px-2 py-1 bg-destructive/10 text-destructive rounded text-xs">High</span></td>
+                      </tr>
+                      <tr className="hover:bg-muted/10">
+                        <td className="p-3 font-medium">Automated notifications</td>
+                        <td className="p-3 text-muted-foreground">Proactive patient party updates</td>
+                        <td className="p-3 text-muted-foreground">NPS score ↑ by 20 points</td>
+                        <td className="p-3 text-center"><span className="px-2 py-1 bg-primary/10 text-primary rounded text-xs">Medium</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
 
             {/* Phase Mapping */}
             <div>
-              <h3 className="font-serif text-xl mb-4 text-primary">Phase Mapping</h3>
-              <p className="text-muted-foreground mb-6">{study.merrySystemFlow.phaseMapping.description}</p>
+              <h3 className="font-serif text-xl mb-4">Phase Mapping</h3>
+              <p className="text-sm text-muted-foreground mb-6">{study.merrySystemFlow.phaseMapping.description}</p>
               
               {/* Phase Mapping Image */}
               <div className="rounded-xl border-2 border-border/60 bg-gradient-to-b from-muted/20 to-background shadow-sm overflow-hidden">
                 <div className="bg-muted/30 px-4 py-2 border-b border-border/40">
                   <span className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Actor × Phase Matrix</span>
                 </div>
-                <div className="p-6">
+                <div className="p-6 bg-background">
                   <img 
                     src={merryPhaseMapping} 
-                    alt="Phase Mapping Diagram" 
+                    alt="Phase Mapping showing how actors interact across different phases of the flow" 
                     className="w-full object-contain cursor-pointer hover:scale-[1.02] transition-transform duration-300"
                     onClick={() => setLightboxImage(merryPhaseMapping)}
                   />
@@ -1666,6 +1808,234 @@ const CaseStudy = () => {
                   <span className="text-xs text-muted-foreground">Click image to enlarge</span>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Merry Health User Journey Mapping */}
+      {slug === 'merry-health' && (
+        <section className="px-6 lg:px-12 py-16 bg-card">
+          <div className="container mx-auto max-w-6xl">
+            <div className="flex items-center gap-4 mb-6">
+              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">3</span>
+              <h2 className="font-serif text-2xl">User Journey Mapping</h2>
+            </div>
+            <p className="text-muted-foreground mb-12">We created current and ideal journey maps for all actors to validate if our identified opportunities would truly make a difference in their experience.</p>
+
+            {/* Patient Party Journey */}
+            <div className="mb-16">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-sm font-medium">PP</div>
+                <div>
+                  <h3 className="font-serif text-xl">Patient Party Journey</h3>
+                  <p className="text-xs text-muted-foreground">Family members coordinating emergency transport</p>
+                </div>
+              </div>
+              
+              <div className="grid lg:grid-cols-2 gap-6 mb-6">
+                {/* Current Journey */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-destructive/60"></span>
+                    <span className="text-sm font-medium text-destructive">Current Journey</span>
+                  </div>
+                  <div className="rounded-xl border border-destructive/20 overflow-hidden">
+                    <div className="bg-destructive/5 px-4 py-2 border-b border-destructive/20">
+                      <span className="text-xs text-muted-foreground">High anxiety, multiple callback loops, unclear status</span>
+                    </div>
+                    <div className="p-4 bg-background">
+                      <img 
+                        src={merryPatientCurrentJourney} 
+                        alt="Patient Party current journey map showing pain points and emotional states" 
+                        className="w-full object-contain cursor-pointer hover:opacity-90 transition-opacity"
+                        onClick={() => setLightboxImage(merryPatientCurrentJourney)}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Ideal Journey */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-primary"></span>
+                    <span className="text-sm font-medium text-primary">Ideal Journey</span>
+                  </div>
+                  <div className="rounded-xl border border-primary/20 overflow-hidden">
+                    <div className="bg-primary/5 px-4 py-2 border-b border-primary/20">
+                      <span className="text-xs text-muted-foreground">Proactive updates, clear visibility, reduced anxiety</span>
+                    </div>
+                    <div className="p-4 bg-background">
+                      <img 
+                        src={merryPatientIdealJourney} 
+                        alt="Patient Party ideal journey map with improved experience" 
+                        className="w-full object-contain cursor-pointer hover:opacity-90 transition-opacity"
+                        onClick={() => setLightboxImage(merryPatientIdealJourney)}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Patient Party Inferences */}
+              <div className="rounded-lg bg-gradient-to-r from-blue-500/5 to-blue-600/5 border border-blue-500/20 p-5">
+                <h4 className="text-sm font-semibold mb-3 flex items-center gap-2">
+                  <span className="w-5 h-5 rounded-full bg-blue-500/20 flex items-center justify-center text-xs text-blue-600">✓</span>
+                  Key Inferences — Patient Party
+                </h4>
+                <ul className="grid md:grid-cols-2 gap-3">
+                  <li className="text-xs text-muted-foreground flex gap-2"><span className="text-blue-600 font-bold">→</span>Anxiety peaks during wait time with no visibility</li>
+                  <li className="text-xs text-muted-foreground flex gap-2"><span className="text-blue-600 font-bold">→</span>Multiple calls made to check ambulance status</li>
+                  <li className="text-xs text-muted-foreground flex gap-2"><span className="text-blue-600 font-bold">→</span>Tracking link (when shared) significantly reduces stress</li>
+                  <li className="text-xs text-muted-foreground flex gap-2"><span className="text-blue-600 font-bold">→</span>Proactive SMS at milestones builds trust</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Merry Health Admin Journey */}
+            <div className="mb-16">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white text-sm font-medium">MH</div>
+                <div>
+                  <h3 className="font-serif text-xl">Merry Health Admin Journey</h3>
+                  <p className="text-xs text-muted-foreground">Central dispatch coordinators managing all requests</p>
+                </div>
+              </div>
+              
+              <div className="grid lg:grid-cols-2 gap-6 mb-6">
+                {/* Current Journey */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-destructive/60"></span>
+                    <span className="text-sm font-medium text-destructive">Current Journey</span>
+                  </div>
+                  <div className="rounded-xl border border-destructive/20 overflow-hidden">
+                    <div className="bg-destructive/5 px-4 py-2 border-b border-destructive/20">
+                      <span className="text-xs text-muted-foreground">Manual coordination, multiple WhatsApp groups, high cognitive load</span>
+                    </div>
+                    <div className="p-4 bg-background">
+                      <img 
+                        src={merryAdminCurrentJourney} 
+                        alt="Merry Health Admin current journey with manual processes" 
+                        className="w-full object-contain cursor-pointer hover:opacity-90 transition-opacity"
+                        onClick={() => setLightboxImage(merryAdminCurrentJourney)}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Ideal Journey */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-primary"></span>
+                    <span className="text-sm font-medium text-primary">Ideal Journey</span>
+                  </div>
+                  <div className="rounded-xl border border-primary/20 overflow-hidden">
+                    <div className="bg-primary/5 px-4 py-2 border-b border-primary/20">
+                      <span className="text-xs text-muted-foreground">Centralized dashboard, automated status, streamlined workflow</span>
+                    </div>
+                    <div className="p-4 bg-background">
+                      <img 
+                        src={merryAdminIdealJourney} 
+                        alt="Merry Health Admin ideal journey with automation" 
+                        className="w-full object-contain cursor-pointer hover:opacity-90 transition-opacity"
+                        onClick={() => setLightboxImage(merryAdminIdealJourney)}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* MH Admin Inferences */}
+              <div className="rounded-lg bg-gradient-to-r from-purple-500/5 to-purple-600/5 border border-purple-500/20 p-5">
+                <h4 className="text-sm font-semibold mb-3 flex items-center gap-2">
+                  <span className="w-5 h-5 rounded-full bg-purple-500/20 flex items-center justify-center text-xs text-purple-600">✓</span>
+                  Key Inferences — Merry Health Admin
+                </h4>
+                <ul className="grid md:grid-cols-2 gap-3">
+                  <li className="text-xs text-muted-foreground flex gap-2"><span className="text-purple-600 font-bold">→</span>Constantly switching between WhatsApp, calls, and dashboard</li>
+                  <li className="text-xs text-muted-foreground flex gap-2"><span className="text-purple-600 font-bold">→</span>Manual relay of status from driver to hospital admin</li>
+                  <li className="text-xs text-muted-foreground flex gap-2"><span className="text-purple-600 font-bold">→</span>No single source of truth for ride status</li>
+                  <li className="text-xs text-muted-foreground flex gap-2"><span className="text-purple-600 font-bold">→</span>High volume of incoming status inquiry calls</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Hospital Admin Journey */}
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white text-sm font-medium">HA</div>
+                <div>
+                  <h3 className="font-serif text-xl">Hospital Admin Journey</h3>
+                  <p className="text-xs text-muted-foreground">Hospital staff initiating and tracking ambulance requests</p>
+                </div>
+              </div>
+              
+              <div className="grid lg:grid-cols-2 gap-6 mb-6">
+                {/* Current Journey */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-destructive/60"></span>
+                    <span className="text-sm font-medium text-destructive">Current Journey</span>
+                  </div>
+                  <div className="rounded-xl border border-destructive/20 overflow-hidden">
+                    <div className="bg-destructive/5 px-4 py-2 border-b border-destructive/20">
+                      <span className="text-xs text-muted-foreground">Phone-based coordination, unclear ETAs, frequent follow-ups</span>
+                    </div>
+                    <div className="p-4 bg-background">
+                      <img 
+                        src={merryHospitalCurrentJourney} 
+                        alt="Hospital Admin current journey with communication gaps" 
+                        className="w-full object-contain cursor-pointer hover:opacity-90 transition-opacity"
+                        onClick={() => setLightboxImage(merryHospitalCurrentJourney)}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Ideal Journey */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-primary"></span>
+                    <span className="text-sm font-medium text-primary">Ideal Journey</span>
+                  </div>
+                  <div className="rounded-xl border border-primary/20 overflow-hidden">
+                    <div className="bg-primary/5 px-4 py-2 border-b border-primary/20">
+                      <span className="text-xs text-muted-foreground">Self-service booking, real-time tracking, automated updates</span>
+                    </div>
+                    <div className="p-4 bg-background">
+                      <img 
+                        src={merryHospitalIdealJourney} 
+                        alt="Hospital Admin ideal journey with improved visibility" 
+                        className="w-full object-contain cursor-pointer hover:opacity-90 transition-opacity"
+                        onClick={() => setLightboxImage(merryHospitalIdealJourney)}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Hospital Admin Inferences */}
+              <div className="rounded-lg bg-gradient-to-r from-emerald-500/5 to-emerald-600/5 border border-emerald-500/20 p-5">
+                <h4 className="text-sm font-semibold mb-3 flex items-center gap-2">
+                  <span className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-xs text-emerald-600">✓</span>
+                  Key Inferences — Hospital Admin
+                </h4>
+                <ul className="grid md:grid-cols-2 gap-3">
+                  <li className="text-xs text-muted-foreground flex gap-2"><span className="text-emerald-600 font-bold">→</span>Needs quick booking without lengthy phone calls</li>
+                  <li className="text-xs text-muted-foreground flex gap-2"><span className="text-emerald-600 font-bold">→</span>Wants visibility into ETA to prepare receiving team</li>
+                  <li className="text-xs text-muted-foreground flex gap-2"><span className="text-emerald-600 font-bold">→</span>Frustrated by having to call MHA for status updates</li>
+                  <li className="text-xs text-muted-foreground flex gap-2"><span className="text-emerald-600 font-bold">→</span>Would benefit from self-service ride history and reports</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Summary */}
+            <div className="mt-12 p-6 rounded-xl bg-gradient-to-br from-primary/5 via-background to-primary/5 border border-primary/20">
+              <h4 className="font-serif text-lg mb-4 text-center">Journey Mapping Summary</h4>
+              <p className="text-sm text-muted-foreground text-center max-w-3xl mx-auto">
+                The journey maps validated that our identified opportunities—automation, real-time tracking, structured data capture, and centralized dashboards—directly address pain points across all three actor groups. Each improvement creates ripple effects that benefit the entire ecosystem.
+              </p>
             </div>
           </div>
         </section>
