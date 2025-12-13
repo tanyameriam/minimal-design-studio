@@ -1620,23 +1620,32 @@ const CaseStudy = () => {
         <section id="merry-context" className="px-6 lg:px-12 xl:pl-48 py-16 border-t border-border scroll-mt-20">
           <div className="container mx-auto max-w-5xl">
             {/* Meta Card - Combined with dividers */}
-            <div className="rounded-xl border border-border bg-card mb-12">
-              <div className="grid md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-border">
+            <div className="rounded-xl border border-border bg-muted/30 mb-12">
+              <div className="grid md:grid-cols-4">
                 <div className="p-5">
                   <h3 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">Role</h3>
                   <p className="text-sm">{study.role}</p>
                 </div>
-                <div className="p-5">
-                  <h3 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">Team</h3>
-                  <p className="text-sm">Team of 5 designers</p>
+                <div className="p-5 flex items-center">
+                  <div className="hidden md:block w-px h-8 bg-border mr-5" />
+                  <div>
+                    <h3 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">Team</h3>
+                    <p className="text-sm">Team of 5 designers</p>
+                  </div>
                 </div>
-                <div className="p-5">
-                  <h3 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">Context</h3>
-                  <p className="text-sm">Academic Practicum, MDes. JSAA</p>
+                <div className="p-5 flex items-center">
+                  <div className="hidden md:block w-px h-8 bg-border mr-5" />
+                  <div>
+                    <h3 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">Context</h3>
+                    <p className="text-sm">Academic Practicum, MDes. JSAA</p>
+                  </div>
                 </div>
-                <div className="p-5">
-                  <h3 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">Tools</h3>
-                  <p className="text-sm">{study.tools?.join(', ')}</p>
+                <div className="p-5 flex items-center">
+                  <div className="hidden md:block w-px h-8 bg-border mr-5" />
+                  <div>
+                    <h3 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">Tools</h3>
+                    <p className="text-sm">{study.tools?.join(', ')}</p>
+                  </div>
                 </div>
               </div>
             </div>
