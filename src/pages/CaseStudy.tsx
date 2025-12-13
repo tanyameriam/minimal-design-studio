@@ -1124,7 +1124,7 @@ const caseStudies: Record<string, CaseStudyData> = {
       content: "Message diverted to individual admin as fallback."
     }],
     businessOutcomes: ["Faster Emergency Handling: Admins will be able to intake requests instantly with minimal data entry", "Higher Ride Success & Completion Rates: Real-time visibility will prevent miscommunication and delays", "Significant Drop in Manual Calls: Automatic updates will replace follow-up calls", "Improved Hospital Trust: Clear timelines and standardized updates will build confidence", "Better Reporting & Data Accuracy: The dashboard will act as a complete, verifiable record", "Operational Efficiency: The system will support high-volume emergencies without overwhelming staff", "Higher Dashboard Adoption: Hospitals will see clear value in the platform, not just WhatsApp"],
-    learnings: ["Real-world emergency systems need resilience, not perfection. Design must survive low network, broken workflows, and human unpredictability.", "WhatsApp is India's most adopted enterprise tool. Designing around WhatsApp, rather than replacing it, was critical.", "A system is only as strong as its fallback modes. Every workflow required a Plan B, C, and D.", "Mobile-first is not optional. Hospital admins coordinate while walking, talking, and multitasking.", "UI is only 30% of the solution. The other 70% is workflow logic, integrations, and system constraints.", "Collaboration across tech and operations shaped the final output. Design was deeply integrated with technical feasibility and real constraints."],
+    learnings: ["This project reinforced several key lessons. Real-world emergency systems need resilience, not perfection—design must survive low networks, broken workflows, and human unpredictability. WhatsApp is India's most adopted enterprise tool, so designing around it rather than replacing it was critical. A system is only as strong as its fallback modes; every workflow required a Plan B, C, and D. Mobile-first is not optional since hospital admins coordinate while walking, talking, and multitasking. Finally, UI is only 30% of the solution—the other 70% is workflow logic, integrations, and system constraints."],
     deliverables: ["Full system workflows", "User journey maps", "Low-fidelity wireframes", "High-fidelity UI (web + mobile)", "WhatsApp message flow screens", "Android module UI", "Complete prototype", "Redesign strategy", "System specification documents", "Final presentation deck"]
   },
   'curateus-plugin': {
@@ -4058,12 +4058,9 @@ const CaseStudy = () => {
       <section className="px-6 lg:px-12 py-16">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Learnings</h2>
-          <ul className="space-y-4">
-            {study.learnings.map((learning, i) => <li key={i} className="flex gap-4">
-                <span className="text-muted-foreground">•</span>
-                <span className="text-lg">{learning}</span>
-              </li>)}
-          </ul>
+          <div className="space-y-4">
+            {study.learnings.map((learning, i) => <p key={i} className="text-lg text-muted-foreground leading-relaxed">{learning}</p>)}
+          </div>
         </div>
       </section>
 
