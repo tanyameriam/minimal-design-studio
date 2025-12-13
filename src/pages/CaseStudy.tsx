@@ -90,6 +90,14 @@ import foodWasteWireframeConfirm from '@/assets/food-waste-wireframe-confirm.png
 import foodWasteWireframeTrack from '@/assets/food-waste-wireframe-track.png';
 import foodWasteWireframeAccount from '@/assets/food-waste-wireframe-account.png';
 import foodWasteWireframeOrders from '@/assets/food-waste-wireframe-orders.png';
+// Food Waste Restaurant wireframes
+import foodWasteRestWireframeMyorders from '@/assets/food-waste-rest-wireframe-myorders.png';
+import foodWasteRestWireframeOrderdetail from '@/assets/food-waste-rest-wireframe-orderdetail.png';
+import foodWasteRestWireframeHandoff from '@/assets/food-waste-rest-wireframe-handoff.png';
+import foodWasteRestWireframeListings from '@/assets/food-waste-rest-wireframe-listings.png';
+import foodWasteRestWireframeAddlisting from '@/assets/food-waste-rest-wireframe-addlisting.png';
+import foodWasteRestWireframeAccount from '@/assets/food-waste-rest-wireframe-account.png';
+import foodWasteRestWireframeInsights from '@/assets/food-waste-rest-wireframe-insights.png';
 import { PlatformAuditPhase } from '@/components/ResearchPhaseCard';
 interface CaseStudySection {
   title: string;
@@ -3438,6 +3446,34 @@ const CaseStudy = () => {
                     { src: foodWasteWireframeTrack, label: 'Track Order' },
                     { src: foodWasteWireframeAccount, label: 'Account' },
                     { src: foodWasteWireframeOrders, label: 'All Orders' },
+                  ].map((wireframe, i) => (
+                    <div key={i} className="flex flex-col items-center">
+                      <div className="bg-background border border-border rounded-lg overflow-hidden cursor-pointer" onClick={() => setLightboxImage(wireframe.src)}>
+                        <img 
+                          src={wireframe.src} 
+                          alt={wireframe.label} 
+                          className="w-full h-auto"
+                        />
+                      </div>
+                      <p className="mt-3 text-sm text-muted-foreground text-center">{wireframe.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+            {/* Restaurant App Wireframes for food waste project */}
+            {slug === 'food-waste-ngo' && (
+              <div className="mt-12">
+                <h3 className="font-serif text-2xl mb-8">Restaurant App Wireframes</h3>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                  {[
+                    { src: foodWasteRestWireframeMyorders, label: 'My Orders' },
+                    { src: foodWasteRestWireframeOrderdetail, label: 'Order Details' },
+                    { src: foodWasteRestWireframeHandoff, label: 'Order Handoff' },
+                    { src: foodWasteRestWireframeListings, label: 'My Listings' },
+                    { src: foodWasteRestWireframeAddlisting, label: 'Add Listing' },
+                    { src: foodWasteRestWireframeAccount, label: 'Account' },
+                    { src: foodWasteRestWireframeInsights, label: 'Insights' },
                   ].map((wireframe, i) => (
                     <div key={i} className="flex flex-col items-center">
                       <div className="bg-background border border-border rounded-lg overflow-hidden cursor-pointer" onClick={() => setLightboxImage(wireframe.src)}>
