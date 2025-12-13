@@ -1707,6 +1707,48 @@ const CaseStudy = () => {
         </section>
       )}
 
+      {/* STREE: Information Architecture - placed before usability testing */}
+      {study.informationArchitecture && 'rationale' in study.informationArchitecture && (
+        <section className="px-6 lg:px-12 py-12">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">Information Architecture</h2>
+            <p className="text-muted-foreground text-sm mb-6">{study.informationArchitecture.rationale}</p>
+            <div className="grid md:grid-cols-2 gap-4 mb-6">
+              {study.informationArchitecture.structure.map((item, i) => (
+                <div key={i} className="p-4 border border-border bg-card">
+                  <h4 className="font-medium text-sm mb-1">{item.area}</h4>
+                  <p className="text-xs text-muted-foreground">{item.reason}</p>
+                </div>
+              ))}
+            </div>
+            <div className="p-4 bg-card border border-border mb-6">
+              <h4 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2">Onboarding Flow</h4>
+              <p className="text-sm text-muted-foreground">{study.informationArchitecture.onboarding}</p>
+            </div>
+            {study.informationArchitecture.imagePlaceholder && (
+              <div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
+                <span className="text-sm text-muted-foreground">[ Information Architecture Diagram ]</span>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* STREE: Wireframing - placed before usability testing */}
+      {study.wireframing && 'approach' in study.wireframing && (
+        <section className="px-6 lg:px-12 py-12 bg-card">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">Wireframing</h2>
+            <p className="text-muted-foreground text-sm mb-6">{study.wireframing.approach}</p>
+            {study.wireframing.imagePlaceholder && (
+              <div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
+                <span className="text-sm text-muted-foreground">[ Wireframe Explorations ]</span>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
       {/* STREE: Usability Testing */}
       {study.usabilityTesting && (
         <section className="px-6 lg:px-12 py-12">
