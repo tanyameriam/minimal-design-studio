@@ -1780,6 +1780,54 @@ const CaseStudy = () => {
                 ]}
                 onImageClick={setLightboxImage}
               />
+
+              {/* Phase 4: Handover & Close */}
+              <PlatformAuditPhase
+                phase="Phase 4"
+                title="Handover & Close"
+                severity="high"
+                description="This phase covers the moment the ambulance reaches the hospital, the patient is handed over, and the trip is officially closed. It is a data-critical phase where timestamps, arrival confirmation, and final trip details must be accurately captured."
+                taskGoal="To accurately confirm arrival, document the handover, and close the trip with complete and consistent data so that operations, reporting, billing, and SLAs stay reliable"
+                actorsInvolved="Ambulance Driver, Merry Health Associate, Hospital Admins, Management / Reporting Teams"
+                issues={[
+                  "Inaccurate or missing timestamps due to manual confirmation.",
+                  "Overwritten or incomplete data due to manual, unchecked trip closure.",
+                  "Inaccurate case records & unsynced reports."
+                ]}
+                businessImpact={[
+                  "Unreliable SLAs and weak hospital trust.",
+                  "Poor data quality → broken reports, billing disputes, and audit failures.",
+                  "Inconsistent or incorrect reports, harming credibility."
+                ]}
+                recommendations={[
+                  "Enable system-led arrival validation to ensure accurate, consistent timestamps.",
+                  "Introduce closure validation workflow that checks required data before finalizing.",
+                  "Support guided, real-time closure with prompts."
+                ]}
+                platformFindings={[
+                  {
+                    number: 1,
+                    title: "Manual arrival & closure entries → inaccurate, inconsistent timestamps",
+                    description: "Arrival and closure are entered manually (often delayed or in bulk), resulting in incorrect timestamps, missing events, and unreliable trip history.",
+                    recommendations: [
+                      "Enable workflow-driven arrival & handover confirmation aligned with real-world events.",
+                      "Reduce reliance on manual timestamps through system-assisted verification.",
+                      "Ensure closure requires complete event data before submission."
+                    ]
+                  },
+                  {
+                    number: 2,
+                    title: "No drill-down or visibility → inconsistent reporting & weak operational insight",
+                    description: "Static KPIs and limited reporting views prevent HAs and management from verifying trip details, diagnosing issues, or reconciling discrepancies across hospitals.",
+                    recommendations: [
+                      "Provide workflow-aligned drill-downs from KPIs to individual trip data.",
+                      "Standardize event labels and timestamps across all reporting surfaces.",
+                      "Ensure reports reflect synced, consistent, end-to-end trip data."
+                    ]
+                  }
+                ]}
+                onImageClick={setLightboxImage}
+              />
             </div>
           </div>
         </section>
@@ -2217,12 +2265,111 @@ const CaseStudy = () => {
         </section>
       )}
 
+      {/* Merry Health Reasons for System Breakdown */}
+      {slug === 'merry-health' && (
+        <section className="px-6 lg:px-12 py-16 bg-card">
+          <div className="container mx-auto max-w-6xl">
+            <h2 className="font-serif text-3xl mb-10">Reasons for System Breakdown</h2>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="p-6 rounded-2xl border border-border bg-background">
+                <h3 className="font-serif text-lg mb-3">Workflow Mismatch with Real Hospital Behavior</h3>
+                <p className="text-sm text-muted-foreground">The system expects complete, structured form entry, while hospital staff operate in emergency-mode using WhatsApp, calls, and quick notes.</p>
+              </div>
+              <div className="p-6 rounded-2xl border border-border bg-background">
+                <h3 className="font-serif text-lg mb-3">Fragmented Data Across Multiple Channels</h3>
+                <p className="text-sm text-muted-foreground">Information moves through WhatsApp → calls → paper → dashboard, leading to duplicated entry, missing fields, and inconsistent records.</p>
+              </div>
+              <div className="p-6 rounded-2xl border border-border bg-background">
+                <h3 className="font-serif text-lg mb-3">Heavy Dependency on Manual Coordination</h3>
+                <p className="text-sm text-muted-foreground">Driver assignment, confirmations, arrival updates, and closure rely on manual calls and WhatsApp messages — increasing delays and errors.</p>
+              </div>
+              <div className="p-6 rounded-2xl border border-border bg-background">
+                <h3 className="font-serif text-lg mb-3">Lack of Real-Time Visibility</h3>
+                <p className="text-sm text-muted-foreground">No live tracking, no driver availability view, and no automated updates → forcing repeated follow-ups, slowing dispatch, and reducing trust.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Merry Health Recommendations to Improve Adoption & Efficiency */}
+      {slug === 'merry-health' && (
+        <section className="px-6 lg:px-12 py-16">
+          <div className="container mx-auto max-w-6xl">
+            <h2 className="font-serif text-3xl mb-10">Recommendations to Improve Adoption & Efficiency</h2>
+            
+            <div className="p-8 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/20 dark:to-orange-950/20 border border-amber-200/50 dark:border-amber-800/30">
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="space-y-3">
+                  <span className="text-4xl font-light text-muted-foreground">01</span>
+                  <h3 className="font-serif text-lg">Fix Tier-1 Workflow Gaps Immediately</h3>
+                  <p className="text-sm text-muted-foreground">Resolve fundamental issues (redundant entries, broken data flow, missing feedback loops) to ensure the core booking → dispatch → closure sequence works reliably.</p>
+                </div>
+                <div className="space-y-3">
+                  <span className="text-4xl font-light text-muted-foreground">02</span>
+                  <h3 className="font-serif text-lg">Shift to a Mobile-First, Dashboard-as-Record Model</h3>
+                  <p className="text-sm text-muted-foreground">Match real hospital behavior to increase adoption, reduce coordination time, and ensure every case is captured consistently.</p>
+                </div>
+                <div className="space-y-3">
+                  <span className="text-4xl font-light text-muted-foreground">03</span>
+                  <h3 className="font-serif text-lg">Smart Dispatch Recommendations & System Alerts</h3>
+                  <p className="text-sm text-muted-foreground">Use distance, ETA, vehicle type, and ratings to suggest suitable ambulances and trigger system-led driver notifications.</p>
+                </div>
+                <div className="space-y-3">
+                  <span className="text-4xl font-light text-muted-foreground">04</span>
+                  <h3 className="font-serif text-lg">Automated Tracking, Communication & Closure</h3>
+                  <p className="text-sm text-muted-foreground">Enable live trip tracking, auto WhatsApp/SMS updates, and guided closure checks to reduce manual coordination.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Merry Health Strategy Outcomes */}
+      {slug === 'merry-health' && (
+        <section className="px-6 lg:px-12 py-16 bg-card">
+          <div className="container mx-auto max-w-6xl">
+            <h2 className="font-serif text-3xl mb-10">The Outcomes This Strategy Unlocks</h2>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="p-6 rounded-2xl border border-border bg-background">
+                <h3 className="font-serif text-lg mb-2">Faster Request → Dispatch Speed</h3>
+                <p className="text-sm text-primary font-medium mb-2">Expected improvement: 20-40%</p>
+                <p className="text-sm text-muted-foreground">By eliminating manual entry, reducing back-and-forth, and enabling quicker driver confirmation.</p>
+              </div>
+              <div className="p-6 rounded-2xl border border-border bg-background">
+                <h3 className="font-serif text-lg mb-2">Higher Dashboard Adoption</h3>
+                <p className="text-sm text-primary font-medium mb-2">Expected lift: 30-50%</p>
+                <p className="text-sm text-muted-foreground">A mobile-first intake and single-source-of-truth reduces friction and aligns with real hospital behavior.</p>
+              </div>
+              <div className="p-6 rounded-2xl border border-border bg-background">
+                <h3 className="font-serif text-lg mb-2">Reduced Manual Coordination Load</h3>
+                <p className="text-sm text-primary font-medium mb-2">Anticipated reduction: 30-50%</p>
+                <p className="text-sm text-muted-foreground">Because WhatsApp auto-fill, unified ticketing, and system-driven driver notifications cut down recurring calls & messages.</p>
+              </div>
+              <div className="p-6 rounded-2xl border border-border bg-background">
+                <h3 className="font-serif text-lg mb-2">Boost in Operational Efficiency</h3>
+                <p className="text-sm text-primary font-medium mb-2">Overall efficiency gain: 25-45%</p>
+                <p className="text-sm text-muted-foreground">With automated updates, real-time tracking, and streamlined closure workflows.</p>
+              </div>
+              <div className="p-6 rounded-2xl border border-border bg-background lg:col-span-2">
+                <h3 className="font-serif text-lg mb-2">Improved Data Accuracy & Completeness</h3>
+                <p className="text-sm text-primary font-medium mb-2">Projected improvement: 40-60%</p>
+                <p className="text-sm text-muted-foreground">From removing duplicate entries, auto-generating tickets, and introducing structured workflows.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Merry Health Proposed Workflow */}
       {slug === 'merry-health' && (
         <section className="px-6 lg:px-12 py-16">
           <div className="container mx-auto max-w-6xl">
             <div className="flex items-center gap-4 mb-6">
-              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">4</span>
+              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">5</span>
               <h2 className="font-serif text-2xl">Proposed Workflow</h2>
             </div>
             <p className="text-muted-foreground mb-10">Based on the research findings, we designed a new workflow that addresses the identified pain points and leverages opportunities for automation and clarity.</p>
