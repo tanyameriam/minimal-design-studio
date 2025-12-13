@@ -4098,18 +4098,6 @@ const CaseStudy = () => {
         </section>}
 
 
-      {/* Deliverables (for Merry Health) */}
-      {study.deliverables && <section className="px-6 lg:px-12 py-16 bg-card">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Deliverables</h2>
-            <ul className="space-y-3">
-              {study.deliverables.map((item, i) => <li key={i} className="flex gap-4">
-                  <span className="text-muted-foreground">•</span>
-                  <span>{item}</span>
-                </li>)}
-            </ul>
-          </div>
-        </section>}
 
       {/* Next Steps */}
       {study.nextSteps && <section className="px-6 lg:px-12 py-16 bg-card">
