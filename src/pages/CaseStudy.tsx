@@ -247,6 +247,11 @@ interface CaseStudyData {
         data: string;
         reason: string;
       }[];
+      absoluteMinData?: {
+        category: string;
+        fields: string;
+        reason: string;
+      }[];
     }[];
     overlappingData: {
       dataPoint: string;
@@ -314,7 +319,70 @@ const caseStudies: Record<string, CaseStudyData> = {
         },
         {
           actor: "Hospital Admin",
-          // Placeholder - data to be added
+          experienceFlow: [
+            { step: 1, name: "Request Ambulance", description: "Admin evaluates if an ambulance is needed based on urgency & doctor approval", channel: "Phone call, In-person", data: "Patient condition (critical/stable), Doctor approval, Destination hospital (for transfers)" },
+            { step: 2, name: "Determine Ambulance Type & Support", description: "Admin confirms what ambulance category/equipment is required", channel: "Phone call, WhatsApp", data: "Type: BLS/ALS/ICU, Oxygen requirement, Ventilator requirement, Paramedic support, Special equipment (monitor, suction, defibrillator)" },
+            { step: 3, name: "Capture Pickup Location", description: "Admin collects and forwards accurate address to Merry Health", channel: "WhatsApp, Phone call, Dashboard (ideal)", data: "Google Maps pin, Full address, Landmark, Caller's phone number" },
+            { step: 4, name: "Confirm Special Access Needs", description: "Admin checks if physical movement issues exist at pickup", channel: "Phone call, WhatsApp", data: "Floor number, Lift availability yes/no, Stretcher access possible, Patient weight (approx)" },
+            { step: 5, name: "Assess Urgency", description: "Admin decides how critical and time-sensitive the case is", channel: "WhatsApp, Phone call", data: "Priority tag (Routine / Emergency / Critical), Expected travel time, Internal note for escalation" },
+            { step: 6, name: "Receive Ambulance Assignment", description: "Merry Health shares ambulance & driver details", channel: "WhatsApp (primary), Dashboard", data: "Ambulance ID/number, Driver name, Driver phone number, Assigned timestamp" },
+            { step: 7, name: "Confirm Ambulance Departure", description: "Admin ensures ambulance has actually left toward pickup", channel: "WhatsApp, Call, Dashboard (if used)", data: "Dispatch timestamp, Status: Assigned vs Dispatched, Geolocation movement (if GPS-enabled)" },
+            { step: 8, name: "Confirm Arrival at Pickup", description: "Admin verifies ambulance reached patient location", channel: "WhatsApp, Call, Dashboard (GPS)", data: "Arrival timestamp, Status: \"Reached Pickup\", GPS confirmation" },
+            { step: 9, name: "Patient Onboard", description: "Admin ensures patient has entered ambulance & trip started", channel: "WhatsApp, Dashboard, Call", data: "Status: \"Onboard / On the way\", Live GPS movement, Any special medical notes" },
+            { step: 10, name: "Track En-route to Hospital", description: "Admin monitors ETA and notifies receiving team", channel: "WhatsApp (tracking link), Dashboard", data: "Live ETA, Location updates, Delay reasons (traffic, route change)" },
+            { step: 11, name: "Ride Completion", description: "Admin confirms patient is delivered safely", channel: "WhatsApp, Dashboard, Call", data: "Drop timestamp, Status: \"Ride Completed\", Driver confirmation, Any incident report" },
+            { step: 12, name: "Monthly Reporting & Audit", description: "Admin reviews summary of rides & hospital performance", channel: "Dashboard, Excel export, WhatsApp logs", data: "Total trips, Cancelled trips, SLA metrics (under 20/30/40 mins), Billing amounts, Average response time, Ambulance utilization patterns" }
+          ],
+          dataPoints: [
+            { dataPoint: "Patient condition (critical/stable)", source: "Caller (family/patient), Doctor", usedBy: "Hospital Admin, Merry Health Admin, Driver", purpose: "Determines urgency & ambulance type", frequency: "Every case", issues: "Caller may not describe condition clearly; panic leads to misinformation" },
+            { dataPoint: "Doctor approval", source: "Doctor, Nurse", usedBy: "Hospital Admin", purpose: "Confirms legitimacy of request; avoids duplicate/false calls", frequency: "Every case", issues: "Doctor may be busy; delays confirmation; admin sometimes proceeds based on caller only" },
+            { dataPoint: "Destination hospital", source: "Caller, Doctor", usedBy: "Merry Health Admin, Driver", purpose: "Needed for hospital-hospital transfers; route calculation", frequency: "Conditional (transfers only)", issues: "Caller may not know exact hospital or spelling; wrong routing" },
+            { dataPoint: "Ambulance category (BLS/ALS/ICU)", source: "Doctor / Admin input", usedBy: "Merry Health Admin, Driver", purpose: "Ensures correct equipment & staff", frequency: "Every case", issues: "Admin unsure which type to choose; mistakes cause medical risk" },
+            { dataPoint: "Oxygen requirement", source: "Caller or Doctor", usedBy: "Merry Health Admin, Driver", purpose: "Send ambulance with oxygen cylinders", frequency: "Conditional", issues: "Caller may not know; missing data → wrong ambulance sent" },
+            { dataPoint: "Ventilator requirement", source: "Doctor", usedBy: "Merry Health Admin, Driver", purpose: "Requires ICU ambulance with ventilator", frequency: "Conditional (critical cases)", issues: "High risk if missed; admin avoids asking due to urgency" },
+            { dataPoint: "Paramedic requirement", source: "Doctor / Admin", usedBy: "Merry Health Admin, Driver", purpose: "Ensures trained support onboard", frequency: "Conditional", issues: "Often skipped on call; paramedic not available = delay" },
+            { dataPoint: "Special equipment (monitor/defibrillator/suction)", source: "Doctor / Admin", usedBy: "Merry Health Admin, Driver", purpose: "Needed for serious cardiac/ICU cases", frequency: "Conditional", issues: "Caller rarely knows; admin may skip" },
+            { dataPoint: "Pickup address", source: "Caller", usedBy: "Driver, Merry Health Admin", purpose: "Navigate to patient location", frequency: "Every case", issues: "Caller gives vague address; spelling mistakes" },
+            { dataPoint: "Google Maps location pin", source: "Caller via WhatsApp", usedBy: "Driver, Merry Health Admin", purpose: "Most accurate navigation to pickup", frequency: "Every case", issues: "Caller may not know how to drop pin; wrong pin shared" },
+            { dataPoint: "Landmark", source: "Caller", usedBy: "Driver, Admin", purpose: "Helps in areas with unclear addresses", frequency: "Frequent", issues: "Landmarks may be outdated or confusing" },
+            { dataPoint: "Caller's phone number", source: "Caller", usedBy: "Driver, Admin, Merry Health Admin", purpose: "Callback in case location unclear", frequency: "Every case", issues: "Caller phones often unreachable; incorrect digits" },
+            { dataPoint: "Floor number", source: "Caller", usedBy: "Driver, Paramedic Team", purpose: "Determines manpower and stretcher access", frequency: "Conditional (apartments)", issues: "Caller forgets to mention; leads to delays" },
+            { dataPoint: "Lift availability", source: "Caller", usedBy: "Driver, Paramedic Team", purpose: "If no lift → more manpower needed", frequency: "Conditional", issues: "Not confirmed → stretcher doesn't fit, manual lifting needed" },
+            { dataPoint: "Patient weight (approx)", source: "Caller / Attendant", usedBy: "Driver, Paramedic Team", purpose: "To estimate manpower required", frequency: "Conditional", issues: "Sensitive topic → caller lies or hides info" },
+            { dataPoint: "Ambulance assigned (ID/Plate)", source: "Merry Health Admin", usedBy: "Hospital Admin, Patient/Family", purpose: "Confirms assignment & accountability", frequency: "Every case", issues: "Shared late or missing; escalations begin" },
+            { dataPoint: "Driver name", source: "Merry Health Admin", usedBy: "Hospital Admin, Patient/Family", purpose: "Direct contact for updates", frequency: "Every case", issues: "Driver may not answer calls; admin forced to chase" },
+            { dataPoint: "Driver phone number", source: "Merry Health Admin", usedBy: "Patient/Family, Admin", purpose: "Location clarification, coordination", frequency: "Every case", issues: "Wrong number shared; driver network issues" },
+            { dataPoint: "Dispatch timestamp", source: "Merry Health Admin (manual)", usedBy: "Hospital Admin, Management", purpose: "Used for SLA/performance tracking", frequency: "Every case", issues: "Manual entry → prone to errors; sometimes skipped" },
+            { dataPoint: "\"Ambulance left for pickup\" status", source: "Merry Health Admin or Driver", usedBy: "Patient, Hospital Admin", purpose: "Confirms movement (not just assignment)", frequency: "Every case", issues: "Drivers delay leaving; updates not consistent" },
+            { dataPoint: "Arrival at pickup timestamp", source: "Merry Health Admin (manual)", usedBy: "", purpose: "SLA & tracking; patient reassurance", frequency: "Every case", issues: "Hard to verify without GPS; updates delayed" },
+            { dataPoint: "Patient onboard status", source: "Merry Health Admin or Driver", usedBy: "Hospital Admin, Doctors", purpose: "Indicates safe loading & departure", frequency: "Every case", issues: "Manual confirmations unreliable" },
+            { dataPoint: "Live tracking GPS location", source: "GPS in driver app or shared link", usedBy: "Hospital Admin, Doctors, Patient/Family", purpose: "Real-time status; reduces calls", frequency: "Every case", issues: "GPS often missing/not shared; link expires" },
+            { dataPoint: "Estimated Time of Arrival (ETA)", source: "GPS, Manual estimate", usedBy: "Patient, Doctors, Admin", purpose: "Hospital prepares receiving team", frequency: "Every case", issues: "Manual ETA inaccurate; traffic changes" },
+            { dataPoint: "Drop/Completion timestamp", source: "Merry Health Admin or Driver", usedBy: "Reports, Billing", purpose: "Ride closure and billing accuracy", frequency: "Every case", issues: "Manual toggle → errors or delays" },
+            { dataPoint: "Trip Invoice / Billing amount", source: "Dashboard export", usedBy: "Hospital Finance, Management", purpose: "Monthly reconciliation & payments", frequency: "Every case", issues: "Missing data → billing disputes" },
+            { dataPoint: "Total rides per month", source: "Dashboard / Excel", usedBy: "Hospital Management, Merry Health", purpose: "Continuation of contract; ROI", frequency: "Monthly", issues: "Missing rides (if only WhatsApp used)" },
+            { dataPoint: "SLA performance (avg response time)", source: "Combine timestamps", usedBy: "Hospital Management, Merry Health", purpose: "Measures performance; renewal driver", frequency: "Monthly", issues: "Data incomplete if request was only on WhatsApp" },
+            { dataPoint: "Cancelled/failed ride reason", source: "Merry Health Admin", usedBy: "Operations, Reporting", purpose: "Root cause analysis", frequency: "Conditional", issues: "Often not logged; missing visibility" },
+            { dataPoint: "Transfer direction (from which hospital to which hospital)", source: "Caller / Admin", usedBy: "Reporting, business impact", purpose: "", frequency: "Conditional", issues: "Caller may mention unclear hospital name" }
+          ],
+          minEssentialData: [
+            { flow: "1. Create / Request Ambulance", data: "Caller phone number, Pickup location (Google pin or full address), Patient condition/severity, Ambulance type (BLS/ALS/ICU)*", reason: "Without contact & location, the ambulance cannot navigate or reach patient. Ambulance type is critical to avoid medical mismatch." },
+            { flow: "2. Assign Ambulance to Case", data: "Pickup location, Available ambulance ID/vehicle, Driver availability & phone number", reason: "Assignment requires knowing where the ambulance needs to go and which ambulance+driver can serve." },
+            { flow: "3. Dispatch Ambulance (Ambulance leaves for pickup)", data: "Driver phone number, Pickup location, \"Left for pickup\" timestamp OR GPS start", reason: "Confirms actual movement, prevents silent delays, and begins SLA timer." },
+            { flow: "4. Driver Reaches Pickup Location", data: "Arrival timestamp OR geofence location ping", reason: "Needed to prove ambulance actually arrived for SLA + patient communication." },
+            { flow: "5. Patient Onboard & Trip Started", data: "\"Onboard\" status OR continuous GPS movement from pickup pin", reason: "Confirms patient is inside and transit has begun—critical milestone for doctors and family." },
+            { flow: "6. Live Tracking During Transit", data: "GPS location, Auto-calculated ETA", reason: "Reduces panic calls, allows hospital to prepare, provides transparency." },
+            { flow: "7. Trip Completion / Drop at Hospital", data: "\"Completed\" status, Drop timestamp, Destination hospital", reason: "Closes case, freezes SLA timings, necessary for billing & monthly reports." },
+            { flow: "8. Monthly Reports / Audit", data: "Total completed trips, Response time (request → dispatch), Drop time, Billing amount", reason: "Hospital uses this to justify renewal and measure service reliability." }
+          ],
+          absoluteMinData: [
+            { category: "Contact", fields: "Patient/attender phone", reason: "Driver or team must call if lost / access issue" },
+            { category: "Navigation", fields: "Google Maps pin (or full address + landmark)", reason: "Without this, ambulance cannot find pickup" },
+            { category: "Medical Safety", fields: "Ambulance type (BLS/ALS/ICU)**", reason: "Wrong ambulance can cause medical harm" },
+            { category: "Operations", fields: "Driver phone number, vehicle assigned", reason: "Allows admin/family to contact and verify" },
+            { category: "Tracking", fields: "GPS + basic status milestones", reason: "Reduces manual follow-up and panic" },
+            { category: "Completion", fields: "Drop time + completed status", reason: "Needed for billing, audit, and contract renewal" }
+          ]
         },
         {
           actor: "Merry Health Admin",
@@ -1305,6 +1373,33 @@ const CaseStudy = () => {
                                 <tr key={i} className="border-b border-border/50 hover:bg-muted/20">
                                   <td className="p-3 font-medium">{row.flow}</td>
                                   <td className="p-3 text-muted-foreground">{row.data}</td>
+                                  <td className="p-3 text-muted-foreground">{row.reason}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Absolute Minimum Essential Data to ensure Patient Safety */}
+                    {audit.absoluteMinData && audit.absoluteMinData.length > 0 && (
+                      <div className="mb-10">
+                        <h4 className="font-serif text-lg mb-4 text-primary">Absolute Min Essential Data to ensure Patient Safety</h4>
+                        <div className="overflow-x-auto">
+                          <table className="w-full text-sm border border-border">
+                            <thead>
+                              <tr className="bg-muted/50">
+                                <th className="text-left p-3 border-b border-border font-medium">Category</th>
+                                <th className="text-left p-3 border-b border-border font-medium">Absolute minimum fields necessary</th>
+                                <th className="text-left p-3 border-b border-border font-medium">Why they are non-negotiable</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {audit.absoluteMinData.map((row, i) => (
+                                <tr key={i} className="border-b border-border/50 hover:bg-muted/20">
+                                  <td className="p-3 font-medium">{row.category}</td>
+                                  <td className="p-3 text-muted-foreground">{row.fields}</td>
                                   <td className="p-3 text-muted-foreground">{row.reason}</td>
                                 </tr>
                               ))}
