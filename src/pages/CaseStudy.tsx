@@ -40,6 +40,15 @@ import streeHifi6 from '@/assets/stree-hifi-6.png';
 import streeHifi7 from '@/assets/stree-hifi-7.png';
 import streeHifi8 from '@/assets/stree-hifi-8.png';
 import streeHifi9 from '@/assets/stree-hifi-9.png';
+import streeHifi10 from '@/assets/stree-hifi-10.png';
+import streeHifi11 from '@/assets/stree-hifi-11.png';
+import streeHifi12 from '@/assets/stree-hifi-12.png';
+import streeHifi13 from '@/assets/stree-hifi-13.png';
+import streeHifi14 from '@/assets/stree-hifi-14.png';
+import streeHifi15 from '@/assets/stree-hifi-15.png';
+import streeHifi16 from '@/assets/stree-hifi-16.png';
+import streeHifi17 from '@/assets/stree-hifi-17.png';
+import streeHifi18 from '@/assets/stree-hifi-18.png';
 interface CaseStudySection {
   title: string;
   content: string;
@@ -1442,7 +1451,7 @@ const CaseStudy = () => {
           {slug === 'stree-safety-app' && (
             <div className="overflow-x-auto pb-4">
               <div className="flex gap-4 px-6 lg:px-12" style={{ width: 'max-content' }}>
-                {[streeHifi1, streeHifi2, streeHifi3, streeHifi4, streeHifi5, streeHifi6, streeHifi7, streeHifi8, streeHifi9].map((img, i) => (
+                {[streeHifi1, streeHifi2, streeHifi3, streeHifi4, streeHifi5, streeHifi6, streeHifi7, streeHifi8, streeHifi9, streeHifi10, streeHifi11, streeHifi12, streeHifi13, streeHifi14, streeHifi15, streeHifi16, streeHifi17, streeHifi18].map((img, i) => (
                   <div 
                     key={i} 
                     className="flex-shrink-0 bg-background border border-border p-2 cursor-pointer hover:border-primary/50 transition-colors"
