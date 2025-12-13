@@ -5,6 +5,12 @@ import spline3dRoom from '@/assets/spline-3d-room.png';
 import sketchDino1 from '@/assets/sketch-dino-1.png';
 import sketchDino2 from '@/assets/sketch-dino-2.png';
 import sketchDino3 from '@/assets/sketch-dino-3.png';
+import charcoal1 from '@/assets/charcoal-1.png';
+import charcoal2 from '@/assets/charcoal-2.png';
+import charcoal3 from '@/assets/charcoal-3.png';
+import charcoal4 from '@/assets/charcoal-4.png';
+import charcoal5 from '@/assets/charcoal-5.png';
+import charcoal6 from '@/assets/charcoal-6.png';
 
 interface ExplorationItem {
   id: number;
@@ -44,6 +50,39 @@ const characterSketches: SketchItem[] = [
     id: 3,
     title: "Dino Cookie Monster",
     thumbnail: sketchDino3
+  }
+];
+
+const charcoalSketches: SketchItem[] = [
+  {
+    id: 1,
+    title: "Surrender",
+    thumbnail: charcoal1
+  },
+  {
+    id: 2,
+    title: "Joker",
+    thumbnail: charcoal2
+  },
+  {
+    id: 3,
+    title: "Skull",
+    thumbnail: charcoal3
+  },
+  {
+    id: 4,
+    title: "Masks",
+    thumbnail: charcoal4
+  },
+  {
+    id: 5,
+    title: "Lion",
+    thumbnail: charcoal5
+  },
+  {
+    id: 6,
+    title: "Meditation",
+    thumbnail: charcoal6
   }
 ];
 
@@ -212,13 +251,16 @@ const Explorations = () => {
           </div>
           
           {/* Character Explorations */}
-          <div className="mb-8">
-            <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-6">Character Explorations</p>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="mb-12">
+            <div className="flex items-center gap-2 mb-6">
+              <div className="w-2 h-2 rounded-full bg-accent" />
+              <p className="text-sm font-medium text-foreground">Character Explorations</p>
+            </div>
+            <div className="grid grid-cols-3 md:grid-cols-3 gap-3">
               {characterSketches.map((sketch) => (
                 <div
                   key={sketch.id}
-                  className="group relative aspect-square overflow-hidden rounded-lg bg-muted"
+                  className="group relative aspect-square overflow-hidden rounded-xl bg-muted shadow-sm hover:shadow-lg transition-shadow duration-300"
                 >
                   <img
                     src={sketch.thumbnail}
@@ -227,8 +269,39 @@ const Explorations = () => {
                   />
                   
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-foreground/70 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <h4 className="text-background font-medium text-sm">
+                      {sketch.title}
+                    </h4>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Charcoal Sketches */}
+          <div>
+            <div className="flex items-center gap-2 mb-6">
+              <div className="w-2 h-2 rounded-full bg-foreground" />
+              <p className="text-sm font-medium text-foreground">Charcoal Sketches</p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {charcoalSketches.map((sketch, index) => (
+                <div
+                  key={sketch.id}
+                  className={`group relative overflow-hidden rounded-xl bg-neutral-900 shadow-md hover:shadow-xl transition-all duration-500 ${
+                    index === 0 || index === 4 || index === 5 ? 'aspect-[3/4]' : index === 3 ? 'aspect-[16/9] md:col-span-2' : 'aspect-square'
+                  }`}
+                >
+                  <img
+                    src={sketch.thumbnail}
+                    alt={sketch.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h4 className="text-white font-medium text-sm">
                       {sketch.title}
                     </h4>
                   </div>
