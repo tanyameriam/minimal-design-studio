@@ -1343,13 +1343,13 @@ const CaseStudy = () => {
 
             {/* Flow Diagrams for STREE */}
             {slug === 'stree-safety-app' && (
-              <div className="mt-10 space-y-8">
+              <div className="mt-10 grid md:grid-cols-2 gap-6">
                 <div className="overflow-hidden rounded-lg border border-border bg-background shadow-sm">
                   <div className="px-4 py-3 border-b border-border bg-muted/30">
                     <h4 className="text-xs uppercase tracking-[0.2em] text-muted-foreground">SOS Mode Flow</h4>
                   </div>
                   <div className="p-4">
-                    <img src={streeSosFlow} alt="SOS Mode user flow showing interactions between user, officials, and contacts" className="w-full rounded" />
+                    <img src={streeSosFlow} alt="SOS Mode user flow showing interactions between user, officials, and contacts" className="w-full rounded cursor-pointer" onClick={() => setLightboxImage(streeSosFlow)} />
                   </div>
                 </div>
                 <div className="overflow-hidden rounded-lg border border-border bg-background shadow-sm">
@@ -1357,7 +1357,7 @@ const CaseStudy = () => {
                     <h4 className="text-xs uppercase tracking-[0.2em] text-muted-foreground">User Journey Flow</h4>
                   </div>
                   <div className="p-6 bg-white">
-                    <img src={streeUserFlow} alt="User journey flow: Discovery, Onboarding, and App navigation" className="w-full" />
+                    <img src={streeUserFlow} alt="User journey flow: Discovery, Onboarding, and App navigation" className="w-full cursor-pointer" onClick={() => setLightboxImage(streeUserFlow)} />
                   </div>
                 </div>
               </div>
