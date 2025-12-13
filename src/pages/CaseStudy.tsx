@@ -224,25 +224,29 @@ interface CaseStudyData {
   merryDataAudit?: {
     intro: string;
     questions: string[];
-    experienceFlow: {
-      step: number;
-      name: string;
-      description: string;
-      channel: string;
-      data: string;
-    }[];
-    dataPoints: {
-      dataPoint: string;
-      source: string;
-      usedBy: string;
-      purpose: string;
-      frequency: string;
-      issues: string;
-    }[];
-    minEssentialData: {
-      flow: string;
-      data: string;
-      reason: string;
+    actors: string[];
+    actorAudits: {
+      actor: string;
+      experienceFlow?: {
+        step: number;
+        name: string;
+        description: string;
+        channel: string;
+        data: string;
+      }[];
+      dataPoints?: {
+        dataPoint: string;
+        source: string;
+        usedBy: string;
+        purpose: string;
+        frequency: string;
+        issues: string;
+      }[];
+      minEssentialData?: {
+        flow: string;
+        data: string;
+        reason: string;
+      }[];
     }[];
     overlappingData: {
       dataPoint: string;
@@ -273,35 +277,49 @@ const caseStudies: Record<string, CaseStudyData> = {
     merryOverview: "", // Placeholder - add content here
     merryCurrentProblem: "", // Placeholder - add content here
     merryDataAudit: {
-      intro: "The first step was a data audit to understand the current platform from the Patient Party perspective. We mapped who owns the data, who initiates it, and what decisions it enables.",
+      intro: "We conducted a data audit across all actors in the dispatch flow to understand who owns the data, who initiates it, and what decisions it enables.",
       questions: ["Who owns the data?", "Who initiates the data?", "What decisions does data enable?"],
-      experienceFlow: [
-        { step: 1, name: "Identify emergency", description: "Patient or family decides to call for ambulance", channel: "Phone", data: "Caller ID" },
-        { step: 2, name: "Contact hospital", description: "Calls hospital/Merry Health helpline", channel: "Phone", data: "Location, patient condition, severity" },
-        { step: 3, name: "Provide details", description: "Shares details on call/WhatsApp", channel: "Phone/WhatsApp", data: "Contact number, pickup address, floor, lift" },
-        { step: 4, name: "Wait for confirmation", description: "Hospital acknowledges request", channel: "Phone/SMS/WhatsApp", data: "Expected time" },
-        { step: 5, name: "Receive ambulance details", description: "Gets driver info", channel: "SMS/WhatsApp", data: "Driver contact number, tracking link" },
-        { step: 6, name: "Patient pickup", description: "Ambulance arrives and loads patient", channel: "In person", data: "Arrival time, transit status, assigned time" },
-        { step: 7, name: "In transit", description: "Patient reaches destination", channel: "Physical handover", data: "Drop timestamp, total duration" }
-      ],
-      dataPoints: [
-        { dataPoint: "Patient name", source: "PP", usedBy: "Hospital admin", purpose: "Identification", frequency: "E", issues: "Incorrect data" },
-        { dataPoint: "Contact number", source: "PP", usedBy: "Hospital admin/Driver", purpose: "Callback and confirmation", frequency: "E", issues: "Incorrect data" },
-        { dataPoint: "Location", source: "PP", usedBy: "Driver/Hospital admin", purpose: "Locate pickup point", frequency: "E", issues: "Not being exact" },
-        { dataPoint: "Patient condition", source: "PP", usedBy: "Hospital admin", purpose: "Decide urgency and ambulance type", frequency: "E", issues: "Can be unknown to PP" },
-        { dataPoint: "Pickup address", source: "PP", usedBy: "Hospital admin/Driver", purpose: "Pickup the patient from address", frequency: "E", issues: "Incorrect data" },
-        { dataPoint: "Driver contact number", source: "Hospital admin", usedBy: "PP/Hospital admin", purpose: "Enable communication with driver", frequency: "E", issues: "Incorrect data" },
-        { dataPoint: "Tracking link", source: "Hospital admin", usedBy: "PP/Hospital admin", purpose: "Track transit of patient", frequency: "E", issues: "Not operational or not updated" },
-        { dataPoint: "Duration of trip", source: "System/Driver", usedBy: "MerryHealth", purpose: "Understand total time", frequency: "E", issues: "Not starting or ending trip" },
-        { dataPoint: "Drop timestamp", source: "System/Driver", usedBy: "MerryHealth", purpose: "Operational analysis", frequency: "E", issues: "" },
-        { dataPoint: "Floor", source: "PP", usedBy: "Driver", purpose: "Pickup the patient", frequency: "C", issues: "Not being shared by PP" },
-        { dataPoint: "Lift", source: "PP", usedBy: "Driver", purpose: "Pickup patient accessibility", frequency: "C", issues: "Not being shared by PP" }
-      ],
-      minEssentialData: [
-        { flow: "Request initiation (PP → Hospital Admin)", data: "Patient name, contact number, location, patient(s) condition", reason: "Without these, HA cannot verify urgency, match ambulance type, or identify pickup." },
-        { flow: "When hospital/MHA confirms dispatch", data: "Driver name, driver contact number, vehicle No, ETA", reason: "Needed for trust, coordination, and tracking reassurance." },
-        { flow: "During the trip (driver en route)", data: "Tracking link/ETA, Landmark and address", reason: "Driver reach exact location efficiently; reduces back-and-forth calls" },
-        { flow: "At drop/completion", data: "Drop location (hospital name), acknowledgment of arrival", reason: "Closes the loop for PP" }
+      actors: ["Patient Party", "Hospital Admin", "Merry Health Admin", "Driver"],
+      actorAudits: [
+        {
+          actor: "Patient Party",
+          experienceFlow: [
+            { step: 1, name: "Identify emergency", description: "Patient or family decides to call for ambulance", channel: "Phone", data: "Caller ID" },
+            { step: 2, name: "Contact hospital", description: "Calls hospital/Merry Health helpline", channel: "Phone", data: "Location, patient condition, severity" },
+            { step: 3, name: "Provide details", description: "Shares details on call/WhatsApp", channel: "Phone/WhatsApp", data: "Contact number, pickup address, floor, lift" },
+            { step: 4, name: "Wait for confirmation", description: "Hospital acknowledges request", channel: "Phone/SMS/WhatsApp", data: "Expected time" },
+            { step: 5, name: "Receive ambulance details", description: "Gets driver info", channel: "SMS/WhatsApp", data: "Driver contact number, tracking link" },
+            { step: 6, name: "Patient pickup", description: "Ambulance arrives and loads patient", channel: "In person", data: "Arrival time, transit status, assigned time" },
+            { step: 7, name: "In transit", description: "Patient reaches destination", channel: "Physical handover", data: "Drop timestamp, total duration" }
+          ],
+          dataPoints: [
+            { dataPoint: "Patient name", source: "PP", usedBy: "Hospital admin", purpose: "Identification", frequency: "E", issues: "Incorrect data" },
+            { dataPoint: "Contact number", source: "PP", usedBy: "Hospital admin/Driver", purpose: "Callback and confirmation", frequency: "E", issues: "Incorrect data" },
+            { dataPoint: "Location", source: "PP", usedBy: "Driver/Hospital admin", purpose: "Locate pickup point", frequency: "E", issues: "Not being exact" },
+            { dataPoint: "Patient condition", source: "PP", usedBy: "Hospital admin", purpose: "Decide urgency and ambulance type", frequency: "E", issues: "Can be unknown to PP" },
+            { dataPoint: "Pickup address", source: "PP", usedBy: "Hospital admin/Driver", purpose: "Pickup the patient from address", frequency: "E", issues: "Incorrect data" },
+            { dataPoint: "Driver contact number", source: "Hospital admin", usedBy: "PP/Hospital admin", purpose: "Enable communication with driver", frequency: "E", issues: "Incorrect data" },
+            { dataPoint: "Tracking link", source: "Hospital admin", usedBy: "PP/Hospital admin", purpose: "Track transit of patient", frequency: "E", issues: "Not operational or not updated" },
+            { dataPoint: "Duration of trip", source: "System/Driver", usedBy: "MerryHealth", purpose: "Understand total time", frequency: "E", issues: "Not starting or ending trip" },
+            { dataPoint: "Drop timestamp", source: "System/Driver", usedBy: "MerryHealth", purpose: "Operational analysis", frequency: "E", issues: "" },
+            { dataPoint: "Floor", source: "PP", usedBy: "Driver", purpose: "Pickup the patient", frequency: "C", issues: "Not being shared by PP" },
+            { dataPoint: "Lift", source: "PP", usedBy: "Driver", purpose: "Pickup patient accessibility", frequency: "C", issues: "Not being shared by PP" }
+          ],
+          minEssentialData: [
+            { flow: "Request initiation (PP → Hospital Admin)", data: "Patient name, contact number, location, patient(s) condition", reason: "Without these, HA cannot verify urgency, match ambulance type, or identify pickup." },
+            { flow: "When hospital/MHA confirms dispatch", data: "Driver name, driver contact number, vehicle No, ETA", reason: "Needed for trust, coordination, and tracking reassurance." },
+            { flow: "During the trip (driver en route)", data: "Tracking link/ETA, Landmark and address", reason: "Driver reach exact location efficiently; reduces back-and-forth calls" },
+            { flow: "At drop/completion", data: "Drop location (hospital name), acknowledgment of arrival", reason: "Closes the loop for PP" }
+          ]
+        },
+        {
+          actor: "Hospital Admin",
+          // Placeholder - data to be added
+        },
+        {
+          actor: "Merry Health Admin",
+          // Placeholder - data to be added
+        }
       ],
       overlappingData: [
         { dataPoint: "Patient name", hospitalAdmin: "Y", driver: "Y", patientParty: "Gives", merryHealthAdmin: "Y", notes: "HA → MHA → Driver" },
@@ -1171,100 +1189,138 @@ const CaseStudy = () => {
         <section className="px-6 lg:px-12 py-16 bg-card">
           <div className="container mx-auto max-w-6xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">Data Audit</h2>
-            <p className="text-lg text-muted-foreground mb-4">Patient Party Perspective</p>
             <p className="text-muted-foreground mb-8">{study.merryDataAudit.intro}</p>
             
             {/* Key Questions */}
-            <div className="flex flex-wrap gap-3 mb-12">
+            <div className="flex flex-wrap gap-3 mb-8">
               {study.merryDataAudit.questions.map((q, i) => (
                 <span key={i} className="px-4 py-2 bg-primary/10 text-primary text-sm font-medium">{q}</span>
               ))}
             </div>
 
-            {/* Experience Flow Overview */}
-            <div className="mb-16">
-              <h3 className="font-serif text-xl mb-6 text-primary">Experience Flow Overview</h3>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm border border-border">
-                  <thead>
-                    <tr className="bg-muted/50">
-                      <th className="text-left p-3 border-b border-border font-medium">Step</th>
-                      <th className="text-left p-3 border-b border-border font-medium">Name</th>
-                      <th className="text-left p-3 border-b border-border font-medium">Description</th>
-                      <th className="text-left p-3 border-b border-border font-medium">Channel</th>
-                      <th className="text-left p-3 border-b border-border font-medium">Data Created/Used</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {study.merryDataAudit.experienceFlow.map((row, i) => (
-                      <tr key={i} className="border-b border-border/50 hover:bg-muted/20">
-                        <td className="p-3 text-muted-foreground">{row.step}</td>
-                        <td className="p-3 font-medium">{row.name}</td>
-                        <td className="p-3 text-muted-foreground">{row.description}</td>
-                        <td className="p-3 text-muted-foreground">{row.channel}</td>
-                        <td className="p-3 text-muted-foreground">{row.data}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+            {/* Actor Flow Diagram */}
+            <div className="mb-12 p-6 border border-border bg-background">
+              <h3 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">Actor Flow</h3>
+              <div className="flex flex-wrap items-center justify-center gap-4">
+                {study.merryDataAudit.actors.map((actor, i) => (
+                  <div key={i} className="flex items-center gap-4">
+                    <span className="px-4 py-2 bg-primary/10 text-primary font-medium text-sm">{actor}</span>
+                    {i < study.merryDataAudit!.actors.length - 1 && (
+                      <span className="text-muted-foreground">→</span>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Data Points Audit Table */}
-            <div className="mb-16">
-              <h3 className="font-serif text-xl mb-6 text-primary">Data Points Audit</h3>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm border border-border">
-                  <thead>
-                    <tr className="bg-muted/50">
-                      <th className="text-left p-3 border-b border-border font-medium">Data Point</th>
-                      <th className="text-left p-3 border-b border-border font-medium">Source</th>
-                      <th className="text-left p-3 border-b border-border font-medium">Used By</th>
-                      <th className="text-left p-3 border-b border-border font-medium">Purpose</th>
-                      <th className="text-left p-3 border-b border-border font-medium">Freq</th>
-                      <th className="text-left p-3 border-b border-border font-medium">Issues</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {study.merryDataAudit.dataPoints.map((row, i) => (
-                      <tr key={i} className="border-b border-border/50 hover:bg-muted/20">
-                        <td className="p-3 font-medium">{row.dataPoint}</td>
-                        <td className="p-3 text-muted-foreground">{row.source}</td>
-                        <td className="p-3 text-muted-foreground">{row.usedBy}</td>
-                        <td className="p-3 text-muted-foreground">{row.purpose}</td>
-                        <td className="p-3 text-muted-foreground text-center">{row.frequency}</td>
-                        <td className="p-3 text-muted-foreground">{row.issues || '—'}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
+            {/* Actor-specific Audits */}
+            {study.merryDataAudit.actorAudits.map((audit, actorIndex) => (
+              <div key={actorIndex} className="mb-16">
+                <div className="flex items-center gap-3 mb-8">
+                  <span className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-medium">
+                    {actorIndex + 1}
+                  </span>
+                  <h3 className="font-serif text-2xl">{audit.actor}</h3>
+                </div>
 
-            {/* Minimum Essential Data */}
-            <div className="mb-16">
-              <h3 className="font-serif text-xl mb-6 text-primary">Minimum Essential Data</h3>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm border border-border">
-                  <thead>
-                    <tr className="bg-muted/50">
-                      <th className="text-left p-3 border-b border-border font-medium w-1/4">Flow</th>
-                      <th className="text-left p-3 border-b border-border font-medium w-2/5">Minimum Required Data</th>
-                      <th className="text-left p-3 border-b border-border font-medium">Reason</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {study.merryDataAudit.minEssentialData.map((row, i) => (
-                      <tr key={i} className="border-b border-border/50 hover:bg-muted/20">
-                        <td className="p-3 font-medium">{row.flow}</td>
-                        <td className="p-3 text-muted-foreground">{row.data}</td>
-                        <td className="p-3 text-muted-foreground">{row.reason}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                {audit.experienceFlow && audit.experienceFlow.length > 0 ? (
+                  <>
+                    {/* Experience Flow Overview */}
+                    <div className="mb-10">
+                      <h4 className="font-serif text-lg mb-4 text-primary">Experience Flow Overview</h4>
+                      <div className="overflow-x-auto">
+                        <table className="w-full text-sm border border-border">
+                          <thead>
+                            <tr className="bg-muted/50">
+                              <th className="text-left p-3 border-b border-border font-medium">Step</th>
+                              <th className="text-left p-3 border-b border-border font-medium">Name</th>
+                              <th className="text-left p-3 border-b border-border font-medium">Description</th>
+                              <th className="text-left p-3 border-b border-border font-medium">Channel</th>
+                              <th className="text-left p-3 border-b border-border font-medium">Data Created/Used</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {audit.experienceFlow.map((row, i) => (
+                              <tr key={i} className="border-b border-border/50 hover:bg-muted/20">
+                                <td className="p-3 text-muted-foreground">{row.step}</td>
+                                <td className="p-3 font-medium">{row.name}</td>
+                                <td className="p-3 text-muted-foreground">{row.description}</td>
+                                <td className="p-3 text-muted-foreground">{row.channel}</td>
+                                <td className="p-3 text-muted-foreground">{row.data}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                    {/* Data Points Audit Table */}
+                    {audit.dataPoints && audit.dataPoints.length > 0 && (
+                      <div className="mb-10">
+                        <h4 className="font-serif text-lg mb-4 text-primary">Data Points Audit</h4>
+                        <div className="overflow-x-auto">
+                          <table className="w-full text-sm border border-border">
+                            <thead>
+                              <tr className="bg-muted/50">
+                                <th className="text-left p-3 border-b border-border font-medium">Data Point</th>
+                                <th className="text-left p-3 border-b border-border font-medium">Source</th>
+                                <th className="text-left p-3 border-b border-border font-medium">Used By</th>
+                                <th className="text-left p-3 border-b border-border font-medium">Purpose</th>
+                                <th className="text-left p-3 border-b border-border font-medium">Freq</th>
+                                <th className="text-left p-3 border-b border-border font-medium">Issues</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {audit.dataPoints.map((row, i) => (
+                                <tr key={i} className="border-b border-border/50 hover:bg-muted/20">
+                                  <td className="p-3 font-medium">{row.dataPoint}</td>
+                                  <td className="p-3 text-muted-foreground">{row.source}</td>
+                                  <td className="p-3 text-muted-foreground">{row.usedBy}</td>
+                                  <td className="p-3 text-muted-foreground">{row.purpose}</td>
+                                  <td className="p-3 text-muted-foreground text-center">{row.frequency}</td>
+                                  <td className="p-3 text-muted-foreground">{row.issues || '—'}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Minimum Essential Data */}
+                    {audit.minEssentialData && audit.minEssentialData.length > 0 && (
+                      <div className="mb-10">
+                        <h4 className="font-serif text-lg mb-4 text-primary">Minimum Essential Data</h4>
+                        <div className="overflow-x-auto">
+                          <table className="w-full text-sm border border-border">
+                            <thead>
+                              <tr className="bg-muted/50">
+                                <th className="text-left p-3 border-b border-border font-medium w-1/4">Flow</th>
+                                <th className="text-left p-3 border-b border-border font-medium w-2/5">Minimum Required Data</th>
+                                <th className="text-left p-3 border-b border-border font-medium">Reason</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {audit.minEssentialData.map((row, i) => (
+                                <tr key={i} className="border-b border-border/50 hover:bg-muted/20">
+                                  <td className="p-3 font-medium">{row.flow}</td>
+                                  <td className="p-3 text-muted-foreground">{row.data}</td>
+                                  <td className="p-3 text-muted-foreground">{row.reason}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <div className="p-8 border-2 border-dashed border-border/50 bg-muted/20 flex items-center justify-center">
+                    <p className="text-muted-foreground italic">Content placeholder – {audit.actor} data audit</p>
+                  </div>
+                )}
               </div>
-            </div>
+            ))}
 
             {/* Overlapping/Shared Data Map */}
             <div>
