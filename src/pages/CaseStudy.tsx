@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, X, ChevronDown } from 'lucide-react';
 import CaseStudySidebar from '@/components/CaseStudySidebar';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import streeAffinity1 from '@/assets/stree-affinity-1.png';
 import streeAffinity2 from '@/assets/stree-affinity-2.png';
 import streeAffinity3 from '@/assets/stree-affinity-3.png';
@@ -2289,33 +2290,73 @@ const CaseStudy = () => {
       {/* Merry Health Platform Audit - Phase-by-Phase Analysis */}
       {slug === 'merry-health' && <section id="merry-audit" className="px-6 lg:px-12 py-16 scroll-mt-20">
           <div className="container mx-auto max-w-6xl">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">1</span>
-              <h2 className="font-serif text-2xl">Audit</h2>
-            </div>
-            <p className="text-muted-foreground mb-6">We conducted a data and platform audit for each phase to understand exactly where we can align better with user needs and business goals.</p>
+            <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2 block">Research</span>
+            <h2 className="font-serif text-3xl mb-4">Deep-Dive Audit Across All Phases</h2>
+            <p className="text-muted-foreground mb-10 max-w-3xl">We conducted a data and platform audit for each phase to understand exactly where we can align better with user needs and business goals.</p>
 
-            {/* Data Audit Link */}
-            <div className="mb-10 p-4 rounded-lg border border-border bg-card flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <span className="text-sm font-medium">Data Audit</span>
-                <span className="text-xs text-muted-foreground">— Understanding data ownership, initiation, and decision points across all actors</span>
+            {/* Summary Insight Cards */}
+            <div className="grid md:grid-cols-2 gap-6 mb-12">
+              <div className="relative overflow-hidden p-6 rounded-2xl border border-border bg-card">
+                <span className="absolute -top-4 -left-2 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">01</span>
+                <div className="relative z-10">
+                  <h3 className="font-serif text-lg mb-2">Intake & Data Capture</h3>
+                  <p className="text-sm text-muted-foreground mb-3">System expects structured forms, but staff use WhatsApp, calls, and paper during emergencies—causing delays and errors.</p>
+                  <p className="text-xs italic text-muted-foreground">"We can't fill long forms when a patient is critical."</p>
+                </div>
               </div>
-              <a href="https://www.figma.com/design/yH9NNuzOQov4XIgkz5D2jo/Project-Merry-Health?node-id=1-8&t=lxBxhBwv6frOZBTQ-1" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs text-primary hover:underline px-3 py-1.5 rounded bg-primary/10">
-                <svg className="w-3.5 h-3.5" viewBox="0 0 38 57" fill="currentColor">
-                  <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" />
-                  <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" />
-                  <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" />
-                  <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" />
-                  <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" />
-                </svg>
-                View in Figma
-              </a>
+              <div className="relative overflow-hidden p-6 rounded-2xl border border-border bg-card">
+                <span className="absolute -top-4 -left-2 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">02</span>
+                <div className="relative z-10">
+                  <h3 className="font-serif text-lg mb-2">Driver Assignment</h3>
+                  <p className="text-sm text-muted-foreground mb-3">Manual coordination via calls and WhatsApp creates delays. No urgency visibility or smart matching.</p>
+                  <p className="text-xs italic text-muted-foreground">"I call 3-4 drivers before one confirms."</p>
+                </div>
+              </div>
+              <div className="relative overflow-hidden p-6 rounded-2xl border border-border bg-card">
+                <span className="absolute -top-4 -left-2 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">03</span>
+                <div className="relative z-10">
+                  <h3 className="font-serif text-lg mb-2">En-Route Tracking</h3>
+                  <p className="text-sm text-muted-foreground mb-3">No real-time tracking or status updates. Everyone relies on manual check-ins and phone calls.</p>
+                  <p className="text-xs italic text-muted-foreground">"Family keeps calling us for ETA updates."</p>
+                </div>
+              </div>
+              <div className="relative overflow-hidden p-6 rounded-2xl border border-border bg-card">
+                <span className="absolute -top-4 -left-2 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">04</span>
+                <div className="relative z-10">
+                  <h3 className="font-serif text-lg mb-2">Handover & Closure</h3>
+                  <p className="text-sm text-muted-foreground mb-3">Manual timestamps and bulk closure lead to inaccurate records, unreliable SLAs, and audit failures.</p>
+                  <p className="text-xs italic text-muted-foreground">"We update records at the end of the day."</p>
+                </div>
+              </div>
             </div>
 
-            <div className="space-y-8">
-              {/* Phase 1: Intake */}
-              <PlatformAuditPhase phase="Phase 1" title="Intake" severity="high" description="First point of contact where hospital staff capture patient and case details during an emergency. It sets the foundation for the entire dispatch workflow by collecting the minimum critical information needed to initiate an ambulance request." taskGoal="Capture dispatch-critical information quickly and reliably" actorsInvolved="Patient/Patient Family, Hospital Receptionist, Merry Health Associate" issues={["Intake workflow requires full data upfront; staff rely on paper/WhatsApp.", "Data easily lost/mixed due to multitasking; no protection for in-progress entries.", "No priority context; admins rely on memory & manual judgment during panic."]} businessImpact={["Dispatch delays, errors, low hospital adoption.", "Inaccurate cases, rework, SLA inconsistencies.", "Wrong ambulance type, poor triage, slower response."]} recommendations={["Enable progressive intake (critical info first → rest later).", "Introduce workflow safeguards (preserve partial data, prevent overwrite).", "Surface priority & critical context early in intake workflow."]} platformFindings={[{
+            {/* Expandable Details */}
+            <Collapsible>
+              <CollapsibleTrigger className="flex items-center gap-3 text-sm text-primary hover:underline mb-6 group">
+                <ChevronDown className="w-4 h-4 transition-transform group-data-[state=open]:rotate-180" />
+                <span>View detailed phase-by-phase audit findings</span>
+              </CollapsibleTrigger>
+              <CollapsibleContent className="space-y-8">
+                {/* Data Audit Link */}
+                <div className="p-4 rounded-lg border border-border bg-card flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <span className="text-sm font-medium">Data Audit</span>
+                    <span className="text-xs text-muted-foreground">— Understanding data ownership, initiation, and decision points across all actors</span>
+                  </div>
+                  <a href="https://www.figma.com/design/yH9NNuzOQov4XIgkz5D2jo/Project-Merry-Health?node-id=1-8&t=lxBxhBwv6frOZBTQ-1" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs text-primary hover:underline px-3 py-1.5 rounded bg-primary/10">
+                    <svg className="w-3.5 h-3.5" viewBox="0 0 38 57" fill="currentColor">
+                      <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" />
+                      <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" />
+                      <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" />
+                      <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" />
+                      <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" />
+                    </svg>
+                    View in Figma
+                  </a>
+                </div>
+
+                {/* Phase 1: Intake */}
+                <PlatformAuditPhase phase="Phase 1" title="Intake" severity="high" description="First point of contact where hospital staff capture patient and case details during an emergency. It sets the foundation for the entire dispatch workflow by collecting the minimum critical information needed to initiate an ambulance request." taskGoal="Capture dispatch-critical information quickly and reliably" actorsInvolved="Patient/Patient Family, Hospital Receptionist, Merry Health Associate" issues={["Intake workflow requires full data upfront; staff rely on paper/WhatsApp.", "Data easily lost/mixed due to multitasking; no protection for in-progress entries.", "No priority context; admins rely on memory & manual judgment during panic."]} businessImpact={["Dispatch delays, errors, low hospital adoption.", "Inaccurate cases, rework, SLA inconsistencies.", "Wrong ambulance type, poor triage, slower response."]} recommendations={["Enable progressive intake (critical info first → rest later).", "Introduce workflow safeguards (preserve partial data, prevent overwrite).", "Surface priority & critical context early in intake workflow."]} platformFindings={[{
             number: 1,
             title: "Intake workflow is not designed for emergency-mode, leading to slow, error-prone data capture.",
             description: "The intake process demands complete, structured data upfront, forcing staff to use paper, memory, and WhatsApp during emergencies — slowing dispatch and increasing errors.",
@@ -2327,8 +2368,8 @@ const CaseStudy = () => {
             recommendations: ["Auto-save partial entries continuously.", "Prevent overwrites when switching cases or calls.", "Support resume-from-where-left workflows.", "Ensure no re-entry of previously captured data."]
           }]} onImageClick={setLightboxImage} />
 
-              {/* Phase 2: Assign */}
-              <PlatformAuditPhase phase="Phase 2" title="Assign" severity="high" description="Connects a new case to an available ambulance through validation, coordination, and confirmation. Delays here slow dispatch and break workflow continuity." taskGoal="Match the right ambulance to the right case, fast and with full clarity" actorsInvolved="Merry Health Associate, Ambulance Driver, Hospital Admins" issues={["Manual driver coordination.", "No urgency/multi-case visibility.", "Weak ambulance discovery."]} businessImpact={["Slow dispatch, high ops load, low trust.", "Mis-prioritization, SLA failures, patient risk.", "Delayed decisions, wrong selection, dependency on manual channels."]} recommendations={["Enable system-led assignment & real-time driver status.", "Surface urgency & separate simultaneous cases.", "Improve availability-led discovery & streamline assignment path."]} platformFindings={[{
+                {/* Phase 2: Assign */}
+                <PlatformAuditPhase phase="Phase 2" title="Assign" severity="high" description="Connects a new case to an available ambulance through validation, coordination, and confirmation. Delays here slow dispatch and break workflow continuity." taskGoal="Match the right ambulance to the right case, fast and with full clarity" actorsInvolved="Merry Health Associate, Ambulance Driver, Hospital Admins" issues={["Manual driver coordination.", "No urgency/multi-case visibility.", "Weak ambulance discovery."]} businessImpact={["Slow dispatch, high ops load, low trust.", "Mis-prioritization, SLA failures, patient risk.", "Delayed decisions, wrong selection, dependency on manual channels."]} recommendations={["Enable system-led assignment & real-time driver status.", "Surface urgency & separate simultaneous cases.", "Improve availability-led discovery & streamline assignment path."]} platformFindings={[{
             number: 1,
             title: "Assignment depends on manual driver coordination, causing delays and uncertainty.",
             description: "MHA must call and follow up with multiple drivers to confirm availability, leading to unpredictable delays and inconsistent dispatch times.",
@@ -2345,8 +2386,8 @@ const CaseStudy = () => {
             recommendations: ["Use availability-driven discovery aligned with workflow needs.", "Support quick narrowing of options (urgency, type, proximity).", "Create a clear, confident assignment path with predictable next steps."]
           }]} onImageClick={setLightboxImage} />
 
-              {/* Phase 3: En-Route */}
-              <PlatformAuditPhase phase="Phase 3" title="En-Route" severity="high" description="The En Route phase covers everything that happens after an ambulance has been assigned and the driver begins traveling toward the pickup location. This is a high-dependency, high-visibility phase where hospitals, MHAs, and patient families all expect accurate, real-time updates." taskGoal="To provide reliable, continuous visibility of the ambulance's movement, status, and ETA across all parties" actorsInvolved="Ambulance Driver, Merry Health Associate, Hospital Admins, Patient Party" issues={["No reliable real-time tracking causing uncertainty and delays.", "Active rides not surfaced or prioritized causing delayed monitoring and missed escalations.", "Ride information hard to parse — unclear, long, and inconsistent."]} businessImpact={["Constant manual follow-ups.", "SLA Failures.", "Delayed decisions, dependency on manual channels."]} recommendations={["Provide continuous, system-led tracking with auto-updating ETA visible to all roles.", "Prioritize and clearly surface ongoing trips for quick access and proactive monitoring.", "Present critical information upfront with structured, consistent ride detail organization."]} platformFindings={[{
+                {/* Phase 3: En-Route */}
+                <PlatformAuditPhase phase="Phase 3" title="En-Route" severity="high" description="The En Route phase covers everything that happens after an ambulance has been assigned and the driver begins traveling toward the pickup location. This is a high-dependency, high-visibility phase where hospitals, MHAs, and patient families all expect accurate, real-time updates." taskGoal="To provide reliable, continuous visibility of the ambulance's movement, status, and ETA across all parties" actorsInvolved="Ambulance Driver, Merry Health Associate, Hospital Admins, Patient Party" issues={["No reliable real-time tracking causing uncertainty and delays.", "Active rides not surfaced or prioritized causing delayed monitoring and missed escalations.", "Ride information hard to parse — unclear, long, and inconsistent."]} businessImpact={["Constant manual follow-ups.", "SLA Failures.", "Delayed decisions, dependency on manual channels."]} recommendations={["Provide continuous, system-led tracking with auto-updating ETA visible to all roles.", "Prioritize and clearly surface ongoing trips for quick access and proactive monitoring.", "Present critical information upfront with structured, consistent ride detail organization."]} platformFindings={[{
             number: 1,
             title: "Active rides aren't clearly surfaced → delays in monitoring & intervention",
             description: "Ongoing rides are visually buried, not distinguishable from other records, and lack clear prioritization — making it hard for MHAs and admins to monitor critical trips.",
@@ -2358,8 +2399,8 @@ const CaseStudy = () => {
             recommendations: ["Present status-critical information upfront for fast scanning.", "Organize ride details into logical, workflow-aligned sections.", "Ensure consistent, clear time/event formatting for reliable reporting and decision-making."]
           }]} onImageClick={setLightboxImage} />
 
-              {/* Phase 4: Handover & Close */}
-              <PlatformAuditPhase phase="Phase 4" title="Handover & Close" severity="high" description="This phase covers the moment the ambulance reaches the hospital, the patient is handed over, and the trip is officially closed. It is a data-critical phase where timestamps, arrival confirmation, and final trip details must be accurately captured." taskGoal="To accurately confirm arrival, document the handover, and close the trip with complete and consistent data so that operations, reporting, billing, and SLAs stay reliable" actorsInvolved="Ambulance Driver, Merry Health Associate, Hospital Admins, Management / Reporting Teams" issues={["Inaccurate or missing timestamps due to manual confirmation.", "Overwritten or incomplete data due to manual, unchecked trip closure.", "Inaccurate case records & unsynced reports."]} businessImpact={["Unreliable SLAs and weak hospital trust.", "Poor data quality → broken reports, billing disputes, and audit failures.", "Inconsistent or incorrect reports, harming credibility."]} recommendations={["Enable system-led arrival validation to ensure accurate, consistent timestamps.", "Introduce closure validation workflow that checks required data before finalizing.", "Support guided, real-time closure with prompts."]} platformFindings={[{
+                {/* Phase 4: Handover & Close */}
+                <PlatformAuditPhase phase="Phase 4" title="Handover & Close" severity="high" description="This phase covers the moment the ambulance reaches the hospital, the patient is handed over, and the trip is officially closed. It is a data-critical phase where timestamps, arrival confirmation, and final trip details must be accurately captured." taskGoal="To accurately confirm arrival, document the handover, and close the trip with complete and consistent data so that operations, reporting, billing, and SLAs stay reliable" actorsInvolved="Ambulance Driver, Merry Health Associate, Hospital Admins, Management / Reporting Teams" issues={["Inaccurate or missing timestamps due to manual confirmation.", "Overwritten or incomplete data due to manual, unchecked trip closure.", "Inaccurate case records & unsynced reports."]} businessImpact={["Unreliable SLAs and weak hospital trust.", "Poor data quality → broken reports, billing disputes, and audit failures.", "Inconsistent or incorrect reports, harming credibility."]} recommendations={["Enable system-led arrival validation to ensure accurate, consistent timestamps.", "Introduce closure validation workflow that checks required data before finalizing.", "Support guided, real-time closure with prompts."]} platformFindings={[{
             number: 1,
             title: "Manual arrival & closure entries → inaccurate, inconsistent timestamps",
             description: "Arrival and closure are entered manually (often delayed or in bulk), resulting in incorrect timestamps, missing events, and unreliable trip history.",
@@ -2370,191 +2411,214 @@ const CaseStudy = () => {
             description: "Static KPIs and limited reporting views prevent HAs and management from verifying trip details, diagnosing issues, or reconciling discrepancies across hospitals.",
             recommendations: ["Provide workflow-aligned drill-downs from KPIs to individual trip data.", "Standardize event labels and timestamps across all reporting surfaces.", "Ensure reports reflect synced, consistent, end-to-end trip data."]
           }]} onImageClick={setLightboxImage} />
-            </div>
+              </CollapsibleContent>
+            </Collapsible>
           </div>
         </section>}
 
-      {/* Merry Health System Flow & Opportunity Mapping - Compact Card Layout */}
+      {/* Merry Health System Flow & Opportunity Mapping */}
       {slug === 'merry-health' && study.merrySystemFlow && <section id="merry-mapping" className="px-6 lg:px-12 py-16 bg-card scroll-mt-20">
           <div className="container mx-auto max-w-6xl">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">2</span>
-              <h2 className="font-serif text-2xl">System Flow & Opportunity Mapping</h2>
-            </div>
-            <p className="text-muted-foreground mb-10">{study.merrySystemFlow.intro}</p>
+            <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2 block">Mapping</span>
+            <h2 className="font-serif text-3xl mb-4">Understanding the System & Opportunities</h2>
+            <p className="text-muted-foreground mb-10 max-w-3xl">{study.merrySystemFlow.intro}</p>
 
-            {/* Compact System Flow Card */}
-            <div className="mb-10 p-6 rounded-xl border border-border bg-background">
-              <div className="grid lg:grid-cols-[1fr_280px] gap-6">
-                {/* Left: Findings Summary */}
-                <div className="space-y-4">
-                  <h3 className="font-serif text-lg">System Flow Analysis</h3>
-                  <p className="text-sm text-muted-foreground">{study.merrySystemFlow.currentFlow.description}</p>
-                  
-                  <div className="grid md:grid-cols-2 gap-4">
-                    {/* Current Issues */}
-                    <div className="p-4 rounded-lg bg-muted/50 border border-border">
-                      <h4 className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-wider">Key Issues</h4>
-                      <ul className="space-y-1.5">
-                        {study.merrySystemFlow.currentFlow.painPoints.slice(0, 4).map((point, i) => <li key={i} className="text-xs text-muted-foreground flex gap-2">
-                            <span className="text-muted-foreground shrink-0">×</span>
-                            <span>{point}</span>
-                          </li>)}
-                      </ul>
-                    </div>
-                    
-                    {/* Improvements */}
-                    <div className="p-4 rounded-lg bg-primary/5 border border-primary/20">
-                      <h4 className="text-xs font-semibold text-primary mb-2 uppercase tracking-wider">Key Improvements</h4>
-                      <ul className="space-y-1.5">
-                        {study.merrySystemFlow.idealFlow.improvements.slice(0, 4).map((point, i) => <li key={i} className="text-xs text-muted-foreground flex gap-2">
-                            <span className="text-primary shrink-0">✓</span>
-                            <span>{point}</span>
-                          </li>)}
-                      </ul>
-                    </div>
+            {/* Summary Insight Cards */}
+            <div className="grid md:grid-cols-2 gap-6 mb-12">
+              <div className="relative overflow-hidden p-6 rounded-2xl border border-border bg-background">
+                <span className="absolute -top-4 -left-2 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">01</span>
+                <div className="relative z-10">
+                  <h3 className="font-serif text-lg mb-2">System Flow Analysis</h3>
+                  <p className="text-sm text-muted-foreground mb-3">Multiple loops and manual intervention points cause delays and errors across the dispatch workflow.</p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-2 py-1 bg-muted text-muted-foreground rounded text-xs">Manual coordination</span>
+                    <span className="px-2 py-1 bg-muted text-muted-foreground rounded text-xs">Fragmented data</span>
                   </div>
                 </div>
-
-                {/* Right: Image Preview Card */}
-                <div className="lg:sticky lg:top-6 h-fit">
-                  <div className="bg-muted/20 border border-border rounded-lg p-3">
-                    <span className="text-xs font-medium text-muted-foreground mb-2 block">2 diagrams attached</span>
-                    <div className="space-y-2">
-                      <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryCurrentFlow)}>
-                        <img src={merryCurrentFlow} alt="Current System Flow" className="w-full h-20 object-cover opacity-80 hover:opacity-100 transition-opacity" />
-                        <div className="bg-muted px-2 py-1">
-                          <span className="text-[10px] text-muted-foreground font-medium">Current Flow</span>
-                        </div>
-                      </div>
-                      <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryIdealFlow)}>
-                        <img src={merryIdealFlow} alt="Ideal System Flow" className="w-full h-20 object-cover opacity-80 hover:opacity-100 transition-opacity" />
-                        <div className="bg-primary/10 px-2 py-1">
-                          <span className="text-[10px] text-primary font-medium">Ideal Flow</span>
-                        </div>
-                      </div>
-                    </div>
-                    {/* Figma Link */}
-                    <a href="https://www.figma.com/design/yH9NNuzOQov4XIgkz5D2jo/Project-Merry-Health?node-id=2-493&t=lxBxhBwv6frOZBTQ-1" target="_blank" rel="noopener noreferrer" className="mt-3 flex items-center gap-2 text-xs text-primary hover:underline">
-                      <svg className="w-3.5 h-3.5" viewBox="0 0 38 57" fill="currentColor">
-                        <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" />
-                        <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" />
-                        <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" />
-                        <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" />
-                        <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" />
-                      </svg>
-                      View in Figma
-                    </a>
+              </div>
+              <div className="relative overflow-hidden p-6 rounded-2xl border border-border bg-background">
+                <span className="absolute -top-4 -left-2 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">02</span>
+                <div className="relative z-10">
+                  <h3 className="font-serif text-lg mb-2">Opportunity Mapping</h3>
+                  <p className="text-sm text-muted-foreground mb-3">Key opportunities prioritized by impact: automation, real-time tracking, and structured data capture.</p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-2 py-1 bg-primary/10 text-primary rounded text-xs">40% faster dispatch</span>
+                    <span className="px-2 py-1 bg-primary/10 text-primary rounded text-xs">60% fewer calls</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Compact Opportunity Mapping Card */}
-            <div className="mb-10 p-6 rounded-xl border border-border bg-background">
-              <div className="grid lg:grid-cols-[1fr_280px] gap-6">
-                {/* Left: Opportunity Summary */}
-                <div className="space-y-4">
-                  <h3 className="font-serif text-lg">Opportunity Mapping</h3>
-                  <p className="text-sm text-muted-foreground">From the system flow analysis, we identified key opportunities for improvement and mapped them to their potential impact and success metrics.</p>
-                  
-                  <div className="space-y-3">
-                    <div className="p-4 rounded-lg bg-muted/20 border border-border/50">
-                      <h5 className="text-sm font-semibold mb-2">Priority Opportunities</h5>
-                      <ul className="space-y-2">
-                        <li className="text-xs text-muted-foreground flex justify-between items-center">
-                          <span className="flex gap-2"><span className="text-primary">→</span>Automate dispatch assignment</span>
-                          <span className="px-1.5 py-0.5 bg-destructive/10 text-destructive rounded text-[10px]">High</span>
-                        </li>
-                        <li className="text-xs text-muted-foreground flex justify-between items-center">
-                          <span className="flex gap-2"><span className="text-primary">→</span>Real-time status tracking</span>
-                          <span className="px-1.5 py-0.5 bg-destructive/10 text-destructive rounded text-[10px]">High</span>
-                        </li>
-                        <li className="text-xs text-muted-foreground flex justify-between items-center">
-                          <span className="flex gap-2"><span className="text-primary">→</span>Structured data capture</span>
-                          <span className="px-1.5 py-0.5 bg-primary/10 text-primary rounded text-[10px]">Med</span>
-                        </li>
-                      </ul>
-                    </div>
-                    
-                    <div className="p-4 rounded-lg bg-primary/5 border border-primary/20">
-                      <h5 className="text-xs uppercase tracking-wider text-primary font-medium mb-2">Expected Impact</h5>
-                      <ul className="space-y-1">
-                        <li className="text-xs text-muted-foreground">• Avg. dispatch time ↓ by 40%</li>
-                        <li className="text-xs text-muted-foreground">• Inbound calls ↓ by 60%</li>
-                        <li className="text-xs text-muted-foreground">• Data error rate ↓ by 70%</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Right: Image Preview Card */}
-                <div className="lg:sticky lg:top-6 h-fit">
-                  <div className="bg-muted/20 border border-border rounded-lg p-3">
-                    <span className="text-xs font-medium text-muted-foreground mb-2 block">2 diagrams attached</span>
-                    <div className="space-y-2">
-                      <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryOpportunityMapping)}>
-                        <img src={merryOpportunityMapping} alt="Opportunity Mapping" className="w-full h-16 object-cover opacity-80 hover:opacity-100 transition-opacity" />
-                        <div className="bg-muted/30 px-2 py-1">
-                          <span className="text-[10px] text-muted-foreground font-medium">Opportunity Map</span>
+            {/* Expandable Details */}
+            <Collapsible>
+              <CollapsibleTrigger className="flex items-center gap-3 text-sm text-primary hover:underline mb-6 group">
+                <ChevronDown className="w-4 h-4 transition-transform group-data-[state=open]:rotate-180" />
+                <span>View detailed flow analysis and opportunity mapping</span>
+              </CollapsibleTrigger>
+              <CollapsibleContent className="space-y-10">
+                {/* System Flow Card */}
+                <div className="p-6 rounded-xl border border-border bg-background">
+                  <div className="grid lg:grid-cols-[1fr_280px] gap-6">
+                    <div className="space-y-4">
+                      <h3 className="font-serif text-lg">System Flow Analysis</h3>
+                      <p className="text-sm text-muted-foreground">{study.merrySystemFlow.currentFlow.description}</p>
+                      
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="p-4 rounded-lg bg-muted/50 border border-border">
+                          <h4 className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-wider">Key Issues</h4>
+                          <ul className="space-y-1.5">
+                            {study.merrySystemFlow.currentFlow.painPoints.slice(0, 4).map((point, i) => <li key={i} className="text-xs text-muted-foreground flex gap-2">
+                                <span className="text-muted-foreground shrink-0">×</span>
+                                <span>{point}</span>
+                              </li>)}
+                          </ul>
                         </div>
-                      </div>
-                      <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryOpportunityRefined)}>
-                        <img src={merryOpportunityRefined} alt="Refined Opportunities" className="w-full h-16 object-cover opacity-80 hover:opacity-100 transition-opacity" />
-                        <div className="bg-primary/10 px-2 py-1">
-                          <span className="text-[10px] text-primary font-medium">Refined Mapping</span>
+                        <div className="p-4 rounded-lg bg-primary/5 border border-primary/20">
+                          <h4 className="text-xs font-semibold text-primary mb-2 uppercase tracking-wider">Key Improvements</h4>
+                          <ul className="space-y-1.5">
+                            {study.merrySystemFlow.idealFlow.improvements.slice(0, 4).map((point, i) => <li key={i} className="text-xs text-muted-foreground flex gap-2">
+                                <span className="text-primary shrink-0">✓</span>
+                                <span>{point}</span>
+                              </li>)}
+                          </ul>
                         </div>
                       </div>
                     </div>
-                    {/* Figma Link */}
-                    <a href="https://www.figma.com/design/yH9NNuzOQov4XIgkz5D2jo/Project-Merry-Health?node-id=10-11098&t=lxBxhBwv6frOZBTQ-1" target="_blank" rel="noopener noreferrer" className="mt-3 flex items-center gap-2 text-xs text-primary hover:underline">
-                      <svg className="w-3.5 h-3.5" viewBox="0 0 38 57" fill="currentColor">
-                        <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" />
-                        <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" />
-                        <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" />
-                        <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" />
-                        <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" />
-                      </svg>
-                      View in Figma
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            {/* Compact Phase Mapping Card */}
-            <div className="p-6 rounded-xl border border-border bg-background">
-              <div className="grid lg:grid-cols-[1fr_280px] gap-6">
-                {/* Left: Phase Mapping Summary */}
-                <div className="space-y-4">
-                  <h3 className="font-serif text-lg">Phase Mapping</h3>
-                  <p className="text-sm text-muted-foreground">{study.merrySystemFlow.phaseMapping.description}</p>
-                  
-                  <div className="p-4 rounded-lg bg-muted/20 border border-border/50">
-                    <h5 className="text-sm font-semibold mb-3">Why Phase Breakdown Matters</h5>
-                    <ul className="space-y-2">
-                      {study.merrySystemFlow.phaseMapping.breakdownReasons.map((reason, i) => <li key={i} className="text-xs text-muted-foreground flex gap-2">
-                          <span className="text-primary shrink-0">{i + 1}.</span>
-                          <span>{reason}</span>
-                        </li>)}
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Right: Image Preview Card */}
-                <div className="lg:sticky lg:top-6 h-fit">
-                  <div className="bg-muted/20 border border-border rounded-lg p-3">
-                    <span className="text-xs font-medium text-muted-foreground mb-2 block">1 diagram attached</span>
-                    <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryPhaseMapping)}>
-                      <img src={merryPhaseMapping} alt="Phase Mapping Matrix" className="w-full object-cover opacity-80 hover:opacity-100 transition-opacity" />
-                      <div className="bg-muted/30 px-2 py-1">
-                        <span className="text-[10px] text-muted-foreground font-medium">Actor × Phase Matrix</span>
+                    <div className="lg:sticky lg:top-6 h-fit">
+                      <div className="bg-muted/20 border border-border rounded-lg p-3">
+                        <span className="text-xs font-medium text-muted-foreground mb-2 block">2 diagrams attached</span>
+                        <div className="space-y-2">
+                          <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryCurrentFlow)}>
+                            <img src={merryCurrentFlow} alt="Current System Flow" className="w-full h-20 object-cover opacity-80 hover:opacity-100 transition-opacity" />
+                            <div className="bg-muted px-2 py-1">
+                              <span className="text-[10px] text-muted-foreground font-medium">Current Flow</span>
+                            </div>
+                          </div>
+                          <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryIdealFlow)}>
+                            <img src={merryIdealFlow} alt="Ideal System Flow" className="w-full h-20 object-cover opacity-80 hover:opacity-100 transition-opacity" />
+                            <div className="bg-primary/10 px-2 py-1">
+                              <span className="text-[10px] text-primary font-medium">Ideal Flow</span>
+                            </div>
+                          </div>
+                        </div>
+                        <a href="https://www.figma.com/design/yH9NNuzOQov4XIgkz5D2jo/Project-Merry-Health?node-id=2-493&t=lxBxhBwv6frOZBTQ-1" target="_blank" rel="noopener noreferrer" className="mt-3 flex items-center gap-2 text-xs text-primary hover:underline">
+                          <svg className="w-3.5 h-3.5" viewBox="0 0 38 57" fill="currentColor">
+                            <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" />
+                            <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" />
+                            <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" />
+                            <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" />
+                            <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" />
+                          </svg>
+                          View in Figma
+                        </a>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
+
+                {/* Opportunity Mapping Card */}
+                <div className="p-6 rounded-xl border border-border bg-background">
+                  <div className="grid lg:grid-cols-[1fr_280px] gap-6">
+                    <div className="space-y-4">
+                      <h3 className="font-serif text-lg">Opportunity Mapping</h3>
+                      <p className="text-sm text-muted-foreground">From the system flow analysis, we identified key opportunities for improvement and mapped them to their potential impact and success metrics.</p>
+                      
+                      <div className="space-y-3">
+                        <div className="p-4 rounded-lg bg-muted/20 border border-border/50">
+                          <h5 className="text-sm font-semibold mb-2">Priority Opportunities</h5>
+                          <ul className="space-y-2">
+                            <li className="text-xs text-muted-foreground flex justify-between items-center">
+                              <span className="flex gap-2"><span className="text-primary">→</span>Automate dispatch assignment</span>
+                              <span className="px-1.5 py-0.5 bg-destructive/10 text-destructive rounded text-[10px]">High</span>
+                            </li>
+                            <li className="text-xs text-muted-foreground flex justify-between items-center">
+                              <span className="flex gap-2"><span className="text-primary">→</span>Real-time status tracking</span>
+                              <span className="px-1.5 py-0.5 bg-destructive/10 text-destructive rounded text-[10px]">High</span>
+                            </li>
+                            <li className="text-xs text-muted-foreground flex justify-between items-center">
+                              <span className="flex gap-2"><span className="text-primary">→</span>Structured data capture</span>
+                              <span className="px-1.5 py-0.5 bg-primary/10 text-primary rounded text-[10px]">Med</span>
+                            </li>
+                          </ul>
+                        </div>
+                        
+                        <div className="p-4 rounded-lg bg-primary/5 border border-primary/20">
+                          <h5 className="text-xs uppercase tracking-wider text-primary font-medium mb-2">Expected Impact</h5>
+                          <ul className="space-y-1">
+                            <li className="text-xs text-muted-foreground">• Avg. dispatch time ↓ by 40%</li>
+                            <li className="text-xs text-muted-foreground">• Inbound calls ↓ by 60%</li>
+                            <li className="text-xs text-muted-foreground">• Data error rate ↓ by 70%</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="lg:sticky lg:top-6 h-fit">
+                      <div className="bg-muted/20 border border-border rounded-lg p-3">
+                        <span className="text-xs font-medium text-muted-foreground mb-2 block">2 diagrams attached</span>
+                        <div className="space-y-2">
+                          <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryOpportunityMapping)}>
+                            <img src={merryOpportunityMapping} alt="Opportunity Mapping" className="w-full h-16 object-cover opacity-80 hover:opacity-100 transition-opacity" />
+                            <div className="bg-muted/30 px-2 py-1">
+                              <span className="text-[10px] text-muted-foreground font-medium">Opportunity Map</span>
+                            </div>
+                          </div>
+                          <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryOpportunityRefined)}>
+                            <img src={merryOpportunityRefined} alt="Refined Opportunities" className="w-full h-16 object-cover opacity-80 hover:opacity-100 transition-opacity" />
+                            <div className="bg-primary/10 px-2 py-1">
+                              <span className="text-[10px] text-primary font-medium">Refined Mapping</span>
+                            </div>
+                          </div>
+                        </div>
+                        <a href="https://www.figma.com/design/yH9NNuzOQov4XIgkz5D2jo/Project-Merry-Health?node-id=10-11098&t=lxBxhBwv6frOZBTQ-1" target="_blank" rel="noopener noreferrer" className="mt-3 flex items-center gap-2 text-xs text-primary hover:underline">
+                          <svg className="w-3.5 h-3.5" viewBox="0 0 38 57" fill="currentColor">
+                            <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" />
+                            <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" />
+                            <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" />
+                            <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" />
+                            <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" />
+                          </svg>
+                          View in Figma
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Phase Mapping Card */}
+                <div className="p-6 rounded-xl border border-border bg-background">
+                  <div className="grid lg:grid-cols-[1fr_280px] gap-6">
+                    <div className="space-y-4">
+                      <h3 className="font-serif text-lg">Phase Mapping</h3>
+                      <p className="text-sm text-muted-foreground">{study.merrySystemFlow.phaseMapping.description}</p>
+                      
+                      <div className="p-4 rounded-lg bg-muted/20 border border-border/50">
+                        <h5 className="text-sm font-semibold mb-3">Why Phase Breakdown Matters</h5>
+                        <ul className="space-y-2">
+                          {study.merrySystemFlow.phaseMapping.breakdownReasons.map((reason, i) => <li key={i} className="text-xs text-muted-foreground flex gap-2">
+                              <span className="text-primary shrink-0">{i + 1}.</span>
+                              <span>{reason}</span>
+                            </li>)}
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div className="lg:sticky lg:top-6 h-fit">
+                      <div className="bg-muted/20 border border-border rounded-lg p-3">
+                        <span className="text-xs font-medium text-muted-foreground mb-2 block">1 diagram attached</span>
+                        <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryPhaseMapping)}>
+                          <img src={merryPhaseMapping} alt="Phase Mapping Matrix" className="w-full object-cover opacity-80 hover:opacity-100 transition-opacity" />
+                          <div className="bg-muted/30 px-2 py-1">
+                            <span className="text-[10px] text-muted-foreground font-medium">Actor × Phase Matrix</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CollapsibleContent>
+            </Collapsible>
           </div>
         </section>}
 
