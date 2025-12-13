@@ -14,6 +14,16 @@ import streeInterview4 from '@/assets/stree-interview-4.png';
 import streeInterview5 from '@/assets/stree-interview-5.png';
 import streeSosFlow from '@/assets/stree-sos-flow.png';
 import streeUserFlow from '@/assets/stree-user-flow.png';
+import streeWireframe1 from '@/assets/stree-wireframe-1.png';
+import streeWireframe2 from '@/assets/stree-wireframe-2.png';
+import streeWireframe3 from '@/assets/stree-wireframe-3.png';
+import streeWireframe4 from '@/assets/stree-wireframe-4.png';
+import streeWireframe5 from '@/assets/stree-wireframe-5.png';
+import streeWireframe6 from '@/assets/stree-wireframe-6.png';
+import streeWireframe7 from '@/assets/stree-wireframe-7.png';
+import streeWireframe8 from '@/assets/stree-wireframe-8.png';
+import streeWireframe9 from '@/assets/stree-wireframe-9.png';
+import streeWireframe10 from '@/assets/stree-wireframe-10.png';
 interface CaseStudySection {
   title: string;
   content: string;
@@ -1310,7 +1320,44 @@ const CaseStudy = () => {
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">Wireframing</h2>
             <p className="text-muted-foreground text-sm mb-6">{study.wireframing.approach}</p>
-            {study.wireframing.imagePlaceholder && <div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
+            {/* Wireframe images for STREE */}
+            {slug === 'stree-safety-app' && (
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                <div className="bg-background rounded-lg border border-border overflow-hidden">
+                  <img src={streeWireframe1} alt="Login wireframe" className="w-full" />
+                </div>
+                <div className="bg-background rounded-lg border border-border overflow-hidden">
+                  <img src={streeWireframe2} alt="Sign up wireframe" className="w-full" />
+                </div>
+                <div className="bg-background rounded-lg border border-border overflow-hidden">
+                  <img src={streeWireframe3} alt="Profile setup wireframe" className="w-full" />
+                </div>
+                <div className="bg-background rounded-lg border border-border overflow-hidden">
+                  <img src={streeWireframe8} alt="Permissions wireframe" className="w-full" />
+                </div>
+                <div className="bg-background rounded-lg border border-border overflow-hidden">
+                  <img src={streeWireframe9} alt="Emergency contacts wireframe" className="w-full" />
+                </div>
+                <div className="bg-background rounded-lg border border-border overflow-hidden">
+                  <img src={streeWireframe10} alt="Frequented places wireframe" className="w-full" />
+                </div>
+                <div className="bg-background rounded-lg border border-border overflow-hidden">
+                  <img src={streeWireframe7} alt="Home screen wireframe" className="w-full" />
+                </div>
+                <div className="bg-background rounded-lg border border-border overflow-hidden">
+                  <img src={streeWireframe4} alt="Reports wireframe" className="w-full" />
+                </div>
+                <div className="bg-background rounded-lg border border-border overflow-hidden">
+                  <img src={streeWireframe5} alt="All reports wireframe" className="w-full" />
+                </div>
+                <div className="bg-background rounded-lg border border-border overflow-hidden">
+                  <img src={streeWireframe6} alt="Settings wireframe" className="w-full" />
+                </div>
+              </div>
+            )}
+
+            {/* Placeholder for non-STREE */}
+            {slug !== 'stree-safety-app' && study.wireframing.imagePlaceholder && <div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
                 <span className="text-sm text-muted-foreground">[ Wireframe Explorations ]</span>
               </div>}
           </div>
