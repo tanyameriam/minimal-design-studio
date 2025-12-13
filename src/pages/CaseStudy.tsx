@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, X } from 'lucide-react';
 import streeAffinity1 from '@/assets/stree-affinity-1.png';
@@ -737,6 +737,9 @@ const CaseStudy = () => {
         <div 
           className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 animate-fade-in cursor-pointer"
           onClick={() => setLightboxImage(null)}
+          onKeyDown={(e) => e.key === 'Escape' && setLightboxImage(null)}
+          tabIndex={0}
+          ref={(el) => el?.focus()}
         >
           <button 
             className="absolute top-6 right-6 text-white/80 hover:text-white transition-colors"
@@ -750,6 +753,7 @@ const CaseStudy = () => {
             className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           />
+          <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/60 text-sm">Press ESC or click outside to close</p>
         </div>
       )}
       {/* Navigation */}
@@ -1200,13 +1204,25 @@ const CaseStudy = () => {
             {/* Affinity Mapping Images for STREE */}
             {slug === 'stree-safety-app' && (
               <>
-                <div className="grid md:grid-cols-2 gap-4 mb-8">
-                  <img src={streeAffinity1} alt="Affinity mapping: Safety perceptions and offender types" className="w-full rounded border border-border" />
-                  <img src={streeAffinity2} alt="Affinity mapping: Reactions and reporting challenges" className="w-full rounded border border-border" />
-                  <img src={streeAffinity3} alt="Affinity mapping: Emotional impact and sharing experiences" className="w-full rounded border border-border" />
-                  <img src={streeAffinity4} alt="Affinity mapping: Adapting behaviors for safety" className="w-full rounded border border-border" />
-                  <img src={streeAffinity5} alt="Affinity mapping: Safety measures and location perceptions" className="w-full rounded border border-border" />
-                  <img src={streeAffinity6} alt="Affinity mapping: Societal attitudes and improvement ideas" className="w-full rounded border border-border" />
+                <div className="grid md:grid-cols-3 gap-4 mb-8">
+                  <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(streeAffinity1)}>
+                    <img src={streeAffinity1} alt="Affinity mapping: Safety perceptions and offender types" className="w-full rounded" />
+                  </div>
+                  <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(streeAffinity2)}>
+                    <img src={streeAffinity2} alt="Affinity mapping: Reactions and reporting challenges" className="w-full rounded" />
+                  </div>
+                  <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(streeAffinity3)}>
+                    <img src={streeAffinity3} alt="Affinity mapping: Emotional impact and sharing experiences" className="w-full rounded" />
+                  </div>
+                  <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(streeAffinity4)}>
+                    <img src={streeAffinity4} alt="Affinity mapping: Adapting behaviors for safety" className="w-full rounded" />
+                  </div>
+                  <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(streeAffinity5)}>
+                    <img src={streeAffinity5} alt="Affinity mapping: Safety measures and location perceptions" className="w-full rounded" />
+                  </div>
+                  <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(streeAffinity6)}>
+                    <img src={streeAffinity6} alt="Affinity mapping: Societal attitudes and improvement ideas" className="w-full rounded" />
+                  </div>
                 </div>
                 <div className="p-6 bg-card border border-border">
                   <p className="text-muted-foreground leading-relaxed">
