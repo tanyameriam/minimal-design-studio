@@ -870,7 +870,33 @@ const CaseStudy = () => {
       </section>}
 
       {/* BrynQ: Templates */}
-      {study.brynqTemplates && <section className="px-6 lg:px-12 py-16"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">From Wizard to Templates</h2><p className="text-lg leading-relaxed text-muted-foreground mb-8">{study.brynqTemplates}</p><div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center"><span className="text-sm text-muted-foreground italic">[ Workflow evolution diagram ]</span></div></div></section>}
+      {study.brynqTemplates && <section className="px-6 lg:px-12 py-16">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">From Wizard to Templates</h2>
+          <p className="text-lg leading-relaxed text-muted-foreground mb-10">{study.brynqTemplates}</p>
+          
+          {/* Metrics */}
+          <div className="grid md:grid-cols-3 gap-6 mb-10">
+            <div className="p-6 bg-card border border-border text-center">
+              <span className="text-3xl md:text-4xl font-serif text-primary">~60%</span>
+              <p className="text-sm text-muted-foreground mt-2">Faster scenario setup with templates</p>
+            </div>
+            <div className="p-6 bg-card border border-border text-center">
+              <span className="text-3xl md:text-4xl font-serif text-primary">Self-serve</span>
+              <p className="text-sm text-muted-foreground mt-2">Customers can now configure integrations independently</p>
+            </div>
+            <div className="p-6 bg-card border border-border text-center">
+              <span className="text-3xl md:text-4xl font-serif text-primary">Scalable</span>
+              <p className="text-sm text-muted-foreground mt-2">Reusable patterns across client implementations</p>
+            </div>
+          </div>
+          <p className="text-xs text-muted-foreground/60 mb-8 italic text-center">* Metrics are indicative and abstracted due to NDA</p>
+          
+          <div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
+            <span className="text-sm text-muted-foreground italic">[ Workflow evolution diagram ]</span>
+          </div>
+        </div>
+      </section>}
 
       {/* BrynQ: Evolution */}
       {study.brynqEvolution && <section className="px-6 lg:px-12 py-16 bg-card"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Platform Evolution</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqEvolution}</p></div></section>}
