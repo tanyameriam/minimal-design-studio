@@ -4044,59 +4044,6 @@ const CaseStudy = () => {
           </div>
         </section>}
 
-      {/* Context Points (for Merry Health) */}
-      {study.contextPoints && <section className="px-6 lg:px-12 py-16 bg-card">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Context & Challenges</h2>
-            <p className="text-lg text-muted-foreground mb-8">Hospital admins must navigate:</p>
-            <div className="flex flex-wrap gap-3">
-              {study.contextPoints.map((point, i) => <span key={i} className="px-4 py-2 border border-border text-sm">{point}</span>)}
-            </div>
-          </div>
-        </section>}
-
-      {/* Problem Definition (for Merry Health) */}
-      {study.problemDefinition && <section className="px-6 lg:px-12 py-16 bg-card">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Problem Definition</h2>
-            <p className="text-lg text-muted-foreground mb-12">Our discovery phase revealed systemic issues:</p>
-            <div className="space-y-10">
-              {study.problemDefinition.map((problem, i) => <div key={i}>
-                  <h3 className="font-serif text-xl mb-4">{problem.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{problem.content}</p>
-                </div>)}
-            </div>
-          </div>
-        </section>}
-
-      {/* System Modules (for Merry Health) */}
-      {study.systemModules && <section className="px-6 lg:px-12 py-16">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">System Modules</h2>
-            <div className="space-y-8">
-              {study.systemModules.map((module, i) => <div key={i}>
-                  <h3 className="font-serif text-xl mb-3">{module.title}</h3>
-                  <p className="text-muted-foreground">{module.content}</p>
-                </div>)}
-            </div>
-          </div>
-        </section>}
-
-
-      {/* Edge Cases (for Merry Health) */}
-      {study.edgeCases && <section className="px-6 lg:px-12 py-16">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Edge Cases & Fallback Logic</h2>
-            <p className="text-lg text-muted-foreground mb-8">Designed for real-world unpredictability:</p>
-            <div className="grid md:grid-cols-2 gap-6">
-              {study.edgeCases.map((edge, i) => <div key={i} className="p-4 border border-border">
-                  <h3 className="font-medium mb-2">{edge.title}</h3>
-                  <p className="text-sm text-muted-foreground">{edge.content}</p>
-                </div>)}
-            </div>
-          </div>
-        </section>}
-
 
 
       {/* Next Steps */}
