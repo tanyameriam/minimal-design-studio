@@ -19,7 +19,7 @@ const About = () => {
               I'm a UX/UI Designer with 5 years of professional design experience and a broader corporate background since 2018. Experienced in UI execution, UX auditing, and workflow design for digital products.
             </p>
             <p className="text-lg leading-relaxed text-muted-foreground">
-              Currently working on BrynQ, an HR–Payroll integration product, focusing on improving usability, clarity, and decision-making within complex system-driven flows. I have a strong technical foundation and academic focus on UX for AI-supported systems.
+              Currently working on BrynQ, an HR/Payroll integration product, focusing on improving usability, clarity, and decision-making within complex system-driven flows. I have a strong technical foundation and academic focus on UX for AI-supported systems.
             </p>
             
             <div className="pt-8 grid grid-cols-2 gap-8">

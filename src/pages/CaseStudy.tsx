@@ -227,22 +227,22 @@ const caseStudies: Record<string, CaseStudyData> = {
     heroImage: "https://images.unsplash.com/photo-1587745416684-47953f16f02f?w=1200&q=80",
     contextPoints: ["Unpredictable emergencies", "Limited information", "High message volume", "Multi-stakeholder communication", "Low digital maturity", "Unreliable networks", "Fragmented workflows"],
     problemDefinition: [{
-      title: "01 — WhatsApp was the real operating system",
+      title: "01: WhatsApp was the real operating system",
       content: "Hospital admins trusted WhatsApp more than the dashboard. However, chats were unstructured, free-text, missing key data, dependent on human memory, and impossible to audit."
     }, {
-      title: "02 — The dashboard was not designed for emergency scenarios",
-      content: "Admins found it slow, overwhelming, missing essential fields, and not aligned with their real workflow. They reverted to WhatsApp—even though it created data loss."
+      title: "02: The dashboard was not designed for emergency scenarios",
+      content: "Admins found it slow, overwhelming, missing essential fields, and not aligned with their real workflow. They reverted to WhatsApp, even though it created data loss."
     }, {
-      title: "03 — Ride information was fragmented",
+      title: "03: Ride information was fragmented",
       content: "Admins jumped between WhatsApp, phone calls, verbal confirmation, Excel sheets, and their own memory. This produced inaccurate records, delays, and unclear handover."
     }, {
-      title: "04 — No real-time visibility or unified timeline",
+      title: "04: No real-time visibility or unified timeline",
       content: "Hospitals had no reliable way to see whether the driver accepted, ETA changes, driver movement, pickup confirmation, or drop confirmation."
     }, {
-      title: "05 — No system could handle peak-load situations",
+      title: "05: No system could handle peak-load situations",
       content: "When multiple emergencies came in minutes apart: messages overlapped, drivers got confused, admins lost track, and trips were duplicated or missed."
     }, {
-      title: "06 — No structured handover process",
+      title: "06: No structured handover process",
       content: "Hospitals needed a verifiable sequence: driver confirms, hospital receiving staff confirms, MHA closes the ride. But the old system left these steps scattered and inconsistent."
     }],
     designGoals: ["Make emergency intake lightning-fast", "Standardize communication across channels", "Provide real-time visibility across the entire ride", "Create a structured, audit-ready Record Model", "Reduce manual coordination and increase operational reliability", "Design a system that works even with poor networks, low literacy, and inconsistent behavior"],
@@ -273,7 +273,7 @@ const caseStudies: Record<string, CaseStudyData> = {
       content: "Designed for high-pressure environments: status-based map markers, filters for case type/patient name/status, driver + vehicle cards, ETA updates, smooth transitions between multiple rides. Admins get an air-traffic-control view of all ambulances."
     }, {
       title: "Solution 5: Structured Handover Workflow",
-      content: "Introduced a 3-step verification: Hospital staff acknowledgment, Driver acknowledgment, MHA final closure. Each step is timestamped—solving disputes and strengthening auditability."
+      content: "Introduced a 3-step verification: Hospital staff acknowledgment, Driver acknowledgment, MHA final closure. Each step is timestamped, solving disputes and strengthening auditability."
     }, {
       title: "Solution 6: Reporting & KPIs",
       content: "The new Reporting module provides: trip volumes, billing summaries, response times, TAT patterns, case severity patterns, and export options (CSV, Excel, PDF). Hospitals move from chaotic data to actionable insights."
@@ -297,8 +297,8 @@ const caseStudies: Record<string, CaseStudyData> = {
       title: "Hospital group not reachable",
       content: "Message diverted to individual admin as fallback."
     }],
-    businessOutcomes: ["Faster Emergency Handling — Admins can intake requests instantly with minimal data entry", "Higher Ride Success & Completion Rates — Real-time visibility prevents miscommunication and delays", "Significant Drop in Manual Calls — Automatic updates replace follow-up calls", "Improved Hospital Trust — Clear timelines and standardized updates build confidence", "Better Reporting & Data Accuracy — The dashboard now acts as a complete, verifiable record", "Operational Efficiency — The system supports high-volume emergencies without overwhelming staff", "Higher Dashboard Adoption — Hospitals now see clear value in the platform—not just WhatsApp"],
-    learnings: ["Real-world emergency systems need resilience, not perfection. Design must survive low network, broken workflows, and human unpredictability.", "WhatsApp is India's most adopted enterprise tool. Designing around WhatsApp—rather than replacing it—was critical.", "A system is only as strong as its fallback modes. Every workflow required a Plan B, C, and D.", "Mobile-first is not optional. Hospital admins coordinate while walking, talking, and multitasking.", "UI is only 30% of the solution. The other 70% is workflow logic, integrations, and system constraints.", "Collaboration across tech and operations shaped the final output. Design was deeply integrated with technical feasibility and real constraints."],
+    businessOutcomes: ["Faster Emergency Handling: Admins can intake requests instantly with minimal data entry", "Higher Ride Success & Completion Rates: Real-time visibility prevents miscommunication and delays", "Significant Drop in Manual Calls: Automatic updates replace follow-up calls", "Improved Hospital Trust: Clear timelines and standardized updates build confidence", "Better Reporting & Data Accuracy: The dashboard now acts as a complete, verifiable record", "Operational Efficiency: The system supports high-volume emergencies without overwhelming staff", "Higher Dashboard Adoption: Hospitals now see clear value in the platform, not just WhatsApp"],
+    learnings: ["Real-world emergency systems need resilience, not perfection. Design must survive low network, broken workflows, and human unpredictability.", "WhatsApp is India's most adopted enterprise tool. Designing around WhatsApp, rather than replacing it, was critical.", "A system is only as strong as its fallback modes. Every workflow required a Plan B, C, and D.", "Mobile-first is not optional. Hospital admins coordinate while walking, talking, and multitasking.", "UI is only 30% of the solution. The other 70% is workflow logic, integrations, and system constraints.", "Collaboration across tech and operations shaped the final output. Design was deeply integrated with technical feasibility and real constraints."],
     deliverables: ["Full system workflows", "User journey maps", "Low-fidelity wireframes", "High-fidelity UI (web + mobile)", "WhatsApp message flow screens", "Android module UI", "Complete prototype", "Redesign strategy", "System specification documents", "Final presentation deck"]
   },
   'curateus-plugin': {
@@ -355,7 +355,7 @@ const caseStudies: Record<string, CaseStudyData> = {
       content: "There is no system to estimate food quantity, match it with demand, coordinate pickup/delivery, or confirm successful donation. Impact: The process relies on luck and manual coordination rather than structure."
     }, {
       title: "5. Human-Dependent Processes Are Too Fragile to Scale",
-      content: "Phone calls, manual planning, and volunteer-based transport create a fragile network that collapses under pressure. Impact: The ecosystem fails daily—not due to lack of food, but lack of system design."
+      content: "Phone calls, manual planning, and volunteer-based transport create a fragile network that collapses under pressure. Impact: The ecosystem fails daily, not due to lack of food, but lack of system design."
     }],
     researchInsights: {
       painPoints: ["Irregular notifications", "Lack of manpower to collect food", "High transportation cost", "Difficulty coordinating pickups from multiple locations", "High spoilage risk due to delays"],
@@ -395,7 +395,7 @@ const caseStudies: Record<string, CaseStudyData> = {
   'curateus-app': {
     title: "Curateus v2.0",
     subtitle: "Transforming content discovery through human curation",
-    overview: "Curateus is a content discovery platform built on a simple idea: human recommendations lead to deeper, more meaningful consumption than algorithmic feeds. In a digital world where people are overwhelmed by choice, misinformation, and algorithm fatigue, Curateus aims to help users find what truly matters—through expert curation, community recommendations, and interest-driven discovery. This case study documents the transformation of Curateus from an MVP into a scalable v2.0 application with a refined content experience, dual user modes (curators + subscribers), and an updated UI system.",
+    overview: "Curateus is a content discovery platform built on a simple idea: human recommendations lead to deeper, more meaningful consumption than algorithmic feeds. In a digital world where people are overwhelmed by choice, misinformation, and algorithm fatigue, Curateus aims to help users find what truly matters through expert curation, community recommendations, and interest-driven discovery. This case study documents the transformation of Curateus from an MVP into a scalable v2.0 application with a refined content experience, dual user modes (curators + subscribers), and an updated UI system.",
     role: "UI Designer (working closely with the Founder & Product Owner)",
     tools: ["Figma", "Illustrator", "Invision", "Zeplin"],
     heroImage: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=1200&q=80",
@@ -422,7 +422,7 @@ const caseStudies: Record<string, CaseStudyData> = {
       title: "Human Curation Platforms (Letterboxd, Beyond, Curateus MVP)",
       content: "Strengths: Intention-first discovery, trust built through human gatekeepers, community-led curation, increased satisfaction vs algorithmic feeds. This category validated Curateus' business vision and potential."
     }],
-    designGoals: ["Build Trust Through Human Curation — Shift from algorithm-first to intention-first content discovery.", "Support Both Curators and Subscribers — The MVP only supported curators. v2.0 needed a dual-experience model: Curators → publish, draft, manage content; Subscribers → discover, save, follow, personalize.", "Create a Unified Visual System — The existing UI lacked hierarchy, consistency, and scalability.", "Simplify Content Workflows — Saving, drafting, curating, searching, bookmarking — all needed clarity and predictability."],
+    designGoals: ["Build Trust Through Human Curation: Shift from algorithm-first to intention-first content discovery.", "Support Both Curators and Subscribers: The MVP only supported curators. v2.0 needed a dual-experience model: Curators publish, draft, manage content; Subscribers discover, save, follow, personalize.", "Create a Unified Visual System: The existing UI lacked hierarchy, consistency, and scalability.", "Simplify Content Workflows: Saving, drafting, curating, searching, bookmarking, all needed clarity and predictability."],
     earlyExplorations: [{
       title: "Why Sketch First?",
       content: "Sketching allowed rapid exploration before committing to UI direction. It ensured all business requirements were represented early. Sketches explored homefeed layouts, metadata card variations, preference selection workflows, save-for-later interactions, draft creation vs publishing, curator public vs private view, and search & no-results states."
@@ -466,7 +466,7 @@ const caseStudies: Record<string, CaseStudyData> = {
       title: "Semantic Colors",
       content: "Used sparingly to convey feedback, support interactive states, and improve accessibility."
     }],
-    outcome: ["A scalable dual-experience model — Curators and subscribers now have distinct, intuitive workflows.", "A refined UI language — Consistent typography, spacing, colors, and components.", "Improved discoverability — Personalized onboarding and structured feeds.", "Reduced friction for curators — Draft management, metadata entry, save-for-later workflow.", "Stronger brand identity — A unified visual system aligned with Curateus' positioning as a premium curation platform."],
+    outcome: ["A scalable dual-experience model: Curators and subscribers now have distinct, intuitive workflows.", "A refined UI language: Consistent typography, spacing, colors, and components.", "Improved discoverability: Personalized onboarding and structured feeds.", "Reduced friction for curators: Draft management, metadata entry, save-for-later workflow.", "Stronger brand identity: A unified visual system aligned with Curateus' positioning as a premium curation platform."],
     learnings: ["Designing for both creators and consumers requires balancing complexity.", "Even UI-driven projects benefit significantly from research.", "Human-curated systems demand interfaces that clearly communicate trust.", "Establishing a design system early prevents screen-level inconsistencies.", "Working directly with a founder/PO sharpens prioritization and product reasoning.", "Thoughtful UI can elevate a brand built on trust, expertise, and meaningful content discovery."]
   },
   'stree-safety-app': {
@@ -483,7 +483,7 @@ const caseStudies: Record<string, CaseStudyData> = {
     },
     brief: {
       intro: "Women across India lack a reliable digital tool that supports them during commutes. The existing safety apps fail due to poor network reliability, complex interfaces during panic, and lack of emotional support after incidents.",
-      coreIntent: "Create a smart, reliable, low-friction safety companion that women can depend on during vulnerable moments—supporting them before, during, and after unsafe experiences.",
+      coreIntent: "Create a smart, reliable, low-friction safety companion that women can depend on during vulnerable moments, supporting them before, during, and after unsafe experiences.",
       goals: ["Support women before an incident by helping them make informed decisions", "Enable quick and reliable action during an incident", "Support reporting and emotional recovery after an incident", "Prioritise accessibility, privacy, and emotional sensitivity"]
     },
     research: {
@@ -601,7 +601,7 @@ const caseStudies: Record<string, CaseStudyData> = {
       functional: ["Faster SOS activation with minimal taps", "Increased clarity in journey status", "Transparent communication with contacts", "Reduced hesitation in using safety features"],
       note: "Since this was an academic project, the app was not released for real-world deployment. The impact metrics are based on usability testing feedback and projected outcomes."
     },
-    learnings: ["Designing for safety is as much about emotional design as it is about functionality.", "Fear, doubt, and social conditioning play a significant role in how women experience risk.", "Not every insight demands a feature, and not every problem can—or should—be solved through technology alone.", "I learned to navigate ambiguity, accept feedback that challenged assumptions, and design with empathy rather than urgency.", "Most importantly, I learned how to tell a clear, compelling research story: connecting evidence to decisions and decisions to outcomes."],
+    learnings: ["Designing for safety is as much about emotional design as it is about functionality.", "Fear, doubt, and social conditioning play a significant role in how women experience risk.", "Not every insight demands a feature, and not every problem can, or should, be solved through technology alone.", "I learned to navigate ambiguity, accept feedback that challenged assumptions, and design with empathy rather than urgency.", "Most importantly, I learned how to tell a clear, compelling research story: connecting evidence to decisions and decisions to outcomes."],
     closing: "Project Stree reflects my approach to UX research and design: grounded in lived experiences, guided by evidence, and shaped by responsibility. It demonstrated how thoughtful design can address sensitive, complex problems, not by providing all the answers, but by asking the right questions and designing with care."
   },
   'brynq': {
@@ -618,15 +618,15 @@ const caseStudies: Record<string, CaseStudyData> = {
       focus: "Digitising offline workflows, reducing delivery time, enabling self-serve integrations"
     },
     // Background section
-    brynqBackground: "BrynQ is a B2B Integration Platform-as-a-Service that connects HRM and Payroll systems, enabling organisations to transfer and transform employee data between applications. When I started working on the platform, it was still operating under its legacy identity, SalureConnect. While technically capable, a large part of the operational workflow — especially integration onboarding and requirements gathering — lived outside the product in manual tools. This case study covers how I helped bring one of the most critical offline workflows into the platform, and how that decision shaped multiple product improvements over time.",
+    brynqBackground: "BrynQ is a B2B Integration Platform-as-a-Service that connects HRM and Payroll systems, enabling organisations to transfer and transform employee data between applications. When I started working on the platform, it was still operating under its legacy identity, SalureConnect. While technically capable, a large part of the operational workflow, especially integration onboarding and requirements gathering, lived outside the product in manual tools. This case study covers how I helped bring one of the most critical offline workflows into the platform, and how that decision shaped multiple product improvements over time.",
     // Legacy Reality section
-    brynqLegacyReality: "Before any integration could be built, interface developers had to gather detailed requirements from customers using Excel files known internally as \"Scenarios.\" These files described how data should flow between systems, including field mappings and transformation logic. In practice, this process was slow, fragile, and heavily dependent on live calls, follow-ups, and manual clarification. Most integration delays did not occur during development — they occurred before development even started.",
+    brynqLegacyReality: "Before any integration could be built, interface developers had to gather detailed requirements from customers using Excel files known internally as \"Scenarios.\" These files described how data should flow between systems, including field mappings and transformation logic. In practice, this process was slow, fragile, and heavily dependent on live calls, follow-ups, and manual clarification. Most integration delays did not occur during development; they occurred before development even started.",
     // Why This Became a Product Problem
     brynqProductProblem: "As BrynQ scaled, the limitations of this process became more visible. Customers often lacked technical clarity about their own systems, developers spent hours translating business intent into technical mappings, and incomplete information caused weeks of delay. There was no structured accountability, no visibility into progress, and no standardisation across integrations. What looked like a documentation issue was actually a product and systems problem.",
     // My Responsibility
-    brynqResponsibility: "My responsibility was to rethink how integration requirements entered the system — not by redesigning integration logic itself, but by redesigning the workflow around it. The challenge was not just usability. It was change management. Any solution had to work within the realities of the interface team, the Product Owner, and existing customers.",
+    brynqResponsibility: "My responsibility was to rethink how integration requirements entered the system, not by redesigning integration logic itself, but by redesigning the workflow around it. The challenge was not just usability. It was change management. Any solution had to work within the realities of the interface team, the Product Owner, and existing customers.",
     // Research section
-    brynqResearch: "To design responsibly, I focused on understanding the current process as it actually happened. I conducted contextual interviews with the interface team and Product Owner, reviewed multiple real scenario files, and shadowed interface developers as they worked with customers. I also observed customer support interactions to understand where confusion surfaced downstream. This helped me see the Excel file not as a form, but as a coordination tool — and any digital replacement needed to preserve that role before improving it.",
+    brynqResearch: "To design responsibly, I focused on understanding the current process as it actually happened. I conducted contextual interviews with the interface team and Product Owner, reviewed multiple real scenario files, and shadowed interface developers as they worked with customers. I also observed customer support interactions to understand where confusion surfaced downstream. This helped me see the Excel file not as a form, but as a coordination tool, and any digital replacement needed to preserve that role before improving it.",
     // Key Insight
     brynqKeyInsight: {
       main: "The biggest delays were not technical. They were caused by incomplete, unclear, and unstable requirements.",
@@ -644,11 +644,11 @@ const caseStudies: Record<string, CaseStudyData> = {
     // Review & Accountability
     brynqReview: "Once submitted, requests entered a structured review flow. Developers were notified, could approve or reject with feedback, and the request reopened until it met development standards. This replaced long email threads with a predictable system state and clear ownership.",
     // MVP Outcomes
-    brynqMvpOutcomes: "Without changing core integration logic, the wizard reduced friction across the process. Scenario completion time dropped significantly, missing information was identified earlier, and internal coordination became more transparent. More importantly, structured data now lived inside the platform — enabling the next phase.",
+    brynqMvpOutcomes: "Without changing core integration logic, the wizard reduced friction across the process. Scenario completion time dropped significantly, missing information was identified earlier, and internal coordination became more transparent. More importantly, structured data now lived inside the platform, enabling the next phase.",
     // Wizard to Templates
     brynqTemplates: "Once patterns emerged across structured scenario data, it became possible to introduce templates for common system combinations and scenarios. Templates reduced input time further and shifted BrynQ from a fully custom, developer-driven model toward self-serve integration setup.",
     // Platform Evolution
-    brynqEvolution: "This foundational work enabled additional capabilities, including lightweight project management and AI-assisted interface creation — covered in separate BrynQ sub-projects. What began as digitising an Excel file became a cornerstone of BrynQ's modernisation.",
+    brynqEvolution: "This foundational work enabled additional capabilities, including lightweight project management and AI-assisted interface creation, covered in separate BrynQ sub-projects. What began as digitising an Excel file became a cornerstone of BrynQ's modernisation.",
     // Reflection
     brynqReflection: "This project reinforced the importance of respecting existing workflows while designing for scale. By digitising before optimising, we created a foundation that teams could trust and build upon. It also strengthened my experience in designing complex B2B systems where success depends as much on adoption and governance as on usability.",
     learnings: ["Respecting existing workflows while designing for scale creates foundations teams can trust", "Digitising before optimising reduces adoption friction", "Success in complex B2B systems depends as much on adoption and governance as on usability", "Change management is as critical as usability in enterprise product design"],
@@ -684,7 +684,7 @@ const caseStudies: Record<string, CaseStudyData> = {
       content: "A new font pairing was introduced to reflect a lifestyle & premium feel while still being highly readable."
     }, {
       title: "3. Refined Color Palette",
-      content: "Colors were adjusted to feel more modern, energetic, and balanced—aligned with lifestyle brands in Dubai. The palette supports vouchers, price highlights, call-to-actions, and categories."
+      content: "Colors were adjusted to feel more modern, energetic, and balanced, aligned with lifestyle brands in Dubai. The palette supports vouchers, price highlights, call-to-actions, and categories."
     }, {
       title: "4. Component Cleanup",
       content: "Buttons, cards, input fields, icons, and voucher elements were redesigned for consistency, clarity, minimalism, and developer-friendliness."
@@ -888,7 +888,7 @@ const CaseStudy = () => {
                 <p className="text-xs text-muted-foreground mt-1">Review & handoff</p>
               </div>
             </div>
-            <p className="text-xs text-muted-foreground/60 italic text-center">* Indicative breakdown — most delays occurred before development even started</p>
+            <p className="text-xs text-muted-foreground/60 italic text-center">* Indicative breakdown: most delays occurred before development even started</p>
           </div>
         </div>
       </section>}
@@ -1844,7 +1844,7 @@ const CaseStudy = () => {
       {study.visionGoals && <section className="px-6 lg:px-12 py-16">
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Vision for BrynQ</h2>
-            <p className="text-lg text-muted-foreground mb-12">The goal was not just a facelift—it was a complete transformation. The product needed to evolve into a modern iPaaS that supported:</p>
+            <p className="text-lg text-muted-foreground mb-12">The goal was not just a facelift; it was a complete transformation. The product needed to evolve into a modern iPaaS that supported:</p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {study.visionGoals.map((goal, i) => <div key={i} className="p-6 border border-border">
                   <h3 className="font-serif text-lg mb-3">{goal.title}</h3>

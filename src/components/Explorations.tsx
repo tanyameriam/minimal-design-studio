@@ -91,10 +91,10 @@ const Explorations = () => {
             Explorations
           </h2>
           <p className="text-muted-foreground max-w-2xl text-lg leading-relaxed">
-            This is where I experiment freely — playing with colors, layouts, animations, 
+            This is where I experiment freely: playing with colors, layouts, animations, 
             and 3D elements outside of client work. A space dedicated to growth, where I 
             build visual muscles, try new styles, and explore imaginative UI concepts. 
-            No briefs, no constraints — just curiosity and craft.
+            No briefs, no constraints, just curiosity and craft.
           </p>
         </div>
 

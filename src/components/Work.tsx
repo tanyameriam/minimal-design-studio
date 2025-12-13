@@ -84,7 +84,7 @@ const Work = () => {
             <h2 className="font-serif text-4xl md:text-5xl">Projects</h2>
           </div>
           <p className="text-muted-foreground text-sm hidden md:block">
-            2021 — Present
+            2021 – Present
           </p>
         </div>
 
