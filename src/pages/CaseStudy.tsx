@@ -2068,23 +2068,38 @@ const CaseStudy = () => {
           </div>
         </section>}
 
-      {/* Merry Health Solution Phases */}
-      {slug === 'merry-health' && study.merrySolutionPhases && <section className="px-6 lg:px-12 py-16">
-          <div className="container mx-auto max-w-4xl">
+      {/* Merry Health Solution Phases - Horizontal Tabs */}
+      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16">
+          <div className="container mx-auto max-w-5xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">The Solution</h2>
-            <p className="text-lg text-muted-foreground mb-12">Our approach was structured into four key phases:</p>
-            <div className="space-y-8">
-              {study.merrySolutionPhases.map((phase, i) => <div key={i} className="border-l-2 border-primary/30 pl-6">
-                  <div className="flex items-center gap-4 mb-4">
-                    <span className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-sm font-medium text-primary">
-                      {i + 1}
+            <p className="text-lg text-muted-foreground mb-10">Our approach was structured into five key phases:</p>
+            
+            {/* Horizontal Phase Tabs */}
+            <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3">
+              {[
+                { num: 1, title: "Audit", subtitle: "Data & Platform" },
+                { num: 2, title: "Mapping", subtitle: "Flows & Journeys" },
+                { num: 3, title: "Findings", subtitle: "Key Insights" },
+                { num: 4, title: "Workflow", subtitle: "Proposed System" },
+                { num: 5, title: "Solution", subtitle: "Wireframes & Hi-Fi" }
+              ].map((phase, i, arr) => (
+                <div key={i} className="flex items-center">
+                  <div className="flex flex-col items-center text-center px-3 py-3 md:px-5 md:py-4 rounded-xl bg-card border border-border hover:border-primary/40 hover:bg-primary/5 transition-all duration-200 min-w-[90px] md:min-w-[110px]">
+                    <span className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-primary/10 flex items-center justify-center text-xs md:text-sm font-semibold text-primary mb-2">
+                      {phase.num}
                     </span>
-                    <h3 className="font-serif text-xl">{phase.title}</h3>
+                    <span className="font-serif text-sm md:text-base font-medium">{phase.title}</span>
+                    <span className="text-[10px] md:text-xs text-muted-foreground mt-0.5">{phase.subtitle}</span>
                   </div>
-                  {phase.content ? <p className="text-muted-foreground">{phase.content}</p> : <div className="p-6 border-2 border-dashed border-border/50 bg-muted/20 min-h-[80px] flex items-center justify-center">
-                      <p className="text-muted-foreground italic">Content placeholder – {phase.title}</p>
-                    </div>}
-                </div>)}
+                  {i < arr.length - 1 && (
+                    <div className="hidden md:block mx-2 text-muted-foreground/40">
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </section>}
