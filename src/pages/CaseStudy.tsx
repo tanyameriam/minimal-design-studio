@@ -31,6 +31,15 @@ import streeWireframe14 from '@/assets/stree-wireframe-14.png';
 import streeCultural1 from '@/assets/stree-cultural-1.png';
 import streeCultural2 from '@/assets/stree-cultural-2.png';
 import streeCultural3 from '@/assets/stree-cultural-3.png';
+import streeHifi1 from '@/assets/stree-hifi-1.png';
+import streeHifi2 from '@/assets/stree-hifi-2.png';
+import streeHifi3 from '@/assets/stree-hifi-3.png';
+import streeHifi4 from '@/assets/stree-hifi-4.png';
+import streeHifi5 from '@/assets/stree-hifi-5.png';
+import streeHifi6 from '@/assets/stree-hifi-6.png';
+import streeHifi7 from '@/assets/stree-hifi-7.png';
+import streeHifi8 from '@/assets/stree-hifi-8.png';
+import streeHifi9 from '@/assets/stree-hifi-9.png';
 interface CaseStudySection {
   title: string;
   content: string;
@@ -1417,8 +1426,8 @@ const CaseStudy = () => {
         </section>}
 
       {/* STREE: Final Design */}
-      {study.finalDesign && <section className="px-6 lg:px-12 py-12 bg-card">
-          <div className="container mx-auto max-w-4xl">
+      {study.finalDesign && <section className="px-6 lg:px-12 py-12 bg-card overflow-hidden">
+          <div className="container mx-auto max-w-4xl mb-8">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-8">Final Design</h2>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
@@ -1427,13 +1436,28 @@ const CaseStudy = () => {
                   <p className="text-xs text-muted-foreground">{change.content}</p>
                 </div>)}
             </div>
-
-            
-
-            {study.finalDesign.imagePlaceholder && <div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
-                <span className="text-sm text-muted-foreground">[ Final UI Screenshots ]</span>
-              </div>}
           </div>
+
+          {/* HiFi Screens - horizontal scroll like wireframes */}
+          {slug === 'stree-safety-app' && (
+            <div className="overflow-x-auto pb-4">
+              <div className="flex gap-4 px-6 lg:px-12" style={{ width: 'max-content' }}>
+                {[streeHifi1, streeHifi2, streeHifi3, streeHifi4, streeHifi5, streeHifi6, streeHifi7, streeHifi8, streeHifi9].map((img, i) => (
+                  <div 
+                    key={i} 
+                    className="flex-shrink-0 bg-background border border-border p-2 cursor-pointer hover:border-primary/50 transition-colors"
+                    onClick={() => setLightboxImage(img)}
+                  >
+                    <img 
+                      src={img} 
+                      alt={`HiFi screen ${i + 1}`}
+                      className="h-[400px] w-auto object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </section>}
 
       {/* STREE: Impact */}
