@@ -72,6 +72,7 @@ import merryProposedWorkflow from '@/assets/merry-proposed-workflow.jpg';
 import merryWireframes from '@/assets/merry-wireframes.png';
 import merryHifiDashboard from '@/assets/merry-hifi-dashboard.png';
 import merryHifiReports from '@/assets/merry-hifi-reports.png';
+import merryHifiBooking from '@/assets/merry-hifi-booking.png';
 // Merry Health WhatsApp chat examples
 import merryWhatsappDriver from '@/assets/merry-whatsapp-driver.png';
 import merryWhatsappPatient from '@/assets/merry-whatsapp-patient.png';
@@ -2910,7 +2911,7 @@ const CaseStudy = () => {
             </div>
             <p className="text-muted-foreground mb-10">After identifying the required modules, we created wireframes for all key flows in the web application—covering dashboard, ride management, live tracking, and reporting.</p>
 
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-4 gap-3">
               <div className="rounded-lg border border-border bg-background overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryWireframes)}>
                 <img src={merryWireframes} alt="Merry Health wireframes" className="w-full h-32 object-cover" />
               </div>
@@ -2919,6 +2920,9 @@ const CaseStudy = () => {
               </div>
               <div className="rounded-lg border border-border bg-background overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryHifiReports)}>
                 <img src={merryHifiReports} alt="Reporting wireframe" className="w-full h-32 object-cover" />
+              </div>
+              <div className="rounded-lg border border-border bg-background overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryHifiBooking)}>
+                <img src={merryHifiBooking} alt="Booking wireframe" className="w-full h-32 object-cover" />
               </div>
             </div>
             <p className="text-xs text-muted-foreground mt-3">Click any image to view details</p>
