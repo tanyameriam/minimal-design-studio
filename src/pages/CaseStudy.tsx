@@ -2908,13 +2908,13 @@ const CaseStudy = () => {
               </div>
             </a>
 
-            {/* Solution Direction */}
+            {/* Changes in New Design */}
             {study.designSolutions && <>
-              <h3 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Solution Direction</h3>
-              <div className="space-y-8 mb-12">
-                {study.designSolutions.map((solution, i) => <div key={i} className="p-6 rounded-xl border border-border bg-background">
-                    <h4 className="font-serif text-lg mb-3">{solution.title}</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{solution.content}</p>
+              <h3 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">What Changed in the New Design</h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 mb-8">
+                {study.designSolutions.map((solution, i) => <div key={i} className="p-4 rounded-lg border border-border bg-background">
+                    <h4 className="text-sm font-medium mb-2">{solution.title.replace(/^Solution \d+: /, '')}</h4>
+                    <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">{solution.content}</p>
                   </div>)}
               </div>
             </>}
