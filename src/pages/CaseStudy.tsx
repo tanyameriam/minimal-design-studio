@@ -4070,18 +4070,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* System Modules (for Merry Health) */}
-      {study.systemModules && <section className="px-6 lg:px-12 py-16">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Systems Thinking: End-to-End Dispatch Ecosystem</h2>
-            <p className="text-lg text-muted-foreground mb-12">We reframed the system from a dashboard redesign to a full dispatch system redesign:</p>
-            <div className="grid md:grid-cols-2 gap-8">
-              {study.systemModules.map((module, i) => <div key={i} className="p-6 border border-border">
-                  <h3 className="font-serif text-lg mb-4">{module.title}</h3>
-                  <p className="text-sm text-muted-foreground">{module.content}</p>
-                </div>)}
-            </div>
-          </div>
-        </section>}
+      {study.systemModules}
 
 
       {/* Edge Cases (for Merry Health) */}
