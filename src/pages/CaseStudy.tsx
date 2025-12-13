@@ -1255,11 +1255,25 @@ const CaseStudy = () => {
                 </div>)}
             </div>
 
-            {/* SOS Flow Diagram for STREE */}
+            {/* Flow Diagrams for STREE */}
             {slug === 'stree-safety-app' && (
-              <div className="mt-8">
-                <img src={streeSosFlow} alt="SOS Mode user flow showing interactions between user, officials, and contacts" className="w-full rounded border border-border" />
-                <img src={streeUserFlow} alt="User journey flow: Discovery, Onboarding, and App navigation" className="w-full rounded border-2 border-border shadow-sm bg-white p-4 mt-6" />
+              <div className="mt-10 space-y-8">
+                <div className="overflow-hidden rounded-lg border border-border bg-background shadow-sm">
+                  <div className="px-4 py-3 border-b border-border bg-muted/30">
+                    <h4 className="text-xs uppercase tracking-[0.2em] text-muted-foreground">SOS Mode Flow</h4>
+                  </div>
+                  <div className="p-4">
+                    <img src={streeSosFlow} alt="SOS Mode user flow showing interactions between user, officials, and contacts" className="w-full rounded" />
+                  </div>
+                </div>
+                <div className="overflow-hidden rounded-lg border border-border bg-background shadow-sm">
+                  <div className="px-4 py-3 border-b border-border bg-muted/30">
+                    <h4 className="text-xs uppercase tracking-[0.2em] text-muted-foreground">User Journey Flow</h4>
+                  </div>
+                  <div className="p-6 bg-white">
+                    <img src={streeUserFlow} alt="User journey flow: Discovery, Onboarding, and App navigation" className="w-full" />
+                  </div>
+                </div>
               </div>
             )}
 
