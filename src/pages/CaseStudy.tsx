@@ -24,6 +24,10 @@ import streeWireframe7 from '@/assets/stree-wireframe-7.png';
 import streeWireframe8 from '@/assets/stree-wireframe-8.png';
 import streeWireframe9 from '@/assets/stree-wireframe-9.png';
 import streeWireframe10 from '@/assets/stree-wireframe-10.png';
+import streeWireframe11 from '@/assets/stree-wireframe-11.png';
+import streeWireframe12 from '@/assets/stree-wireframe-12.png';
+import streeWireframe13 from '@/assets/stree-wireframe-13.png';
+import streeWireframe14 from '@/assets/stree-wireframe-14.png';
 interface CaseStudySection {
   title: string;
   content: string;
@@ -1322,38 +1326,54 @@ const CaseStudy = () => {
             <p className="text-muted-foreground text-sm mb-6">{study.wireframing.approach}</p>
             {/* Wireframe images for STREE */}
             {slug === 'stree-safety-app' && (
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                <div className="bg-background rounded-lg border border-border overflow-hidden">
-                  <img src={streeWireframe1} alt="Login wireframe" className="w-full" />
+              <>
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                  <div className="bg-background rounded-lg border border-border overflow-hidden">
+                    <img src={streeWireframe1} alt="Login wireframe" className="w-full" />
+                  </div>
+                  <div className="bg-background rounded-lg border border-border overflow-hidden">
+                    <img src={streeWireframe2} alt="Sign up wireframe" className="w-full" />
+                  </div>
+                  <div className="bg-background rounded-lg border border-border overflow-hidden">
+                    <img src={streeWireframe3} alt="Profile setup wireframe" className="w-full" />
+                  </div>
+                  <div className="bg-background rounded-lg border border-border overflow-hidden">
+                    <img src={streeWireframe8} alt="Permissions wireframe" className="w-full" />
+                  </div>
+                  <div className="bg-background rounded-lg border border-border overflow-hidden">
+                    <img src={streeWireframe9} alt="Emergency contacts wireframe" className="w-full" />
+                  </div>
+                  <div className="bg-background rounded-lg border border-border overflow-hidden">
+                    <img src={streeWireframe10} alt="Frequented places wireframe" className="w-full" />
+                  </div>
+                  <div className="bg-background rounded-lg border border-border overflow-hidden">
+                    <img src={streeWireframe7} alt="Home screen wireframe" className="w-full" />
+                  </div>
+                  <div className="bg-background rounded-lg border border-border overflow-hidden">
+                    <img src={streeWireframe4} alt="Reports wireframe" className="w-full" />
+                  </div>
+                  <div className="bg-background rounded-lg border border-border overflow-hidden">
+                    <img src={streeWireframe5} alt="All reports wireframe" className="w-full" />
+                  </div>
+                  <div className="bg-background rounded-lg border border-border overflow-hidden">
+                    <img src={streeWireframe6} alt="Settings wireframe" className="w-full" />
+                  </div>
                 </div>
-                <div className="bg-background rounded-lg border border-border overflow-hidden">
-                  <img src={streeWireframe2} alt="Sign up wireframe" className="w-full" />
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+                  <div className="bg-background rounded-lg border border-border overflow-hidden">
+                    <img src={streeWireframe11} alt="Map screen wireframe" className="w-full" />
+                  </div>
+                  <div className="bg-background rounded-lg border border-border overflow-hidden">
+                    <img src={streeWireframe12} alt="Route planning wireframe" className="w-full" />
+                  </div>
+                  <div className="bg-background rounded-lg border border-border overflow-hidden">
+                    <img src={streeWireframe13} alt="Safety assistance wireframe" className="w-full" />
+                  </div>
+                  <div className="bg-background rounded-lg border border-border overflow-hidden">
+                    <img src={streeWireframe14} alt="SOS mode wireframe" className="w-full" />
+                  </div>
                 </div>
-                <div className="bg-background rounded-lg border border-border overflow-hidden">
-                  <img src={streeWireframe3} alt="Profile setup wireframe" className="w-full" />
-                </div>
-                <div className="bg-background rounded-lg border border-border overflow-hidden">
-                  <img src={streeWireframe8} alt="Permissions wireframe" className="w-full" />
-                </div>
-                <div className="bg-background rounded-lg border border-border overflow-hidden">
-                  <img src={streeWireframe9} alt="Emergency contacts wireframe" className="w-full" />
-                </div>
-                <div className="bg-background rounded-lg border border-border overflow-hidden">
-                  <img src={streeWireframe10} alt="Frequented places wireframe" className="w-full" />
-                </div>
-                <div className="bg-background rounded-lg border border-border overflow-hidden">
-                  <img src={streeWireframe7} alt="Home screen wireframe" className="w-full" />
-                </div>
-                <div className="bg-background rounded-lg border border-border overflow-hidden">
-                  <img src={streeWireframe4} alt="Reports wireframe" className="w-full" />
-                </div>
-                <div className="bg-background rounded-lg border border-border overflow-hidden">
-                  <img src={streeWireframe5} alt="All reports wireframe" className="w-full" />
-                </div>
-                <div className="bg-background rounded-lg border border-border overflow-hidden">
-                  <img src={streeWireframe6} alt="Settings wireframe" className="w-full" />
-                </div>
-              </div>
+              </>
             )}
 
             {/* Placeholder for non-STREE */}
