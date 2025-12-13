@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
 import streeCover from '@/assets/stree-cover.png';
 import merryHealthCover from '@/assets/merry-health-cover.png';
+import brynqCover from '@/assets/brynq-cover.png';
 type ProjectTag = 'UI' | 'UX' | 'Research';
 interface Project {
   title: string;
@@ -26,7 +27,7 @@ const projects: Project[] = [{
   title: "BrynQ Platform",
   category: "Product Design • B2B iPaaS",
   year: "2021-2024",
-  image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80",
+  image: brynqCover,
   slug: "brynq",
   tags: ['UX', 'Research', 'UI'],
   published: true
