@@ -3305,7 +3305,7 @@ const CaseStudy = () => {
       {study.informationArchitecture && !('rationale' in study.informationArchitecture) && <section className="px-6 lg:px-12 py-16 bg-card">
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Information Architecture</h2>
-            <p className="text-lg text-muted-foreground mb-12">Workflow Logic & Reasoning</p>
+            
             <div className="space-y-12">
               {study.informationArchitecture.map((item, i) => <div key={i}>
                   <h3 className="font-serif text-xl mb-4">{item.title}</h3>
