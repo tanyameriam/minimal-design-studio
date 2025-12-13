@@ -2720,8 +2720,8 @@ const CaseStudy = () => {
 
             {/* Proposed Workflow Diagram */}
             <div className="mb-8">
-              <h3 className="font-serif text-lg mb-4">Edge Case Workflow Design</h3>
-              <p className="text-sm text-muted-foreground mb-6">The proposed workflow integrates WhatsApp API, automated trip creation, driver assignment with priority rules, and automated notifications—while accounting for edge cases like driver unavailability, tracking issues, and identity verification.</p>
+              <h3 className="font-serif text-lg mb-4">Proposed Workflow Diagram</h3>
+              <p className="text-sm text-muted-foreground mb-6">The workflow integrates WhatsApp API, automated trip creation, driver assignment with priority rules, and automated notifications—while accounting for edge cases like driver unavailability and tracking issues.</p>
               
               <div className="rounded-xl border-2 border-primary/20 bg-gradient-to-b from-primary/5 to-background shadow-sm overflow-hidden">
                 <div className="bg-primary/10 px-4 py-2 border-b border-primary/20 flex items-center justify-between">
