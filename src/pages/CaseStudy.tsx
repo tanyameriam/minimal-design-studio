@@ -1276,47 +1276,20 @@ const CaseStudy = () => {
         </section>
       )}
 
-      {/* Information Architecture - handles both formats */}
-      {study.informationArchitecture && (
+      {/* Information Architecture - Curateus array format only (STREE has its own section after Solution Design) */}
+      {study.informationArchitecture && !('rationale' in study.informationArchitecture) && (
         <section className="px-6 lg:px-12 py-16 bg-card">
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Information Architecture</h2>
-            {'rationale' in study.informationArchitecture ? (
-              // STREE format
-              <>
-                <p className="text-muted-foreground mb-8">{study.informationArchitecture.rationale}</p>
-                <div className="grid md:grid-cols-2 gap-4 mb-8">
-                  {study.informationArchitecture.structure.map((item, i) => (
-                    <div key={i} className="p-4 border border-border">
-                      <h4 className="font-medium text-sm mb-1">{item.area}</h4>
-                      <p className="text-xs text-muted-foreground">{item.reason}</p>
-                    </div>
-                  ))}
+            <p className="text-lg text-muted-foreground mb-12">Workflow Logic & Reasoning</p>
+            <div className="space-y-12">
+              {study.informationArchitecture.map((item, i) => (
+                <div key={i}>
+                  <h3 className="font-serif text-xl mb-4">{item.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{item.content}</p>
                 </div>
-                <div className="p-4 bg-background border border-border">
-                  <h4 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2">Onboarding Flow</h4>
-                  <p className="text-sm">{study.informationArchitecture.onboarding}</p>
-                </div>
-                {study.informationArchitecture.imagePlaceholder && (
-                  <div className="mt-8 aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
-                    <span className="text-sm text-muted-foreground">[ Information Architecture Diagram ]</span>
-                  </div>
-                )}
-              </>
-            ) : (
-              // Curateus array format
-              <>
-                <p className="text-lg text-muted-foreground mb-12">Workflow Logic & Reasoning</p>
-                <div className="space-y-12">
-                  {study.informationArchitecture.map((item, i) => (
-                    <div key={i}>
-                      <h3 className="font-serif text-xl mb-4">{item.title}</h3>
-                      <p className="text-muted-foreground leading-relaxed">{item.content}</p>
-                    </div>
-                  ))}
-                </div>
-              </>
-            )}
+              ))}
+            </div>
           </div>
         </section>
       )}
