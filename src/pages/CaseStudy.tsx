@@ -2538,11 +2538,14 @@ const CaseStudy = () => {
             </div>
 
             {/* Summary */}
-            <div className="mt-10 p-5 rounded-xl bg-gradient-to-br from-primary/5 via-background to-primary/5 border border-primary/20">
-              <h4 className="font-serif text-base mb-3 text-center">Journey Mapping Summary</h4>
-              <p className="text-xs text-muted-foreground text-center max-w-2xl mx-auto">
-                The journey maps validated that our identified opportunities—automation, real-time tracking, structured data capture, and centralized dashboards—directly address pain points across all three actor groups.
-              </p>
+            <div className="mt-10 p-6 rounded-xl bg-destructive/5 border border-destructive/20">
+              <h4 className="font-serif text-base mb-4 text-center text-destructive">Key Problems Identified</h4>
+              <div className="flex flex-wrap justify-center gap-3">
+                <span className="px-3 py-1.5 bg-destructive/10 text-destructive rounded-full text-xs font-medium">Manual coordination delays</span>
+                <span className="px-3 py-1.5 bg-destructive/10 text-destructive rounded-full text-xs font-medium">No real-time visibility</span>
+                <span className="px-3 py-1.5 bg-destructive/10 text-destructive rounded-full text-xs font-medium">Fragmented data across channels</span>
+                <span className="px-3 py-1.5 bg-destructive/10 text-destructive rounded-full text-xs font-medium">Workflow mismatch with hospital behavior</span>
+              </div>
             </div>
           </div>
         </section>}
