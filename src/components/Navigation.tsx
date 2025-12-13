@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Navigation = () => {
+  const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -56,6 +58,12 @@ const Navigation = () => {
             className="text-sm font-sans tracking-wide link-underline"
           >
             Contact
+          </button>
+          <button 
+            onClick={() => navigate('/cv')}
+            className="text-sm font-sans tracking-wide link-underline"
+          >
+            CV
           </button>
         </div>
       </div>
