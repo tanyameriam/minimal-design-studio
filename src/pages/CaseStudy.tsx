@@ -128,6 +128,9 @@ interface CaseStudyData {
   } | CaseStudySection[];
   usabilityTesting?: {
     intro: string;
+    method?: string;
+    participants?: string;
+    mode?: string;
     findings: string[];
   };
   finalDesign?: {
@@ -523,6 +526,9 @@ const caseStudies: Record<string, CaseStudyData> = {
     },
     usabilityTesting: {
       intro: "After initial wireframe iterations, we conducted usability testing with a few users to understand expectations and identify friction points.",
+      method: "Observational study; Think Aloud followed by a feedback session",
+      participants: "Four; Women",
+      mode: "Online, moderated",
       findings: ["Users wanted profile pictures for quicker identification", "Lockscreen SOS drastically improved perceived safety", "Emergency contacts must receive start + end notifications", "Users needed immediate feedback after pressing SOS", "Need for clarity around what information contacts receive", "Users expected dynamic ETA updates"]
     },
     finalDesign: {
@@ -1382,6 +1388,25 @@ const CaseStudy = () => {
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">Usability Testing</h2>
             <p className="text-sm text-muted-foreground mb-6">{study.usabilityTesting.intro}</p>
+            
+            {/* Method details */}
+            {'method' in study.usabilityTesting && (
+              <div className="grid grid-cols-3 gap-4 mb-8 p-4 bg-card border border-border">
+                <div>
+                  <span className="text-xs uppercase tracking-wider text-muted-foreground/70">Method</span>
+                  <p className="text-sm text-foreground mt-1">{study.usabilityTesting.method}</p>
+                </div>
+                <div>
+                  <span className="text-xs uppercase tracking-wider text-muted-foreground/70">Participants</span>
+                  <p className="text-sm text-foreground mt-1">{study.usabilityTesting.participants}</p>
+                </div>
+                <div>
+                  <span className="text-xs uppercase tracking-wider text-muted-foreground/70">Mode</span>
+                  <p className="text-sm text-foreground mt-1">{study.usabilityTesting.mode}</p>
+                </div>
+              </div>
+            )}
+
             <div className="grid md:grid-cols-2 gap-4">
               {study.usabilityTesting.findings.map((finding, i) => <div key={i} className="flex gap-3 p-4 bg-card border border-border">
                   <span className="text-primary/50 text-sm">{i + 1}.</span>
