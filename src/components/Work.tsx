@@ -3,6 +3,7 @@ import ProjectCard from './ProjectCard';
 import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
 import streeCover from '@/assets/stree-cover.png';
+import merryHealthCover from '@/assets/merry-health-cover.png';
 type ProjectTag = 'UI' | 'UX' | 'Research';
 interface Project {
   title: string;
@@ -41,7 +42,7 @@ const projects: Project[] = [{
   title: "Merry Health",
   category: "Systems Design • Healthcare",
   year: "2024",
-  image: "https://images.unsplash.com/photo-1587745416684-47953f16f02f?w=800&q=80",
+  image: merryHealthCover,
   slug: "merry-health",
   tags: ['UX', 'Research', 'UI'],
   published: true
