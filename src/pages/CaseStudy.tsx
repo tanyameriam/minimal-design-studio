@@ -1570,26 +1570,28 @@ const CaseStudy = () => {
         </section>
       )}
 
-      {/* Merry Health Data Audit Detail - Accordion Style */}
-      {slug === 'merry-health' && study.merryDataAudit && (
-        <section className="px-6 lg:px-12 py-16 bg-card">
+
+      {/* Merry Health Platform Audit - Phase-by-Phase Analysis */}
+      {slug === 'merry-health' && (
+        <section className="px-6 lg:px-12 py-16">
           <div className="container mx-auto max-w-6xl">
             <div className="flex items-center gap-4 mb-6">
               <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">1</span>
-              <h2 className="font-serif text-2xl">Data Audit</h2>
+              <h2 className="font-serif text-2xl">Platform Audit</h2>
             </div>
-            <p className="text-muted-foreground mb-8">{study.merryDataAudit.intro}</p>
-            
-            {/* Key Questions */}
-            <div className="flex flex-wrap items-center gap-3 mb-8">
-              {study.merryDataAudit.questions.map((q, i) => (
-                <span key={i} className="px-4 py-2 bg-primary/10 text-primary text-sm font-medium">{q}</span>
-              ))}
+            <p className="text-muted-foreground mb-6">We conducted a data and platform audit for each phase to understand exactly where we can align better with user needs and business goals.</p>
+
+            {/* Data Audit Link */}
+            <div className="mb-10 p-4 rounded-lg border border-border bg-card flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <span className="text-sm font-medium">Data Audit</span>
+                <span className="text-xs text-muted-foreground">— Understanding data ownership, initiation, and decision points across all actors</span>
+              </div>
               <a 
                 href="https://www.figma.com/design/yH9NNuzOQov4XIgkz5D2jo/Project-Merry-Health?node-id=1-8&t=lxBxhBwv6frOZBTQ-1"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-xs text-primary hover:underline ml-auto"
+                className="flex items-center gap-2 text-xs text-primary hover:underline px-3 py-1.5 rounded bg-primary/10"
               >
                 <svg className="w-3.5 h-3.5" viewBox="0 0 38 57" fill="currentColor">
                   <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z"/>
@@ -1601,210 +1603,6 @@ const CaseStudy = () => {
                 View in Figma
               </a>
             </div>
-
-
-            {/* Actor-specific Audits as Accordions */}
-            <div className="space-y-4 mb-12">
-              {study.merryDataAudit.actorAudits.map((audit, actorIndex) => (
-                <details key={actorIndex} className="group border border-border bg-background">
-                  <summary className="flex items-center gap-4 p-4 cursor-pointer hover:bg-muted/30 transition-colors">
-                    <span className="w-7 h-7 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-xs font-medium flex-shrink-0">
-                      {actorIndex + 1}
-                    </span>
-                    <h3 className="font-serif text-lg flex-1">{audit.actor}</h3>
-                    <ChevronDown className="w-5 h-5 text-muted-foreground transition-transform group-open:rotate-180" />
-                  </summary>
-                  
-                  <div className="p-4 pt-0 border-t border-border/50">
-                    {audit.experienceFlow && audit.experienceFlow.length > 0 ? (
-                      <div className="space-y-6">
-                        {/* Experience Flow - Compact */}
-                        <details className="border border-border/50">
-                          <summary className="p-3 bg-muted/20 cursor-pointer hover:bg-muted/40 flex items-center justify-between">
-                            <span className="text-sm font-medium text-primary">Experience Flow ({audit.experienceFlow.length} steps)</span>
-                            <ChevronDown className="w-4 h-4 text-muted-foreground" />
-                          </summary>
-                          <div className="overflow-x-auto">
-                            <table className="w-full text-xs">
-                              <thead>
-                                <tr className="bg-muted/30">
-                                  <th className="text-left p-2 border-b border-border font-medium w-12">#</th>
-                                  <th className="text-left p-2 border-b border-border font-medium">Step</th>
-                                  <th className="text-left p-2 border-b border-border font-medium">Description</th>
-                                  <th className="text-left p-2 border-b border-border font-medium">Channel</th>
-                                  <th className="text-left p-2 border-b border-border font-medium">Data</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {audit.experienceFlow.map((row, i) => (
-                                  <tr key={i} className="border-b border-border/30 hover:bg-muted/10">
-                                    <td className="p-2 text-muted-foreground">{row.step}</td>
-                                    <td className="p-2 font-medium text-xs">{row.name}</td>
-                                    <td className="p-2 text-muted-foreground">{row.description}</td>
-                                    <td className="p-2 text-muted-foreground">{row.channel}</td>
-                                    <td className="p-2 text-muted-foreground">{row.data}</td>
-                                  </tr>
-                                ))}
-                              </tbody>
-                            </table>
-                          </div>
-                        </details>
-
-                        {/* Data Points - Compact */}
-                        {audit.dataPoints && audit.dataPoints.length > 0 && (
-                          <details className="border border-border/50">
-                            <summary className="p-3 bg-muted/20 cursor-pointer hover:bg-muted/40 flex items-center justify-between">
-                              <span className="text-sm font-medium text-primary">Data Points ({audit.dataPoints.length} items)</span>
-                              <ChevronDown className="w-4 h-4 text-muted-foreground" />
-                            </summary>
-                            <div className="overflow-x-auto">
-                              <table className="w-full text-xs">
-                                <thead>
-                                  <tr className="bg-muted/30">
-                                    <th className="text-left p-2 border-b border-border font-medium">Data Point</th>
-                                    <th className="text-left p-2 border-b border-border font-medium">Source</th>
-                                    <th className="text-left p-2 border-b border-border font-medium">Used By</th>
-                                    <th className="text-left p-2 border-b border-border font-medium">Purpose</th>
-                                    <th className="text-left p-2 border-b border-border font-medium">Freq</th>
-                                    <th className="text-left p-2 border-b border-border font-medium">Issues</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  {audit.dataPoints.map((row, i) => (
-                                    <tr key={i} className="border-b border-border/30 hover:bg-muted/10">
-                                      <td className="p-2 font-medium">{row.dataPoint}</td>
-                                      <td className="p-2 text-muted-foreground">{row.source}</td>
-                                      <td className="p-2 text-muted-foreground">{row.usedBy}</td>
-                                      <td className="p-2 text-muted-foreground">{row.purpose}</td>
-                                      <td className="p-2 text-muted-foreground">{row.frequency}</td>
-                                      <td className="p-2 text-muted-foreground">{row.issues || '—'}</td>
-                                    </tr>
-                                  ))}
-                                </tbody>
-                              </table>
-                            </div>
-                          </details>
-                        )}
-
-                        {/* Minimum Essential Data - Compact */}
-                        {audit.minEssentialData && audit.minEssentialData.length > 0 && (
-                          <details className="border border-border/50">
-                            <summary className="p-3 bg-muted/20 cursor-pointer hover:bg-muted/40 flex items-center justify-between">
-                              <span className="text-sm font-medium text-primary">Minimum Essential Data ({audit.minEssentialData.length} flows)</span>
-                              <ChevronDown className="w-4 h-4 text-muted-foreground" />
-                            </summary>
-                            <div className="overflow-x-auto">
-                              <table className="w-full text-xs">
-                                <thead>
-                                  <tr className="bg-muted/30">
-                                    <th className="text-left p-2 border-b border-border font-medium w-1/4">Flow</th>
-                                    <th className="text-left p-2 border-b border-border font-medium w-2/5">Data Required</th>
-                                    <th className="text-left p-2 border-b border-border font-medium">Reason</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  {audit.minEssentialData.map((row, i) => (
-                                    <tr key={i} className="border-b border-border/30 hover:bg-muted/10">
-                                      <td className="p-2 font-medium">{row.flow}</td>
-                                      <td className="p-2 text-muted-foreground">{row.data}</td>
-                                      <td className="p-2 text-muted-foreground">{row.reason}</td>
-                                    </tr>
-                                  ))}
-                                </tbody>
-                              </table>
-                            </div>
-                          </details>
-                        )}
-
-                        {/* Absolute Minimum Data - Compact */}
-                        {audit.absoluteMinData && audit.absoluteMinData.length > 0 && (
-                          <details className="border border-border/50">
-                            <summary className="p-3 bg-muted/20 cursor-pointer hover:bg-muted/40 flex items-center justify-between">
-                              <span className="text-sm font-medium text-primary">Absolute Min Data for Patient Safety ({audit.absoluteMinData.length} categories)</span>
-                              <ChevronDown className="w-4 h-4 text-muted-foreground" />
-                            </summary>
-                            <div className="overflow-x-auto">
-                              <table className="w-full text-xs">
-                                <thead>
-                                  <tr className="bg-muted/30">
-                                    <th className="text-left p-2 border-b border-border font-medium">Category</th>
-                                    <th className="text-left p-2 border-b border-border font-medium">Fields</th>
-                                    <th className="text-left p-2 border-b border-border font-medium">Why Non-negotiable</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  {audit.absoluteMinData.map((row, i) => (
-                                    <tr key={i} className="border-b border-border/30 hover:bg-muted/10">
-                                      <td className="p-2 font-medium">{row.category}</td>
-                                      <td className="p-2 text-muted-foreground">{row.fields}</td>
-                                      <td className="p-2 text-muted-foreground">{row.reason}</td>
-                                    </tr>
-                                  ))}
-                                </tbody>
-                              </table>
-                            </div>
-                          </details>
-                        )}
-                      </div>
-                    ) : (
-                      <div className="p-6 border-2 border-dashed border-border/50 bg-muted/20 flex items-center justify-center">
-                        <p className="text-muted-foreground italic text-sm">Content placeholder – {audit.actor} data audit</p>
-                      </div>
-                    )}
-                  </div>
-                </details>
-              ))}
-            </div>
-
-            {/* Overlapping/Shared Data Map */}
-            <details className="border border-border bg-background">
-              <summary className="p-4 cursor-pointer hover:bg-muted/30 flex items-center justify-between">
-                <h3 className="font-serif text-lg text-primary">Overlapping/Shared Data Map</h3>
-                <ChevronDown className="w-5 h-5 text-muted-foreground" />
-              </summary>
-              <div className="p-4 pt-0 border-t border-border/50">
-                <p className="text-sm text-muted-foreground mb-4">Understanding which actors have access to which data points revealed overlaps and gaps in information flow.</p>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-xs border border-border">
-                    <thead>
-                      <tr className="bg-muted/50">
-                        <th className="text-left p-2 border-b border-border font-medium">Data Field</th>
-                        <th className="text-center p-2 border-b border-border font-medium">Hospital Admin</th>
-                        <th className="text-center p-2 border-b border-border font-medium">Driver</th>
-                        <th className="text-center p-2 border-b border-border font-medium">Patient Party</th>
-                        <th className="text-center p-2 border-b border-border font-medium">MHA</th>
-                        <th className="text-left p-2 border-b border-border font-medium">Notes</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {study.merryDataAudit.overlappingData.map((row, i) => (
-                        <tr key={i} className="border-b border-border/50 hover:bg-muted/20">
-                          <td className="p-2 font-medium">{row.dataPoint}</td>
-                          <td className="p-2 text-center">{row.hospitalAdmin === 'YES' ? <span className="text-green-600">✓</span> : row.hospitalAdmin === 'NO' ? <span className="text-muted-foreground">—</span> : <span className="text-muted-foreground">{row.hospitalAdmin}</span>}</td>
-                          <td className="p-2 text-center">{row.driver === 'YES' ? <span className="text-green-600">✓</span> : row.driver === 'NO' ? <span className="text-muted-foreground">—</span> : <span className="text-muted-foreground">{row.driver}</span>}</td>
-                          <td className="p-2 text-center">{row.patientParty === 'YES' ? <span className="text-green-600">✓</span> : row.patientParty === 'NO' ? <span className="text-muted-foreground">—</span> : <span className="text-muted-foreground">{row.patientParty}</span>}</td>
-                          <td className="p-2 text-center">{row.merryHealthAdmin === 'YES' ? <span className="text-green-600">✓</span> : row.merryHealthAdmin === 'NO' ? <span className="text-muted-foreground">—</span> : <span className="text-muted-foreground">{row.merryHealthAdmin}</span>}</td>
-                          <td className="p-2 text-muted-foreground">{row.notes}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </details>
-          </div>
-        </section>
-      )}
-
-      {/* Merry Health Platform Audit - Phase-by-Phase Analysis */}
-      {slug === 'merry-health' && (
-        <section className="px-6 lg:px-12 py-16">
-          <div className="container mx-auto max-w-6xl">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">1b</span>
-              <h2 className="font-serif text-2xl">Platform Audit</h2>
-            </div>
-            <p className="text-muted-foreground mb-10">After the data audit, we conducted a platform audit for each phase to understand exactly where we can align better with user needs and business goals.</p>
 
             <div className="space-y-8">
               {/* Phase 1: Intake */}
