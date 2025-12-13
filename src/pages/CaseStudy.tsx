@@ -2878,7 +2878,7 @@ const CaseStudy = () => {
               <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">8</span>
               <h2 className="font-serif text-2xl">High-Fidelity Screens</h2>
             </div>
-            <p className="text-muted-foreground mb-6">The final high-fidelity designs bring together all research insights into a polished, production-ready interface for the Merry Health Admin platform.</p>
+            <p className="text-muted-foreground mb-6">The final high-fidelity designs bring together all research insights into a new Merry Heath platform             </p>
 
             <a href="https://www.figma.com/proto/yH9NNuzOQov4XIgkz5D2jo/Project-Merry-Health?node-id=15-36521&t=31Fmb4tJRbqNkLny-1&scaling=min-zoom&content-scaling=fixed&page-id=14%3A5438&starting-point-node-id=15%3A36521" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-6 py-4 rounded-xl border border-primary/20 bg-primary/5 hover:bg-primary/10 transition-colors">
               <svg className="w-5 h-5 text-primary" viewBox="0 0 38 57" fill="currentColor">
