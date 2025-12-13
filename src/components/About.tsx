@@ -53,7 +53,7 @@ const About = () => {
             Tools
           </p>
           <div className="flex flex-wrap gap-3">
-            {['Figma', 'FigJam', 'Miro', 'Zeplin'].map((tool) => (
+            {['Figma', 'FigJam', 'Miro', 'Zeplin', 'Affinity', 'Illustrator'].map((tool) => (
               <span key={tool} className="px-4 py-2 bg-muted rounded-md text-sm">
                 {tool}
               </span>

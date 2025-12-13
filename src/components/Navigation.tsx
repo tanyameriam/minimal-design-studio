@@ -29,9 +29,11 @@ const Navigation = () => {
       <div className="container mx-auto px-6 lg:px-12 flex justify-between items-center">
         <button 
           onClick={() => scrollToSection('hero')}
-          className="font-serif text-xl tracking-tight"
+          className="font-handwritten text-2xl tracking-tight overflow-hidden"
         >
-          Portfolio
+          <span className="inline-block animate-handwrite whitespace-nowrap">
+            Tanya Sunny
+          </span>
         </button>
         
         <div className="flex items-center gap-8">

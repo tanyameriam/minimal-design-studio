@@ -16,6 +16,7 @@ export default {
       fontFamily: {
         serif: ['Playfair Display', 'Georgia', 'serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        handwritten: ['Caveat', 'cursive'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -96,6 +97,19 @@ export default {
           "0%": { transform: "translateX(-50%)" },
           "100%": { transform: "translateX(0)" },
         },
+        "handwrite": {
+          "0%": { 
+            width: "0",
+            opacity: "0"
+          },
+          "10%": {
+            opacity: "1"
+          },
+          "100%": { 
+            width: "100%",
+            opacity: "1"
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -105,6 +119,7 @@ export default {
         "scale-up": "scale-up 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards",
         "marquee-slow": "marquee-slow 30s linear infinite",
         "marquee-slow-reverse": "marquee-slow-reverse 30s linear infinite",
+        "handwrite": "handwrite 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards",
       },
     },
   },
