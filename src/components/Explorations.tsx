@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
 import splineFrogs from '@/assets/spline-frogs.png';
+import spline3dRoom from '@/assets/spline-3d-room.png';
 
 interface ExplorationItem {
   id: number;
@@ -71,6 +72,13 @@ const splineProjects: SplineProject[] = [
     description: "An ambient 3D scene with playful frog characters in a moonlit pond environment",
     thumbnail: splineFrogs,
     splineUrl: "https://my.spline.design/untitled-e67be5ddaa2a9e554df22e7b93f787ff/"
+  },
+  {
+    id: 2,
+    title: "3D Room",
+    description: "A cozy isometric room with artistic details, furniture, and warm pink aesthetics",
+    thumbnail: spline3dRoom,
+    splineUrl: "https://youtu.be/zCLplo7GXgw?list=TLGGc1r6-W2s0TYxMzEyMjAyNQ"
   }
 ];
 
