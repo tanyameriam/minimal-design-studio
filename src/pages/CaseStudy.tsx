@@ -82,6 +82,7 @@ import merryWhatsappAdmin from '@/assets/merry-whatsapp-admin.png';
 // Food Waste system flow and sitemaps
 import foodWasteSystemFlow from '@/assets/food-waste-system-flow.png';
 import foodWasteRestaurantSitemap from '@/assets/food-waste-restaurant-sitemap.png';
+import foodWasteNgoSitemap from '@/assets/food-waste-ngo-sitemap.png';
 import { PlatformAuditPhase } from '@/components/ResearchPhaseCard';
 interface CaseStudySection {
   title: string;
@@ -3290,6 +3291,17 @@ const CaseStudy = () => {
                         alt="Restaurant App Sitemap" 
                         className="w-full h-auto cursor-pointer"
                         onClick={() => setLightboxImage(foodWasteRestaurantSitemap)}
+                      />
+                    </div>
+                  )}
+                  {/* Show NGO sitemap for second IA item in food waste project */}
+                  {slug === 'food-waste-ngo' && i === 1 && (
+                    <div className="bg-background border border-border rounded-lg p-4 mt-6">
+                      <img 
+                        src={foodWasteNgoSitemap} 
+                        alt="NGO App Sitemap" 
+                        className="w-full h-auto cursor-pointer"
+                        onClick={() => setLightboxImage(foodWasteNgoSitemap)}
                       />
                     </div>
                   )}
