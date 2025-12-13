@@ -169,6 +169,12 @@ const CV = () => {
           </div>
 
           <div class="section">
+            <h2>Community</h2>
+            <p><strong>Co-organiser</strong> — Design Reimagined Utrecht</p>
+            <p style="font-size: 10pt; color: #555;">A design community in the Netherlands hosting sessions and workshops on design learnings.</p>
+          </div>
+
+          <div class="section">
             <h2>Tools</h2>
             <div class="skills">
               <span class="skill">Figma</span>
@@ -374,6 +380,26 @@ const CV = () => {
                 <h3 className="font-medium">Bachelor of Technology in Computer Science</h3>
                 <p className="text-sm text-muted-foreground">University of Calicut, 2013–2017</p>
               </div>
+            </div>
+          </section>
+
+          {/* Community */}
+          <section className="mb-12">
+            <h2 className="font-serif text-lg mb-4 pb-2 border-b border-border">Community</h2>
+            <div>
+              <h3 className="font-medium">Co-organiser</h3>
+              <a 
+                href="https://www.linkedin.com/company/design-reimagined-utrecht" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1.5"
+              >
+                <Linkedin className="w-3.5 h-3.5" />
+                Design Reimagined Utrecht
+              </a>
+              <p className="text-sm text-muted-foreground mt-1">
+                A design community in the Netherlands hosting sessions and workshops on design learnings.
+              </p>
             </div>
           </section>
 

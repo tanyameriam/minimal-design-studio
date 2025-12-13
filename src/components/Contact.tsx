@@ -1,4 +1,4 @@
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Users } from 'lucide-react';
 
 const Contact = () => {
   return (
@@ -20,6 +20,40 @@ const Contact = () => {
             tanyameriamsunny@gmail.com
             <ArrowUpRight className="w-6 h-6 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
           </a>
+        </div>
+
+        {/* Speaker Invitation */}
+        <div className="mt-16 p-6 md:p-8 rounded-xl bg-muted/50 border border-border max-w-2xl">
+          <div className="flex items-start gap-4">
+            <div className="w-10 h-10 rounded-full bg-foreground flex items-center justify-center flex-shrink-0">
+              <Users className="w-5 h-5 text-background" />
+            </div>
+            <div>
+              <h3 className="font-serif text-xl mb-2">Want to speak at Design Reimagined?</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                I co-organise{' '}
+                <a 
+                  href="https://www.linkedin.com/company/design-reimagined-utrecht" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-foreground underline underline-offset-2 hover:no-underline"
+                >
+                  Design Reimagined Utrecht
+                </a>
+                , a community for designers in the Netherlands. We host sessions on design learnings, case studies, and workshops — online or in-person at HU Utrecht.
+              </p>
+              <p className="text-muted-foreground text-sm">
+                Interested in sharing your knowledge?{' '}
+                <a 
+                  href="mailto:tanyameriamsunny@gmail.com?subject=Speaker%20Inquiry%20-%20Design%20Reimagined" 
+                  className="text-foreground underline underline-offset-2 hover:no-underline"
+                >
+                  Drop me a message
+                </a>{' '}
+                and let's connect.
+              </p>
+            </div>
+          </div>
         </div>
         
         <div className="mt-32 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
