@@ -821,7 +821,47 @@ const CaseStudy = () => {
       {study.brynqBackground && <section className="px-6 lg:px-12 py-16"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Background & Context</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqBackground}</p></div></section>}
 
       {/* BrynQ: The Legacy Reality */}
-      {study.brynqLegacyReality && <section className="px-6 lg:px-12 py-16 bg-card"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">The Legacy Reality</h2><p className="text-lg leading-relaxed text-muted-foreground mb-8">{study.brynqLegacyReality}</p><div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center"><span className="text-sm text-muted-foreground italic">[ Diagram: Legacy workflow overview ]</span></div></div></section>}
+      {study.brynqLegacyReality && <section className="px-6 lg:px-12 py-16 bg-card">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">The Legacy Reality</h2>
+          <p className="text-lg leading-relaxed text-muted-foreground mb-10">{study.brynqLegacyReality}</p>
+          
+          {/* Current System Flow Diagram */}
+          <div className="p-6 bg-background border border-border">
+            <h3 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6 text-center">Current System Flow (Before)</h3>
+            <div className="flex flex-col md:flex-row items-center justify-between gap-3 md:gap-2">
+              <div className="flex-1 text-center p-4 bg-muted/20 border border-dashed border-border rounded">
+                <span className="text-xs font-medium">Customer</span>
+                <p className="text-[10px] text-muted-foreground mt-1">Unclear requirements</p>
+              </div>
+              <div className="text-muted-foreground/50 rotate-90 md:rotate-0">→</div>
+              <div className="flex-1 text-center p-4 bg-muted/20 border border-dashed border-border rounded">
+                <span className="text-xs font-medium">Excel File</span>
+                <p className="text-[10px] text-muted-foreground mt-1">Manual scenarios</p>
+              </div>
+              <div className="text-muted-foreground/50 rotate-90 md:rotate-0">→</div>
+              <div className="flex-1 text-center p-4 bg-muted/20 border border-dashed border-border rounded">
+                <span className="text-xs font-medium">Live Calls</span>
+                <p className="text-[10px] text-muted-foreground mt-1">Clarifications</p>
+              </div>
+              <div className="text-muted-foreground/50 rotate-90 md:rotate-0">→</div>
+              <div className="flex-1 text-center p-4 bg-muted/20 border border-dashed border-border rounded">
+                <span className="text-xs font-medium">Email Threads</span>
+                <p className="text-[10px] text-muted-foreground mt-1">Follow-ups</p>
+              </div>
+              <div className="text-muted-foreground/50 rotate-90 md:rotate-0">→</div>
+              <div className="flex-1 text-center p-4 bg-destructive/10 border border-dashed border-destructive/30 rounded">
+                <span className="text-xs font-medium text-destructive/80">Developer</span>
+                <p className="text-[10px] text-muted-foreground mt-1">Incomplete info</p>
+              </div>
+            </div>
+            <div className="mt-4 flex items-center justify-center gap-2">
+              <span className="text-xs text-destructive/70">⟳</span>
+              <p className="text-xs text-muted-foreground italic">Repeated back-and-forth cycles causing weeks of delay</p>
+            </div>
+          </div>
+        </div>
+      </section>}
 
       {/* BrynQ: Why This Became a Product Problem */}
       {study.brynqProductProblem && <section className="px-6 lg:px-12 py-16">
@@ -869,7 +909,50 @@ const CaseStudy = () => {
       {study.brynqWizard && <section className="px-6 lg:px-12 py-16 bg-card"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Designing the Interface Requirements Wizard</h2><p className="text-lg leading-relaxed text-muted-foreground mb-8">{study.brynqWizard.intro}</p><div className="grid md:grid-cols-3 gap-4 mb-8">{study.brynqWizard.phases.map((phase, i) => <div key={i} className="p-5 border border-border bg-background"><span className="text-xs uppercase tracking-[0.2em] text-primary/70 font-medium">Phase {i + 1}</span><p className="mt-2">{phase}</p></div>)}</div><p className="text-muted-foreground">{study.brynqWizard.benefits}</p><div className="mt-8 aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center"><span className="text-sm text-muted-foreground italic">[ Wizard flow diagram ]</span></div></div></section>}
 
       {/* BrynQ: Review */}
-      {study.brynqReview && <section className="px-6 lg:px-12 py-16"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Introducing Review & Accountability</h2><p className="text-lg leading-relaxed text-muted-foreground mb-8">{study.brynqReview}</p><div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center"><span className="text-sm text-muted-foreground italic">[ Approval loop diagram ]</span></div></div></section>}
+      {study.brynqReview && <section className="px-6 lg:px-12 py-16">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Introducing Review & Accountability</h2>
+          <p className="text-lg leading-relaxed text-muted-foreground mb-8">{study.brynqReview}</p>
+          <div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center mb-10">
+            <span className="text-sm text-muted-foreground italic">[ Approval loop diagram ]</span>
+          </div>
+          
+          {/* New System Flow Diagram */}
+          <div className="p-6 bg-card border border-border">
+            <h3 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6 text-center">New System Flow (After Implementation)</h3>
+            <div className="flex flex-col md:flex-row items-center justify-between gap-3 md:gap-2">
+              <div className="flex-1 text-center p-4 bg-primary/5 border border-primary/20 rounded">
+                <span className="text-xs font-medium">Customer</span>
+                <p className="text-[10px] text-muted-foreground mt-1">Guided wizard input</p>
+              </div>
+              <div className="text-primary/50">→</div>
+              <div className="flex-1 text-center p-4 bg-primary/5 border border-primary/20 rounded">
+                <span className="text-xs font-medium">In-App Wizard</span>
+                <p className="text-[10px] text-muted-foreground mt-1">Structured scenarios</p>
+              </div>
+              <div className="text-primary/50">→</div>
+              <div className="flex-1 text-center p-4 bg-primary/5 border border-primary/20 rounded">
+                <span className="text-xs font-medium">Validation</span>
+                <p className="text-[10px] text-muted-foreground mt-1">Missing info flagged</p>
+              </div>
+              <div className="text-primary/50">→</div>
+              <div className="flex-1 text-center p-4 bg-primary/5 border border-primary/20 rounded">
+                <span className="text-xs font-medium">Review Flow</span>
+                <p className="text-[10px] text-muted-foreground mt-1">Approve / Reject</p>
+              </div>
+              <div className="text-primary/50">→</div>
+              <div className="flex-1 text-center p-4 bg-primary/10 border border-primary/30 rounded">
+                <span className="text-xs font-medium text-primary">Developer</span>
+                <p className="text-[10px] text-muted-foreground mt-1">Complete info ready</p>
+              </div>
+            </div>
+            <div className="mt-4 flex items-center justify-center gap-2">
+              <span className="text-xs text-primary">✓</span>
+              <p className="text-xs text-muted-foreground italic">Single source of truth with structured accountability</p>
+            </div>
+          </div>
+        </div>
+      </section>}
 
       {/* BrynQ: MVP Outcomes */}
       {study.brynqMvpOutcomes && <section className="px-6 lg:px-12 py-16 bg-card">
