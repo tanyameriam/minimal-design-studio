@@ -31,9 +31,7 @@ const Navigation = () => {
           onClick={() => scrollToSection('hero')}
           className="font-handwritten text-3xl md:text-4xl tracking-tight"
         >
-          <span className="handwriting-animation">
-            Tanya Sunny
-          </span>
+          Tanya Sunny
         </button>
         
         <div className="flex items-center gap-8">
