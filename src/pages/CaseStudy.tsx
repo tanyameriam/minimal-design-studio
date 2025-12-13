@@ -2892,9 +2892,9 @@ const CaseStudy = () => {
               <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">6</span>
               <h2 className="font-serif text-2xl">High-Fidelity Screens</h2>
             </div>
-            <p className="text-muted-foreground mb-6">The final high-fidelity designs bring together all research insights into a new Merry Heath platform             </p>
+            <p className="text-muted-foreground mb-6">The final high-fidelity designs bring together all research insights into a new Merry Heath platform</p>
 
-            <a href="https://www.figma.com/proto/yH9NNuzOQov4XIgkz5D2jo/Project-Merry-Health?node-id=15-36521&t=31Fmb4tJRbqNkLny-1&scaling=min-zoom&content-scaling=fixed&page-id=14%3A5438&starting-point-node-id=15%3A36521" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-6 py-4 rounded-xl border border-primary/20 bg-primary/5 hover:bg-primary/10 transition-colors">
+            <a href="https://www.figma.com/proto/yH9NNuzOQov4XIgkz5D2jo/Project-Merry-Health?node-id=15-36521&t=31Fmb4tJRbqNkLny-1&scaling=min-zoom&content-scaling=fixed&page-id=14%3A5438&starting-point-node-id=15%3A36521" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-6 py-4 rounded-xl border border-primary/20 bg-primary/5 hover:bg-primary/10 transition-colors mb-12">
               <svg className="w-5 h-5 text-primary" viewBox="0 0 38 57" fill="currentColor">
                 <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" />
                 <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" />
@@ -2907,6 +2907,17 @@ const CaseStudy = () => {
                 <p className="text-xs text-muted-foreground">Interactive prototype with all screens and flows</p>
               </div>
             </a>
+
+            {/* Solution Direction */}
+            {study.designSolutions && <>
+              <h3 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Solution Direction</h3>
+              <div className="space-y-8 mb-12">
+                {study.designSolutions.map((solution, i) => <div key={i} className="p-6 rounded-xl border border-border bg-background">
+                    <h4 className="font-serif text-lg mb-3">{solution.title}</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{solution.content}</p>
+                  </div>)}
+              </div>
+            </>}
           </div>
         </section>}
 
@@ -4005,18 +4016,6 @@ const CaseStudy = () => {
           </div>
         </section>}
 
-      {/* Design Solutions (for Merry Health) */}
-      {study.designSolutions && <section className="px-6 lg:px-12 py-16 bg-card">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Key Design Solutions</h2>
-            <div className="space-y-12">
-              {study.designSolutions.map((solution, i) => <div key={i}>
-                  <h3 className="font-serif text-xl mb-4">{solution.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{solution.content}</p>
-                </div>)}
-            </div>
-          </div>
-        </section>}
 
       {/* Edge Cases (for Merry Health) */}
       {study.edgeCases && <section className="px-6 lg:px-12 py-16">
