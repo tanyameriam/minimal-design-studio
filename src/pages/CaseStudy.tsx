@@ -2622,286 +2622,343 @@ const CaseStudy = () => {
           </div>
         </section>}
 
-      {/* Merry Health User Journey Mapping - Compact Card Layout */}
-      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16">
+      {/* Merry Health User Journey & Findings */}
+      {slug === 'merry-health' && <section id="merry-findings" className="px-6 lg:px-12 py-16 scroll-mt-20">
           <div className="container mx-auto max-w-6xl">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">2</span>
-              <h2 className="font-serif text-2xl">User Journey Mapping</h2>
-              <a href="https://www.figma.com/design/yH9NNuzOQov4XIgkz5D2jo/Project-Merry-Health?node-id=15-28403&t=lxBxhBwv6frOZBTQ-1" target="_blank" rel="noopener noreferrer" className="ml-auto flex items-center gap-2 text-xs text-primary hover:underline">
-                <svg className="w-3.5 h-3.5" viewBox="0 0 38 57" fill="currentColor">
-                  <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" />
-                  <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" />
-                  <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" />
-                  <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" />
-                  <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" />
-                </svg>
-                View in Figma
-              </a>
-            </div>
-            <p className="text-muted-foreground mb-10">We created current and ideal journey maps for all actors to validate if our identified opportunities would truly make a difference in their experience.</p>
+            <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2 block">Findings</span>
+            <h2 className="font-serif text-3xl mb-4">Key Insights from User Journeys</h2>
+            <p className="text-muted-foreground mb-10 max-w-3xl">We mapped current and ideal journeys for all actors to validate if our identified opportunities would truly make a difference.</p>
 
-            <div className="space-y-8">
-              {/* Patient Party Journey Card */}
-              <div className="p-6 rounded-xl border border-border bg-background">
-                <div className="grid lg:grid-cols-[1fr_280px] gap-6">
-                  {/* Left: Findings */}
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-xs font-medium">PP</div>
-                      <div>
-                        <h3 className="font-serif text-lg">Patient Party Journey</h3>
-                        <p className="text-xs text-muted-foreground">Family members coordinating emergency transport</p>
-                      </div>
-                    </div>
-                    
-                    <div className="p-4 rounded-lg bg-gradient-to-r from-blue-500/5 to-blue-600/5 border border-blue-500/20">
-                      <h4 className="text-xs font-semibold mb-3 flex items-center gap-2">
-                        <span className="w-4 h-4 rounded-full bg-blue-500/20 flex items-center justify-center text-[10px] text-blue-600">✓</span>
-                        Key Inferences
-                      </h4>
-                      <ul className="space-y-2">
-                        <li className="text-xs text-muted-foreground flex gap-2"><span className="text-blue-600 font-bold">→</span>Anxiety peaks during wait time with no visibility</li>
-                        <li className="text-xs text-muted-foreground flex gap-2"><span className="text-blue-600 font-bold">→</span>Multiple calls made to check ambulance status</li>
-                        <li className="text-xs text-muted-foreground flex gap-2"><span className="text-blue-600 font-bold">→</span>Tracking link (when shared) significantly reduces stress</li>
-                        <li className="text-xs text-muted-foreground flex gap-2"><span className="text-blue-600 font-bold">→</span>Proactive SMS at milestones builds trust</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  {/* Right: Image Preview Card */}
-                  <div className="lg:sticky lg:top-6 h-fit">
-                    <div className="bg-muted/20 border border-border rounded-lg p-3">
-                      <span className="text-xs font-medium text-muted-foreground mb-2 block">2 journey maps</span>
-                      <div className="space-y-2">
-                        <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryPatientCurrentJourney)}>
-                          <img src={merryPatientCurrentJourney} alt="Current Journey" className="w-full h-14 object-cover opacity-80 hover:opacity-100 transition-opacity" />
-                          <div className="bg-muted px-2 py-1">
-                            <span className="text-[10px] text-muted-foreground font-medium">Current</span>
-                          </div>
-                        </div>
-                        <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryPatientIdealJourney)}>
-                          <img src={merryPatientIdealJourney} alt="Ideal Journey" className="w-full h-14 object-cover opacity-80 hover:opacity-100 transition-opacity" />
-                          <div className="bg-primary/10 px-2 py-1">
-                            <span className="text-[10px] text-primary font-medium">Ideal</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+            {/* Summary Insight Cards - Always Visible */}
+            <div className="grid md:grid-cols-3 gap-6 mb-12">
+              <div className="relative overflow-hidden p-6 rounded-2xl border border-border bg-card">
+                <span className="absolute -top-4 -left-2 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">01</span>
+                <div className="relative z-10">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-xs font-medium mb-3">PP</div>
+                  <h3 className="font-serif text-lg mb-2">Patient Party</h3>
+                  <p className="text-sm text-muted-foreground">Anxiety peaks during wait time. Tracking links and proactive SMS at milestones build trust.</p>
                 </div>
               </div>
-
-              {/* Merry Health Admin Journey Card */}
-              <div className="p-6 rounded-xl border border-border bg-background">
-                <div className="grid lg:grid-cols-[1fr_280px] gap-6">
-                  {/* Left: Findings */}
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white text-xs font-medium">MH</div>
-                      <div>
-                        <h3 className="font-serif text-lg">Merry Health Admin Journey</h3>
-                        <p className="text-xs text-muted-foreground">Central dispatch coordinators managing all requests</p>
-                      </div>
-                    </div>
-                    
-                    <div className="p-4 rounded-lg bg-gradient-to-r from-purple-500/5 to-purple-600/5 border border-purple-500/20">
-                      <h4 className="text-xs font-semibold mb-3 flex items-center gap-2">
-                        <span className="w-4 h-4 rounded-full bg-purple-500/20 flex items-center justify-center text-[10px] text-purple-600">✓</span>
-                        Key Inferences
-                      </h4>
-                      <ul className="space-y-2">
-                        <li className="text-xs text-muted-foreground flex gap-2"><span className="text-purple-600 font-bold">→</span>Constantly switching between WhatsApp, calls, and dashboard</li>
-                        <li className="text-xs text-muted-foreground flex gap-2"><span className="text-purple-600 font-bold">→</span>Manual relay of status from driver to hospital admin</li>
-                        <li className="text-xs text-muted-foreground flex gap-2"><span className="text-purple-600 font-bold">→</span>No single source of truth for ride status</li>
-                        <li className="text-xs text-muted-foreground flex gap-2"><span className="text-purple-600 font-bold">→</span>High volume of incoming status inquiry calls</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  {/* Right: Image Preview Card */}
-                  <div className="lg:sticky lg:top-6 h-fit">
-                    <div className="bg-muted/20 border border-border rounded-lg p-3">
-                      <span className="text-xs font-medium text-muted-foreground mb-2 block">2 journey maps</span>
-                      <div className="space-y-2">
-                        <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryAdminCurrentJourney)}>
-                          <img src={merryAdminCurrentJourney} alt="Current Journey" className="w-full h-14 object-cover opacity-80 hover:opacity-100 transition-opacity" />
-                          <div className="bg-muted px-2 py-1">
-                            <span className="text-[10px] text-muted-foreground font-medium">Current</span>
-                          </div>
-                        </div>
-                        <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryAdminIdealJourney)}>
-                          <img src={merryAdminIdealJourney} alt="Ideal Journey" className="w-full h-14 object-cover opacity-80 hover:opacity-100 transition-opacity" />
-                          <div className="bg-primary/10 px-2 py-1">
-                            <span className="text-[10px] text-primary font-medium">Ideal</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              <div className="relative overflow-hidden p-6 rounded-2xl border border-border bg-card">
+                <span className="absolute -top-4 -left-2 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">02</span>
+                <div className="relative z-10">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white text-xs font-medium mb-3">MH</div>
+                  <h3 className="font-serif text-lg mb-2">Merry Health Admin</h3>
+                  <p className="text-sm text-muted-foreground">Constantly switching tools. No single source of truth. High volume of status inquiry calls.</p>
                 </div>
               </div>
-
-              {/* Hospital Admin Journey Card */}
-              <div className="p-6 rounded-xl border border-border bg-background">
-                <div className="grid lg:grid-cols-[1fr_280px] gap-6">
-                  {/* Left: Findings */}
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white text-xs font-medium">HA</div>
-                      <div>
-                        <h3 className="font-serif text-lg">Hospital Admin Journey</h3>
-                        <p className="text-xs text-muted-foreground">Hospital staff initiating and tracking ambulance requests</p>
-                      </div>
-                    </div>
-
-                    {/* Emotional Arc */}
-                    
-                    
-                    <div className="p-4 rounded-lg bg-gradient-to-r from-emerald-500/5 to-emerald-600/5 border border-emerald-500/20">
-                      <h4 className="text-xs font-semibold mb-3 flex items-center gap-2">
-                        <span className="w-4 h-4 rounded-full bg-emerald-500/20 flex items-center justify-center text-[10px] text-emerald-600">✓</span>
-                        Key Inferences
-                      </h4>
-                      <ul className="space-y-2">
-                        <li className="text-xs text-muted-foreground flex gap-2"><span className="text-emerald-600 font-bold">→</span>Needs quick booking without lengthy phone calls</li>
-                        <li className="text-xs text-muted-foreground flex gap-2"><span className="text-emerald-600 font-bold">→</span>Wants visibility into ETA to prepare receiving team</li>
-                        <li className="text-xs text-muted-foreground flex gap-2"><span className="text-emerald-600 font-bold">→</span>Frustrated by having to call MHA for status updates</li>
-                        <li className="text-xs text-muted-foreground flex gap-2"><span className="text-emerald-600 font-bold">→</span>Would benefit from self-service ride history and reports</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  {/* Right: Image Preview Card */}
-                  <div className="lg:sticky lg:top-6 h-fit">
-                    <div className="bg-muted/20 border border-border rounded-lg p-3">
-                      <span className="text-xs font-medium text-muted-foreground mb-2 block">1 journey map</span>
-                      <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryHospitalJourney)}>
-                        <img src={merryHospitalJourney} alt="Hospital Admin Journey" className="w-full object-cover opacity-80 hover:opacity-100 transition-opacity" />
-                        <div className="bg-muted/30 px-2 py-1">
-                          <span className="text-[10px] text-muted-foreground font-medium">Complete Journey Map</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              <div className="relative overflow-hidden p-6 rounded-2xl border border-border bg-card">
+                <span className="absolute -top-4 -left-2 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">03</span>
+                <div className="relative z-10">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white text-xs font-medium mb-3">HA</div>
+                  <h3 className="font-serif text-lg mb-2">Hospital Admin</h3>
+                  <p className="text-sm text-muted-foreground">Needs quick booking, ETA visibility, and self-service ride history without calling MHA.</p>
                 </div>
               </div>
             </div>
 
-            {/* Summary */}
-            <div className="mt-10 p-6 rounded-xl bg-muted/50 border border-border">
-              <h4 className="font-serif text-base mb-4 text-center text-foreground">Key Problems Identified</h4>
-              <div className="flex flex-wrap justify-center gap-3">
-                <span className="px-3 py-1.5 bg-muted text-muted-foreground rounded-full text-xs font-medium">Manual coordination delays</span>
-                <span className="px-3 py-1.5 bg-muted text-muted-foreground rounded-full text-xs font-medium">No real-time visibility</span>
-                <span className="px-3 py-1.5 bg-muted text-muted-foreground rounded-full text-xs font-medium">Fragmented data across channels</span>
-                <span className="px-3 py-1.5 bg-muted text-muted-foreground rounded-full text-xs font-medium">Workflow mismatch with hospital behavior</span>
+            {/* Expandable Detailed Journeys */}
+            <Collapsible>
+              <CollapsibleTrigger className="flex items-center gap-3 text-sm text-primary hover:underline mb-6 group">
+                <ChevronDown className="w-4 h-4 transition-transform group-data-[state=open]:rotate-180" />
+                <span>View detailed user journey maps</span>
+              </CollapsibleTrigger>
+              <CollapsibleContent className="space-y-8 animate-fade-in">
+                {/* Patient Party Journey Card */}
+                <div className="p-6 rounded-xl border border-border bg-background">
+                  <div className="grid lg:grid-cols-[1fr_280px] gap-6">
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-xs font-medium">PP</div>
+                        <div>
+                          <h3 className="font-serif text-lg">Patient Party Journey</h3>
+                          <p className="text-xs text-muted-foreground">Family members coordinating emergency transport</p>
+                        </div>
+                      </div>
+                      
+                      <div className="p-4 rounded-lg bg-gradient-to-r from-blue-500/5 to-blue-600/5 border border-blue-500/20">
+                        <h4 className="text-xs font-semibold mb-3 flex items-center gap-2">
+                          <span className="w-4 h-4 rounded-full bg-blue-500/20 flex items-center justify-center text-[10px] text-blue-600">✓</span>
+                          Key Inferences
+                        </h4>
+                        <ul className="space-y-2">
+                          <li className="text-xs text-muted-foreground flex gap-2"><span className="text-blue-600 font-bold">→</span>Anxiety peaks during wait time with no visibility</li>
+                          <li className="text-xs text-muted-foreground flex gap-2"><span className="text-blue-600 font-bold">→</span>Multiple calls made to check ambulance status</li>
+                          <li className="text-xs text-muted-foreground flex gap-2"><span className="text-blue-600 font-bold">→</span>Tracking link (when shared) significantly reduces stress</li>
+                          <li className="text-xs text-muted-foreground flex gap-2"><span className="text-blue-600 font-bold">→</span>Proactive SMS at milestones builds trust</li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div className="lg:sticky lg:top-6 h-fit">
+                      <div className="bg-muted/20 border border-border rounded-lg p-3">
+                        <span className="text-xs font-medium text-muted-foreground mb-2 block">2 journey maps</span>
+                        <div className="space-y-2">
+                          <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryPatientCurrentJourney)}>
+                            <img src={merryPatientCurrentJourney} alt="Current Journey" className="w-full h-14 object-cover opacity-80 hover:opacity-100 transition-opacity" />
+                            <div className="bg-muted px-2 py-1">
+                              <span className="text-[10px] text-muted-foreground font-medium">Current</span>
+                            </div>
+                          </div>
+                          <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryPatientIdealJourney)}>
+                            <img src={merryPatientIdealJourney} alt="Ideal Journey" className="w-full h-14 object-cover opacity-80 hover:opacity-100 transition-opacity" />
+                            <div className="bg-primary/10 px-2 py-1">
+                              <span className="text-[10px] text-primary font-medium">Ideal</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Merry Health Admin Journey Card */}
+                <div className="p-6 rounded-xl border border-border bg-background">
+                  <div className="grid lg:grid-cols-[1fr_280px] gap-6">
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white text-xs font-medium">MH</div>
+                        <div>
+                          <h3 className="font-serif text-lg">Merry Health Admin Journey</h3>
+                          <p className="text-xs text-muted-foreground">Central dispatch coordinators managing all requests</p>
+                        </div>
+                      </div>
+                      
+                      <div className="p-4 rounded-lg bg-gradient-to-r from-purple-500/5 to-purple-600/5 border border-purple-500/20">
+                        <h4 className="text-xs font-semibold mb-3 flex items-center gap-2">
+                          <span className="w-4 h-4 rounded-full bg-purple-500/20 flex items-center justify-center text-[10px] text-purple-600">✓</span>
+                          Key Inferences
+                        </h4>
+                        <ul className="space-y-2">
+                          <li className="text-xs text-muted-foreground flex gap-2"><span className="text-purple-600 font-bold">→</span>Constantly switching between WhatsApp, calls, and dashboard</li>
+                          <li className="text-xs text-muted-foreground flex gap-2"><span className="text-purple-600 font-bold">→</span>Manual relay of status from driver to hospital admin</li>
+                          <li className="text-xs text-muted-foreground flex gap-2"><span className="text-purple-600 font-bold">→</span>No single source of truth for ride status</li>
+                          <li className="text-xs text-muted-foreground flex gap-2"><span className="text-purple-600 font-bold">→</span>High volume of incoming status inquiry calls</li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div className="lg:sticky lg:top-6 h-fit">
+                      <div className="bg-muted/20 border border-border rounded-lg p-3">
+                        <span className="text-xs font-medium text-muted-foreground mb-2 block">2 journey maps</span>
+                        <div className="space-y-2">
+                          <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryAdminCurrentJourney)}>
+                            <img src={merryAdminCurrentJourney} alt="Current Journey" className="w-full h-14 object-cover opacity-80 hover:opacity-100 transition-opacity" />
+                            <div className="bg-muted px-2 py-1">
+                              <span className="text-[10px] text-muted-foreground font-medium">Current</span>
+                            </div>
+                          </div>
+                          <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryAdminIdealJourney)}>
+                            <img src={merryAdminIdealJourney} alt="Ideal Journey" className="w-full h-14 object-cover opacity-80 hover:opacity-100 transition-opacity" />
+                            <div className="bg-primary/10 px-2 py-1">
+                              <span className="text-[10px] text-primary font-medium">Ideal</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Hospital Admin Journey Card */}
+                <div className="p-6 rounded-xl border border-border bg-background">
+                  <div className="grid lg:grid-cols-[1fr_280px] gap-6">
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white text-xs font-medium">HA</div>
+                        <div>
+                          <h3 className="font-serif text-lg">Hospital Admin Journey</h3>
+                          <p className="text-xs text-muted-foreground">Hospital staff initiating and tracking ambulance requests</p>
+                        </div>
+                      </div>
+                      
+                      <div className="p-4 rounded-lg bg-gradient-to-r from-emerald-500/5 to-emerald-600/5 border border-emerald-500/20">
+                        <h4 className="text-xs font-semibold mb-3 flex items-center gap-2">
+                          <span className="w-4 h-4 rounded-full bg-emerald-500/20 flex items-center justify-center text-[10px] text-emerald-600">✓</span>
+                          Key Inferences
+                        </h4>
+                        <ul className="space-y-2">
+                          <li className="text-xs text-muted-foreground flex gap-2"><span className="text-emerald-600 font-bold">→</span>Needs quick booking without lengthy phone calls</li>
+                          <li className="text-xs text-muted-foreground flex gap-2"><span className="text-emerald-600 font-bold">→</span>Wants visibility into ETA to prepare receiving team</li>
+                          <li className="text-xs text-muted-foreground flex gap-2"><span className="text-emerald-600 font-bold">→</span>Frustrated by having to call MHA for status updates</li>
+                          <li className="text-xs text-muted-foreground flex gap-2"><span className="text-emerald-600 font-bold">→</span>Would benefit from self-service ride history and reports</li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div className="lg:sticky lg:top-6 h-fit">
+                      <div className="bg-muted/20 border border-border rounded-lg p-3">
+                        <span className="text-xs font-medium text-muted-foreground mb-2 block">1 journey map</span>
+                        <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryHospitalJourney)}>
+                          <img src={merryHospitalJourney} alt="Hospital Admin Journey" className="w-full object-cover opacity-80 hover:opacity-100 transition-opacity" />
+                          <div className="bg-muted/30 px-2 py-1">
+                            <span className="text-[10px] text-muted-foreground font-medium">Complete Journey Map</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <a href="https://www.figma.com/design/yH9NNuzOQov4XIgkz5D2jo/Project-Merry-Health?node-id=15-28403&t=lxBxhBwv6frOZBTQ-1" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs text-primary hover:underline">
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 38 57" fill="currentColor">
+                    <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" />
+                    <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" />
+                    <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" />
+                    <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" />
+                    <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" />
+                  </svg>
+                  View all journey maps in Figma
+                </a>
+              </CollapsibleContent>
+            </Collapsible>
+
+            {/* Reasons for Breakdown - Always Visible */}
+            <div className="mt-16">
+              <h3 className="font-serif text-2xl mb-6">Why the System Was Breaking Down</h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="relative overflow-hidden p-6 rounded-2xl border border-border bg-card">
+                  <span className="absolute -top-4 -left-2 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">01</span>
+                  <div className="relative z-10">
+                    <h4 className="font-serif text-lg mb-2">Workflow Mismatch</h4>
+                    <p className="text-sm text-muted-foreground">System expects structured forms; staff use WhatsApp, calls, and quick notes in emergencies.</p>
+                  </div>
+                </div>
+                <div className="relative overflow-hidden p-6 rounded-2xl border border-border bg-card">
+                  <span className="absolute -top-4 -left-2 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">02</span>
+                  <div className="relative z-10">
+                    <h4 className="font-serif text-lg mb-2">Fragmented Data</h4>
+                    <p className="text-sm text-muted-foreground">Info moves through WhatsApp → calls → paper → dashboard, causing duplicates and missing fields.</p>
+                  </div>
+                </div>
+                <div className="relative overflow-hidden p-6 rounded-2xl border border-border bg-card">
+                  <span className="absolute -top-4 -left-2 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">03</span>
+                  <div className="relative z-10">
+                    <h4 className="font-serif text-lg mb-2">Manual Coordination</h4>
+                    <p className="text-sm text-muted-foreground">Driver assignment, confirmations, and updates rely on manual calls—increasing delays and errors.</p>
+                  </div>
+                </div>
+                <div className="relative overflow-hidden p-6 rounded-2xl border border-border bg-card">
+                  <span className="absolute -top-4 -left-2 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">04</span>
+                  <div className="relative z-10">
+                    <h4 className="font-serif text-lg mb-2">No Real-Time Visibility</h4>
+                    <p className="text-sm text-muted-foreground">No live tracking or automated updates—forcing repeated follow-ups and slowing dispatch.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </section>}
 
-      {/* Merry Health Reasons for System Breakdown */}
-      {slug === 'merry-health' && <section id="merry-findings" className="px-6 lg:px-12 py-16 bg-card scroll-mt-20">
+      {/* Merry Health Strategy & Recommendations */}
+      {slug === 'merry-health' && <section id="merry-strategy" className="px-6 lg:px-12 py-16 bg-card scroll-mt-20">
           <div className="container mx-auto max-w-6xl">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">3</span>
-              <h2 className="font-serif text-2xl">Reasons for System Breakdown</h2>
-            </div>
+            <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2 block">Strategy</span>
+            <h2 className="font-serif text-3xl mb-4">Recommendations to Improve Adoption</h2>
+            <p className="text-muted-foreground mb-10 max-w-3xl">Based on our research, we identified four key strategic recommendations to address the system breakdown.</p>
             
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="p-6 rounded-2xl border border-border bg-background">
-                <h3 className="font-serif text-lg mb-3">Workflow Mismatch with Real Hospital Behavior</h3>
-                <p className="text-sm text-muted-foreground">The system expects complete, structured form entry, while hospital staff operate in emergency-mode using WhatsApp, calls, and quick notes.</p>
+            {/* Summary Cards - Always Visible */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+              <div className="relative overflow-hidden p-6 rounded-2xl border border-border bg-background">
+                <span className="absolute -top-4 -left-2 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">01</span>
+                <div className="relative z-10">
+                  <h3 className="font-serif text-base mb-2">Fix Workflow Gaps</h3>
+                  <p className="text-xs text-muted-foreground">Fix core booking → dispatch → closure sequence first.</p>
+                </div>
               </div>
-              <div className="p-6 rounded-2xl border border-border bg-background">
-                <h3 className="font-serif text-lg mb-3">Fragmented Data Across Multiple Channels</h3>
-                <p className="text-sm text-muted-foreground">Information moves through WhatsApp → calls → paper → dashboard, leading to duplicated entry, missing fields, and inconsistent records.</p>
+              <div className="relative overflow-hidden p-6 rounded-2xl border border-border bg-background">
+                <span className="absolute -top-4 -left-2 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">02</span>
+                <div className="relative z-10">
+                  <h3 className="font-serif text-base mb-2">Mobile-First Model</h3>
+                  <p className="text-xs text-muted-foreground">Match real hospital behavior for higher adoption.</p>
+                </div>
               </div>
-              <div className="p-6 rounded-2xl border border-border bg-background">
-                <h3 className="font-serif text-lg mb-3">Heavy Dependency on Manual Coordination</h3>
-                <p className="text-sm text-muted-foreground">Driver assignment, confirmations, arrival updates, and closure rely on manual calls and WhatsApp messages — increasing delays and errors.</p>
+              <div className="relative overflow-hidden p-6 rounded-2xl border border-border bg-background">
+                <span className="absolute -top-4 -left-2 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">03</span>
+                <div className="relative z-10">
+                  <h3 className="font-serif text-base mb-2">Smart Dispatch</h3>
+                  <p className="text-xs text-muted-foreground">Use distance, ETA, and ratings for recommendations.</p>
+                </div>
               </div>
-              <div className="p-6 rounded-2xl border border-border bg-background">
-                <h3 className="font-serif text-lg mb-3">Lack of Real-Time Visibility</h3>
-                <p className="text-sm text-muted-foreground">No live tracking, no driver availability view, and no automated updates → forcing repeated follow-ups, slowing dispatch, and reducing trust.</p>
+              <div className="relative overflow-hidden p-6 rounded-2xl border border-border bg-background">
+                <span className="absolute -top-4 -left-2 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">04</span>
+                <div className="relative z-10">
+                  <h3 className="font-serif text-base mb-2">Automated Tracking</h3>
+                  <p className="text-xs text-muted-foreground">Live tracking, auto updates, guided closure.</p>
+                </div>
               </div>
             </div>
+
+            {/* Expandable Details */}
+            <Collapsible>
+              <CollapsibleTrigger className="flex items-center gap-3 text-sm text-primary hover:underline mb-6 group">
+                <ChevronDown className="w-4 h-4 transition-transform group-data-[state=open]:rotate-180" />
+                <span>View detailed recommendations and expected outcomes</span>
+              </CollapsibleTrigger>
+              <CollapsibleContent className="space-y-10 animate-fade-in">
+                {/* Detailed Recommendations */}
+                <div className="p-8 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/20 dark:to-orange-950/20 border border-amber-200/50 dark:border-amber-800/30">
+                  <h3 className="font-serif text-lg mb-6">Detailed Recommendations</h3>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-3">
+                      <span className="text-3xl font-light text-muted-foreground">01</span>
+                      <h4 className="font-serif text-base">Fix Tier-1 Workflow Gaps Immediately</h4>
+                      <p className="text-sm text-muted-foreground">Resolve fundamental issues (redundant entries, broken data flow, missing feedback loops) to ensure the core booking → dispatch → closure sequence works reliably.</p>
+                    </div>
+                    <div className="space-y-3">
+                      <span className="text-3xl font-light text-muted-foreground">02</span>
+                      <h4 className="font-serif text-base">Shift to a Mobile-First, Dashboard-as-Record Model</h4>
+                      <p className="text-sm text-muted-foreground">Match real hospital behavior to increase adoption, reduce coordination time, and ensure every case is captured consistently.</p>
+                    </div>
+                    <div className="space-y-3">
+                      <span className="text-3xl font-light text-muted-foreground">03</span>
+                      <h4 className="font-serif text-base">Smart Dispatch Recommendations & System Alerts</h4>
+                      <p className="text-sm text-muted-foreground">Use distance, ETA, vehicle type, and ratings to suggest suitable ambulances and trigger system-led driver notifications.</p>
+                    </div>
+                    <div className="space-y-3">
+                      <span className="text-3xl font-light text-muted-foreground">04</span>
+                      <h4 className="font-serif text-base">Automated Tracking, Communication & Closure</h4>
+                      <p className="text-sm text-muted-foreground">Enable live trip tracking, auto WhatsApp/SMS updates, and guided closure checks to reduce manual coordination.</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Expected Outcomes */}
+                <div>
+                  <h3 className="font-serif text-lg mb-6">The Outcomes This Strategy Unlocks</h3>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="p-6 rounded-2xl border border-border bg-background">
+                      <h4 className="font-serif text-base mb-2">Faster Dispatch Speed</h4>
+                      <p className="text-sm text-primary font-medium mb-2">20-40% improvement</p>
+                      <p className="text-xs text-muted-foreground">By eliminating manual entry and enabling quicker driver confirmation.</p>
+                    </div>
+                    <div className="p-6 rounded-2xl border border-border bg-background">
+                      <h4 className="font-serif text-base mb-2">Higher Dashboard Adoption</h4>
+                      <p className="text-sm text-primary font-medium mb-2">30-50% lift</p>
+                      <p className="text-xs text-muted-foreground">Mobile-first intake aligns with real hospital behavior.</p>
+                    </div>
+                    <div className="p-6 rounded-2xl border border-border bg-background">
+                      <h4 className="font-serif text-base mb-2">Reduced Manual Coordination</h4>
+                      <p className="text-sm text-primary font-medium mb-2">30-50% reduction</p>
+                      <p className="text-xs text-muted-foreground">System-driven notifications cut down recurring calls.</p>
+                    </div>
+                    <div className="p-6 rounded-2xl border border-border bg-background">
+                      <h4 className="font-serif text-base mb-2">Operational Efficiency</h4>
+                      <p className="text-sm text-primary font-medium mb-2">25-45% gain</p>
+                      <p className="text-xs text-muted-foreground">Automated updates and streamlined closure workflows.</p>
+                    </div>
+                    <div className="p-6 rounded-2xl border border-border bg-background lg:col-span-2">
+                      <h4 className="font-serif text-base mb-2">Data Accuracy & Completeness</h4>
+                      <p className="text-sm text-primary font-medium mb-2">40-60% improvement</p>
+                      <p className="text-xs text-muted-foreground">From removing duplicate entries, auto-generating tickets, and introducing structured workflows.</p>
+                    </div>
+                  </div>
+                </div>
+              </CollapsibleContent>
+            </Collapsible>
           </div>
         </section>}
 
-      {/* Merry Health Recommendations to Improve Adoption & Efficiency */}
-      {slug === 'merry-health' && <section id="merry-strategy" className="px-6 lg:px-12 py-16 scroll-mt-20">
-          <div className="container mx-auto max-w-6xl">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">4</span>
-              <h2 className="font-serif text-2xl">Recommendations to Improve Adoption & Efficiency</h2>
-            </div>
-            
-            <div className="p-8 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/20 dark:to-orange-950/20 border border-amber-200/50 dark:border-amber-800/30">
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="space-y-3">
-                  <span className="text-4xl font-light text-muted-foreground">01</span>
-                  <h3 className="font-serif text-lg">Fix Tier-1 Workflow Gaps Immediately</h3>
-                  <p className="text-sm text-muted-foreground">Resolve fundamental issues (redundant entries, broken data flow, missing feedback loops) to ensure the core booking → dispatch → closure sequence works reliably.</p>
-                </div>
-                <div className="space-y-3">
-                  <span className="text-4xl font-light text-muted-foreground">02</span>
-                  <h3 className="font-serif text-lg">Shift to a Mobile-First, Dashboard-as-Record Model</h3>
-                  <p className="text-sm text-muted-foreground">Match real hospital behavior to increase adoption, reduce coordination time, and ensure every case is captured consistently.</p>
-                </div>
-                <div className="space-y-3">
-                  <span className="text-4xl font-light text-muted-foreground">03</span>
-                  <h3 className="font-serif text-lg">Smart Dispatch Recommendations & System Alerts</h3>
-                  <p className="text-sm text-muted-foreground">Use distance, ETA, vehicle type, and ratings to suggest suitable ambulances and trigger system-led driver notifications.</p>
-                </div>
-                <div className="space-y-3">
-                  <span className="text-4xl font-light text-muted-foreground">04</span>
-                  <h3 className="font-serif text-lg">Automated Tracking, Communication & Closure</h3>
-                  <p className="text-sm text-muted-foreground">Enable live trip tracking, auto WhatsApp/SMS updates, and guided closure checks to reduce manual coordination.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>}
-
-      {/* Merry Health Strategy Outcomes */}
-      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16 bg-card">
-          <div className="container mx-auto max-w-6xl">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">4</span>
-              <h2 className="font-serif text-2xl">The Outcomes This Strategy Unlocks</h2>
-            </div>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="p-6 rounded-2xl border border-border bg-background">
-                <h3 className="font-serif text-lg mb-2">Faster Request → Dispatch Speed</h3>
-                <p className="text-sm text-primary font-medium mb-2">Expected improvement: 20-40%</p>
-                <p className="text-sm text-muted-foreground">By eliminating manual entry, reducing back-and-forth, and enabling quicker driver confirmation.</p>
-              </div>
-              <div className="p-6 rounded-2xl border border-border bg-background">
-                <h3 className="font-serif text-lg mb-2">Higher Dashboard Adoption</h3>
-                <p className="text-sm text-primary font-medium mb-2">Expected lift: 30-50%</p>
-                <p className="text-sm text-muted-foreground">A mobile-first intake and single-source-of-truth reduces friction and aligns with real hospital behavior.</p>
-              </div>
-              <div className="p-6 rounded-2xl border border-border bg-background">
-                <h3 className="font-serif text-lg mb-2">Reduced Manual Coordination Load</h3>
-                <p className="text-sm text-primary font-medium mb-2">Anticipated reduction: 30-50%</p>
-                <p className="text-sm text-muted-foreground">Because WhatsApp auto-fill, unified ticketing, and system-driven driver notifications cut down recurring calls & messages.</p>
-              </div>
-              <div className="p-6 rounded-2xl border border-border bg-background">
-                <h3 className="font-serif text-lg mb-2">Boost in Operational Efficiency</h3>
-                <p className="text-sm text-primary font-medium mb-2">Overall efficiency gain: 25-45%</p>
-                <p className="text-sm text-muted-foreground">With automated updates, real-time tracking, and streamlined closure workflows.</p>
-              </div>
-              <div className="p-6 rounded-2xl border border-border bg-background lg:col-span-2">
-                <h3 className="font-serif text-lg mb-2">Improved Data Accuracy & Completeness</h3>
-                <p className="text-sm text-primary font-medium mb-2">Projected improvement: 40-60%</p>
-                <p className="text-sm text-muted-foreground">From removing duplicate entries, auto-generating tickets, and introducing structured workflows.</p>
-              </div>
-            </div>
-          </div>
-        </section>}
 
       {/* Merry Health Proposed Workflow */}
       {slug === 'merry-health' && <section id="merry-workflow" className="px-6 lg:px-12 py-16 scroll-mt-20">
