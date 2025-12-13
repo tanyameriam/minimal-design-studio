@@ -64,8 +64,8 @@ import merryOpportunityRefined from '@/assets/merry-opportunity-refined.png';
 // Merry Health user journey maps
 import merryPatientCurrentJourney from '@/assets/merry-patient-current-journey.jpg';
 import merryPatientIdealJourney from '@/assets/merry-patient-ideal-journey.jpg';
-import merryAdminCurrentJourney from '@/assets/merry-admin-current-journey.png';
-import merryAdminIdealJourney from '@/assets/merry-admin-ideal-journey.png';
+import merryAdminCurrentJourney from '@/assets/merry-admin-current-journey.jpg';
+import merryAdminIdealJourney from '@/assets/merry-admin-ideal-journey.jpg';
 import merryHospitalCurrentJourney from '@/assets/merry-hospital-current-journey.png';
 import merryHospitalIdealJourney from '@/assets/merry-hospital-ideal-journey.png';
 interface CaseStudySection {
@@ -1892,10 +1892,13 @@ const CaseStudy = () => {
                     <div className="p-4 bg-background">
                       <img 
                         src={merryAdminCurrentJourney} 
-                        alt="Merry Health Admin current journey with manual processes" 
+                        alt="Merry Health Admin current journey showing 3 phases: Call Intake & Manual Assignment, Monitoring & Mid-Ride Compliance, Finalization & Audit" 
                         className="w-full object-contain cursor-pointer hover:opacity-90 transition-opacity"
                         onClick={() => setLightboxImage(merryAdminCurrentJourney)}
                       />
+                    </div>
+                    <div className="bg-destructive/5 px-4 py-2 border-t border-destructive/20 text-center">
+                      <span className="text-xs text-muted-foreground">Click to view full journey map</span>
                     </div>
                   </div>
                 </div>
@@ -1908,15 +1911,18 @@ const CaseStudy = () => {
                   </div>
                   <div className="rounded-xl border border-primary/20 overflow-hidden">
                     <div className="bg-primary/5 px-4 py-2 border-b border-primary/20">
-                      <span className="text-xs text-muted-foreground">Centralized dashboard, automated status, streamlined workflow</span>
+                      <span className="text-xs text-muted-foreground">Automated intake, system-assisted tracking, automated audit</span>
                     </div>
                     <div className="p-4 bg-background">
                       <img 
                         src={merryAdminIdealJourney} 
-                        alt="Merry Health Admin ideal journey with automation" 
+                        alt="Merry Health Admin ideal journey with WhatsApp-Dashboard integration showing automated phases" 
                         className="w-full object-contain cursor-pointer hover:opacity-90 transition-opacity"
                         onClick={() => setLightboxImage(merryAdminIdealJourney)}
                       />
+                    </div>
+                    <div className="bg-primary/5 px-4 py-2 border-t border-primary/20 text-center">
+                      <span className="text-xs text-muted-foreground">Click to view full journey map</span>
                     </div>
                   </div>
                 </div>
