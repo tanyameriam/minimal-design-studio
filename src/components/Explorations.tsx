@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { ExternalLink } from 'lucide-react';
+import splineFrogs from '@/assets/spline-frogs.png';
 
 interface ExplorationItem {
   id: number;
@@ -9,6 +11,14 @@ interface ExplorationItem {
   splineUrl?: string;
 }
 
+interface SplineProject {
+  id: number;
+  title: string;
+  description: string;
+  thumbnail: string;
+  splineUrl: string;
+}
+
 const explorations: ExplorationItem[] = [
   {
     id: 1,
@@ -16,14 +26,6 @@ const explorations: ExplorationItem[] = [
     type: "image",
     category: "UI Experiment",
     thumbnail: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&q=80"
-  },
-  {
-    id: 2,
-    title: "3D Abstract Shapes",
-    type: "spline",
-    category: "Spline 3D",
-    thumbnail: "https://images.unsplash.com/photo-1634017839464-5c339bbe3c35?w=600&q=80",
-    splineUrl: "https://prod.spline.design/example"
   },
   {
     id: 3,
@@ -38,13 +40,6 @@ const explorations: ExplorationItem[] = [
     type: "image",
     category: "Color Study",
     thumbnail: "https://images.unsplash.com/photo-1557683316-973673baf926?w=600&q=80"
-  },
-  {
-    id: 5,
-    title: "Floating UI Elements",
-    type: "spline",
-    category: "Spline 3D",
-    thumbnail: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600&q=80"
   },
   {
     id: 6,
@@ -69,7 +64,17 @@ const explorations: ExplorationItem[] = [
   }
 ];
 
-const categories = ['All', 'UI Experiment', 'Spline 3D', 'Concept Screen', 'Color Study', 'Quick Sketch', 'Animation Study'];
+const splineProjects: SplineProject[] = [
+  {
+    id: 1,
+    title: "Frogs in the Pond",
+    description: "An ambient 3D scene with playful frog characters in a moonlit pond environment",
+    thumbnail: splineFrogs,
+    splineUrl: "https://my.spline.design/untitled-e67be5ddaa2a9e554df22e7b93f787ff/"
+  }
+];
+
+const categories = ['All', 'UI Experiment', 'Concept Screen', 'Color Study', 'Quick Sketch', 'Animation Study'];
 
 const Explorations = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -96,6 +101,73 @@ const Explorations = () => {
             build visual muscles, try new styles, and explore imaginative UI concepts. 
             No briefs, no constraints, just curiosity and craft.
           </p>
+        </div>
+
+        {/* Spline Explorations Section */}
+        <div className="mb-20">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-8 h-8 rounded-full bg-foreground flex items-center justify-center">
+              <span className="text-xs font-medium text-background">3D</span>
+            </div>
+            <h3 className="font-serif text-2xl">Spline Explorations</h3>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {splineProjects.map((project) => (
+              <a
+                key={project.id}
+                href={project.splineUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block"
+              >
+                <div className="relative overflow-hidden rounded-xl bg-[#0a1628] aspect-[16/9]">
+                  <img
+                    src={project.thumbnail}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  
+                  {/* Play Button */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
+                      <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* Badge */}
+                  <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+                    <span className="text-xs text-white font-medium">Interactive 3D</span>
+                  </div>
+                </div>
+                
+                <div className="mt-4 flex items-start justify-between gap-4">
+                  <div>
+                    <h4 className="font-medium text-foreground group-hover:text-foreground/80 transition-colors">
+                      {project.title}
+                    </h4>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      {project.description}
+                    </p>
+                  </div>
+                  <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors flex-shrink-0 mt-1" />
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="border-t border-border mb-12" />
+
+        {/* UI Explorations Section */}
+        <div className="mb-8">
+          <h3 className="font-serif text-2xl mb-8">UI Explorations</h3>
         </div>
 
         {/* Category Filter */}
@@ -145,22 +217,9 @@ const Explorations = () => {
                 <h3 className="text-background font-medium text-sm md:text-base">
                   {item.title}
                 </h3>
-                {item.type === 'spline' && (
-                  <span className="mt-2 text-xs text-background/60 flex items-center gap-1">
-                    <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" />
-                    </svg>
-                    3D Interactive
-                  </span>
-                )}
               </div>
 
               {/* Type Badge */}
-              {item.type === 'spline' && (
-                <div className="absolute top-3 right-3 w-6 h-6 rounded-full bg-background/90 flex items-center justify-center">
-                  <span className="text-[10px] font-medium text-foreground">3D</span>
-                </div>
-              )}
               {item.type === 'animation' && (
                 <div className="absolute top-3 right-3 w-6 h-6 rounded-full bg-background/90 flex items-center justify-center">
                   <svg className="w-3 h-3 text-foreground" fill="currentColor" viewBox="0 0 20 20">
