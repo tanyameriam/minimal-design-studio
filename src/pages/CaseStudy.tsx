@@ -23,7 +23,6 @@ interface CaseStudyData {
   marketInsight?: string;
   opportunity?: string;
   designApproach?: CaseStudySection[];
-  wireframing?: CaseStudySection[];
   nextSteps?: string;
   learnings: string[];
   heroImage: string;
@@ -31,10 +30,7 @@ interface CaseStudyData {
   currentScenario?: CaseStudySection[];
   researchInsights?: { ngoQuotes?: string[]; painPoints?: string[]; opportunity?: string };
   processFlow?: CaseStudySection[];
-  informationArchitecture?: CaseStudySection[];
-  impact?: string[];
   // Curateus App specific sections
-  problemSpace?: CaseStudySection[];
   researchFoundations?: CaseStudySection[];
   designGoals?: string[];
   earlyExplorations?: CaseStudySection[];
@@ -43,19 +39,65 @@ interface CaseStudyData {
   outcome?: string[];
   // STREE specific sections
   projectDuration?: string;
-  briefPoints?: string[];
-  researchMethods?: string[];
+  projectContext?: string;
+  problemSpace?: { why: string; context: string } | CaseStudySection[];
+  brief?: {
+    intro: string;
+    coreIntent: string;
+    goals: string[];
+  };
+  research?: {
+    method: string;
+    participants: {
+      count: number;
+      demographics: string;
+      ethics: string;
+    };
+    interviewGoals: string[];
+    imagePlaceholder?: boolean;
+  };
+  synthesis?: {
+    method: string;
+    imagePlaceholders?: number;
+  };
   keyInsights?: CaseStudySection[];
   userGoals?: { primary?: string; motivations?: string[]; challenges?: string[] };
-  personaDescription?: string;
+  personaIntro?: string;
   personaImage?: string;
-  productStrategy?: CaseStudySection[];
-  sosSystem?: CaseStudySection[];
-  usabilityFindings?: string[];
-  finalDesignChanges?: CaseStudySection[];
-  finalUISummary?: CaseStudySection[];
-  functionalImpact?: string[];
-  emotionalImpact?: string[];
+  productStrategy?: {
+    reframe: string;
+    mentorFeedback: string;
+    phases: CaseStudySection[];
+  } | CaseStudySection[];
+  solutionPhase?: {
+    storyboard: string;
+    modes: CaseStudySection[];
+    imagePlaceholder?: boolean;
+  };
+  informationArchitecture?: {
+    rationale: string;
+    structure: { area: string; reason: string }[];
+    onboarding: string;
+    imagePlaceholder?: boolean;
+  } | CaseStudySection[];
+  wireframing?: {
+    approach: string;
+    imagePlaceholder?: boolean;
+  } | CaseStudySection[];
+  usabilityTesting?: {
+    intro: string;
+    findings: string[];
+  };
+  finalDesign?: {
+    changes: CaseStudySection[];
+    screens: string;
+    imagePlaceholder?: boolean;
+  };
+  impact?: {
+    functional: string[];
+    note: string;
+  } | string[];
+  closing?: string;
   // AlHub specific sections
   projectScope?: string[];
   redesignGoals?: CaseStudySection[];
@@ -80,23 +122,6 @@ interface CaseStudyData {
   designSolutions?: CaseStudySection[];
   edgeCases?: CaseStudySection[];
   deliverables?: string[];
-  // STREE detailed version sections
-  hasDetailedVersion?: boolean;
-  detailedVersion?: {
-    whyMattered: string;
-    researchIntent: string;
-    methodology: string;
-    affinityMapping: string;
-    insightGeneration: CaseStudySection[];
-    problemReframing: string;
-    ideation: CaseStudySection[];
-    storyboarding: string;
-    informationArchitecture: string;
-    wireframing: string;
-    outcomes: string;
-    reflection: string;
-    closingLine: string;
-  };
 }
 
 const caseStudies: Record<string, CaseStudyData> = {
@@ -520,57 +545,64 @@ const caseStudies: Record<string, CaseStudyData> = {
     title: "STREE",
     subtitle: "Designing a Virtual Safety Assistant for Women in India",
     overview: "Harassment in public spaces restricts women's freedom of movement, participation in public life, and overall wellbeing. While existing safety tools focus on post-incident response, fear often exists long before an incident and lingers long after. Project Stree explores how design can support women across the entire safety journey—before, during, and after unsafe experiences.",
-    role: "UX Research • Interaction Design • UI Design • Usability Testing • Prototyping",
+    role: "UX Research • UX Design • UI Direction",
     projectDuration: "3 Iterations • 26 Screens",
+    projectContext: "This project was completed as part of the IIT PG Diploma program, working with a team of 5 people. My responsibility was UX Research and UX Design, along with suggesting the direction for UI design.",
     heroImage: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=1200&q=80",
-    // Why This Project Mattered
-    problemSpace: [
-      {
-        title: "Why This Project Mattered",
-        content: "This project started with a fundamental question: What does safety actually mean to women in their everyday lives?\n\nMost existing safety products focus on emergencies—panic buttons, SOS calls, or post-incident reporting. However, early desk research and lived experiences suggested that safety is not a moment—it is a continuous state shaped by perception, environment, social behaviour, and systemic response.\n\nUnderstanding this required moving beyond assumptions and into lived experiences."
+    problemSpace: {
+      why: "Safety, for women, is not a single moment—it is a continuous state shaped by perception, environment, and systemic response. Most existing safety products focus only on emergencies. We wanted to understand what safety actually means in everyday life.",
+      context: "Fear is influenced by location, time of day, social context, and cultural attitudes. Even when no incident occurs, the anticipation of risk shapes behaviour—choosing longer routes, avoiding places, or limiting mobility altogether."
+    },
+    brief: {
+      intro: "Women across India lack a reliable digital tool that supports them during commutes. The existing safety apps fail due to poor network reliability, complex interfaces during panic, and lack of emotional support after incidents.",
+      coreIntent: "Create a smart, reliable, low-friction safety companion that women can depend on during vulnerable moments—supporting them before, during, and after unsafe experiences.",
+      goals: [
+        "Support women before an incident by helping them make informed decisions",
+        "Enable quick and reliable action during an incident",
+        "Support reporting and emotional recovery after an incident",
+        "Prioritise accessibility, privacy, and emotional sensitivity"
+      ]
+    },
+    research: {
+      method: "We chose contextual interviews as our primary research method to deeply understand the problem from lived experiences.",
+      participants: {
+        count: 15,
+        demographics: "Women aged 25-35 from Pune, Bangalore, Delhi, Mumbai, and Kerala",
+        ethics: "Given the sensitive nature of the topic, we ensured all participant information remained anonymous. Every piece of information was documented with care and consent."
       },
-      {
-        title: "The Problem Space",
-        content: "Women's safety is deeply tied to perception. Fear is influenced by location, time of day, social context, and cultural attitudes. Even when no incident occurs, the anticipation of risk shapes behaviour—choosing longer routes, avoiding certain places, travelling in groups, or limiting mobility altogether.\n\nExisting systems largely focus on reaction after harm has occurred. The challenge was not to design a panic button alone—but to design a holistic safety experience that fits into women's daily lives without increasing fear or judgement."
-      }
-    ],
-    briefPoints: [
-      "Support women before an incident by helping them make informed decisions",
-      "Enable quick and reliable action during an incident",
-      "Support reporting and emotional recovery after an incident",
-      "Prioritise accessibility, privacy, and emotional sensitivity",
-      "Design for urban and rural contexts, age groups, and varying tech comfort levels"
-    ],
-    researchMethods: [
-      "15 in-depth interviews with women from ages 19 to 85, across urban and rural contexts",
-      "Open-ended conversations with informed consent and protected identities",
-      "Focus on how women define safety, past experiences, safety concerns across spaces, and current technology use",
-      "Affinity mapping to cluster insights into behavioural, emotional, and functional themes"
-    ],
+      interviewGoals: [
+        "How women define safety in their daily lives",
+        "Past experiences of harassment and how they responded",
+        "Safety concerns across different spaces (travel, work, public areas)",
+        "Current technology use for safety and its limitations",
+        "Who they approach for help and why"
+      ],
+      imagePlaceholder: true
+    },
+    synthesis: {
+      method: "We used affinity mapping on Miro to synthesise the information gathered from interviews. All notes were broken down into individual observations and clustered repeatedly to distinguish between what participants explicitly said, what they felt but struggled to articulate, and what behaviours emerged across multiple interviews.",
+      imagePlaceholders: 3
+    },
     keyInsights: [
-      {
-        title: "Affinity Mapping & Synthesis",
-        content: "After completing the interviews, all notes were broken down into individual observations and transferred onto an affinity mapping board. By clustering observations repeatedly, we distinguished between what participants explicitly said, what they felt but struggled to articulate, and what behaviours emerged across multiple interviews.\n\nThis process revealed that many experiences were not isolated incidents but recurring emotional and behavioural patterns."
-      },
       {
         title: "Safety means independence",
         content: "Women described safety as the ability to live independently without fear. \"I want safety without feeling controlled.\""
       },
       {
         title: "Harassment is not limited to strangers",
-        content: "Offenders are often known people, which complicates reporting and response. During incidents, many women freeze rather than react immediately, often questioning whether their discomfort is justified."
+        content: "Offenders are often known people, which complicates reporting. During incidents, many women freeze rather than react, often questioning whether their discomfort is justified."
       },
       {
         title: "Bystanders rarely intervene",
-        content: "Especially in public spaces. Reporting systems are perceived as slow or ineffective, leading many women to stop reporting incidents entirely."
+        content: "Especially in public spaces. Reporting systems are perceived as slow or ineffective, leading many women to stop reporting entirely."
       },
       {
         title: "Emotional recovery is long-lasting",
-        content: "Experiences are usually shared only within close circles due to shame or fear of judgement. Post-incident emotional impact lingers for long periods."
+        content: "Experiences are shared only within close circles due to shame or fear of judgement. Post-incident emotional impact lingers for long periods."
       },
       {
         title: "Safety perception is contextual",
-        content: "What feels unsafe at 2 PM feels very different at 11 PM. Women adapted behaviour constantly—changing routes, avoiding spaces, travelling in groups—often without conscious planning.\n\nThese insights reframed the problem from \"How do we respond to emergencies?\" to \"How do we support women across the entire safety journey?\""
+        content: "What feels unsafe at 2 PM feels very different at 11 PM. Women adapted behaviour constantly—changing routes, avoiding spaces, travelling in groups."
       }
     ],
     userGoals: {
@@ -584,114 +616,109 @@ const caseStudies: Record<string, CaseStudyData> = {
         "Recovery from user error"
       ]
     },
-    personaDescription: "Alayah is an 18-year-old student who wants to settle far from home to live independently. She is looking forward to her studies in Bangalore, she is a self-motivated woman who is confident enough to face challenges that come her way, also is very practical about life. She does not like patriarchal society and wants the judicial system to take serious actions towards those who misbehave with women.",
+    personaIntro: "We brought all research findings together into a persona representing the goals, motivations, and challenges of our target users.",
     personaImage: "/assets/stree-persona.png",
-    productStrategy: [
-      {
-        title: "Reframing the Problem",
-        content: "Based on research insights, we reframed the design challenge: How might we design a system that supports women before, during, and after safety incidents—without increasing fear or judgement?\n\nMentor feedback raised concerns about unintended consequences, such as labelling places as unsafe and reinforcing fear. This led to a more nuanced design direction where safety maps were reframed as contextual and time-sensitive rather than absolute labels."
-      },
-      {
-        title: "Before an incident",
-        content: "Women needed awareness without alarm. The product provides contextual awareness through crowdsourced safety maps and nearby safe spaces such as police stations and NGOs—framed as contextual guidance rather than absolute warnings."
-      },
-      {
-        title: "During an incident",
-        content: "Women needed simplicity and speed. Quick actions like location sharing, emergency alerts, and passive evidence capture reduce cognitive load. SOS works even with locked screen, poor network, and high stress—single-tap actions that trigger multiple outcomes."
-      },
-      {
-        title: "After an incident",
-        content: "Women needed validation, recovery, and accountability. Anonymous sharing, support groups, and simplified reporting flows help women process experiences and seek accountability with visibility into what happens next."
-      }
-    ],
-    sosSystem: [
-      {
-        title: "Storyboard: A Lived Experience",
-        content: "To test whether our ideas worked together as a system, we created a storyboard following a young woman moving cities for education, navigating unfamiliar spaces, experiencing harassment, and gradually finding support through the platform.\n\nThis step exposed gaps that feature lists often hide—moments of loneliness, doubt, and emotional fatigue that required design attention. The storyboard ensured the product did not only activate during emergencies but remained relevant throughout everyday life."
-      },
-      {
-        title: "Offline Mode",
-        content: "Shows last live location, last updated time, destination & transport type, closest police station, and contact details. Network unreliability should not compromise safety."
-      },
-      {
-        title: "Live Mode",
-        content: "Provides video stream, current location, real-time route deviation detection, contact + official notifications, visible journey status, and estimated arrival time updates."
-      }
-    ],
-    informationArchitecture: [
-      {
-        title: "Structuring the Experience",
-        content: "The architecture prioritised quick access to safety actions while keeping supportive and reflective spaces available without overwhelming the user. Accessibility was considered throughout, including vernacular language support, minimal text, and icon-based navigation."
-      },
-      {
-        title: "App Structure",
-        content: "Home, Maps, SOS, Profile, Contacts, Settings. All safety actions centered around Home + SOS for minimal thought during emergencies."
-      },
-      {
-        title: "Onboarding",
-        content: "Progressive onboarding—not overwhelming. Walkthrough → Profile → Permissions → Emergency Contacts → Locations. Give users a sense of control and transparency."
-      }
-    ],
-    usabilityFindings: [
-      "Users wanted profile pictures for quicker identification",
-      "Lockscreen SOS drastically improved perceived safety",
-      "Emergency contacts must receive start + end notifications",
-      "Users needed feedback after pressing SOS",
-      "Need for clarity around what information contacts receive",
-      "Users expected dynamic ETA updates"
-    ],
-    finalDesignChanges: [
-      {
-        title: "Full-Width SOS Button",
-        content: "High visibility under stress, easy thumb reach."
-      },
-      {
-        title: "Journey Card with ETA + Route + Contact Visibility",
-        content: "Reduces cognitive load; reassures the user."
-      },
-      {
-        title: "Calm Color System",
-        content: "Soft purples + neutrals → safe, calm, non-threatening palette. Safety apps must avoid alarming aesthetics."
-      },
-      {
-        title: "Lock Screen Shortcut",
-        content: "Instant SOS activation in real emergencies."
-      },
-      {
-        title: "Refined Icons & Microcopy",
-        content: "Provide clarity during panic situations."
-      }
-    ],
-    finalUISummary: [
-      {
-        title: "UI Characteristics",
-        content: "Calm, clean, and minimal; safety-first hierarchy; large interactive areas; progressive disclosure; high contrast for night use; intuitive for first-time users."
-      },
-      {
-        title: "Screens Delivered",
-        content: "Login / Sign Up, Permissions, Emergency Contacts, Preferred Locations, Live Map, SOS Mode (Live & Offline), SOS End Flow, Settings & Profile."
-      }
-    ],
-    functionalImpact: [
-      "Faster SOS activation",
-      "Increased clarity in journey status",
-      "Transparent communication with contacts",
-      "Reduced hesitation in using safety features"
-    ],
-    emotionalImpact: [
-      "Women reported feeling more in control",
-      "Families felt reassured",
-      "Overall anxiety during commutes reduced",
-      "Trust in the app increased through transparency"
-    ],
+    productStrategy: {
+      reframe: "Based on research insights, we reframed the design challenge: How might we design a system that supports women before, during, and after safety incidents—without increasing fear or judgement?",
+      mentorFeedback: "Mentor feedback raised concerns about unintended consequences, such as labelling places as unsafe and reinforcing fear. This led to a more nuanced design direction where safety maps were reframed as contextual and time-sensitive rather than absolute labels.",
+      phases: [
+        {
+          title: "Before an incident",
+          content: "Women needed awareness without alarm. Contextual awareness through crowdsourced safety maps and nearby safe spaces—framed as guidance rather than warnings."
+        },
+        {
+          title: "During an incident",
+          content: "Women needed simplicity and speed. Quick actions like location sharing, emergency alerts, and passive evidence capture. SOS works even with locked screen and poor network."
+        },
+        {
+          title: "After an incident",
+          content: "Women needed validation, recovery, and accountability. Anonymous sharing, support groups, and simplified reporting flows with visibility into what happens next."
+        }
+      ]
+    },
+    solutionPhase: {
+      storyboard: "To test whether our ideas worked together as a system, we created a storyboard following a young woman moving cities for education, navigating unfamiliar spaces, experiencing harassment, and gradually finding support through the platform. This exposed gaps that feature lists often hide—moments of loneliness, doubt, and emotional fatigue.",
+      modes: [
+        {
+          title: "Offline Mode",
+          content: "Shows last live location, last updated time, destination & transport type, closest police station, and contact details. Network unreliability should not compromise safety."
+        },
+        {
+          title: "Live Mode",
+          content: "Provides video stream, current location, real-time route deviation detection, contact + official notifications, visible journey status, and estimated arrival time updates."
+        }
+      ],
+      imagePlaceholder: true
+    },
+    informationArchitecture: {
+      rationale: "The architecture prioritised quick access to safety actions while keeping supportive and reflective spaces available without overwhelming the user. Accessibility was considered throughout—vernacular language support, minimal text, and icon-based navigation.",
+      structure: [
+        { area: "Home + SOS", reason: "All safety actions centered here for minimal thought during emergencies" },
+        { area: "Maps", reason: "Contextual safety information and nearby safe spaces" },
+        { area: "Profile & Contacts", reason: "Emergency contact management and preferences" },
+        { area: "Settings", reason: "Permissions and privacy controls" }
+      ],
+      onboarding: "Progressive onboarding—not overwhelming. Walkthrough → Profile → Permissions → Emergency Contacts → Locations. Give users a sense of control and transparency.",
+      imagePlaceholder: true
+    },
+    wireframing: {
+      approach: "We created wireframes around the ideas generated from affinity mapping and research synthesis. Each wireframe addressed specific insights—from quick SOS access to emotional support features.",
+      imagePlaceholder: true
+    },
+    usabilityTesting: {
+      intro: "After initial wireframe iterations, we conducted usability testing with a few users to understand expectations and identify friction points.",
+      findings: [
+        "Users wanted profile pictures for quicker identification",
+        "Lockscreen SOS drastically improved perceived safety",
+        "Emergency contacts must receive start + end notifications",
+        "Users needed immediate feedback after pressing SOS",
+        "Need for clarity around what information contacts receive",
+        "Users expected dynamic ETA updates"
+      ]
+    },
+    finalDesign: {
+      changes: [
+        {
+          title: "Full-Width SOS Button",
+          content: "High visibility under stress, easy thumb reach."
+        },
+        {
+          title: "Journey Card with ETA + Route",
+          content: "Reduces cognitive load; reassures the user with contact visibility."
+        },
+        {
+          title: "Calm Color System",
+          content: "Soft purples + neutrals → safe, calm, non-threatening palette."
+        },
+        {
+          title: "Lock Screen Shortcut",
+          content: "Instant SOS activation in real emergencies."
+        },
+        {
+          title: "Refined Icons & Microcopy",
+          content: "Provide clarity during panic situations."
+        }
+      ],
+      screens: "Login / Sign Up, Permissions, Emergency Contacts, Preferred Locations, Live Map, SOS Mode (Live & Offline), SOS End Flow, Settings & Profile.",
+      imagePlaceholder: true
+    },
+    impact: {
+      functional: [
+        "Faster SOS activation with minimal taps",
+        "Increased clarity in journey status",
+        "Transparent communication with contacts",
+        "Reduced hesitation in using safety features"
+      ],
+      note: "Since this was an academic project, the app was not released for real-world deployment. The impact metrics are based on usability testing feedback and projected outcomes."
+    },
     learnings: [
       "Designing for safety is as much about emotional design as it is about functionality.",
       "Fear, doubt, and social conditioning play a significant role in how women experience risk.",
       "Not every insight demands a feature, and not every problem can—or should—be solved through technology alone.",
       "I learned to navigate ambiguity, accept feedback that challenged assumptions, and design with empathy rather than urgency.",
-      "Most importantly, I learned how to tell a clear, compelling research story—connecting evidence to decisions and decisions to outcomes.",
-      "Project Stree reflects my approach to UX research and design: grounded in lived experiences, guided by evidence, and shaped by responsibility."
-    ]
+      "Most importantly, I learned how to tell a clear, compelling research story—connecting evidence to decisions and decisions to outcomes."
+    ],
+    closing: "Project Stree reflects my approach to UX research and design: grounded in lived experiences, guided by evidence, and shaped by responsibility. It demonstrated how thoughtful design can address sensitive, complex problems—not by providing all the answers, but by asking the right questions and designing with care."
   },
   'alhub-app': {
     title: "AlHub",
@@ -1162,20 +1189,37 @@ const CaseStudy = () => {
         </section>
       )}
 
-      {/* Problem Space (for Curateus App) */}
+      {/* Problem Space - handles both STREE object format and Curateus array format */}
       {study.problemSpace && (
-        <section className="px-6 lg:px-12 py-16 bg-card">
+        <section className="px-6 lg:px-12 py-12 bg-card">
           <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">The Problem Space</h2>
-            <p className="text-lg text-muted-foreground mb-12">The Modern Content Dilemma</p>
-            <div className="space-y-10">
-              {study.problemSpace.map((item, i) => (
-                <div key={i}>
-                  <h3 className="font-serif text-xl mb-4">{item.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{item.content}</p>
+            {'why' in study.problemSpace ? (
+              // STREE format - compact visual
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="p-6 border-l-2 border-primary/30">
+                  <h3 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Why This Project Mattered</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{study.problemSpace.why}</p>
                 </div>
-              ))}
-            </div>
+                <div className="p-6 border-l-2 border-primary/30">
+                  <h3 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">The Problem Space</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{study.problemSpace.context}</p>
+                </div>
+              </div>
+            ) : (
+              // Curateus array format
+              <>
+                <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">The Problem Space</h2>
+                <p className="text-lg text-muted-foreground mb-12">The Modern Content Dilemma</p>
+                <div className="space-y-10">
+                  {study.problemSpace.map((item, i) => (
+                    <div key={i}>
+                      <h3 className="font-serif text-xl mb-4">{item.title}</h3>
+                      <p className="text-muted-foreground leading-relaxed">{item.content}</p>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         </section>
       )}
@@ -1232,20 +1276,47 @@ const CaseStudy = () => {
         </section>
       )}
 
-      {/* Information Architecture */}
+      {/* Information Architecture - handles both formats */}
       {study.informationArchitecture && (
         <section className="px-6 lg:px-12 py-16 bg-card">
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Information Architecture</h2>
-            <p className="text-lg text-muted-foreground mb-12">Workflow Logic & Reasoning</p>
-            <div className="space-y-12">
-              {study.informationArchitecture.map((item, i) => (
-                <div key={i}>
-                  <h3 className="font-serif text-xl mb-4">{item.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{item.content}</p>
+            {'rationale' in study.informationArchitecture ? (
+              // STREE format
+              <>
+                <p className="text-muted-foreground mb-8">{study.informationArchitecture.rationale}</p>
+                <div className="grid md:grid-cols-2 gap-4 mb-8">
+                  {study.informationArchitecture.structure.map((item, i) => (
+                    <div key={i} className="p-4 border border-border">
+                      <h4 className="font-medium text-sm mb-1">{item.area}</h4>
+                      <p className="text-xs text-muted-foreground">{item.reason}</p>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+                <div className="p-4 bg-background border border-border">
+                  <h4 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2">Onboarding Flow</h4>
+                  <p className="text-sm">{study.informationArchitecture.onboarding}</p>
+                </div>
+                {study.informationArchitecture.imagePlaceholder && (
+                  <div className="mt-8 aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
+                    <span className="text-sm text-muted-foreground">[ Information Architecture Diagram ]</span>
+                  </div>
+                )}
+              </>
+            ) : (
+              // Curateus array format
+              <>
+                <p className="text-lg text-muted-foreground mb-12">Workflow Logic & Reasoning</p>
+                <div className="space-y-12">
+                  {study.informationArchitecture.map((item, i) => (
+                    <div key={i}>
+                      <h3 className="font-serif text-xl mb-4">{item.title}</h3>
+                      <p className="text-muted-foreground leading-relaxed">{item.content}</p>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         </section>
       )}
@@ -1379,16 +1450,50 @@ const CaseStudy = () => {
         </section>
       )}
 
-      {/* Wireframing */}
+      {/* Wireframing - handles both formats */}
       {study.wireframing && (
         <section className="px-6 lg:px-12 py-16 border-t border-border">
           <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-12">Wireframing</h2>
-            <div className="space-y-12">
-              {study.wireframing.map((step, i) => (
-                <div key={i}>
-                  <h3 className="font-serif text-xl mb-4">{step.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{step.content}</p>
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-8">Wireframing</h2>
+            {'approach' in study.wireframing ? (
+              // STREE format
+              <>
+                <p className="text-muted-foreground mb-8">{study.wireframing.approach}</p>
+                {study.wireframing.imagePlaceholder && (
+                  <div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
+                    <span className="text-sm text-muted-foreground">[ Wireframe Screenshots ]</span>
+                  </div>
+                )}
+              </>
+            ) : (
+              // Array format
+              <div className="space-y-12">
+                {study.wireframing.map((step, i) => (
+                  <div key={i}>
+                    <h3 className="font-serif text-xl mb-4">{step.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{step.content}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* STREE: Brief Section */}
+      {study.brief && (
+        <section className="px-6 lg:px-12 py-12">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">The Brief</h2>
+            <p className="text-muted-foreground mb-6">{study.brief.intro}</p>
+            <div className="p-6 bg-card border-l-4 border-primary mb-8">
+              <p className="font-serif text-lg italic">{study.brief.coreIntent}</p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-4">
+              {study.brief.goals.map((goal, i) => (
+                <div key={i} className="flex gap-3 text-sm">
+                  <span className="text-primary font-medium">{i + 1}.</span>
+                  <span className="text-muted-foreground">{goal}</span>
                 </div>
               ))}
             </div>
@@ -1396,53 +1501,78 @@ const CaseStudy = () => {
         </section>
       )}
 
-      {/* Brief Points (for STREE) */}
-      {study.briefPoints && (
-        <section className="px-6 lg:px-12 py-16 bg-card">
+      {/* STREE: Research Phase */}
+      {study.research && (
+        <section className="px-6 lg:px-12 py-12 bg-card">
           <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">The Brief</h2>
-            <p className="text-lg mb-8">Women across India lack a reliable digital tool that supports them during commutes. The existing safety apps fail due to:</p>
-            <ul className="space-y-3 mb-8">
-              {study.briefPoints.map((point, i) => (
-                <li key={i} className="flex gap-4">
-                  <span className="text-muted-foreground">•</span>
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="font-serif text-xl text-muted-foreground italic">The core intent: Create a smart, reliable, low-friction safety companion that women can depend on during vulnerable moments.</p>
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-xs uppercase tracking-[0.3em] text-primary/70 font-medium">Phase 1</span>
+              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground">Research</h2>
+            </div>
+            <p className="text-muted-foreground mb-8">{study.research.method}</p>
+            
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
+              <div className="p-4 bg-background border border-border">
+                <h4 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2">Participants</h4>
+                <p className="text-2xl font-serif mb-1">{study.research.participants.count}</p>
+                <p className="text-xs text-muted-foreground">{study.research.participants.demographics}</p>
+              </div>
+              <div className="p-4 bg-background border border-border md:col-span-2">
+                <h4 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2">Ethics</h4>
+                <p className="text-sm text-muted-foreground">{study.research.participants.ethics}</p>
+              </div>
+            </div>
+
+            <div className="p-6 border border-border">
+              <h4 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">Interview Goals</h4>
+              <div className="grid md:grid-cols-2 gap-3">
+                {study.research.interviewGoals.map((goal, i) => (
+                  <div key={i} className="flex gap-2 text-sm">
+                    <span className="text-primary/50">→</span>
+                    <span className="text-muted-foreground">{goal}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {study.research.imagePlaceholder && (
+              <div className="mt-8 aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
+                <span className="text-sm text-muted-foreground">[ Research Documentation / Interview Notes ]</span>
+              </div>
+            )}
           </div>
         </section>
       )}
 
-      {/* Research Methods (for STREE) */}
-      {study.researchMethods && (
-        <section className="px-6 lg:px-12 py-16">
+      {/* STREE: Synthesis Phase */}
+      {study.synthesis && (
+        <section className="px-6 lg:px-12 py-12">
           <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Research Phase</h2>
-            <p className="text-lg text-muted-foreground mb-8">Understanding Safety from Women's Lived Experiences</p>
-            <ul className="space-y-4">
-              {study.researchMethods.map((method, i) => (
-                <li key={i} className="flex gap-4">
-                  <span className="text-muted-foreground">•</span>
-                  <span>{method}</span>
-                </li>
-              ))}
-            </ul>
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Affinity Mapping & Synthesis</h2>
+            <p className="text-muted-foreground mb-8">{study.synthesis.method}</p>
+            {study.synthesis.imagePlaceholders && (
+              <div className="grid md:grid-cols-2 gap-4">
+                {Array.from({ length: study.synthesis.imagePlaceholders }).map((_, i) => (
+                  <div key={i} className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
+                    <span className="text-sm text-muted-foreground">[ Affinity Map Screenshot {i + 1} ]</span>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </section>
       )}
 
       {/* Key Insights (for STREE) */}
       {study.keyInsights && (
-        <section className="px-6 lg:px-12 py-16 bg-card">
+        <section className="px-6 lg:px-12 py-12 bg-card">
           <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-12">Key Insights from Research</h2>
-            <div className="space-y-10">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-8">Key Insights</h2>
+            <div className="grid md:grid-cols-2 gap-6">
               {study.keyInsights.map((insight, i) => (
-                <div key={i}>
-                  <h3 className="font-serif text-xl mb-4">{insight.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{insight.content}</p>
+                <div key={i} className="p-5 bg-background border border-border">
+                  <h3 className="font-serif text-base mb-2">{insight.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{insight.content}</p>
                 </div>
               ))}
             </div>
@@ -1452,175 +1582,36 @@ const CaseStudy = () => {
 
       {/* User Goals (for STREE) */}
       {study.userGoals && (
-        <section className="px-6 lg:px-12 py-16">
+        <section className="px-6 lg:px-12 py-12">
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">User Goals & Challenges</h2>
-            {study.userGoals.primary && (
-              <div className="mb-8">
-                <h3 className="font-serif text-xl mb-4">Primary Goal</h3>
-                <p className="text-lg">{study.userGoals.primary}</p>
-              </div>
-            )}
-            {study.userGoals.motivations && (
-              <div className="mb-8">
-                <h3 className="font-serif text-xl mb-4">Motivations</h3>
-                <div className="flex flex-wrap gap-3">
-                  {study.userGoals.motivations.map((m, i) => (
-                    <span key={i} className="px-4 py-2 border border-border text-sm">{m}</span>
-                  ))}
-                </div>
-              </div>
-            )}
-            {study.userGoals.challenges && (
-              <div>
-                <h3 className="font-serif text-xl mb-4">Challenges Identified</h3>
-                <ul className="space-y-3">
-                  {study.userGoals.challenges.map((c, i) => (
-                    <li key={i} className="flex gap-4">
-                      <span className="text-muted-foreground">•</span>
-                      <span>{c}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
-        </section>
-      )}
-
-      {/* Persona Description (for STREE) */}
-      {study.personaDescription && (
-        <section className="px-6 lg:px-12 py-16 bg-card">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Persona</h2>
-            {study.personaImage && (
-              <div className="mb-8">
-                <img 
-                  src={study.personaImage} 
-                  alt="User Persona" 
-                  className="w-full rounded-lg border border-border"
-                />
-              </div>
-            )}
-            <p className="text-lg leading-relaxed">{study.personaDescription}</p>
-          </div>
-        </section>
-      )}
-
-      {/* Product Strategy (for STREE) */}
-      {study.productStrategy && (
-        <section className="px-6 lg:px-12 py-16">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Core Product Strategy</h2>
             <div className="grid md:grid-cols-2 gap-8">
-              {study.productStrategy.map((item, i) => (
-                <div key={i} className="p-6 border border-border">
-                  <h3 className="font-serif text-lg mb-3">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground">{item.content}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* SOS System (for STREE) */}
-      {study.sosSystem && (
-        <section className="px-6 lg:px-12 py-16 bg-card">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">SOS System Design</h2>
-            <p className="text-lg text-muted-foreground mb-12">The SOS system was designed to operate intelligently in two modes</p>
-            <div className="space-y-10">
-              {study.sosSystem.map((mode, i) => (
-                <div key={i}>
-                  <h3 className="font-serif text-xl mb-4">{mode.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{mode.content}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Usability Findings (for STREE) */}
-      {study.usabilityFindings && (
-        <section className="px-6 lg:px-12 py-16">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Usability Testing</h2>
-            <p className="text-lg text-muted-foreground mb-8">Key findings from observational tests with women simulating real journey actions:</p>
-            <ul className="space-y-3">
-              {study.usabilityFindings.map((finding, i) => (
-                <li key={i} className="flex gap-4">
-                  <span className="text-muted-foreground">•</span>
-                  <span>{finding}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-      )}
-
-      {/* Final Design Changes (for STREE) */}
-      {study.finalDesignChanges && (
-        <section className="px-6 lg:px-12 py-16 bg-card">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Final Design — What Changed</h2>
-            <div className="space-y-8">
-              {study.finalDesignChanges.map((change, i) => (
-                <div key={i}>
-                  <h3 className="font-serif text-xl mb-3">{change.title}</h3>
-                  <p className="text-muted-foreground">{change.content}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Final UI Summary (for STREE) */}
-      {study.finalUISummary && (
-        <section className="px-6 lg:px-12 py-16">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-12">Final UI Summary</h2>
-            <div className="grid md:grid-cols-2 gap-12">
-              {study.finalUISummary.map((item, i) => (
-                <div key={i}>
-                  <h3 className="font-serif text-xl mb-4">{item.title}</h3>
-                  <p className="text-muted-foreground">{item.content}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Functional & Emotional Impact (for STREE) */}
-      {(study.functionalImpact || study.emotionalImpact) && (
-        <section className="px-6 lg:px-12 py-16 bg-card">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-12">Impact</h2>
-            <div className="grid md:grid-cols-2 gap-12">
-              {study.functionalImpact && (
+              <div>
+                {study.userGoals.primary && (
+                  <div className="mb-6">
+                    <h3 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Primary Goal</h3>
+                    <p className="font-serif text-lg">{study.userGoals.primary}</p>
+                  </div>
+                )}
+                {study.userGoals.motivations && (
+                  <div>
+                    <h3 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Motivations</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {study.userGoals.motivations.map((m, i) => (
+                        <span key={i} className="px-3 py-1 border border-primary/30 text-sm text-primary/80">{m}</span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+              {study.userGoals.challenges && (
                 <div>
-                  <h3 className="font-serif text-xl mb-6">Functional Impact</h3>
-                  <ul className="space-y-3">
-                    {study.functionalImpact.map((item, i) => (
-                      <li key={i} className="flex gap-4">
+                  <h3 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Challenges Identified</h3>
+                  <ul className="space-y-2">
+                    {study.userGoals.challenges.map((c, i) => (
+                      <li key={i} className="flex gap-2 text-sm">
                         <span className="text-muted-foreground">•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              {study.emotionalImpact && (
-                <div>
-                  <h3 className="font-serif text-xl mb-6">Emotional Impact</h3>
-                  <ul className="space-y-3">
-                    {study.emotionalImpact.map((item, i) => (
-                      <li key={i} className="flex gap-4">
-                        <span className="text-muted-foreground">•</span>
-                        <span>{item}</span>
+                        <span className="text-muted-foreground">{c}</span>
                       </li>
                     ))}
                   </ul>
@@ -1631,8 +1622,158 @@ const CaseStudy = () => {
         </section>
       )}
 
-      {/* Impact (for food waste project) */}
-      {study.impact && (
+      {/* Persona (for STREE) */}
+      {(study.personaIntro || study.personaImage) && (
+        <section className="px-6 lg:px-12 py-12 bg-card">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">Persona</h2>
+            {study.personaIntro && (
+              <p className="text-sm text-muted-foreground mb-6">{study.personaIntro}</p>
+            )}
+            {study.personaImage && (
+              <img 
+                src={study.personaImage} 
+                alt="User Persona" 
+                className="w-full rounded-lg border border-border"
+              />
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* Product Strategy - handles both formats */}
+      {study.productStrategy && (
+        <section className="px-6 lg:px-12 py-12">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Product Strategy</h2>
+            {'reframe' in study.productStrategy ? (
+              // STREE format
+              <>
+                <p className="text-muted-foreground mb-4">{study.productStrategy.reframe}</p>
+                <p className="text-sm text-muted-foreground/70 mb-8 italic">{study.productStrategy.mentorFeedback}</p>
+                <div className="grid md:grid-cols-3 gap-6">
+                  {study.productStrategy.phases.map((phase, i) => (
+                    <div key={i} className="p-5 border border-border">
+                      <h3 className="font-serif text-base mb-3">{phase.title}</h3>
+                      <p className="text-sm text-muted-foreground">{phase.content}</p>
+                    </div>
+                  ))}
+                </div>
+              </>
+            ) : (
+              // Array format
+              <div className="grid md:grid-cols-2 gap-8">
+                {study.productStrategy.map((item, i) => (
+                  <div key={i} className="p-6 border border-border">
+                    <h3 className="font-serif text-lg mb-3">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground">{item.content}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* STREE: Solution Phase */}
+      {study.solutionPhase && (
+        <section className="px-6 lg:px-12 py-12 bg-card">
+          <div className="container mx-auto max-w-4xl">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-xs uppercase tracking-[0.3em] text-primary/70 font-medium">Phase 2</span>
+              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground">Solution Design</h2>
+            </div>
+            
+            <div className="mb-8">
+              <h3 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Storyboarding</h3>
+              <p className="text-sm text-muted-foreground">{study.solutionPhase.storyboard}</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {study.solutionPhase.modes.map((mode, i) => (
+                <div key={i} className="p-5 bg-background border border-border">
+                  <h4 className="font-serif text-base mb-2">{mode.title}</h4>
+                  <p className="text-sm text-muted-foreground">{mode.content}</p>
+                </div>
+              ))}
+            </div>
+
+            {study.solutionPhase.imagePlaceholder && (
+              <div className="mt-8 aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
+                <span className="text-sm text-muted-foreground">[ Storyboard / User Flow ]</span>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* STREE: Usability Testing */}
+      {study.usabilityTesting && (
+        <section className="px-6 lg:px-12 py-12">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">Usability Testing</h2>
+            <p className="text-sm text-muted-foreground mb-6">{study.usabilityTesting.intro}</p>
+            <div className="grid md:grid-cols-2 gap-4">
+              {study.usabilityTesting.findings.map((finding, i) => (
+                <div key={i} className="flex gap-3 p-4 bg-card border border-border">
+                  <span className="text-primary/50 text-sm">{i + 1}.</span>
+                  <span className="text-sm text-muted-foreground">{finding}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* STREE: Final Design */}
+      {study.finalDesign && (
+        <section className="px-6 lg:px-12 py-12 bg-card">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-8">Final Design</h2>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+              {study.finalDesign.changes.map((change, i) => (
+                <div key={i} className="p-4 bg-background border border-border">
+                  <h3 className="font-medium text-sm mb-2">{change.title}</h3>
+                  <p className="text-xs text-muted-foreground">{change.content}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="p-4 border border-border mb-8">
+              <h4 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2">Screens Delivered</h4>
+              <p className="text-sm text-muted-foreground">{study.finalDesign.screens}</p>
+            </div>
+
+            {study.finalDesign.imagePlaceholder && (
+              <div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
+                <span className="text-sm text-muted-foreground">[ Final UI Screenshots ]</span>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* STREE: Impact */}
+      {study.impact && 'functional' in study.impact && (
+        <section className="px-6 lg:px-12 py-12">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Projected Impact</h2>
+            <div className="grid md:grid-cols-2 gap-4 mb-6">
+              {study.impact.functional.map((item, i) => (
+                <div key={i} className="flex gap-2 text-sm">
+                  <span className="text-primary">✓</span>
+                  <span className="text-muted-foreground">{item}</span>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-muted-foreground/70 italic">{study.impact.note}</p>
+          </div>
+        </section>
+      )}
+
+      {/* Impact (for food waste project - array format) */}
+      {study.impact && Array.isArray(study.impact) && (
         <section className="px-6 lg:px-12 py-16 bg-card">
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Impact</h2>
