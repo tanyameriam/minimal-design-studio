@@ -67,6 +67,7 @@ import merryPatientIdealJourney from '@/assets/merry-patient-ideal-journey.jpg';
 import merryAdminCurrentJourney from '@/assets/merry-admin-current-journey.jpg';
 import merryAdminIdealJourney from '@/assets/merry-admin-ideal-journey.jpg';
 import merryHospitalJourney from '@/assets/merry-hospital-journey.jpg';
+import merryProposedWorkflow from '@/assets/merry-proposed-workflow.jpg';
 interface CaseStudySection {
   title: string;
   content: string;
@@ -2013,6 +2014,139 @@ const CaseStudy = () => {
               <p className="text-sm text-muted-foreground text-center max-w-3xl mx-auto">
                 The journey maps validated that our identified opportunities—automation, real-time tracking, structured data capture, and centralized dashboards—directly address pain points across all three actor groups. Each improvement creates ripple effects that benefit the entire ecosystem.
               </p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Merry Health Proposed Workflow */}
+      {slug === 'merry-health' && (
+        <section className="px-6 lg:px-12 py-16">
+          <div className="container mx-auto max-w-6xl">
+            <div className="flex items-center gap-4 mb-6">
+              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">4</span>
+              <h2 className="font-serif text-2xl">Proposed Workflow</h2>
+            </div>
+            <p className="text-muted-foreground mb-10">Based on the research findings, we designed a new workflow that addresses the identified pain points and leverages opportunities for automation and clarity.</p>
+
+            {/* Key Findings Summary */}
+            <div className="mb-12">
+              <h3 className="font-serif text-lg mb-6">Key Findings from Research</h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <div className="p-4 rounded-lg border border-border bg-card">
+                  <div className="flex items-start gap-3">
+                    <span className="w-6 h-6 rounded-full bg-destructive/10 flex items-center justify-center text-destructive text-xs font-bold flex-shrink-0 mt-0.5">1</span>
+                    <div>
+                      <h4 className="text-sm font-medium mb-1">Manual Coordination Overload</h4>
+                      <p className="text-xs text-muted-foreground">WhatsApp, calls, and dashboard switching creates cognitive burden</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-4 rounded-lg border border-border bg-card">
+                  <div className="flex items-start gap-3">
+                    <span className="w-6 h-6 rounded-full bg-destructive/10 flex items-center justify-center text-destructive text-xs font-bold flex-shrink-0 mt-0.5">2</span>
+                    <div>
+                      <h4 className="text-sm font-medium mb-1">Status Visibility Gap</h4>
+                      <p className="text-xs text-muted-foreground">No real-time tracking leads to frequent status inquiry calls</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-4 rounded-lg border border-border bg-card">
+                  <div className="flex items-start gap-3">
+                    <span className="w-6 h-6 rounded-full bg-destructive/10 flex items-center justify-center text-destructive text-xs font-bold flex-shrink-0 mt-0.5">3</span>
+                    <div>
+                      <h4 className="text-sm font-medium mb-1">Data Inconsistency</h4>
+                      <p className="text-xs text-muted-foreground">Freeform messages cause missing or incorrect patient details</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-4 rounded-lg border border-border bg-card">
+                  <div className="flex items-start gap-3">
+                    <span className="w-6 h-6 rounded-full bg-destructive/10 flex items-center justify-center text-destructive text-xs font-bold flex-shrink-0 mt-0.5">4</span>
+                    <div>
+                      <h4 className="text-sm font-medium mb-1">Driver Status Relay</h4>
+                      <p className="text-xs text-muted-foreground">MHA manually relays driver updates to hospital admins</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-4 rounded-lg border border-border bg-card">
+                  <div className="flex items-start gap-3">
+                    <span className="w-6 h-6 rounded-full bg-destructive/10 flex items-center justify-center text-destructive text-xs font-bold flex-shrink-0 mt-0.5">5</span>
+                    <div>
+                      <h4 className="text-sm font-medium mb-1">Patient Party Anxiety</h4>
+                      <p className="text-xs text-muted-foreground">No proactive updates during critical wait periods</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-4 rounded-lg border border-border bg-card">
+                  <div className="flex items-start gap-3">
+                    <span className="w-6 h-6 rounded-full bg-destructive/10 flex items-center justify-center text-destructive text-xs font-bold flex-shrink-0 mt-0.5">6</span>
+                    <div>
+                      <h4 className="text-sm font-medium mb-1">Audit & Compliance Gaps</h4>
+                      <p className="text-xs text-muted-foreground">Manual logging leads to incomplete ride documentation</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Placeholder for additional findings */}
+              <div className="p-4 border-2 border-dashed border-border/50 bg-muted/10 rounded-lg">
+                <p className="text-sm text-muted-foreground italic text-center">Additional findings to be documented here...</p>
+              </div>
+            </div>
+
+            {/* Proposed Workflow Diagram */}
+            <div className="mb-8">
+              <h3 className="font-serif text-lg mb-4">Edge Case Workflow Design</h3>
+              <p className="text-sm text-muted-foreground mb-6">The proposed workflow integrates WhatsApp API, automated trip creation, driver assignment with priority rules, and automated notifications—while accounting for edge cases like driver unavailability, tracking issues, and identity verification.</p>
+              
+              <div className="rounded-xl border-2 border-primary/20 bg-gradient-to-b from-primary/5 to-background shadow-sm overflow-hidden">
+                <div className="bg-primary/10 px-4 py-2 border-b border-primary/20 flex items-center justify-between">
+                  <span className="text-xs uppercase tracking-wider text-primary font-medium">Proposed Workflow with Edge Cases</span>
+                  <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                    <span>HA → WhatsApp API → MHA → Driver → PP</span>
+                  </div>
+                </div>
+                <div className="p-6 bg-background">
+                  <img 
+                    src={merryProposedWorkflow} 
+                    alt="Proposed edge case workflow showing 12 steps from Hospital Admin through WhatsApp API, MHA trip creation, driver assignment, to patient party notification with fallback mechanisms" 
+                    className="w-full object-contain cursor-pointer hover:scale-[1.01] transition-transform duration-300"
+                    onClick={() => setLightboxImage(merryProposedWorkflow)}
+                  />
+                </div>
+                <div className="bg-primary/5 px-4 py-2 border-t border-primary/20 text-center">
+                  <span className="text-xs text-muted-foreground">Click to view full workflow diagram with all edge cases and fallback mechanisms</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Key Workflow Features */}
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="p-5 rounded-lg border border-border bg-card">
+                <h4 className="text-sm font-semibold mb-3 flex items-center gap-2">
+                  <span className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-xs text-primary">✓</span>
+                  Automated Flow
+                </h4>
+                <ul className="space-y-2 text-xs text-muted-foreground">
+                  <li className="flex gap-2"><span className="text-primary">•</span>WhatsApp API integration for seamless intake</li>
+                  <li className="flex gap-2"><span className="text-primary">•</span>Auto Trip ID creation with priority tagging</li>
+                  <li className="flex gap-2"><span className="text-primary">•</span>Automated patient party notifications</li>
+                  <li className="flex gap-2"><span className="text-primary">•</span>Real-time status sync across all actors</li>
+                </ul>
+              </div>
+              <div className="p-5 rounded-lg border border-border bg-card">
+                <h4 className="text-sm font-semibold mb-3 flex items-center gap-2">
+                  <span className="w-5 h-5 rounded-full bg-amber-500/10 flex items-center justify-center text-xs text-amber-600">!</span>
+                  Edge Case Handling
+                </h4>
+                <ul className="space-y-2 text-xs text-muted-foreground">
+                  <li className="flex gap-2"><span className="text-amber-600">•</span>Driver phone unreachable → SMS fallback</li>
+                  <li className="flex gap-2"><span className="text-amber-600">•</span>Driver stagnant → MHA intervention alert</li>
+                  <li className="flex gap-2"><span className="text-amber-600">•</span>Tracking failure → Manual status call</li>
+                  <li className="flex gap-2"><span className="text-amber-600">•</span>Identity verification → MHA confirms before dispatch</li>
+                </ul>
+              </div>
             </div>
           </div>
         </section>
