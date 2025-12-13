@@ -1565,28 +1565,38 @@ const CaseStudy = () => {
             <p className="text-muted-foreground mb-12">{study.merrySystemFlow.intro}</p>
 
             {/* Current System Flow */}
-            <div className="mb-12">
+            <div className="mb-16">
               <h3 className="font-serif text-xl mb-4 text-primary">Current System Flow</h3>
               <p className="text-muted-foreground mb-6">{study.merrySystemFlow.currentFlow.description}</p>
               
               {/* Flow Diagram Image */}
-              <div className="mb-6 border border-border bg-background p-4 overflow-hidden">
-                <img 
-                  src={merryCurrentFlow} 
-                  alt="Current System Flow Diagram" 
-                  className="w-full max-h-[600px] object-contain cursor-pointer hover:opacity-90 transition-opacity"
-                  onClick={() => setLightboxImage(merryCurrentFlow)}
-                />
-                <p className="text-xs text-muted-foreground text-center mt-2">Click to enlarge</p>
+              <div className="mb-8 rounded-xl border-2 border-border/60 bg-gradient-to-b from-muted/20 to-background shadow-sm overflow-hidden">
+                <div className="bg-muted/30 px-4 py-2 border-b border-border/40">
+                  <span className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Flow Diagram</span>
+                </div>
+                <div className="p-6">
+                  <img 
+                    src={merryCurrentFlow} 
+                    alt="Current System Flow Diagram" 
+                    className="w-full max-h-[700px] object-contain cursor-pointer hover:scale-[1.02] transition-transform duration-300"
+                    onClick={() => setLightboxImage(merryCurrentFlow)}
+                  />
+                </div>
+                <div className="bg-muted/20 px-4 py-2 border-t border-border/40 text-center">
+                  <span className="text-xs text-muted-foreground">Click image to enlarge</span>
+                </div>
               </div>
 
               {/* Pain Points */}
-              <div className="bg-destructive/5 border border-destructive/20 p-4">
-                <h4 className="text-sm font-medium text-destructive mb-3">System Breakdown Reasons</h4>
-                <ul className="space-y-2">
+              <div className="rounded-lg bg-destructive/5 border border-destructive/20 p-5">
+                <h4 className="text-sm font-semibold text-destructive mb-4 flex items-center gap-2">
+                  <span className="w-5 h-5 rounded-full bg-destructive/20 flex items-center justify-center text-xs">!</span>
+                  System Breakdown Reasons
+                </h4>
+                <ul className="space-y-3">
                   {study.merrySystemFlow.currentFlow.painPoints.map((point, i) => (
-                    <li key={i} className="text-sm text-muted-foreground flex gap-2">
-                      <span className="text-destructive">•</span>
+                    <li key={i} className="text-sm text-muted-foreground flex gap-3">
+                      <span className="text-destructive font-bold">•</span>
                       <span>{point}</span>
                     </li>
                   ))}
@@ -1595,28 +1605,38 @@ const CaseStudy = () => {
             </div>
 
             {/* Ideal System Flow */}
-            <div className="mb-12">
+            <div className="mb-16">
               <h3 className="font-serif text-xl mb-4 text-primary">Ideal System Flow</h3>
               <p className="text-muted-foreground mb-6">{study.merrySystemFlow.idealFlow.description}</p>
               
               {/* Flow Diagram Image */}
-              <div className="mb-6 border border-border bg-background p-4 overflow-hidden">
-                <img 
-                  src={merryIdealFlow} 
-                  alt="Ideal System Flow Diagram" 
-                  className="w-full max-h-[600px] object-contain cursor-pointer hover:opacity-90 transition-opacity"
-                  onClick={() => setLightboxImage(merryIdealFlow)}
-                />
-                <p className="text-xs text-muted-foreground text-center mt-2">Click to enlarge</p>
+              <div className="mb-8 rounded-xl border-2 border-primary/20 bg-gradient-to-b from-primary/5 to-background shadow-sm overflow-hidden">
+                <div className="bg-primary/10 px-4 py-2 border-b border-primary/20">
+                  <span className="text-xs uppercase tracking-wider text-primary font-medium">Optimized Flow</span>
+                </div>
+                <div className="p-6">
+                  <img 
+                    src={merryIdealFlow} 
+                    alt="Ideal System Flow Diagram" 
+                    className="w-full max-h-[700px] object-contain cursor-pointer hover:scale-[1.02] transition-transform duration-300"
+                    onClick={() => setLightboxImage(merryIdealFlow)}
+                  />
+                </div>
+                <div className="bg-primary/5 px-4 py-2 border-t border-primary/20 text-center">
+                  <span className="text-xs text-muted-foreground">Click image to enlarge</span>
+                </div>
               </div>
 
               {/* Improvements */}
-              <div className="bg-primary/5 border border-primary/20 p-4">
-                <h4 className="text-sm font-medium text-primary mb-3">Key Improvements</h4>
-                <ul className="space-y-2">
+              <div className="rounded-lg bg-primary/5 border border-primary/20 p-5">
+                <h4 className="text-sm font-semibold text-primary mb-4 flex items-center gap-2">
+                  <span className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center text-xs">✓</span>
+                  Key Improvements
+                </h4>
+                <ul className="space-y-3">
                   {study.merrySystemFlow.idealFlow.improvements.map((point, i) => (
-                    <li key={i} className="text-sm text-muted-foreground flex gap-2">
-                      <span className="text-primary">✓</span>
+                    <li key={i} className="text-sm text-muted-foreground flex gap-3">
+                      <span className="text-primary font-bold">✓</span>
                       <span>{point}</span>
                     </li>
                   ))}
@@ -1630,14 +1650,21 @@ const CaseStudy = () => {
               <p className="text-muted-foreground mb-6">{study.merrySystemFlow.phaseMapping.description}</p>
               
               {/* Phase Mapping Image */}
-              <div className="border border-border bg-background p-4 overflow-hidden">
-                <img 
-                  src={merryPhaseMapping} 
-                  alt="Phase Mapping Diagram" 
-                  className="w-full object-contain cursor-pointer hover:opacity-90 transition-opacity"
-                  onClick={() => setLightboxImage(merryPhaseMapping)}
-                />
-                <p className="text-xs text-muted-foreground text-center mt-2">Click to enlarge</p>
+              <div className="rounded-xl border-2 border-border/60 bg-gradient-to-b from-muted/20 to-background shadow-sm overflow-hidden">
+                <div className="bg-muted/30 px-4 py-2 border-b border-border/40">
+                  <span className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Actor × Phase Matrix</span>
+                </div>
+                <div className="p-6">
+                  <img 
+                    src={merryPhaseMapping} 
+                    alt="Phase Mapping Diagram" 
+                    className="w-full object-contain cursor-pointer hover:scale-[1.02] transition-transform duration-300"
+                    onClick={() => setLightboxImage(merryPhaseMapping)}
+                  />
+                </div>
+                <div className="bg-muted/20 px-4 py-2 border-t border-border/40 text-center">
+                  <span className="text-xs text-muted-foreground">Click image to enlarge</span>
+                </div>
               </div>
             </div>
           </div>
