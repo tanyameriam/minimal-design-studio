@@ -69,7 +69,6 @@ import merryAdminIdealJourney from '@/assets/merry-admin-ideal-journey.jpg';
 import merryHospitalJourney from '@/assets/merry-hospital-journey.jpg';
 import merryProposedWorkflow from '@/assets/merry-proposed-workflow.jpg';
 import { PlatformAuditPhase } from '@/components/ResearchPhaseCard';
-
 interface CaseStudySection {
   title: string;
   content: string;
@@ -310,205 +309,737 @@ const caseStudies: Record<string, CaseStudyData> = {
     tools: ["Figma", "Miro", "Prototyping tools"],
     heroImage: "https://images.unsplash.com/photo-1587745416684-47953f16f02f?w=1200&q=80",
     // New structure
-    merryOverview: "", // Placeholder - add content here
-    merryCurrentProblem: "", // Placeholder - add content here
+    merryOverview: "",
+    // Placeholder - add content here
+    merryCurrentProblem: "",
+    // Placeholder - add content here
     merryDataAudit: {
       intro: "We conducted a data audit across all actors in the dispatch flow to understand who owns the data, who initiates it, and what decisions it enables.",
       questions: ["Who owns the data?", "Who initiates the data?", "What decisions does data enable?"],
       actors: ["Patient Party", "Hospital Admin", "Merry Health Admin", "Driver"],
-      actorAudits: [
-        {
-          actor: "Patient Party",
-          experienceFlow: [
-            { step: 1, name: "Identify emergency", description: "Patient or family decides to call for ambulance", channel: "Phone", data: "Caller ID" },
-            { step: 2, name: "Contact hospital", description: "Calls hospital/Merry Health helpline", channel: "Phone", data: "Location, patient condition, severity" },
-            { step: 3, name: "Provide details", description: "Shares details on call/WhatsApp", channel: "Phone/WhatsApp", data: "Contact number, pickup address, floor, lift" },
-            { step: 4, name: "Wait for confirmation", description: "Hospital acknowledges request", channel: "Phone/SMS/WhatsApp", data: "Expected time" },
-            { step: 5, name: "Receive ambulance details", description: "Gets driver info", channel: "SMS/WhatsApp", data: "Driver contact number, tracking link" },
-            { step: 6, name: "Patient pickup", description: "Ambulance arrives and loads patient", channel: "In person", data: "Arrival time, transit status, assigned time" },
-            { step: 7, name: "In transit", description: "Patient reaches destination", channel: "Physical handover", data: "Drop timestamp, total duration" }
-          ],
-          dataPoints: [
-            { dataPoint: "Patient name", source: "PP", usedBy: "Hospital admin", purpose: "Identification", frequency: "E", issues: "Incorrect data" },
-            { dataPoint: "Contact number", source: "PP", usedBy: "Hospital admin/Driver", purpose: "Callback and confirmation", frequency: "E", issues: "Incorrect data" },
-            { dataPoint: "Location", source: "PP", usedBy: "Driver/Hospital admin", purpose: "Locate pickup point", frequency: "E", issues: "Not being exact" },
-            { dataPoint: "Patient condition", source: "PP", usedBy: "Hospital admin", purpose: "Decide urgency and ambulance type", frequency: "E", issues: "Can be unknown to PP" },
-            { dataPoint: "Pickup address", source: "PP", usedBy: "Hospital admin/Driver", purpose: "Pickup the patient from address", frequency: "E", issues: "Incorrect data" },
-            { dataPoint: "Driver contact number", source: "Hospital admin", usedBy: "PP/Hospital admin", purpose: "Enable communication with driver", frequency: "E", issues: "Incorrect data" },
-            { dataPoint: "Tracking link", source: "Hospital admin", usedBy: "PP/Hospital admin", purpose: "Track transit of patient", frequency: "E", issues: "Not operational or not updated" },
-            { dataPoint: "Duration of trip", source: "System/Driver", usedBy: "MerryHealth", purpose: "Understand total time", frequency: "E", issues: "Not starting or ending trip" },
-            { dataPoint: "Drop timestamp", source: "System/Driver", usedBy: "MerryHealth", purpose: "Operational analysis", frequency: "E", issues: "" },
-            { dataPoint: "Floor", source: "PP", usedBy: "Driver", purpose: "Pickup the patient", frequency: "C", issues: "Not being shared by PP" },
-            { dataPoint: "Lift", source: "PP", usedBy: "Driver", purpose: "Pickup patient accessibility", frequency: "C", issues: "Not being shared by PP" }
-          ],
-          minEssentialData: [
-            { flow: "Request initiation (PP → Hospital Admin)", data: "Patient name, contact number, location, patient(s) condition", reason: "Without these, HA cannot verify urgency, match ambulance type, or identify pickup." },
-            { flow: "When hospital/MHA confirms dispatch", data: "Driver name, driver contact number, vehicle No, ETA", reason: "Needed for trust, coordination, and tracking reassurance." },
-            { flow: "During the trip (driver en route)", data: "Tracking link/ETA, Landmark and address", reason: "Driver reach exact location efficiently; reduces back-and-forth calls" },
-            { flow: "At drop/completion", data: "Drop location (hospital name), acknowledgment of arrival", reason: "Closes the loop for PP" }
-          ]
-        },
-        {
-          actor: "Hospital Admin",
-          experienceFlow: [
-            { step: 1, name: "Request Ambulance", description: "Admin evaluates if an ambulance is needed based on urgency & doctor approval", channel: "Phone call, In-person", data: "Patient condition (critical/stable), Doctor approval, Destination hospital (for transfers)" },
-            { step: 2, name: "Determine Ambulance Type & Support", description: "Admin confirms what ambulance category/equipment is required", channel: "Phone call, WhatsApp", data: "Type: BLS/ALS/ICU, Oxygen requirement, Ventilator requirement, Paramedic support, Special equipment (monitor, suction, defibrillator)" },
-            { step: 3, name: "Capture Pickup Location", description: "Admin collects and forwards accurate address to Merry Health", channel: "WhatsApp, Phone call, Dashboard (ideal)", data: "Google Maps pin, Full address, Landmark, Caller's phone number" },
-            { step: 4, name: "Confirm Special Access Needs", description: "Admin checks if physical movement issues exist at pickup", channel: "Phone call, WhatsApp", data: "Floor number, Lift availability yes/no, Stretcher access possible, Patient weight (approx)" },
-            { step: 5, name: "Assess Urgency", description: "Admin decides how critical and time-sensitive the case is", channel: "WhatsApp, Phone call", data: "Priority tag (Routine / Emergency / Critical), Expected travel time, Internal note for escalation" },
-            { step: 6, name: "Receive Ambulance Assignment", description: "Merry Health shares ambulance & driver details", channel: "WhatsApp (primary), Dashboard", data: "Ambulance ID/number, Driver name, Driver phone number, Assigned timestamp" },
-            { step: 7, name: "Confirm Ambulance Departure", description: "Admin ensures ambulance has actually left toward pickup", channel: "WhatsApp, Call, Dashboard (if used)", data: "Dispatch timestamp, Status: Assigned vs Dispatched, Geolocation movement (if GPS-enabled)" },
-            { step: 8, name: "Confirm Arrival at Pickup", description: "Admin verifies ambulance reached patient location", channel: "WhatsApp, Call, Dashboard (GPS)", data: "Arrival timestamp, Status: \"Reached Pickup\", GPS confirmation" },
-            { step: 9, name: "Patient Onboard", description: "Admin ensures patient has entered ambulance & trip started", channel: "WhatsApp, Dashboard, Call", data: "Status: \"Onboard / On the way\", Live GPS movement, Any special medical notes" },
-            { step: 10, name: "Track En-route to Hospital", description: "Admin monitors ETA and notifies receiving team", channel: "WhatsApp (tracking link), Dashboard", data: "Live ETA, Location updates, Delay reasons (traffic, route change)" },
-            { step: 11, name: "Ride Completion", description: "Admin confirms patient is delivered safely", channel: "WhatsApp, Dashboard, Call", data: "Drop timestamp, Status: \"Ride Completed\", Driver confirmation, Any incident report" },
-            { step: 12, name: "Monthly Reporting & Audit", description: "Admin reviews summary of rides & hospital performance", channel: "Dashboard, Excel export, WhatsApp logs", data: "Total trips, Cancelled trips, SLA metrics (under 20/30/40 mins), Billing amounts, Average response time, Ambulance utilization patterns" }
-          ],
-          dataPoints: [
-            { dataPoint: "Patient condition (critical/stable)", source: "Caller (family/patient), Doctor", usedBy: "Hospital Admin, Merry Health Admin, Driver", purpose: "Determines urgency & ambulance type", frequency: "Every case", issues: "Caller may not describe condition clearly; panic leads to misinformation" },
-            { dataPoint: "Doctor approval", source: "Doctor, Nurse", usedBy: "Hospital Admin", purpose: "Confirms legitimacy of request; avoids duplicate/false calls", frequency: "Every case", issues: "Doctor may be busy; delays confirmation; admin sometimes proceeds based on caller only" },
-            { dataPoint: "Destination hospital", source: "Caller, Doctor", usedBy: "Merry Health Admin, Driver", purpose: "Needed for hospital-hospital transfers; route calculation", frequency: "Conditional (transfers only)", issues: "Caller may not know exact hospital or spelling; wrong routing" },
-            { dataPoint: "Ambulance category (BLS/ALS/ICU)", source: "Doctor / Admin input", usedBy: "Merry Health Admin, Driver", purpose: "Ensures correct equipment & staff", frequency: "Every case", issues: "Admin unsure which type to choose; mistakes cause medical risk" },
-            { dataPoint: "Oxygen requirement", source: "Caller or Doctor", usedBy: "Merry Health Admin, Driver", purpose: "Send ambulance with oxygen cylinders", frequency: "Conditional", issues: "Caller may not know; missing data → wrong ambulance sent" },
-            { dataPoint: "Ventilator requirement", source: "Doctor", usedBy: "Merry Health Admin, Driver", purpose: "Requires ICU ambulance with ventilator", frequency: "Conditional (critical cases)", issues: "High risk if missed; admin avoids asking due to urgency" },
-            { dataPoint: "Paramedic requirement", source: "Doctor / Admin", usedBy: "Merry Health Admin, Driver", purpose: "Ensures trained support onboard", frequency: "Conditional", issues: "Often skipped on call; paramedic not available = delay" },
-            { dataPoint: "Special equipment (monitor/defibrillator/suction)", source: "Doctor / Admin", usedBy: "Merry Health Admin, Driver", purpose: "Needed for serious cardiac/ICU cases", frequency: "Conditional", issues: "Caller rarely knows; admin may skip" },
-            { dataPoint: "Pickup address", source: "Caller", usedBy: "Driver, Merry Health Admin", purpose: "Navigate to patient location", frequency: "Every case", issues: "Caller gives vague address; spelling mistakes" },
-            { dataPoint: "Google Maps location pin", source: "Caller via WhatsApp", usedBy: "Driver, Merry Health Admin", purpose: "Most accurate navigation to pickup", frequency: "Every case", issues: "Caller may not know how to drop pin; wrong pin shared" },
-            { dataPoint: "Landmark", source: "Caller", usedBy: "Driver, Admin", purpose: "Helps in areas with unclear addresses", frequency: "Frequent", issues: "Landmarks may be outdated or confusing" },
-            { dataPoint: "Caller's phone number", source: "Caller", usedBy: "Driver, Admin, Merry Health Admin", purpose: "Callback in case location unclear", frequency: "Every case", issues: "Caller phones often unreachable; incorrect digits" },
-            { dataPoint: "Floor number", source: "Caller", usedBy: "Driver, Paramedic Team", purpose: "Determines manpower and stretcher access", frequency: "Conditional (apartments)", issues: "Caller forgets to mention; leads to delays" },
-            { dataPoint: "Lift availability", source: "Caller", usedBy: "Driver, Paramedic Team", purpose: "If no lift → more manpower needed", frequency: "Conditional", issues: "Not confirmed → stretcher doesn't fit, manual lifting needed" },
-            { dataPoint: "Patient weight (approx)", source: "Caller / Attendant", usedBy: "Driver, Paramedic Team", purpose: "To estimate manpower required", frequency: "Conditional", issues: "Sensitive topic → caller lies or hides info" },
-            { dataPoint: "Ambulance assigned (ID/Plate)", source: "Merry Health Admin", usedBy: "Hospital Admin, Patient/Family", purpose: "Confirms assignment & accountability", frequency: "Every case", issues: "Shared late or missing; escalations begin" },
-            { dataPoint: "Driver name", source: "Merry Health Admin", usedBy: "Hospital Admin, Patient/Family", purpose: "Direct contact for updates", frequency: "Every case", issues: "Driver may not answer calls; admin forced to chase" },
-            { dataPoint: "Driver phone number", source: "Merry Health Admin", usedBy: "Patient/Family, Admin", purpose: "Location clarification, coordination", frequency: "Every case", issues: "Wrong number shared; driver network issues" },
-            { dataPoint: "Dispatch timestamp", source: "Merry Health Admin (manual)", usedBy: "Hospital Admin, Management", purpose: "Used for SLA/performance tracking", frequency: "Every case", issues: "Manual entry → prone to errors; sometimes skipped" },
-            { dataPoint: "\"Ambulance left for pickup\" status", source: "Merry Health Admin or Driver", usedBy: "Patient, Hospital Admin", purpose: "Confirms movement (not just assignment)", frequency: "Every case", issues: "Drivers delay leaving; updates not consistent" },
-            { dataPoint: "Arrival at pickup timestamp", source: "Merry Health Admin (manual)", usedBy: "", purpose: "SLA & tracking; patient reassurance", frequency: "Every case", issues: "Hard to verify without GPS; updates delayed" },
-            { dataPoint: "Patient onboard status", source: "Merry Health Admin or Driver", usedBy: "Hospital Admin, Doctors", purpose: "Indicates safe loading & departure", frequency: "Every case", issues: "Manual confirmations unreliable" },
-            { dataPoint: "Live tracking GPS location", source: "GPS in driver app or shared link", usedBy: "Hospital Admin, Doctors, Patient/Family", purpose: "Real-time status; reduces calls", frequency: "Every case", issues: "GPS often missing/not shared; link expires" },
-            { dataPoint: "Estimated Time of Arrival (ETA)", source: "GPS, Manual estimate", usedBy: "Patient, Doctors, Admin", purpose: "Hospital prepares receiving team", frequency: "Every case", issues: "Manual ETA inaccurate; traffic changes" },
-            { dataPoint: "Drop/Completion timestamp", source: "Merry Health Admin or Driver", usedBy: "Reports, Billing", purpose: "Ride closure and billing accuracy", frequency: "Every case", issues: "Manual toggle → errors or delays" },
-            { dataPoint: "Trip Invoice / Billing amount", source: "Dashboard export", usedBy: "Hospital Finance, Management", purpose: "Monthly reconciliation & payments", frequency: "Every case", issues: "Missing data → billing disputes" },
-            { dataPoint: "Total rides per month", source: "Dashboard / Excel", usedBy: "Hospital Management, Merry Health", purpose: "Continuation of contract; ROI", frequency: "Monthly", issues: "Missing rides (if only WhatsApp used)" },
-            { dataPoint: "SLA performance (avg response time)", source: "Combine timestamps", usedBy: "Hospital Management, Merry Health", purpose: "Measures performance; renewal driver", frequency: "Monthly", issues: "Data incomplete if request was only on WhatsApp" },
-            { dataPoint: "Cancelled/failed ride reason", source: "Merry Health Admin", usedBy: "Operations, Reporting", purpose: "Root cause analysis", frequency: "Conditional", issues: "Often not logged; missing visibility" },
-            { dataPoint: "Transfer direction (from which hospital to which hospital)", source: "Caller / Admin", usedBy: "Reporting, business impact", purpose: "", frequency: "Conditional", issues: "Caller may mention unclear hospital name" }
-          ],
-          minEssentialData: [
-            { flow: "1. Create / Request Ambulance", data: "Caller phone number, Pickup location (Google pin or full address), Patient condition/severity, Ambulance type (BLS/ALS/ICU)*", reason: "Without contact & location, the ambulance cannot navigate or reach patient. Ambulance type is critical to avoid medical mismatch." },
-            { flow: "2. Assign Ambulance to Case", data: "Pickup location, Available ambulance ID/vehicle, Driver availability & phone number", reason: "Assignment requires knowing where the ambulance needs to go and which ambulance+driver can serve." },
-            { flow: "3. Dispatch Ambulance (Ambulance leaves for pickup)", data: "Driver phone number, Pickup location, \"Left for pickup\" timestamp OR GPS start", reason: "Confirms actual movement, prevents silent delays, and begins SLA timer." },
-            { flow: "4. Driver Reaches Pickup Location", data: "Arrival timestamp OR geofence location ping", reason: "Needed to prove ambulance actually arrived for SLA + patient communication." },
-            { flow: "5. Patient Onboard & Trip Started", data: "\"Onboard\" status OR continuous GPS movement from pickup pin", reason: "Confirms patient is inside and transit has begun—critical milestone for doctors and family." },
-            { flow: "6. Live Tracking During Transit", data: "GPS location, Auto-calculated ETA", reason: "Reduces panic calls, allows hospital to prepare, provides transparency." },
-            { flow: "7. Trip Completion / Drop at Hospital", data: "\"Completed\" status, Drop timestamp, Destination hospital", reason: "Closes case, freezes SLA timings, necessary for billing & monthly reports." },
-            { flow: "8. Monthly Reports / Audit", data: "Total completed trips, Response time (request → dispatch), Drop time, Billing amount", reason: "Hospital uses this to justify renewal and measure service reliability." }
-          ],
-          absoluteMinData: [
-            { category: "Contact", fields: "Patient/attender phone", reason: "Driver or team must call if lost / access issue" },
-            { category: "Navigation", fields: "Google Maps pin (or full address + landmark)", reason: "Without this, ambulance cannot find pickup" },
-            { category: "Medical Safety", fields: "Ambulance type (BLS/ALS/ICU)**", reason: "Wrong ambulance can cause medical harm" },
-            { category: "Operations", fields: "Driver phone number, vehicle assigned", reason: "Allows admin/family to contact and verify" },
-            { category: "Tracking", fields: "GPS + basic status milestones", reason: "Reduces manual follow-up and panic" },
-            { category: "Completion", fields: "Drop time + completed status", reason: "Needed for billing, audit, and contract renewal" }
-          ]
-        },
-        {
-          actor: "Merry Health Admin",
-          experienceFlow: [
-            { step: 1, name: "Vehicle Dispatch/Assign", description: "The Admin identifies and assigns the nearest available, qualified ambulance using the map view and the \"Assign Ambulance\" button", channel: "Dispatcher Dashboard (Map view), Ride Detail Screen", data: "Ambulance ID, Driver ID, Estimated Time of Arrival (ETA), Ambulance Assigned Time" },
-            { step: 2, name: "Offline Data Entry", description: "Admin receives a manual booking and fills out all mandatory patient, logistical, and financial details in the Offline Booking form", channel: "Offline Booking Screen", data: "Patient Name, Case/Disease, Facilities, Fare Amount, Total Amount, Partner Commission" },
-            { step: 3, name: "Emergency Call Intake & Initial Logging", description: "The Dispatch Admin receives the emergency call, logs core incident details (caller information, location, patient status) predominantly via WhatsApp (~95%) or a supplementary dashboard form (~5%)", channel: "WhatsApp/Chat, Dispatcher Dashboard (Call Log/Form)", data: "Incident ID, Caller Data, Location, Preliminary Triage/Case Type" },
-            { step: 4, name: "Manual Driver Contact & Assignment", description: "The Admin contacts the nearest available, qualified driver manually to assign the emergency ride and waits for the driver's confirmation of acceptance", channel: "Manual Call/SMS (to Driver), Dispatcher Dashboard (Map view, Driver list)", data: "Driver ID, Estimated Time of Arrival (ETA), Ambulance Assigned Time" },
-            { step: 5, name: "Ride Status & Data Finalization", description: "Upon confirmation, the Admin manually updates the ride status on the dashboard and completes all mandatory operational, logistical, financial, and regulatory compliance details", channel: "Dispatcher Dashboard (Status Update, Ride Detail Screen)", data: "Patient Name, Case/Disease, Facilities, Fare Amount, Partner Commission, Final Ride Status (Confirmed/Dispatched)" },
-            { step: 6, name: "Refusal Audit & Re-Dispatch", description: "Admin immediately reviews the logged refusal reason and simultaneously initiates the process to assign the ride to the next available appropriate ambulance", channel: "Ride Refused List, Pending Ride List", data: "New Ambulance ID, New Dispatch Time, Audit Log Entry (for driver discipline)" },
-            { step: 7, name: "System Audit & Permanent Logging", description: "The record undergoes final system checks to ensure adherence to all financial and compliance standards before the emergency ride data is permanently finalized and logged in the system", channel: "Backend System/Audit Log", data: "Financial Compliance Status, Regulatory Compliance Status, Final Logged Timestamp" }
-          ],
-          dataPoints: [
-            { dataPoint: "Ambulance Current Status (Available/Busy/En-route/At-Scene)", source: "Dispatch Admin (selecting from a dropdown/typing in the Offline Booking form)", usedBy: "Dispatch Admin, Finance/Billing Team, Ambulance Operator", purpose: "To link a specific physical asset to the booking, enabling tracking, billing, and operator payout", frequency: "Every Offline Case. Required field", issues: "" },
-            { dataPoint: "Facilities (e.g., Ventilator, Bipap)", source: "Dispatch Admin (based on caller/hospital request)", usedBy: "Dispatch Admin, Ambulance Operator, Quality Assurance", purpose: "To ensure compliance with the medical needs of the patient and verify that the assigned ambulance is properly equipped", frequency: "Conditional (based on patient's critical needs)", issues: "" },
-            { dataPoint: "Initial Call Log (Text/Audio)", source: "Dispatch Admin (Receiving call, capturing details via WhatsApp)", usedBy: "Dispatch Admin, Quality Assurance Team, Compliance Team", purpose: "To establish the official time of emergency receipt and initial incident details (location, nature of emergency, caller contact) for time-stamp accountability", frequency: "Every Emergency Call", issues: "" },
-            { dataPoint: "Response Time", source: "Ride Detail Screen (Request received time to Ambulance assigned time)", usedBy: "Dispatch Admin, Quality Assurance Team", purpose: "To track efficiency and measure adherence to Service Level Agreements (SLAs)", frequency: "Every Case", issues: "" },
-            { dataPoint: "Refusal Reason", source: "Driver/Operator App (input by driver upon refusal) and Ride Refused List", usedBy: "Dispatch Admin, Compliance Team", purpose: "To determine the validity of the service denial and enforce fleet reliability/SLAs", frequency: "Conditional (Only on refusal)", issues: "" },
-            { dataPoint: "Ambulance Number (Currently 'Not Assigned')", source: "Ambulance List (database of registered vehicles)", usedBy: "Dispatch Admin, Driver, Hospital Admin", purpose: "To confirm which specific vehicle is responsible for the pick-up and to allow the Dispatch Admin to track its movement until assignment", frequency: "Every Case. Must be assigned post-request", issues: "" },
-            { dataPoint: "Number of Completed Rides", source: "Dashboard Reporting/Database (see Total Completed Rides on image)", usedBy: "Merry Health Admin, Finance/Billing Team, Dispatch Admin", purpose: "To track driver/operator performance, calculate monthly commissions, and report on overall system volume", frequency: "Every case. Calculated daily, weekly, or monthly", issues: "" },
-            { dataPoint: "Final Status Update (Confirmed/Cancelled)", source: "Dispatch Admin (Manual dashboard entry)", usedBy: "Billing/Finance Team, Compliance Team, Data Analytics", purpose: "To finalize the financial liability and operational completion of the ride; critical for commission calculation and service audits", frequency: "Every Ride Conclusion", issues: "" },
-            { dataPoint: "Ambulance Geo-Location (Real-Time)", source: "Driver App/GPS System", usedBy: "Dispatch Admin, Operations Team", purpose: "To select the nearest and most appropriate unit for assignment and track adherence to ETA", frequency: "Continuous (Map View)", issues: "" }
-          ],
-          minEssentialData: [
-            { flow: "Creating an Offline Booking", data: "Patient Name, Calling Number, Pickup/Drop Points, Ambulance Type, Case/Disease, Ambulance No. (to be assigned)", reason: "The Dispatch Admin acts as the booking agent, so they must capture all logistical, medical, and resource-allocation data before submitting" },
-            { flow: "Financial Entry for Offline Ride", data: "Fare Amount, Total Amount, Total Recd. Amount, Partner Commission, Company Commission", reason: "Offline bookings involve manual financial entries, requiring the Dispatch Admin to record all price components for accurate reconciliation" },
-            { flow: "Tracking Offline Ride Status", data: "Ride Status, Updated Time, Reached Location (Time/Status), Ride Completed (Time/Status)", reason: "Essential for the Dispatch Admin to track and update the ride progress manually, as the driver app might not automatically update all fields" },
-            { flow: "Dispatch a new ride (Emergency)", data: "Pickup Location, Patient Condition (triage level/BLS/ALS), Ambulance Type Req.", reason: "Essential for the Dispatch Admin to match the nearest, most appropriate ambulance to the immediate need" },
-            { flow: "Logging a Refusal", data: "Ride ID, Driver ID/Number, Refusal Reason (Comments), Timestamp of Refusal", reason: "All must be recorded to complete the audit trail for a service failure and hold the responsible party accountable" },
-            { flow: "Ride Completion & Billing", data: "Final Ride Status (Completed), Total Distance/Time traveled, Applicable Fare/Charges", reason: "Required to formally close the ride loop and trigger billing/payout calculations" },
-            { flow: "Assigning an Ambulance", data: "Ambulance Number/ID, Driver Name, Ambulance Geo-Location (live)", reason: "Needed to link the available physical asset to the digital ride request (via the Assign Ambulance button) and track its path" }
-          ]
-        }
-      ],
-      overlappingData: [
-        { dataPoint: "Case / symptoms", hospitalAdmin: "YES", driver: "YES", patientParty: "NO", merryHealthAdmin: "YES", notes: "Critical for preparing the ambulance and medical crew" },
-        { dataPoint: "Facilities Req. (e.g., Ventilator, Bipap)", hospitalAdmin: "YES", driver: "YES", patientParty: "NO", merryHealthAdmin: "YES", notes: "Determines the required level of care/equipment for dispatch" },
-        { dataPoint: "Floor Number & Lift", hospitalAdmin: "YES", driver: "YES", patientParty: "NO", merryHealthAdmin: "NO", notes: "Crucial logistical data for the crew on arrival for rapid patient transfer" },
-        { dataPoint: "Approx Distance (in KM)", hospitalAdmin: "YES", driver: "NO", patientParty: "NO", merryHealthAdmin: "YES", notes: "Used to quickly calculate estimated fare and resource allocation" },
-        { dataPoint: "Ambulance No. & Driver Name", hospitalAdmin: "NO", driver: "YES", patientParty: "NO", merryHealthAdmin: "YES", notes: "Must be manually input or selected by the Dispatch Admin for an Offline Booking" },
-        { dataPoint: "Ride Status", hospitalAdmin: "YES", driver: "YES", patientParty: "YES", merryHealthAdmin: "YES", notes: "Operational Monitoring (Tracking progress, deciding next action)" },
-        { dataPoint: "Request Received Time", hospitalAdmin: "YES", driver: "NO", patientParty: "NO", merryHealthAdmin: "YES", notes: "Performance KPI (Calculating response time)" },
-        { dataPoint: "Ambulance Type (BLS/ALS)", hospitalAdmin: "YES", driver: "YES", patientParty: "NO", merryHealthAdmin: "YES", notes: "Resource Matching (Ensuring correct vehicle is assigned)" },
-        { dataPoint: "Comments (Refusal Reason)", hospitalAdmin: "NO", driver: "YES", patientParty: "NO", merryHealthAdmin: "YES", notes: "Compliance Audit (Investigating service denials/SLA breaches)" },
-        { dataPoint: "Facilities Req. (e.g., Ventilator)", hospitalAdmin: "YES", driver: "YES", patientParty: "NO", merryHealthAdmin: "YES", notes: "Medical Resource Allocation (Offline Booking)" }
-      ]
+      actorAudits: [{
+        actor: "Patient Party",
+        experienceFlow: [{
+          step: 1,
+          name: "Identify emergency",
+          description: "Patient or family decides to call for ambulance",
+          channel: "Phone",
+          data: "Caller ID"
+        }, {
+          step: 2,
+          name: "Contact hospital",
+          description: "Calls hospital/Merry Health helpline",
+          channel: "Phone",
+          data: "Location, patient condition, severity"
+        }, {
+          step: 3,
+          name: "Provide details",
+          description: "Shares details on call/WhatsApp",
+          channel: "Phone/WhatsApp",
+          data: "Contact number, pickup address, floor, lift"
+        }, {
+          step: 4,
+          name: "Wait for confirmation",
+          description: "Hospital acknowledges request",
+          channel: "Phone/SMS/WhatsApp",
+          data: "Expected time"
+        }, {
+          step: 5,
+          name: "Receive ambulance details",
+          description: "Gets driver info",
+          channel: "SMS/WhatsApp",
+          data: "Driver contact number, tracking link"
+        }, {
+          step: 6,
+          name: "Patient pickup",
+          description: "Ambulance arrives and loads patient",
+          channel: "In person",
+          data: "Arrival time, transit status, assigned time"
+        }, {
+          step: 7,
+          name: "In transit",
+          description: "Patient reaches destination",
+          channel: "Physical handover",
+          data: "Drop timestamp, total duration"
+        }],
+        dataPoints: [{
+          dataPoint: "Patient name",
+          source: "PP",
+          usedBy: "Hospital admin",
+          purpose: "Identification",
+          frequency: "E",
+          issues: "Incorrect data"
+        }, {
+          dataPoint: "Contact number",
+          source: "PP",
+          usedBy: "Hospital admin/Driver",
+          purpose: "Callback and confirmation",
+          frequency: "E",
+          issues: "Incorrect data"
+        }, {
+          dataPoint: "Location",
+          source: "PP",
+          usedBy: "Driver/Hospital admin",
+          purpose: "Locate pickup point",
+          frequency: "E",
+          issues: "Not being exact"
+        }, {
+          dataPoint: "Patient condition",
+          source: "PP",
+          usedBy: "Hospital admin",
+          purpose: "Decide urgency and ambulance type",
+          frequency: "E",
+          issues: "Can be unknown to PP"
+        }, {
+          dataPoint: "Pickup address",
+          source: "PP",
+          usedBy: "Hospital admin/Driver",
+          purpose: "Pickup the patient from address",
+          frequency: "E",
+          issues: "Incorrect data"
+        }, {
+          dataPoint: "Driver contact number",
+          source: "Hospital admin",
+          usedBy: "PP/Hospital admin",
+          purpose: "Enable communication with driver",
+          frequency: "E",
+          issues: "Incorrect data"
+        }, {
+          dataPoint: "Tracking link",
+          source: "Hospital admin",
+          usedBy: "PP/Hospital admin",
+          purpose: "Track transit of patient",
+          frequency: "E",
+          issues: "Not operational or not updated"
+        }, {
+          dataPoint: "Duration of trip",
+          source: "System/Driver",
+          usedBy: "MerryHealth",
+          purpose: "Understand total time",
+          frequency: "E",
+          issues: "Not starting or ending trip"
+        }, {
+          dataPoint: "Drop timestamp",
+          source: "System/Driver",
+          usedBy: "MerryHealth",
+          purpose: "Operational analysis",
+          frequency: "E",
+          issues: ""
+        }, {
+          dataPoint: "Floor",
+          source: "PP",
+          usedBy: "Driver",
+          purpose: "Pickup the patient",
+          frequency: "C",
+          issues: "Not being shared by PP"
+        }, {
+          dataPoint: "Lift",
+          source: "PP",
+          usedBy: "Driver",
+          purpose: "Pickup patient accessibility",
+          frequency: "C",
+          issues: "Not being shared by PP"
+        }],
+        minEssentialData: [{
+          flow: "Request initiation (PP → Hospital Admin)",
+          data: "Patient name, contact number, location, patient(s) condition",
+          reason: "Without these, HA cannot verify urgency, match ambulance type, or identify pickup."
+        }, {
+          flow: "When hospital/MHA confirms dispatch",
+          data: "Driver name, driver contact number, vehicle No, ETA",
+          reason: "Needed for trust, coordination, and tracking reassurance."
+        }, {
+          flow: "During the trip (driver en route)",
+          data: "Tracking link/ETA, Landmark and address",
+          reason: "Driver reach exact location efficiently; reduces back-and-forth calls"
+        }, {
+          flow: "At drop/completion",
+          data: "Drop location (hospital name), acknowledgment of arrival",
+          reason: "Closes the loop for PP"
+        }]
+      }, {
+        actor: "Hospital Admin",
+        experienceFlow: [{
+          step: 1,
+          name: "Request Ambulance",
+          description: "Admin evaluates if an ambulance is needed based on urgency & doctor approval",
+          channel: "Phone call, In-person",
+          data: "Patient condition (critical/stable), Doctor approval, Destination hospital (for transfers)"
+        }, {
+          step: 2,
+          name: "Determine Ambulance Type & Support",
+          description: "Admin confirms what ambulance category/equipment is required",
+          channel: "Phone call, WhatsApp",
+          data: "Type: BLS/ALS/ICU, Oxygen requirement, Ventilator requirement, Paramedic support, Special equipment (monitor, suction, defibrillator)"
+        }, {
+          step: 3,
+          name: "Capture Pickup Location",
+          description: "Admin collects and forwards accurate address to Merry Health",
+          channel: "WhatsApp, Phone call, Dashboard (ideal)",
+          data: "Google Maps pin, Full address, Landmark, Caller's phone number"
+        }, {
+          step: 4,
+          name: "Confirm Special Access Needs",
+          description: "Admin checks if physical movement issues exist at pickup",
+          channel: "Phone call, WhatsApp",
+          data: "Floor number, Lift availability yes/no, Stretcher access possible, Patient weight (approx)"
+        }, {
+          step: 5,
+          name: "Assess Urgency",
+          description: "Admin decides how critical and time-sensitive the case is",
+          channel: "WhatsApp, Phone call",
+          data: "Priority tag (Routine / Emergency / Critical), Expected travel time, Internal note for escalation"
+        }, {
+          step: 6,
+          name: "Receive Ambulance Assignment",
+          description: "Merry Health shares ambulance & driver details",
+          channel: "WhatsApp (primary), Dashboard",
+          data: "Ambulance ID/number, Driver name, Driver phone number, Assigned timestamp"
+        }, {
+          step: 7,
+          name: "Confirm Ambulance Departure",
+          description: "Admin ensures ambulance has actually left toward pickup",
+          channel: "WhatsApp, Call, Dashboard (if used)",
+          data: "Dispatch timestamp, Status: Assigned vs Dispatched, Geolocation movement (if GPS-enabled)"
+        }, {
+          step: 8,
+          name: "Confirm Arrival at Pickup",
+          description: "Admin verifies ambulance reached patient location",
+          channel: "WhatsApp, Call, Dashboard (GPS)",
+          data: "Arrival timestamp, Status: \"Reached Pickup\", GPS confirmation"
+        }, {
+          step: 9,
+          name: "Patient Onboard",
+          description: "Admin ensures patient has entered ambulance & trip started",
+          channel: "WhatsApp, Dashboard, Call",
+          data: "Status: \"Onboard / On the way\", Live GPS movement, Any special medical notes"
+        }, {
+          step: 10,
+          name: "Track En-route to Hospital",
+          description: "Admin monitors ETA and notifies receiving team",
+          channel: "WhatsApp (tracking link), Dashboard",
+          data: "Live ETA, Location updates, Delay reasons (traffic, route change)"
+        }, {
+          step: 11,
+          name: "Ride Completion",
+          description: "Admin confirms patient is delivered safely",
+          channel: "WhatsApp, Dashboard, Call",
+          data: "Drop timestamp, Status: \"Ride Completed\", Driver confirmation, Any incident report"
+        }, {
+          step: 12,
+          name: "Monthly Reporting & Audit",
+          description: "Admin reviews summary of rides & hospital performance",
+          channel: "Dashboard, Excel export, WhatsApp logs",
+          data: "Total trips, Cancelled trips, SLA metrics (under 20/30/40 mins), Billing amounts, Average response time, Ambulance utilization patterns"
+        }],
+        dataPoints: [{
+          dataPoint: "Patient condition (critical/stable)",
+          source: "Caller (family/patient), Doctor",
+          usedBy: "Hospital Admin, Merry Health Admin, Driver",
+          purpose: "Determines urgency & ambulance type",
+          frequency: "Every case",
+          issues: "Caller may not describe condition clearly; panic leads to misinformation"
+        }, {
+          dataPoint: "Doctor approval",
+          source: "Doctor, Nurse",
+          usedBy: "Hospital Admin",
+          purpose: "Confirms legitimacy of request; avoids duplicate/false calls",
+          frequency: "Every case",
+          issues: "Doctor may be busy; delays confirmation; admin sometimes proceeds based on caller only"
+        }, {
+          dataPoint: "Destination hospital",
+          source: "Caller, Doctor",
+          usedBy: "Merry Health Admin, Driver",
+          purpose: "Needed for hospital-hospital transfers; route calculation",
+          frequency: "Conditional (transfers only)",
+          issues: "Caller may not know exact hospital or spelling; wrong routing"
+        }, {
+          dataPoint: "Ambulance category (BLS/ALS/ICU)",
+          source: "Doctor / Admin input",
+          usedBy: "Merry Health Admin, Driver",
+          purpose: "Ensures correct equipment & staff",
+          frequency: "Every case",
+          issues: "Admin unsure which type to choose; mistakes cause medical risk"
+        }, {
+          dataPoint: "Oxygen requirement",
+          source: "Caller or Doctor",
+          usedBy: "Merry Health Admin, Driver",
+          purpose: "Send ambulance with oxygen cylinders",
+          frequency: "Conditional",
+          issues: "Caller may not know; missing data → wrong ambulance sent"
+        }, {
+          dataPoint: "Ventilator requirement",
+          source: "Doctor",
+          usedBy: "Merry Health Admin, Driver",
+          purpose: "Requires ICU ambulance with ventilator",
+          frequency: "Conditional (critical cases)",
+          issues: "High risk if missed; admin avoids asking due to urgency"
+        }, {
+          dataPoint: "Paramedic requirement",
+          source: "Doctor / Admin",
+          usedBy: "Merry Health Admin, Driver",
+          purpose: "Ensures trained support onboard",
+          frequency: "Conditional",
+          issues: "Often skipped on call; paramedic not available = delay"
+        }, {
+          dataPoint: "Special equipment (monitor/defibrillator/suction)",
+          source: "Doctor / Admin",
+          usedBy: "Merry Health Admin, Driver",
+          purpose: "Needed for serious cardiac/ICU cases",
+          frequency: "Conditional",
+          issues: "Caller rarely knows; admin may skip"
+        }, {
+          dataPoint: "Pickup address",
+          source: "Caller",
+          usedBy: "Driver, Merry Health Admin",
+          purpose: "Navigate to patient location",
+          frequency: "Every case",
+          issues: "Caller gives vague address; spelling mistakes"
+        }, {
+          dataPoint: "Google Maps location pin",
+          source: "Caller via WhatsApp",
+          usedBy: "Driver, Merry Health Admin",
+          purpose: "Most accurate navigation to pickup",
+          frequency: "Every case",
+          issues: "Caller may not know how to drop pin; wrong pin shared"
+        }, {
+          dataPoint: "Landmark",
+          source: "Caller",
+          usedBy: "Driver, Admin",
+          purpose: "Helps in areas with unclear addresses",
+          frequency: "Frequent",
+          issues: "Landmarks may be outdated or confusing"
+        }, {
+          dataPoint: "Caller's phone number",
+          source: "Caller",
+          usedBy: "Driver, Admin, Merry Health Admin",
+          purpose: "Callback in case location unclear",
+          frequency: "Every case",
+          issues: "Caller phones often unreachable; incorrect digits"
+        }, {
+          dataPoint: "Floor number",
+          source: "Caller",
+          usedBy: "Driver, Paramedic Team",
+          purpose: "Determines manpower and stretcher access",
+          frequency: "Conditional (apartments)",
+          issues: "Caller forgets to mention; leads to delays"
+        }, {
+          dataPoint: "Lift availability",
+          source: "Caller",
+          usedBy: "Driver, Paramedic Team",
+          purpose: "If no lift → more manpower needed",
+          frequency: "Conditional",
+          issues: "Not confirmed → stretcher doesn't fit, manual lifting needed"
+        }, {
+          dataPoint: "Patient weight (approx)",
+          source: "Caller / Attendant",
+          usedBy: "Driver, Paramedic Team",
+          purpose: "To estimate manpower required",
+          frequency: "Conditional",
+          issues: "Sensitive topic → caller lies or hides info"
+        }, {
+          dataPoint: "Ambulance assigned (ID/Plate)",
+          source: "Merry Health Admin",
+          usedBy: "Hospital Admin, Patient/Family",
+          purpose: "Confirms assignment & accountability",
+          frequency: "Every case",
+          issues: "Shared late or missing; escalations begin"
+        }, {
+          dataPoint: "Driver name",
+          source: "Merry Health Admin",
+          usedBy: "Hospital Admin, Patient/Family",
+          purpose: "Direct contact for updates",
+          frequency: "Every case",
+          issues: "Driver may not answer calls; admin forced to chase"
+        }, {
+          dataPoint: "Driver phone number",
+          source: "Merry Health Admin",
+          usedBy: "Patient/Family, Admin",
+          purpose: "Location clarification, coordination",
+          frequency: "Every case",
+          issues: "Wrong number shared; driver network issues"
+        }, {
+          dataPoint: "Dispatch timestamp",
+          source: "Merry Health Admin (manual)",
+          usedBy: "Hospital Admin, Management",
+          purpose: "Used for SLA/performance tracking",
+          frequency: "Every case",
+          issues: "Manual entry → prone to errors; sometimes skipped"
+        }, {
+          dataPoint: "\"Ambulance left for pickup\" status",
+          source: "Merry Health Admin or Driver",
+          usedBy: "Patient, Hospital Admin",
+          purpose: "Confirms movement (not just assignment)",
+          frequency: "Every case",
+          issues: "Drivers delay leaving; updates not consistent"
+        }, {
+          dataPoint: "Arrival at pickup timestamp",
+          source: "Merry Health Admin (manual)",
+          usedBy: "",
+          purpose: "SLA & tracking; patient reassurance",
+          frequency: "Every case",
+          issues: "Hard to verify without GPS; updates delayed"
+        }, {
+          dataPoint: "Patient onboard status",
+          source: "Merry Health Admin or Driver",
+          usedBy: "Hospital Admin, Doctors",
+          purpose: "Indicates safe loading & departure",
+          frequency: "Every case",
+          issues: "Manual confirmations unreliable"
+        }, {
+          dataPoint: "Live tracking GPS location",
+          source: "GPS in driver app or shared link",
+          usedBy: "Hospital Admin, Doctors, Patient/Family",
+          purpose: "Real-time status; reduces calls",
+          frequency: "Every case",
+          issues: "GPS often missing/not shared; link expires"
+        }, {
+          dataPoint: "Estimated Time of Arrival (ETA)",
+          source: "GPS, Manual estimate",
+          usedBy: "Patient, Doctors, Admin",
+          purpose: "Hospital prepares receiving team",
+          frequency: "Every case",
+          issues: "Manual ETA inaccurate; traffic changes"
+        }, {
+          dataPoint: "Drop/Completion timestamp",
+          source: "Merry Health Admin or Driver",
+          usedBy: "Reports, Billing",
+          purpose: "Ride closure and billing accuracy",
+          frequency: "Every case",
+          issues: "Manual toggle → errors or delays"
+        }, {
+          dataPoint: "Trip Invoice / Billing amount",
+          source: "Dashboard export",
+          usedBy: "Hospital Finance, Management",
+          purpose: "Monthly reconciliation & payments",
+          frequency: "Every case",
+          issues: "Missing data → billing disputes"
+        }, {
+          dataPoint: "Total rides per month",
+          source: "Dashboard / Excel",
+          usedBy: "Hospital Management, Merry Health",
+          purpose: "Continuation of contract; ROI",
+          frequency: "Monthly",
+          issues: "Missing rides (if only WhatsApp used)"
+        }, {
+          dataPoint: "SLA performance (avg response time)",
+          source: "Combine timestamps",
+          usedBy: "Hospital Management, Merry Health",
+          purpose: "Measures performance; renewal driver",
+          frequency: "Monthly",
+          issues: "Data incomplete if request was only on WhatsApp"
+        }, {
+          dataPoint: "Cancelled/failed ride reason",
+          source: "Merry Health Admin",
+          usedBy: "Operations, Reporting",
+          purpose: "Root cause analysis",
+          frequency: "Conditional",
+          issues: "Often not logged; missing visibility"
+        }, {
+          dataPoint: "Transfer direction (from which hospital to which hospital)",
+          source: "Caller / Admin",
+          usedBy: "Reporting, business impact",
+          purpose: "",
+          frequency: "Conditional",
+          issues: "Caller may mention unclear hospital name"
+        }],
+        minEssentialData: [{
+          flow: "1. Create / Request Ambulance",
+          data: "Caller phone number, Pickup location (Google pin or full address), Patient condition/severity, Ambulance type (BLS/ALS/ICU)*",
+          reason: "Without contact & location, the ambulance cannot navigate or reach patient. Ambulance type is critical to avoid medical mismatch."
+        }, {
+          flow: "2. Assign Ambulance to Case",
+          data: "Pickup location, Available ambulance ID/vehicle, Driver availability & phone number",
+          reason: "Assignment requires knowing where the ambulance needs to go and which ambulance+driver can serve."
+        }, {
+          flow: "3. Dispatch Ambulance (Ambulance leaves for pickup)",
+          data: "Driver phone number, Pickup location, \"Left for pickup\" timestamp OR GPS start",
+          reason: "Confirms actual movement, prevents silent delays, and begins SLA timer."
+        }, {
+          flow: "4. Driver Reaches Pickup Location",
+          data: "Arrival timestamp OR geofence location ping",
+          reason: "Needed to prove ambulance actually arrived for SLA + patient communication."
+        }, {
+          flow: "5. Patient Onboard & Trip Started",
+          data: "\"Onboard\" status OR continuous GPS movement from pickup pin",
+          reason: "Confirms patient is inside and transit has begun—critical milestone for doctors and family."
+        }, {
+          flow: "6. Live Tracking During Transit",
+          data: "GPS location, Auto-calculated ETA",
+          reason: "Reduces panic calls, allows hospital to prepare, provides transparency."
+        }, {
+          flow: "7. Trip Completion / Drop at Hospital",
+          data: "\"Completed\" status, Drop timestamp, Destination hospital",
+          reason: "Closes case, freezes SLA timings, necessary for billing & monthly reports."
+        }, {
+          flow: "8. Monthly Reports / Audit",
+          data: "Total completed trips, Response time (request → dispatch), Drop time, Billing amount",
+          reason: "Hospital uses this to justify renewal and measure service reliability."
+        }],
+        absoluteMinData: [{
+          category: "Contact",
+          fields: "Patient/attender phone",
+          reason: "Driver or team must call if lost / access issue"
+        }, {
+          category: "Navigation",
+          fields: "Google Maps pin (or full address + landmark)",
+          reason: "Without this, ambulance cannot find pickup"
+        }, {
+          category: "Medical Safety",
+          fields: "Ambulance type (BLS/ALS/ICU)**",
+          reason: "Wrong ambulance can cause medical harm"
+        }, {
+          category: "Operations",
+          fields: "Driver phone number, vehicle assigned",
+          reason: "Allows admin/family to contact and verify"
+        }, {
+          category: "Tracking",
+          fields: "GPS + basic status milestones",
+          reason: "Reduces manual follow-up and panic"
+        }, {
+          category: "Completion",
+          fields: "Drop time + completed status",
+          reason: "Needed for billing, audit, and contract renewal"
+        }]
+      }, {
+        actor: "Merry Health Admin",
+        experienceFlow: [{
+          step: 1,
+          name: "Vehicle Dispatch/Assign",
+          description: "The Admin identifies and assigns the nearest available, qualified ambulance using the map view and the \"Assign Ambulance\" button",
+          channel: "Dispatcher Dashboard (Map view), Ride Detail Screen",
+          data: "Ambulance ID, Driver ID, Estimated Time of Arrival (ETA), Ambulance Assigned Time"
+        }, {
+          step: 2,
+          name: "Offline Data Entry",
+          description: "Admin receives a manual booking and fills out all mandatory patient, logistical, and financial details in the Offline Booking form",
+          channel: "Offline Booking Screen",
+          data: "Patient Name, Case/Disease, Facilities, Fare Amount, Total Amount, Partner Commission"
+        }, {
+          step: 3,
+          name: "Emergency Call Intake & Initial Logging",
+          description: "The Dispatch Admin receives the emergency call, logs core incident details (caller information, location, patient status) predominantly via WhatsApp (~95%) or a supplementary dashboard form (~5%)",
+          channel: "WhatsApp/Chat, Dispatcher Dashboard (Call Log/Form)",
+          data: "Incident ID, Caller Data, Location, Preliminary Triage/Case Type"
+        }, {
+          step: 4,
+          name: "Manual Driver Contact & Assignment",
+          description: "The Admin contacts the nearest available, qualified driver manually to assign the emergency ride and waits for the driver's confirmation of acceptance",
+          channel: "Manual Call/SMS (to Driver), Dispatcher Dashboard (Map view, Driver list)",
+          data: "Driver ID, Estimated Time of Arrival (ETA), Ambulance Assigned Time"
+        }, {
+          step: 5,
+          name: "Ride Status & Data Finalization",
+          description: "Upon confirmation, the Admin manually updates the ride status on the dashboard and completes all mandatory operational, logistical, financial, and regulatory compliance details",
+          channel: "Dispatcher Dashboard (Status Update, Ride Detail Screen)",
+          data: "Patient Name, Case/Disease, Facilities, Fare Amount, Partner Commission, Final Ride Status (Confirmed/Dispatched)"
+        }, {
+          step: 6,
+          name: "Refusal Audit & Re-Dispatch",
+          description: "Admin immediately reviews the logged refusal reason and simultaneously initiates the process to assign the ride to the next available appropriate ambulance",
+          channel: "Ride Refused List, Pending Ride List",
+          data: "New Ambulance ID, New Dispatch Time, Audit Log Entry (for driver discipline)"
+        }, {
+          step: 7,
+          name: "System Audit & Permanent Logging",
+          description: "The record undergoes final system checks to ensure adherence to all financial and compliance standards before the emergency ride data is permanently finalized and logged in the system",
+          channel: "Backend System/Audit Log",
+          data: "Financial Compliance Status, Regulatory Compliance Status, Final Logged Timestamp"
+        }],
+        dataPoints: [{
+          dataPoint: "Ambulance Current Status (Available/Busy/En-route/At-Scene)",
+          source: "Dispatch Admin (selecting from a dropdown/typing in the Offline Booking form)",
+          usedBy: "Dispatch Admin, Finance/Billing Team, Ambulance Operator",
+          purpose: "To link a specific physical asset to the booking, enabling tracking, billing, and operator payout",
+          frequency: "Every Offline Case. Required field",
+          issues: ""
+        }, {
+          dataPoint: "Facilities (e.g., Ventilator, Bipap)",
+          source: "Dispatch Admin (based on caller/hospital request)",
+          usedBy: "Dispatch Admin, Ambulance Operator, Quality Assurance",
+          purpose: "To ensure compliance with the medical needs of the patient and verify that the assigned ambulance is properly equipped",
+          frequency: "Conditional (based on patient's critical needs)",
+          issues: ""
+        }, {
+          dataPoint: "Initial Call Log (Text/Audio)",
+          source: "Dispatch Admin (Receiving call, capturing details via WhatsApp)",
+          usedBy: "Dispatch Admin, Quality Assurance Team, Compliance Team",
+          purpose: "To establish the official time of emergency receipt and initial incident details (location, nature of emergency, caller contact) for time-stamp accountability",
+          frequency: "Every Emergency Call",
+          issues: ""
+        }, {
+          dataPoint: "Response Time",
+          source: "Ride Detail Screen (Request received time to Ambulance assigned time)",
+          usedBy: "Dispatch Admin, Quality Assurance Team",
+          purpose: "To track efficiency and measure adherence to Service Level Agreements (SLAs)",
+          frequency: "Every Case",
+          issues: ""
+        }, {
+          dataPoint: "Refusal Reason",
+          source: "Driver/Operator App (input by driver upon refusal) and Ride Refused List",
+          usedBy: "Dispatch Admin, Compliance Team",
+          purpose: "To determine the validity of the service denial and enforce fleet reliability/SLAs",
+          frequency: "Conditional (Only on refusal)",
+          issues: ""
+        }, {
+          dataPoint: "Ambulance Number (Currently 'Not Assigned')",
+          source: "Ambulance List (database of registered vehicles)",
+          usedBy: "Dispatch Admin, Driver, Hospital Admin",
+          purpose: "To confirm which specific vehicle is responsible for the pick-up and to allow the Dispatch Admin to track its movement until assignment",
+          frequency: "Every Case. Must be assigned post-request",
+          issues: ""
+        }, {
+          dataPoint: "Number of Completed Rides",
+          source: "Dashboard Reporting/Database (see Total Completed Rides on image)",
+          usedBy: "Merry Health Admin, Finance/Billing Team, Dispatch Admin",
+          purpose: "To track driver/operator performance, calculate monthly commissions, and report on overall system volume",
+          frequency: "Every case. Calculated daily, weekly, or monthly",
+          issues: ""
+        }, {
+          dataPoint: "Final Status Update (Confirmed/Cancelled)",
+          source: "Dispatch Admin (Manual dashboard entry)",
+          usedBy: "Billing/Finance Team, Compliance Team, Data Analytics",
+          purpose: "To finalize the financial liability and operational completion of the ride; critical for commission calculation and service audits",
+          frequency: "Every Ride Conclusion",
+          issues: ""
+        }, {
+          dataPoint: "Ambulance Geo-Location (Real-Time)",
+          source: "Driver App/GPS System",
+          usedBy: "Dispatch Admin, Operations Team",
+          purpose: "To select the nearest and most appropriate unit for assignment and track adherence to ETA",
+          frequency: "Continuous (Map View)",
+          issues: ""
+        }],
+        minEssentialData: [{
+          flow: "Creating an Offline Booking",
+          data: "Patient Name, Calling Number, Pickup/Drop Points, Ambulance Type, Case/Disease, Ambulance No. (to be assigned)",
+          reason: "The Dispatch Admin acts as the booking agent, so they must capture all logistical, medical, and resource-allocation data before submitting"
+        }, {
+          flow: "Financial Entry for Offline Ride",
+          data: "Fare Amount, Total Amount, Total Recd. Amount, Partner Commission, Company Commission",
+          reason: "Offline bookings involve manual financial entries, requiring the Dispatch Admin to record all price components for accurate reconciliation"
+        }, {
+          flow: "Tracking Offline Ride Status",
+          data: "Ride Status, Updated Time, Reached Location (Time/Status), Ride Completed (Time/Status)",
+          reason: "Essential for the Dispatch Admin to track and update the ride progress manually, as the driver app might not automatically update all fields"
+        }, {
+          flow: "Dispatch a new ride (Emergency)",
+          data: "Pickup Location, Patient Condition (triage level/BLS/ALS), Ambulance Type Req.",
+          reason: "Essential for the Dispatch Admin to match the nearest, most appropriate ambulance to the immediate need"
+        }, {
+          flow: "Logging a Refusal",
+          data: "Ride ID, Driver ID/Number, Refusal Reason (Comments), Timestamp of Refusal",
+          reason: "All must be recorded to complete the audit trail for a service failure and hold the responsible party accountable"
+        }, {
+          flow: "Ride Completion & Billing",
+          data: "Final Ride Status (Completed), Total Distance/Time traveled, Applicable Fare/Charges",
+          reason: "Required to formally close the ride loop and trigger billing/payout calculations"
+        }, {
+          flow: "Assigning an Ambulance",
+          data: "Ambulance Number/ID, Driver Name, Ambulance Geo-Location (live)",
+          reason: "Needed to link the available physical asset to the digital ride request (via the Assign Ambulance button) and track its path"
+        }]
+      }],
+      overlappingData: [{
+        dataPoint: "Case / symptoms",
+        hospitalAdmin: "YES",
+        driver: "YES",
+        patientParty: "NO",
+        merryHealthAdmin: "YES",
+        notes: "Critical for preparing the ambulance and medical crew"
+      }, {
+        dataPoint: "Facilities Req. (e.g., Ventilator, Bipap)",
+        hospitalAdmin: "YES",
+        driver: "YES",
+        patientParty: "NO",
+        merryHealthAdmin: "YES",
+        notes: "Determines the required level of care/equipment for dispatch"
+      }, {
+        dataPoint: "Floor Number & Lift",
+        hospitalAdmin: "YES",
+        driver: "YES",
+        patientParty: "NO",
+        merryHealthAdmin: "NO",
+        notes: "Crucial logistical data for the crew on arrival for rapid patient transfer"
+      }, {
+        dataPoint: "Approx Distance (in KM)",
+        hospitalAdmin: "YES",
+        driver: "NO",
+        patientParty: "NO",
+        merryHealthAdmin: "YES",
+        notes: "Used to quickly calculate estimated fare and resource allocation"
+      }, {
+        dataPoint: "Ambulance No. & Driver Name",
+        hospitalAdmin: "NO",
+        driver: "YES",
+        patientParty: "NO",
+        merryHealthAdmin: "YES",
+        notes: "Must be manually input or selected by the Dispatch Admin for an Offline Booking"
+      }, {
+        dataPoint: "Ride Status",
+        hospitalAdmin: "YES",
+        driver: "YES",
+        patientParty: "YES",
+        merryHealthAdmin: "YES",
+        notes: "Operational Monitoring (Tracking progress, deciding next action)"
+      }, {
+        dataPoint: "Request Received Time",
+        hospitalAdmin: "YES",
+        driver: "NO",
+        patientParty: "NO",
+        merryHealthAdmin: "YES",
+        notes: "Performance KPI (Calculating response time)"
+      }, {
+        dataPoint: "Ambulance Type (BLS/ALS)",
+        hospitalAdmin: "YES",
+        driver: "YES",
+        patientParty: "NO",
+        merryHealthAdmin: "YES",
+        notes: "Resource Matching (Ensuring correct vehicle is assigned)"
+      }, {
+        dataPoint: "Comments (Refusal Reason)",
+        hospitalAdmin: "NO",
+        driver: "YES",
+        patientParty: "NO",
+        merryHealthAdmin: "YES",
+        notes: "Compliance Audit (Investigating service denials/SLA breaches)"
+      }, {
+        dataPoint: "Facilities Req. (e.g., Ventilator)",
+        hospitalAdmin: "YES",
+        driver: "YES",
+        patientParty: "NO",
+        merryHealthAdmin: "YES",
+        notes: "Medical Resource Allocation (Offline Booking)"
+      }]
     },
     merrySystemFlow: {
       intro: "To understand how the current system works and identify opportunities for improvement, we mapped the complete system flow from patient emergency to ride completion.",
       currentFlow: {
         description: "The current system flow revealed multiple loops and manual intervention points that cause delays and errors. The diagram shows the existing process with pain points marked as sticky notes.",
-        painPoints: [
-          "Heavy Dependency on Manual Coordination: Driver assignment relies on manual calls/WhatsApp—delays and errors",
-          "Lack of Real-Time Visibility: No live tracking or automated updates—forces repeated follow-ups, slowing dispatch",
-          "Fragmented Data Across Multiple Channels: Info moves through WhatsApp, calls, dashboard—duplicated entry and inconsistent records",
-          "Workflow Mismatch with Real Hospital Behavior: System expects structured entry, but staff use quick calls and WhatsApp—inconsistent data"
-        ]
+        painPoints: ["Heavy Dependency on Manual Coordination: Driver assignment relies on manual calls/WhatsApp—delays and errors", "Lack of Real-Time Visibility: No live tracking or automated updates—forces repeated follow-ups, slowing dispatch", "Fragmented Data Across Multiple Channels: Info moves through WhatsApp, calls, dashboard—duplicated entry and inconsistent records", "Workflow Mismatch with Real Hospital Behavior: System expects structured entry, but staff use quick calls and WhatsApp—inconsistent data"]
       },
       idealFlow: {
         description: "The ideal system flow removes manual loops through automation, providing real-time visibility and structured data capture at every step.",
-        improvements: [
-          "Automated driver assignment based on location and availability",
-          "Real-time status updates pushed to all stakeholders",
-          "Single source of truth for all ride data",
-          "Structured intake that works with existing hospital workflows"
-        ]
+        improvements: ["Automated driver assignment based on location and availability", "Real-time status updates pushed to all stakeholders", "Single source of truth for all ride data", "Structured intake that works with existing hospital workflows"]
       },
       phaseMapping: {
         description: "We mapped how each actor participates across the four key phases: Intake, Assign, En-Route, and Handover & Close.",
-        breakdownReasons: [
-          "Heavy Dependency on Manual Coordination: Driver assignment relies on manual calls/WhatsApp—delays and errors",
-          "Lack of Real-Time Visibility: No live tracking or automated updates—forces repeated follow-ups, slowing dispatch",
-          "Fragmented Data Across Multiple Channels: Info moves through WhatsApp, calls, dashboard—duplicated entry and inconsistent records",
-          "Workflow Mismatch with Real Hospital Behavior: System expects structured entry, but staff use quick calls and WhatsApp—inconsistent data"
-        ]
+        breakdownReasons: ["Heavy Dependency on Manual Coordination: Driver assignment relies on manual calls/WhatsApp—delays and errors", "Lack of Real-Time Visibility: No live tracking or automated updates—forces repeated follow-ups, slowing dispatch", "Fragmented Data Across Multiple Channels: Info moves through WhatsApp, calls, dashboard—duplicated entry and inconsistent records", "Workflow Mismatch with Real Hospital Behavior: System expects structured entry, but staff use quick calls and WhatsApp—inconsistent data"]
       }
     },
-    merrySolutionPhases: [
-      {
-        title: "Data Audit",
-        content: "Mapped data ownership, initiation, and decision-enabling across all actors"
-      },
-      {
-        title: "System Flow & Opportunity Mapping",
-        content: "Analyzed current vs ideal system flows to identify automation opportunities"
-      },
-      {
-        title: "User Journey Mapping",
-        content: "" // Placeholder - add content here
-      },
-      {
-        title: "Proposed: Workflow + Scenarios",
-        content: "" // Placeholder - add content here
-      }
-    ],
+    merrySolutionPhases: [{
+      title: "Data Audit",
+      content: "Mapped data ownership, initiation, and decision-enabling across all actors"
+    }, {
+      title: "System Flow & Opportunity Mapping",
+      content: "Analyzed current vs ideal system flows to identify automation opportunities"
+    }, {
+      title: "User Journey Mapping",
+      content: "" // Placeholder - add content here
+    }, {
+      title: "Proposed: Workflow + Scenarios",
+      content: "" // Placeholder - add content here
+    }],
     contextPoints: ["Unpredictable emergencies", "Limited information", "High message volume", "Multi-stakeholder communication", "Low digital maturity", "Unreliable networks", "Fragmented workflows"],
     problemDefinition: [{
       title: "01: WhatsApp was the real operating system",
@@ -1302,8 +1833,7 @@ const CaseStudy = () => {
       {study.brynqNdaNote && <section className="px-6 lg:px-12 py-8 bg-muted/30 border-y border-border"><div className="container mx-auto max-w-4xl text-center"><p className="text-sm text-muted-foreground italic">{study.brynqNdaNote}</p></div></section>}
 
       {/* Merry Health UX Approach Principles */}
-      {slug === 'merry-health' && (
-        <section className="px-6 lg:px-12 py-16 bg-card">
+      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16 bg-card">
           <div className="container mx-auto max-w-5xl">
             <h2 className="font-serif text-3xl md:text-4xl text-center mb-4">The 3 Principles Guiding Our UX Approach</h2>
             <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">We identified three core problems in the current system and defined principles to address each one.</p>
@@ -1358,41 +1888,31 @@ const CaseStudy = () => {
               </div>
             </div>
           </div>
-        </section>
-      )}
+        </section>}
 
       {/* Merry Health Solution Phases */}
-      {slug === 'merry-health' && study.merrySolutionPhases && (
-        <section className="px-6 lg:px-12 py-16">
+      {slug === 'merry-health' && study.merrySolutionPhases && <section className="px-6 lg:px-12 py-16">
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">The Solution</h2>
             <p className="text-lg text-muted-foreground mb-12">Our approach was structured into four key phases:</p>
             <div className="space-y-8">
-              {study.merrySolutionPhases.map((phase, i) => (
-                <div key={i} className="border-l-2 border-primary/30 pl-6">
+              {study.merrySolutionPhases.map((phase, i) => <div key={i} className="border-l-2 border-primary/30 pl-6">
                   <div className="flex items-center gap-4 mb-4">
                     <span className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-sm font-medium text-primary">
                       {i + 1}
                     </span>
                     <h3 className="font-serif text-xl">{phase.title}</h3>
                   </div>
-                  {phase.content ? (
-                    <p className="text-muted-foreground">{phase.content}</p>
-                  ) : (
-                    <div className="p-6 border-2 border-dashed border-border/50 bg-muted/20 min-h-[80px] flex items-center justify-center">
+                  {phase.content ? <p className="text-muted-foreground">{phase.content}</p> : <div className="p-6 border-2 border-dashed border-border/50 bg-muted/20 min-h-[80px] flex items-center justify-center">
                       <p className="text-muted-foreground italic">Content placeholder – {phase.title}</p>
-                    </div>
-                  )}
-                </div>
-              ))}
+                    </div>}
+                </div>)}
             </div>
           </div>
-        </section>
-      )}
+        </section>}
 
       {/* Merry Health Data Audit Detail - Accordion Style */}
-      {slug === 'merry-health' && study.merryDataAudit && (
-        <section className="px-6 lg:px-12 py-16 bg-card">
+      {slug === 'merry-health' && study.merryDataAudit && <section className="px-6 lg:px-12 py-16 bg-card">
           <div className="container mx-auto max-w-6xl">
             <div className="flex items-center gap-4 mb-6">
               <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">1</span>
@@ -1401,30 +1921,14 @@ const CaseStudy = () => {
             <p className="text-muted-foreground mb-8">{study.merryDataAudit.intro}</p>
             
             {/* Key Questions */}
-            <div className="flex flex-wrap gap-3 mb-8">
-              {study.merryDataAudit.questions.map((q, i) => (
-                <span key={i} className="px-4 py-2 bg-primary/10 text-primary text-sm font-medium">{q}</span>
-              ))}
-            </div>
+            
 
             {/* Actor Flow Diagram */}
-            <div className="mb-8 p-4 border border-border bg-background">
-              <div className="flex flex-wrap items-center justify-center gap-3">
-                {study.merryDataAudit.actors.map((actor, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <span className="px-3 py-1.5 bg-primary/10 text-primary font-medium text-sm">{actor}</span>
-                    {i < study.merryDataAudit!.actors.length - 1 && (
-                      <span className="text-muted-foreground">→</span>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
+            
 
             {/* Actor-specific Audits as Accordions */}
             <div className="space-y-4 mb-12">
-              {study.merryDataAudit.actorAudits.map((audit, actorIndex) => (
-                <details key={actorIndex} className="group border border-border bg-background">
+              {study.merryDataAudit.actorAudits.map((audit, actorIndex) => <details key={actorIndex} className="group border border-border bg-background">
                   <summary className="flex items-center gap-4 p-4 cursor-pointer hover:bg-muted/30 transition-colors">
                     <span className="w-7 h-7 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-xs font-medium flex-shrink-0">
                       {actorIndex + 1}
@@ -1434,8 +1938,7 @@ const CaseStudy = () => {
                   </summary>
                   
                   <div className="p-4 pt-0 border-t border-border/50">
-                    {audit.experienceFlow && audit.experienceFlow.length > 0 ? (
-                      <div className="space-y-6">
+                    {audit.experienceFlow && audit.experienceFlow.length > 0 ? <div className="space-y-6">
                         {/* Experience Flow - Compact */}
                         <details className="border border-border/50">
                           <summary className="p-3 bg-muted/20 cursor-pointer hover:bg-muted/40 flex items-center justify-between">
@@ -1454,23 +1957,20 @@ const CaseStudy = () => {
                                 </tr>
                               </thead>
                               <tbody>
-                                {audit.experienceFlow.map((row, i) => (
-                                  <tr key={i} className="border-b border-border/30 hover:bg-muted/10">
+                                {audit.experienceFlow.map((row, i) => <tr key={i} className="border-b border-border/30 hover:bg-muted/10">
                                     <td className="p-2 text-muted-foreground">{row.step}</td>
                                     <td className="p-2 font-medium text-xs">{row.name}</td>
                                     <td className="p-2 text-muted-foreground">{row.description}</td>
                                     <td className="p-2 text-muted-foreground">{row.channel}</td>
                                     <td className="p-2 text-muted-foreground">{row.data}</td>
-                                  </tr>
-                                ))}
+                                  </tr>)}
                               </tbody>
                             </table>
                           </div>
                         </details>
 
                         {/* Data Points - Compact */}
-                        {audit.dataPoints && audit.dataPoints.length > 0 && (
-                          <details className="border border-border/50">
+                        {audit.dataPoints && audit.dataPoints.length > 0 && <details className="border border-border/50">
                             <summary className="p-3 bg-muted/20 cursor-pointer hover:bg-muted/40 flex items-center justify-between">
                               <span className="text-sm font-medium text-primary">Data Points ({audit.dataPoints.length} items)</span>
                               <ChevronDown className="w-4 h-4 text-muted-foreground" />
@@ -1488,25 +1988,21 @@ const CaseStudy = () => {
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  {audit.dataPoints.map((row, i) => (
-                                    <tr key={i} className="border-b border-border/30 hover:bg-muted/10">
+                                  {audit.dataPoints.map((row, i) => <tr key={i} className="border-b border-border/30 hover:bg-muted/10">
                                       <td className="p-2 font-medium">{row.dataPoint}</td>
                                       <td className="p-2 text-muted-foreground">{row.source}</td>
                                       <td className="p-2 text-muted-foreground">{row.usedBy}</td>
                                       <td className="p-2 text-muted-foreground">{row.purpose}</td>
                                       <td className="p-2 text-muted-foreground">{row.frequency}</td>
                                       <td className="p-2 text-muted-foreground">{row.issues || '—'}</td>
-                                    </tr>
-                                  ))}
+                                    </tr>)}
                                 </tbody>
                               </table>
                             </div>
-                          </details>
-                        )}
+                          </details>}
 
                         {/* Minimum Essential Data - Compact */}
-                        {audit.minEssentialData && audit.minEssentialData.length > 0 && (
-                          <details className="border border-border/50">
+                        {audit.minEssentialData && audit.minEssentialData.length > 0 && <details className="border border-border/50">
                             <summary className="p-3 bg-muted/20 cursor-pointer hover:bg-muted/40 flex items-center justify-between">
                               <span className="text-sm font-medium text-primary">Minimum Essential Data ({audit.minEssentialData.length} flows)</span>
                               <ChevronDown className="w-4 h-4 text-muted-foreground" />
@@ -1521,22 +2017,18 @@ const CaseStudy = () => {
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  {audit.minEssentialData.map((row, i) => (
-                                    <tr key={i} className="border-b border-border/30 hover:bg-muted/10">
+                                  {audit.minEssentialData.map((row, i) => <tr key={i} className="border-b border-border/30 hover:bg-muted/10">
                                       <td className="p-2 font-medium">{row.flow}</td>
                                       <td className="p-2 text-muted-foreground">{row.data}</td>
                                       <td className="p-2 text-muted-foreground">{row.reason}</td>
-                                    </tr>
-                                  ))}
+                                    </tr>)}
                                 </tbody>
                               </table>
                             </div>
-                          </details>
-                        )}
+                          </details>}
 
                         {/* Absolute Minimum Data - Compact */}
-                        {audit.absoluteMinData && audit.absoluteMinData.length > 0 && (
-                          <details className="border border-border/50">
+                        {audit.absoluteMinData && audit.absoluteMinData.length > 0 && <details className="border border-border/50">
                             <summary className="p-3 bg-muted/20 cursor-pointer hover:bg-muted/40 flex items-center justify-between">
                               <span className="text-sm font-medium text-primary">Absolute Min Data for Patient Safety ({audit.absoluteMinData.length} categories)</span>
                               <ChevronDown className="w-4 h-4 text-muted-foreground" />
@@ -1551,27 +2043,20 @@ const CaseStudy = () => {
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  {audit.absoluteMinData.map((row, i) => (
-                                    <tr key={i} className="border-b border-border/30 hover:bg-muted/10">
+                                  {audit.absoluteMinData.map((row, i) => <tr key={i} className="border-b border-border/30 hover:bg-muted/10">
                                       <td className="p-2 font-medium">{row.category}</td>
                                       <td className="p-2 text-muted-foreground">{row.fields}</td>
                                       <td className="p-2 text-muted-foreground">{row.reason}</td>
-                                    </tr>
-                                  ))}
+                                    </tr>)}
                                 </tbody>
                               </table>
                             </div>
-                          </details>
-                        )}
-                      </div>
-                    ) : (
-                      <div className="p-6 border-2 border-dashed border-border/50 bg-muted/20 flex items-center justify-center">
+                          </details>}
+                      </div> : <div className="p-6 border-2 border-dashed border-border/50 bg-muted/20 flex items-center justify-center">
                         <p className="text-muted-foreground italic text-sm">Content placeholder – {audit.actor} data audit</p>
-                      </div>
-                    )}
+                      </div>}
                   </div>
-                </details>
-              ))}
+                </details>)}
             </div>
 
             {/* Overlapping/Shared Data Map */}
@@ -1595,28 +2080,24 @@ const CaseStudy = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {study.merryDataAudit.overlappingData.map((row, i) => (
-                        <tr key={i} className="border-b border-border/50 hover:bg-muted/20">
+                      {study.merryDataAudit.overlappingData.map((row, i) => <tr key={i} className="border-b border-border/50 hover:bg-muted/20">
                           <td className="p-2 font-medium">{row.dataPoint}</td>
                           <td className="p-2 text-center">{row.hospitalAdmin === 'YES' ? <span className="text-green-600">✓</span> : row.hospitalAdmin === 'NO' ? <span className="text-muted-foreground">—</span> : <span className="text-muted-foreground">{row.hospitalAdmin}</span>}</td>
                           <td className="p-2 text-center">{row.driver === 'YES' ? <span className="text-green-600">✓</span> : row.driver === 'NO' ? <span className="text-muted-foreground">—</span> : <span className="text-muted-foreground">{row.driver}</span>}</td>
                           <td className="p-2 text-center">{row.patientParty === 'YES' ? <span className="text-green-600">✓</span> : row.patientParty === 'NO' ? <span className="text-muted-foreground">—</span> : <span className="text-muted-foreground">{row.patientParty}</span>}</td>
                           <td className="p-2 text-center">{row.merryHealthAdmin === 'YES' ? <span className="text-green-600">✓</span> : row.merryHealthAdmin === 'NO' ? <span className="text-muted-foreground">—</span> : <span className="text-muted-foreground">{row.merryHealthAdmin}</span>}</td>
                           <td className="p-2 text-muted-foreground">{row.notes}</td>
-                        </tr>
-                      ))}
+                        </tr>)}
                     </tbody>
                   </table>
                 </div>
               </div>
             </details>
           </div>
-        </section>
-      )}
+        </section>}
 
       {/* Merry Health Platform Audit - Phase-by-Phase Analysis */}
-      {slug === 'merry-health' && (
-        <section className="px-6 lg:px-12 py-16">
+      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16">
           <div className="container mx-auto max-w-6xl">
             <div className="flex items-center gap-4 mb-6">
               <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">1b</span>
@@ -1626,166 +2107,54 @@ const CaseStudy = () => {
 
             <div className="space-y-8">
               {/* Phase 1: Intake */}
-              <PlatformAuditPhase
-                phase="Phase 1"
-                title="Intake"
-                severity="high"
-                description="First point of contact where hospital staff capture patient and case details during an emergency. It sets the foundation for the entire dispatch workflow by collecting the minimum critical information needed to initiate an ambulance request."
-                taskGoal="Capture dispatch-critical information quickly and reliably"
-                actorsInvolved="Patient/Patient Family, Hospital Receptionist, Merry Health Associate"
-                issues={[
-                  "Intake workflow requires full data upfront; staff rely on paper/WhatsApp.",
-                  "Data easily lost/mixed due to multitasking; no protection for in-progress entries.",
-                  "No priority context; admins rely on memory & manual judgment during panic."
-                ]}
-                businessImpact={[
-                  "Dispatch delays, errors, low hospital adoption.",
-                  "Inaccurate cases, rework, SLA inconsistencies.",
-                  "Wrong ambulance type, poor triage, slower response."
-                ]}
-                recommendations={[
-                  "Enable progressive intake (critical info first → rest later).",
-                  "Introduce workflow safeguards (preserve partial data, prevent overwrite).",
-                  "Surface priority & critical context early in intake workflow."
-                ]}
-                platformFindings={[
-                  {
-                    number: 1,
-                    title: "Intake workflow is not designed for emergency-mode, leading to slow, error-prone data capture.",
-                    description: "The intake process demands complete, structured data upfront, forcing staff to use paper, memory, and WhatsApp during emergencies — slowing dispatch and increasing errors.",
-                    recommendations: [
-                      "Allow critical-first intake, complete the rest later.",
-                      "Auto-preserve early inputs during interruptions.",
-                      "Align flow with speed-first emergency behavior."
-                    ]
-                  },
-                  {
-                    number: 2,
-                    title: "Intake input is fragile and easily overwritten, causing lost or mixed case data.",
-                    description: "Ongoing intake entries are frequently reset, overwritten, or mixed between cases due to multitasking, interruptions, and lack of workflow protection.",
-                    recommendations: [
-                      "Auto-save partial entries continuously.",
-                      "Prevent overwrites when switching cases or calls.",
-                      "Support resume-from-where-left workflows.",
-                      "Ensure no re-entry of previously captured data."
-                    ]
-                  }
-                ]}
-                onImageClick={setLightboxImage}
-              />
+              <PlatformAuditPhase phase="Phase 1" title="Intake" severity="high" description="First point of contact where hospital staff capture patient and case details during an emergency. It sets the foundation for the entire dispatch workflow by collecting the minimum critical information needed to initiate an ambulance request." taskGoal="Capture dispatch-critical information quickly and reliably" actorsInvolved="Patient/Patient Family, Hospital Receptionist, Merry Health Associate" issues={["Intake workflow requires full data upfront; staff rely on paper/WhatsApp.", "Data easily lost/mixed due to multitasking; no protection for in-progress entries.", "No priority context; admins rely on memory & manual judgment during panic."]} businessImpact={["Dispatch delays, errors, low hospital adoption.", "Inaccurate cases, rework, SLA inconsistencies.", "Wrong ambulance type, poor triage, slower response."]} recommendations={["Enable progressive intake (critical info first → rest later).", "Introduce workflow safeguards (preserve partial data, prevent overwrite).", "Surface priority & critical context early in intake workflow."]} platformFindings={[{
+            number: 1,
+            title: "Intake workflow is not designed for emergency-mode, leading to slow, error-prone data capture.",
+            description: "The intake process demands complete, structured data upfront, forcing staff to use paper, memory, and WhatsApp during emergencies — slowing dispatch and increasing errors.",
+            recommendations: ["Allow critical-first intake, complete the rest later.", "Auto-preserve early inputs during interruptions.", "Align flow with speed-first emergency behavior."]
+          }, {
+            number: 2,
+            title: "Intake input is fragile and easily overwritten, causing lost or mixed case data.",
+            description: "Ongoing intake entries are frequently reset, overwritten, or mixed between cases due to multitasking, interruptions, and lack of workflow protection.",
+            recommendations: ["Auto-save partial entries continuously.", "Prevent overwrites when switching cases or calls.", "Support resume-from-where-left workflows.", "Ensure no re-entry of previously captured data."]
+          }]} onImageClick={setLightboxImage} />
 
               {/* Phase 2: Assign */}
-              <PlatformAuditPhase
-                phase="Phase 2"
-                title="Assign"
-                severity="high"
-                description="Connects a new case to an available ambulance through validation, coordination, and confirmation. Delays here slow dispatch and break workflow continuity."
-                taskGoal="Match the right ambulance to the right case, fast and with full clarity"
-                actorsInvolved="Merry Health Associate, Ambulance Driver, Hospital Admins"
-                issues={[
-                  "Manual driver coordination.",
-                  "No urgency/multi-case visibility.",
-                  "Weak ambulance discovery."
-                ]}
-                businessImpact={[
-                  "Slow dispatch, high ops load, low trust.",
-                  "Mis-prioritization, SLA failures, patient risk.",
-                  "Delayed decisions, wrong selection, dependency on manual channels."
-                ]}
-                recommendations={[
-                  "Enable system-led assignment & real-time driver status.",
-                  "Surface urgency & separate simultaneous cases.",
-                  "Improve availability-led discovery & streamline assignment path."
-                ]}
-                platformFindings={[
-                  {
-                    number: 1,
-                    title: "Assignment depends on manual driver coordination, causing delays and uncertainty.",
-                    description: "MHA must call and follow up with multiple drivers to confirm availability, leading to unpredictable delays and inconsistent dispatch times.",
-                    recommendations: [
-                      "Provide real-time driver status to reduce repeated follow-ups.",
-                      "Support a single, streamlined assignment flow with clear confirmation."
-                    ]
-                  },
-                  {
-                    number: 2,
-                    title: "System does not surface urgency or simultaneous requests, resulting in wrong prioritization and case mix-ups.",
-                    description: "Urgency cues and simultaneous requests are not surfaced, forcing MHAs to rely on memory and guesswork, causing wrong prioritization or missed critical cases.",
-                    recommendations: [
-                      "Surface priority context early during assignment.",
-                      "Clearly separate concurrent cases to prevent mix-ups.",
-                      "Provide guided triage cues to support accurate decision-making."
-                    ]
-                  },
-                  {
-                    number: 3,
-                    title: "Ambulance discovery provides weak decision support — no clarity, no availability logic, no booking confidence.",
-                    description: "Ambulance list provides poor decision support — no sorting, no availability logic, unclear booking path — slowing down assignment and increasing reliance on manual channels.",
-                    recommendations: [
-                      "Use availability-driven discovery aligned with workflow needs.",
-                      "Support quick narrowing of options (urgency, type, proximity).",
-                      "Create a clear, confident assignment path with predictable next steps."
-                    ]
-                  }
-                ]}
-                onImageClick={setLightboxImage}
-              />
+              <PlatformAuditPhase phase="Phase 2" title="Assign" severity="high" description="Connects a new case to an available ambulance through validation, coordination, and confirmation. Delays here slow dispatch and break workflow continuity." taskGoal="Match the right ambulance to the right case, fast and with full clarity" actorsInvolved="Merry Health Associate, Ambulance Driver, Hospital Admins" issues={["Manual driver coordination.", "No urgency/multi-case visibility.", "Weak ambulance discovery."]} businessImpact={["Slow dispatch, high ops load, low trust.", "Mis-prioritization, SLA failures, patient risk.", "Delayed decisions, wrong selection, dependency on manual channels."]} recommendations={["Enable system-led assignment & real-time driver status.", "Surface urgency & separate simultaneous cases.", "Improve availability-led discovery & streamline assignment path."]} platformFindings={[{
+            number: 1,
+            title: "Assignment depends on manual driver coordination, causing delays and uncertainty.",
+            description: "MHA must call and follow up with multiple drivers to confirm availability, leading to unpredictable delays and inconsistent dispatch times.",
+            recommendations: ["Provide real-time driver status to reduce repeated follow-ups.", "Support a single, streamlined assignment flow with clear confirmation."]
+          }, {
+            number: 2,
+            title: "System does not surface urgency or simultaneous requests, resulting in wrong prioritization and case mix-ups.",
+            description: "Urgency cues and simultaneous requests are not surfaced, forcing MHAs to rely on memory and guesswork, causing wrong prioritization or missed critical cases.",
+            recommendations: ["Surface priority context early during assignment.", "Clearly separate concurrent cases to prevent mix-ups.", "Provide guided triage cues to support accurate decision-making."]
+          }, {
+            number: 3,
+            title: "Ambulance discovery provides weak decision support — no clarity, no availability logic, no booking confidence.",
+            description: "Ambulance list provides poor decision support — no sorting, no availability logic, unclear booking path — slowing down assignment and increasing reliance on manual channels.",
+            recommendations: ["Use availability-driven discovery aligned with workflow needs.", "Support quick narrowing of options (urgency, type, proximity).", "Create a clear, confident assignment path with predictable next steps."]
+          }]} onImageClick={setLightboxImage} />
 
               {/* Phase 3: En-Route */}
-              <PlatformAuditPhase
-                phase="Phase 3"
-                title="En-Route"
-                severity="high"
-                description="The En Route phase covers everything that happens after an ambulance has been assigned and the driver begins traveling toward the pickup location. This is a high-dependency, high-visibility phase where hospitals, MHAs, and patient families all expect accurate, real-time updates."
-                taskGoal="To provide reliable, continuous visibility of the ambulance's movement, status, and ETA across all parties"
-                actorsInvolved="Ambulance Driver, Merry Health Associate, Hospital Admins, Patient Party"
-                issues={[
-                  "No reliable real-time tracking causing uncertainty and delays.",
-                  "Active rides not surfaced or prioritized causing delayed monitoring and missed escalations.",
-                  "Ride information hard to parse — unclear, long, and inconsistent."
-                ]}
-                businessImpact={[
-                  "Constant manual follow-ups.",
-                  "SLA Failures.",
-                  "Delayed decisions, dependency on manual channels."
-                ]}
-                recommendations={[
-                  "Provide continuous, system-led tracking with auto-updating ETA visible to all roles.",
-                  "Prioritize and clearly surface ongoing trips for quick access and proactive monitoring.",
-                  "Present critical information upfront with structured, consistent ride detail organization."
-                ]}
-                platformFindings={[
-                  {
-                    number: 1,
-                    title: "Active rides aren't clearly surfaced → delays in monitoring & intervention",
-                    description: "Ongoing rides are visually buried, not distinguishable from other records, and lack clear prioritization — making it hard for MHAs and admins to monitor critical trips.",
-                    recommendations: [
-                      "Highlight in-progress trips as priority states in the workflow.",
-                      "Ensure quick access to active ride details without searching.",
-                      "Support proactive monitoring, reducing missed updates or delays."
-                    ]
-                  },
-                  {
-                    number: 2,
-                    title: "Poor ride detail structure → situational awareness is slow and error-prone",
-                    description: "Ride details are long, undifferentiated, and inconsistent, making it hard to extract status, timestamps, or critical info quickly during high-pressure moments.",
-                    recommendations: [
-                      "Present status-critical information upfront for fast scanning.",
-                      "Organize ride details into logical, workflow-aligned sections.",
-                      "Ensure consistent, clear time/event formatting for reliable reporting and decision-making."
-                    ]
-                  }
-                ]}
-                onImageClick={setLightboxImage}
-              />
+              <PlatformAuditPhase phase="Phase 3" title="En-Route" severity="high" description="The En Route phase covers everything that happens after an ambulance has been assigned and the driver begins traveling toward the pickup location. This is a high-dependency, high-visibility phase where hospitals, MHAs, and patient families all expect accurate, real-time updates." taskGoal="To provide reliable, continuous visibility of the ambulance's movement, status, and ETA across all parties" actorsInvolved="Ambulance Driver, Merry Health Associate, Hospital Admins, Patient Party" issues={["No reliable real-time tracking causing uncertainty and delays.", "Active rides not surfaced or prioritized causing delayed monitoring and missed escalations.", "Ride information hard to parse — unclear, long, and inconsistent."]} businessImpact={["Constant manual follow-ups.", "SLA Failures.", "Delayed decisions, dependency on manual channels."]} recommendations={["Provide continuous, system-led tracking with auto-updating ETA visible to all roles.", "Prioritize and clearly surface ongoing trips for quick access and proactive monitoring.", "Present critical information upfront with structured, consistent ride detail organization."]} platformFindings={[{
+            number: 1,
+            title: "Active rides aren't clearly surfaced → delays in monitoring & intervention",
+            description: "Ongoing rides are visually buried, not distinguishable from other records, and lack clear prioritization — making it hard for MHAs and admins to monitor critical trips.",
+            recommendations: ["Highlight in-progress trips as priority states in the workflow.", "Ensure quick access to active ride details without searching.", "Support proactive monitoring, reducing missed updates or delays."]
+          }, {
+            number: 2,
+            title: "Poor ride detail structure → situational awareness is slow and error-prone",
+            description: "Ride details are long, undifferentiated, and inconsistent, making it hard to extract status, timestamps, or critical info quickly during high-pressure moments.",
+            recommendations: ["Present status-critical information upfront for fast scanning.", "Organize ride details into logical, workflow-aligned sections.", "Ensure consistent, clear time/event formatting for reliable reporting and decision-making."]
+          }]} onImageClick={setLightboxImage} />
             </div>
           </div>
-        </section>
-      )}
+        </section>}
 
       {/* Merry Health System Flow & Opportunity Mapping - Compact Card Layout */}
-      {slug === 'merry-health' && study.merrySystemFlow && (
-        <section className="px-6 lg:px-12 py-16 bg-card">
+      {slug === 'merry-health' && study.merrySystemFlow && <section className="px-6 lg:px-12 py-16 bg-card">
           <div className="container mx-auto max-w-6xl">
             <div className="flex items-center gap-4 mb-6">
               <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">2</span>
@@ -1806,12 +2175,10 @@ const CaseStudy = () => {
                     <div className="p-4 rounded-lg bg-destructive/5 border border-destructive/20">
                       <h4 className="text-xs font-semibold text-destructive mb-2 uppercase tracking-wider">Key Issues</h4>
                       <ul className="space-y-1.5">
-                        {study.merrySystemFlow.currentFlow.painPoints.slice(0, 4).map((point, i) => (
-                          <li key={i} className="text-xs text-muted-foreground flex gap-2">
+                        {study.merrySystemFlow.currentFlow.painPoints.slice(0, 4).map((point, i) => <li key={i} className="text-xs text-muted-foreground flex gap-2">
                             <span className="text-destructive shrink-0">×</span>
                             <span>{point}</span>
-                          </li>
-                        ))}
+                          </li>)}
                       </ul>
                     </div>
                     
@@ -1819,12 +2186,10 @@ const CaseStudy = () => {
                     <div className="p-4 rounded-lg bg-primary/5 border border-primary/20">
                       <h4 className="text-xs font-semibold text-primary mb-2 uppercase tracking-wider">Key Improvements</h4>
                       <ul className="space-y-1.5">
-                        {study.merrySystemFlow.idealFlow.improvements.slice(0, 4).map((point, i) => (
-                          <li key={i} className="text-xs text-muted-foreground flex gap-2">
+                        {study.merrySystemFlow.idealFlow.improvements.slice(0, 4).map((point, i) => <li key={i} className="text-xs text-muted-foreground flex gap-2">
                             <span className="text-primary shrink-0">✓</span>
                             <span>{point}</span>
-                          </li>
-                        ))}
+                          </li>)}
                       </ul>
                     </div>
                   </div>
@@ -1835,19 +2200,13 @@ const CaseStudy = () => {
                   <div className="bg-muted/20 border border-border rounded-lg p-3">
                     <span className="text-xs font-medium text-muted-foreground mb-2 block">2 diagrams attached</span>
                     <div className="space-y-2">
-                      <div 
-                        className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow"
-                        onClick={() => setLightboxImage(merryCurrentFlow)}
-                      >
+                      <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryCurrentFlow)}>
                         <img src={merryCurrentFlow} alt="Current System Flow" className="w-full h-20 object-cover opacity-80 hover:opacity-100 transition-opacity" />
                         <div className="bg-destructive/10 px-2 py-1">
                           <span className="text-[10px] text-destructive font-medium">Current Flow</span>
                         </div>
                       </div>
-                      <div 
-                        className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow"
-                        onClick={() => setLightboxImage(merryIdealFlow)}
-                      >
+                      <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryIdealFlow)}>
                         <img src={merryIdealFlow} alt="Ideal System Flow" className="w-full h-20 object-cover opacity-80 hover:opacity-100 transition-opacity" />
                         <div className="bg-primary/10 px-2 py-1">
                           <span className="text-[10px] text-primary font-medium">Ideal Flow</span>
@@ -1906,19 +2265,13 @@ const CaseStudy = () => {
                   <div className="bg-muted/20 border border-border rounded-lg p-3">
                     <span className="text-xs font-medium text-muted-foreground mb-2 block">2 diagrams attached</span>
                     <div className="space-y-2">
-                      <div 
-                        className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow"
-                        onClick={() => setLightboxImage(merryOpportunityMapping)}
-                      >
+                      <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryOpportunityMapping)}>
                         <img src={merryOpportunityMapping} alt="Opportunity Mapping" className="w-full h-16 object-cover opacity-80 hover:opacity-100 transition-opacity" />
                         <div className="bg-muted/30 px-2 py-1">
                           <span className="text-[10px] text-muted-foreground font-medium">Opportunity Map</span>
                         </div>
                       </div>
-                      <div 
-                        className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow"
-                        onClick={() => setLightboxImage(merryOpportunityRefined)}
-                      >
+                      <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryOpportunityRefined)}>
                         <img src={merryOpportunityRefined} alt="Refined Opportunities" className="w-full h-16 object-cover opacity-80 hover:opacity-100 transition-opacity" />
                         <div className="bg-primary/10 px-2 py-1">
                           <span className="text-[10px] text-primary font-medium">Refined Mapping</span>
@@ -1941,12 +2294,10 @@ const CaseStudy = () => {
                   <div className="p-4 rounded-lg bg-muted/20 border border-border/50">
                     <h5 className="text-sm font-semibold mb-3">Why Phase Breakdown Matters</h5>
                     <ul className="space-y-2">
-                      {study.merrySystemFlow.phaseMapping.breakdownReasons.map((reason, i) => (
-                        <li key={i} className="text-xs text-muted-foreground flex gap-2">
+                      {study.merrySystemFlow.phaseMapping.breakdownReasons.map((reason, i) => <li key={i} className="text-xs text-muted-foreground flex gap-2">
                           <span className="text-primary shrink-0">{i + 1}.</span>
                           <span>{reason}</span>
-                        </li>
-                      ))}
+                        </li>)}
                     </ul>
                   </div>
                 </div>
@@ -1955,10 +2306,7 @@ const CaseStudy = () => {
                 <div className="lg:sticky lg:top-6 h-fit">
                   <div className="bg-muted/20 border border-border rounded-lg p-3">
                     <span className="text-xs font-medium text-muted-foreground mb-2 block">1 diagram attached</span>
-                    <div 
-                      className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow"
-                      onClick={() => setLightboxImage(merryPhaseMapping)}
-                    >
+                    <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryPhaseMapping)}>
                       <img src={merryPhaseMapping} alt="Phase Mapping Matrix" className="w-full object-cover opacity-80 hover:opacity-100 transition-opacity" />
                       <div className="bg-muted/30 px-2 py-1">
                         <span className="text-[10px] text-muted-foreground font-medium">Actor × Phase Matrix</span>
@@ -1969,12 +2317,10 @@ const CaseStudy = () => {
               </div>
             </div>
           </div>
-        </section>
-      )}
+        </section>}
 
       {/* Merry Health User Journey Mapping - Compact Card Layout */}
-      {slug === 'merry-health' && (
-        <section className="px-6 lg:px-12 py-16">
+      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16">
           <div className="container mx-auto max-w-6xl">
             <div className="flex items-center gap-4 mb-6">
               <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">3</span>
@@ -2015,19 +2361,13 @@ const CaseStudy = () => {
                     <div className="bg-muted/20 border border-border rounded-lg p-3">
                       <span className="text-xs font-medium text-muted-foreground mb-2 block">2 journey maps</span>
                       <div className="space-y-2">
-                        <div 
-                          className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow"
-                          onClick={() => setLightboxImage(merryPatientCurrentJourney)}
-                        >
+                        <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryPatientCurrentJourney)}>
                           <img src={merryPatientCurrentJourney} alt="Current Journey" className="w-full h-14 object-cover opacity-80 hover:opacity-100 transition-opacity" />
                           <div className="bg-destructive/10 px-2 py-1">
                             <span className="text-[10px] text-destructive font-medium">Current</span>
                           </div>
                         </div>
-                        <div 
-                          className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow"
-                          onClick={() => setLightboxImage(merryPatientIdealJourney)}
-                        >
+                        <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryPatientIdealJourney)}>
                           <img src={merryPatientIdealJourney} alt="Ideal Journey" className="w-full h-14 object-cover opacity-80 hover:opacity-100 transition-opacity" />
                           <div className="bg-primary/10 px-2 py-1">
                             <span className="text-[10px] text-primary font-medium">Ideal</span>
@@ -2071,19 +2411,13 @@ const CaseStudy = () => {
                     <div className="bg-muted/20 border border-border rounded-lg p-3">
                       <span className="text-xs font-medium text-muted-foreground mb-2 block">2 journey maps</span>
                       <div className="space-y-2">
-                        <div 
-                          className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow"
-                          onClick={() => setLightboxImage(merryAdminCurrentJourney)}
-                        >
+                        <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryAdminCurrentJourney)}>
                           <img src={merryAdminCurrentJourney} alt="Current Journey" className="w-full h-14 object-cover opacity-80 hover:opacity-100 transition-opacity" />
                           <div className="bg-destructive/10 px-2 py-1">
                             <span className="text-[10px] text-destructive font-medium">Current</span>
                           </div>
                         </div>
-                        <div 
-                          className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow"
-                          onClick={() => setLightboxImage(merryAdminIdealJourney)}
-                        >
+                        <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryAdminIdealJourney)}>
                           <img src={merryAdminIdealJourney} alt="Ideal Journey" className="w-full h-14 object-cover opacity-80 hover:opacity-100 transition-opacity" />
                           <div className="bg-primary/10 px-2 py-1">
                             <span className="text-[10px] text-primary font-medium">Ideal</span>
@@ -2142,10 +2476,7 @@ const CaseStudy = () => {
                   <div className="lg:sticky lg:top-6 h-fit">
                     <div className="bg-muted/20 border border-border rounded-lg p-3">
                       <span className="text-xs font-medium text-muted-foreground mb-2 block">1 journey map</span>
-                      <div 
-                        className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow"
-                        onClick={() => setLightboxImage(merryHospitalJourney)}
-                      >
+                      <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryHospitalJourney)}>
                         <img src={merryHospitalJourney} alt="Hospital Admin Journey" className="w-full object-cover opacity-80 hover:opacity-100 transition-opacity" />
                         <div className="bg-muted/30 px-2 py-1">
                           <span className="text-[10px] text-muted-foreground font-medium">Complete Journey Map</span>
@@ -2165,12 +2496,10 @@ const CaseStudy = () => {
               </p>
             </div>
           </div>
-        </section>
-      )}
+        </section>}
 
       {/* Merry Health Proposed Workflow */}
-      {slug === 'merry-health' && (
-        <section className="px-6 lg:px-12 py-16">
+      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16">
           <div className="container mx-auto max-w-6xl">
             <div className="flex items-center gap-4 mb-6">
               <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">4</span>
@@ -2257,12 +2586,7 @@ const CaseStudy = () => {
                   </div>
                 </div>
                 <div className="p-6 bg-background">
-                  <img 
-                    src={merryProposedWorkflow} 
-                    alt="Proposed edge case workflow showing 12 steps from Hospital Admin through WhatsApp API, MHA trip creation, driver assignment, to patient party notification with fallback mechanisms" 
-                    className="w-full object-contain cursor-pointer hover:scale-[1.01] transition-transform duration-300"
-                    onClick={() => setLightboxImage(merryProposedWorkflow)}
-                  />
+                  <img src={merryProposedWorkflow} alt="Proposed edge case workflow showing 12 steps from Hospital Admin through WhatsApp API, MHA trip creation, driver assignment, to patient party notification with fallback mechanisms" className="w-full object-contain cursor-pointer hover:scale-[1.01] transition-transform duration-300" onClick={() => setLightboxImage(merryProposedWorkflow)} />
                 </div>
                 <div className="bg-primary/5 px-4 py-2 border-t border-primary/20 text-center">
                   <span className="text-xs text-muted-foreground">Click to view full workflow diagram with all edge cases and fallback mechanisms</span>
@@ -2298,8 +2622,7 @@ const CaseStudy = () => {
               </div>
             </div>
           </div>
-        </section>
-      )}
+        </section>}
 
       {/* Current Scenario (for food waste project) */}
       {study.currentScenario && <section className="px-6 lg:px-12 py-16 bg-card">
@@ -2620,48 +2943,54 @@ const CaseStudy = () => {
                 </div>
                 
                 {/* Collapsible Interview Preview */}
-                <div 
-                  className="group bg-card border border-border rounded-lg p-4 cursor-pointer hover:border-primary/40 transition-all"
-                  onClick={() => setShowInterviewGallery(!showInterviewGallery)}
-                >
+                <div className="group bg-card border border-border rounded-lg p-4 cursor-pointer hover:border-primary/40 transition-all" onClick={() => setShowInterviewGallery(!showInterviewGallery)}>
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-sm font-medium text-foreground">View Interview Analysis</span>
                     <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform ${showInterviewGallery ? 'rotate-180' : ''}`} />
                   </div>
-                  {!showInterviewGallery && (
-                    <div className="flex gap-2 overflow-hidden">
-                      {[streeInterview1, streeInterview2, streeInterview3].map((img, i) => (
-                        <div key={i} className="w-20 h-14 rounded overflow-hidden border border-border flex-shrink-0">
+                  {!showInterviewGallery && <div className="flex gap-2 overflow-hidden">
+                      {[streeInterview1, streeInterview2, streeInterview3].map((img, i) => <div key={i} className="w-20 h-14 rounded overflow-hidden border border-border flex-shrink-0">
                           <img src={img} alt={`Interview preview ${i + 1}`} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" />
-                        </div>
-                      ))}
+                        </div>)}
                       <div className="w-20 h-14 rounded bg-muted/50 border border-border flex items-center justify-center flex-shrink-0">
                         <span className="text-xs text-muted-foreground">+2 more</span>
                       </div>
-                    </div>
-                  )}
+                    </div>}
                 </div>
                 
                 {/* Expanded Gallery */}
-                {showInterviewGallery && (
-                  <div className="mt-4 grid md:grid-cols-3 gap-4 animate-fade-in">
-                    <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={(e) => { e.stopPropagation(); setLightboxImage(streeInterview1); }}>
+                {showInterviewGallery && <div className="mt-4 grid md:grid-cols-3 gap-4 animate-fade-in">
+                    <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={e => {
+              e.stopPropagation();
+              setLightboxImage(streeInterview1);
+            }}>
                       <img src={streeInterview1} alt="Interview analysis with observation coding" className="w-full rounded" />
                     </div>
-                    <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={(e) => { e.stopPropagation(); setLightboxImage(streeInterview2); }}>
+                    <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={e => {
+              e.stopPropagation();
+              setLightboxImage(streeInterview2);
+            }}>
                       <img src={streeInterview2} alt="Interview analysis with observation coding" className="w-full rounded" />
                     </div>
-                    <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={(e) => { e.stopPropagation(); setLightboxImage(streeInterview3); }}>
+                    <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={e => {
+              e.stopPropagation();
+              setLightboxImage(streeInterview3);
+            }}>
                       <img src={streeInterview3} alt="Interview analysis with observation coding" className="w-full rounded" />
                     </div>
-                    <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={(e) => { e.stopPropagation(); setLightboxImage(streeInterview4); }}>
+                    <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={e => {
+              e.stopPropagation();
+              setLightboxImage(streeInterview4);
+            }}>
                       <img src={streeInterview4} alt="Interview analysis with observation coding" className="w-full rounded" />
                     </div>
-                    <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={(e) => { e.stopPropagation(); setLightboxImage(streeInterview5); }}>
+                    <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={e => {
+              e.stopPropagation();
+              setLightboxImage(streeInterview5);
+            }}>
                       <img src={streeInterview5} alt="Interview analysis with observation coding" className="w-full rounded" />
                     </div>
-                  </div>
-                )}
+                  </div>}
               </div>}
 
             {/* Placeholder for non-STREE projects */}
@@ -2700,59 +3029,66 @@ const CaseStudy = () => {
             {/* Affinity Mapping Images for STREE */}
             {slug === 'stree-safety-app' && <>
                 {/* Collapsible Affinity Preview */}
-                <div 
-                  className="group bg-card border border-border rounded-lg p-4 cursor-pointer hover:border-primary/40 transition-all mb-6"
-                  onClick={() => setShowAffinityGallery(!showAffinityGallery)}
-                >
+                <div className="group bg-card border border-border rounded-lg p-4 cursor-pointer hover:border-primary/40 transition-all mb-6" onClick={() => setShowAffinityGallery(!showAffinityGallery)}>
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-sm font-medium text-foreground">View Affinity Mapping</span>
                     <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform ${showAffinityGallery ? 'rotate-180' : ''}`} />
                   </div>
-                  {!showAffinityGallery && (
-                    <div className="flex gap-2 overflow-hidden">
-                      {[streeAffinity1, streeAffinity2, streeAffinity3].map((img, i) => (
-                        <div key={i} className="w-20 h-14 rounded overflow-hidden border border-border flex-shrink-0">
+                  {!showAffinityGallery && <div className="flex gap-2 overflow-hidden">
+                      {[streeAffinity1, streeAffinity2, streeAffinity3].map((img, i) => <div key={i} className="w-20 h-14 rounded overflow-hidden border border-border flex-shrink-0">
                           <img src={img} alt={`Affinity preview ${i + 1}`} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" />
-                        </div>
-                      ))}
+                        </div>)}
                       <div className="w-20 h-14 rounded bg-muted/50 border border-border flex items-center justify-center flex-shrink-0">
                         <span className="text-xs text-muted-foreground">+3 more</span>
                       </div>
-                    </div>
-                  )}
+                    </div>}
                 </div>
                 
                 {/* Expanded Gallery */}
-                {showAffinityGallery && (
-                  <div className="columns-1 md:columns-2 lg:columns-3 gap-4 mb-8 space-y-4 animate-fade-in">
-                    <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={(e) => { e.stopPropagation(); setLightboxImage(streeAffinity1); }}>
+                {showAffinityGallery && <div className="columns-1 md:columns-2 lg:columns-3 gap-4 mb-8 space-y-4 animate-fade-in">
+                    <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={e => {
+              e.stopPropagation();
+              setLightboxImage(streeAffinity1);
+            }}>
                       <img src={streeAffinity1} alt="Affinity mapping: Safety perceptions and offender types" className="w-full rounded" />
                     </div>
-                    <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={(e) => { e.stopPropagation(); setLightboxImage(streeAffinity2); }}>
+                    <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={e => {
+              e.stopPropagation();
+              setLightboxImage(streeAffinity2);
+            }}>
                       <img src={streeAffinity2} alt="Affinity mapping: Reactions and reporting challenges" className="w-full rounded" />
                     </div>
-                    <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={(e) => { e.stopPropagation(); setLightboxImage(streeAffinity3); }}>
+                    <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={e => {
+              e.stopPropagation();
+              setLightboxImage(streeAffinity3);
+            }}>
                       <img src={streeAffinity3} alt="Affinity mapping: Emotional impact and sharing experiences" className="w-full rounded" />
                     </div>
-                    <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={(e) => { e.stopPropagation(); setLightboxImage(streeAffinity4); }}>
+                    <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={e => {
+              e.stopPropagation();
+              setLightboxImage(streeAffinity4);
+            }}>
                       <img src={streeAffinity4} alt="Affinity mapping: Adapting behaviors for safety" className="w-full rounded" />
                     </div>
-                    <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={(e) => { e.stopPropagation(); setLightboxImage(streeAffinity5); }}>
+                    <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={e => {
+              e.stopPropagation();
+              setLightboxImage(streeAffinity5);
+            }}>
                       <img src={streeAffinity5} alt="Affinity mapping: Safety measures and location perceptions" className="w-full rounded" />
                     </div>
-                    <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={(e) => { e.stopPropagation(); setLightboxImage(streeAffinity6); }}>
+                    <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={e => {
+              e.stopPropagation();
+              setLightboxImage(streeAffinity6);
+            }}>
                       <img src={streeAffinity6} alt="Affinity mapping: Societal attitudes and improvement ideas" className="w-full rounded" />
                     </div>
-                  </div>
-                )}
+                  </div>}
                 
-                {showAffinityGallery && (
-                  <div className="p-6 bg-card border border-border animate-fade-in">
+                {showAffinityGallery && <div className="p-6 bg-card border border-border animate-fade-in">
                     <p className="text-muted-foreground leading-relaxed">
                       From the affinity mapping exercise, we identified recurring <span className="text-foreground font-medium">themes</span> across participant responses. These themes helped us understand the underlying patterns in women's safety experiences, which directly informed our <span className="text-foreground font-medium">user goals</span> and <span className="text-foreground font-medium">challenges</span> framework below.
                     </p>
-                  </div>
-                )}
+                  </div>}
               </>}
             
             {/* Placeholder for non-STREE projects */}
@@ -2929,8 +3265,7 @@ const CaseStudy = () => {
             <p className="text-sm text-muted-foreground mb-6">{study.usabilityTesting.intro}</p>
             
             {/* Method details */}
-            {'method' in study.usabilityTesting && (
-              <div className="grid grid-cols-3 gap-4 mb-8 p-4 bg-card border border-border">
+            {'method' in study.usabilityTesting && <div className="grid grid-cols-3 gap-4 mb-8 p-4 bg-card border border-border">
                 <div>
                   <span className="text-xs uppercase tracking-wider text-muted-foreground/70">Method</span>
                   <p className="text-sm text-foreground mt-1">{study.usabilityTesting.method}</p>
@@ -2943,8 +3278,7 @@ const CaseStudy = () => {
                   <span className="text-xs uppercase tracking-wider text-muted-foreground/70">Mode</span>
                   <p className="text-sm text-foreground mt-1">{study.usabilityTesting.mode}</p>
                 </div>
-              </div>
-            )}
+              </div>}
 
             <div className="grid md:grid-cols-2 gap-4">
               {study.usabilityTesting.findings.map((finding, i) => <div key={i} className="flex gap-3 p-4 bg-card border border-border">
@@ -2969,25 +3303,15 @@ const CaseStudy = () => {
           </div>
 
           {/* HiFi Screens - horizontal scroll like wireframes */}
-          {slug === 'stree-safety-app' && (
-            <div className="overflow-x-auto pb-4">
-              <div className="flex gap-4 px-6 lg:px-12" style={{ width: 'max-content' }}>
-                {[streeHifi1, streeHifi2, streeHifi3, streeHifi4, streeHifi5, streeHifi6, streeHifi7, streeHifi8, streeHifi9, streeHifi10, streeHifi11, streeHifi12, streeHifi13, streeHifi14, streeHifi15, streeHifi16, streeHifi17, streeHifi18].map((img, i) => (
-                  <div 
-                    key={i} 
-                    className="flex-shrink-0 bg-background border border-border p-2 cursor-pointer hover:border-primary/50 transition-colors"
-                    onClick={() => setLightboxImage(img)}
-                  >
-                    <img 
-                      src={img} 
-                      alt={`HiFi screen ${i + 1}`}
-                      className="h-[400px] w-auto object-contain"
-                    />
-                  </div>
-                ))}
+          {slug === 'stree-safety-app' && <div className="overflow-x-auto pb-4">
+              <div className="flex gap-4 px-6 lg:px-12" style={{
+          width: 'max-content'
+        }}>
+                {[streeHifi1, streeHifi2, streeHifi3, streeHifi4, streeHifi5, streeHifi6, streeHifi7, streeHifi8, streeHifi9, streeHifi10, streeHifi11, streeHifi12, streeHifi13, streeHifi14, streeHifi15, streeHifi16, streeHifi17, streeHifi18].map((img, i) => <div key={i} className="flex-shrink-0 bg-background border border-border p-2 cursor-pointer hover:border-primary/50 transition-colors" onClick={() => setLightboxImage(img)}>
+                    <img src={img} alt={`HiFi screen ${i + 1}`} className="h-[400px] w-auto object-contain" />
+                  </div>)}
               </div>
-            </div>
-          )}
+            </div>}
         </section>}
 
       {/* STREE: Impact */}
@@ -3295,8 +3619,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* Platform Screenshots (for Merry Health) */}
-      {slug === 'merry-health' && (
-        <section className="px-6 lg:px-12 py-20 bg-card">
+      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-20 bg-card">
           <div className="container mx-auto max-w-6xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4 text-center">The Platform</h2>
             <p className="text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
@@ -3305,16 +3628,9 @@ const CaseStudy = () => {
             
             <div className="grid gap-8">
               {/* Main dashboard - large */}
-              <div 
-                className="group relative overflow-hidden rounded-lg border border-border bg-background shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
-                onClick={() => setLightboxImage(merryHealthDashboard)}
-              >
+              <div className="group relative overflow-hidden rounded-lg border border-border bg-background shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer" onClick={() => setLightboxImage(merryHealthDashboard)}>
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
-                <img 
-                  src={merryHealthDashboard} 
-                  alt="Merry Health Dashboard - Hospital dispatch overview with live tracking and ride metrics" 
-                  className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                />
+                <img src={merryHealthDashboard} alt="Merry Health Dashboard - Hospital dispatch overview with live tracking and ride metrics" className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <h3 className="font-serif text-lg text-foreground mb-1">Hospital Dashboard</h3>
                   <p className="text-sm text-muted-foreground">Live tracking, ride metrics, and operational overview</p>
@@ -3323,48 +3639,27 @@ const CaseStudy = () => {
               
               {/* Secondary screens - grid */}
               <div className="grid md:grid-cols-3 gap-6">
-                <div 
-                  className="group relative overflow-hidden rounded-lg border border-border bg-background shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
-                  onClick={() => setLightboxImage(merryHealthMap)}
-                >
+                <div className="group relative overflow-hidden rounded-lg border border-border bg-background shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer" onClick={() => setLightboxImage(merryHealthMap)}>
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
-                  <img 
-                    src={merryHealthMap} 
-                    alt="Find Ambulance - Map view with available ambulance locations" 
-                    className="w-full h-48 object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
-                  />
+                  <img src={merryHealthMap} alt="Find Ambulance - Map view with available ambulance locations" className="w-full h-48 object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]" />
                   <div className="absolute bottom-0 left-0 right-0 p-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <h3 className="font-serif text-base text-foreground">Find Ambulance</h3>
                     <p className="text-xs text-muted-foreground">Real-time fleet visibility</p>
                   </div>
                 </div>
                 
-                <div 
-                  className="group relative overflow-hidden rounded-lg border border-border bg-background shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
-                  onClick={() => setLightboxImage(merryHealthBooking)}
-                >
+                <div className="group relative overflow-hidden rounded-lg border border-border bg-background shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer" onClick={() => setLightboxImage(merryHealthBooking)}>
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
-                  <img 
-                    src={merryHealthBooking} 
-                    alt="Offline Booking - Structured intake form for emergency rides" 
-                    className="w-full h-48 object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
-                  />
+                  <img src={merryHealthBooking} alt="Offline Booking - Structured intake form for emergency rides" className="w-full h-48 object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]" />
                   <div className="absolute bottom-0 left-0 right-0 p-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <h3 className="font-serif text-base text-foreground">Add Ride Flow</h3>
                     <p className="text-xs text-muted-foreground">Structured emergency intake</p>
                   </div>
                 </div>
                 
-                <div 
-                  className="group relative overflow-hidden rounded-lg border border-border bg-background shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
-                  onClick={() => setLightboxImage(merryHealthRides)}
-                >
+                <div className="group relative overflow-hidden rounded-lg border border-border bg-background shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer" onClick={() => setLightboxImage(merryHealthRides)}>
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
-                  <img 
-                    src={merryHealthRides} 
-                    alt="Ride List - Complete ride history with status tracking" 
-                    className="w-full h-48 object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
-                  />
+                  <img src={merryHealthRides} alt="Ride List - Complete ride history with status tracking" className="w-full h-48 object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]" />
                   <div className="absolute bottom-0 left-0 right-0 p-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <h3 className="font-serif text-base text-foreground">Ride Management</h3>
                     <p className="text-xs text-muted-foreground">Unified timeline & status</p>
@@ -3373,8 +3668,7 @@ const CaseStudy = () => {
               </div>
             </div>
           </div>
-        </section>
-      )}
+        </section>}
 
       {/* Deliverables (for Merry Health) */}
       {study.deliverables && <section className="px-6 lg:px-12 py-16">
