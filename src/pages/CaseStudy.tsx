@@ -218,6 +218,13 @@ interface CaseStudyData {
   contextPoints?: string[];
   problemDefinition?: CaseStudySection[];
   systemModules?: CaseStudySection[];
+  // Merry Health new structure
+  merryOverview?: string;
+  merryCurrentProblem?: string;
+  merrySolutionPhases?: {
+    title: string;
+    content: string;
+  }[];
   designSolutions?: CaseStudySection[];
   edgeCases?: CaseStudySection[];
   deliverables?: string[];
@@ -230,6 +237,27 @@ const caseStudies: Record<string, CaseStudyData> = {
     role: "Research & Discovery, Strategy & Systems Thinking, Design Execution, Collaboration & Delivery",
     tools: ["Figma", "Miro", "Prototyping tools"],
     heroImage: "https://images.unsplash.com/photo-1587745416684-47953f16f02f?w=1200&q=80",
+    // New structure
+    merryOverview: "", // Placeholder - add content here
+    merryCurrentProblem: "", // Placeholder - add content here
+    merrySolutionPhases: [
+      {
+        title: "Data Audit",
+        content: "" // Placeholder - add content here
+      },
+      {
+        title: "System Flow & Opportunity Mapping",
+        content: "" // Placeholder - add content here
+      },
+      {
+        title: "User Journey Mapping",
+        content: "" // Placeholder - add content here
+      },
+      {
+        title: "Proposed: Workflow + Scenarios",
+        content: "" // Placeholder - add content here
+      }
+    ],
     contextPoints: ["Unpredictable emergencies", "Limited information", "High message volume", "Multi-stakeholder communication", "Low digital maturity", "Unreliable networks", "Fragmented workflows"],
     problemDefinition: [{
       title: "01: WhatsApp was the real operating system",
@@ -1022,6 +1050,43 @@ const CaseStudy = () => {
       {/* BrynQ: NDA Note */}
       {study.brynqNdaNote && <section className="px-6 lg:px-12 py-8 bg-muted/30 border-y border-border"><div className="container mx-auto max-w-4xl text-center"><p className="text-sm text-muted-foreground italic">{study.brynqNdaNote}</p></div></section>}
 
+      {/* Merry Health Current Problem (Placeholder) */}
+      {slug === 'merry-health' && (
+        <section className="px-6 lg:px-12 py-16 bg-card">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">The Current Problem</h2>
+            <div className="p-8 border-2 border-dashed border-border/50 bg-muted/20 min-h-[120px] flex items-center justify-center">
+              <p className="text-muted-foreground italic">Content placeholder – Current Problem section</p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Merry Health Solution Phases */}
+      {slug === 'merry-health' && study.merrySolutionPhases && (
+        <section className="px-6 lg:px-12 py-16">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">The Solution</h2>
+            <p className="text-lg text-muted-foreground mb-12">Our approach was structured into four key phases:</p>
+            <div className="space-y-8">
+              {study.merrySolutionPhases.map((phase, i) => (
+                <div key={i} className="border-l-2 border-primary/30 pl-6">
+                  <div className="flex items-center gap-4 mb-4">
+                    <span className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-sm font-medium text-primary">
+                      {i + 1}
+                    </span>
+                    <h3 className="font-serif text-xl">{phase.title}</h3>
+                  </div>
+                  <div className="p-6 border-2 border-dashed border-border/50 bg-muted/20 min-h-[80px] flex items-center justify-center">
+                    <p className="text-muted-foreground italic">Content placeholder – {phase.title}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Current Scenario (for food waste project) */}
       {study.currentScenario && <section className="px-6 lg:px-12 py-16 bg-card">
           <div className="container mx-auto max-w-4xl">
@@ -1124,8 +1189,8 @@ const CaseStudy = () => {
           </div>
         </section>}
 
-      {/* Design Goals (for Curateus App) */}
-      {study.designGoals && <section className="px-6 lg:px-12 py-16 bg-card">
+      {/* Design Goals (for Curateus App - skip for Merry Health) */}
+      {study.designGoals && slug !== 'merry-health' && <section className="px-6 lg:px-12 py-16 bg-card">
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Design Goals for v2.0</h2>
             <div className="space-y-6">
@@ -1950,7 +2015,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* Context Points (for Merry Health) */}
-      {study.contextPoints && <section className="px-6 lg:px-12 py-16">
+      {study.contextPoints && <section className="px-6 lg:px-12 py-16 bg-card">
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Context & Challenges</h2>
             <p className="text-lg text-muted-foreground mb-8">Hospital admins must navigate:</p>
