@@ -25,10 +25,10 @@ const Contact = () => {
         <div className="mt-32 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
           <div className="flex gap-8">
             {[
-              { name: 'LinkedIn', url: '#' },
-              { name: 'Dribbble', url: '#' },
-              { name: 'Behance', url: '#' },
-              { name: 'Twitter', url: '#' }
+              { name: 'LinkedIn', url: 'https://www.linkedin.com/in/tanya-sunny/' },
+              { name: 'Dribbble', url: 'https://dribbble.com/TanyaSunny' },
+              { name: 'Behance', url: 'https://www.behance.net/tanyasunny' },
+              { name: 'Medium', url: 'https://medium.com/@tanyameriamsunny' }
             ].map((social) => (
               <a 
                 key={social.name}
