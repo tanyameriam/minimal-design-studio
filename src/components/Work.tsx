@@ -11,6 +11,7 @@ interface Project {
   image: string;
   slug: string;
   tags: ProjectTag[];
+  published?: boolean;
 }
 const projects: Project[] = [{
   title: "STREE Safety App",
@@ -18,49 +19,56 @@ const projects: Project[] = [{
   year: "2022",
   image: streeCover,
   slug: "stree-safety-app",
-  tags: ['UX', 'Research']
+  tags: ['UX', 'Research'],
+  published: true
 }, {
   title: "BrynQ Platform",
   category: "Product Design • B2B iPaaS",
   year: "2021-2024",
   image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80",
   slug: "brynq",
-  tags: ['UX', 'Research', 'UI']
+  tags: ['UX', 'Research', 'UI'],
+  published: true
 }, {
   title: "Food Waste Solution",
   category: "UX Design • Social Impact",
   year: "2024",
   image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80",
   slug: "food-waste-ngo",
-  tags: ['UX', 'Research', 'UI']
+  tags: ['UX', 'Research', 'UI'],
+  published: true
 }, {
   title: "Merry Health",
   category: "Systems Design • Healthcare",
   year: "2024",
   image: "https://images.unsplash.com/photo-1587745416684-47953f16f02f?w=800&q=80",
   slug: "merry-health",
-  tags: ['UX', 'Research', 'UI']
+  tags: ['UX', 'Research', 'UI'],
+  published: true
 }, {
   title: "Curateus Plugin",
   category: "UX Research • Browser Extension",
   year: "2024",
   image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
   slug: "curateus-plugin",
-  tags: ['UX', 'Research', 'UI']
+  tags: ['UX', 'Research', 'UI'],
+  published: false
 }, {
   title: "Curateus App",
   category: "UI Design • Content Platform",
   year: "2024",
   image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=80",
   slug: "curateus-app",
-  tags: ['UI', 'UX']
+  tags: ['UI', 'UX'],
+  published: false
 }, {
   title: "AlHub App",
   category: "UI Redesign • Lifestyle Platform",
   year: "2023",
   image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
   slug: "alhub-app",
-  tags: ['UI']
+  tags: ['UI'],
+  published: false
 }];
 const allTags: ProjectTag[] = ['UI', 'UX', 'Research'];
 const Work = () => {
@@ -68,6 +76,7 @@ const Work = () => {
   const [activeTag, setActiveTag] = useState<ProjectTag | 'All'>('All');
   const filteredProjects = useMemo(() => {
     return projects.filter(project => {
+      if (project.published === false) return false;
       const matchesSearch = project.title.toLowerCase().includes(searchQuery.toLowerCase()) || project.category.toLowerCase().includes(searchQuery.toLowerCase());
       const matchesTag = activeTag === 'All' || project.tags.includes(activeTag);
       return matchesSearch && matchesTag;
