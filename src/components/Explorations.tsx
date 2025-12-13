@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ExternalLink, Sparkles, Pencil, Box } from 'lucide-react';
+import { ExternalLink, Sparkles, Pencil, Box, X } from 'lucide-react';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
 import splineFrogs from '@/assets/spline-frogs.png';
 import spline3dRoom from '@/assets/spline-3d-room.png';
 import sketchDino1 from '@/assets/sketch-dino-1.png';
@@ -44,8 +45,40 @@ const splineProjects = [
 
 type Tab = 'all' | '3d' | 'character' | 'charcoal';
 
+interface LightboxImage {
+  src: string;
+  title: string;
+}
+
+const ImageCard = ({ 
+  src, 
+  title, 
+  aspectRatio = 'aspect-square',
+  onClick 
+}: { 
+  src: string; 
+  title: string; 
+  aspectRatio?: string;
+  onClick: () => void;
+}) => (
+  <button
+    onClick={onClick}
+    className={`group relative ${aspectRatio} overflow-hidden rounded-lg bg-muted cursor-pointer w-full`}
+  >
+    <img
+      src={src}
+      alt={title}
+      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+      <span className="text-background text-xs font-medium">{title}</span>
+    </div>
+  </button>
+);
+
 const Explorations = () => {
   const [activeTab, setActiveTab] = useState<Tab>('all');
+  const [lightboxImage, setLightboxImage] = useState<LightboxImage | null>(null);
 
   const totalCount = splineProjects.length + characterSketches.length + charcoalSketches.length;
 
@@ -55,6 +88,10 @@ const Explorations = () => {
     { id: 'character' as Tab, label: 'Characters', icon: Sparkles, count: characterSketches.length },
     { id: 'charcoal' as Tab, label: 'Charcoal', icon: Pencil, count: charcoalSketches.length },
   ];
+
+  const openLightbox = (src: string, title: string) => {
+    setLightboxImage({ src, title });
+  };
 
   return (
     <section id="explorations" className="py-24 px-6 lg:px-12 bg-muted/30">
@@ -131,16 +168,13 @@ const Explorations = () => {
                 <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Character Sketches</p>
                 <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
                   {characterSketches.map((sketch) => (
-                    <div
+                    <ImageCard
                       key={sketch.id}
-                      className="group relative aspect-[4/3] overflow-hidden rounded-lg bg-muted"
-                    >
-                      <img
-                        src={sketch.thumbnail}
-                        alt={sketch.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
+                      src={sketch.thumbnail}
+                      title={sketch.title}
+                      aspectRatio="aspect-[4/3]"
+                      onClick={() => openLightbox(sketch.thumbnail, sketch.title)}
+                    />
                   ))}
                 </div>
               </div>
@@ -150,21 +184,19 @@ const Explorations = () => {
                 <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Charcoal Sketches</p>
                 <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
                   {charcoalSketches.map((sketch) => (
-                    <div
+                    <ImageCard
                       key={sketch.id}
-                      className="group relative aspect-[3/4] overflow-hidden rounded-lg bg-neutral-900"
-                    >
-                      <img
-                        src={sketch.thumbnail}
-                        alt={sketch.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
+                      src={sketch.thumbnail}
+                      title={sketch.title}
+                      aspectRatio="aspect-[3/4]"
+                      onClick={() => openLightbox(sketch.thumbnail, sketch.title)}
+                    />
                   ))}
                 </div>
               </div>
             </div>
           )}
+
           {/* 3D Tab */}
           {activeTab === '3d' && (
             <div className="grid grid-cols-2 gap-4 animate-fade-in">
@@ -196,19 +228,13 @@ const Explorations = () => {
           {activeTab === 'character' && (
             <div className="grid grid-cols-3 gap-4 animate-fade-in">
               {characterSketches.map((sketch) => (
-                <div
+                <ImageCard
                   key={sketch.id}
-                  className="group relative aspect-square overflow-hidden rounded-xl bg-muted"
-                >
-                  <img
-                    src={sketch.thumbnail}
-                    alt={sketch.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <span className="text-background text-sm font-medium">{sketch.title}</span>
-                  </div>
-                </div>
+                  src={sketch.thumbnail}
+                  title={sketch.title}
+                  aspectRatio="aspect-square"
+                  onClick={() => openLightbox(sketch.thumbnail, sketch.title)}
+                />
               ))}
             </div>
           )}
@@ -217,19 +243,13 @@ const Explorations = () => {
           {activeTab === 'charcoal' && (
             <div className="grid grid-cols-3 md:grid-cols-6 gap-4 animate-fade-in">
               {charcoalSketches.map((sketch) => (
-                <div
+                <ImageCard
                   key={sketch.id}
-                  className="group relative aspect-[3/4] overflow-hidden rounded-xl bg-neutral-900"
-                >
-                  <img
-                    src={sketch.thumbnail}
-                    alt={sketch.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
-                    <span className="text-white text-xs font-medium">{sketch.title}</span>
-                  </div>
-                </div>
+                  src={sketch.thumbnail}
+                  title={sketch.title}
+                  aspectRatio="aspect-[3/4]"
+                  onClick={() => openLightbox(sketch.thumbnail, sketch.title)}
+                />
               ))}
             </div>
           )}
@@ -240,6 +260,30 @@ const Explorations = () => {
           Always learning, always experimenting
         </p>
       </div>
+
+      {/* Lightbox Modal */}
+      <Dialog open={!!lightboxImage} onOpenChange={() => setLightboxImage(null)}>
+        <DialogContent className="max-w-4xl p-0 bg-transparent border-none shadow-none">
+          <button
+            onClick={() => setLightboxImage(null)}
+            className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center hover:bg-background transition-colors"
+          >
+            <X className="w-5 h-5" />
+          </button>
+          {lightboxImage && (
+            <div className="relative">
+              <img
+                src={lightboxImage.src}
+                alt={lightboxImage.title}
+                className="w-full h-auto max-h-[85vh] object-contain rounded-lg"
+              />
+              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent rounded-b-lg">
+                <p className="text-white font-medium">{lightboxImage.title}</p>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
