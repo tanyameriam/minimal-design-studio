@@ -3225,9 +3225,7 @@ const CaseStudy = () => {
               
               <p>The system monitors delivery execution as a critical accountability checkpoint. Successful deliveries result in food reaching the NGO, who then distributes it to hotspots. Failed deliveries trigger a donation equivalent to the food cost from the delivery partner, with the NGO notified about the compensation ensuring accountability and transparency in failure handling. Regardless of the path taken, the system records fulfillment method, delivery completion or failure, and all payments or donations, creating a closed-loop system with full traceability.</p>
               
-              <p className="text-sm italic border-l-2 border-primary/30 pl-4 mt-8">
-                This flow demonstrates clear separation of roles and responsibilities, strong validation at every critical step, multiple fallback paths instead of dead ends, and built-in accountability mechanisms—representing a robust, real-world orchestration flow rather than a simplified happy path.
-              </p>
+              <p className="text-sm italic border-l-2 border-primary/30 pl-4 mt-8">This flow demonstrates clear separation of roles and responsibilities, strong validation at every critical step, multiple fallback paths instead of dead ends, and built-in accountability mechanisms, representing a robust, real-world orchestration flow rather than a simplified happy path.</p>
             </div>
             
             <div className="bg-background border border-border rounded-lg p-4">
