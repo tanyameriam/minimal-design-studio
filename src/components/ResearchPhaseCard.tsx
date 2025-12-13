@@ -172,7 +172,7 @@ export function PlatformAuditPhase({
   images = [],
   onImageClick,
 }: PlatformAuditPhaseProps) {
-  const [showFindings, setShowFindings] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [showAllImages, setShowAllImages] = useState(false);
 
   const severityColors = {
@@ -183,74 +183,109 @@ export function PlatformAuditPhase({
 
   return (
     <div className="border border-border rounded-xl overflow-hidden bg-background">
-      {/* Header */}
-      <div className="p-6 bg-gradient-to-r from-muted/30 to-muted/10 border-b border-border">
-        <div className="flex items-center gap-2 mb-2">
-          <span className={`text-xs font-medium ${severityColors[severity]}`}>⚠ Severity - {severity.charAt(0).toUpperCase() + severity.slice(1)}</span>
-        </div>
-        <h3 className="font-serif text-2xl mb-3">{phase}: {title}</h3>
-        <p className="text-sm text-muted-foreground mb-4">{description}</p>
-        <div className="space-y-2 text-sm">
-          <p><span className="font-medium text-foreground">Task Goal</span> — {taskGoal}</p>
-          <p><span className="font-medium text-foreground">Actors Involved</span> — {actorsInvolved}</p>
-        </div>
-      </div>
+      {/* Collapsible Header */}
+      <button
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="w-full p-6 text-left bg-gradient-to-r from-muted/30 to-muted/10 hover:from-muted/40 hover:to-muted/20 transition-colors"
+      >
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex-1">
+            <div className="flex items-center gap-2 mb-2">
+              <span className={`text-xs font-medium ${severityColors[severity]}`}>⚠ Severity - {severity.charAt(0).toUpperCase() + severity.slice(1)}</span>
+            </div>
+            <h3 className="font-serif text-2xl mb-3">{phase}: {title}</h3>
+            
+            {/* Collapsed View: Show key findings & recommendations summary */}
+            {!isExpanded && (
+              <div className="space-y-3">
+                {/* Quick Recommendations Summary */}
+                <div className="p-3 rounded-lg bg-primary/5 border border-primary/20">
+                  <span className="text-xs font-medium text-primary uppercase tracking-wider">Key Recommendations</span>
+                  <ul className="mt-2 space-y-1">
+                    {recommendations.slice(0, 3).map((rec, i) => (
+                      <li key={i} className="text-xs text-muted-foreground flex gap-2">
+                        <span className="text-primary/60 shrink-0">→</span>
+                        <span>{rec}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-      {/* Issues, Impact, Recommendations Grid */}
-      <div className="grid md:grid-cols-3 gap-0 border-b border-border">
-        {/* Issues */}
-        <div className="p-5 border-r border-border md:border-r-0 md:border-b-0">
-          <h4 className="font-semibold mb-3 text-sm">Issue</h4>
-          <ul className="space-y-2">
-            {issues.map((issue, i) => (
-              <li key={i} className="text-xs text-muted-foreground flex gap-2">
-                <span className="text-muted-foreground/60">•</span>
-                <span>{issue}</span>
-              </li>
-            ))}
-          </ul>
+                {/* Platform Findings Summary */}
+                {platformFindings && platformFindings.length > 0 && (
+                  <div className="flex flex-wrap gap-2">
+                    {platformFindings.map((finding, i) => (
+                      <span key={i} className="text-xs px-2 py-1 bg-muted/30 border border-border rounded text-muted-foreground">
+                        #{finding.number} {finding.title.length > 50 ? finding.title.slice(0, 50) + '...' : finding.title}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+          <ChevronDown className={`w-5 h-5 text-muted-foreground transition-transform shrink-0 mt-1 ${isExpanded ? 'rotate-180' : ''}`} />
         </div>
+      </button>
 
-        {/* Business Impact */}
-        <div className="p-5 bg-primary/10 text-primary-foreground md:border-x border-primary/20">
-          <h4 className="font-semibold mb-3 text-sm text-primary">Business Impact</h4>
-          <ul className="space-y-2">
-            {businessImpact.map((impact, i) => (
-              <li key={i} className="text-xs text-muted-foreground flex gap-2">
-                <span className="text-primary/60">•</span>
-                <span>{impact}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+      {/* Expanded Content */}
+      {isExpanded && (
+        <div className="animate-fade-in">
+          {/* Description & Context */}
+          <div className="p-6 pt-0 border-b border-border bg-gradient-to-r from-muted/30 to-muted/10">
+            <p className="text-sm text-muted-foreground mb-4">{description}</p>
+            <div className="space-y-2 text-sm">
+              <p><span className="font-medium text-foreground">Task Goal</span> — {taskGoal}</p>
+              <p><span className="font-medium text-foreground">Actors Involved</span> — {actorsInvolved}</p>
+            </div>
+          </div>
 
-        {/* Recommendations */}
-        <div className="p-5 border-l border-border md:border-l-0">
-          <h4 className="font-semibold mb-3 text-sm text-primary">Recommendation</h4>
-          <ul className="space-y-2">
-            {recommendations.map((rec, i) => (
-              <li key={i} className="text-xs text-muted-foreground flex gap-2">
-                <span className="text-primary/60">•</span>
-                <span>{rec}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+          {/* Issues, Impact, Recommendations Grid */}
+          <div className="grid md:grid-cols-3 gap-0 border-b border-border">
+            {/* Issues */}
+            <div className="p-5 border-r border-border md:border-r-0 md:border-b-0">
+              <h4 className="font-semibold mb-3 text-sm">Issue</h4>
+              <ul className="space-y-2">
+                {issues.map((issue, i) => (
+                  <li key={i} className="text-xs text-muted-foreground flex gap-2">
+                    <span className="text-muted-foreground/60">•</span>
+                    <span>{issue}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-      {/* Platform Findings - Collapsible */}
-      {platformFindings && platformFindings.length > 0 && (
-        <div className="border-b border-border">
-          <button
-            onClick={() => setShowFindings(!showFindings)}
-            className="w-full p-4 flex items-center justify-between hover:bg-muted/20 transition-colors"
-          >
-            <span className="text-sm font-medium">Platform Audit Findings ({platformFindings.length})</span>
-            <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform ${showFindings ? 'rotate-180' : ''}`} />
-          </button>
-          
-          {showFindings && (
-            <div className="p-4 pt-0 space-y-6 animate-fade-in">
+            {/* Business Impact */}
+            <div className="p-5 bg-primary/10 text-primary-foreground md:border-x border-primary/20">
+              <h4 className="font-semibold mb-3 text-sm text-primary">Business Impact</h4>
+              <ul className="space-y-2">
+                {businessImpact.map((impact, i) => (
+                  <li key={i} className="text-xs text-muted-foreground flex gap-2">
+                    <span className="text-primary/60">•</span>
+                    <span>{impact}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Recommendations */}
+            <div className="p-5 border-l border-border md:border-l-0">
+              <h4 className="font-semibold mb-3 text-sm text-primary">Recommendation</h4>
+              <ul className="space-y-2">
+                {recommendations.map((rec, i) => (
+                  <li key={i} className="text-xs text-muted-foreground flex gap-2">
+                    <span className="text-primary/60">•</span>
+                    <span>{rec}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Platform Findings */}
+          {platformFindings && platformFindings.length > 0 && (
+            <div className="p-6 space-y-4">
+              <h4 className="text-sm font-medium">Platform Audit Findings ({platformFindings.length})</h4>
               <div className="grid lg:grid-cols-[1fr_200px] gap-4">
                 <div className="space-y-4">
                   {platformFindings.map((finding, i) => (
