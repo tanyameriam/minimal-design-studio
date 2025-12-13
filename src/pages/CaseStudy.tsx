@@ -3135,26 +3135,40 @@ const CaseStudy = () => {
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-12">Research Insights</h2>
             
-            {study.researchInsights.painPoints && <div className="mb-12">
-                <h3 className="font-serif text-2xl mb-6">NGO Pain Points</h3>
-                <ul className="space-y-3">
-                  {study.researchInsights.painPoints.map((point, i) => <li key={i} className="flex gap-4">
-                      <span className="text-muted-foreground">•</span>
-                      <span>{point}</span>
-                    </li>)}
-                </ul>
+            {/* Interview Context */}
+            <div className="mb-12">
+              <p className="text-lg leading-relaxed text-muted-foreground">
+                To understand the real challenges faced on the ground, I conducted interviews with NGO representatives working in food redistribution. These conversations revealed critical pain points that are often invisible in data but define everyday struggles.
+              </p>
+            </div>
+            
+            {/* Pain Points as Paragraph with Highlights */}
+            {study.researchInsights.painPoints && <div className="mb-16">
+                <h3 className="font-serif text-2xl mb-6">What NGOs Struggle With</h3>
+                <p className="text-lg leading-relaxed">
+                  NGOs face a cascade of operational hurdles: <span className="bg-muted px-2 py-0.5 rounded">irregular notifications</span> from restaurants make planning impossible, while <span className="bg-muted px-2 py-0.5 rounded">lack of manpower</span> means even known opportunities slip away. <span className="bg-muted px-2 py-0.5 rounded">High transportation costs</span> strain already tight budgets, and <span className="bg-muted px-2 py-0.5 rounded">coordinating pickups from multiple locations</span> becomes a logistical nightmare. All of this compounds into <span className="bg-muted px-2 py-0.5 rounded">high spoilage risk</span> due to inevitable delays.
+                </p>
               </div>}
             
-            {study.researchInsights.ngoQuotes && <div className="mb-12 space-y-4">
-                <h3 className="font-serif text-xl mb-6">NGO Quotes</h3>
-                {study.researchInsights.ngoQuotes.map((quote, i) => <blockquote key={i} className="border-l-2 border-border pl-6 italic text-muted-foreground">
-                    "{quote}"
-                  </blockquote>)}
+            {/* NGO Quotes in Aesthetic Cards */}
+            {study.researchInsights.ngoQuotes && <div className="mb-16">
+                <h3 className="font-serif text-2xl mb-8">Voices from the Field</h3>
+                <div className="grid gap-6">
+                  {study.researchInsights.ngoQuotes.map((quote, i) => (
+                    <div key={i} className="relative pl-8 py-6 pr-6 bg-card border border-border rounded-lg">
+                      <span className="absolute left-4 top-4 text-4xl text-muted-foreground/30 font-serif leading-none">"</span>
+                      <p className="text-lg italic text-foreground/90 leading-relaxed pl-4">
+                        {quote}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>}
             
-            {study.researchInsights.opportunity && <div className="p-6 border border-border bg-card">
-                <p className="font-serif text-lg">
-                  <span className="text-muted-foreground">Opportunity: </span>
+            {/* Opportunity */}
+            {study.researchInsights.opportunity && <div className="p-8 border-l-4 border-foreground bg-muted/30">
+                <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-4">The Opportunity</h3>
+                <p className="font-serif text-xl leading-relaxed">
                   {study.researchInsights.opportunity}
                 </p>
               </div>}
