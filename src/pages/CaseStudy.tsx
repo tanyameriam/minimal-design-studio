@@ -3212,7 +3212,7 @@ const CaseStudy = () => {
               </p>
               
               <p>
-                Restaurants and caterers receive notifications about NGO food requirements, reviewing the quantity and type needed. When they can fulfill a request, they upload surplus food details to the platform, specify pickup availability and time windows, and notify delivery partners about pickup timing—creating a synchronized handoff between supply and logistics.
+                Restaurants and caterers receive notifications about NGO food requirements, reviewing the quantity and type needed. When they can fulfill a request, they upload surplus food details to the platform, specify pickup availability and time windows, and notify delivery partners about pickup timing, creating a synchronized handoff between supply and logistics.
               </p>
               
               <p>
