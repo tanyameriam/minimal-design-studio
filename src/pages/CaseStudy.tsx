@@ -7,6 +7,11 @@ import streeAffinity3 from '@/assets/stree-affinity-3.png';
 import streeAffinity4 from '@/assets/stree-affinity-4.png';
 import streeAffinity5 from '@/assets/stree-affinity-5.png';
 import streeAffinity6 from '@/assets/stree-affinity-6.png';
+import streeInterview1 from '@/assets/stree-interview-1.png';
+import streeInterview2 from '@/assets/stree-interview-2.png';
+import streeInterview3 from '@/assets/stree-interview-3.png';
+import streeInterview4 from '@/assets/stree-interview-4.png';
+import streeInterview5 from '@/assets/stree-interview-5.png';
 interface CaseStudySection {
   title: string;
   content: string;
@@ -1081,7 +1086,34 @@ const CaseStudy = () => {
               </div>
             </div>
 
-            {study.research.imagePlaceholder && <div className="mt-8 aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
+            {/* Interview Documentation for STREE */}
+            {slug === 'stree-safety-app' && (
+              <div className="mt-8">
+                <h4 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">Interview Analysis</h4>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Each interview was documented and coded using a structured framework to identify key patterns:
+                </p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <span className="px-2 py-1 text-xs bg-primary/10 border border-primary/20 rounded">OB - Observations</span>
+                  <span className="px-2 py-1 text-xs bg-primary/10 border border-primary/20 rounded">US - User Statements</span>
+                  <span className="px-2 py-1 text-xs bg-primary/10 border border-primary/20 rounded">B - Breakdowns</span>
+                  <span className="px-2 py-1 text-xs bg-primary/10 border border-primary/20 rounded">IN - Insights</span>
+                  <span className="px-2 py-1 text-xs bg-primary/10 border border-primary/20 rounded">CI - Cultural Influences</span>
+                  <span className="px-2 py-1 text-xs bg-primary/10 border border-primary/20 rounded">I - Intents</span>
+                  <span className="px-2 py-1 text-xs bg-primary/10 border border-primary/20 rounded">DI - Design Ideas</span>
+                </div>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <img src={streeInterview1} alt="Interview analysis with observation coding" className="w-full rounded border border-border" />
+                  <img src={streeInterview2} alt="Interview analysis with observation coding" className="w-full rounded border border-border" />
+                  <img src={streeInterview3} alt="Interview analysis with observation coding" className="w-full rounded border border-border" />
+                  <img src={streeInterview4} alt="Interview analysis with observation coding" className="w-full rounded border border-border" />
+                  <img src={streeInterview5} alt="Interview analysis with observation coding" className="w-full rounded border border-border" />
+                </div>
+              </div>
+            )}
+
+            {/* Placeholder for non-STREE projects */}
+            {slug !== 'stree-safety-app' && study.research.imagePlaceholder && <div className="mt-8 aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
                 <span className="text-sm text-muted-foreground">[ Research Documentation / Interview Notes ]</span>
               </div>}
           </div>
