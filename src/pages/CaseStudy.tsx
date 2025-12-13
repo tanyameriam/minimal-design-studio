@@ -1407,19 +1407,6 @@ const CaseStudy = () => {
               ))}
             </div>
 
-            {/* Actor Flow Diagram */}
-            <div className="mb-8 p-4 border border-border bg-background">
-              <div className="flex flex-wrap items-center justify-center gap-3">
-                {study.merryDataAudit.actors.map((actor, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <span className="px-3 py-1.5 bg-primary/10 text-primary font-medium text-sm">{actor}</span>
-                    {i < study.merryDataAudit!.actors.length - 1 && (
-                      <span className="text-muted-foreground">→</span>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
 
             {/* Actor-specific Audits as Accordions */}
             <div className="space-y-4 mb-12">
