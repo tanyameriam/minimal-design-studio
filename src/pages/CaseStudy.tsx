@@ -1423,32 +1423,19 @@ const CaseStudy = () => {
         </section>
       )}
 
-      {/* Wireframing - handles both formats */}
-      {study.wireframing && (
+      {/* Wireframing - array format only (STREE has its own section after Solution Design) */}
+      {study.wireframing && !('approach' in study.wireframing) && (
         <section className="px-6 lg:px-12 py-16 border-t border-border">
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-8">Wireframing</h2>
-            {'approach' in study.wireframing ? (
-              // STREE format
-              <>
-                <p className="text-muted-foreground mb-8">{study.wireframing.approach}</p>
-                {study.wireframing.imagePlaceholder && (
-                  <div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
-                    <span className="text-sm text-muted-foreground">[ Wireframe Screenshots ]</span>
-                  </div>
-                )}
-              </>
-            ) : (
-              // Array format
-              <div className="space-y-12">
-                {study.wireframing.map((step, i) => (
-                  <div key={i}>
-                    <h3 className="font-serif text-xl mb-4">{step.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">{step.content}</p>
-                  </div>
-                ))}
-              </div>
-            )}
+            <div className="space-y-12">
+              {study.wireframing.map((step, i) => (
+                <div key={i}>
+                  <h3 className="font-serif text-xl mb-4">{step.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{step.content}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       )}
