@@ -13,15 +13,11 @@ const Contact = () => {
             <br />
             something <span className="italic">together</span>
           </h2>
-          <p className="text-lg text-muted-foreground mb-12 max-w-xl">
-            Currently available for freelance projects and full-time opportunities. Feel free to reach out.
-          </p>
-          
           <a 
-            href="mailto:hello@portfolio.com"
+            href="mailto:tanyameriamsunny@gmail.com"
             className="group inline-flex items-center gap-3 text-2xl md:text-3xl font-serif hover:italic transition-all duration-300"
           >
-            hello@portfolio.com
+            tanyameriamsunny@gmail.com
             <ArrowUpRight className="w-6 h-6 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
           </a>
         </div>
