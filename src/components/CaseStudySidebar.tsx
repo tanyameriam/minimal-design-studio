@@ -14,9 +14,8 @@ const CaseStudySidebar = ({ sections }: CaseStudySidebarProps) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 200; // offset for header
+      const scrollPosition = window.scrollY + 200;
 
-      // Find which section is currently in view
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
         const element = document.getElementById(section.id);
@@ -29,14 +28,13 @@ const CaseStudySidebar = ({ sections }: CaseStudySidebarProps) => {
         }
       }
       
-      // Default to first section if nothing else matches
       if (sections.length > 0) {
         setActiveSection(sections[0].id);
       }
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
+    handleScroll();
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, [sections]);
@@ -49,16 +47,16 @@ const CaseStudySidebar = ({ sections }: CaseStudySidebarProps) => {
   };
 
   return (
-    <nav className="hidden xl:block fixed left-6 top-1/2 -translate-y-1/2 z-40">
-      <ul className="space-y-4">
+    <nav className="hidden xl:block fixed left-8 top-1/2 -translate-y-1/2 z-40">
+      <ul className="space-y-3">
         {sections.map((section) => (
           <li key={section.id}>
             <button
               onClick={() => scrollToSection(section.id)}
-              className={`text-left text-[11px] uppercase tracking-[0.2em] transition-all duration-300 ${
+              className={`text-left text-[11px] uppercase tracking-[0.15em] transition-all duration-300 block py-1 ${
                 activeSection === section.id
                   ? 'text-foreground font-semibold'
-                  : 'text-muted-foreground/60 hover:text-muted-foreground'
+                  : 'text-muted-foreground/50 hover:text-muted-foreground'
               }`}
             >
               {section.label}
