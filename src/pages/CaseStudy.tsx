@@ -171,7 +171,35 @@ interface CaseStudyData {
     before: string[];
     after: string[];
   };
-  // BrynQ specific sections
+  // BrynQ specific sections (new narrative structure)
+  brynqHeroMeta?: {
+    scope: string;
+    context: string;
+    focus: string;
+  };
+  brynqBackground?: string;
+  brynqLegacyReality?: string;
+  brynqProductProblem?: string;
+  brynqResponsibility?: string;
+  brynqResearch?: string;
+  brynqKeyInsight?: {
+    main: string;
+    conclusion: string;
+    reframe: string;
+  };
+  brynqMvpDirection?: string;
+  brynqWizard?: {
+    intro: string;
+    phases: string[];
+    benefits: string;
+  };
+  brynqReview?: string;
+  brynqMvpOutcomes?: string;
+  brynqTemplates?: string;
+  brynqEvolution?: string;
+  brynqReflection?: string;
+  brynqNdaNote?: string;
+  // BrynQ legacy sections (keeping for backward compatibility)
   legacyProblems?: CaseStudySection[];
   visionGoals?: CaseStudySection[];
   responsibilities?: CaseStudySection[];
@@ -576,6 +604,56 @@ const caseStudies: Record<string, CaseStudyData> = {
     learnings: ["Designing for safety is as much about emotional design as it is about functionality.", "Fear, doubt, and social conditioning play a significant role in how women experience risk.", "Not every insight demands a feature, and not every problem can—or should—be solved through technology alone.", "I learned to navigate ambiguity, accept feedback that challenged assumptions, and design with empathy rather than urgency.", "Most importantly, I learned how to tell a clear, compelling research story: connecting evidence to decisions and decisions to outcomes."],
     closing: "Project Stree reflects my approach to UX research and design: grounded in lived experiences, guided by evidence, and shaped by responsibility. It demonstrated how thoughtful design can address sensitive, complex problems, not by providing all the answers, but by asking the right questions and designing with care."
   },
+  'brynq': {
+    title: "BrynQ",
+    subtitle: "Transforming a legacy integration platform into a scalable B2B iPaaS",
+    overview: "This case study focuses on process, reasoning, and outcomes. Product visuals are abstracted due to NDA.",
+    role: "Product Designer (UX + UI)",
+    projectDuration: "Multi-year platform redesign",
+    heroImage: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&q=80",
+    // Hero metadata
+    brynqHeroMeta: {
+      scope: "Multi-year platform redesign",
+      context: "Legacy system → modern B2B iPaaS",
+      focus: "Digitising offline workflows, reducing delivery time, enabling self-serve integrations"
+    },
+    // Background section
+    brynqBackground: "BrynQ is a B2B Integration Platform-as-a-Service that connects HRM and Payroll systems, enabling organisations to transfer and transform employee data between applications. When I started working on the platform, it was still operating under its legacy identity, SalureConnect. While technically capable, a large part of the operational workflow — especially integration onboarding and requirements gathering — lived outside the product in manual tools. This case study covers how I helped bring one of the most critical offline workflows into the platform, and how that decision shaped multiple product improvements over time.",
+    // Legacy Reality section
+    brynqLegacyReality: "Before any integration could be built, interface developers had to gather detailed requirements from customers using Excel files known internally as \"Scenarios.\" These files described how data should flow between systems, including field mappings and transformation logic. In practice, this process was slow, fragile, and heavily dependent on live calls, follow-ups, and manual clarification. Most integration delays did not occur during development — they occurred before development even started.",
+    // Why This Became a Product Problem
+    brynqProductProblem: "As BrynQ scaled, the limitations of this process became more visible. Customers often lacked technical clarity about their own systems, developers spent hours translating business intent into technical mappings, and incomplete information caused weeks of delay. There was no structured accountability, no visibility into progress, and no standardisation across integrations. What looked like a documentation issue was actually a product and systems problem.",
+    // My Responsibility
+    brynqResponsibility: "My responsibility was to rethink how integration requirements entered the system — not by redesigning integration logic itself, but by redesigning the workflow around it. The challenge was not just usability. It was change management. Any solution had to work within the realities of the interface team, the Product Owner, and existing customers.",
+    // Research section
+    brynqResearch: "To design responsibly, I focused on understanding the current process as it actually happened. I conducted contextual interviews with the interface team and Product Owner, reviewed multiple real scenario files, and shadowed interface developers as they worked with customers. I also observed customer support interactions to understand where confusion surfaced downstream. This helped me see the Excel file not as a form, but as a coordination tool — and any digital replacement needed to preserve that role before improving it.",
+    // Key Insight
+    brynqKeyInsight: {
+      main: "The biggest delays were not technical. They were caused by incomplete, unclear, and unstable requirements.",
+      conclusion: "Stabilising input early would unlock speed everywhere else.",
+      reframe: "This insight reframed the problem from \"how do we build integrations faster?\" to \"how do we help people express what they need, clearly and early?\""
+    },
+    // MVP Direction
+    brynqMvpDirection: "Together with the Product Owner and interface team PM, I aligned on a pragmatic MVP approach: Rather than redesigning the process from scratch, we would first bring the existing Excel workflow into the platform, mirroring the team's mental model to ensure adoption. Optimisation would come later.",
+    // Interface Requirements Wizard
+    brynqWizard: {
+      intro: "Based on research, I structured the workflow into three explicit phases that already existed implicitly:",
+      phases: ["Gathering basic context", "Defining scenarios and mappings", "Reviewing and confirming before development"],
+      benefits: "The wizard helped users provide minimum viable context upfront, made missing information visible, and created a single source of truth for developers."
+    },
+    // Review & Accountability
+    brynqReview: "Once submitted, requests entered a structured review flow. Developers were notified, could approve or reject with feedback, and the request reopened until it met development standards. This replaced long email threads with a predictable system state and clear ownership.",
+    // MVP Outcomes
+    brynqMvpOutcomes: "Without changing core integration logic, the wizard reduced friction across the process. Scenario completion time dropped significantly, missing information was identified earlier, and internal coordination became more transparent. More importantly, structured data now lived inside the platform — enabling the next phase.",
+    // Wizard to Templates
+    brynqTemplates: "Once patterns emerged across structured scenario data, it became possible to introduce templates for common system combinations and scenarios. Templates reduced input time further and shifted BrynQ from a fully custom, developer-driven model toward self-serve integration setup.",
+    // Platform Evolution
+    brynqEvolution: "This foundational work enabled additional capabilities, including lightweight project management and AI-assisted interface creation — covered in separate BrynQ sub-projects. What began as digitising an Excel file became a cornerstone of BrynQ's modernisation.",
+    // Reflection
+    brynqReflection: "This project reinforced the importance of respecting existing workflows while designing for scale. By digitising before optimising, we created a foundation that teams could trust and build upon. It also strengthened my experience in designing complex B2B systems where success depends as much on adoption and governance as on usability.",
+    learnings: ["Respecting existing workflows while designing for scale creates foundations teams can trust", "Digitising before optimising reduces adoption friction", "Success in complex B2B systems depends as much on adoption and governance as on usability", "Change management is as critical as usability in enterprise product design"],
+    brynqNdaNote: "Due to NDA, product visuals are abstracted. Happy to discuss details privately."
+  },
   'alhub-app': {
     title: "AlHub",
     subtitle: "Mobile App UI Redesign for a Lifestyle & Voucher Platform",
@@ -623,120 +701,6 @@ const caseStudies: Record<string, CaseStudyData> = {
       after: ["Polished, modern lifestyle aesthetic", "Better clarity and readability", "More professional and credible brand image", "Consistent visual language across all screens", "Developers able to implement the redesign seamlessly"]
     },
     learnings: ["UI-only redesigns require deep respect for existing UX decisions.", "Working within strict constraints sharpens design discipline.", "Visual consistency is foundational to brand credibility.", "Developer collaboration early in the process prevents handoff issues.", "Premium aesthetics can be achieved through spacing, typography, and restraint.", "A polished UI directly impacts partnership opportunities and brand trust."]
-  },
-  'brynq': {
-    title: "BrynQ",
-    subtitle: "Transforming a Legacy B2B iPaaS into a Modern Integration Platform",
-    overview: "BrynQ is a B2B Integration Platform-as-a-Service (iPaaS) that enables organizations—mostly HR and payroll teams—to automate data flows between systems. When I joined the company, the platform existed in its earlier form as SalureConnect, a legacy system built with strong functionality but limited user experience, inconsistent UI patterns, and workflows that had grown more complex over time. Over multiple years, I worked closely with the Product Owner, developers, stakeholders, and external freelancers to modernize the entire platform, redesign core workflows end-to-end, improve usability for both technical and non-technical users, establish design governance and design system foundations, introduce new capabilities such as AI-assisted interface creation, and evolve a fragmented legacy tool into a scalable, future-ready product.",
-    role: "UX + Product Design • UI Design • Research & Evaluation • Technical Collaboration • Governance & Design Operations",
-    projectDuration: "Multi-year engagement • NDA-Compliant Case Study",
-    heroImage: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&q=80",
-    legacyProblems: [{
-      title: "1. Fragmented User Experience",
-      content: "Navigation, terminology, and layout varied across modules."
-    }, {
-      title: "2. Lack of Clarity for Non-Technical Users",
-      content: "Interface status, system health, and error visibility were not intuitive."
-    }, {
-      title: "3. Increasing Product Complexity",
-      content: "New features had been added over time without a cohesive UX strategy."
-    }, {
-      title: "4. Confusing Test vs Live Interface Behavior",
-      content: "Users often did not understand what environment they were working in, what actions affected live systems, or how changes propagated."
-    }, {
-      title: "5. Support Teams Were Overwhelmed",
-      content: "Users frequently contacted support because the platform lacked guidance and explanation."
-    }, {
-      title: "6. No Design System",
-      content: "The UI was inconsistent across fonts, colors, spacing, and interactions."
-    }, {
-      title: "7. Unscalable Information Architecture",
-      content: "As new features were added, navigation and discoverability became less intuitive."
-    }],
-    visionGoals: [{
-      title: "1. Clarity",
-      content: "At a glance, users should know system status, interface health, recent activity, and urgent actions."
-    }, {
-      title: "2. Predictability & Control",
-      content: "Workflows needed to be explicit and reversible."
-    }, {
-      title: "3. Self-Service",
-      content: "Non-technical customers should be able to manage integrations without depending on support or developers."
-    }, {
-      title: "4. Scalability",
-      content: "A robust UX and UI foundation that supports years of new features."
-    }, {
-      title: "5. Intelligence",
-      content: "AI-assisted creation and guided workflows for faster setup."
-    }],
-    responsibilities: [{
-      title: "UX + Product Design",
-      content: "Restructured navigation & platform information architecture. Designed new workflows (Test/Live, editing, approvals, logs). Introduced a multi-step governance flow for publishing changes."
-    }, {
-      title: "UI Design",
-      content: "Brought visual consistency with a new design system (typography, colors, spacing, components). Designed dashboards, modals, forms, and visual language patterns."
-    }, {
-      title: "Research & Evaluation",
-      content: "Conducted user interviews. Mapped user behavior models. Analyzed gaps in current platform usage. Facilitated internal workshops (including event storming)."
-    }, {
-      title: "Technical Collaboration",
-      content: "Worked with developers daily. Ensured designs were buildable. Defined requirements & edge-case handling. Aligned on constraints and dependencies."
-    }, {
-      title: "Governance & Design Operations",
-      content: "Structured Figma files & naming conventions. Created internal documentation. Managed workflows with freelancers. Supported design system scalability."
-    }],
-    researchThemes: [{
-      title: "Insight 1 — Users Fear \"Breaking Something\"",
-      content: "Non-technical users worried that small actions might impact live integrations."
-    }, {
-      title: "Insight 2 — Lack of Environmental Clarity",
-      content: "Users could not distinguish between test and live environments, leading to confusion and errors."
-    }, {
-      title: "Insight 3 — Logs Were Not Actionable",
-      content: "Users saw errors but did not know how to interpret or resolve them."
-    }, {
-      title: "Insight 4 — Interface Creation Was Overwhelming",
-      content: "Custom integrations required too much manual input and technical knowledge."
-    }, {
-      title: "Insight 5 — Support Was Over-Reliant",
-      content: "Users relied on the support team for tasks they could perform themselves—if the UI guided them."
-    }, {
-      title: "Insight 6 — Navigational Overload",
-      content: "Users struggled to understand where to begin and what actions to prioritize."
-    }],
-    transformationPillars: [{
-      title: "PILLAR 1 — Redesigning the Platform Foundation",
-      content: "Home Dashboard Overhaul: Transformed the homepage into an operational monitoring hub showing system health, error visibility, quick access to logs, and run status. Logs Redesign: Created clearer grouping, human-readable error explanations, suggested next steps, and consistent terminology. Information Architecture: Simplified navigation into Monitor, Interfaces, Settings, Account, and Logs."
-    }, {
-      title: "PILLAR 2 — Interface Lifecycle Redesign",
-      content: "Clear Separation of Test and Live Interfaces: Introduced distinct visual styling, rules for auto-creating test interfaces, explicit sync logic, and warnings before applying changes. Interface Overview Page: Enhanced with expandable cards, run buttons with visible states, direct links to logs, and status indicators. Editing & Approval Workflow: Designed Edit → Review → Confirm → Activate governance model reducing system failures."
-    }, {
-      title: "PILLAR 3 — Designing New Features That Modernize BrynQ",
-      content: "AI-Assisted Interface Creation Wizard: Step-based conversational input, scenario mapping, data flow visualization, transformation summary, and validation steps—making integration setup accessible to non-technical users. Template-Based Creation Modal: Replaced outdated dropdowns with AI creation, template selection, and custom setup options. Scenario Submission Wizard: Streamlined flow for contact details, data mapping, transformation logic, system authorizations, and sequencing rules."
-    }, {
-      title: "PILLAR 4 — Design System & UX Governance",
-      content: "Establishing the BrynQ Design System: Typography scale documentation, color palette refinement, spacing + grid system, interactive states, and patterns for cards, tables, and modals. Figma Governance: Introduced work files, stakeholder review files, final handoff files, and beta files. Freelancer Collaboration: Created clear requirements, structured feedback loops, daily syncs, and onboarding documentation."
-    }],
-    workshopTypes: ["Event storming for test/live flows", "Problem-mapping for logs clarity", "Action management system conception", "Scenario flow alignment"],
-    businessOutcomes: ["Reduced support tickets", "Higher confidence for non-technical users", "More predictable and safer interface editing", "Better visibility into system health", "Smoother onboarding for new integrations", "Improved developer efficiency due to cleaner requirements", "Stronger foundation for future features (AI, metrics, actions)"],
-    skillsStrengthened: [{
-      title: "Systems Thinking",
-      content: "Designing for interconnected workflows across environments."
-    }, {
-      title: "Enterprise UX Skills",
-      content: "Balancing complexity with usability for technical and non-technical users."
-    }, {
-      title: "Alignment Across Teams",
-      content: "Bringing product, engineering, support, and external designers to a shared understanding."
-    }, {
-      title: "Design Governance",
-      content: "Building scalable foundations rather than isolated screens."
-    }, {
-      title: "Strategic Product Design",
-      content: "Understanding how each design decision impacts the platform's long-term evolution."
-    }],
-    closingReflection: "This case study represents not just a redesign, but a product transformation. From legacy patterns in SalureConnect to a modern, AI-enabled, user-friendly iPaaS platform, I contributed across UX strategy, research, system design, UI redesign, process governance, new feature invention, and team alignment. BrynQ's shift into a future-ready product is a collective achievement, and this multi-year project represents some of my most impactful enterprise design work.",
-    learnings: ["Enterprise UX requires balancing complexity with clarity.", "Multi-year projects demand design governance from the start.", "Cross-functional alignment is as important as pixel-perfect design.", "Legacy systems transformation needs empathy for existing users.", "AI-assisted features must be designed for non-technical users first.", "Design systems enable scalability and consistency across teams.", "Product transformation is a collective achievement requiring sustained collaboration."]
   }
 };
 const CaseStudy = () => {
@@ -841,6 +805,59 @@ const CaseStudy = () => {
             <p className="text-lg leading-relaxed">{study.solution}</p>
           </div>
         </section>}
+
+      {/* BrynQ Hero Meta */}
+      {study.brynqHeroMeta && <section className="px-6 lg:px-12 py-8 bg-card border-y border-border">
+          <div className="container mx-auto max-w-4xl">
+            <div className="grid md:grid-cols-3 gap-6 text-sm">
+              <div><span className="text-xs uppercase tracking-[0.2em] text-muted-foreground block mb-2">Scope</span><span>{study.brynqHeroMeta.scope}</span></div>
+              <div><span className="text-xs uppercase tracking-[0.2em] text-muted-foreground block mb-2">Context</span><span>{study.brynqHeroMeta.context}</span></div>
+              <div><span className="text-xs uppercase tracking-[0.2em] text-muted-foreground block mb-2">Focus</span><span>{study.brynqHeroMeta.focus}</span></div>
+            </div>
+          </div>
+        </section>}
+
+      {/* BrynQ: Background & Context */}
+      {study.brynqBackground && <section className="px-6 lg:px-12 py-16"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Background & Context</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqBackground}</p></div></section>}
+
+      {/* BrynQ: The Legacy Reality */}
+      {study.brynqLegacyReality && <section className="px-6 lg:px-12 py-16 bg-card"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">The Legacy Reality</h2><p className="text-lg leading-relaxed text-muted-foreground mb-8">{study.brynqLegacyReality}</p><div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center"><span className="text-sm text-muted-foreground italic">[ Diagram: Legacy workflow overview ]</span></div></div></section>}
+
+      {/* BrynQ: Why This Became a Product Problem */}
+      {study.brynqProductProblem && <section className="px-6 lg:px-12 py-16"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Why This Became a Product Problem</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqProductProblem}</p></div></section>}
+
+      {/* BrynQ: My Responsibility */}
+      {study.brynqResponsibility && <section className="px-6 lg:px-12 py-16 bg-card"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">My Responsibility & Design Framing</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqResponsibility}</p></div></section>}
+
+      {/* BrynQ: Research */}
+      {study.brynqResearch && <section className="px-6 lg:px-12 py-16"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Research & Understanding the Work</h2><p className="text-lg leading-relaxed text-muted-foreground mb-8">{study.brynqResearch}</p><div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center"><span className="text-sm text-muted-foreground italic">[ Research artifacts / process sketch ]</span></div></div></section>}
+
+      {/* BrynQ: Key Insight */}
+      {study.brynqKeyInsight && <section className="px-6 lg:px-12 py-16 bg-primary/5"><div className="container mx-auto max-w-4xl text-center"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-8">Key Insight</h2><p className="font-serif text-2xl md:text-3xl leading-relaxed mb-6">{study.brynqKeyInsight.main}</p><p className="font-serif text-xl text-primary mb-8">{study.brynqKeyInsight.conclusion}</p><p className="text-muted-foreground italic">{study.brynqKeyInsight.reframe}</p></div></section>}
+
+      {/* BrynQ: MVP Direction */}
+      {study.brynqMvpDirection && <section className="px-6 lg:px-12 py-16"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Defining an MVP Direction</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqMvpDirection}</p></div></section>}
+
+      {/* BrynQ: Wizard */}
+      {study.brynqWizard && <section className="px-6 lg:px-12 py-16 bg-card"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Designing the Interface Requirements Wizard</h2><p className="text-lg leading-relaxed text-muted-foreground mb-8">{study.brynqWizard.intro}</p><div className="grid md:grid-cols-3 gap-4 mb-8">{study.brynqWizard.phases.map((phase, i) => <div key={i} className="p-5 border border-border bg-background"><span className="text-xs uppercase tracking-[0.2em] text-primary/70 font-medium">Phase {i + 1}</span><p className="mt-2">{phase}</p></div>)}</div><p className="text-muted-foreground">{study.brynqWizard.benefits}</p><div className="mt-8 aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center"><span className="text-sm text-muted-foreground italic">[ Wizard flow diagram ]</span></div></div></section>}
+
+      {/* BrynQ: Review */}
+      {study.brynqReview && <section className="px-6 lg:px-12 py-16"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Introducing Review & Accountability</h2><p className="text-lg leading-relaxed text-muted-foreground mb-8">{study.brynqReview}</p><div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center"><span className="text-sm text-muted-foreground italic">[ Approval loop diagram ]</span></div></div></section>}
+
+      {/* BrynQ: MVP Outcomes */}
+      {study.brynqMvpOutcomes && <section className="px-6 lg:px-12 py-16 bg-card"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Outcomes of the MVP</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqMvpOutcomes}</p></div></section>}
+
+      {/* BrynQ: Templates */}
+      {study.brynqTemplates && <section className="px-6 lg:px-12 py-16"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">From Wizard to Templates</h2><p className="text-lg leading-relaxed text-muted-foreground mb-8">{study.brynqTemplates}</p><div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center"><span className="text-sm text-muted-foreground italic">[ Workflow evolution diagram ]</span></div></div></section>}
+
+      {/* BrynQ: Evolution */}
+      {study.brynqEvolution && <section className="px-6 lg:px-12 py-16 bg-card"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Platform Evolution</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqEvolution}</p></div></section>}
+
+      {/* BrynQ: Reflection */}
+      {study.brynqReflection && <section className="px-6 lg:px-12 py-16"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Reflection & Learnings</h2><p className="font-serif text-xl leading-relaxed text-muted-foreground">{study.brynqReflection}</p></div></section>}
+
+      {/* BrynQ: NDA Note */}
+      {study.brynqNdaNote && <section className="px-6 lg:px-12 py-8 bg-muted/30 border-y border-border"><div className="container mx-auto max-w-4xl text-center"><p className="text-sm text-muted-foreground italic">{study.brynqNdaNote}</p></div></section>}
 
       {/* Current Scenario (for food waste project) */}
       {study.currentScenario && <section className="px-6 lg:px-12 py-16 bg-card">
