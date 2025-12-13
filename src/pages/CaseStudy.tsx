@@ -2072,7 +2072,7 @@ const CaseStudy = () => {
       {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16">
           <div className="container mx-auto max-w-5xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">The Solution</h2>
-            <p className="text-lg text-muted-foreground mb-10">Our approach was structured into five key phases:</p>
+            <p className="text-lg text-muted-foreground mb-10">Our approach was structured into six key phases:</p>
             
             {/* Horizontal Phase Tabs */}
             <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3">
@@ -2080,8 +2080,9 @@ const CaseStudy = () => {
                 { num: 1, title: "Audit", subtitle: "Data & Platform" },
                 { num: 2, title: "Mapping", subtitle: "Flows & Journeys" },
                 { num: 3, title: "Findings", subtitle: "Key Insights" },
-                { num: 4, title: "Workflow", subtitle: "Proposed System" },
-                { num: 5, title: "Solution", subtitle: "Wireframes & Hi-Fi" }
+                { num: 4, title: "Strategy", subtitle: "Recommendations" },
+                { num: 5, title: "Workflow", subtitle: "Proposed System" },
+                { num: 6, title: "Design", subtitle: "Wireframes & Hi-Fi" }
               ].map((phase, i, arr) => (
                 <div key={i} className="flex items-center">
                   <div className="flex flex-col items-center text-center px-3 py-3 md:px-5 md:py-4 rounded-xl bg-card border border-border hover:border-primary/40 hover:bg-primary/5 transition-all duration-200 min-w-[90px] md:min-w-[110px]">
@@ -2381,7 +2382,7 @@ const CaseStudy = () => {
       {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16">
           <div className="container mx-auto max-w-6xl">
             <div className="flex items-center gap-4 mb-6">
-              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">3</span>
+              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">2</span>
               <h2 className="font-serif text-2xl">User Journey Mapping</h2>
               <a href="https://www.figma.com/design/yH9NNuzOQov4XIgkz5D2jo/Project-Merry-Health?node-id=15-28403&t=lxBxhBwv6frOZBTQ-1" target="_blank" rel="noopener noreferrer" className="ml-auto flex items-center gap-2 text-xs text-primary hover:underline">
                 <svg className="w-3.5 h-3.5" viewBox="0 0 38 57" fill="currentColor">
@@ -2572,7 +2573,10 @@ const CaseStudy = () => {
       {/* Merry Health Reasons for System Breakdown */}
       {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16 bg-card">
           <div className="container mx-auto max-w-6xl">
-            <h2 className="font-serif text-3xl mb-10">Reasons for System Breakdown</h2>
+            <div className="flex items-center gap-4 mb-6">
+              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">3</span>
+              <h2 className="font-serif text-2xl">Reasons for System Breakdown</h2>
+            </div>
             
             <div className="grid md:grid-cols-2 gap-6">
               <div className="p-6 rounded-2xl border border-border bg-background">
@@ -2598,7 +2602,10 @@ const CaseStudy = () => {
       {/* Merry Health Recommendations to Improve Adoption & Efficiency */}
       {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16">
           <div className="container mx-auto max-w-6xl">
-            <h2 className="font-serif text-3xl mb-10">Recommendations to Improve Adoption & Efficiency</h2>
+            <div className="flex items-center gap-4 mb-6">
+              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">4</span>
+              <h2 className="font-serif text-2xl">Recommendations to Improve Adoption & Efficiency</h2>
+            </div>
             
             <div className="p-8 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/20 dark:to-orange-950/20 border border-amber-200/50 dark:border-amber-800/30">
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -2630,7 +2637,10 @@ const CaseStudy = () => {
       {/* Merry Health Strategy Outcomes */}
       {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16 bg-card">
           <div className="container mx-auto max-w-6xl">
-            <h2 className="font-serif text-3xl mb-10">The Outcomes This Strategy Unlocks</h2>
+            <div className="flex items-center gap-4 mb-6">
+              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">4</span>
+              <h2 className="font-serif text-2xl">The Outcomes This Strategy Unlocks</h2>
+            </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="p-6 rounded-2xl border border-border bg-background">
@@ -2792,7 +2802,7 @@ const CaseStudy = () => {
       {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16 bg-card">
           <div className="container mx-auto max-w-6xl">
             <div className="flex items-center gap-4 mb-6">
-              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">6</span>
+              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">5</span>
               <h2 className="font-serif text-2xl">Scenario Mapping & Module Definition</h2>
             </div>
             <p className="text-muted-foreground mb-10">After the proposed workflow, we conducted scenario mapping to understand the exact screens and workflows required for both WhatsApp integration and the desktop application.</p>
@@ -2843,7 +2853,7 @@ const CaseStudy = () => {
       {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16">
           <div className="container mx-auto max-w-6xl">
             <div className="flex items-center gap-4 mb-6">
-              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">7</span>
+              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">6</span>
               <h2 className="font-serif text-2xl">Wireframing</h2>
               <a href="https://www.figma.com/design/yH9NNuzOQov4XIgkz5D2jo/Project-Merry-Health?node-id=14-5439&t=D4QoBAFlTIFjCBK6-1" target="_blank" rel="noopener noreferrer" className="ml-auto flex items-center gap-2 text-xs text-primary hover:underline">
                 <svg className="w-3.5 h-3.5" viewBox="0 0 38 57" fill="currentColor">
@@ -2877,7 +2887,7 @@ const CaseStudy = () => {
       {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16 bg-card">
           <div className="container mx-auto max-w-6xl">
             <div className="flex items-center gap-4 mb-6">
-              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">8</span>
+              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">6</span>
               <h2 className="font-serif text-2xl">High-Fidelity Screens</h2>
             </div>
             <p className="text-muted-foreground mb-6">The final high-fidelity designs bring together all research insights into a new Merry Heath platform             </p>
@@ -2902,7 +2912,7 @@ const CaseStudy = () => {
       {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16">
           <div className="container mx-auto max-w-6xl">
             <div className="flex items-center gap-4 mb-6">
-              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">9</span>
+              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">6</span>
               <h2 className="font-serif text-2xl">WhatsApp Integration Design</h2>
             </div>
             <p className="text-muted-foreground mb-4">Given that 95% of hospital admins currently use WhatsApp for intake, we designed a structured WhatsApp experience that respects existing mental models while enabling automated workflows.</p>
