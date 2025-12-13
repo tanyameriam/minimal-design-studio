@@ -1594,7 +1594,6 @@ const CaseStudy = () => {
             { id: 'merry-context', label: 'Context' },
             { id: 'merry-problem', label: 'Problem' },
             { id: 'merry-research', label: 'Research' },
-            { id: 'merry-process', label: 'Process' },
             { id: 'merry-solution', label: 'Solution' },
             { id: 'merry-impact', label: 'Impact' },
             { id: 'merry-reflection', label: 'Reflection' },
