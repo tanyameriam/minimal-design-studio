@@ -12,6 +12,7 @@ import streeInterview2 from '@/assets/stree-interview-2.png';
 import streeInterview3 from '@/assets/stree-interview-3.png';
 import streeInterview4 from '@/assets/stree-interview-4.png';
 import streeInterview5 from '@/assets/stree-interview-5.png';
+import streeSosFlow from '@/assets/stree-sos-flow.png';
 interface CaseStudySection {
   title: string;
   content: string;
@@ -1253,7 +1254,15 @@ const CaseStudy = () => {
                 </div>)}
             </div>
 
-            {study.solutionPhase.imagePlaceholder && <div className="mt-8 aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
+            {/* SOS Flow Diagram for STREE */}
+            {slug === 'stree-safety-app' && (
+              <div className="mt-8">
+                <img src={streeSosFlow} alt="SOS Mode user flow showing interactions between user, officials, and contacts" className="w-full rounded border border-border" />
+              </div>
+            )}
+
+            {/* Placeholder for non-STREE */}
+            {slug !== 'stree-safety-app' && study.solutionPhase.imagePlaceholder && <div className="mt-8 aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
                 <span className="text-sm text-muted-foreground">[ Storyboard / User Flow ]</span>
               </div>}
           </div>
