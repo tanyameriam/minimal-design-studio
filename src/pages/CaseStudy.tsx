@@ -66,8 +66,7 @@ import merryPatientCurrentJourney from '@/assets/merry-patient-current-journey.j
 import merryPatientIdealJourney from '@/assets/merry-patient-ideal-journey.jpg';
 import merryAdminCurrentJourney from '@/assets/merry-admin-current-journey.jpg';
 import merryAdminIdealJourney from '@/assets/merry-admin-ideal-journey.jpg';
-import merryHospitalCurrentJourney from '@/assets/merry-hospital-current-journey.png';
-import merryHospitalIdealJourney from '@/assets/merry-hospital-ideal-journey.png';
+import merryHospitalJourney from '@/assets/merry-hospital-journey.jpg';
 interface CaseStudySection {
   title: string;
   content: string;
@@ -1953,47 +1952,43 @@ const CaseStudy = () => {
                 </div>
               </div>
               
-              <div className="grid lg:grid-cols-2 gap-6 mb-6">
-                {/* Current Journey */}
-                <div className="space-y-4">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-destructive/60"></span>
-                    <span className="text-sm font-medium text-destructive">Current Journey</span>
+              {/* Combined Journey Map */}
+              <div className="mb-6">
+                <div className="rounded-xl border-2 border-border/60 bg-gradient-to-b from-muted/20 to-background shadow-sm overflow-hidden">
+                  <div className="bg-muted/30 px-4 py-2 border-b border-border/40 flex items-center justify-between">
+                    <span className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Hospital Admin User Journey Map</span>
+                    <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                      <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-destructive/60"></span>Pain points</span>
+                      <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-primary"></span>Opportunities</span>
+                    </div>
                   </div>
-                  <div className="rounded-xl border border-destructive/20 overflow-hidden">
-                    <div className="bg-destructive/5 px-4 py-2 border-b border-destructive/20">
-                      <span className="text-xs text-muted-foreground">Phone-based coordination, unclear ETAs, frequent follow-ups</span>
-                    </div>
-                    <div className="p-4 bg-background">
-                      <img 
-                        src={merryHospitalCurrentJourney} 
-                        alt="Hospital Admin current journey with communication gaps" 
-                        className="w-full object-contain cursor-pointer hover:opacity-90 transition-opacity"
-                        onClick={() => setLightboxImage(merryHospitalCurrentJourney)}
-                      />
-                    </div>
+                  <div className="p-6 bg-background">
+                    <img 
+                      src={merryHospitalJourney} 
+                      alt="Hospital Admin complete user journey map showing emotional arc from high stress at beginning, through relief in middle, to confidence at end" 
+                      className="w-full object-contain cursor-pointer hover:scale-[1.01] transition-transform duration-300"
+                      onClick={() => setLightboxImage(merryHospitalJourney)}
+                    />
+                  </div>
+                  <div className="bg-muted/20 px-4 py-2 border-t border-border/40 text-center">
+                    <span className="text-xs text-muted-foreground">Click to view full journey map with all details</span>
                   </div>
                 </div>
+              </div>
 
-                {/* Ideal Journey */}
-                <div className="space-y-4">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-primary"></span>
-                    <span className="text-sm font-medium text-primary">Ideal Journey</span>
-                  </div>
-                  <div className="rounded-xl border border-primary/20 overflow-hidden">
-                    <div className="bg-primary/5 px-4 py-2 border-b border-primary/20">
-                      <span className="text-xs text-muted-foreground">Self-service booking, real-time tracking, automated updates</span>
-                    </div>
-                    <div className="p-4 bg-background">
-                      <img 
-                        src={merryHospitalIdealJourney} 
-                        alt="Hospital Admin ideal journey with improved visibility" 
-                        className="w-full object-contain cursor-pointer hover:opacity-90 transition-opacity"
-                        onClick={() => setLightboxImage(merryHospitalIdealJourney)}
-                      />
-                    </div>
-                  </div>
+              {/* Emotional Arc Highlight */}
+              <div className="grid md:grid-cols-3 gap-4 mb-6">
+                <div className="p-4 rounded-lg bg-destructive/5 border border-destructive/20">
+                  <h5 className="text-xs font-semibold text-destructive mb-2">Beginning</h5>
+                  <p className="text-xs text-muted-foreground">High stress, panic, multitasking</p>
+                </div>
+                <div className="p-4 rounded-lg bg-amber-500/5 border border-amber-500/20">
+                  <h5 className="text-xs font-semibold text-amber-600 mb-2">Middle</h5>
+                  <p className="text-xs text-muted-foreground">Relief once tracking & movement confirmed; tension only if unclear</p>
+                </div>
+                <div className="p-4 rounded-lg bg-primary/5 border border-primary/20">
+                  <h5 className="text-xs font-semibold text-primary mb-2">End</h5>
+                  <p className="text-xs text-muted-foreground">Confidence & closure when patient arrives and data is logged</p>
                 </div>
               </div>
 
