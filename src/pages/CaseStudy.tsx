@@ -1615,49 +1615,122 @@ const CaseStudy = () => {
 
       {/* Hero Image */}
 
-      {/* Overview / Context */}
-      <section id={slug === 'merry-health' ? 'merry-context' : undefined} className="px-6 lg:px-12 py-16 border-t border-border scroll-mt-20">
-        <div className="container mx-auto max-w-4xl">
-          <div className="grid md:grid-cols-3 gap-12">
-            <div className="md:col-span-2">
-              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Background</h2>
-              <p className="text-lg leading-relaxed">{study.overview}</p>
-            </div>
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Role</h3>
+      {/* Overview / Context - Merry Health specific layout */}
+      {slug === 'merry-health' ? (
+        <section id="merry-context" className="px-6 lg:px-12 xl:pl-48 py-16 border-t border-border scroll-mt-20">
+          <div className="container mx-auto max-w-5xl">
+            {/* Section Header */}
+            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Context</p>
+            <h2 className="font-serif text-3xl md:text-4xl mb-8">Background</h2>
+            
+            {/* Background Content */}
+            <p className="text-lg leading-relaxed text-muted-foreground mb-12 max-w-3xl">{study.overview}</p>
+            
+            {/* Meta Cards - Horizontal Layout */}
+            <div className="grid md:grid-cols-4 gap-4 mb-16">
+              <div className="p-5 rounded-xl border border-border bg-card">
+                <h3 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">Role</h3>
                 <p className="text-sm">{study.role}</p>
               </div>
-              {slug === 'merry-health' && <div>
-                  <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Team</h3>
-                  <p className="text-sm">Team of 5 designers</p>
-                </div>}
-              {slug === 'merry-health' && <div>
-                  <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Academic Context</h3>
-                  <p className="text-sm">Part of Academic Practicum, MDes. JSAA</p>
-                </div>}
-              {study.projectDuration && <div>
-                  <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Duration</h3>
-                  <p className="text-sm">{study.projectDuration}</p>
-                </div>}
-              {study.projectContext && <div>
-                  <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Program</h3>
-                  <p className="text-sm">{study.projectContext}</p>
-                </div>}
-              {study.timeline && <div>
-                  <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Timeline</h3>
-                  <ul className="text-sm space-y-1">
-                    {study.timeline.map((item, i) => <li key={i}>{item}</li>)}
-                  </ul>
-                </div>}
-              {study.tools && <div>
-                  <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Tools</h3>
-                  <p className="text-sm">{study.tools.join(', ')}</p>
-                </div>}
+              <div className="p-5 rounded-xl border border-border bg-card">
+                <h3 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">Team</h3>
+                <p className="text-sm">Team of 5 designers</p>
+              </div>
+              <div className="p-5 rounded-xl border border-border bg-card">
+                <h3 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">Context</h3>
+                <p className="text-sm">Academic Practicum, MDes. JSAA</p>
+              </div>
+              <div className="p-5 rounded-xl border border-border bg-card">
+                <h3 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">Tools</h3>
+                <p className="text-sm">{study.tools?.join(', ')}</p>
+              </div>
+            </div>
+
+            {/* What Are We Building - Sub-section */}
+            <div className="mb-16">
+              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Context</p>
+              <h3 className="font-serif text-2xl md:text-3xl mb-6">What Are We Trying to Build?</h3>
+              <p className="text-lg leading-relaxed text-muted-foreground mb-8 max-w-3xl">
+                The project aims to explore how the ambulance dispatch process can be simplified and made more responsive by aligning with existing end-user communication behaviors and operational realities.
+              </p>
+              <div className="grid md:grid-cols-3 gap-4">
+                <div className="p-5 rounded-xl border border-border bg-card">
+                  <p className="text-sm text-muted-foreground">Simplify how hospital admins request and assign ambulances.</p>
+                </div>
+                <div className="p-5 rounded-xl border border-border bg-card">
+                  <p className="text-sm text-muted-foreground">Improve driver acknowledgment and communication reliability.</p>
+                </div>
+                <div className="p-5 rounded-xl border border-border bg-card">
+                  <p className="text-sm text-muted-foreground">Strengthen visibility, data capture, and reporting accuracy across all users.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Identified Users */}
+            <div>
+              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Context</p>
+              <h3 className="font-serif text-2xl md:text-3xl mb-6">Identified Users</h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="p-6 rounded-xl border border-border bg-card">
+                  <h4 className="font-serif text-lg mb-2">Hospital Admins</h4>
+                  <p className="text-xs text-muted-foreground mb-2">Receive emergency calls and initiate ambulance requests.</p>
+                  <p className="text-sm"><span className="font-medium text-primary">Goal:</span> Quickly assign an available ambulance with minimal manual effort and ensure timely patient pickup.</p>
+                </div>
+                <div className="p-6 rounded-xl border border-border bg-card">
+                  <h4 className="font-serif text-lg mb-2">Drivers</h4>
+                  <p className="text-xs text-muted-foreground mb-2">Receive and confirm ambulance requests from hospitals or Merry Health staff.</p>
+                  <p className="text-sm"><span className="font-medium text-primary">Goal:</span> Get clear trip details and confirm rides easily without delays or confusion.</p>
+                </div>
+                <div className="p-6 rounded-xl border border-border bg-card">
+                  <h4 className="font-serif text-lg mb-2">Patients / Families</h4>
+                  <p className="text-xs text-muted-foreground mb-2">Request ambulances via hospitals and receive live tracking updates.</p>
+                  <p className="text-sm"><span className="font-medium text-primary">Goal:</span> Access timely, transparent information to feel confident that help is on the way.</p>
+                </div>
+                <div className="p-6 rounded-xl border border-border bg-card">
+                  <h4 className="font-serif text-lg mb-2">Merry Health Admins</h4>
+                  <p className="text-xs text-muted-foreground mb-2">Oversee hospital and driver coordination, monitor SLAs, and manage data quality.</p>
+                  <p className="text-sm"><span className="font-medium text-primary">Goal:</span> Ensure fast, reliable dispatch operations and maintain accurate performance reporting.</p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : (
+        <section className="px-6 lg:px-12 py-16 border-t border-border scroll-mt-20">
+          <div className="container mx-auto max-w-4xl">
+            <div className="grid md:grid-cols-3 gap-12">
+              <div className="md:col-span-2">
+                <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Background</h2>
+                <p className="text-lg leading-relaxed">{study.overview}</p>
+              </div>
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Role</h3>
+                  <p className="text-sm">{study.role}</p>
+                </div>
+                {study.projectDuration && <div>
+                    <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Duration</h3>
+                    <p className="text-sm">{study.projectDuration}</p>
+                  </div>}
+                {study.projectContext && <div>
+                    <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Program</h3>
+                    <p className="text-sm">{study.projectContext}</p>
+                  </div>}
+                {study.timeline && <div>
+                    <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Timeline</h3>
+                    <ul className="text-sm space-y-1">
+                      {study.timeline.map((item, i) => <li key={i}>{item}</li>)}
+                    </ul>
+                  </div>}
+                {study.tools && <div>
+                    <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Tools</h3>
+                    <p className="text-sm">{study.tools.join(', ')}</p>
+                  </div>}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Challenge */}
       {study.challenge && <section className="px-6 lg:px-12 py-16 bg-card">
@@ -1886,125 +1959,86 @@ const CaseStudy = () => {
       {/* BrynQ: NDA Note */}
       {study.brynqNdaNote && <section className="px-6 lg:px-12 py-8 bg-muted/30 border-y border-border"><div className="container mx-auto max-w-4xl text-center"><p className="text-sm text-muted-foreground italic">{study.brynqNdaNote}</p></div></section>}
 
-      {/* Merry Health Background & Problem Statement */}
-      {slug === 'merry-health' && <section id="merry-problem" className="px-6 lg:px-12 py-16 scroll-mt-20">
+      {/* Merry Health Problem Section */}
+      {slug === 'merry-health' && <section id="merry-problem" className="px-6 lg:px-12 xl:pl-48 py-16 bg-card scroll-mt-20">
           <div className="container mx-auto max-w-5xl">
+            {/* Section Header */}
+            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Problem</p>
+            <h2 className="font-serif text-3xl md:text-4xl mb-8">Understanding the Challenges</h2>
 
-            {/* What are we trying to build */}
-            <div className="mb-16">
-              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">What Are We Trying to Build?</h2>
-              <p className="text-lg leading-relaxed text-muted-foreground mb-8">
-                The project aims to explore how the ambulance dispatch process can be simplified and made more responsive by aligning with existing end-user communication behaviors and operational realities.
-              </p>
-              <div className="grid md:grid-cols-3 gap-4">
-                <div className="p-5 rounded-xl border border-border bg-card">
-                  <p className="text-sm text-muted-foreground">Simplify how hospital admins request and assign ambulances.</p>
+            {/* User Problems - Reference Style Cards */}
+            <div className="mb-12">
+              <h3 className="font-serif text-xl mb-6">User Problems</h3>
+              <div className="space-y-4">
+                <div className="p-6 rounded-xl bg-primary/5 border-l-4 border-primary/30">
+                  <h4 className="font-serif text-lg mb-2">Dashboard Underutilization</h4>
+                  <p className="text-sm text-muted-foreground mb-3">Hospital admins rely on phone calls instead of the dashboard, leading to delays in ambulance assignment and loss of structured data for reporting.</p>
+                  <p className="text-sm italic text-foreground/70">"We just call because it's faster than logging in."</p>
                 </div>
-                <div className="p-5 rounded-xl border border-border bg-card">
-                  <p className="text-sm text-muted-foreground">Improve driver acknowledgment and communication reliability.</p>
+                <div className="p-6 rounded-xl bg-primary/5 border-l-4 border-primary/30">
+                  <h4 className="font-serif text-lg mb-2">Slow Dispatch Process</h4>
+                  <p className="text-sm text-muted-foreground mb-3">Dispatch process takes 8–10 minutes due to manual entry and back-and-forth coordination.</p>
+                  <p className="text-sm italic text-foreground/70">"By the time we confirm, we've already made 3-4 calls."</p>
                 </div>
-                <div className="p-5 rounded-xl border border-border bg-card">
-                  <p className="text-sm text-muted-foreground">Strengthen visibility, data capture, and reporting accuracy across all users.</p>
+                <div className="p-6 rounded-xl bg-primary/5 border-l-4 border-primary/30">
+                  <h4 className="font-serif text-lg mb-2">Driver Communication Failures</h4>
+                  <p className="text-sm text-muted-foreground mb-3">Drivers ignore app messages or fail to confirm, creating uncertainty about ambulance availability.</p>
+                  <p className="text-sm italic text-foreground/70">"We never know if the driver actually saw the request."</p>
+                </div>
+                <div className="p-6 rounded-xl bg-primary/5 border-l-4 border-primary/30">
+                  <h4 className="font-serif text-lg mb-2">Patient Tracking Gaps</h4>
+                  <p className="text-sm text-muted-foreground mb-3">Tracking links not always shared with patients, leading to anxiety and repeated follow-up calls.</p>
+                  <p className="text-sm italic text-foreground/70">"Families keep calling to ask where the ambulance is."</p>
+                </div>
+                <div className="p-6 rounded-xl bg-primary/5 border-l-4 border-primary/30">
+                  <h4 className="font-serif text-lg mb-2">Poor Data Visibility</h4>
+                  <p className="text-sm text-muted-foreground mb-3">Low visibility of data quality and response metrics makes it hard to identify and fix systemic issues.</p>
+                  <p className="text-sm italic text-foreground/70">"We don't have clear reports on what's working."</p>
                 </div>
               </div>
             </div>
 
-            {/* Users & Primary Responsibility */}
-            <div className="mb-16">
-              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Users & Primary Responsibility</h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="p-6 rounded-xl border border-border bg-card">
-                  <h3 className="font-serif text-lg mb-2">Hospital Admins</h3>
-                  <p className="text-xs text-muted-foreground mb-2">Receive emergency calls and initiate ambulance requests.</p>
-                  <p className="text-sm"><span className="font-medium text-primary">Goal:</span> Quickly assign an available ambulance with minimal manual effort and ensure timely patient pickup.</p>
+            {/* Business Problems - Reference Style Cards */}
+            <div className="mb-12">
+              <h3 className="font-serif text-xl mb-6">Business Problems</h3>
+              <div className="space-y-4">
+                <div className="p-6 rounded-xl bg-muted/30 border-l-4 border-muted-foreground/30">
+                  <h4 className="font-serif text-lg mb-2">Low Platform Adoption</h4>
+                  <p className="text-sm text-muted-foreground">Admins underuse the dashboard, lowering retention and reducing the platform's value proposition.</p>
                 </div>
-                <div className="p-6 rounded-xl border border-border bg-card">
-                  <h3 className="font-serif text-lg mb-2">Drivers</h3>
-                  <p className="text-xs text-muted-foreground mb-2">Receive and confirm ambulance requests from hospitals or Merry Health staff.</p>
-                  <p className="text-sm"><span className="font-medium text-primary">Goal:</span> Get clear trip details and confirm rides easily without delays or confusion.</p>
+                <div className="p-6 rounded-xl bg-muted/30 border-l-4 border-muted-foreground/30">
+                  <h4 className="font-serif text-lg mb-2">No Centralized Data</h4>
+                  <p className="text-sm text-muted-foreground">No centralized data for reporting or audits, making it difficult to demonstrate value to hospital partners.</p>
                 </div>
-                <div className="p-6 rounded-xl border border-border bg-card">
-                  <h3 className="font-serif text-lg mb-2">Patients / Families</h3>
-                  <p className="text-xs text-muted-foreground mb-2">Request ambulances via hospitals and receive live tracking updates.</p>
-                  <p className="text-sm"><span className="font-medium text-primary">Goal:</span> Access timely, transparent information to feel confident that help is on the way.</p>
+                <div className="p-6 rounded-xl bg-muted/30 border-l-4 border-muted-foreground/30">
+                  <h4 className="font-serif text-lg mb-2">Credibility at Risk</h4>
+                  <p className="text-sm text-muted-foreground">Delayed response time affects Merry Health's credibility and reputation with hospital partners.</p>
                 </div>
-                <div className="p-6 rounded-xl border border-border bg-card">
-                  <h3 className="font-serif text-lg mb-2">Merry Health Admins</h3>
-                  <p className="text-xs text-muted-foreground mb-2">Oversee hospital and driver coordination, monitor SLAs, and manage data quality.</p>
-                  <p className="text-sm"><span className="font-medium text-primary">Goal:</span> Ensure fast, reliable dispatch operations and maintain accurate performance reporting.</p>
+                <div className="p-6 rounded-xl bg-muted/30 border-l-4 border-muted-foreground/30">
+                  <h4 className="font-serif text-lg mb-2">High Coordination Costs</h4>
+                  <p className="text-sm text-muted-foreground">Manual coordination between admin and driver adds operational cost and reduces scalability.</p>
                 </div>
-              </div>
-            </div>
-
-            {/* Problems */}
-            <div className="mb-16">
-              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">The Problems</h2>
-              <div className="grid md:grid-cols-2 gap-8">
-                {/* User Problems */}
-                <div>
-                  <h3 className="font-serif text-lg mb-4 flex items-center gap-2">
-                    <span className="w-6 h-6 rounded bg-amber-500/20 flex items-center justify-center text-xs font-medium text-amber-600">UP</span>
-                    User Problems
-                  </h3>
-                  <div className="space-y-3">
-                    <div className="p-4 rounded-lg border border-border bg-card">
-                      <p className="text-sm text-muted-foreground"><span className="font-medium text-foreground">UP1:</span> Hospital admins rely on phone calls instead of the dashboard, leading to delays in ambulance assignment and loss of structured data for reporting.</p>
-                    </div>
-                    <div className="p-4 rounded-lg border border-border bg-card">
-                      <p className="text-sm text-muted-foreground"><span className="font-medium text-foreground">UP2:</span> Dispatch process takes 8–10 minutes due to manual entry.</p>
-                    </div>
-                    <div className="p-4 rounded-lg border border-border bg-card">
-                      <p className="text-sm text-muted-foreground"><span className="font-medium text-foreground">UP3:</span> Drivers ignore app messages or fail to confirm.</p>
-                    </div>
-                    <div className="p-4 rounded-lg border border-border bg-card">
-                      <p className="text-sm text-muted-foreground"><span className="font-medium text-foreground">UP4:</span> Tracking links not always shared with patients.</p>
-                    </div>
-                    <div className="p-4 rounded-lg border border-border bg-card">
-                      <p className="text-sm text-muted-foreground"><span className="font-medium text-foreground">UP5:</span> Low visibility of data quality and response metrics.</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Business Problems */}
-                <div>
-                  <h3 className="font-serif text-lg mb-4 flex items-center gap-2">
-                    <span className="w-6 h-6 rounded bg-primary/20 flex items-center justify-center text-xs font-medium text-primary">BP</span>
-                    Business Problems
-                  </h3>
-                  <div className="space-y-3">
-                    <div className="p-4 rounded-lg border border-border bg-card">
-                      <p className="text-sm text-muted-foreground"><span className="font-medium text-foreground">BP1:</span> Admins underuse the dashboard, lowering retention.</p>
-                    </div>
-                    <div className="p-4 rounded-lg border border-border bg-card">
-                      <p className="text-sm text-muted-foreground"><span className="font-medium text-foreground">BP2:</span> No centralized data for reporting or audits.</p>
-                    </div>
-                    <div className="p-4 rounded-lg border border-border bg-card">
-                      <p className="text-sm text-muted-foreground"><span className="font-medium text-foreground">BP3:</span> Delayed response time affects Merry Health's credibility.</p>
-                    </div>
-                    <div className="p-4 rounded-lg border border-border bg-card">
-                      <p className="text-sm text-muted-foreground"><span className="font-medium text-foreground">BP4:</span> Manual coordination between admin and driver adds cost.</p>
-                    </div>
-                    <div className="p-4 rounded-lg border border-border bg-card">
-                      <p className="text-sm text-muted-foreground"><span className="font-medium text-foreground">BP5:</span> Weak differentiation from competitors.</p>
-                    </div>
-                  </div>
+                <div className="p-6 rounded-xl bg-muted/30 border-l-4 border-muted-foreground/30">
+                  <h4 className="font-serif text-lg mb-2">Weak Differentiation</h4>
+                  <p className="text-sm text-muted-foreground">Without structured workflows and data, it's hard to differentiate from competitors.</p>
                 </div>
               </div>
             </div>
 
-            {/* Goals */}
-            <div className="mb-8">
-              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Project Goal</h2>
+            {/* Goals - Derived from Problems */}
+            <div>
+              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Problem</p>
+              <h3 className="font-serif text-2xl md:text-3xl mb-6">Project Goals</h3>
+              
               <div className="p-6 rounded-xl border border-primary/30 bg-primary/5 mb-8">
                 <p className="font-serif text-lg text-center">
-                  To design a high-adoption, low-friction emergency dispatch system that reduces manual coordination time, structures operational data, and strengthens Merry Health's enterprise positioning with measurable value for hospitals.
+                  Design a high-adoption, low-friction emergency dispatch system that reduces manual coordination time, structures operational data, and strengthens Merry Health's enterprise positioning with measurable value for hospitals.
                 </p>
               </div>
               
               <div className="grid md:grid-cols-2 gap-8">
-                {/* Business Goals */}
                 <div>
-                  <h3 className="font-serif text-lg mb-4">Business Goals</h3>
+                  <h4 className="font-serif text-lg mb-4">Business Goals</h4>
                   <ul className="space-y-3">
                     <li className="text-sm text-muted-foreground flex gap-2">
                       <span className="text-primary shrink-0">→</span>
@@ -2024,10 +2058,8 @@ const CaseStudy = () => {
                     </li>
                   </ul>
                 </div>
-
-                {/* User Goals */}
                 <div>
-                  <h3 className="font-serif text-lg mb-4">User Goals</h3>
+                  <h4 className="font-serif text-lg mb-4">User Goals</h4>
                   <ul className="space-y-3">
                     <li className="text-sm text-muted-foreground flex gap-2">
                       <span className="text-primary shrink-0">→</span>
@@ -2052,101 +2084,135 @@ const CaseStudy = () => {
           </div>
         </section>}
 
-      {/* Merry Health UX Approach Principles */}
-      {slug === 'merry-health' && <section id="merry-research" className="px-6 lg:px-12 py-16 bg-card scroll-mt-20">
+      {/* Merry Health Research Section */}
+      {slug === 'merry-health' && <section id="merry-research" className="px-6 lg:px-12 xl:pl-48 py-16 scroll-mt-20">
           <div className="container mx-auto max-w-5xl">
-            <h2 className="font-serif text-3xl md:text-4xl text-center mb-4">The 3 Principles Guiding Our UX Approach</h2>
-            <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">We identified three core problems in the current system and defined principles to address each one.</p>
+            {/* Section Header */}
+            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Research</p>
+            <h2 className="font-serif text-3xl md:text-4xl mb-8">Guiding Principles</h2>
+            <p className="text-muted-foreground mb-12 max-w-3xl">We identified three core problems in the current system and defined principles to address each one.</p>
             
-            <div className="space-y-8">
+            <div className="space-y-4 mb-16">
               {/* Principle 1 */}
-              <div className="flex flex-col md:flex-row gap-6 items-start">
-                <div className="md:w-1/3">
-                  <p className="text-sm text-muted-foreground bg-muted/50 p-4 rounded-lg border-l-4 border-amber-400">
-                    Current workflows do not match how staff actually work
-                  </p>
-                </div>
-                <div className="hidden md:flex items-center text-muted-foreground">
-                  <span className="text-2xl">→</span>
-                </div>
-                <div className="md:flex-1 p-6 rounded-xl border border-border bg-background shadow-sm">
-                  <h3 className="font-serif text-xl text-primary mb-2">Expand Hospital Adoption</h3>
-                  <p className="text-muted-foreground text-sm">Enable fast, mobile-friendly workflows that match how staff actually work.</p>
+              <div className="p-6 rounded-xl bg-primary/5 border-l-4 border-primary/30">
+                <div className="flex flex-col md:flex-row md:items-center gap-4">
+                  <div className="md:w-1/2">
+                    <p className="text-sm text-muted-foreground">Current workflows do not match how staff actually work</p>
+                  </div>
+                  <div className="hidden md:block text-muted-foreground">→</div>
+                  <div className="md:flex-1">
+                    <h3 className="font-serif text-lg text-foreground">Expand Hospital Adoption</h3>
+                    <p className="text-sm text-muted-foreground">Enable fast, mobile-friendly workflows that match how staff actually work.</p>
+                  </div>
                 </div>
               </div>
 
               {/* Principle 2 */}
-              <div className="flex flex-col md:flex-row gap-6 items-start">
-                <div className="md:w-1/3">
-                  <p className="text-sm text-muted-foreground bg-muted/50 p-4 rounded-lg border-l-4 border-amber-400">
-                    Information is duplicated, overwritten, or incomplete
-                  </p>
-                </div>
-                <div className="hidden md:flex items-center text-muted-foreground">
-                  <span className="text-2xl">→</span>
-                </div>
-                <div className="md:flex-1 p-6 rounded-xl border border-border bg-background shadow-sm">
-                  <h3 className="font-serif text-xl text-primary mb-2">Strengthen Data Quality</h3>
-                  <p className="text-muted-foreground text-sm">Ensure information is captured once and stays consistent across all systems.</p>
+              <div className="p-6 rounded-xl bg-primary/5 border-l-4 border-primary/30">
+                <div className="flex flex-col md:flex-row md:items-center gap-4">
+                  <div className="md:w-1/2">
+                    <p className="text-sm text-muted-foreground">Information is duplicated, overwritten, or incomplete</p>
+                  </div>
+                  <div className="hidden md:block text-muted-foreground">→</div>
+                  <div className="md:flex-1">
+                    <h3 className="font-serif text-lg text-foreground">Strengthen Data Quality</h3>
+                    <p className="text-sm text-muted-foreground">Ensure information is captured once and stays consistent across all systems.</p>
+                  </div>
                 </div>
               </div>
 
               {/* Principle 3 */}
-              <div className="flex flex-col md:flex-row gap-6 items-start">
-                <div className="md:w-1/3">
-                  <p className="text-sm text-muted-foreground bg-muted/50 p-4 rounded-lg border-l-4 border-amber-400">
-                    Heavy manual coordination slows dispatch, increases errors, and raises cost
-                  </p>
-                </div>
-                <div className="hidden md:flex items-center text-muted-foreground">
-                  <span className="text-2xl">→</span>
-                </div>
-                <div className="md:flex-1 p-6 rounded-xl border border-border bg-background shadow-sm">
-                  <h3 className="font-serif text-xl text-primary mb-2">Improve Operational Efficiency</h3>
-                  <p className="text-muted-foreground text-sm">Reduce manual coordination, calls, and rework across stakeholders.</p>
+              <div className="p-6 rounded-xl bg-primary/5 border-l-4 border-primary/30">
+                <div className="flex flex-col md:flex-row md:items-center gap-4">
+                  <div className="md:w-1/2">
+                    <p className="text-sm text-muted-foreground">Heavy manual coordination slows dispatch, increases errors, and raises cost</p>
+                  </div>
+                  <div className="hidden md:block text-muted-foreground">→</div>
+                  <div className="md:flex-1">
+                    <h3 className="font-serif text-lg text-foreground">Improve Operational Efficiency</h3>
+                    <p className="text-sm text-muted-foreground">Reduce manual coordination, calls, and rework across stakeholders.</p>
+                  </div>
                 </div>
               </div>
+            </div>
+
+            {/* Research Approach Steps */}
+            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Research</p>
+            <h3 className="font-serif text-2xl md:text-3xl mb-8">Our Approach</h3>
+            <p className="text-muted-foreground mb-8">Our research was structured into three key phases:</p>
+            
+            <div className="flex items-center justify-start gap-2 overflow-x-auto pb-4">
+              {[{
+                num: 1,
+                title: "Audit",
+                id: "merry-audit"
+              }, {
+                num: 2,
+                title: "Mapping",
+                id: "merry-mapping"
+              }, {
+                num: 3,
+                title: "Findings",
+                id: "merry-findings"
+              }].map((phase, i, arr) => <div key={i} className="flex items-center flex-shrink-0">
+                  <button onClick={() => document.getElementById(phase.id)?.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                  })} className="flex items-center gap-2 px-4 py-3 rounded-full bg-card border border-border hover:border-primary/50 hover:bg-primary/5 transition-all duration-200 cursor-pointer group">
+                    <span className="w-6 h-6 rounded-full bg-primary/10 group-hover:bg-primary/20 flex items-center justify-center text-xs font-semibold text-primary transition-colors">
+                      {phase.num}
+                    </span>
+                    <span className="text-sm font-medium whitespace-nowrap">{phase.title}</span>
+                  </button>
+                  {i < arr.length - 1 && <div className="mx-2 text-muted-foreground/30">
+                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>}
+                </div>)}
             </div>
           </div>
         </section>}
 
-      {/* Merry Health Solution Phases - Horizontal Tabs */}
-      {slug === 'merry-health' && <section id="merry-process" className="px-6 lg:px-12 py-16 scroll-mt-20">
+      {/* Merry Health Process Section */}
+      {slug === 'merry-health' && <section id="merry-process" className="px-6 lg:px-12 xl:pl-48 py-16 bg-card scroll-mt-20">
           <div className="container mx-auto max-w-5xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">The Solution</h2>
-            <p className="text-lg text-muted-foreground mb-10">Our approach was structured into six key phases:</p>
+            {/* Section Header */}
+            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Process</p>
+            <h2 className="font-serif text-3xl md:text-4xl mb-8">Our Solution Approach</h2>
+            <p className="text-muted-foreground mb-10 max-w-3xl">We structured our work into six key phases, moving from research to design execution:</p>
             
             {/* Horizontal Phase Tabs - Compact Single Line */}
-            <div className="flex items-center justify-center gap-1 md:gap-2 overflow-x-auto pb-2">
+            <div className="flex items-center justify-start gap-1 md:gap-2 overflow-x-auto pb-4">
               {[{
-            num: 1,
-            title: "Audit",
-            id: "merry-audit"
-          }, {
-            num: 2,
-            title: "Mapping",
-            id: "merry-mapping"
-          }, {
-            num: 3,
-            title: "Findings",
-            id: "merry-findings"
-          }, {
-            num: 4,
-            title: "Strategy",
-            id: "merry-strategy"
-          }, {
-            num: 5,
-            title: "Workflow",
-            id: "merry-workflow"
-          }, {
-            num: 6,
-            title: "Design",
-            id: "merry-design"
-          }].map((phase, i, arr) => <div key={i} className="flex items-center flex-shrink-0">
+                num: 1,
+                title: "Audit",
+                id: "merry-audit"
+              }, {
+                num: 2,
+                title: "Mapping",
+                id: "merry-mapping"
+              }, {
+                num: 3,
+                title: "Findings",
+                id: "merry-findings"
+              }, {
+                num: 4,
+                title: "Strategy",
+                id: "merry-strategy"
+              }, {
+                num: 5,
+                title: "Workflow",
+                id: "merry-workflow"
+              }, {
+                num: 6,
+                title: "Design",
+                id: "merry-design"
+              }].map((phase, i, arr) => <div key={i} className="flex items-center flex-shrink-0">
                   <button onClick={() => document.getElementById(phase.id)?.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            })} className="flex items-center gap-2 px-3 py-2 md:px-4 md:py-2.5 rounded-full bg-card border border-border hover:border-primary/50 hover:bg-primary/5 transition-all duration-200 cursor-pointer group">
+                    behavior: 'smooth',
+                    block: 'start'
+                  })} className="flex items-center gap-2 px-3 py-2 md:px-4 md:py-2.5 rounded-full bg-background border border-border hover:border-primary/50 hover:bg-primary/5 transition-all duration-200 cursor-pointer group">
                     <span className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-primary/10 group-hover:bg-primary/20 flex items-center justify-center text-[10px] md:text-xs font-semibold text-primary transition-colors">
                       {phase.num}
                     </span>
