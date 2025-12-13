@@ -805,6 +805,10 @@ const CaseStudy = () => {
                   <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Duration</h3>
                   <p className="text-sm">{study.projectDuration}</p>
                 </div>}
+              {study.projectContext && <div>
+                  <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Program</h3>
+                  <p className="text-sm">{study.projectContext}</p>
+                </div>}
               {study.timeline && <div>
                   <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Timeline</h3>
                   <ul className="text-sm space-y-1">
