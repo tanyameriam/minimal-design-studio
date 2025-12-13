@@ -1621,13 +1621,9 @@ const CaseStudy = () => {
           <div className="container mx-auto max-w-5xl">
             {/* Section Header */}
             <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Context</p>
-            <h2 className="font-serif text-3xl md:text-4xl mb-8">Background</h2>
             
-            {/* Background Content */}
-            <p className="text-lg leading-relaxed text-muted-foreground mb-12 max-w-3xl">{study.overview}</p>
-            
-            {/* Meta Cards - Horizontal Layout */}
-            <div className="grid md:grid-cols-4 gap-4 mb-16">
+            {/* Meta Cards - Horizontal Layout (moved to top) */}
+            <div className="grid md:grid-cols-4 gap-4 mb-12">
               <div className="p-5 rounded-xl border border-border bg-card">
                 <h3 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">Role</h3>
                 <p className="text-sm">{study.role}</p>
@@ -1645,6 +1641,10 @@ const CaseStudy = () => {
                 <p className="text-sm">{study.tools?.join(', ')}</p>
               </div>
             </div>
+
+            {/* Background Content */}
+            <h2 className="font-serif text-3xl md:text-4xl mb-6">Background</h2>
+            <p className="text-lg leading-relaxed text-muted-foreground mb-16 max-w-3xl">{study.overview}</p>
 
             {/* What Are We Building - Sub-section */}
             <div className="mb-16">
