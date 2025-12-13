@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import streeAffinity1 from '@/assets/stree-affinity-1.png';
+import streeAffinity2 from '@/assets/stree-affinity-2.png';
+import streeAffinity3 from '@/assets/stree-affinity-3.png';
+import streeAffinity4 from '@/assets/stree-affinity-4.png';
+import streeAffinity5 from '@/assets/stree-affinity-5.png';
+import streeAffinity6 from '@/assets/stree-affinity-6.png';
 interface CaseStudySection {
   title: string;
   content: string;
@@ -1086,7 +1092,28 @@ const CaseStudy = () => {
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Affinity Mapping & Synthesis</h2>
             <p className="text-muted-foreground mb-8">{study.synthesis.method}</p>
-            {study.synthesis.imagePlaceholders && <div className="grid md:grid-cols-2 gap-4">
+            
+            {/* Affinity Mapping Images for STREE */}
+            {slug === 'stree-safety-app' && (
+              <>
+                <div className="grid md:grid-cols-2 gap-4 mb-8">
+                  <img src={streeAffinity1} alt="Affinity mapping: Safety perceptions and offender types" className="w-full rounded border border-border" />
+                  <img src={streeAffinity2} alt="Affinity mapping: Reactions and reporting challenges" className="w-full rounded border border-border" />
+                  <img src={streeAffinity3} alt="Affinity mapping: Emotional impact and sharing experiences" className="w-full rounded border border-border" />
+                  <img src={streeAffinity4} alt="Affinity mapping: Adapting behaviors for safety" className="w-full rounded border border-border" />
+                  <img src={streeAffinity5} alt="Affinity mapping: Safety measures and location perceptions" className="w-full rounded border border-border" />
+                  <img src={streeAffinity6} alt="Affinity mapping: Societal attitudes and improvement ideas" className="w-full rounded border border-border" />
+                </div>
+                <div className="p-6 bg-card border border-border">
+                  <p className="text-muted-foreground leading-relaxed">
+                    From the affinity mapping exercise, we identified recurring <span className="text-foreground font-medium">themes</span> across participant responses. These themes helped us understand the underlying patterns in women's safety experiences, which directly informed our <span className="text-foreground font-medium">user goals</span> and <span className="text-foreground font-medium">challenges</span> framework below.
+                  </p>
+                </div>
+              </>
+            )}
+            
+            {/* Placeholder for non-STREE projects */}
+            {slug !== 'stree-safety-app' && study.synthesis.imagePlaceholders && <div className="grid md:grid-cols-2 gap-4">
                 {Array.from({
             length: study.synthesis.imagePlaceholders
           }).map((_, i) => <div key={i} className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
