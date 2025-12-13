@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, X, ChevronDown } from 'lucide-react';
 import streeAffinity1 from '@/assets/stree-affinity-1.png';
 import streeAffinity2 from '@/assets/stree-affinity-2.png';
 import streeAffinity3 from '@/assets/stree-affinity-3.png';
@@ -744,6 +744,8 @@ const CaseStudy = () => {
     slug
   } = useParams();
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+  const [showInterviewGallery, setShowInterviewGallery] = useState(false);
+  const [showAffinityGallery, setShowAffinityGallery] = useState(false);
   const study = slug ? caseStudies[slug] : null;
   if (!study) {
     return <div className="min-h-screen flex items-center justify-center">
@@ -1157,23 +1159,50 @@ const CaseStudy = () => {
                   <span className="px-2 py-1 text-xs bg-primary/10 border border-primary/20 rounded">I - Intents</span>
                   <span className="px-2 py-1 text-xs bg-primary/10 border border-primary/20 rounded">DI - Design Ideas</span>
                 </div>
-                <div className="grid md:grid-cols-3 gap-4">
-                  <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(streeInterview1)}>
-                    <img src={streeInterview1} alt="Interview analysis with observation coding" className="w-full rounded" />
+                
+                {/* Collapsible Interview Preview */}
+                <div 
+                  className="group bg-card border border-border rounded-lg p-4 cursor-pointer hover:border-primary/40 transition-all"
+                  onClick={() => setShowInterviewGallery(!showInterviewGallery)}
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-sm font-medium text-foreground">View Interview Analysis</span>
+                    <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform ${showInterviewGallery ? 'rotate-180' : ''}`} />
                   </div>
-                  <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(streeInterview2)}>
-                    <img src={streeInterview2} alt="Interview analysis with observation coding" className="w-full rounded" />
-                  </div>
-                  <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(streeInterview3)}>
-                    <img src={streeInterview3} alt="Interview analysis with observation coding" className="w-full rounded" />
-                  </div>
-                  <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(streeInterview4)}>
-                    <img src={streeInterview4} alt="Interview analysis with observation coding" className="w-full rounded" />
-                  </div>
-                  <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(streeInterview5)}>
-                    <img src={streeInterview5} alt="Interview analysis with observation coding" className="w-full rounded" />
-                  </div>
+                  {!showInterviewGallery && (
+                    <div className="flex gap-2 overflow-hidden">
+                      {[streeInterview1, streeInterview2, streeInterview3].map((img, i) => (
+                        <div key={i} className="w-20 h-14 rounded overflow-hidden border border-border flex-shrink-0">
+                          <img src={img} alt={`Interview preview ${i + 1}`} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" />
+                        </div>
+                      ))}
+                      <div className="w-20 h-14 rounded bg-muted/50 border border-border flex items-center justify-center flex-shrink-0">
+                        <span className="text-xs text-muted-foreground">+2 more</span>
+                      </div>
+                    </div>
+                  )}
                 </div>
+                
+                {/* Expanded Gallery */}
+                {showInterviewGallery && (
+                  <div className="mt-4 grid md:grid-cols-3 gap-4 animate-fade-in">
+                    <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={(e) => { e.stopPropagation(); setLightboxImage(streeInterview1); }}>
+                      <img src={streeInterview1} alt="Interview analysis with observation coding" className="w-full rounded" />
+                    </div>
+                    <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={(e) => { e.stopPropagation(); setLightboxImage(streeInterview2); }}>
+                      <img src={streeInterview2} alt="Interview analysis with observation coding" className="w-full rounded" />
+                    </div>
+                    <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={(e) => { e.stopPropagation(); setLightboxImage(streeInterview3); }}>
+                      <img src={streeInterview3} alt="Interview analysis with observation coding" className="w-full rounded" />
+                    </div>
+                    <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={(e) => { e.stopPropagation(); setLightboxImage(streeInterview4); }}>
+                      <img src={streeInterview4} alt="Interview analysis with observation coding" className="w-full rounded" />
+                    </div>
+                    <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={(e) => { e.stopPropagation(); setLightboxImage(streeInterview5); }}>
+                      <img src={streeInterview5} alt="Interview analysis with observation coding" className="w-full rounded" />
+                    </div>
+                  </div>
+                )}
               </div>}
 
             {/* Placeholder for non-STREE projects */}
@@ -1211,31 +1240,60 @@ const CaseStudy = () => {
             
             {/* Affinity Mapping Images for STREE */}
             {slug === 'stree-safety-app' && <>
-                <div className="columns-1 md:columns-2 lg:columns-3 gap-4 mb-8 space-y-4">
-                  <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(streeAffinity1)}>
-                    <img src={streeAffinity1} alt="Affinity mapping: Safety perceptions and offender types" className="w-full rounded" />
+                {/* Collapsible Affinity Preview */}
+                <div 
+                  className="group bg-card border border-border rounded-lg p-4 cursor-pointer hover:border-primary/40 transition-all mb-6"
+                  onClick={() => setShowAffinityGallery(!showAffinityGallery)}
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-sm font-medium text-foreground">View Affinity Mapping</span>
+                    <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform ${showAffinityGallery ? 'rotate-180' : ''}`} />
                   </div>
-                  <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(streeAffinity2)}>
-                    <img src={streeAffinity2} alt="Affinity mapping: Reactions and reporting challenges" className="w-full rounded" />
-                  </div>
-                  <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(streeAffinity3)}>
-                    <img src={streeAffinity3} alt="Affinity mapping: Emotional impact and sharing experiences" className="w-full rounded" />
-                  </div>
-                  <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(streeAffinity4)}>
-                    <img src={streeAffinity4} alt="Affinity mapping: Adapting behaviors for safety" className="w-full rounded" />
-                  </div>
-                  <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(streeAffinity5)}>
-                    <img src={streeAffinity5} alt="Affinity mapping: Safety measures and location perceptions" className="w-full rounded" />
-                  </div>
-                  <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(streeAffinity6)}>
-                    <img src={streeAffinity6} alt="Affinity mapping: Societal attitudes and improvement ideas" className="w-full rounded" />
-                  </div>
+                  {!showAffinityGallery && (
+                    <div className="flex gap-2 overflow-hidden">
+                      {[streeAffinity1, streeAffinity2, streeAffinity3].map((img, i) => (
+                        <div key={i} className="w-20 h-14 rounded overflow-hidden border border-border flex-shrink-0">
+                          <img src={img} alt={`Affinity preview ${i + 1}`} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" />
+                        </div>
+                      ))}
+                      <div className="w-20 h-14 rounded bg-muted/50 border border-border flex items-center justify-center flex-shrink-0">
+                        <span className="text-xs text-muted-foreground">+3 more</span>
+                      </div>
+                    </div>
+                  )}
                 </div>
-                <div className="p-6 bg-card border border-border">
-                  <p className="text-muted-foreground leading-relaxed">
-                    From the affinity mapping exercise, we identified recurring <span className="text-foreground font-medium">themes</span> across participant responses. These themes helped us understand the underlying patterns in women's safety experiences, which directly informed our <span className="text-foreground font-medium">user goals</span> and <span className="text-foreground font-medium">challenges</span> framework below.
-                  </p>
-                </div>
+                
+                {/* Expanded Gallery */}
+                {showAffinityGallery && (
+                  <div className="columns-1 md:columns-2 lg:columns-3 gap-4 mb-8 space-y-4 animate-fade-in">
+                    <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={(e) => { e.stopPropagation(); setLightboxImage(streeAffinity1); }}>
+                      <img src={streeAffinity1} alt="Affinity mapping: Safety perceptions and offender types" className="w-full rounded" />
+                    </div>
+                    <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={(e) => { e.stopPropagation(); setLightboxImage(streeAffinity2); }}>
+                      <img src={streeAffinity2} alt="Affinity mapping: Reactions and reporting challenges" className="w-full rounded" />
+                    </div>
+                    <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={(e) => { e.stopPropagation(); setLightboxImage(streeAffinity3); }}>
+                      <img src={streeAffinity3} alt="Affinity mapping: Emotional impact and sharing experiences" className="w-full rounded" />
+                    </div>
+                    <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={(e) => { e.stopPropagation(); setLightboxImage(streeAffinity4); }}>
+                      <img src={streeAffinity4} alt="Affinity mapping: Adapting behaviors for safety" className="w-full rounded" />
+                    </div>
+                    <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={(e) => { e.stopPropagation(); setLightboxImage(streeAffinity5); }}>
+                      <img src={streeAffinity5} alt="Affinity mapping: Safety measures and location perceptions" className="w-full rounded" />
+                    </div>
+                    <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={(e) => { e.stopPropagation(); setLightboxImage(streeAffinity6); }}>
+                      <img src={streeAffinity6} alt="Affinity mapping: Societal attitudes and improvement ideas" className="w-full rounded" />
+                    </div>
+                  </div>
+                )}
+                
+                {showAffinityGallery && (
+                  <div className="p-6 bg-card border border-border animate-fade-in">
+                    <p className="text-muted-foreground leading-relaxed">
+                      From the affinity mapping exercise, we identified recurring <span className="text-foreground font-medium">themes</span> across participant responses. These themes helped us understand the underlying patterns in women's safety experiences, which directly informed our <span className="text-foreground font-medium">user goals</span> and <span className="text-foreground font-medium">challenges</span> framework below.
+                    </p>
+                  </div>
+                )}
               </>}
             
             {/* Placeholder for non-STREE projects */}
