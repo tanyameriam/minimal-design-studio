@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ExternalLink, ChevronDown, ChevronRight } from 'lucide-react';
+import { ExternalLink, Sparkles, Pencil, Box } from 'lucide-react';
 import splineFrogs from '@/assets/spline-frogs.png';
 import spline3dRoom from '@/assets/spline-3d-room.png';
 import sketchDino1 from '@/assets/sketch-dino-1.png';
@@ -42,131 +42,128 @@ const splineProjects = [
   }
 ];
 
-interface CollapsibleSectionProps {
-  title: string;
-  badge?: string;
-  children: React.ReactNode;
-  defaultOpen?: boolean;
-}
-
-const CollapsibleSection = ({ title, badge, children, defaultOpen = false }: CollapsibleSectionProps) => {
-  const [isOpen, setIsOpen] = useState(defaultOpen);
-  
-  return (
-    <div className="border-b border-border last:border-b-0">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between py-4 group"
-      >
-        <div className="flex items-center gap-3">
-          <span className="font-medium text-foreground">{title}</span>
-          {badge && (
-            <span className="text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
-              {badge}
-            </span>
-          )}
-        </div>
-        {isOpen ? (
-          <ChevronDown className="w-4 h-4 text-muted-foreground" />
-        ) : (
-          <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
-        )}
-      </button>
-      
-      <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-[2000px] pb-6' : 'max-h-0'}`}>
-        {children}
-      </div>
-    </div>
-  );
-};
+type Tab = '3d' | 'character' | 'charcoal';
 
 const Explorations = () => {
+  const [activeTab, setActiveTab] = useState<Tab>('3d');
+
+  const tabs = [
+    { id: '3d' as Tab, label: '3D', icon: Box, count: splineProjects.length },
+    { id: 'character' as Tab, label: 'Characters', icon: Sparkles, count: characterSketches.length },
+    { id: 'charcoal' as Tab, label: 'Charcoal', icon: Pencil, count: charcoalSketches.length },
+  ];
+
   return (
     <section id="explorations" className="py-24 px-6 lg:px-12 bg-muted/30">
-      <div className="container mx-auto max-w-4xl">
+      <div className="container mx-auto max-w-5xl">
         {/* Header */}
-        <div className="mb-10">
+        <div className="mb-8">
           <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-3">
             Creative Playground
           </p>
-          <h2 className="font-serif text-3xl md:text-4xl mb-4">
+          <h2 className="font-serif text-3xl md:text-4xl mb-3">
             Explorations
           </h2>
-          <p className="text-muted-foreground text-base leading-relaxed max-w-xl">
+          <p className="text-muted-foreground text-base max-w-lg">
             Experiments with colors, layouts, animations, and 3D — a space for curiosity and craft.
           </p>
         </div>
 
-        {/* Collapsible Sections */}
-        <div className="bg-background rounded-xl border border-border overflow-hidden">
-          
-          {/* 3D / Spline */}
-          <CollapsibleSection title="3D Explorations" badge={`${splineProjects.length}`} defaultOpen>
-            <div className="grid grid-cols-2 gap-3 px-4">
+        {/* Tab Navigation */}
+        <div className="flex gap-2 mb-6">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-all duration-200 ${
+                activeTab === tab.id
+                  ? 'bg-foreground text-background'
+                  : 'bg-background border border-border text-muted-foreground hover:text-foreground hover:border-foreground/50'
+              }`}
+            >
+              <tab.icon className="w-3.5 h-3.5" />
+              <span>{tab.label}</span>
+              <span className={`text-xs ${activeTab === tab.id ? 'text-background/60' : 'text-muted-foreground/60'}`}>
+                {tab.count}
+              </span>
+            </button>
+          ))}
+        </div>
+
+        {/* Content */}
+        <div className="min-h-[200px]">
+          {/* 3D Tab */}
+          {activeTab === '3d' && (
+            <div className="grid grid-cols-2 gap-4 animate-fade-in">
               {splineProjects.map((project) => (
                 <a
                   key={project.id}
                   href={project.splineUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative overflow-hidden rounded-lg aspect-video bg-neutral-900"
+                  className="group relative overflow-hidden rounded-xl aspect-video bg-neutral-900"
                 >
                   <img
                     src={project.thumbnail}
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-3">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
                     <div className="flex items-center justify-between w-full">
-                      <span className="text-white text-sm font-medium">{project.title}</span>
-                      <ExternalLink className="w-3.5 h-3.5 text-white/70" />
+                      <span className="text-white font-medium">{project.title}</span>
+                      <ExternalLink className="w-4 h-4 text-white/70 group-hover:text-white transition-colors" />
                     </div>
                   </div>
                 </a>
               ))}
             </div>
-          </CollapsibleSection>
+          )}
 
-          {/* Character Sketches */}
-          <CollapsibleSection title="Character Sketches" badge={`${characterSketches.length}`}>
-            <div className="grid grid-cols-3 gap-2 px-4">
+          {/* Character Tab */}
+          {activeTab === 'character' && (
+            <div className="grid grid-cols-3 gap-4 animate-fade-in">
               {characterSketches.map((sketch) => (
                 <div
                   key={sketch.id}
-                  className="group relative aspect-square overflow-hidden rounded-lg bg-muted"
+                  className="group relative aspect-square overflow-hidden rounded-xl bg-muted"
                 >
                   <img
                     src={sketch.thumbnail}
                     alt={sketch.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                    <span className="text-background text-sm font-medium">{sketch.title}</span>
+                  </div>
                 </div>
               ))}
             </div>
-          </CollapsibleSection>
+          )}
 
-          {/* Charcoal Sketches */}
-          <CollapsibleSection title="Charcoal Sketches" badge={`${charcoalSketches.length}`}>
-            <div className="grid grid-cols-3 md:grid-cols-6 gap-2 px-4">
+          {/* Charcoal Tab */}
+          {activeTab === 'charcoal' && (
+            <div className="grid grid-cols-3 md:grid-cols-6 gap-4 animate-fade-in">
               {charcoalSketches.map((sketch) => (
                 <div
                   key={sketch.id}
-                  className="group relative aspect-[3/4] overflow-hidden rounded-lg bg-neutral-900"
+                  className="group relative aspect-[3/4] overflow-hidden rounded-xl bg-neutral-900"
                 >
                   <img
                     src={sketch.thumbnail}
                     alt={sketch.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                    <span className="text-white text-xs font-medium">{sketch.title}</span>
+                  </div>
                 </div>
               ))}
             </div>
-          </CollapsibleSection>
-
+          )}
         </div>
 
         {/* Footer */}
-        <p className="text-center text-muted-foreground text-xs mt-8 opacity-60">
+        <p className="text-center text-muted-foreground text-xs mt-10 opacity-50">
           Always learning, always experimenting
         </p>
       </div>
