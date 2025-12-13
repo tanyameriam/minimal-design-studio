@@ -133,7 +133,7 @@ const Explorations = () => {
                   {characterSketches.map((sketch) => (
                     <div
                       key={sketch.id}
-                      className="group relative aspect-square overflow-hidden rounded-lg bg-muted"
+                      className="group relative aspect-[4/3] overflow-hidden rounded-lg bg-muted"
                     >
                       <img
                         src={sketch.thumbnail}
