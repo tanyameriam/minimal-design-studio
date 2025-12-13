@@ -305,7 +305,7 @@ const caseStudies: Record<string, CaseStudyData> = {
   'merry-health': {
     title: "Redesigning India's Hospital Dispatch System",
     subtitle: "for Speed, Clarity & Operational Reliability",
-    overview: "Emergency ambulance coordination in India happens under extreme pressure. Hospital admins must make rapid decisions while navigating unpredictable emergencies, limited information, high message volume, and multi-stakeholder communication. At Merry Health, these challenges were amplified by a dispatch process that depended heavily on manual phone calls, WhatsApp chats, and inconsistent data capture. This case study captures how we redesigned Merry Health into a multi-channel, integrated dispatch ecosystem.",
+    overview: "Merry Health is a hospital technology platform focused on emergency ambulance dispatch management. The system connects hospitals, drivers, and patients to ensure faster, reliable ambulance deployment especially in Tier 2 and Tier 3 cities, where hospitals rely heavily on phone calls and WhatsApp due to low digital adoption and staff shortages.",
     role: "Research & Discovery, Strategy & Systems Thinking, Design Execution, Collaboration & Delivery",
     tools: ["Figma", "Miro", "Prototyping tools"],
     heroImage: "https://images.unsplash.com/photo-1587745416684-47953f16f02f?w=1200&q=80",
@@ -1043,7 +1043,7 @@ const CaseStudy = () => {
         <div className="container mx-auto max-w-4xl">
           <div className="grid md:grid-cols-3 gap-12">
             <div className="md:col-span-2">
-              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Overview</h2>
+              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Background</h2>
               <p className="text-lg leading-relaxed">{study.overview}</p>
             </div>
             <div className="space-y-8">
@@ -1317,13 +1317,6 @@ const CaseStudy = () => {
       {slug === 'merry-health' && (
         <section className="px-6 lg:px-12 py-16">
           <div className="container mx-auto max-w-5xl">
-            {/* Background */}
-            <div className="mb-16">
-              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Background</h2>
-              <p className="text-lg leading-relaxed text-muted-foreground mb-6">
-                Merry Health is a hospital technology platform focused on emergency ambulance dispatch management. The system connects hospitals, drivers, and patients to ensure faster, reliable ambulance deployment especially in Tier 2 and Tier 3 cities, where hospitals rely heavily on phone calls and WhatsApp due to low digital adoption and staff shortages.
-              </p>
-            </div>
 
             {/* What are we trying to build */}
             <div className="mb-16">
