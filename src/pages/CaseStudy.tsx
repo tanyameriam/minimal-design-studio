@@ -1622,53 +1622,68 @@ const CaseStudy = () => {
       {slug === 'merry-health' ? (
         <>
           {/* Hero Banner with Platform Screenshots */}
-          <section className="w-full bg-gradient-to-b from-primary/[0.08] to-primary/[0.02] pt-24 pb-12 border-b border-primary/10">
+          <section className="w-full bg-gradient-to-b from-muted/60 to-background pt-16 pb-8 border-b border-border/30">
             <div className="container mx-auto max-w-6xl px-6 lg:px-12">
               <div className="flex flex-col items-center">
-                {/* Overlapping Screenshots Layout */}
-                <div className="relative w-full h-[280px] md:h-[360px] lg:h-[420px] mb-8">
-                  {/* Center Main Screenshot */}
+                {/* Overlapping Screenshots Layout - Horizontal spread like reference */}
+                <div className="relative w-full h-[200px] md:h-[280px] lg:h-[320px] mb-6">
+                  {/* Far Left Screenshot */}
                   <div 
-                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 cursor-pointer group"
+                    className="absolute left-0 top-[20%] z-10 cursor-pointer group hidden sm:block"
+                    onClick={() => setLightboxImage(merryHealthMap)}
+                  >
+                    <div className="w-[160px] md:w-[200px] lg:w-[240px] rounded-lg overflow-hidden bg-background transition-all duration-300 hover:z-30"
+                      style={{ boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 12px 24px -8px rgba(0, 0, 0, 0.15)' }}>
+                      <img src={merryHealthMap} alt="Find Ambulance Map" className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-300" />
+                    </div>
+                  </div>
+                  
+                  {/* Left-Center Screenshot */}
+                  <div 
+                    className="absolute left-[15%] md:left-[18%] top-[5%] z-20 cursor-pointer group hidden md:block"
+                    onClick={() => setLightboxImage(merryHealthBooking)}
+                  >
+                    <div className="w-[180px] md:w-[220px] lg:w-[260px] rounded-lg overflow-hidden bg-background transition-all duration-300 hover:z-30"
+                      style={{ boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.3), 0 15px 30px -10px rgba(0, 0, 0, 0.2)' }}>
+                      <img src={merryHealthBooking} alt="Add Ride Flow" className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-300" />
+                    </div>
+                  </div>
+                  
+                  {/* Center Main Screenshot - Largest and most prominent */}
+                  <div 
+                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30 cursor-pointer group"
                     onClick={() => setLightboxImage(merryHealthDashboard)}
                   >
-                    <div className="w-[280px] md:w-[400px] lg:w-[500px] rounded-lg overflow-hidden shadow-2xl border border-border/50 bg-background">
+                    <div className="w-[240px] md:w-[320px] lg:w-[380px] rounded-lg overflow-hidden bg-background transition-all duration-300"
+                      style={{ boxShadow: '0 40px 80px -20px rgba(0, 0, 0, 0.35), 0 20px 40px -15px rgba(0, 0, 0, 0.25)' }}>
                       <img src={merryHealthDashboard} alt="Hospital Dashboard" className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-300" />
                     </div>
                   </div>
                   
-                  {/* Left Screenshot */}
+                  {/* Right-Center Screenshot */}
                   <div 
-                    className="absolute left-0 md:left-[5%] top-[15%] z-10 cursor-pointer group hidden sm:block"
-                    onClick={() => setLightboxImage(merryHealthMap)}
-                  >
-                    <div className="w-[140px] md:w-[180px] lg:w-[220px] rounded-lg overflow-hidden shadow-xl border border-border/50 bg-background opacity-90 hover:opacity-100 transition-opacity">
-                      <img src={merryHealthMap} alt="Find Ambulance Map" className="w-full h-auto" />
-                    </div>
-                  </div>
-                  
-                  {/* Right Screenshot */}
-                  <div 
-                    className="absolute right-0 md:right-[5%] top-[15%] z-10 cursor-pointer group hidden sm:block"
+                    className="absolute right-[15%] md:right-[18%] top-[8%] z-20 cursor-pointer group hidden md:block"
                     onClick={() => setLightboxImage(merryHealthRides)}
                   >
-                    <div className="w-[140px] md:w-[180px] lg:w-[220px] rounded-lg overflow-hidden shadow-xl border border-border/50 bg-background opacity-90 hover:opacity-100 transition-opacity">
-                      <img src={merryHealthRides} alt="Ride Management" className="w-full h-auto" />
+                    <div className="w-[180px] md:w-[220px] lg:w-[260px] rounded-lg overflow-hidden bg-background transition-all duration-300 hover:z-30"
+                      style={{ boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.3), 0 15px 30px -10px rgba(0, 0, 0, 0.2)' }}>
+                      <img src={merryHealthRides} alt="Ride Management" className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-300" />
                     </div>
                   </div>
                   
-                  {/* Bottom Right Screenshot */}
+                  {/* Far Right Screenshot */}
                   <div 
-                    className="absolute right-[10%] md:right-[15%] bottom-0 z-15 cursor-pointer group hidden md:block"
-                    onClick={() => setLightboxImage(merryHealthBooking)}
+                    className="absolute right-0 top-[25%] z-10 cursor-pointer group hidden sm:block"
+                    onClick={() => setLightboxImage(merryHealthMap)}
                   >
-                    <div className="w-[120px] md:w-[160px] lg:w-[200px] rounded-lg overflow-hidden shadow-xl border border-border/50 bg-background opacity-85 hover:opacity-100 transition-opacity">
-                      <img src={merryHealthBooking} alt="Add Ride Flow" className="w-full h-auto" />
+                    <div className="w-[160px] md:w-[200px] lg:w-[240px] rounded-lg overflow-hidden bg-background transition-all duration-300 hover:z-30"
+                      style={{ boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 12px 24px -8px rgba(0, 0, 0, 0.15)' }}>
+                      <img src={merryHealthBooking} alt="Booking Flow" className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-300" />
                     </div>
                   </div>
                 </div>
                 
-                <p className="text-xs text-muted-foreground text-center">Current platform we audited and redesigned. Click screenshots to view.</p>
+                <p className="text-xs text-muted-foreground/70 text-center">Current platform we audited and redesigned</p>
               </div>
             </div>
           </section>
