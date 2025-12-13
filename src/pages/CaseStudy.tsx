@@ -1651,6 +1651,7 @@ const CaseStudy = () => {
             </div>
 
             {/* Background Content */}
+            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Context</p>
             <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl mb-6 max-w-3xl leading-tight">Streamlining Emergency Dispatch for 50+ Hospitals Across Tier 2 & 3 Cities</h2>
             <p className="text-lg leading-relaxed text-muted-foreground mb-16 max-w-3xl">{study.overview}</p>
 
