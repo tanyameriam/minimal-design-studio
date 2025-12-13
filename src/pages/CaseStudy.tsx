@@ -2560,13 +2560,13 @@ const CaseStudy = () => {
             </div>
 
             {/* Summary */}
-            <div className="mt-10 p-6 rounded-xl bg-destructive/5 border border-destructive/20">
-              <h4 className="font-serif text-base mb-4 text-center text-destructive">Key Problems Identified</h4>
+            <div className="mt-10 p-6 rounded-xl bg-muted/50 border border-border">
+              <h4 className="font-serif text-base mb-4 text-center text-foreground">Key Problems Identified</h4>
               <div className="flex flex-wrap justify-center gap-3">
-                <span className="px-3 py-1.5 bg-destructive/10 text-destructive rounded-full text-xs font-medium">Manual coordination delays</span>
-                <span className="px-3 py-1.5 bg-destructive/10 text-destructive rounded-full text-xs font-medium">No real-time visibility</span>
-                <span className="px-3 py-1.5 bg-destructive/10 text-destructive rounded-full text-xs font-medium">Fragmented data across channels</span>
-                <span className="px-3 py-1.5 bg-destructive/10 text-destructive rounded-full text-xs font-medium">Workflow mismatch with hospital behavior</span>
+                <span className="px-3 py-1.5 bg-muted text-muted-foreground rounded-full text-xs font-medium">Manual coordination delays</span>
+                <span className="px-3 py-1.5 bg-muted text-muted-foreground rounded-full text-xs font-medium">No real-time visibility</span>
+                <span className="px-3 py-1.5 bg-muted text-muted-foreground rounded-full text-xs font-medium">Fragmented data across channels</span>
+                <span className="px-3 py-1.5 bg-muted text-muted-foreground rounded-full text-xs font-medium">Workflow mismatch with hospital behavior</span>
               </div>
             </div>
           </div>
