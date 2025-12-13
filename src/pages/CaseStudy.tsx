@@ -824,7 +824,34 @@ const CaseStudy = () => {
       {study.brynqLegacyReality && <section className="px-6 lg:px-12 py-16 bg-card"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">The Legacy Reality</h2><p className="text-lg leading-relaxed text-muted-foreground mb-8">{study.brynqLegacyReality}</p><div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center"><span className="text-sm text-muted-foreground italic">[ Diagram: Legacy workflow overview ]</span></div></div></section>}
 
       {/* BrynQ: Why This Became a Product Problem */}
-      {study.brynqProductProblem && <section className="px-6 lg:px-12 py-16"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Why This Became a Product Problem</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqProductProblem}</p></div></section>}
+      {study.brynqProductProblem && <section className="px-6 lg:px-12 py-16">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Why This Became a Product Problem</h2>
+          <p className="text-lg leading-relaxed text-muted-foreground mb-10">{study.brynqProductProblem}</p>
+          
+          {/* Time loss diagram placeholder */}
+          <div className="p-8 bg-card border border-border">
+            <h3 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6 text-center">Where Time Was Lost</h3>
+            <div className="flex items-center justify-between gap-4 mb-6">
+              <div className="flex-1 text-center p-4 bg-muted/30 border border-dashed border-border">
+                <span className="text-2xl font-serif text-destructive/70">70%</span>
+                <p className="text-xs text-muted-foreground mt-1">Pre-development delays</p>
+              </div>
+              <div className="text-muted-foreground/50">→</div>
+              <div className="flex-1 text-center p-4 bg-muted/30 border border-dashed border-border">
+                <span className="text-2xl font-serif text-muted-foreground">20%</span>
+                <p className="text-xs text-muted-foreground mt-1">Actual development</p>
+              </div>
+              <div className="text-muted-foreground/50">→</div>
+              <div className="flex-1 text-center p-4 bg-muted/30 border border-dashed border-border">
+                <span className="text-2xl font-serif text-muted-foreground">10%</span>
+                <p className="text-xs text-muted-foreground mt-1">Review & handoff</p>
+              </div>
+            </div>
+            <p className="text-xs text-muted-foreground/60 italic text-center">* Indicative breakdown — most delays occurred before development even started</p>
+          </div>
+        </div>
+      </section>}
 
       {/* BrynQ: My Responsibility */}
       {study.brynqResponsibility && <section className="px-6 lg:px-12 py-16 bg-card"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">My Responsibility & Design Framing</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqResponsibility}</p></div></section>}
