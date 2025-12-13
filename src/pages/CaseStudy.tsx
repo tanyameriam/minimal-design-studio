@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, X } from 'lucide-react';
 import streeAffinity1 from '@/assets/stree-affinity-1.png';
 import streeAffinity2 from '@/assets/stree-affinity-2.png';
 import streeAffinity3 from '@/assets/stree-affinity-3.png';
@@ -719,6 +719,7 @@ const CaseStudy = () => {
   const {
     slug
   } = useParams();
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
   const study = slug ? caseStudies[slug] : null;
   if (!study) {
     return <div className="min-h-screen flex items-center justify-center">
@@ -731,6 +732,26 @@ const CaseStudy = () => {
       </div>;
   }
   return <main className="min-h-screen bg-background text-foreground">
+      {/* Lightbox Modal */}
+      {lightboxImage && (
+        <div 
+          className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 animate-fade-in cursor-pointer"
+          onClick={() => setLightboxImage(null)}
+        >
+          <button 
+            className="absolute top-6 right-6 text-white/80 hover:text-white transition-colors"
+            onClick={() => setLightboxImage(null)}
+          >
+            <X className="w-8 h-8" />
+          </button>
+          <img 
+            src={lightboxImage} 
+            alt="Enlarged view" 
+            className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 px-6 lg:px-12 py-6 bg-background/80 backdrop-blur-sm">
         <Link to="/#work" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
@@ -1121,12 +1142,22 @@ const CaseStudy = () => {
                   <span className="px-2 py-1 text-xs bg-primary/10 border border-primary/20 rounded">I - Intents</span>
                   <span className="px-2 py-1 text-xs bg-primary/10 border border-primary/20 rounded">DI - Design Ideas</span>
                 </div>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <img src={streeInterview1} alt="Interview analysis with observation coding" className="w-full rounded border border-border" />
-                  <img src={streeInterview2} alt="Interview analysis with observation coding" className="w-full rounded border border-border" />
-                  <img src={streeInterview3} alt="Interview analysis with observation coding" className="w-full rounded border border-border" />
-                  <img src={streeInterview4} alt="Interview analysis with observation coding" className="w-full rounded border border-border" />
-                  <img src={streeInterview5} alt="Interview analysis with observation coding" className="w-full rounded border border-border" />
+                <div className="grid md:grid-cols-3 gap-4">
+                  <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(streeInterview1)}>
+                    <img src={streeInterview1} alt="Interview analysis with observation coding" className="w-full rounded" />
+                  </div>
+                  <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(streeInterview2)}>
+                    <img src={streeInterview2} alt="Interview analysis with observation coding" className="w-full rounded" />
+                  </div>
+                  <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(streeInterview3)}>
+                    <img src={streeInterview3} alt="Interview analysis with observation coding" className="w-full rounded" />
+                  </div>
+                  <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(streeInterview4)}>
+                    <img src={streeInterview4} alt="Interview analysis with observation coding" className="w-full rounded" />
+                  </div>
+                  <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(streeInterview5)}>
+                    <img src={streeInterview5} alt="Interview analysis with observation coding" className="w-full rounded" />
+                  </div>
                 </div>
               </div>
             )}
@@ -1147,13 +1178,13 @@ const CaseStudy = () => {
               Cultural models were created to visualize the relationships and influences surrounding women's safety experiences. These diagrams map the cultural, social, and environmental factors that impact users.
             </p>
             <div className="grid md:grid-cols-3 gap-4">
-              <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow">
+              <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(streeCultural1)}>
                 <img src={streeCultural1} alt="Cultural model: User relationships and breakdowns" className="w-full rounded" />
               </div>
-              <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow">
+              <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(streeCultural2)}>
                 <img src={streeCultural2} alt="Cultural model: Environmental factors" className="w-full rounded" />
               </div>
-              <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow">
+              <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(streeCultural3)}>
                 <img src={streeCultural3} alt="Cultural work model: User influences" className="w-full rounded" />
               </div>
             </div>
