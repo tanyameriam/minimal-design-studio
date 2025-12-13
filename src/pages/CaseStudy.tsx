@@ -79,6 +79,8 @@ import merryWhatsappDriver from '@/assets/merry-whatsapp-driver.png';
 import merryWhatsappPatient from '@/assets/merry-whatsapp-patient.png';
 import merryWhatsappHospital from '@/assets/merry-whatsapp-hospital.png';
 import merryWhatsappAdmin from '@/assets/merry-whatsapp-admin.png';
+// Food Waste system flow
+import foodWasteSystemFlow from '@/assets/food-waste-system-flow.png';
 import { PlatformAuditPhase } from '@/components/ResearchPhaseCard';
 interface CaseStudySection {
   title: string;
@@ -3181,6 +3183,22 @@ const CaseStudy = () => {
                   <h3 className="font-serif text-xl mb-4">{item.title}</h3>
                   <p className="text-muted-foreground leading-relaxed">{item.content}</p>
                 </div>)}
+            </div>
+          </div>
+        </section>}
+
+      {/* Suggested Solution System Flow (for food waste project) */}
+      {slug === 'food-waste-ngo' && <section className="px-6 lg:px-12 py-16">
+          <div className="container mx-auto max-w-5xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Suggested Solution</h2>
+            <h3 className="font-serif text-3xl mb-8">System Flow</h3>
+            <div className="bg-background border border-border rounded-lg p-4">
+              <img 
+                src={foodWasteSystemFlow} 
+                alt="Food Waste Solution System Flow Diagram" 
+                className="w-full h-auto cursor-pointer"
+                onClick={() => setLightboxImage(foodWasteSystemFlow)}
+              />
             </div>
           </div>
         </section>}
