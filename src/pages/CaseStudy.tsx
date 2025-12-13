@@ -28,6 +28,9 @@ import streeWireframe11 from '@/assets/stree-wireframe-11.png';
 import streeWireframe12 from '@/assets/stree-wireframe-12.png';
 import streeWireframe13 from '@/assets/stree-wireframe-13.png';
 import streeWireframe14 from '@/assets/stree-wireframe-14.png';
+import streeCultural1 from '@/assets/stree-cultural-1.png';
+import streeCultural2 from '@/assets/stree-cultural-2.png';
+import streeCultural3 from '@/assets/stree-cultural-3.png';
 interface CaseStudySection {
   title: string;
   content: string;
@@ -1135,7 +1138,29 @@ const CaseStudy = () => {
           </div>
         </section>}
 
-      {/* STREE: Synthesis Phase */}
+      {/* STREE: Cultural Model Section */}
+      {slug === 'stree-safety-app' && study.research && (
+        <section className="px-6 lg:px-12 py-12 border-t border-border">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">Cultural Model</h2>
+            <p className="text-sm text-muted-foreground mb-6">
+              Cultural models were created to visualize the relationships and influences surrounding women's safety experiences. These diagrams map the cultural, social, and environmental factors that impact users.
+            </p>
+            <div className="grid md:grid-cols-3 gap-4">
+              <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow">
+                <img src={streeCultural1} alt="Cultural model: User relationships and breakdowns" className="w-full rounded" />
+              </div>
+              <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow">
+                <img src={streeCultural2} alt="Cultural model: Environmental factors" className="w-full rounded" />
+              </div>
+              <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow">
+                <img src={streeCultural3} alt="Cultural work model: User influences" className="w-full rounded" />
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {study.synthesis && <section className="px-6 lg:px-12 py-12">
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Affinity Mapping & Synthesis</h2>
