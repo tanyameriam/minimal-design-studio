@@ -42,12 +42,15 @@ const splineProjects = [
   }
 ];
 
-type Tab = '3d' | 'character' | 'charcoal';
+type Tab = 'all' | '3d' | 'character' | 'charcoal';
 
 const Explorations = () => {
-  const [activeTab, setActiveTab] = useState<Tab>('3d');
+  const [activeTab, setActiveTab] = useState<Tab>('all');
+
+  const totalCount = splineProjects.length + characterSketches.length + charcoalSketches.length;
 
   const tabs = [
+    { id: 'all' as Tab, label: 'All', icon: Sparkles, count: totalCount },
     { id: '3d' as Tab, label: '3D', icon: Box, count: splineProjects.length },
     { id: 'character' as Tab, label: 'Characters', icon: Sparkles, count: characterSketches.length },
     { id: 'charcoal' as Tab, label: 'Charcoal', icon: Pencil, count: charcoalSketches.length },
@@ -91,7 +94,77 @@ const Explorations = () => {
         </div>
 
         {/* Content */}
-        <div className="min-h-[200px]">
+        <div className="min-h-[200px] space-y-6">
+          {/* All Tab */}
+          {activeTab === 'all' && (
+            <div className="space-y-6 animate-fade-in">
+              {/* 3D Section */}
+              <div>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">3D Explorations</p>
+                <div className="grid grid-cols-2 gap-4">
+                  {splineProjects.map((project) => (
+                    <a
+                      key={project.id}
+                      href={project.splineUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group relative overflow-hidden rounded-xl aspect-video bg-neutral-900"
+                    >
+                      <img
+                        src={project.thumbnail}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
+                        <div className="flex items-center justify-between w-full">
+                          <span className="text-white font-medium">{project.title}</span>
+                          <ExternalLink className="w-4 h-4 text-white/70 group-hover:text-white transition-colors" />
+                        </div>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              {/* Characters Section */}
+              <div>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Character Sketches</p>
+                <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
+                  {characterSketches.map((sketch) => (
+                    <div
+                      key={sketch.id}
+                      className="group relative aspect-square overflow-hidden rounded-lg bg-muted"
+                    >
+                      <img
+                        src={sketch.thumbnail}
+                        alt={sketch.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Charcoal Section */}
+              <div>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Charcoal Sketches</p>
+                <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
+                  {charcoalSketches.map((sketch) => (
+                    <div
+                      key={sketch.id}
+                      className="group relative aspect-[3/4] overflow-hidden rounded-lg bg-neutral-900"
+                    >
+                      <img
+                        src={sketch.thumbnail}
+                        alt={sketch.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
           {/* 3D Tab */}
           {activeTab === '3d' && (
             <div className="grid grid-cols-2 gap-4 animate-fade-in">
