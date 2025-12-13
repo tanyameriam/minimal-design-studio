@@ -3220,7 +3220,7 @@ const CaseStudy = () => {
               </p>
               
               <p>
-                Upon checkout completion, existing delivery partners are notified and the nearest available partner is assigned with pickup and delivery instructions, optimizing for speed, location efficiency, and resource usage. Delivery partners log in separately to check for notifications—if an order is assigned, they proceed; otherwise, they continue with their normal routine, avoiding idle time.
+                Upon checkout completion, existing delivery partners are notified and the nearest available partner is assigned with pickup and delivery instructions, optimizing for speed, location efficiency, and resource usage. Delivery partners log in separately to check for notifications , if an order is assigned, they proceed; otherwise, they continue with their normal routine, avoiding idle time.
               </p>
               
               <p>
