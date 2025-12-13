@@ -1401,10 +1401,25 @@ const CaseStudy = () => {
             <p className="text-muted-foreground mb-8">{study.merryDataAudit.intro}</p>
             
             {/* Key Questions */}
-            <div className="flex flex-wrap gap-3 mb-8">
+            <div className="flex flex-wrap items-center gap-3 mb-8">
               {study.merryDataAudit.questions.map((q, i) => (
                 <span key={i} className="px-4 py-2 bg-primary/10 text-primary text-sm font-medium">{q}</span>
               ))}
+              <a 
+                href="https://www.figma.com/design/yH9NNuzOQov4XIgkz5D2jo/Project-Merry-Health?node-id=1-8&t=lxBxhBwv6frOZBTQ-1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-xs text-primary hover:underline ml-auto"
+              >
+                <svg className="w-3.5 h-3.5" viewBox="0 0 38 57" fill="currentColor">
+                  <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z"/>
+                  <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z"/>
+                  <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z"/>
+                  <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z"/>
+                  <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z"/>
+                </svg>
+                View in Figma
+              </a>
             </div>
 
 
@@ -1928,6 +1943,22 @@ const CaseStudy = () => {
                         </div>
                       </div>
                     </div>
+                    {/* Figma Link */}
+                    <a 
+                      href="https://www.figma.com/design/yH9NNuzOQov4XIgkz5D2jo/Project-Merry-Health?node-id=10-11098&t=lxBxhBwv6frOZBTQ-1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 flex items-center gap-2 text-xs text-primary hover:underline"
+                    >
+                      <svg className="w-3.5 h-3.5" viewBox="0 0 38 57" fill="currentColor">
+                        <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z"/>
+                        <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z"/>
+                        <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z"/>
+                        <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z"/>
+                        <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z"/>
+                      </svg>
+                      View in Figma
+                    </a>
                   </div>
                 </div>
               </div>
@@ -1982,6 +2013,21 @@ const CaseStudy = () => {
             <div className="flex items-center gap-4 mb-6">
               <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">3</span>
               <h2 className="font-serif text-2xl">User Journey Mapping</h2>
+              <a 
+                href="https://www.figma.com/design/yH9NNuzOQov4XIgkz5D2jo/Project-Merry-Health?node-id=15-28403&t=lxBxhBwv6frOZBTQ-1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-auto flex items-center gap-2 text-xs text-primary hover:underline"
+              >
+                <svg className="w-3.5 h-3.5" viewBox="0 0 38 57" fill="currentColor">
+                  <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z"/>
+                  <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z"/>
+                  <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z"/>
+                  <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z"/>
+                  <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z"/>
+                </svg>
+                View in Figma
+              </a>
             </div>
             <p className="text-muted-foreground mb-10">We created current and ideal journey maps for all actors to validate if our identified opportunities would truly make a difference in their experience.</p>
 
