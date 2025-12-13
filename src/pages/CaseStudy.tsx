@@ -2982,11 +2982,18 @@ const CaseStudy = () => {
             <div className="space-y-8">
               {/* Hospital Admin WhatsApp */}
               <div className="p-6 rounded-xl border border-border bg-background">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white text-sm font-medium">HA</div>
-                  <div>
-                    <h3 className="font-serif text-lg">Hospital Admin Experience</h3>
-                    <p className="text-xs text-muted-foreground">Intake via WhatsApp with structured parsing</p>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white text-sm font-medium">HA</div>
+                    <div>
+                      <h3 className="font-serif text-lg">Hospital Admin Experience</h3>
+                      <p className="text-xs text-muted-foreground">Intake via WhatsApp with structured parsing</p>
+                    </div>
+                  </div>
+                  <div className="cursor-pointer group" onClick={() => setLightboxImage(merryWhatsappAdmin)}>
+                    <div className="w-14 h-18 overflow-hidden rounded-lg border border-border bg-muted/20">
+                      <img src={merryWhatsappAdmin} alt="Hospital Admin WhatsApp" className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300" />
+                    </div>
                   </div>
                 </div>
                 <div className="grid md:grid-cols-2 gap-6">
@@ -3012,7 +3019,14 @@ const CaseStudy = () => {
                     </div>
                   </div>
                   <div className="p-4 rounded-lg bg-emerald-500/5 border border-emerald-500/20">
-                    <h4 className="text-sm font-semibold mb-3">Announcement Group (Read-Only)</h4>
+                    <div className="flex items-center justify-between mb-3">
+                      <h4 className="text-sm font-semibold">Announcement Group (Read-Only)</h4>
+                      <div className="cursor-pointer group" onClick={() => setLightboxImage(merryWhatsappHospital)}>
+                        <div className="w-10 h-12 overflow-hidden rounded border border-border bg-muted/20">
+                          <img src={merryWhatsappHospital} alt="Hospital Announcement Group" className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300" />
+                        </div>
+                      </div>
+                    </div>
                     <p className="text-xs text-muted-foreground mb-3">Hospital managers can view all updates in a read-only community announcement channel for day-to-day operations visibility.</p>
                     <ul className="space-y-1 text-xs text-muted-foreground">
                       <li>• Single source of truth for all ride milestones</li>
@@ -3025,13 +3039,19 @@ const CaseStudy = () => {
                 </div>
               </div>
 
-              {/* Driver WhatsApp */}
               <div className="p-6 rounded-xl border border-border bg-background">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center text-white text-sm font-medium">DR</div>
-                  <div>
-                    <h3 className="font-serif text-lg">Driver Experience</h3>
-                    <p className="text-xs text-muted-foreground">Ride requests with SMS fallback for feature phones</p>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center text-white text-sm font-medium">DR</div>
+                    <div>
+                      <h3 className="font-serif text-lg">Driver Experience</h3>
+                      <p className="text-xs text-muted-foreground">Ride requests with SMS fallback for feature phones</p>
+                    </div>
+                  </div>
+                  <div className="cursor-pointer group" onClick={() => setLightboxImage(merryWhatsappDriver)}>
+                    <div className="w-14 h-18 overflow-hidden rounded-lg border border-border bg-muted/20">
+                      <img src={merryWhatsappDriver} alt="Driver WhatsApp" className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300" />
+                    </div>
                   </div>
                 </div>
                 <div className="grid md:grid-cols-2 gap-6">
@@ -3060,13 +3080,19 @@ const CaseStudy = () => {
                 </div>
               </div>
 
-              {/* Patient Party WhatsApp */}
               <div className="p-6 rounded-xl border border-border bg-background">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-sm font-medium">PP</div>
-                  <div>
-                    <h3 className="font-serif text-lg">Patient Party Experience</h3>
-                    <p className="text-xs text-muted-foreground">Updates via WhatsApp, IVR calls, or SMS</p>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-sm font-medium">PP</div>
+                    <div>
+                      <h3 className="font-serif text-lg">Patient Party Experience</h3>
+                      <p className="text-xs text-muted-foreground">Updates via WhatsApp, IVR calls, or SMS</p>
+                    </div>
+                  </div>
+                  <div className="cursor-pointer group" onClick={() => setLightboxImage(merryWhatsappPatient)}>
+                    <div className="w-14 h-18 overflow-hidden rounded-lg border border-border bg-muted/20">
+                      <img src={merryWhatsappPatient} alt="Patient Party WhatsApp" className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300" />
+                    </div>
                   </div>
                 </div>
                 <div className="grid md:grid-cols-2 gap-6">
@@ -3095,38 +3121,6 @@ const CaseStudy = () => {
               </div>
             </div>
 
-            {/* WhatsApp Chat Examples */}
-            <div className="mt-12">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-serif text-lg">WhatsApp Chat Examples</h3>
-                <p className="text-xs text-muted-foreground">Click to view</p>
-              </div>
-              
-              <div className="flex gap-3">
-                {[{
-              src: merryWhatsappDriver,
-              alt: "Driver WhatsApp experience",
-              label: "Driver"
-            }, {
-              src: merryWhatsappPatient,
-              alt: "Patient Party WhatsApp experience",
-              label: "Patient"
-            }, {
-              src: merryWhatsappHospital,
-              alt: "Hospital Announcement Group experience",
-              label: "Hospital"
-            }, {
-              src: merryWhatsappAdmin,
-              alt: "Hospital Admin WhatsApp experience",
-              label: "Admin"
-            }].map((item, i) => <div key={i} className="cursor-pointer group" onClick={() => setLightboxImage(item.src)}>
-                    <div className="w-16 h-20 overflow-hidden rounded-lg border border-border bg-muted/20">
-                      <img src={item.src} alt={item.alt} className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300" />
-                    </div>
-                    <p className="text-[10px] text-muted-foreground mt-1 text-center">{item.label}</p>
-                  </div>)}
-              </div>
-            </div>
           </div>
         </section>}
 
