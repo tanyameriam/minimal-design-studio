@@ -4070,7 +4070,17 @@ const CaseStudy = () => {
         </section>}
 
       {/* System Modules (for Merry Health) */}
-      {study.systemModules}
+      {study.systemModules && <section className="px-6 lg:px-12 py-16">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">System Modules</h2>
+            <div className="space-y-8">
+              {study.systemModules.map((module, i) => <div key={i}>
+                  <h3 className="font-serif text-xl mb-3">{module.title}</h3>
+                  <p className="text-muted-foreground">{module.content}</p>
+                </div>)}
+            </div>
+          </div>
+        </section>}
 
 
       {/* Edge Cases (for Merry Health) */}
@@ -4089,7 +4099,17 @@ const CaseStudy = () => {
 
 
       {/* Deliverables (for Merry Health) */}
-      {study.deliverables}
+      {study.deliverables && <section className="px-6 lg:px-12 py-16 bg-card">
+          <div className="container mx-auto max-w-4xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Deliverables</h2>
+            <ul className="space-y-3">
+              {study.deliverables.map((item, i) => <li key={i} className="flex gap-4">
+                  <span className="text-muted-foreground">•</span>
+                  <span>{item}</span>
+                </li>)}
+            </ul>
+          </div>
+        </section>}
 
       {/* Next Steps */}
       {study.nextSteps && <section className="px-6 lg:px-12 py-16 bg-card">
