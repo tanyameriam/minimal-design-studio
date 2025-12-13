@@ -2135,19 +2135,28 @@ const CaseStudy = () => {
             </p>
             
             <div className="flex gap-3 overflow-x-auto pb-2">
-              {[
-                { src: merryHealthDashboard, alt: "Hospital Dashboard", label: "Dashboard" },
-                { src: merryHealthMap, alt: "Find Ambulance Map", label: "Find Ambulance" },
-                { src: merryHealthBooking, alt: "Add Ride Flow", label: "Add Ride" },
-                { src: merryHealthRides, alt: "Ride Management", label: "Rides" }
-              ].map((item, i) => (
-                <div key={i} className="cursor-pointer group flex-shrink-0" onClick={() => setLightboxImage(item.src)}>
+              {[{
+            src: merryHealthDashboard,
+            alt: "Hospital Dashboard",
+            label: "Dashboard"
+          }, {
+            src: merryHealthMap,
+            alt: "Find Ambulance Map",
+            label: "Find Ambulance"
+          }, {
+            src: merryHealthBooking,
+            alt: "Add Ride Flow",
+            label: "Add Ride"
+          }, {
+            src: merryHealthRides,
+            alt: "Ride Management",
+            label: "Rides"
+          }].map((item, i) => <div key={i} className="cursor-pointer group flex-shrink-0" onClick={() => setLightboxImage(item.src)}>
                   <div className="w-32 h-20 overflow-hidden rounded-lg border-2 border-primary/30 bg-background shadow-md">
                     <img src={item.src} alt={item.alt} className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300" />
                   </div>
                   <p className="text-xs text-muted-foreground mt-2 text-center">{item.label}</p>
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
         </section>}
@@ -2558,20 +2567,7 @@ const CaseStudy = () => {
                     </div>
 
                     {/* Emotional Arc */}
-                    <div className="grid grid-cols-3 gap-2">
-                      <div className="p-3 rounded-lg bg-destructive/5 border border-destructive/20">
-                        <h5 className="text-[10px] font-semibold text-destructive mb-1">Beginning</h5>
-                        <p className="text-[10px] text-muted-foreground">High stress, panic</p>
-                      </div>
-                      <div className="p-3 rounded-lg bg-amber-500/5 border border-amber-500/20">
-                        <h5 className="text-[10px] font-semibold text-amber-600 mb-1">Middle</h5>
-                        <p className="text-[10px] text-muted-foreground">Relief when tracking confirmed</p>
-                      </div>
-                      <div className="p-3 rounded-lg bg-primary/5 border border-primary/20">
-                        <h5 className="text-[10px] font-semibold text-primary mb-1">End</h5>
-                        <p className="text-[10px] text-muted-foreground">Confidence & closure</p>
-                      </div>
-                    </div>
+                    
                     
                     <div className="p-4 rounded-lg bg-gradient-to-r from-emerald-500/5 to-emerald-600/5 border border-emerald-500/20">
                       <h4 className="text-xs font-semibold mb-3 flex items-center gap-2">
@@ -3099,19 +3095,28 @@ const CaseStudy = () => {
               </div>
               
               <div className="flex gap-3">
-                {[
-                  { src: merryWhatsappDriver, alt: "Driver WhatsApp experience", label: "Driver" },
-                  { src: merryWhatsappPatient, alt: "Patient Party WhatsApp experience", label: "Patient" },
-                  { src: merryWhatsappHospital, alt: "Hospital Announcement Group experience", label: "Hospital" },
-                  { src: merryWhatsappAdmin, alt: "Hospital Admin WhatsApp experience", label: "Admin" }
-                ].map((item, i) => (
-                  <div key={i} className="cursor-pointer group" onClick={() => setLightboxImage(item.src)}>
+                {[{
+              src: merryWhatsappDriver,
+              alt: "Driver WhatsApp experience",
+              label: "Driver"
+            }, {
+              src: merryWhatsappPatient,
+              alt: "Patient Party WhatsApp experience",
+              label: "Patient"
+            }, {
+              src: merryWhatsappHospital,
+              alt: "Hospital Announcement Group experience",
+              label: "Hospital"
+            }, {
+              src: merryWhatsappAdmin,
+              alt: "Hospital Admin WhatsApp experience",
+              label: "Admin"
+            }].map((item, i) => <div key={i} className="cursor-pointer group" onClick={() => setLightboxImage(item.src)}>
                     <div className="w-16 h-20 overflow-hidden rounded-lg border border-border bg-muted/20">
                       <img src={item.src} alt={item.alt} className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300" />
                     </div>
                     <p className="text-[10px] text-muted-foreground mt-1 text-center">{item.label}</p>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </div>
           </div>
