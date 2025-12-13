@@ -21,7 +21,7 @@ const Hero = () => {
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed animate-fade-up-delay-2">
-            Specializing in designing end-to-end systems that bring alignment, usability, and operational efficiency to everyday workflows.
+            End-to-end systems designed to bring alignment, usability, and operational efficiency to everyday workflows.
           </p>
         </div>
         
