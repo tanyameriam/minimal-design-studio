@@ -1299,13 +1299,61 @@ const CaseStudy = () => {
       {/* BrynQ: NDA Note */}
       {study.brynqNdaNote && <section className="px-6 lg:px-12 py-8 bg-muted/30 border-y border-border"><div className="container mx-auto max-w-4xl text-center"><p className="text-sm text-muted-foreground italic">{study.brynqNdaNote}</p></div></section>}
 
-      {/* Merry Health Current Problem (Placeholder) */}
+      {/* Merry Health UX Approach Principles */}
       {slug === 'merry-health' && (
         <section className="px-6 lg:px-12 py-16 bg-card">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">The Current Problem</h2>
-            <div className="p-8 border-2 border-dashed border-border/50 bg-muted/20 min-h-[120px] flex items-center justify-center">
-              <p className="text-muted-foreground italic">Content placeholder – Current Problem section</p>
+          <div className="container mx-auto max-w-5xl">
+            <h2 className="font-serif text-3xl md:text-4xl text-center mb-4">The 3 Principles Guiding Our UX Approach</h2>
+            <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">We identified three core problems in the current system and defined principles to address each one.</p>
+            
+            <div className="space-y-8">
+              {/* Principle 1 */}
+              <div className="flex flex-col md:flex-row gap-6 items-start">
+                <div className="md:w-1/3">
+                  <p className="text-sm text-muted-foreground bg-muted/50 p-4 rounded-lg border-l-4 border-amber-400">
+                    Current workflows do not match how staff actually work
+                  </p>
+                </div>
+                <div className="hidden md:flex items-center text-muted-foreground">
+                  <span className="text-2xl">→</span>
+                </div>
+                <div className="md:flex-1 p-6 rounded-xl border border-border bg-background shadow-sm">
+                  <h3 className="font-serif text-xl text-primary mb-2">Expand Hospital Adoption</h3>
+                  <p className="text-muted-foreground text-sm">Enable fast, mobile-friendly workflows that match how staff actually work.</p>
+                </div>
+              </div>
+
+              {/* Principle 2 */}
+              <div className="flex flex-col md:flex-row gap-6 items-start">
+                <div className="md:w-1/3">
+                  <p className="text-sm text-muted-foreground bg-muted/50 p-4 rounded-lg border-l-4 border-amber-400">
+                    Information is duplicated, overwritten, or incomplete
+                  </p>
+                </div>
+                <div className="hidden md:flex items-center text-muted-foreground">
+                  <span className="text-2xl">→</span>
+                </div>
+                <div className="md:flex-1 p-6 rounded-xl border border-border bg-background shadow-sm">
+                  <h3 className="font-serif text-xl text-primary mb-2">Strengthen Data Quality</h3>
+                  <p className="text-muted-foreground text-sm">Ensure information is captured once and stays consistent across all systems.</p>
+                </div>
+              </div>
+
+              {/* Principle 3 */}
+              <div className="flex flex-col md:flex-row gap-6 items-start">
+                <div className="md:w-1/3">
+                  <p className="text-sm text-muted-foreground bg-muted/50 p-4 rounded-lg border-l-4 border-amber-400">
+                    Heavy manual coordination slows dispatch, increases errors, and raises cost
+                  </p>
+                </div>
+                <div className="hidden md:flex items-center text-muted-foreground">
+                  <span className="text-2xl">→</span>
+                </div>
+                <div className="md:flex-1 p-6 rounded-xl border border-border bg-background shadow-sm">
+                  <h3 className="font-serif text-xl text-primary mb-2">Improve Operational Efficiency</h3>
+                  <p className="text-muted-foreground text-sm">Reduce manual coordination, calls, and rework across stakeholders.</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
