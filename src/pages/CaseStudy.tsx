@@ -72,6 +72,11 @@ import merryProposedWorkflow from '@/assets/merry-proposed-workflow.jpg';
 import merryWireframes from '@/assets/merry-wireframes.png';
 import merryHifiDashboard from '@/assets/merry-hifi-dashboard.png';
 import merryHifiReports from '@/assets/merry-hifi-reports.png';
+// Merry Health WhatsApp chat examples
+import merryWhatsappDriver from '@/assets/merry-whatsapp-driver.png';
+import merryWhatsappPatient from '@/assets/merry-whatsapp-patient.png';
+import merryWhatsappHospital from '@/assets/merry-whatsapp-hospital.png';
+import merryWhatsappAdmin from '@/assets/merry-whatsapp-admin.png';
 import { PlatformAuditPhase } from '@/components/ResearchPhaseCard';
 interface CaseStudySection {
   title: string;
@@ -3043,6 +3048,67 @@ const CaseStudy = () => {
                       <li>• Transparent experience without back-and-forth calls</li>
                     </ul>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* WhatsApp Chat Examples */}
+            <div className="mt-16">
+              <h3 className="font-serif text-xl mb-4">WhatsApp Chat Examples</h3>
+              <p className="text-sm text-muted-foreground mb-8">Real examples of the WhatsApp message flows for each user type, demonstrating the end-to-end communication system.</p>
+              
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div 
+                  className="cursor-pointer group"
+                  onClick={() => setLightboxImage(merryWhatsappDriver)}
+                >
+                  <div className="overflow-hidden rounded-xl border border-border bg-muted/20">
+                    <img 
+                      src={merryWhatsappDriver} 
+                      alt="Driver WhatsApp experience" 
+                      className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-2 text-center">Driver</p>
+                </div>
+                <div 
+                  className="cursor-pointer group"
+                  onClick={() => setLightboxImage(merryWhatsappPatient)}
+                >
+                  <div className="overflow-hidden rounded-xl border border-border bg-muted/20">
+                    <img 
+                      src={merryWhatsappPatient} 
+                      alt="Patient Party WhatsApp experience" 
+                      className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-2 text-center">Patient Party</p>
+                </div>
+                <div 
+                  className="cursor-pointer group"
+                  onClick={() => setLightboxImage(merryWhatsappHospital)}
+                >
+                  <div className="overflow-hidden rounded-xl border border-border bg-muted/20">
+                    <img 
+                      src={merryWhatsappHospital} 
+                      alt="Hospital Announcement Group experience" 
+                      className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-2 text-center">Hospital Group</p>
+                </div>
+                <div 
+                  className="cursor-pointer group"
+                  onClick={() => setLightboxImage(merryWhatsappAdmin)}
+                >
+                  <div className="overflow-hidden rounded-xl border border-border bg-muted/20">
+                    <img 
+                      src={merryWhatsappAdmin} 
+                      alt="Hospital Admin WhatsApp experience" 
+                      className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-2 text-center">Hospital Admin</p>
                 </div>
               </div>
             </div>
