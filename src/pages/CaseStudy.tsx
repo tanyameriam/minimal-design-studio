@@ -2081,33 +2081,46 @@ const CaseStudy = () => {
             
             {/* Horizontal Phase Tabs - Compact Single Line */}
             <div className="flex items-center justify-center gap-1 md:gap-2 overflow-x-auto pb-2">
-              {[
-                { num: 1, title: "Audit", id: "merry-audit" },
-                { num: 2, title: "Mapping", id: "merry-mapping" },
-                { num: 3, title: "Findings", id: "merry-findings" },
-                { num: 4, title: "Strategy", id: "merry-strategy" },
-                { num: 5, title: "Workflow", id: "merry-workflow" },
-                { num: 6, title: "Design", id: "merry-design" }
-              ].map((phase, i, arr) => (
-                <div key={i} className="flex items-center flex-shrink-0">
-                  <button 
-                    onClick={() => document.getElementById(phase.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-                    className="flex items-center gap-2 px-3 py-2 md:px-4 md:py-2.5 rounded-full bg-card border border-border hover:border-primary/50 hover:bg-primary/5 transition-all duration-200 cursor-pointer group"
-                  >
+              {[{
+            num: 1,
+            title: "Audit",
+            id: "merry-audit"
+          }, {
+            num: 2,
+            title: "Mapping",
+            id: "merry-mapping"
+          }, {
+            num: 3,
+            title: "Findings",
+            id: "merry-findings"
+          }, {
+            num: 4,
+            title: "Strategy",
+            id: "merry-strategy"
+          }, {
+            num: 5,
+            title: "Workflow",
+            id: "merry-workflow"
+          }, {
+            num: 6,
+            title: "Design",
+            id: "merry-design"
+          }].map((phase, i, arr) => <div key={i} className="flex items-center flex-shrink-0">
+                  <button onClick={() => document.getElementById(phase.id)?.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            })} className="flex items-center gap-2 px-3 py-2 md:px-4 md:py-2.5 rounded-full bg-card border border-border hover:border-primary/50 hover:bg-primary/5 transition-all duration-200 cursor-pointer group">
                     <span className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-primary/10 group-hover:bg-primary/20 flex items-center justify-center text-[10px] md:text-xs font-semibold text-primary transition-colors">
                       {phase.num}
                     </span>
                     <span className="text-xs md:text-sm font-medium whitespace-nowrap">{phase.title}</span>
                   </button>
-                  {i < arr.length - 1 && (
-                    <div className="mx-1 text-muted-foreground/30">
+                  {i < arr.length - 1 && <div className="mx-1 text-muted-foreground/30">
                       <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                       </svg>
-                    </div>
-                  )}
-                </div>
-              ))}
+                    </div>}
+                </div>)}
             </div>
           </div>
         </section>}
@@ -3055,58 +3068,30 @@ const CaseStudy = () => {
             {/* WhatsApp Chat Examples */}
             <div className="mt-16">
               <h3 className="font-serif text-xl mb-4">WhatsApp Chat Examples</h3>
-              <p className="text-sm text-muted-foreground mb-8">Real examples of the WhatsApp message flows for each user type, demonstrating the end-to-end communication system.</p>
+              <p className="text-sm text-muted-foreground mb-8">Examples of the WhatsApp message flows for each user type, demonstrating the end-to-end communication system.</p>
               
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div 
-                  className="cursor-pointer group"
-                  onClick={() => setLightboxImage(merryWhatsappDriver)}
-                >
+                <div className="cursor-pointer group" onClick={() => setLightboxImage(merryWhatsappDriver)}>
                   <div className="overflow-hidden rounded-xl border border-border bg-muted/20">
-                    <img 
-                      src={merryWhatsappDriver} 
-                      alt="Driver WhatsApp experience" 
-                      className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+                    <img src={merryWhatsappDriver} alt="Driver WhatsApp experience" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300" />
                   </div>
                   <p className="text-xs text-muted-foreground mt-2 text-center">Driver</p>
                 </div>
-                <div 
-                  className="cursor-pointer group"
-                  onClick={() => setLightboxImage(merryWhatsappPatient)}
-                >
+                <div className="cursor-pointer group" onClick={() => setLightboxImage(merryWhatsappPatient)}>
                   <div className="overflow-hidden rounded-xl border border-border bg-muted/20">
-                    <img 
-                      src={merryWhatsappPatient} 
-                      alt="Patient Party WhatsApp experience" 
-                      className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+                    <img src={merryWhatsappPatient} alt="Patient Party WhatsApp experience" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300" />
                   </div>
                   <p className="text-xs text-muted-foreground mt-2 text-center">Patient Party</p>
                 </div>
-                <div 
-                  className="cursor-pointer group"
-                  onClick={() => setLightboxImage(merryWhatsappHospital)}
-                >
+                <div className="cursor-pointer group" onClick={() => setLightboxImage(merryWhatsappHospital)}>
                   <div className="overflow-hidden rounded-xl border border-border bg-muted/20">
-                    <img 
-                      src={merryWhatsappHospital} 
-                      alt="Hospital Announcement Group experience" 
-                      className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+                    <img src={merryWhatsappHospital} alt="Hospital Announcement Group experience" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300" />
                   </div>
                   <p className="text-xs text-muted-foreground mt-2 text-center">Hospital Group</p>
                 </div>
-                <div 
-                  className="cursor-pointer group"
-                  onClick={() => setLightboxImage(merryWhatsappAdmin)}
-                >
+                <div className="cursor-pointer group" onClick={() => setLightboxImage(merryWhatsappAdmin)}>
                   <div className="overflow-hidden rounded-xl border border-border bg-muted/20">
-                    <img 
-                      src={merryWhatsappAdmin} 
-                      alt="Hospital Admin WhatsApp experience" 
-                      className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+                    <img src={merryWhatsappAdmin} alt="Hospital Admin WhatsApp experience" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300" />
                   </div>
                   <p className="text-xs text-muted-foreground mt-2 text-center">Hospital Admin</p>
                 </div>
