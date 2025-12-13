@@ -3945,14 +3945,20 @@ const CaseStudy = () => {
       {/* Impact (for food waste project - array format) */}
       {study.impact && Array.isArray(study.impact) && <section className="px-6 lg:px-12 py-16 bg-card">
           <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Impact</h2>
-            <p className="text-lg text-muted-foreground mb-8">The designed system helps:</p>
-            <ul className="space-y-4">
-              {study.impact.map((item, i) => <li key={i} className="flex gap-4">
-                  <span className="text-muted-foreground">•</span>
-                  <span className="text-lg">{item}</span>
-                </li>)}
-            </ul>
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-8">Impact</h2>
+            <p className="font-serif text-xl text-foreground/80 mb-10">The designed system helps:</p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {study.impact.map((item, i) => (
+                <div key={i} className="group p-6 bg-background border border-border rounded-lg hover:border-primary/30 transition-all duration-300">
+                  <div className="flex items-start gap-4">
+                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-medium text-sm">
+                      {i + 1}
+                    </span>
+                    <p className="text-foreground/80 leading-relaxed">{item}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>}
 
