@@ -14,7 +14,9 @@ const Contact = () => {
             something <span className="italic">together</span>
           </h2>
           <a 
-            href="mailto:tanyameriamsunny@gmail.com"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=tanyameriamsunny@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group inline-flex items-center gap-3 text-2xl md:text-3xl font-serif hover:italic transition-all duration-300"
           >
             tanyameriamsunny@gmail.com
@@ -45,7 +47,9 @@ const Contact = () => {
               <p className="text-muted-foreground text-sm">
                 Interested in sharing your knowledge?{' '}
                 <a 
-                  href="mailto:tanyameriamsunny@gmail.com?subject=Speaker%20Inquiry%20-%20Design%20Reimagined" 
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=tanyameriamsunny@gmail.com&su=Speaker%20Inquiry%20-%20Design%20Reimagined"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-foreground underline underline-offset-2 hover:no-underline"
                 >
                   Drop me a message
