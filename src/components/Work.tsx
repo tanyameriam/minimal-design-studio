@@ -3,7 +3,6 @@ import ProjectCard from './ProjectCard';
 import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
 import streeCover from '@/assets/stree-cover.png';
-
 type ProjectTag = 'UI' | 'UX' | 'Research';
 interface Project {
   title: string;
@@ -83,9 +82,7 @@ const Work = () => {
             </p>
             <h2 className="font-serif text-4xl md:text-5xl">Projects</h2>
           </div>
-          <p className="text-muted-foreground text-sm hidden md:block">
-            2021 – Present
-          </p>
+          
         </div>
 
         {/* Filter & Search */}
