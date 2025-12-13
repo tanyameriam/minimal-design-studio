@@ -106,6 +106,7 @@ interface CaseStudyData {
   // Extended sections for flexible content
   currentScenario?: CaseStudySection[];
   researchInsights?: {
+    ngoRole?: string;
     ngoQuotes?: string[];
     painPoints?: string[];
     opportunity?: string;
@@ -1184,8 +1185,9 @@ const caseStudies: Record<string, CaseStudyData> = {
       content: "Phone calls, manual planning, and volunteer-based transport create a fragile network that collapses under pressure. Impact: The ecosystem fails daily, not due to lack of food, but lack of system design."
     }],
     researchInsights: {
+      ngoRole: "Food leftover management has been a struggle for almost all NGOs in India. They facilitate the leftover food from restaurants, parties, etc to be channeled to the hunger hotspots. One such organization is **Manav Charities**, they collect leftover food from parties, weddings, or other events and distribute it in Hunger hotspots.",
       painPoints: ["Irregular notifications", "Lack of manpower to collect food", "High transportation cost", "Difficulty coordinating pickups from multiple locations", "High spoilage risk due to delays"],
-      ngoQuotes: ["Leftover food is going to waste while people outside are starving.", "We often get notified too late to do anything about it.", "Transporting food on time is our biggest challenge."],
+      ngoQuotes: ["Leftover food at marriage functions or company events is going down the sewer when there are a lot of hungry stomachs on the street. Logistics and reaching out to them simultaneously has been a huge struggle throughout", "There have been a lot of instances when we couldn't collect food from parties because they were informed at odd timings", "The logistics in transporting the food on time to reach the hunger hotspots was very difficult to arrange and manage"],
       opportunity: "There was a clear need for a centralized, coordinated system that provides real-time connectivity between restaurants and NGOs, assigns delivery partners automatically, manages time-sensitive pickups efficiently, and offers transparency and accountability across all stakeholders."
     },
     processFlow: [{
@@ -3135,30 +3137,24 @@ const CaseStudy = () => {
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-12">Research Insights</h2>
             
-            {/* Interview Context */}
-            <div className="mb-12">
-              <p className="text-lg leading-relaxed text-muted-foreground">
-                To understand the real challenges faced on the ground, I conducted interviews with NGO representatives working in food redistribution. These conversations revealed critical pain points that are often invisible in data but define everyday struggles.
-              </p>
-            </div>
-            
-            {/* Pain Points as Paragraph with Highlights */}
-            {study.researchInsights.painPoints && <div className="mb-16">
-                <h3 className="font-serif text-2xl mb-6">What NGOs Struggle With</h3>
-                <p className="text-lg leading-relaxed">
-                  NGOs face a cascade of operational hurdles: <span className="bg-muted px-2 py-0.5 rounded">irregular notifications</span> from restaurants make planning impossible, while <span className="bg-muted px-2 py-0.5 rounded">lack of manpower</span> means even known opportunities slip away. <span className="bg-muted px-2 py-0.5 rounded">High transportation costs</span> strain already tight budgets, and <span className="bg-muted px-2 py-0.5 rounded">coordinating pickups from multiple locations</span> becomes a logistical nightmare. All of this compounds into <span className="bg-muted px-2 py-0.5 rounded">high spoilage risk</span> due to inevitable delays.
+            {/* What is the role of NGOs? */}
+            {study.researchInsights.ngoRole && <div className="mb-16">
+                <h3 className="font-serif text-3xl mb-6">What is the role of NGOs?</h3>
+                <p className="text-lg leading-relaxed text-foreground/80">
+                  {study.researchInsights.ngoRole.split('**').map((part, i) => 
+                    i % 2 === 1 ? <strong key={i} className="font-semibold text-foreground">{part}</strong> : part
+                  )}
                 </p>
               </div>}
             
-            {/* NGO Quotes in Aesthetic Cards */}
+            {/* NGO Quotes */}
             {study.researchInsights.ngoQuotes && <div className="mb-16">
-                <h3 className="font-serif text-2xl mb-8">Voices from the Field</h3>
-                <div className="grid gap-6">
+                <h3 className="font-serif text-3xl mb-8 text-center">What does the NGOs say?</h3>
+                <div className="grid md:grid-cols-3 gap-6">
                   {study.researchInsights.ngoQuotes.map((quote, i) => (
-                    <div key={i} className="relative pl-8 py-6 pr-6 bg-card border border-border rounded-lg">
-                      <span className="absolute left-4 top-4 text-4xl text-muted-foreground/30 font-serif leading-none">"</span>
-                      <p className="text-lg italic text-foreground/90 leading-relaxed pl-4">
-                        {quote}
+                    <div key={i} className="relative">
+                      <p className="text-lg leading-relaxed text-foreground/80">
+                        "{quote}"
                       </p>
                     </div>
                   ))}
