@@ -2215,11 +2215,11 @@ const CaseStudy = () => {
                   
                   <div className="grid md:grid-cols-2 gap-4">
                     {/* Current Issues */}
-                    <div className="p-4 rounded-lg bg-destructive/5 border border-destructive/20">
-                      <h4 className="text-xs font-semibold text-destructive mb-2 uppercase tracking-wider">Key Issues</h4>
+                    <div className="p-4 rounded-lg bg-muted/50 border border-border">
+                      <h4 className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-wider">Key Issues</h4>
                       <ul className="space-y-1.5">
                         {study.merrySystemFlow.currentFlow.painPoints.slice(0, 4).map((point, i) => <li key={i} className="text-xs text-muted-foreground flex gap-2">
-                            <span className="text-destructive shrink-0">×</span>
+                            <span className="text-muted-foreground shrink-0">×</span>
                             <span>{point}</span>
                           </li>)}
                       </ul>
@@ -2245,8 +2245,8 @@ const CaseStudy = () => {
                     <div className="space-y-2">
                       <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryCurrentFlow)}>
                         <img src={merryCurrentFlow} alt="Current System Flow" className="w-full h-20 object-cover opacity-80 hover:opacity-100 transition-opacity" />
-                        <div className="bg-destructive/10 px-2 py-1">
-                          <span className="text-[10px] text-destructive font-medium">Current Flow</span>
+                        <div className="bg-muted px-2 py-1">
+                          <span className="text-[10px] text-muted-foreground font-medium">Current Flow</span>
                         </div>
                       </div>
                       <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryIdealFlow)}>
@@ -2434,8 +2434,8 @@ const CaseStudy = () => {
                       <div className="space-y-2">
                         <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryPatientCurrentJourney)}>
                           <img src={merryPatientCurrentJourney} alt="Current Journey" className="w-full h-14 object-cover opacity-80 hover:opacity-100 transition-opacity" />
-                          <div className="bg-destructive/10 px-2 py-1">
-                            <span className="text-[10px] text-destructive font-medium">Current</span>
+                          <div className="bg-muted px-2 py-1">
+                            <span className="text-[10px] text-muted-foreground font-medium">Current</span>
                           </div>
                         </div>
                         <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryPatientIdealJourney)}>
@@ -2484,8 +2484,8 @@ const CaseStudy = () => {
                       <div className="space-y-2">
                         <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryAdminCurrentJourney)}>
                           <img src={merryAdminCurrentJourney} alt="Current Journey" className="w-full h-14 object-cover opacity-80 hover:opacity-100 transition-opacity" />
-                          <div className="bg-destructive/10 px-2 py-1">
-                            <span className="text-[10px] text-destructive font-medium">Current</span>
+                          <div className="bg-muted px-2 py-1">
+                            <span className="text-[10px] text-muted-foreground font-medium">Current</span>
                           </div>
                         </div>
                         <div className="rounded border border-border overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryAdminIdealJourney)}>
@@ -2689,7 +2689,7 @@ const CaseStudy = () => {
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
                 <div className="p-4 rounded-lg border border-border bg-card">
                   <div className="flex items-start gap-3">
-                    <span className="w-6 h-6 rounded-full bg-destructive/10 flex items-center justify-center text-destructive text-xs font-bold flex-shrink-0 mt-0.5">1</span>
+                    <span className="w-6 h-6 rounded-full bg-muted flex items-center justify-center text-muted-foreground text-xs font-bold flex-shrink-0 mt-0.5">1</span>
                     <div>
                       <h4 className="text-sm font-medium mb-1">Manual Coordination Overload</h4>
                       <p className="text-xs text-muted-foreground">WhatsApp, calls, and dashboard switching creates cognitive burden</p>
@@ -2698,7 +2698,7 @@ const CaseStudy = () => {
                 </div>
                 <div className="p-4 rounded-lg border border-border bg-card">
                   <div className="flex items-start gap-3">
-                    <span className="w-6 h-6 rounded-full bg-destructive/10 flex items-center justify-center text-destructive text-xs font-bold flex-shrink-0 mt-0.5">2</span>
+                    <span className="w-6 h-6 rounded-full bg-muted flex items-center justify-center text-muted-foreground text-xs font-bold flex-shrink-0 mt-0.5">2</span>
                     <div>
                       <h4 className="text-sm font-medium mb-1">Status Visibility Gap</h4>
                       <p className="text-xs text-muted-foreground">No real-time tracking leads to frequent status inquiry calls</p>
@@ -2707,7 +2707,7 @@ const CaseStudy = () => {
                 </div>
                 <div className="p-4 rounded-lg border border-border bg-card">
                   <div className="flex items-start gap-3">
-                    <span className="w-6 h-6 rounded-full bg-destructive/10 flex items-center justify-center text-destructive text-xs font-bold flex-shrink-0 mt-0.5">3</span>
+                    <span className="w-6 h-6 rounded-full bg-muted flex items-center justify-center text-muted-foreground text-xs font-bold flex-shrink-0 mt-0.5">3</span>
                     <div>
                       <h4 className="text-sm font-medium mb-1">Data Inconsistency</h4>
                       <p className="text-xs text-muted-foreground">Freeform messages cause missing or incorrect patient details</p>
@@ -2716,7 +2716,7 @@ const CaseStudy = () => {
                 </div>
                 <div className="p-4 rounded-lg border border-border bg-card">
                   <div className="flex items-start gap-3">
-                    <span className="w-6 h-6 rounded-full bg-destructive/10 flex items-center justify-center text-destructive text-xs font-bold flex-shrink-0 mt-0.5">4</span>
+                    <span className="w-6 h-6 rounded-full bg-muted flex items-center justify-center text-muted-foreground text-xs font-bold flex-shrink-0 mt-0.5">4</span>
                     <div>
                       <h4 className="text-sm font-medium mb-1">Driver Status Relay</h4>
                       <p className="text-xs text-muted-foreground">MHA manually relays driver updates to hospital admins</p>
@@ -2725,7 +2725,7 @@ const CaseStudy = () => {
                 </div>
                 <div className="p-4 rounded-lg border border-border bg-card">
                   <div className="flex items-start gap-3">
-                    <span className="w-6 h-6 rounded-full bg-destructive/10 flex items-center justify-center text-destructive text-xs font-bold flex-shrink-0 mt-0.5">5</span>
+                    <span className="w-6 h-6 rounded-full bg-muted flex items-center justify-center text-muted-foreground text-xs font-bold flex-shrink-0 mt-0.5">5</span>
                     <div>
                       <h4 className="text-sm font-medium mb-1">Patient Party Anxiety</h4>
                       <p className="text-xs text-muted-foreground">No proactive updates during critical wait periods</p>
@@ -2734,7 +2734,7 @@ const CaseStudy = () => {
                 </div>
                 <div className="p-4 rounded-lg border border-border bg-card">
                   <div className="flex items-start gap-3">
-                    <span className="w-6 h-6 rounded-full bg-destructive/10 flex items-center justify-center text-destructive text-xs font-bold flex-shrink-0 mt-0.5">6</span>
+                    <span className="w-6 h-6 rounded-full bg-muted flex items-center justify-center text-muted-foreground text-xs font-bold flex-shrink-0 mt-0.5">6</span>
                     <div>
                       <h4 className="text-sm font-medium mb-1">Audit & Compliance Gaps</h4>
                       <p className="text-xs text-muted-foreground">Manual logging leads to incomplete ride documentation</p>
