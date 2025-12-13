@@ -68,6 +68,10 @@ import merryAdminCurrentJourney from '@/assets/merry-admin-current-journey.jpg';
 import merryAdminIdealJourney from '@/assets/merry-admin-ideal-journey.jpg';
 import merryHospitalJourney from '@/assets/merry-hospital-journey.jpg';
 import merryProposedWorkflow from '@/assets/merry-proposed-workflow.jpg';
+// Merry Health wireframes and hi-fi screens
+import merryWireframes from '@/assets/merry-wireframes.png';
+import merryHifiDashboard from '@/assets/merry-hifi-dashboard.png';
+import merryHifiReports from '@/assets/merry-hifi-reports.png';
 import { PlatformAuditPhase } from '@/components/ResearchPhaseCard';
 interface CaseStudySection {
   title: string;
@@ -2764,6 +2768,251 @@ const CaseStudy = () => {
                   <li className="flex gap-2"><span className="text-amber-600">•</span>Tracking failure → Manual status call</li>
                   <li className="flex gap-2"><span className="text-amber-600">•</span>Identity verification → MHA confirms before dispatch</li>
                 </ul>
+              </div>
+            </div>
+          </div>
+        </section>}
+
+      {/* Merry Health Scenario Mapping & Modules */}
+      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16 bg-card">
+          <div className="container mx-auto max-w-6xl">
+            <div className="flex items-center gap-4 mb-6">
+              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">6</span>
+              <h2 className="font-serif text-2xl">Scenario Mapping & Module Definition</h2>
+            </div>
+            <p className="text-muted-foreground mb-10">After the proposed workflow, we conducted scenario mapping to understand the exact screens and workflows required for both WhatsApp integration and the desktop application.</p>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-10">
+              <div className="p-6 rounded-xl border border-border bg-background">
+                <h3 className="font-serif text-lg mb-4">Scenario Mapping Process</h3>
+                <p className="text-sm text-muted-foreground mb-4">Based on our research findings, we mapped out user scenarios to identify the exact screens, interactions, and data flows needed for the platform.</p>
+                <a href="https://www.figma.com/design/yH9NNuzOQov4XIgkz5D2jo/Project-Merry-Health?node-id=3-1576&t=lxBxhBwv6frOZBTQ-1" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-primary hover:underline">
+                  <svg className="w-4 h-4" viewBox="0 0 38 57" fill="currentColor">
+                    <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" />
+                    <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" />
+                    <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" />
+                    <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" />
+                    <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" />
+                  </svg>
+                  View Scenario Mapping in Figma
+                </a>
+              </div>
+
+              <div className="p-6 rounded-xl border border-primary/20 bg-primary/5">
+                <h3 className="font-serif text-lg mb-4">Desktop App Modules Identified</h3>
+                <p className="text-sm text-muted-foreground mb-4">Based on the scenario mapping, we identified four core modules for the Merry Health Admin web app:</p>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="p-3 rounded-lg bg-background border border-border">
+                    <span className="text-sm font-medium">Dashboard</span>
+                    <p className="text-xs text-muted-foreground">Overview & quick actions</p>
+                  </div>
+                  <div className="p-3 rounded-lg bg-background border border-border">
+                    <span className="text-sm font-medium">Add Ride</span>
+                    <p className="text-xs text-muted-foreground">New request creation</p>
+                  </div>
+                  <div className="p-3 rounded-lg bg-background border border-border">
+                    <span className="text-sm font-medium">Ride List</span>
+                    <p className="text-xs text-muted-foreground">All rides & status tracking</p>
+                  </div>
+                  <div className="p-3 rounded-lg bg-background border border-border">
+                    <span className="text-sm font-medium">Reporting</span>
+                    <p className="text-xs text-muted-foreground">Analytics & insights</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>}
+
+      {/* Merry Health Wireframes */}
+      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16">
+          <div className="container mx-auto max-w-6xl">
+            <div className="flex items-center gap-4 mb-6">
+              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">7</span>
+              <h2 className="font-serif text-2xl">Wireframing</h2>
+              <a href="https://www.figma.com/design/yH9NNuzOQov4XIgkz5D2jo/Project-Merry-Health?node-id=14-5439&t=D4QoBAFlTIFjCBK6-1" target="_blank" rel="noopener noreferrer" className="ml-auto flex items-center gap-2 text-xs text-primary hover:underline">
+                <svg className="w-3.5 h-3.5" viewBox="0 0 38 57" fill="currentColor">
+                  <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" />
+                  <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" />
+                  <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" />
+                  <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" />
+                  <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" />
+                </svg>
+                View in Figma
+              </a>
+            </div>
+            <p className="text-muted-foreground mb-10">After identifying the required modules, we created wireframes for all key flows in the web application—covering dashboard, ride management, live tracking, and reporting.</p>
+
+            <div className="rounded-xl border border-border bg-background overflow-hidden cursor-pointer hover:shadow-lg transition-shadow" onClick={() => setLightboxImage(merryWireframes)}>
+              <img src={merryWireframes} alt="Merry Health wireframes showing active rides, ride details, and map view screens" className="w-full object-contain" />
+              <div className="p-4 bg-muted/20 border-t border-border">
+                <span className="text-xs text-muted-foreground">Click to view wireframe details • Covers Active Rides, Ride Details, Map View, and Mobile flows</span>
+              </div>
+            </div>
+          </div>
+        </section>}
+
+      {/* Merry Health Hi-Fi Screens */}
+      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16 bg-card">
+          <div className="container mx-auto max-w-6xl">
+            <div className="flex items-center gap-4 mb-6">
+              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">8</span>
+              <h2 className="font-serif text-2xl">High-Fidelity Screens</h2>
+              <a href="https://www.figma.com/proto/yH9NNuzOQov4XIgkz5D2jo/Project-Merry-Health?node-id=15-36521&t=31Fmb4tJRbqNkLny-1&scaling=min-zoom&content-scaling=fixed&page-id=14%3A5438&starting-point-node-id=15%3A36521" target="_blank" rel="noopener noreferrer" className="ml-auto flex items-center gap-2 text-xs text-primary hover:underline">
+                <svg className="w-3.5 h-3.5" viewBox="0 0 38 57" fill="currentColor">
+                  <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" />
+                  <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" />
+                  <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" />
+                  <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" />
+                  <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" />
+                </svg>
+                View Prototype
+              </a>
+            </div>
+            <p className="text-muted-foreground mb-10">The final high-fidelity designs bring together all research insights into a polished, production-ready interface for the Merry Health Admin platform.</p>
+
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
+              <div className="rounded-xl border border-border bg-background overflow-hidden cursor-pointer hover:shadow-lg transition-shadow" onClick={() => setLightboxImage(merryHifiDashboard)}>
+                <img src={merryHifiDashboard} alt="Merry Health dashboard with KPIs, quick actions, and ride list" className="w-full object-cover aspect-video" />
+                <div className="p-4 border-t border-border">
+                  <h4 className="text-sm font-medium mb-1">Dashboard</h4>
+                  <p className="text-xs text-muted-foreground">Overview with KPIs, quick actions, and real-time ride list</p>
+                </div>
+              </div>
+              <div className="rounded-xl border border-border bg-background overflow-hidden cursor-pointer hover:shadow-lg transition-shadow" onClick={() => setLightboxImage(merryHifiReports)}>
+                <img src={merryHifiReports} alt="Merry Health analytics and reporting module" className="w-full object-cover aspect-video" />
+                <div className="p-4 border-t border-border">
+                  <h4 className="text-sm font-medium mb-1">Reporting Module</h4>
+                  <p className="text-xs text-muted-foreground">Analytics dashboard with filters, charts, and export options</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>}
+
+      {/* Merry Health WhatsApp Integration */}
+      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16">
+          <div className="container mx-auto max-w-6xl">
+            <div className="flex items-center gap-4 mb-6">
+              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">9</span>
+              <h2 className="font-serif text-2xl">WhatsApp Integration Design</h2>
+            </div>
+            <p className="text-muted-foreground mb-4">Given that 95% of hospital admins currently use WhatsApp for intake, we designed a structured WhatsApp experience that respects existing mental models while enabling automated workflows.</p>
+            <p className="text-sm text-muted-foreground mb-10">The system parses incoming messages to extract required data points (as identified in our data audit), requests missing information, and pushes automated status updates to all stakeholders.</p>
+
+            <div className="space-y-8">
+              {/* Hospital Admin WhatsApp */}
+              <div className="p-6 rounded-xl border border-border bg-background">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white text-sm font-medium">HA</div>
+                  <div>
+                    <h3 className="font-serif text-lg">Hospital Admin Experience</h3>
+                    <p className="text-xs text-muted-foreground">Intake via WhatsApp with structured parsing</p>
+                  </div>
+                </div>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-4">
+                    <div className="p-4 rounded-lg bg-muted/20 border border-border/50">
+                      <h4 className="text-sm font-semibold mb-3">How It Works</h4>
+                      <ul className="space-y-2 text-xs text-muted-foreground">
+                        <li className="flex gap-2"><span className="text-primary">1.</span>Hospital admin sends request to Merry Health WhatsApp</li>
+                        <li className="flex gap-2"><span className="text-primary">2.</span>System parses message for required data points</li>
+                        <li className="flex gap-2"><span className="text-primary">3.</span>Missing data is requested via automated reply</li>
+                        <li className="flex gap-2"><span className="text-primary">4.</span>User confirms by replying to the message</li>
+                        <li className="flex gap-2"><span className="text-primary">5.</span>Each status update is communicated automatically</li>
+                      </ul>
+                    </div>
+                    <div className="p-4 rounded-lg bg-primary/5 border border-primary/20">
+                      <h4 className="text-xs uppercase tracking-wider text-primary font-medium mb-2">Benefits</h4>
+                      <ul className="space-y-1 text-xs text-muted-foreground">
+                        <li>• Consistent, standardized updates for every ride</li>
+                        <li>• Automatic status messages instead of manual follow-ups</li>
+                        <li>• Live location links and driver details pushed instantly</li>
+                        <li>• End-to-end ride visibility directly inside WhatsApp</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="p-4 rounded-lg bg-emerald-500/5 border border-emerald-500/20">
+                    <h4 className="text-sm font-semibold mb-3">Announcement Group (Read-Only)</h4>
+                    <p className="text-xs text-muted-foreground mb-3">Hospital managers can view all updates in a read-only community announcement channel for day-to-day operations visibility.</p>
+                    <ul className="space-y-1 text-xs text-muted-foreground">
+                      <li>• Single source of truth for all ride milestones</li>
+                      <li>• Consistent, system-generated messages</li>
+                      <li>• Real-time updates for trip statuses</li>
+                      <li>• Clutter-free experience (read-only)</li>
+                      <li>• Better coordination across departments</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Driver WhatsApp */}
+              <div className="p-6 rounded-xl border border-border bg-background">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center text-white text-sm font-medium">DR</div>
+                  <div>
+                    <h3 className="font-serif text-lg">Driver Experience</h3>
+                    <p className="text-xs text-muted-foreground">Ride requests with SMS fallback for feature phones</p>
+                  </div>
+                </div>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-4">
+                    <div className="p-4 rounded-lg bg-muted/20 border border-border/50">
+                      <h4 className="text-sm font-semibold mb-3">How It Works</h4>
+                      <ul className="space-y-2 text-xs text-muted-foreground">
+                        <li className="flex gap-2"><span className="text-amber-600">1.</span>Driver receives ride request via WhatsApp</li>
+                        <li className="flex gap-2"><span className="text-amber-600">2.</span>If no smartphone, SMS with response options is sent</li>
+                        <li className="flex gap-2"><span className="text-amber-600">3.</span>Driver responds to accept/decline</li>
+                        <li className="flex gap-2"><span className="text-amber-600">4.</span>Once confirmed, patient party receives updates</li>
+                        <li className="flex gap-2"><span className="text-amber-600">5.</span>All actions sync back to Merry Health database</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="p-4 rounded-lg bg-amber-500/5 border border-amber-500/20">
+                    <h4 className="text-xs uppercase tracking-wider text-amber-600 font-medium mb-2">Driver Benefits</h4>
+                    <ul className="space-y-1 text-xs text-muted-foreground">
+                      <li>• Clear, standardized ride requests with patient contact</li>
+                      <li>• One-tap Accept/Decline options reducing delays</li>
+                      <li>• Live pickup location links for instant navigation</li>
+                      <li>• Automated status prompts for pickup, drop, closure</li>
+                      <li>• Simplified, reliable workflow</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Patient Party WhatsApp */}
+              <div className="p-6 rounded-xl border border-border bg-background">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-sm font-medium">PP</div>
+                  <div>
+                    <h3 className="font-serif text-lg">Patient Party Experience</h3>
+                    <p className="text-xs text-muted-foreground">Updates via WhatsApp, IVR calls, or SMS</p>
+                  </div>
+                </div>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-4">
+                    <div className="p-4 rounded-lg bg-muted/20 border border-border/50">
+                      <h4 className="text-sm font-semibold mb-3">Communication Channels</h4>
+                      <ul className="space-y-2 text-xs text-muted-foreground">
+                        <li className="flex gap-2"><span className="text-blue-600">•</span><strong>WhatsApp:</strong> Primary channel for real-time updates</li>
+                        <li className="flex gap-2"><span className="text-blue-600">•</span><strong>IVR Calls:</strong> Ambulance info in regional language</li>
+                        <li className="flex gap-2"><span className="text-blue-600">•</span><strong>SMS:</strong> Fallback for non-smartphone users</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="p-4 rounded-lg bg-blue-500/5 border border-blue-500/20">
+                    <h4 className="text-xs uppercase tracking-wider text-blue-600 font-medium mb-2">Patient Party Benefits</h4>
+                    <ul className="space-y-1 text-xs text-muted-foreground">
+                      <li>• Instant confirmation that request is received</li>
+                      <li>• Ambulance and driver details shared automatically</li>
+                      <li>• Live tracking link to follow ambulance in real time</li>
+                      <li>• Clear updates for each milestone</li>
+                      <li>• Reduced uncertainty and anxiety during emergency</li>
+                      <li>• Transparent experience without back-and-forth calls</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
