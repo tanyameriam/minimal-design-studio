@@ -1400,24 +1400,12 @@ const CaseStudy = () => {
           
           {/* Wireframe images for STREE - Marquee style */}
           {slug === 'stree-safety-app' && (
-            <div className="relative">
-              {/* First row - scrolling left */}
-              <div className="flex animate-marquee-slow gap-6 mb-6">
-                {[streeWireframe1, streeWireframe2, streeWireframe3, streeWireframe8, streeWireframe9, streeWireframe10, streeWireframe7, streeWireframe1, streeWireframe2, streeWireframe3, streeWireframe8, streeWireframe9, streeWireframe10, streeWireframe7].map((img, i) => (
-                  <div key={i} className="flex-shrink-0 w-40 md:w-48 bg-background rounded-xl border border-border shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+            <div className="relative overflow-x-auto">
+              <div className="flex gap-6 pb-4">
+                {[streeWireframe1, streeWireframe2, streeWireframe3, streeWireframe4, streeWireframe5, streeWireframe6, streeWireframe7, streeWireframe8, streeWireframe9, streeWireframe10, streeWireframe11, streeWireframe12, streeWireframe13, streeWireframe14].map((img, i) => (
+                  <div key={i} className="flex-shrink-0 w-40 md:w-48 bg-background rounded-xl border border-border shadow-sm overflow-hidden hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(img)}>
                     <div className="aspect-[9/16] overflow-hidden">
                       <img src={img} alt={`Wireframe ${i + 1}`} className="w-full h-full object-cover object-top" />
-                    </div>
-                  </div>
-                ))}
-              </div>
-              
-              {/* Second row - scrolling right */}
-              <div className="flex animate-marquee-slow-reverse gap-6">
-                {[streeWireframe4, streeWireframe5, streeWireframe6, streeWireframe11, streeWireframe12, streeWireframe13, streeWireframe14, streeWireframe4, streeWireframe5, streeWireframe6, streeWireframe11, streeWireframe12, streeWireframe13, streeWireframe14].map((img, i) => (
-                  <div key={i} className="flex-shrink-0 w-40 md:w-48 bg-background rounded-xl border border-border shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-                    <div className="aspect-[9/16] overflow-hidden">
-                      <img src={img} alt={`Wireframe ${i + 8}`} className="w-full h-full object-cover object-top" />
                     </div>
                   </div>
                 ))}
