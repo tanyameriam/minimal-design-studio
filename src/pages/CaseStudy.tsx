@@ -1123,7 +1123,7 @@ const caseStudies: Record<string, CaseStudyData> = {
       title: "Hospital group not reachable",
       content: "Message diverted to individual admin as fallback."
     }],
-    businessOutcomes: ["Faster Emergency Handling: Admins can intake requests instantly with minimal data entry", "Higher Ride Success & Completion Rates: Real-time visibility prevents miscommunication and delays", "Significant Drop in Manual Calls: Automatic updates replace follow-up calls", "Improved Hospital Trust: Clear timelines and standardized updates build confidence", "Better Reporting & Data Accuracy: The dashboard now acts as a complete, verifiable record", "Operational Efficiency: The system supports high-volume emergencies without overwhelming staff", "Higher Dashboard Adoption: Hospitals now see clear value in the platform, not just WhatsApp"],
+    businessOutcomes: ["Faster Emergency Handling: Admins will be able to intake requests instantly with minimal data entry", "Higher Ride Success & Completion Rates: Real-time visibility will prevent miscommunication and delays", "Significant Drop in Manual Calls: Automatic updates will replace follow-up calls", "Improved Hospital Trust: Clear timelines and standardized updates will build confidence", "Better Reporting & Data Accuracy: The dashboard will act as a complete, verifiable record", "Operational Efficiency: The system will support high-volume emergencies without overwhelming staff", "Higher Dashboard Adoption: Hospitals will see clear value in the platform, not just WhatsApp"],
     learnings: ["Real-world emergency systems need resilience, not perfection. Design must survive low network, broken workflows, and human unpredictability.", "WhatsApp is India's most adopted enterprise tool. Designing around WhatsApp, rather than replacing it, was critical.", "A system is only as strong as its fallback modes. Every workflow required a Plan B, C, and D.", "Mobile-first is not optional. Hospital admins coordinate while walking, talking, and multitasking.", "UI is only 30% of the solution. The other 70% is workflow logic, integrations, and system constraints.", "Collaboration across tech and operations shaped the final output. Design was deeply integrated with technical feasibility and real constraints."],
     deliverables: ["Full system workflows", "User journey maps", "Low-fidelity wireframes", "High-fidelity UI (web + mobile)", "WhatsApp message flow screens", "Android module UI", "Complete prototype", "Redesign strategy", "System specification documents", "Final presentation deck"]
   },
@@ -4010,15 +4010,15 @@ const CaseStudy = () => {
       {/* Business Outcomes (for BrynQ) */}
       {study.businessOutcomes && <section className="px-6 lg:px-12 py-16 bg-card">
           <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Outcomes & Business Impact</h2>
-            <p className="text-lg text-muted-foreground mb-8">While exact numbers are confidential, the redesign resulted in:</p>
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Expected Outcomes & Business Impact</h2>
+            <p className="text-lg text-muted-foreground mb-8">The redesign is expected to deliver:</p>
             <ul className="space-y-3">
               {study.businessOutcomes.map((outcome, i) => <li key={i} className="flex gap-4">
                   <span className="text-muted-foreground">•</span>
                   <span>{outcome}</span>
                 </li>)}
             </ul>
-            <p className="mt-8 font-serif text-lg text-muted-foreground italic">The cumulative outcome was a significantly more modern, usable, and scalable platform.</p>
+            <p className="mt-8 font-serif text-lg text-muted-foreground italic">The cumulative outcome will be a significantly more modern, usable, and scalable platform.</p>
           </div>
         </section>}
 
