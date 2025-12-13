@@ -4066,15 +4066,20 @@ const CaseStudy = () => {
 
       {/* Footer Navigation */}
       <footer className="px-6 lg:px-12 py-16 border-t border-border">
-        <div className="container mx-auto max-w-4xl flex justify-between items-center">
-          <Link to="/#work" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
-            <ArrowLeft className="w-4 h-4" />
-            All projects
-          </Link>
-          <Link to="/#contact" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
-            Get in touch
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+        <div className="container mx-auto max-w-4xl flex flex-col gap-8">
+          <div className="flex justify-between items-center">
+            <Link to="/#work" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+              <ArrowLeft className="w-4 h-4" />
+              All projects
+            </Link>
+          </div>
+          <div className="p-6 bg-primary/5 border border-primary/20 rounded-lg text-center">
+            <p className="text-muted-foreground mb-3">Interested in working together?</p>
+            <Link to="/#contact" className="inline-flex items-center gap-2 text-lg font-medium text-primary hover:text-primary/80 transition-colors">
+              Get in touch
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
         </div>
       </footer>
     </main>;
