@@ -49,6 +49,11 @@ import streeHifi15 from '@/assets/stree-hifi-15.png';
 import streeHifi16 from '@/assets/stree-hifi-16.png';
 import streeHifi17 from '@/assets/stree-hifi-17.png';
 import streeHifi18 from '@/assets/stree-hifi-18.png';
+// Merry Health screenshots
+import merryHealthDashboard from '@/assets/merry-health-dashboard.png';
+import merryHealthBooking from '@/assets/merry-health-booking.png';
+import merryHealthRides from '@/assets/merry-health-rides.png';
+import merryHealthMap from '@/assets/merry-health-map.png';
 interface CaseStudySection {
   title: string;
   content: string;
@@ -2010,8 +2015,90 @@ const CaseStudy = () => {
           </div>
         </section>}
 
+      {/* Platform Screenshots (for Merry Health) */}
+      {slug === 'merry-health' && (
+        <section className="px-6 lg:px-12 py-20 bg-card">
+          <div className="container mx-auto max-w-6xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4 text-center">The Platform</h2>
+            <p className="text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
+              Key screens from the redesigned dispatch system
+            </p>
+            
+            <div className="grid gap-8">
+              {/* Main dashboard - large */}
+              <div 
+                className="group relative overflow-hidden rounded-lg border border-border bg-background shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                onClick={() => setLightboxImage(merryHealthDashboard)}
+              >
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+                <img 
+                  src={merryHealthDashboard} 
+                  alt="Merry Health Dashboard - Hospital dispatch overview with live tracking and ride metrics" 
+                  className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                />
+                <div className="absolute bottom-0 left-0 right-0 p-6 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <h3 className="font-serif text-lg text-foreground mb-1">Hospital Dashboard</h3>
+                  <p className="text-sm text-muted-foreground">Live tracking, ride metrics, and operational overview</p>
+                </div>
+              </div>
+              
+              {/* Secondary screens - grid */}
+              <div className="grid md:grid-cols-3 gap-6">
+                <div 
+                  className="group relative overflow-hidden rounded-lg border border-border bg-background shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
+                  onClick={() => setLightboxImage(merryHealthMap)}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+                  <img 
+                    src={merryHealthMap} 
+                    alt="Find Ambulance - Map view with available ambulance locations" 
+                    className="w-full h-48 object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 p-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h3 className="font-serif text-base text-foreground">Find Ambulance</h3>
+                    <p className="text-xs text-muted-foreground">Real-time fleet visibility</p>
+                  </div>
+                </div>
+                
+                <div 
+                  className="group relative overflow-hidden rounded-lg border border-border bg-background shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
+                  onClick={() => setLightboxImage(merryHealthBooking)}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+                  <img 
+                    src={merryHealthBooking} 
+                    alt="Offline Booking - Structured intake form for emergency rides" 
+                    className="w-full h-48 object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 p-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h3 className="font-serif text-base text-foreground">Add Ride Flow</h3>
+                    <p className="text-xs text-muted-foreground">Structured emergency intake</p>
+                  </div>
+                </div>
+                
+                <div 
+                  className="group relative overflow-hidden rounded-lg border border-border bg-background shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
+                  onClick={() => setLightboxImage(merryHealthRides)}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+                  <img 
+                    src={merryHealthRides} 
+                    alt="Ride List - Complete ride history with status tracking" 
+                    className="w-full h-48 object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 p-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h3 className="font-serif text-base text-foreground">Ride Management</h3>
+                    <p className="text-xs text-muted-foreground">Unified timeline & status</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Deliverables (for Merry Health) */}
-      {study.deliverables && <section className="px-6 lg:px-12 py-16 bg-card">
+      {study.deliverables && <section className="px-6 lg:px-12 py-16">
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Final Deliverables</h2>
             <div className="flex flex-wrap gap-3">
