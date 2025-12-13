@@ -3440,11 +3440,16 @@ const CaseStudy = () => {
                     { src: foodWasteWireframeOrders, label: 'All Orders' },
                   ].map((wireframe, i) => (
                     <div key={i} className="flex flex-col items-center">
-                      <div className="bg-background border border-border rounded-lg overflow-hidden cursor-pointer" onClick={() => setLightboxImage(wireframe.src)}>
+                      <div 
+                        className="bg-background border border-border rounded-lg overflow-hidden cursor-pointer"
+                        style={{ maxHeight: '400px' }}
+                        onClick={() => setLightboxImage(wireframe.src)}
+                      >
                         <img 
                           src={wireframe.src} 
                           alt={wireframe.label} 
                           className="w-full h-auto"
+                          style={{ marginBottom: '-60px' }}
                         />
                       </div>
                       <p className="mt-3 text-sm text-muted-foreground text-center">{wireframe.label}</p>
