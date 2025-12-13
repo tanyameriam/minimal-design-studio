@@ -2843,31 +2843,18 @@ const CaseStudy = () => {
             </div>
             <p className="text-muted-foreground mb-10">After identifying the required modules, we created wireframes for all key flows in the web application—covering dashboard, ride management, live tracking, and reporting.</p>
 
-            <div className="space-y-6">
-              <div className="rounded-xl border border-border bg-background overflow-hidden cursor-pointer hover:shadow-lg transition-shadow" onClick={() => setLightboxImage(merryWireframes)}>
-                <img src={merryWireframes} alt="Merry Health wireframes showing active rides, ride details, and map view screens" className="w-full object-contain" />
-                <div className="p-4 bg-muted/20 border-t border-border">
-                  <span className="text-xs text-muted-foreground">Click to view wireframe details • Covers Active Rides, Ride Details, Map View, and Mobile flows</span>
-                </div>
+            <div className="grid grid-cols-3 gap-3">
+              <div className="rounded-lg border border-border bg-background overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryWireframes)}>
+                <img src={merryWireframes} alt="Merry Health wireframes" className="w-full h-32 object-cover" />
               </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="rounded-xl border border-border bg-background overflow-hidden cursor-pointer hover:shadow-lg transition-shadow" onClick={() => setLightboxImage(merryHifiDashboard)}>
-                  <img src={merryHifiDashboard} alt="Merry Health dashboard wireframe" className="w-full object-cover aspect-video" />
-                  <div className="p-4 border-t border-border">
-                    <h4 className="text-sm font-medium mb-1">Dashboard Wireframe</h4>
-                    <p className="text-xs text-muted-foreground">Overview with KPIs, quick actions, and ride list structure</p>
-                  </div>
-                </div>
-                <div className="rounded-xl border border-border bg-background overflow-hidden cursor-pointer hover:shadow-lg transition-shadow" onClick={() => setLightboxImage(merryHifiReports)}>
-                  <img src={merryHifiReports} alt="Merry Health reporting module wireframe" className="w-full object-cover aspect-video" />
-                  <div className="p-4 border-t border-border">
-                    <h4 className="text-sm font-medium mb-1">Reporting Module Wireframe</h4>
-                    <p className="text-xs text-muted-foreground">Analytics dashboard with filters, charts, and export options</p>
-                  </div>
-                </div>
+              <div className="rounded-lg border border-border bg-background overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryHifiDashboard)}>
+                <img src={merryHifiDashboard} alt="Dashboard wireframe" className="w-full h-32 object-cover" />
+              </div>
+              <div className="rounded-lg border border-border bg-background overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onClick={() => setLightboxImage(merryHifiReports)}>
+                <img src={merryHifiReports} alt="Reporting wireframe" className="w-full h-32 object-cover" />
               </div>
             </div>
+            <p className="text-xs text-muted-foreground mt-3">Click any image to view details</p>
           </div>
         </section>}
 
