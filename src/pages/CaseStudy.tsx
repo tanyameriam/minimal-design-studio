@@ -1620,12 +1620,65 @@ const CaseStudy = () => {
 
       {/* Overview / Context - Merry Health specific layout */}
       {slug === 'merry-health' ? (
-        <section id="merry-context" className="px-6 lg:px-12 xl:pl-48 pt-32 pb-16 border-t border-border scroll-mt-20">
-          <div className="container mx-auto max-w-5xl">
-            {/* Background Content */}
-            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Context</p>
-            <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-6 max-w-3xl leading-tight">Streamlining Emergency Dispatch for 50+ Hospitals Across Tier 2 & 3 Cities</h1>
-            <p className="text-lg leading-relaxed text-muted-foreground mb-12 max-w-3xl">{study.overview}</p>
+        <>
+          {/* Hero Banner with Platform Screenshots */}
+          <section className="w-full bg-gradient-to-b from-primary/[0.08] to-primary/[0.02] pt-24 pb-12 border-b border-primary/10">
+            <div className="container mx-auto max-w-6xl px-6 lg:px-12">
+              <div className="flex flex-col items-center">
+                {/* Overlapping Screenshots Layout */}
+                <div className="relative w-full h-[280px] md:h-[360px] lg:h-[420px] mb-8">
+                  {/* Center Main Screenshot */}
+                  <div 
+                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 cursor-pointer group"
+                    onClick={() => setLightboxImage(merryHealthDashboard)}
+                  >
+                    <div className="w-[280px] md:w-[400px] lg:w-[500px] rounded-lg overflow-hidden shadow-2xl border border-border/50 bg-background">
+                      <img src={merryHealthDashboard} alt="Hospital Dashboard" className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-300" />
+                    </div>
+                  </div>
+                  
+                  {/* Left Screenshot */}
+                  <div 
+                    className="absolute left-0 md:left-[5%] top-[15%] z-10 cursor-pointer group hidden sm:block"
+                    onClick={() => setLightboxImage(merryHealthMap)}
+                  >
+                    <div className="w-[140px] md:w-[180px] lg:w-[220px] rounded-lg overflow-hidden shadow-xl border border-border/50 bg-background opacity-90 hover:opacity-100 transition-opacity">
+                      <img src={merryHealthMap} alt="Find Ambulance Map" className="w-full h-auto" />
+                    </div>
+                  </div>
+                  
+                  {/* Right Screenshot */}
+                  <div 
+                    className="absolute right-0 md:right-[5%] top-[15%] z-10 cursor-pointer group hidden sm:block"
+                    onClick={() => setLightboxImage(merryHealthRides)}
+                  >
+                    <div className="w-[140px] md:w-[180px] lg:w-[220px] rounded-lg overflow-hidden shadow-xl border border-border/50 bg-background opacity-90 hover:opacity-100 transition-opacity">
+                      <img src={merryHealthRides} alt="Ride Management" className="w-full h-auto" />
+                    </div>
+                  </div>
+                  
+                  {/* Bottom Right Screenshot */}
+                  <div 
+                    className="absolute right-[10%] md:right-[15%] bottom-0 z-15 cursor-pointer group hidden md:block"
+                    onClick={() => setLightboxImage(merryHealthBooking)}
+                  >
+                    <div className="w-[120px] md:w-[160px] lg:w-[200px] rounded-lg overflow-hidden shadow-xl border border-border/50 bg-background opacity-85 hover:opacity-100 transition-opacity">
+                      <img src={merryHealthBooking} alt="Add Ride Flow" className="w-full h-auto" />
+                    </div>
+                  </div>
+                </div>
+                
+                <p className="text-xs text-muted-foreground text-center">Current platform we audited and redesigned. Click screenshots to view.</p>
+              </div>
+            </div>
+          </section>
+          
+          <section id="merry-context" className="px-6 lg:px-12 xl:pl-48 pt-16 pb-16 scroll-mt-20">
+            <div className="container mx-auto max-w-5xl">
+              {/* Background Content */}
+              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Context</p>
+              <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-6 max-w-3xl leading-tight">Streamlining Emergency Dispatch for 50+ Hospitals Across Tier 2 & 3 Cities</h1>
+              <p className="text-lg leading-relaxed text-muted-foreground mb-12 max-w-3xl">{study.overview}</p>
 
             {/* Meta Card - Combined with dividers */}
             <div className="rounded-xl border border-border bg-muted/30 mb-12">
@@ -1705,6 +1758,7 @@ const CaseStudy = () => {
             </div>
           </div>
         </section>
+        </>
       ) : (
         <section className="px-6 lg:px-12 py-16 border-t border-border scroll-mt-20">
           <div className="container mx-auto max-w-4xl">
@@ -2249,43 +2303,6 @@ const CaseStudy = () => {
           </div>
         </section>}
 
-      {/* Current Platform (for Merry Health) */}
-      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16 bg-primary/5 border-y border-primary/20">
-          <div className="container mx-auto max-w-6xl">
-            <div className="flex items-center gap-3 mb-2">
-              <span className="px-2 py-0.5 text-[10px] uppercase tracking-wider bg-primary/20 text-primary rounded">Before</span>
-              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground">Current Platform</h2>
-            </div>
-            <p className="text-sm text-muted-foreground mb-8 max-w-2xl">
-              The existing dispatch system we audited and redesigned. Click to view screens.
-            </p>
-            
-            <div className="flex gap-3 overflow-x-auto pb-2">
-              {[{
-            src: merryHealthDashboard,
-            alt: "Hospital Dashboard",
-            label: "Dashboard"
-          }, {
-            src: merryHealthMap,
-            alt: "Find Ambulance Map",
-            label: "Find Ambulance"
-          }, {
-            src: merryHealthBooking,
-            alt: "Add Ride Flow",
-            label: "Add Ride"
-          }, {
-            src: merryHealthRides,
-            alt: "Ride Management",
-            label: "Rides"
-          }].map((item, i) => <div key={i} className="cursor-pointer group flex-shrink-0" onClick={() => setLightboxImage(item.src)}>
-                  <div className="w-32 h-20 overflow-hidden rounded-lg border-2 border-primary/30 bg-background shadow-md">
-                    <img src={item.src} alt={item.alt} className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300" />
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-2 text-center">{item.label}</p>
-                </div>)}
-            </div>
-          </div>
-        </section>}
 
       {/* Merry Health Platform Audit - Phase-by-Phase Analysis */}
       {slug === 'merry-health' && <section id="merry-audit" className="px-6 lg:px-12 py-16 scroll-mt-20">
