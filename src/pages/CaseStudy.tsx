@@ -221,6 +221,38 @@ interface CaseStudyData {
   // Merry Health new structure
   merryOverview?: string;
   merryCurrentProblem?: string;
+  merryDataAudit?: {
+    intro: string;
+    questions: string[];
+    experienceFlow: {
+      step: number;
+      name: string;
+      description: string;
+      channel: string;
+      data: string;
+    }[];
+    dataPoints: {
+      dataPoint: string;
+      source: string;
+      usedBy: string;
+      purpose: string;
+      frequency: string;
+      issues: string;
+    }[];
+    minEssentialData: {
+      flow: string;
+      data: string;
+      reason: string;
+    }[];
+    overlappingData: {
+      dataPoint: string;
+      hospitalAdmin: string;
+      driver: string;
+      patientParty: string;
+      merryHealthAdmin: string;
+      notes: string;
+    }[];
+  };
   merrySolutionPhases?: {
     title: string;
     content: string;
@@ -240,10 +272,53 @@ const caseStudies: Record<string, CaseStudyData> = {
     // New structure
     merryOverview: "", // Placeholder - add content here
     merryCurrentProblem: "", // Placeholder - add content here
+    merryDataAudit: {
+      intro: "The first step was a data audit to understand the current platform from the Patient Party perspective. We mapped who owns the data, who initiates it, and what decisions it enables.",
+      questions: ["Who owns the data?", "Who initiates the data?", "What decisions does data enable?"],
+      experienceFlow: [
+        { step: 1, name: "Identify emergency", description: "Patient or family decides to call for ambulance", channel: "Phone", data: "Caller ID" },
+        { step: 2, name: "Contact hospital", description: "Calls hospital/Merry Health helpline", channel: "Phone", data: "Location, patient condition, severity" },
+        { step: 3, name: "Provide details", description: "Shares details on call/WhatsApp", channel: "Phone/WhatsApp", data: "Contact number, pickup address, floor, lift" },
+        { step: 4, name: "Wait for confirmation", description: "Hospital acknowledges request", channel: "Phone/SMS/WhatsApp", data: "Expected time" },
+        { step: 5, name: "Receive ambulance details", description: "Gets driver info", channel: "SMS/WhatsApp", data: "Driver contact number, tracking link" },
+        { step: 6, name: "Patient pickup", description: "Ambulance arrives and loads patient", channel: "In person", data: "Arrival time, transit status, assigned time" },
+        { step: 7, name: "In transit", description: "Patient reaches destination", channel: "Physical handover", data: "Drop timestamp, total duration" }
+      ],
+      dataPoints: [
+        { dataPoint: "Patient name", source: "PP", usedBy: "Hospital admin", purpose: "Identification", frequency: "E", issues: "Incorrect data" },
+        { dataPoint: "Contact number", source: "PP", usedBy: "Hospital admin/Driver", purpose: "Callback and confirmation", frequency: "E", issues: "Incorrect data" },
+        { dataPoint: "Location", source: "PP", usedBy: "Driver/Hospital admin", purpose: "Locate pickup point", frequency: "E", issues: "Not being exact" },
+        { dataPoint: "Patient condition", source: "PP", usedBy: "Hospital admin", purpose: "Decide urgency and ambulance type", frequency: "E", issues: "Can be unknown to PP" },
+        { dataPoint: "Pickup address", source: "PP", usedBy: "Hospital admin/Driver", purpose: "Pickup the patient from address", frequency: "E", issues: "Incorrect data" },
+        { dataPoint: "Driver contact number", source: "Hospital admin", usedBy: "PP/Hospital admin", purpose: "Enable communication with driver", frequency: "E", issues: "Incorrect data" },
+        { dataPoint: "Tracking link", source: "Hospital admin", usedBy: "PP/Hospital admin", purpose: "Track transit of patient", frequency: "E", issues: "Not operational or not updated" },
+        { dataPoint: "Duration of trip", source: "System/Driver", usedBy: "MerryHealth", purpose: "Understand total time", frequency: "E", issues: "Not starting or ending trip" },
+        { dataPoint: "Drop timestamp", source: "System/Driver", usedBy: "MerryHealth", purpose: "Operational analysis", frequency: "E", issues: "" },
+        { dataPoint: "Floor", source: "PP", usedBy: "Driver", purpose: "Pickup the patient", frequency: "C", issues: "Not being shared by PP" },
+        { dataPoint: "Lift", source: "PP", usedBy: "Driver", purpose: "Pickup patient accessibility", frequency: "C", issues: "Not being shared by PP" }
+      ],
+      minEssentialData: [
+        { flow: "Request initiation (PP → Hospital Admin)", data: "Patient name, contact number, location, patient(s) condition", reason: "Without these, HA cannot verify urgency, match ambulance type, or identify pickup." },
+        { flow: "When hospital/MHA confirms dispatch", data: "Driver name, driver contact number, vehicle No, ETA", reason: "Needed for trust, coordination, and tracking reassurance." },
+        { flow: "During the trip (driver en route)", data: "Tracking link/ETA, Landmark and address", reason: "Driver reach exact location efficiently; reduces back-and-forth calls" },
+        { flow: "At drop/completion", data: "Drop location (hospital name), acknowledgment of arrival", reason: "Closes the loop for PP" }
+      ],
+      overlappingData: [
+        { dataPoint: "Patient name", hospitalAdmin: "Y", driver: "Y", patientParty: "Gives", merryHealthAdmin: "Y", notes: "HA → MHA → Driver" },
+        { dataPoint: "Patient condition", hospitalAdmin: "Y", driver: "Y", patientParty: "Gives", merryHealthAdmin: "Y", notes: "HA → MHA" },
+        { dataPoint: "Contact number (PP)", hospitalAdmin: "Y", driver: "Y", patientParty: "Gives", merryHealthAdmin: "Y", notes: "HA → MHA → Driver" },
+        { dataPoint: "Pickup address/location", hospitalAdmin: "Y", driver: "Y", patientParty: "Gives", merryHealthAdmin: "Y", notes: "HA → MHA → Driver" },
+        { dataPoint: "Driver contact number", hospitalAdmin: "Y", driver: "Y", patientParty: "Receives", merryHealthAdmin: "Y", notes: "From HA or MHA" },
+        { dataPoint: "Tracking link/ETA", hospitalAdmin: "Y", driver: "-", patientParty: "Sometimes receives", merryHealthAdmin: "Y", notes: "From HA (if shared manually)" },
+        { dataPoint: "Drop location", hospitalAdmin: "Y", driver: "Y", patientParty: "Confirms/knows", merryHealthAdmin: "Y", notes: "Driver, HA, MHA" },
+        { dataPoint: "Floor/Lift info", hospitalAdmin: "Y", driver: "Y", patientParty: "Sometimes gives", merryHealthAdmin: "Y", notes: "Driver" },
+        { dataPoint: "Trip duration/timestamp", hospitalAdmin: "Y", driver: "Y", patientParty: "Doesn't see", merryHealthAdmin: "Y", notes: "Driver → MHA" }
+      ]
+    },
     merrySolutionPhases: [
       {
         title: "Data Audit",
-        content: "" // Placeholder - add content here
+        content: "Mapped data ownership, initiation, and decision-enabling across all actors"
       },
       {
         title: "System Flow & Opportunity Mapping",
@@ -1077,11 +1152,150 @@ const CaseStudy = () => {
                     </span>
                     <h3 className="font-serif text-xl">{phase.title}</h3>
                   </div>
-                  <div className="p-6 border-2 border-dashed border-border/50 bg-muted/20 min-h-[80px] flex items-center justify-center">
-                    <p className="text-muted-foreground italic">Content placeholder – {phase.title}</p>
-                  </div>
+                  {phase.content ? (
+                    <p className="text-muted-foreground">{phase.content}</p>
+                  ) : (
+                    <div className="p-6 border-2 border-dashed border-border/50 bg-muted/20 min-h-[80px] flex items-center justify-center">
+                      <p className="text-muted-foreground italic">Content placeholder – {phase.title}</p>
+                    </div>
+                  )}
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Merry Health Data Audit Detail */}
+      {slug === 'merry-health' && study.merryDataAudit && (
+        <section className="px-6 lg:px-12 py-16 bg-card">
+          <div className="container mx-auto max-w-6xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">Data Audit</h2>
+            <p className="text-lg text-muted-foreground mb-4">Patient Party Perspective</p>
+            <p className="text-muted-foreground mb-8">{study.merryDataAudit.intro}</p>
+            
+            {/* Key Questions */}
+            <div className="flex flex-wrap gap-3 mb-12">
+              {study.merryDataAudit.questions.map((q, i) => (
+                <span key={i} className="px-4 py-2 bg-primary/10 text-primary text-sm font-medium">{q}</span>
+              ))}
+            </div>
+
+            {/* Experience Flow Overview */}
+            <div className="mb-16">
+              <h3 className="font-serif text-xl mb-6 text-primary">Experience Flow Overview</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm border border-border">
+                  <thead>
+                    <tr className="bg-muted/50">
+                      <th className="text-left p-3 border-b border-border font-medium">Step</th>
+                      <th className="text-left p-3 border-b border-border font-medium">Name</th>
+                      <th className="text-left p-3 border-b border-border font-medium">Description</th>
+                      <th className="text-left p-3 border-b border-border font-medium">Channel</th>
+                      <th className="text-left p-3 border-b border-border font-medium">Data Created/Used</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {study.merryDataAudit.experienceFlow.map((row, i) => (
+                      <tr key={i} className="border-b border-border/50 hover:bg-muted/20">
+                        <td className="p-3 text-muted-foreground">{row.step}</td>
+                        <td className="p-3 font-medium">{row.name}</td>
+                        <td className="p-3 text-muted-foreground">{row.description}</td>
+                        <td className="p-3 text-muted-foreground">{row.channel}</td>
+                        <td className="p-3 text-muted-foreground">{row.data}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Data Points Audit Table */}
+            <div className="mb-16">
+              <h3 className="font-serif text-xl mb-6 text-primary">Data Points Audit</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm border border-border">
+                  <thead>
+                    <tr className="bg-muted/50">
+                      <th className="text-left p-3 border-b border-border font-medium">Data Point</th>
+                      <th className="text-left p-3 border-b border-border font-medium">Source</th>
+                      <th className="text-left p-3 border-b border-border font-medium">Used By</th>
+                      <th className="text-left p-3 border-b border-border font-medium">Purpose</th>
+                      <th className="text-left p-3 border-b border-border font-medium">Freq</th>
+                      <th className="text-left p-3 border-b border-border font-medium">Issues</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {study.merryDataAudit.dataPoints.map((row, i) => (
+                      <tr key={i} className="border-b border-border/50 hover:bg-muted/20">
+                        <td className="p-3 font-medium">{row.dataPoint}</td>
+                        <td className="p-3 text-muted-foreground">{row.source}</td>
+                        <td className="p-3 text-muted-foreground">{row.usedBy}</td>
+                        <td className="p-3 text-muted-foreground">{row.purpose}</td>
+                        <td className="p-3 text-muted-foreground text-center">{row.frequency}</td>
+                        <td className="p-3 text-muted-foreground">{row.issues || '—'}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Minimum Essential Data */}
+            <div className="mb-16">
+              <h3 className="font-serif text-xl mb-6 text-primary">Minimum Essential Data</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm border border-border">
+                  <thead>
+                    <tr className="bg-muted/50">
+                      <th className="text-left p-3 border-b border-border font-medium w-1/4">Flow</th>
+                      <th className="text-left p-3 border-b border-border font-medium w-2/5">Minimum Required Data</th>
+                      <th className="text-left p-3 border-b border-border font-medium">Reason</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {study.merryDataAudit.minEssentialData.map((row, i) => (
+                      <tr key={i} className="border-b border-border/50 hover:bg-muted/20">
+                        <td className="p-3 font-medium">{row.flow}</td>
+                        <td className="p-3 text-muted-foreground">{row.data}</td>
+                        <td className="p-3 text-muted-foreground">{row.reason}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Overlapping/Shared Data Map */}
+            <div>
+              <h3 className="font-serif text-xl mb-6 text-primary">Overlapping/Shared Data Map</h3>
+              <p className="text-sm text-muted-foreground mb-6">Understanding which actors have access to which data points revealed overlaps and gaps in information flow.</p>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm border border-border">
+                  <thead>
+                    <tr className="bg-muted/50">
+                      <th className="text-left p-3 border-b border-border font-medium">Data Point</th>
+                      <th className="text-center p-3 border-b border-border font-medium">Hospital Admin</th>
+                      <th className="text-center p-3 border-b border-border font-medium">Driver</th>
+                      <th className="text-center p-3 border-b border-border font-medium">Patient Party</th>
+                      <th className="text-center p-3 border-b border-border font-medium">MHA</th>
+                      <th className="text-left p-3 border-b border-border font-medium">Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {study.merryDataAudit.overlappingData.map((row, i) => (
+                      <tr key={i} className="border-b border-border/50 hover:bg-muted/20">
+                        <td className="p-3 font-medium">{row.dataPoint}</td>
+                        <td className="p-3 text-center text-muted-foreground">{row.hospitalAdmin}</td>
+                        <td className="p-3 text-center text-muted-foreground">{row.driver}</td>
+                        <td className="p-3 text-center text-muted-foreground">{row.patientParty}</td>
+                        <td className="p-3 text-center text-muted-foreground">{row.merryHealthAdmin}</td>
+                        <td className="p-3 text-muted-foreground text-xs">{row.notes}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </section>
