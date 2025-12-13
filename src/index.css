@@ -182,6 +182,37 @@
   }
 }
 
+@keyframes typewriter {
+  from {
+    max-width: 0;
+  }
+  to {
+    max-width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: hsl(var(--foreground));
+  }
+}
+
+.handwriting-animation {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typewriter 1.5s steps(11, end) forwards;
+  border-right: 2px solid transparent;
+}
+
+.handwriting-animation::after {
+  content: '';
+  animation: blink-caret 0.75s step-end 3;
+}
+
 html {
   scroll-behavior: smooth;
 }
