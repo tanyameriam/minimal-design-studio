@@ -1643,10 +1643,17 @@ const CaseStudy = () => {
 
               {/* Meta Card - Horizontal layout like Merry Health */}
               <div className="rounded-xl border border-border bg-muted/30 mb-12">
-                <div className="grid md:grid-cols-4">
+                <div className="grid md:grid-cols-5">
                   <div className="p-5">
                     <h3 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">Role</h3>
                     <p className="text-sm">{study.role}</p>
+                  </div>
+                  <div className="p-5 flex items-center">
+                    <div className="hidden md:block w-px h-8 bg-border mr-5" />
+                    <div>
+                      <h3 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">Team</h3>
+                      <p className="text-sm">Team of 5</p>
+                    </div>
                   </div>
                   {study.projectDuration && <div className="p-5 flex items-center">
                     <div className="hidden md:block w-px h-8 bg-border mr-5" />
