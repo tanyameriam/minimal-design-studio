@@ -1725,7 +1725,7 @@ const CaseStudy = () => {
         </>}
 
       {/* Other case studies header */}
-      {slug !== 'merry-health' && slug !== 'stree-safety-app' && slug !== 'brynq' && <header className="pt-32 pb-20 px-6 lg:px-12 scroll-mt-20">
+      {slug !== 'merry-health' && slug !== 'stree-safety-app' && slug !== 'brynq' && slug !== 'food-waste-ngo' && <header className="pt-32 pb-20 px-6 lg:px-12 scroll-mt-20">
           <div className="container mx-auto max-w-5xl">
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-4 animate-fade-up">
               {study.title}
