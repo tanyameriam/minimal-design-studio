@@ -12,10 +12,26 @@ interface CaseStudySidebarProps {
 const CaseStudySidebar = ({ sections }: CaseStudySidebarProps) => {
   const [activeSection, setActiveSection] = useState<string>(sections[0]?.id || '');
   const [isSticky, setIsSticky] = useState(false);
+  const [sidebarLeft, setSidebarLeft] = useState(0);
   const navRef = useRef<HTMLElement>(null);
   const placeholderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const calculateSidebarPosition = () => {
+      // Calculate position to stay close to a max-w-5xl (64rem = 1024px) centered container
+      const maxContentWidth = 1024; // 64rem
+      const sidebarOffset = 160; // Distance from content edge
+      const viewportWidth = window.innerWidth;
+      
+      if (viewportWidth > 1280) {
+        // Center the content area, sidebar sits to the left of it
+        const contentStart = (viewportWidth - maxContentWidth) / 2;
+        setSidebarLeft(Math.max(24, contentStart - sidebarOffset));
+      } else {
+        setSidebarLeft(24);
+      }
+    };
+
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 200;
 
@@ -43,10 +59,15 @@ const CaseStudySidebar = ({ sections }: CaseStudySidebarProps) => {
       }
     };
 
+    calculateSidebarPosition();
     window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', calculateSidebarPosition);
     handleScroll();
     
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', calculateSidebarPosition);
+    };
   }, [sections]);
 
   const scrollToSection = (id: string) => {
@@ -63,11 +84,12 @@ const CaseStudySidebar = ({ sections }: CaseStudySidebarProps) => {
       
       <nav 
         ref={navRef}
-        className={`hidden xl:block z-40 transition-all duration-300 ${
+        className={`hidden xl:block z-40 transition-all duration-300 w-32 ${
           isSticky 
-            ? 'fixed left-12 top-32' 
-            : 'absolute left-12 top-[400px]'
+            ? 'fixed top-32' 
+            : 'absolute top-[400px]'
         }`}
+        style={{ left: `${sidebarLeft}px` }}
       >
         <ul className="space-y-4">
           {sections.map((section) => (
