@@ -303,7 +303,7 @@ const CV = () => {
               <div>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
                   <div>
-                    <h3 className="font-medium text-2xl">UI Designer</h3>
+                    <h3 className="font-medium text-xl">UI Designer</h3>
                     <p className="text-muted-foreground text-sm">Segments Cloud LLC, Dubai, UAE</p>
                   </div>
                   <span className="text-sm text-muted-foreground">2021 – 2022</span>
