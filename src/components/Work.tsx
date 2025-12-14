@@ -25,6 +25,14 @@ const projects: Project[] = [{
   tags: ['UX', 'Research'],
   published: true
 }, {
+  title: "Merry Health",
+  category: "Systems Design • Healthcare",
+  year: "2024",
+  image: merryHealthCover,
+  slug: "merry-health",
+  tags: ['UX', 'Research', 'UI'],
+  published: true
+}, {
   title: "BrynQ Platform",
   category: "Product Design • B2B iPaaS",
   year: "2021-2024",
@@ -38,14 +46,6 @@ const projects: Project[] = [{
   year: "2024",
   image: hungerProjectCover,
   slug: "food-waste-ngo",
-  tags: ['UX', 'Research', 'UI'],
-  published: true
-}, {
-  title: "Merry Health",
-  category: "Systems Design • Healthcare",
-  year: "2024",
-  image: merryHealthCover,
-  slug: "merry-health",
   tags: ['UX', 'Research', 'UI'],
   published: true
 }, {
