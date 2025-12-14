@@ -101,6 +101,7 @@ import foodWasteRestWireframeAddlisting from '@/assets/food-waste-rest-wireframe
 import foodWasteRestWireframeAccount from '@/assets/food-waste-rest-wireframe-account.png';
 import foodWasteRestWireframeInsights from '@/assets/food-waste-rest-wireframe-insights.png';
 import brynqScenarioRedacted from '@/assets/brynq-scenario-redacted.png';
+import brynqWizardFlow from '@/assets/brynq-wizard-flow.png';
 import { PlatformAuditPhase } from '@/components/ResearchPhaseCard';
 interface CaseStudySection {
   title: string;
@@ -2006,7 +2007,7 @@ const CaseStudy = () => {
       {study.brynqMvpDirection && <section id="brynq-solution" className="px-6 lg:px-12 py-16 scroll-mt-20"><div className="container mx-auto max-w-5xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Defining an MVP Direction</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqMvpDirection}</p></div></section>}
 
       {/* BrynQ: Wizard */}
-      {study.brynqWizard && <section className="px-6 lg:px-12 py-16 bg-card"><div className="container mx-auto max-w-5xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Designing the Interface Requirements Wizard</h2><p className="text-lg leading-relaxed text-muted-foreground mb-8">{study.brynqWizard.intro}</p><div className="grid md:grid-cols-3 gap-4 mb-8">{study.brynqWizard.phases.map((phase, i) => <div key={i} className="p-5 border border-border bg-background"><span className="text-xs uppercase tracking-[0.2em] text-primary/70 font-medium">Phase {i + 1}</span><p className="mt-2">{phase}</p></div>)}</div><p className="text-muted-foreground">{study.brynqWizard.benefits}</p><div className="mt-8 aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center"><span className="text-sm text-muted-foreground italic">[ Wizard flow diagram ]</span></div></div></section>}
+      {study.brynqWizard && <section className="px-6 lg:px-12 py-16 bg-card"><div className="container mx-auto max-w-5xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Designing the Interface Requirements Wizard</h2><p className="text-lg leading-relaxed text-muted-foreground mb-8">{study.brynqWizard.intro}</p><div className="grid md:grid-cols-3 gap-4 mb-8">{study.brynqWizard.phases.map((phase, i) => <div key={i} className="p-5 border border-border bg-background"><span className="text-xs uppercase tracking-[0.2em] text-primary/70 font-medium">Phase {i + 1}</span><p className="mt-2">{phase}</p></div>)}</div><p className="text-muted-foreground">{study.brynqWizard.benefits}</p><div className="mt-8 bg-muted/30 border border-border rounded-lg overflow-hidden"><img src={brynqWizardFlow} alt="Wizard flow diagram" className="w-full h-auto" /></div></div></section>}
 
       {/* BrynQ: Review */}
       {study.brynqReview && <section className="px-6 lg:px-12 py-16">
