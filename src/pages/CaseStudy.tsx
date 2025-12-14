@@ -3827,37 +3827,17 @@ const CaseStudy = () => {
                 </div>
                 
                 {/* Expanded Gallery */}
-                {showInterviewGallery && <div className="mt-4 grid md:grid-cols-3 gap-4 animate-fade-in">
-                    <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={e => {
-              e.stopPropagation();
-              setLightboxImage(streeInterview1);
-            }}>
-                      <img src={streeInterview1} alt="Interview analysis with observation coding" className="w-full rounded" />
-                    </div>
-                    <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={e => {
-              e.stopPropagation();
-              setLightboxImage(streeInterview2);
-            }}>
-                      <img src={streeInterview2} alt="Interview analysis with observation coding" className="w-full rounded" />
-                    </div>
-                    <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={e => {
-              e.stopPropagation();
-              setLightboxImage(streeInterview3);
-            }}>
-                      <img src={streeInterview3} alt="Interview analysis with observation coding" className="w-full rounded" />
-                    </div>
-                    <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={e => {
-              e.stopPropagation();
-              setLightboxImage(streeInterview4);
-            }}>
-                      <img src={streeInterview4} alt="Interview analysis with observation coding" className="w-full rounded" />
-                    </div>
-                    <div className="bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={e => {
-              e.stopPropagation();
-              setLightboxImage(streeInterview5);
-            }}>
-                      <img src={streeInterview5} alt="Interview analysis with observation coding" className="w-full rounded" />
-                    </div>
+                {showInterviewGallery && <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 animate-fade-in">
+                    {[streeInterview1, streeInterview2, streeInterview3, streeInterview4, streeInterview5].map((img, i) => <div 
+                        key={i}
+                        className="bg-background rounded-lg border border-border p-3 hover:shadow-md hover:border-primary/40 transition-all cursor-pointer" 
+                        onClick={e => {
+                          e.stopPropagation();
+                          openGallery([streeInterview1, streeInterview2, streeInterview3, streeInterview4, streeInterview5], i);
+                        }}
+                      >
+                        <img src={img} alt={`Interview analysis ${i + 1}`} className="w-full rounded" />
+                      </div>)}
                   </div>}
               </div>}
 
