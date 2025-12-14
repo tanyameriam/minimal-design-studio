@@ -42,8 +42,8 @@ const ProjectCard = ({
           <p className="text-sm text-muted-foreground tracking-wide mb-3">
             {category}
           </p>
-          {tags && tags.length > 0 && <div className="flex gap-2 flex-wrap">
-              {tags.map(tag => <Badge key={tag} variant="outline" className={`text-xs font-medium ${tagColors[tag]}`}>
+          {tags && tags.length > 0 && <div className="flex gap-1.5 flex-wrap">
+              {tags.map(tag => <Badge key={tag} variant="outline" className={`text-[10px] px-2 py-0.5 font-medium ${tagColors[tag]}`}>
                   {tag}
                 </Badge>)}
             </div>}
