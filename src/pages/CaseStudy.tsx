@@ -1896,10 +1896,10 @@ const CaseStudy = () => {
 
 
       {/* BrynQ: Background & Context */}
-      {study.brynqBackground && <section className="px-6 lg:px-12 py-16"><div className="container mx-auto max-w-5xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Background & Context</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqBackground}</p></div></section>}
+      {study.brynqBackground && <section className="px-6 lg:px-12 py-20"><div className="container mx-auto max-w-5xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Background & Context</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqBackground}</p></div></section>}
 
       {/* BrynQ: The Legacy Reality */}
-      {study.brynqLegacyReality && <section className="px-6 lg:px-12 py-16 bg-card">
+      {study.brynqLegacyReality && <section className="px-6 lg:px-12 py-20 bg-card">
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">The Legacy Reality</h2>
           <p className="text-lg leading-relaxed text-muted-foreground mb-10">{study.brynqLegacyReality}</p>
@@ -1942,7 +1942,7 @@ const CaseStudy = () => {
       </section>}
 
       {/* BrynQ: Why This Became a Product Problem */}
-      {study.brynqProductProblem && <section id="brynq-problem" className="px-6 lg:px-12 py-16 scroll-mt-20">
+      {study.brynqProductProblem && <section id="brynq-problem" className="px-6 lg:px-12 py-20 scroll-mt-20">
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Why This Became a Product Problem</h2>
           <p className="text-lg leading-relaxed text-muted-foreground mb-10">{study.brynqProductProblem}</p>
@@ -1972,10 +1972,10 @@ const CaseStudy = () => {
       </section>}
 
       {/* BrynQ: My Responsibility */}
-      {study.brynqResponsibility && <section className="px-6 lg:px-12 py-16 bg-card"><div className="container mx-auto max-w-5xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">My Responsibility & Design Framing</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqResponsibility}</p></div></section>}
+      {study.brynqResponsibility && <section className="px-6 lg:px-12 py-20 bg-card"><div className="container mx-auto max-w-5xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">My Responsibility & Design Framing</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqResponsibility}</p></div></section>}
 
       {/* BrynQ: Research */}
-      {study.brynqResearch && <section className="px-6 lg:px-12 py-16">
+      {study.brynqResearch && <section className="px-6 lg:px-12 py-20">
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Research & Understanding the Work</h2>
           <p className="text-lg leading-relaxed text-muted-foreground mb-8">{study.brynqResearch}</p>
@@ -1989,7 +1989,7 @@ const CaseStudy = () => {
       </section>}
 
       {/* BrynQ: Key Insight */}
-      {study.brynqKeyInsight && <section className="px-6 lg:px-12 py-16 bg-card">
+      {study.brynqKeyInsight && <section className="px-6 lg:px-12 py-20 bg-card">
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-8">Key Insight</h2>
           <div className="relative p-8 rounded-2xl bg-muted/30 border-l-4 border-primary/40 overflow-hidden">
@@ -2002,13 +2002,13 @@ const CaseStudy = () => {
       </section>}
 
       {/* BrynQ: MVP Direction */}
-      {study.brynqMvpDirection && <section id="brynq-solution" className="px-6 lg:px-12 py-16 scroll-mt-20"><div className="container mx-auto max-w-5xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Defining an MVP Direction</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqMvpDirection}</p></div></section>}
+      {study.brynqMvpDirection && <section id="brynq-solution" className="px-6 lg:px-12 py-20 scroll-mt-20"><div className="container mx-auto max-w-5xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Defining an MVP Direction</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqMvpDirection}</p></div></section>}
 
       {/* BrynQ: Wizard */}
-      {study.brynqWizard && <section className="px-6 lg:px-12 py-16 bg-card"><div className="container mx-auto max-w-5xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Designing the Interface Requirements Wizard</h2><p className="text-lg leading-relaxed text-muted-foreground mb-8">{study.brynqWizard.intro}</p><div className="grid md:grid-cols-3 gap-4 mb-8">{study.brynqWizard.phases.map((phase, i) => <div key={i} className="p-5 border border-border bg-background"><span className="text-xs uppercase tracking-[0.2em] text-primary/70 font-medium">Phase {i + 1}</span><p className="mt-2">{phase}</p></div>)}</div><p className="text-muted-foreground">{study.brynqWizard.benefits}</p><div className="mt-8 bg-muted/30 border border-border rounded-lg overflow-hidden"><img src={brynqWizardFlow} alt="Wizard flow diagram" className="w-full h-auto" /></div></div></section>}
+      {study.brynqWizard && <section className="px-6 lg:px-12 py-20 bg-card"><div className="container mx-auto max-w-5xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Designing the Interface Requirements Wizard</h2><p className="text-lg leading-relaxed text-muted-foreground mb-8">{study.brynqWizard.intro}</p><div className="grid md:grid-cols-3 gap-4 mb-8">{study.brynqWizard.phases.map((phase, i) => <div key={i} className="p-5 border border-border bg-background"><span className="text-xs uppercase tracking-[0.2em] text-primary/70 font-medium">Phase {i + 1}</span><p className="mt-2">{phase}</p></div>)}</div><p className="text-muted-foreground">{study.brynqWizard.benefits}</p><div className="mt-8 bg-muted/30 border border-border rounded-lg overflow-hidden"><img src={brynqWizardFlow} alt="Wizard flow diagram" className="w-full h-auto" /></div></div></section>}
 
       {/* BrynQ: Review */}
-      {study.brynqReview && <section className="px-6 lg:px-12 py-16">
+      {study.brynqReview && <section className="px-6 lg:px-12 py-20">
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Introducing Review & Accountability</h2>
           <p className="text-lg leading-relaxed text-muted-foreground mb-8">{study.brynqReview}</p>
@@ -2054,7 +2054,7 @@ const CaseStudy = () => {
       </section>}
 
       {/* BrynQ: MVP Outcomes */}
-      {study.brynqMvpOutcomes && <section id="brynq-outcomes" className="px-6 lg:px-12 py-16 bg-card scroll-mt-20">
+      {study.brynqMvpOutcomes && <section id="brynq-outcomes" className="px-6 lg:px-12 py-20 bg-card scroll-mt-20">
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Outcomes of the MVP</h2>
           <p className="text-lg leading-relaxed text-muted-foreground mb-10">{study.brynqMvpOutcomes}</p>
@@ -2079,7 +2079,7 @@ const CaseStudy = () => {
       </section>}
 
       {/* BrynQ: Templates */}
-      {study.brynqTemplates && <section className="px-6 lg:px-12 py-16">
+      {study.brynqTemplates && <section className="px-6 lg:px-12 py-20">
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">From Wizard to Templates</h2>
           <p className="text-lg leading-relaxed text-muted-foreground mb-10">{study.brynqTemplates}</p>
@@ -2109,10 +2109,10 @@ const CaseStudy = () => {
       </section>}
 
       {/* BrynQ: Evolution */}
-      {study.brynqEvolution && <section className="px-6 lg:px-12 py-16 bg-card"><div className="container mx-auto max-w-5xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Platform Evolution</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqEvolution}</p></div></section>}
+      {study.brynqEvolution && <section className="px-6 lg:px-12 py-20 bg-card"><div className="container mx-auto max-w-5xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Platform Evolution</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqEvolution}</p></div></section>}
 
       {/* BrynQ: Reflection */}
-      {study.brynqReflection && <section id="brynq-reflection" className="px-6 lg:px-12 py-16 scroll-mt-20"><div className="container mx-auto max-w-5xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Reflection & Learnings</h2><p className="font-serif text-xl leading-relaxed text-muted-foreground">{study.brynqReflection}</p></div></section>}
+      {study.brynqReflection && <section id="brynq-reflection" className="px-6 lg:px-12 py-20 scroll-mt-20"><div className="container mx-auto max-w-5xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Reflection & Learnings</h2><p className="font-serif text-xl leading-relaxed text-muted-foreground">{study.brynqReflection}</p></div></section>}
 
       {/* BrynQ: NDA Note */}
       {study.brynqNdaNote && <section className="px-6 lg:px-12 py-8 bg-muted/30 border-y border-border"><div className="container mx-auto max-w-5xl text-center"><p className="text-sm text-muted-foreground italic">{study.brynqNdaNote}</p></div></section>}
