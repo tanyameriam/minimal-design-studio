@@ -352,15 +352,15 @@ const CV = () => {
             <h2 className="font-serif text-lg mb-6 pb-2 border-b border-border">Education</h2>
             <div className="space-y-4">
               <div>
-                <h3 className="font-medium text-2xl">Master's in UX (Specialization: AI) <span className="text-muted-foreground font-normal">(Ongoing)</span></h3>
+                <h3 className="font-medium text-lg">Master's in UX (Specialization: AI) <span className="text-muted-foreground font-normal">(Ongoing)</span></h3>
                 <p className="text-sm text-muted-foreground">Jindal School of Art & Architecture, 2025–2026</p>
               </div>
               <div>
-                <h3 className="font-medium text-2xl">Post Graduate Programme in UX Design</h3>
+                <h3 className="font-medium text-lg">Post Graduate Programme in UX Design</h3>
                 <p className="text-sm text-muted-foreground">IDC, Indian Institute of Technology Bombay, 2021–2022</p>
               </div>
               <div>
-                <h3 className="font-medium text-2xl">Bachelor of Technology in Computer Science</h3>
+                <h3 className="font-medium text-lg">Bachelor of Technology in Computer Science</h3>
                 <p className="text-sm text-muted-foreground">University of Calicut, 2013–2017</p>
               </div>
             </div>
@@ -370,7 +370,7 @@ const CV = () => {
           <section className="mb-12">
             <h2 className="font-serif text-lg mb-4 pb-2 border-b border-border">Community</h2>
             <div>
-              <h3 className="font-medium text-2xl">Co-organiser</h3>
+              <h3 className="font-medium text-lg">Co-organiser</h3>
               <a href="https://www.linkedin.com/company/design-reimagined-utrecht" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1.5">
                 <Linkedin className="w-3.5 h-3.5" />
                 Design Reimagined Utrecht
