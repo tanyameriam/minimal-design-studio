@@ -91,29 +91,44 @@ const CaseStudySidebar = ({ sections }: CaseStudySidebarProps) => {
       
       <nav 
         ref={navRef}
-        className={`hidden xl:block z-40 transition-all duration-300 w-32 ${
+        className={`hidden xl:block z-40 transition-all duration-300 ${
           isSticky 
             ? 'fixed top-32' 
             : 'absolute top-[400px]'
         }`}
         style={{ left: `${sidebarLeft}px` }}
       >
-        <ul className="space-y-4">
+        <ul className="space-y-3">
           {sections.map((section) => (
-            <li key={section.id}>
+            <li key={section.id} className="relative">
               <button
                 onClick={() => scrollToSection(section.id)}
-                className={`text-left text-sm uppercase tracking-[0.12em] transition-all duration-300 block py-1 ${
+                className={`text-left text-sm uppercase tracking-[0.12em] transition-all duration-300 block py-1.5 pl-4 relative ${
                   activeSection === section.id
                     ? 'text-foreground font-semibold'
                     : 'text-muted-foreground/60 hover:text-muted-foreground'
                 }`}
               >
+                {/* Vertical indicator line */}
+                <span 
+                  className={`absolute left-0 top-0 bottom-0 w-[2px] rounded-full transition-all duration-300 ${
+                    activeSection === section.id 
+                      ? 'bg-primary opacity-100' 
+                      : 'bg-border/50 opacity-0 group-hover:opacity-50'
+                  }`}
+                />
+                {/* Horizontal connecting line for active section */}
+                {activeSection === section.id && (
+                  <span className="absolute left-0 top-1/2 -translate-y-1/2 h-[1px] w-8 bg-gradient-to-r from-primary/60 to-transparent -ml-8" />
+                )}
                 {section.label}
               </button>
             </li>
           ))}
         </ul>
+        
+        {/* Subtle vertical track line */}
+        <div className="absolute left-4 top-0 bottom-0 w-[1px] bg-border/30 -z-10" />
       </nav>
     </>
   );
