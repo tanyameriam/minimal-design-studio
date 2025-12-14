@@ -1489,7 +1489,7 @@ const caseStudies: Record<string, CaseStudyData> = {
     brynqMvpDirection: "Together with the Product Owner and interface team PM, I aligned on a pragmatic MVP approach: Rather than redesigning the process from scratch, we would first bring the existing Excel workflow into the platform, mirroring the team's mental model to ensure adoption. Optimisation would come later.",
     // Interface Requirements Wizard
     brynqWizard: {
-      intro: "Based on research, I structured the workflow into three explicit phases that already existed implicitly:",
+      intro: "Based on research, I structured the workflow into three explicit phases that already existed implicitly. At this stage, the wizard still relied on mostly manual entry — the key wins were establishing a single source of truth, enabling self-reliability, and eliminating redundant scenario files:",
       phases: ["Gathering basic context", "Defining scenarios and mappings", "Reviewing and confirming before development"],
       benefits: "The wizard helped users provide minimum viable context upfront, made missing information visible, and created a single source of truth for developers."
     },
