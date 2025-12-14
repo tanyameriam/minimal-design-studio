@@ -1674,7 +1674,7 @@ const CaseStudy = () => {
             <div className="container mx-auto max-w-5xl">
               {/* Context Header */}
               <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Context</p>
-              <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-6 max-w-3xl leading-tight">{study.title}</h1>
+              <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-6 max-w-3xl leading-tight">Designing a Safety Companion for Independent Women Navigating Indian Cities</h1>
               <p className="text-lg leading-relaxed text-muted-foreground mb-12 max-w-3xl">{study.overview}</p>
 
               {/* Meta Card - Horizontal layout like Merry Health */}
@@ -1825,35 +1825,44 @@ const CaseStudy = () => {
           </div>
         </section>
         </> : slug !== 'stree-safety-app' && <section id={slug === 'food-waste-ngo' ? 'foodwaste-context' : slug === 'brynq' ? 'brynq-context' : undefined} className={`px-6 lg:px-12 py-16 border-t border-border scroll-mt-20`}>
-          <div className="container mx-auto max-w-4xl">
-            <div className="grid md:grid-cols-3 gap-12">
-              <div className="md:col-span-2">
-                <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Background</h2>
-                <p className="text-lg leading-relaxed">{study.overview}</p>
-              </div>
-              <div className="space-y-8">
-                <div>
-                  <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Role</h3>
+          <div className="container mx-auto max-w-5xl">
+            {/* Context Header */}
+            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Context</p>
+            <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-6 max-w-3xl leading-tight">
+              {slug === 'food-waste-ngo' && 'Bridging Surplus Food with Hunger Hotspots Through Coordinated Redistribution'}
+              {slug === 'brynq' && 'Transforming a Legacy Integration Platform into a Scalable B2B iPaaS'}
+              {slug !== 'food-waste-ngo' && slug !== 'brynq' && study.title}
+            </h1>
+            <p className="text-lg leading-relaxed text-muted-foreground mb-12 max-w-3xl">{study.overview}</p>
+            
+            {/* Meta Card - Horizontal layout like other case studies */}
+            <div className="rounded-xl border border-border bg-muted/30 mb-12">
+              <div className="grid md:grid-cols-4">
+                <div className="p-5">
+                  <h3 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">Role</h3>
                   <p className="text-sm">{study.role}</p>
                 </div>
-                {study.projectDuration && <div>
-                    <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Duration</h3>
+                {study.projectDuration && <div className="p-5 flex items-center">
+                  <div className="hidden md:block w-px h-8 bg-border mr-5" />
+                  <div>
+                    <h3 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">Duration</h3>
                     <p className="text-sm">{study.projectDuration}</p>
-                  </div>}
-                {study.projectContext && <div>
-                    <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Program</h3>
+                  </div>
+                </div>}
+                {study.projectContext && <div className="p-5 flex items-center">
+                  <div className="hidden md:block w-px h-8 bg-border mr-5" />
+                  <div>
+                    <h3 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">Program</h3>
                     <p className="text-sm">{study.projectContext}</p>
-                  </div>}
-                {study.timeline && <div>
-                    <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Timeline</h3>
-                    <ul className="text-sm space-y-1">
-                      {study.timeline.map((item, i) => <li key={i}>{item}</li>)}
-                    </ul>
-                  </div>}
-                {study.tools && <div>
-                    <h3 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3">Tools</h3>
+                  </div>
+                </div>}
+                {study.tools && <div className="p-5 flex items-center">
+                  <div className="hidden md:block w-px h-8 bg-border mr-5" />
+                  <div>
+                    <h3 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">Tools</h3>
                     <p className="text-sm">{study.tools.join(', ')}</p>
-                  </div>}
+                  </div>
+                </div>}
               </div>
             </div>
           </div>
