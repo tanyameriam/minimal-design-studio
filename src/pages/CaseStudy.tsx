@@ -4076,7 +4076,7 @@ const CaseStudy = () => {
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {study.finalDesign.changes.map((change, i) => <div key={i} className="p-5 rounded-xl bg-background border border-border">
-                  <h3 className="font-medium mb-2">{change.title}</h3>
+                  <h3 className="font-serif text-lg mb-2">{change.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{change.content}</p>
                 </div>)}
             </div>
