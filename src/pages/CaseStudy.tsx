@@ -3113,7 +3113,7 @@ const CaseStudy = () => {
                   </div>
                   <div className="p-3 rounded bg-emerald-500/5 border border-emerald-500/20">
                     <div className="flex items-center justify-between mb-2">
-                      <h4 className="text-sm font-semibold">Announcement Group</h4>
+                      <h4 className="text-sm font-medium font-serif">Announcement Group</h4>
                       <div className="cursor-pointer group" onClick={() => setLightboxImage(merryWhatsappHospital)}>
                         <div className="w-8 h-10 overflow-hidden rounded border border-border bg-muted/20">
                           <img src={merryWhatsappHospital} alt="Hospital Announcement" className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300" />
