@@ -4024,7 +4024,7 @@ const CaseStudy = () => {
       {/* STREE: Wireframing - placed before usability testing */}
       {study.wireframing && 'approach' in study.wireframing && <section className="px-6 lg:px-12 py-12 bg-card overflow-hidden">
           <div className="container mx-auto max-w-5xl mb-8">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">Wireframing</h2>
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">WIREFRAMES</h2>
             <p className="text-muted-foreground text-sm">{study.wireframing.approach}</p>
           </div>
           
