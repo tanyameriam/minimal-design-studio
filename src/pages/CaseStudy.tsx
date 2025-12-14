@@ -1632,6 +1632,42 @@ const CaseStudy = () => {
         label: 'Impact'
       }]} />}
 
+      {/* Food Waste Sidebar Navigation */}
+      {slug === 'food-waste-ngo' && <CaseStudySidebar sections={[{
+        id: 'foodwaste-context',
+        label: 'Context'
+      }, {
+        id: 'foodwaste-research',
+        label: 'Research'
+      }, {
+        id: 'foodwaste-solution',
+        label: 'Solution'
+      }, {
+        id: 'foodwaste-design',
+        label: 'Design'
+      }, {
+        id: 'foodwaste-impact',
+        label: 'Impact'
+      }]} />}
+
+      {/* BrynQ Sidebar Navigation */}
+      {slug === 'brynq' && <CaseStudySidebar sections={[{
+        id: 'brynq-context',
+        label: 'Context'
+      }, {
+        id: 'brynq-problem',
+        label: 'Problem'
+      }, {
+        id: 'brynq-solution',
+        label: 'Solution'
+      }, {
+        id: 'brynq-outcomes',
+        label: 'Outcomes'
+      }, {
+        id: 'brynq-reflection',
+        label: 'Reflection'
+      }]} />}
+
       {/* STREE Context Section - Similar to Merry Health */}
       {slug === 'stree-safety-app' && <>
           <section id="stree-context" className="px-6 lg:px-12 pt-32 pb-16 scroll-mt-20">
@@ -1788,7 +1824,7 @@ const CaseStudy = () => {
             </div>
           </div>
         </section>
-        </> : slug !== 'stree-safety-app' && <section className="px-6 lg:px-12 py-16 border-t border-border scroll-mt-20">
+        </> : slug !== 'stree-safety-app' && <section id={slug === 'food-waste-ngo' ? 'foodwaste-context' : slug === 'brynq' ? 'brynq-context' : undefined} className={`px-6 lg:px-12 py-16 border-t border-border scroll-mt-20`}>
           <div className="container mx-auto max-w-4xl">
             <div className="grid md:grid-cols-3 gap-12">
               <div className="md:col-span-2">
@@ -1897,7 +1933,7 @@ const CaseStudy = () => {
       </section>}
 
       {/* BrynQ: Why This Became a Product Problem */}
-      {study.brynqProductProblem && <section className="px-6 lg:px-12 py-16">
+      {study.brynqProductProblem && <section id="brynq-problem" className="px-6 lg:px-12 py-16 scroll-mt-20">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Why This Became a Product Problem</h2>
           <p className="text-lg leading-relaxed text-muted-foreground mb-10">{study.brynqProductProblem}</p>
@@ -1946,7 +1982,7 @@ const CaseStudy = () => {
       </section>}
 
       {/* BrynQ: MVP Direction */}
-      {study.brynqMvpDirection && <section className="px-6 lg:px-12 py-16"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Defining an MVP Direction</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqMvpDirection}</p></div></section>}
+      {study.brynqMvpDirection && <section id="brynq-solution" className="px-6 lg:px-12 py-16 scroll-mt-20"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Defining an MVP Direction</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqMvpDirection}</p></div></section>}
 
       {/* BrynQ: Wizard */}
       {study.brynqWizard && <section className="px-6 lg:px-12 py-16 bg-card"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Designing the Interface Requirements Wizard</h2><p className="text-lg leading-relaxed text-muted-foreground mb-8">{study.brynqWizard.intro}</p><div className="grid md:grid-cols-3 gap-4 mb-8">{study.brynqWizard.phases.map((phase, i) => <div key={i} className="p-5 border border-border bg-background"><span className="text-xs uppercase tracking-[0.2em] text-primary/70 font-medium">Phase {i + 1}</span><p className="mt-2">{phase}</p></div>)}</div><p className="text-muted-foreground">{study.brynqWizard.benefits}</p><div className="mt-8 aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center"><span className="text-sm text-muted-foreground italic">[ Wizard flow diagram ]</span></div></div></section>}
@@ -1998,7 +2034,7 @@ const CaseStudy = () => {
       </section>}
 
       {/* BrynQ: MVP Outcomes */}
-      {study.brynqMvpOutcomes && <section className="px-6 lg:px-12 py-16 bg-card">
+      {study.brynqMvpOutcomes && <section id="brynq-outcomes" className="px-6 lg:px-12 py-16 bg-card scroll-mt-20">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Outcomes of the MVP</h2>
           <p className="text-lg leading-relaxed text-muted-foreground mb-10">{study.brynqMvpOutcomes}</p>
@@ -2055,7 +2091,7 @@ const CaseStudy = () => {
       {study.brynqEvolution && <section className="px-6 lg:px-12 py-16 bg-card"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Platform Evolution</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqEvolution}</p></div></section>}
 
       {/* BrynQ: Reflection */}
-      {study.brynqReflection && <section className="px-6 lg:px-12 py-16"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Reflection & Learnings</h2><p className="font-serif text-xl leading-relaxed text-muted-foreground">{study.brynqReflection}</p></div></section>}
+      {study.brynqReflection && <section id="brynq-reflection" className="px-6 lg:px-12 py-16 scroll-mt-20"><div className="container mx-auto max-w-4xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Reflection & Learnings</h2><p className="font-serif text-xl leading-relaxed text-muted-foreground">{study.brynqReflection}</p></div></section>}
 
       {/* BrynQ: NDA Note */}
       {study.brynqNdaNote && <section className="px-6 lg:px-12 py-8 bg-muted/30 border-y border-border"><div className="container mx-auto max-w-4xl text-center"><p className="text-sm text-muted-foreground italic">{study.brynqNdaNote}</p></div></section>}
@@ -3248,7 +3284,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* Research Insights (for food waste project) */}
-      {study.researchInsights && <section className="px-6 lg:px-12 py-16">
+      {study.researchInsights && <section id={slug === 'food-waste-ngo' ? 'foodwaste-research' : undefined} className={`px-6 lg:px-12 py-16 ${slug === 'food-waste-ngo' ? 'scroll-mt-20' : ''}`}>
           <div className="container mx-auto max-w-4xl">
             <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Research & Insights</p>
             <h2 className="font-serif text-3xl md:text-4xl mb-6">Understanding the NGO Ecosystem</h2>
@@ -3322,7 +3358,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* Suggested Solution System Flow (for food waste project) */}
-      {slug === 'food-waste-ngo' && <section className="px-6 lg:px-12 py-16">
+      {slug === 'food-waste-ngo' && <section id="foodwaste-solution" className="px-6 lg:px-12 py-16 scroll-mt-20">
           <div className="container mx-auto max-w-5xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Suggested Solution</h2>
             <h3 className="font-serif text-3xl mb-8">System Flow</h3>
@@ -3544,7 +3580,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* Wireframing - array format only (STREE has its own section after Solution Design) */}
-      {study.wireframing && !('approach' in study.wireframing) && <section className="px-6 lg:px-12 py-16 border-t border-border">
+      {study.wireframing && !('approach' in study.wireframing) && <section id={slug === 'food-waste-ngo' ? 'foodwaste-design' : undefined} className={`px-6 lg:px-12 py-16 border-t border-border ${slug === 'food-waste-ngo' ? 'scroll-mt-20' : ''}`}>
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-8">Wireframing</h2>
             <div className="space-y-12">
@@ -4074,7 +4110,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* Impact (for food waste project - array format) */}
-      {study.impact && Array.isArray(study.impact) && <section className="px-6 lg:px-12 py-16 bg-card">
+      {study.impact && Array.isArray(study.impact) && <section id={slug === 'food-waste-ngo' ? 'foodwaste-impact' : undefined} className={`px-6 lg:px-12 py-16 bg-card ${slug === 'food-waste-ngo' ? 'scroll-mt-20' : ''}`}>
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-8">Impact</h2>
             <p className="font-serif text-xl text-foreground/80 mb-10">The designed system helps:</p>
