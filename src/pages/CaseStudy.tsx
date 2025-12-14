@@ -3093,8 +3093,8 @@ const CaseStudy = () => {
                 </div>
                 <div className="space-y-3">
                   <div className="p-3 rounded bg-muted/20 border border-border/50">
-                    <h4 className="text-xs font-semibold mb-2">How It Works</h4>
-                    <ul className="space-y-1 text-xs text-muted-foreground">
+                    <h4 className="text-sm font-semibold mb-2">How It Works</h4>
+                    <ul className="space-y-1.5 text-sm text-muted-foreground">
                       <li><span className="text-primary">1.</span> Admin sends request to WhatsApp</li>
                       <li><span className="text-primary">2.</span> System parses for data points</li>
                       <li><span className="text-primary">3.</span> Missing data requested automatically</li>
@@ -3103,8 +3103,8 @@ const CaseStudy = () => {
                     </ul>
                   </div>
                   <div className="p-3 rounded bg-primary/5 border border-primary/20">
-                    <h4 className="text-xs uppercase tracking-wider text-primary font-medium mb-2">Benefits</h4>
-                    <ul className="space-y-1 text-xs text-muted-foreground">
+                    <h4 className="text-sm uppercase tracking-wider text-primary font-medium mb-2">Benefits</h4>
+                    <ul className="space-y-1.5 text-sm text-muted-foreground">
                       <li>• Standardized updates for every ride</li>
                       <li>• Automatic status messages</li>
                       <li>• Live location links pushed instantly</li>
@@ -3113,14 +3113,14 @@ const CaseStudy = () => {
                   </div>
                   <div className="p-3 rounded bg-emerald-500/5 border border-emerald-500/20">
                     <div className="flex items-center justify-between mb-2">
-                      <h4 className="text-xs font-semibold">Announcement Group</h4>
+                      <h4 className="text-sm font-semibold">Announcement Group</h4>
                       <div className="cursor-pointer group" onClick={() => setLightboxImage(merryWhatsappHospital)}>
                         <div className="w-8 h-10 overflow-hidden rounded border border-border bg-muted/20">
                           <img src={merryWhatsappHospital} alt="Hospital Announcement" className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300" />
                         </div>
                       </div>
                     </div>
-                    <ul className="space-y-1 text-xs text-muted-foreground">
+                    <ul className="space-y-1.5 text-sm text-muted-foreground">
                       <li>• Read-only channel for managers</li>
                       <li>• Single source of truth</li>
                       <li>• Real-time trip updates</li>
@@ -3147,8 +3147,8 @@ const CaseStudy = () => {
                 </div>
                 <div className="space-y-3">
                   <div className="p-3 rounded bg-muted/20 border border-border/50">
-                    <h4 className="text-xs font-semibold mb-2">How It Works</h4>
-                    <ul className="space-y-1 text-xs text-muted-foreground">
+                    <h4 className="text-sm font-semibold mb-2">How It Works</h4>
+                    <ul className="space-y-1.5 text-sm text-muted-foreground">
                       <li><span className="text-amber-600">1.</span> Driver receives ride request</li>
                       <li><span className="text-amber-600">2.</span> SMS fallback for feature phones</li>
                       <li><span className="text-amber-600">3.</span> Accept/decline response</li>
@@ -3157,8 +3157,8 @@ const CaseStudy = () => {
                     </ul>
                   </div>
                   <div className="p-3 rounded bg-amber-500/5 border border-amber-500/20">
-                    <h4 className="text-xs uppercase tracking-wider text-amber-600 font-medium mb-2">Benefits</h4>
-                    <ul className="space-y-1 text-xs text-muted-foreground">
+                    <h4 className="text-sm uppercase tracking-wider text-amber-600 font-medium mb-2">Benefits</h4>
+                    <ul className="space-y-1.5 text-sm text-muted-foreground">
                       <li>• Clear, standardized requests</li>
                       <li>• One-tap Accept/Decline</li>
                       <li>• Live pickup location links</li>
@@ -3187,16 +3187,16 @@ const CaseStudy = () => {
                 </div>
                 <div className="space-y-3">
                   <div className="p-3 rounded bg-muted/20 border border-border/50">
-                    <h4 className="text-xs font-semibold mb-2">Channels</h4>
-                    <ul className="space-y-1 text-xs text-muted-foreground">
+                    <h4 className="text-sm font-semibold mb-2">Channels</h4>
+                    <ul className="space-y-1.5 text-sm text-muted-foreground">
                       <li><span className="text-blue-600">•</span> <strong>WhatsApp:</strong> Real-time updates</li>
                       <li><span className="text-blue-600">•</span> <strong>IVR:</strong> Regional language info</li>
                       <li><span className="text-blue-600">•</span> <strong>SMS:</strong> Feature phone fallback</li>
                     </ul>
                   </div>
                   <div className="p-3 rounded bg-blue-500/5 border border-blue-500/20">
-                    <h4 className="text-xs uppercase tracking-wider text-blue-600 font-medium mb-2">Benefits</h4>
-                    <ul className="space-y-1 text-xs text-muted-foreground">
+                    <h4 className="text-sm uppercase tracking-wider text-blue-600 font-medium mb-2">Benefits</h4>
+                    <ul className="space-y-1.5 text-sm text-muted-foreground">
                       <li>• Instant confirmation</li>
                       <li>• Driver details shared automatically</li>
                       <li>• Live tracking link</li>
