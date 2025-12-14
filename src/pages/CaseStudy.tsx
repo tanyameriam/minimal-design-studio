@@ -1632,7 +1632,51 @@ const CaseStudy = () => {
         label: 'Impact'
       }]} />}
 
-      {slug !== 'merry-health' && <header id={slug === 'stree-safety-app' ? 'stree-context' : undefined} className="pt-32 pb-20 px-6 lg:px-12 scroll-mt-20">
+      {/* STREE Context Section - Similar to Merry Health */}
+      {slug === 'stree-safety-app' && <>
+          <section id="stree-context" className="px-6 lg:px-12 pt-32 pb-16 scroll-mt-20">
+            <div className="container mx-auto max-w-5xl">
+              {/* Context Header */}
+              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Context</p>
+              <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-6 max-w-3xl leading-tight">{study.title}</h1>
+              <p className="text-lg leading-relaxed text-muted-foreground mb-12 max-w-3xl">{study.overview}</p>
+
+              {/* Meta Card - Horizontal layout like Merry Health */}
+              <div className="rounded-xl border border-border bg-muted/30 mb-12">
+                <div className="grid md:grid-cols-4">
+                  <div className="p-5">
+                    <h3 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">Role</h3>
+                    <p className="text-sm">{study.role}</p>
+                  </div>
+                  {study.projectDuration && <div className="p-5 flex items-center">
+                    <div className="hidden md:block w-px h-8 bg-border mr-5" />
+                    <div>
+                      <h3 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">Duration</h3>
+                      <p className="text-sm">{study.projectDuration}</p>
+                    </div>
+                  </div>}
+                  {study.projectContext && <div className="p-5 flex items-center">
+                    <div className="hidden md:block w-px h-8 bg-border mr-5" />
+                    <div>
+                      <h3 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">Program</h3>
+                      <p className="text-sm">{study.projectContext}</p>
+                    </div>
+                  </div>}
+                  {study.tools && <div className="p-5 flex items-center">
+                    <div className="hidden md:block w-px h-8 bg-border mr-5" />
+                    <div>
+                      <h3 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">Tools</h3>
+                      <p className="text-sm">{study.tools.join(', ')}</p>
+                    </div>
+                  </div>}
+                </div>
+              </div>
+            </div>
+          </section>
+        </>}
+
+      {/* Other case studies header */}
+      {slug !== 'merry-health' && slug !== 'stree-safety-app' && <header className="pt-32 pb-20 px-6 lg:px-12 scroll-mt-20">
           <div className="container mx-auto max-w-4xl">
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-4 animate-fade-up">
               {study.title}
@@ -1719,29 +1763,25 @@ const CaseStudy = () => {
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="p-6 rounded-xl border border-border bg-card">
                   <h4 className="font-serif text-lg mb-2">Hospital Admins</h4>
-                  <p className="text-xs text-muted-foreground mb-2">Receive emergency calls and initiate ambulance requests.</p>
-                  <p className="text-sm"><span className="font-medium text-primary">Goal:</span> Quickly assign an available ambulance with minimal manual effort and ensure timely patient pickup.</p>
-                </div>
-                <div className="p-6 rounded-xl border border-border bg-card">
-                  <h4 className="font-serif text-lg mb-2">Drivers</h4>
-                  <p className="text-xs text-muted-foreground mb-2">Receive and confirm ambulance requests from hospitals or Merry Health staff.</p>
-                  <p className="text-sm"><span className="font-medium text-primary">Goal:</span> Get clear trip details and confirm rides easily without delays or confusion.</p>
-                </div>
-                <div className="p-6 rounded-xl border border-border bg-card">
-                  <h4 className="font-serif text-lg mb-2">Patients / Families</h4>
-                  <p className="text-xs text-muted-foreground mb-2">Request ambulances via hospitals and receive live tracking updates.</p>
-                  <p className="text-sm"><span className="font-medium text-primary">Goal:</span> Access timely, transparent information to feel confident that help is on the way.</p>
+                  <p className="text-sm text-muted-foreground">Coordinate ambulance bookings, track rides, and manage patient handoffs across facilities.</p>
                 </div>
                 <div className="p-6 rounded-xl border border-border bg-card">
                   <h4 className="font-serif text-lg mb-2">Merry Health Admins</h4>
-                  <p className="text-xs text-muted-foreground mb-2">Oversee hospital and driver coordination, monitor SLAs, and manage data quality.</p>
-                  <p className="text-sm"><span className="font-medium text-primary">Goal:</span> Ensure fast, reliable dispatch operations and maintain accurate performance reporting.</p>
+                  <p className="text-sm text-muted-foreground">Oversee system-wide operations, assign drivers, and ensure timely service delivery.</p>
+                </div>
+                <div className="p-6 rounded-xl border border-border bg-card">
+                  <h4 className="font-serif text-lg mb-2">Drivers</h4>
+                  <p className="text-sm text-muted-foreground">Receive ride assignments, navigate to pickup locations, and update ride statuses.</p>
+                </div>
+                <div className="p-6 rounded-xl border border-border bg-card">
+                  <h4 className="font-serif text-lg mb-2">Patient Party</h4>
+                  <p className="text-sm text-muted-foreground">Family members or attendants who need visibility into ambulance arrival and ride progress.</p>
                 </div>
               </div>
             </div>
           </div>
         </section>
-        </> : <section className="px-6 lg:px-12 py-16 border-t border-border scroll-mt-20">
+        </> : slug !== 'stree-safety-app' && <section className="px-6 lg:px-12 py-16 border-t border-border scroll-mt-20">
           <div className="container mx-auto max-w-4xl">
             <div className="grid md:grid-cols-3 gap-12">
               <div className="md:col-span-2">
@@ -3573,16 +3613,17 @@ const CaseStudy = () => {
         </section>}
 
       {/* STREE: Brief Section */}
-      {study.brief && <section id="stree-brief" className="px-6 lg:px-12 py-12 scroll-mt-20">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">The Brief</h2>
-            <p className="text-muted-foreground mb-6">{study.brief.intro}</p>
-            <div className="p-6 bg-card border-l-4 border-primary mb-8">
-              <p className="font-serif text-lg italic">{study.brief.coreIntent}</p>
+      {study.brief && <section id="stree-brief" className="px-6 lg:px-12 py-16 scroll-mt-20">
+          <div className="container mx-auto max-w-5xl">
+            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Brief</p>
+            <h2 className="font-serif text-3xl md:text-4xl mb-6">Project Intent & Goals</h2>
+            <p className="text-lg text-muted-foreground mb-8 max-w-3xl">{study.brief.intro}</p>
+            <div className="p-6 rounded-xl border border-border bg-card mb-8">
+              <p className="font-serif text-xl italic text-foreground/80">{study.brief.coreIntent}</p>
             </div>
             <div className="grid md:grid-cols-2 gap-4">
-              {study.brief.goals.map((goal, i) => <div key={i} className="flex gap-3 text-sm">
-                  <span className="text-primary font-medium">{i + 1}.</span>
+              {study.brief.goals.map((goal, i) => <div key={i} className="flex gap-3 p-4 rounded-lg border border-border bg-card/50">
+                  <span className="text-primary font-semibold">{i + 1}.</span>
                   <span className="text-muted-foreground">{goal}</span>
                 </div>)}
             </div>
@@ -3590,31 +3631,29 @@ const CaseStudy = () => {
         </section>}
 
       {/* STREE: Research Phase */}
-      {study.research && <section id="stree-research" className="px-6 lg:px-12 py-12 bg-card scroll-mt-20">
-          <div className="container mx-auto max-w-4xl">
-            <div className="flex items-center gap-3 mb-6">
-              <span className="text-xs uppercase tracking-[0.3em] text-primary/70 font-medium">Phase 1</span>
-              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground">Research</h2>
-            </div>
-            <p className="text-muted-foreground mb-8">{study.research.method}</p>
+      {study.research && <section id="stree-research" className="px-6 lg:px-12 py-16 bg-card scroll-mt-20">
+          <div className="container mx-auto max-w-5xl">
+            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Research</p>
+            <h2 className="font-serif text-3xl md:text-4xl mb-6">Understanding the Problem Space</h2>
+            <p className="text-lg text-muted-foreground mb-10 max-w-3xl">{study.research.method}</p>
             
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
-              <div className="p-4 bg-background border border-border">
-                <h4 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2">Participants</h4>
-                <p className="text-2xl font-serif mb-1">{study.research.participants.count}</p>
-                <p className="text-xs text-muted-foreground">{study.research.participants.demographics}</p>
+            <div className="grid md:grid-cols-3 gap-6 mb-10">
+              <div className="p-5 rounded-xl bg-background border border-border">
+                <h4 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">Participants</h4>
+                <p className="text-3xl font-serif mb-1">{study.research.participants.count}</p>
+                <p className="text-sm text-muted-foreground">{study.research.participants.demographics}</p>
               </div>
-              <div className="p-4 bg-background border border-border md:col-span-2">
-                <h4 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2">Ethics</h4>
-                <p className="text-sm text-muted-foreground">{study.research.participants.ethics}</p>
+              <div className="p-5 rounded-xl bg-background border border-border md:col-span-2">
+                <h4 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">Ethics</h4>
+                <p className="text-sm text-muted-foreground leading-relaxed">{study.research.participants.ethics}</p>
               </div>
             </div>
 
-            <div className="p-6 border border-border">
-              <h4 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">Interview Goals</h4>
+            <div className="p-6 rounded-xl border border-border bg-background">
+              <h4 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-4">Interview Goals</h4>
               <div className="grid md:grid-cols-2 gap-3">
                 {study.research.interviewGoals.map((goal, i) => <div key={i} className="flex gap-2 text-sm">
-                    <span className="text-primary/50">→</span>
+                    <span className="text-primary">→</span>
                     <span className="text-muted-foreground">{goal}</span>
                   </div>)}
               </div>
@@ -3715,10 +3754,11 @@ const CaseStudy = () => {
           </div>
         </section>}
 
-      {study.synthesis && <section id="stree-synthesis" className="px-6 lg:px-12 py-12 scroll-mt-20">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Affinity Mapping & Synthesis</h2>
-            <p className="text-muted-foreground mb-8">{study.synthesis.method}</p>
+      {study.synthesis && <section id="stree-synthesis" className="px-6 lg:px-12 py-16 scroll-mt-20">
+          <div className="container mx-auto max-w-5xl">
+            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Synthesis</p>
+            <h2 className="font-serif text-3xl md:text-4xl mb-6">Affinity Mapping & Pattern Recognition</h2>
+            <p className="text-lg text-muted-foreground mb-10 max-w-3xl">{study.synthesis.method}</p>
             
             {/* Affinity Mapping Images for STREE */}
             {slug === 'stree-safety-app' && <>
@@ -3850,18 +3890,19 @@ const CaseStudy = () => {
         </section>}
 
       {/* Product Strategy - handles both formats */}
-      {study.productStrategy && <section id="stree-solution" className="px-6 lg:px-12 py-12 scroll-mt-20">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Product Strategy</h2>
+      {study.productStrategy && <section id="stree-solution" className="px-6 lg:px-12 py-16 scroll-mt-20">
+          <div className="container mx-auto max-w-5xl">
+            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Solution</p>
+            <h2 className="font-serif text-3xl md:text-4xl mb-6">Product Strategy</h2>
             {'reframe' in study.productStrategy ?
         // STREE format
         <>
-                <p className="text-muted-foreground mb-4">{study.productStrategy.reframe}</p>
+                <p className="text-lg text-muted-foreground mb-8 max-w-3xl">{study.productStrategy.reframe}</p>
                 
                 <div className="grid md:grid-cols-3 gap-6">
-                  {study.productStrategy.phases.map((phase, i) => <div key={i} className="p-5 border border-border">
-                      <h3 className="font-serif text-base mb-3">{phase.title}</h3>
-                      <p className="text-sm text-muted-foreground">{phase.content}</p>
+                  {study.productStrategy.phases.map((phase, i) => <div key={i} className="p-6 rounded-xl border border-border bg-card">
+                      <h3 className="font-serif text-lg mb-3">{phase.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{phase.content}</p>
                     </div>)}
                 </div>
               </> :
@@ -3985,14 +4026,15 @@ const CaseStudy = () => {
         </section>}
 
       {/* STREE: Final Design */}
-      {study.finalDesign && <section id="stree-design" className="px-6 lg:px-12 py-12 bg-card overflow-hidden scroll-mt-20">
-          <div className="container mx-auto max-w-4xl mb-8">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-8">Final Design</h2>
+      {study.finalDesign && <section id="stree-design" className="px-6 lg:px-12 py-16 bg-card overflow-hidden scroll-mt-20">
+          <div className="container mx-auto max-w-5xl mb-10">
+            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Design</p>
+            <h2 className="font-serif text-3xl md:text-4xl mb-8">Final Design & Key Changes</h2>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-              {study.finalDesign.changes.map((change, i) => <div key={i} className="p-4 bg-background border border-border">
-                  <h3 className="font-medium text-sm mb-2">{change.title}</h3>
-                  <p className="text-xs text-muted-foreground">{change.content}</p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {study.finalDesign.changes.map((change, i) => <div key={i} className="p-5 rounded-xl bg-background border border-border">
+                  <h3 className="font-medium mb-2">{change.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{change.content}</p>
                 </div>)}
             </div>
           </div>
@@ -4010,16 +4052,17 @@ const CaseStudy = () => {
         </section>}
 
       {/* STREE: Impact */}
-      {study.impact && 'functional' in study.impact && <section id="stree-impact" className="px-6 lg:px-12 py-12 scroll-mt-20">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Projected Impact</h2>
-            <div className="grid md:grid-cols-2 gap-4 mb-6">
-              {study.impact.functional.map((item, i) => <div key={i} className="flex gap-2 text-sm">
-                  <span className="text-primary">✓</span>
+      {study.impact && 'functional' in study.impact && <section id="stree-impact" className="px-6 lg:px-12 py-16 scroll-mt-20">
+          <div className="container mx-auto max-w-5xl">
+            <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Impact</p>
+            <h2 className="font-serif text-3xl md:text-4xl mb-8">Projected Outcomes</h2>
+            <div className="grid md:grid-cols-2 gap-4 mb-8">
+              {study.impact.functional.map((item, i) => <div key={i} className="flex gap-3 p-4 rounded-lg border border-border bg-card/50">
+                  <span className="text-primary font-semibold">✓</span>
                   <span className="text-muted-foreground">{item}</span>
                 </div>)}
             </div>
-            <p className="text-xs text-muted-foreground/70 italic">{study.impact.note}</p>
+            <p className="text-sm text-muted-foreground/70 italic">{study.impact.note}</p>
           </div>
         </section>}
 
