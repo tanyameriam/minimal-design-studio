@@ -102,6 +102,7 @@ import foodWasteRestWireframeAccount from '@/assets/food-waste-rest-wireframe-ac
 import foodWasteRestWireframeInsights from '@/assets/food-waste-rest-wireframe-insights.png';
 import brynqScenarioRedacted from '@/assets/brynq-scenario-redacted.png';
 import brynqWizardFlow from '@/assets/brynq-wizard-flow.png';
+import brynqTemplateFlow from '@/assets/brynq-template-flow.png';
 import { PlatformAuditPhase } from '@/components/ResearchPhaseCard';
 interface CaseStudySection {
   title: string;
@@ -2103,9 +2104,10 @@ const CaseStudy = () => {
           </div>
           <p className="text-xs text-muted-foreground/60 mb-8 italic text-center">* Metrics are indicative and abstracted due to NDA</p>
           
-          <div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
-            <span className="text-sm text-muted-foreground italic">[ Workflow evolution diagram ]</span>
+          <div className="mb-4">
+            <img src={brynqTemplateFlow} alt="Template builder flow diagram showing the workflow for admin template creation" className="w-full border border-border" />
           </div>
+          <p className="text-sm text-muted-foreground italic text-center">Template builder flow — admins create reusable templates for known system combinations, enabling users to select prefilled fields from dropdown options based on historical knowledge.</p>
         </div>
       </section>}
 
