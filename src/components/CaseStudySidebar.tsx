@@ -13,8 +13,10 @@ const CaseStudySidebar = ({ sections }: CaseStudySidebarProps) => {
   const [activeSection, setActiveSection] = useState<string>(sections[0]?.id || '');
   const [isSticky, setIsSticky] = useState(false);
   const [sidebarLeft, setSidebarLeft] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
   const navRef = useRef<HTMLElement>(null);
   const placeholderRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     const calculateSidebarPosition = () => {
@@ -56,6 +58,7 @@ const CaseStudySidebar = ({ sections }: CaseStudySidebarProps) => {
           const offsetTop = element.offsetTop;
           if (scrollPosition >= offsetTop) {
             setActiveSection(section.id);
+            setActiveIndex(i);
             return;
           }
         }
@@ -63,6 +66,7 @@ const CaseStudySidebar = ({ sections }: CaseStudySidebarProps) => {
       
       if (sections.length > 0) {
         setActiveSection(sections[0].id);
+        setActiveIndex(0);
       }
     };
 
@@ -84,6 +88,12 @@ const CaseStudySidebar = ({ sections }: CaseStudySidebarProps) => {
     }
   };
 
+  // Calculate the sliding indicator position
+  const indicatorStyle = {
+    transform: `translateY(${activeIndex * 40}px)`,
+    transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease'
+  };
+
   return (
     <>
       {/* Placeholder to track original position */}
@@ -91,44 +101,49 @@ const CaseStudySidebar = ({ sections }: CaseStudySidebarProps) => {
       
       <nav 
         ref={navRef}
-        className={`hidden xl:block z-40 transition-all duration-300 ${
+        className={`hidden xl:block z-40 transition-all duration-500 ease-out ${
           isSticky 
             ? 'fixed top-32' 
             : 'absolute top-[400px]'
         }`}
         style={{ left: `${sidebarLeft}px` }}
       >
-        <ul className="space-y-3">
-          {sections.map((section) => (
-            <li key={section.id} className="relative">
-              <button
-                onClick={() => scrollToSection(section.id)}
-                className={`text-left text-sm uppercase tracking-[0.12em] transition-all duration-300 block py-1.5 pl-4 relative ${
-                  activeSection === section.id
-                    ? 'text-foreground font-semibold'
-                    : 'text-muted-foreground/60 hover:text-muted-foreground'
-                }`}
-              >
-                {/* Vertical indicator line */}
-                <span 
-                  className={`absolute left-0 top-0 bottom-0 w-[2px] rounded-full transition-all duration-300 ${
-                    activeSection === section.id 
-                      ? 'bg-primary opacity-100' 
-                      : 'bg-border/50 opacity-0 group-hover:opacity-50'
+        <div className="relative">
+          {/* Animated sliding indicator */}
+          <div 
+            className="absolute left-0 w-[2px] h-8 bg-primary rounded-full"
+            style={indicatorStyle}
+          />
+          
+          {/* Horizontal line extending from active indicator */}
+          <div 
+            className="absolute left-0 h-[1px] w-6 bg-gradient-to-r from-primary/50 to-transparent -ml-6"
+            style={{
+              ...indicatorStyle,
+              transform: `translateY(${activeIndex * 40 + 12}px)`,
+            }}
+          />
+          
+          <ul ref={listRef} className="space-y-2 pl-4">
+            {sections.map((section, index) => (
+              <li key={section.id} className="relative">
+                <button
+                  onClick={() => scrollToSection(section.id)}
+                  className={`text-left text-sm uppercase tracking-[0.12em] block py-2 pr-4 transition-all duration-300 ease-out ${
+                    activeSection === section.id
+                      ? 'text-foreground font-semibold translate-x-1'
+                      : 'text-muted-foreground/60 hover:text-muted-foreground hover:translate-x-0.5'
                   }`}
-                />
-                {/* Horizontal connecting line for active section */}
-                {activeSection === section.id && (
-                  <span className="absolute left-0 top-1/2 -translate-y-1/2 h-[1px] w-8 bg-gradient-to-r from-primary/60 to-transparent -ml-8" />
-                )}
-                {section.label}
-              </button>
-            </li>
-          ))}
-        </ul>
-        
-        {/* Subtle vertical track line */}
-        <div className="absolute left-4 top-0 bottom-0 w-[1px] bg-border/30 -z-10" />
+                >
+                  {section.label}
+                </button>
+              </li>
+            ))}
+          </ul>
+          
+          {/* Subtle vertical track line */}
+          <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-border/20" />
+        </div>
       </nav>
     </>
   );
