@@ -1610,63 +1610,63 @@ const CaseStudy = () => {
 
       {/* STREE Sidebar Navigation */}
       {slug === 'stree-safety-app' && <CaseStudySidebar sections={[{
-        id: 'stree-context',
-        label: 'Context'
-      }, {
-        id: 'stree-brief',
-        label: 'Brief'
-      }, {
-        id: 'stree-research',
-        label: 'Research'
-      }, {
-        id: 'stree-synthesis',
-        label: 'Synthesis'
-      }, {
-        id: 'stree-solution',
-        label: 'Solution'
-      }, {
-        id: 'stree-design',
-        label: 'Design'
-      }, {
-        id: 'stree-impact',
-        label: 'Impact'
-      }]} />}
+      id: 'stree-context',
+      label: 'Context'
+    }, {
+      id: 'stree-brief',
+      label: 'Brief'
+    }, {
+      id: 'stree-research',
+      label: 'Research'
+    }, {
+      id: 'stree-synthesis',
+      label: 'Synthesis'
+    }, {
+      id: 'stree-solution',
+      label: 'Solution'
+    }, {
+      id: 'stree-design',
+      label: 'Design'
+    }, {
+      id: 'stree-impact',
+      label: 'Impact'
+    }]} />}
 
       {/* Food Waste Sidebar Navigation */}
       {slug === 'food-waste-ngo' && <CaseStudySidebar sections={[{
-        id: 'foodwaste-context',
-        label: 'Context'
-      }, {
-        id: 'foodwaste-research',
-        label: 'Research'
-      }, {
-        id: 'foodwaste-solution',
-        label: 'Solution'
-      }, {
-        id: 'foodwaste-design',
-        label: 'Design'
-      }, {
-        id: 'foodwaste-impact',
-        label: 'Impact'
-      }]} />}
+      id: 'foodwaste-context',
+      label: 'Context'
+    }, {
+      id: 'foodwaste-research',
+      label: 'Research'
+    }, {
+      id: 'foodwaste-solution',
+      label: 'Solution'
+    }, {
+      id: 'foodwaste-design',
+      label: 'Design'
+    }, {
+      id: 'foodwaste-impact',
+      label: 'Impact'
+    }]} />}
 
       {/* BrynQ Sidebar Navigation */}
       {slug === 'brynq' && <CaseStudySidebar sections={[{
-        id: 'brynq-context',
-        label: 'Context'
-      }, {
-        id: 'brynq-problem',
-        label: 'Problem'
-      }, {
-        id: 'brynq-solution',
-        label: 'Solution'
-      }, {
-        id: 'brynq-outcomes',
-        label: 'Outcomes'
-      }, {
-        id: 'brynq-reflection',
-        label: 'Reflection'
-      }]} />}
+      id: 'brynq-context',
+      label: 'Context'
+    }, {
+      id: 'brynq-problem',
+      label: 'Problem'
+    }, {
+      id: 'brynq-solution',
+      label: 'Solution'
+    }, {
+      id: 'brynq-outcomes',
+      label: 'Outcomes'
+    }, {
+      id: 'brynq-reflection',
+      label: 'Reflection'
+    }]} />}
 
       {/* STREE Context Section - Similar to Merry Health */}
       {slug === 'stree-safety-app' && <>
@@ -3972,8 +3972,9 @@ const CaseStudy = () => {
       {study.solutionPhase && <section className="px-6 lg:px-12 py-12 bg-card">
           <div className="container mx-auto max-w-5xl">
             <div className="flex items-center gap-3 mb-6">
-              <span className="text-xs uppercase tracking-[0.3em] text-primary/70 font-medium">Phase 2</span>
-              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground">Solution Design</h2>
+              <span className="text-xs uppercase tracking-[0.3em] text-primary/70 font-medium">
+          </span>
+              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground">STORY BOARD</h2>
             </div>
             
             <div className="mb-8">
