@@ -2012,9 +2012,6 @@ const CaseStudy = () => {
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Introducing Review & Accountability</h2>
           <p className="text-lg leading-relaxed text-muted-foreground mb-8">{study.brynqReview}</p>
-          <div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center mb-10">
-            <span className="text-sm text-muted-foreground italic">[ Approval loop diagram ]</span>
-          </div>
           
           {/* New System Flow Diagram */}
           <div className="p-6 bg-card border border-border">
