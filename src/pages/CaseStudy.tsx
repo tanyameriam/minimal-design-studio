@@ -3978,7 +3978,7 @@ const CaseStudy = () => {
             </div>
             
             <div className="mb-8">
-              <h3 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Storyboarding</h3>
+              
               <p className="text-sm text-muted-foreground">{study.solutionPhase.storyboard}</p>
             </div>
 
