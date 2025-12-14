@@ -4240,19 +4240,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* Business Outcomes (for BrynQ) */}
-      {study.businessOutcomes && <section className="px-6 lg:px-12 py-16 bg-card">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Expected Outcomes & Business Impact</h2>
-            <p className="text-lg text-muted-foreground mb-8">The redesign is expected to deliver:</p>
-            <ul className="space-y-3">
-              {study.businessOutcomes.map((outcome, i) => <li key={i} className="flex gap-4">
-                  <span className="text-muted-foreground">•</span>
-                  <span>{outcome}</span>
-                </li>)}
-            </ul>
-            <p className="mt-8 font-serif text-lg text-muted-foreground italic">The cumulative outcome will be a significantly more modern, usable, and scalable platform.</p>
-          </div>
-        </section>}
+      {study.businessOutcomes}
 
       {/* Skills Strengthened (for BrynQ) */}
       {study.skillsStrengthened && <section className="px-6 lg:px-12 py-16">
