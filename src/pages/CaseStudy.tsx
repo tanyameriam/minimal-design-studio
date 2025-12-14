@@ -4191,8 +4191,7 @@ const CaseStudy = () => {
           </div>
         </section>}
 
-      {/* Business Outcomes (for BrynQ) */}
-      {study.businessOutcomes}
+      {/* Business Outcomes are rendered in the Merry Health Impact section below */}
 
       {/* Skills Strengthened (for BrynQ) */}
       {study.skillsStrengthened && <section className="px-6 lg:px-12 py-16">
