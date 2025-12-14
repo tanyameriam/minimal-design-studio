@@ -3914,43 +3914,17 @@ const CaseStudy = () => {
                 </div>
                 
                 {/* Expanded Gallery */}
-                {showAffinityGallery && <div className="columns-1 md:columns-2 lg:columns-3 gap-4 mb-8 space-y-4 animate-fade-in">
-                    <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={e => {
-              e.stopPropagation();
-              setLightboxImage(streeAffinity1);
-            }}>
-                      <img src={streeAffinity1} alt="Affinity mapping: Safety perceptions and offender types" className="w-full rounded" />
-                    </div>
-                    <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={e => {
-              e.stopPropagation();
-              setLightboxImage(streeAffinity2);
-            }}>
-                      <img src={streeAffinity2} alt="Affinity mapping: Reactions and reporting challenges" className="w-full rounded" />
-                    </div>
-                    <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={e => {
-              e.stopPropagation();
-              setLightboxImage(streeAffinity3);
-            }}>
-                      <img src={streeAffinity3} alt="Affinity mapping: Emotional impact and sharing experiences" className="w-full rounded" />
-                    </div>
-                    <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={e => {
-              e.stopPropagation();
-              setLightboxImage(streeAffinity4);
-            }}>
-                      <img src={streeAffinity4} alt="Affinity mapping: Adapting behaviors for safety" className="w-full rounded" />
-                    </div>
-                    <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={e => {
-              e.stopPropagation();
-              setLightboxImage(streeAffinity5);
-            }}>
-                      <img src={streeAffinity5} alt="Affinity mapping: Safety measures and location perceptions" className="w-full rounded" />
-                    </div>
-                    <div className="break-inside-avoid bg-background rounded-lg border border-border p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={e => {
-              e.stopPropagation();
-              setLightboxImage(streeAffinity6);
-            }}>
-                      <img src={streeAffinity6} alt="Affinity mapping: Societal attitudes and improvement ideas" className="w-full rounded" />
-                    </div>
+                {showAffinityGallery && <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8 animate-fade-in">
+                    {[streeAffinity1, streeAffinity2, streeAffinity3, streeAffinity4, streeAffinity5, streeAffinity6].map((img, i) => <div 
+                        key={i}
+                        className="bg-background rounded-lg border border-border p-3 hover:shadow-md hover:border-primary/40 transition-all cursor-pointer" 
+                        onClick={e => {
+                          e.stopPropagation();
+                          openGallery([streeAffinity1, streeAffinity2, streeAffinity3, streeAffinity4, streeAffinity5, streeAffinity6], i);
+                        }}
+                      >
+                        <img src={img} alt={`Affinity mapping ${i + 1}`} className="w-full rounded" />
+                      </div>)}
                   </div>}
                 
                 {showAffinityGallery && <div className="p-6 bg-card border border-border animate-fade-in">
