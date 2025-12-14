@@ -3935,8 +3935,8 @@ const CaseStudy = () => {
           </div>
           
           {/* Wireframe images for STREE - Marquee style */}
-          {slug === 'stree-safety-app' && <div className="relative overflow-x-auto">
-              <div className="flex gap-6 pb-4">
+          {slug === 'stree-safety-app' && <div className="relative overflow-x-auto xl:ml-32">
+              <div className="flex gap-6 pb-4 px-6 lg:px-12">
                 {[streeWireframe1, streeWireframe2, streeWireframe3, streeWireframe4, streeWireframe5, streeWireframe6, streeWireframe7, streeWireframe8, streeWireframe9, streeWireframe10, streeWireframe11, streeWireframe12, streeWireframe13, streeWireframe14].map((img, i) => <div key={i} className="flex-shrink-0 w-40 md:w-48 bg-background rounded-xl border border-border shadow-sm overflow-hidden hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(img)}>
                     <div className="aspect-[9/16] overflow-hidden">
                       <img src={img} alt={`Wireframe ${i + 1}`} className="w-full h-full object-cover object-top" />
@@ -3998,7 +3998,7 @@ const CaseStudy = () => {
           </div>
 
           {/* HiFi Screens - horizontal scroll like wireframes */}
-          {slug === 'stree-safety-app' && <div className="overflow-x-auto pb-4">
+          {slug === 'stree-safety-app' && <div className="overflow-x-auto pb-4 xl:ml-32">
               <div className="flex gap-4 px-6 lg:px-12" style={{
           width: 'max-content'
         }}>
