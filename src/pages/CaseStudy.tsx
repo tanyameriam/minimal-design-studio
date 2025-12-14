@@ -1661,6 +1661,9 @@ const CaseStudy = () => {
       id: 'brynq-problem',
       label: 'Problem'
     }, {
+      id: 'brynq-research',
+      label: 'Research'
+    }, {
       id: 'brynq-solution',
       label: 'Solution'
     }, {
@@ -1896,14 +1899,15 @@ const CaseStudy = () => {
 
 
 
-      {/* BrynQ: The Legacy Reality */}
-      {study.brynqLegacyReality && <section className="px-6 lg:px-12 py-20 bg-card">
+      {/* BrynQ: Problem Section - Legacy Reality + Product Problem merged */}
+      {study.brynqLegacyReality && <section id="brynq-problem" className="px-6 lg:px-12 py-20 bg-card scroll-mt-20">
         <div className="container mx-auto max-w-5xl">
-          <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">The Legacy Reality</h2>
+          <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Problem</p>
+          <h2 className="font-serif text-3xl md:text-4xl mb-8">Manual Workflows Blocking Platform Scale</h2>
           <p className="text-lg leading-relaxed text-muted-foreground mb-10">{study.brynqLegacyReality}</p>
           
           {/* Current System Flow Diagram */}
-          <div className="p-6 bg-background border border-border">
+          <div className="p-6 bg-background border border-border mb-12">
             <h3 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6 text-center">Current System Flow (Before)</h3>
             <div className="flex flex-col md:flex-row items-center justify-between gap-3 md:gap-2">
               <div className="flex-1 text-center p-4 bg-muted/20 border border-dashed border-border rounded">
@@ -1936,46 +1940,41 @@ const CaseStudy = () => {
               <p className="text-xs text-muted-foreground italic">Repeated back-and-forth cycles causing weeks of delay</p>
             </div>
           </div>
-        </div>
-      </section>}
 
-      {/* BrynQ: Why This Became a Product Problem */}
-      {study.brynqProductProblem && <section id="brynq-problem" className="px-6 lg:px-12 py-20 scroll-mt-20">
-        <div className="container mx-auto max-w-5xl">
-          <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Why This Became a Product Problem</h2>
-          <p className="text-lg leading-relaxed text-muted-foreground mb-10">{study.brynqProductProblem}</p>
-          
-          {/* Time loss diagram placeholder */}
-          <div className="p-8 bg-card border border-border">
-            <h3 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6 text-center">Where Time Was Lost</h3>
-            <div className="flex items-center justify-between gap-4 mb-6">
-              <div className="flex-1 text-center p-4 bg-muted/30 border border-dashed border-border">
-                <span className="text-2xl font-serif text-destructive/70">70%</span>
-                <p className="text-xs text-muted-foreground mt-1">Pre-development delays</p>
+          {/* Product Problem content */}
+          {study.brynqProductProblem && <>
+            <p className="text-lg leading-relaxed text-muted-foreground mb-10">{study.brynqProductProblem}</p>
+            
+            {/* Time loss diagram */}
+            <div className="p-8 bg-background border border-border">
+              <h3 className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6 text-center">Where Time Was Lost</h3>
+              <div className="flex items-center justify-between gap-4 mb-6">
+                <div className="flex-1 text-center p-4 bg-muted/30 border border-dashed border-border">
+                  <span className="text-2xl font-serif text-destructive/70">70%</span>
+                  <p className="text-xs text-muted-foreground mt-1">Pre-development delays</p>
+                </div>
+                <div className="text-muted-foreground/50">→</div>
+                <div className="flex-1 text-center p-4 bg-muted/30 border border-dashed border-border">
+                  <span className="text-2xl font-serif text-muted-foreground">20%</span>
+                  <p className="text-xs text-muted-foreground mt-1">Actual development</p>
+                </div>
+                <div className="text-muted-foreground/50">→</div>
+                <div className="flex-1 text-center p-4 bg-muted/30 border border-dashed border-border">
+                  <span className="text-2xl font-serif text-muted-foreground">10%</span>
+                  <p className="text-xs text-muted-foreground mt-1">Review & handoff</p>
+                </div>
               </div>
-              <div className="text-muted-foreground/50">→</div>
-              <div className="flex-1 text-center p-4 bg-muted/30 border border-dashed border-border">
-                <span className="text-2xl font-serif text-muted-foreground">20%</span>
-                <p className="text-xs text-muted-foreground mt-1">Actual development</p>
-              </div>
-              <div className="text-muted-foreground/50">→</div>
-              <div className="flex-1 text-center p-4 bg-muted/30 border border-dashed border-border">
-                <span className="text-2xl font-serif text-muted-foreground">10%</span>
-                <p className="text-xs text-muted-foreground mt-1">Review & handoff</p>
-              </div>
+              <p className="text-xs text-muted-foreground/60 italic text-center">* Indicative breakdown: most delays occurred before development even started</p>
             </div>
-            <p className="text-xs text-muted-foreground/60 italic text-center">* Indicative breakdown: most delays occurred before development even started</p>
-          </div>
+          </>}
         </div>
       </section>}
 
-      {/* BrynQ: My Responsibility */}
-      {study.brynqResponsibility && <section className="px-6 lg:px-12 py-20 bg-card"><div className="container mx-auto max-w-5xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">My Responsibility & Design Framing</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqResponsibility}</p></div></section>}
-
-      {/* BrynQ: Research */}
-      {study.brynqResearch && <section className="px-6 lg:px-12 py-20">
+      {/* BrynQ: Research Section */}
+      {study.brynqResearch && <section id="brynq-research" className="px-6 lg:px-12 py-20 scroll-mt-20">
         <div className="container mx-auto max-w-5xl">
-          <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Research & Understanding the Work</h2>
+          <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Research</p>
+          <h2 className="font-serif text-3xl md:text-4xl mb-8">Understanding the Existing Workflow</h2>
           <p className="text-lg leading-relaxed text-muted-foreground mb-8">{study.brynqResearch}</p>
           <div className="bg-background border border-border rounded-lg overflow-hidden">
             <img src={brynqScenarioRedacted} alt="Sample scenario file (redacted)" className="w-full h-auto" />
@@ -1985,6 +1984,9 @@ const CaseStudy = () => {
           </div>
         </div>
       </section>}
+
+      {/* BrynQ: My Responsibility - now under Research */}
+      {study.brynqResponsibility && <section className="px-6 lg:px-12 py-20 bg-card"><div className="container mx-auto max-w-5xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Design Approach & Framing</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqResponsibility}</p></div></section>}
 
       {/* BrynQ: Key Insight */}
       {study.brynqKeyInsight && <section className="px-6 lg:px-12 py-20 bg-card">
@@ -1999,8 +2001,8 @@ const CaseStudy = () => {
         </div>
       </section>}
 
-      {/* BrynQ: MVP Direction */}
-      {study.brynqMvpDirection && <section id="brynq-solution" className="px-6 lg:px-12 py-20 scroll-mt-20"><div className="container mx-auto max-w-5xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Defining an MVP Direction</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqMvpDirection}</p></div></section>}
+      {/* BrynQ: Solution Section - MVP Direction */}
+      {study.brynqMvpDirection && <section id="brynq-solution" className="px-6 lg:px-12 py-20 scroll-mt-20"><div className="container mx-auto max-w-5xl"><p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Solution</p><h2 className="font-serif text-3xl md:text-4xl mb-8">Digitising the Scenario Workflow</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqMvpDirection}</p></div></section>}
 
       {/* BrynQ: Wizard */}
       {study.brynqWizard && <section className="px-6 lg:px-12 py-20 bg-card"><div className="container mx-auto max-w-5xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Designing the Interface Requirements Wizard</h2><p className="text-lg leading-relaxed text-muted-foreground mb-8">{study.brynqWizard.intro}</p><div className="grid md:grid-cols-3 gap-4 mb-8">{study.brynqWizard.phases.map((phase, i) => <div key={i} className="p-5 border border-border bg-background"><span className="text-xs uppercase tracking-[0.2em] text-primary/70 font-medium">Phase {i + 1}</span><p className="mt-2">{phase}</p></div>)}</div><p className="text-muted-foreground">{study.brynqWizard.benefits}</p><div className="mt-8 bg-muted/30 border border-border rounded-lg overflow-hidden"><img src={brynqWizardFlow} alt="Wizard flow diagram" className="w-full h-auto" /></div></div></section>}
@@ -2054,7 +2056,8 @@ const CaseStudy = () => {
       {/* BrynQ: MVP Outcomes */}
       {study.brynqMvpOutcomes && <section id="brynq-outcomes" className="px-6 lg:px-12 py-20 bg-card scroll-mt-20">
         <div className="container mx-auto max-w-5xl">
-          <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Outcomes of the MVP</h2>
+          <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Outcomes</p>
+          <h2 className="font-serif text-3xl md:text-4xl mb-8">Measurable Impact</h2>
           <p className="text-lg leading-relaxed text-muted-foreground mb-10">{study.brynqMvpOutcomes}</p>
           
           {/* Metric placeholder */}
@@ -2110,7 +2113,7 @@ const CaseStudy = () => {
       {study.brynqEvolution && <section className="px-6 lg:px-12 py-20 bg-card"><div className="container mx-auto max-w-5xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Platform Evolution</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqEvolution}</p></div></section>}
 
       {/* BrynQ: Reflection */}
-      {study.brynqReflection && <section id="brynq-reflection" className="px-6 lg:px-12 py-20 scroll-mt-20"><div className="container mx-auto max-w-5xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Reflection & Learnings</h2><p className="font-serif text-xl leading-relaxed text-muted-foreground">{study.brynqReflection}</p></div></section>}
+      {study.brynqReflection && <section id="brynq-reflection" className="px-6 lg:px-12 py-20 scroll-mt-20"><div className="container mx-auto max-w-5xl"><p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Reflection</p><h2 className="font-serif text-3xl md:text-4xl mb-8">What I Learned</h2><p className="font-serif text-xl leading-relaxed text-muted-foreground">{study.brynqReflection}</p></div></section>}
 
       {/* BrynQ: NDA Note */}
       {study.brynqNdaNote && <section className="px-6 lg:px-12 py-8 bg-muted/30 border-y border-border"><div className="container mx-auto max-w-5xl text-center"><p className="text-sm text-muted-foreground italic">{study.brynqNdaNote}</p></div></section>}
