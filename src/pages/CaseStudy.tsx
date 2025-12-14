@@ -3026,53 +3026,53 @@ const CaseStudy = () => {
             <p className="text-muted-foreground mb-6 leading-relaxed">Given that 95% of hospital admins currently use WhatsApp for intake, we designed a structured WhatsApp experience that respects existing mental models while enabling automated workflows.</p>
             <p className="text-base text-muted-foreground mb-10 leading-relaxed">The system parses incoming messages to extract required data points (as identified in our data audit), requests missing information, and pushes automated status updates to all stakeholders.</p>
 
-            <div className="grid md:grid-cols-3 gap-4">
+            <div className="grid md:grid-cols-3 gap-6">
               {/* Hospital Admin WhatsApp */}
-              <div className="p-5 rounded-xl border border-border bg-background">
-                <div className="flex items-center justify-between mb-4">
+              <div className="p-6 rounded-xl border border-border/50 bg-card/50">
+                <div className="flex items-center justify-between mb-5">
                   <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white text-sm font-medium">HA</div>
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white text-sm font-semibold">HA</div>
                     <div>
-                      <h3 className="font-serif text-base">Hospital Admin</h3>
-                      <p className="text-xs text-muted-foreground">WhatsApp intake</p>
+                      <h3 className="font-serif text-lg">Hospital Admin</h3>
+                      <p className="text-sm text-muted-foreground">WhatsApp intake</p>
                     </div>
                   </div>
                   <div className="cursor-pointer group" onClick={() => setLightboxImage(merryWhatsappAdmin)}>
-                    <div className="w-12 h-16 overflow-hidden rounded border border-border bg-muted/20">
+                    <div className="w-14 h-20 overflow-hidden rounded-lg border border-border/50 bg-muted/20">
                       <img src={merryWhatsappAdmin} alt="Hospital Admin WhatsApp" className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300" />
                     </div>
                   </div>
                 </div>
-                <div className="space-y-3">
-                  <div className="p-3 rounded bg-muted/20 border border-border/50">
-                    <h4 className="text-sm font-semibold mb-2">How It Works</h4>
-                    <ul className="space-y-1.5 text-sm text-muted-foreground">
-                      <li><span className="text-primary">1.</span> Admin sends request to WhatsApp</li>
-                      <li><span className="text-primary">2.</span> System parses for data points</li>
-                      <li><span className="text-primary">3.</span> Missing data requested automatically</li>
-                      <li><span className="text-primary">4.</span> User confirms by reply</li>
-                      <li><span className="text-primary">5.</span> Status updates sent automatically</li>
+                <div className="space-y-4">
+                  <div className="p-4 rounded-lg bg-muted/30 border border-border/30">
+                    <h4 className="text-sm font-semibold mb-3">How It Works</h4>
+                    <ul className="space-y-2 text-sm text-muted-foreground leading-relaxed">
+                      <li><span className="text-primary font-medium">1.</span> Admin sends request to WhatsApp</li>
+                      <li><span className="text-primary font-medium">2.</span> System parses for data points</li>
+                      <li><span className="text-primary font-medium">3.</span> Missing data requested automatically</li>
+                      <li><span className="text-primary font-medium">4.</span> User confirms by reply</li>
+                      <li><span className="text-primary font-medium">5.</span> Status updates sent automatically</li>
                     </ul>
                   </div>
-                  <div className="p-3 rounded bg-primary/5 border border-primary/20">
-                    <h4 className="text-sm uppercase tracking-wider text-primary font-medium mb-2">Benefits</h4>
-                    <ul className="space-y-1.5 text-sm text-muted-foreground">
+                  <div className="p-4 rounded-lg bg-primary/5 border border-primary/20">
+                    <h4 className="text-sm uppercase tracking-wider text-primary font-medium mb-3">Benefits</h4>
+                    <ul className="space-y-2 text-sm text-muted-foreground leading-relaxed">
                       <li>• Standardized updates for every ride</li>
                       <li>• Automatic status messages</li>
                       <li>• Live location links pushed instantly</li>
                       <li>• End-to-end visibility in WhatsApp</li>
                     </ul>
                   </div>
-                  <div className="p-3 rounded bg-emerald-500/5 border border-emerald-500/20">
-                    <div className="flex items-center justify-between mb-2">
+                  <div className="p-4 rounded-lg bg-emerald-500/5 border border-emerald-500/20">
+                    <div className="flex items-center justify-between mb-3">
                       <h4 className="text-sm font-medium font-serif">Announcement Group</h4>
                       <div className="cursor-pointer group" onClick={() => setLightboxImage(merryWhatsappHospital)}>
-                        <div className="w-8 h-10 overflow-hidden rounded border border-border bg-muted/20">
+                        <div className="w-10 h-12 overflow-hidden rounded-lg border border-border/50 bg-muted/20">
                           <img src={merryWhatsappHospital} alt="Hospital Announcement" className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300" />
                         </div>
                       </div>
                     </div>
-                    <ul className="space-y-1.5 text-sm text-muted-foreground">
+                    <ul className="space-y-2 text-sm text-muted-foreground leading-relaxed">
                       <li>• Read-only channel for managers</li>
                       <li>• Single source of truth</li>
                       <li>• Real-time trip updates</li>
@@ -3082,35 +3082,35 @@ const CaseStudy = () => {
               </div>
 
               {/* Driver WhatsApp */}
-              <div className="p-5 rounded-xl border border-border bg-background">
-                <div className="flex items-center justify-between mb-4">
+              <div className="p-6 rounded-xl border border-border/50 bg-card/50">
+                <div className="flex items-center justify-between mb-5">
                   <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center text-white text-sm font-medium">DR</div>
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center text-white text-sm font-semibold">DR</div>
                     <div>
-                      <h3 className="font-serif text-base">Driver</h3>
-                      <p className="text-xs text-muted-foreground">SMS fallback support</p>
+                      <h3 className="font-serif text-lg">Driver</h3>
+                      <p className="text-sm text-muted-foreground">SMS fallback support</p>
                     </div>
                   </div>
                   <div className="cursor-pointer group" onClick={() => setLightboxImage(merryWhatsappDriver)}>
-                    <div className="w-12 h-16 overflow-hidden rounded border border-border bg-muted/20">
+                    <div className="w-14 h-20 overflow-hidden rounded-lg border border-border/50 bg-muted/20">
                       <img src={merryWhatsappDriver} alt="Driver WhatsApp" className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300" />
                     </div>
                   </div>
                 </div>
-                <div className="space-y-3">
-                  <div className="p-3 rounded bg-muted/20 border border-border/50">
-                    <h4 className="text-sm font-semibold mb-2">How It Works</h4>
-                    <ul className="space-y-1.5 text-sm text-muted-foreground">
-                      <li><span className="text-amber-600">1.</span> Driver receives ride request</li>
-                      <li><span className="text-amber-600">2.</span> SMS fallback for feature phones</li>
-                      <li><span className="text-amber-600">3.</span> Accept/decline response</li>
-                      <li><span className="text-amber-600">4.</span> Patient party gets updates</li>
-                      <li><span className="text-amber-600">5.</span> Actions sync to database</li>
+                <div className="space-y-4">
+                  <div className="p-4 rounded-lg bg-muted/30 border border-border/30">
+                    <h4 className="text-sm font-semibold mb-3">How It Works</h4>
+                    <ul className="space-y-2 text-sm text-muted-foreground leading-relaxed">
+                      <li><span className="text-amber-600 font-medium">1.</span> Driver receives ride request</li>
+                      <li><span className="text-amber-600 font-medium">2.</span> SMS fallback for feature phones</li>
+                      <li><span className="text-amber-600 font-medium">3.</span> Accept/decline response</li>
+                      <li><span className="text-amber-600 font-medium">4.</span> Patient party gets updates</li>
+                      <li><span className="text-amber-600 font-medium">5.</span> Actions sync to database</li>
                     </ul>
                   </div>
-                  <div className="p-3 rounded bg-amber-500/5 border border-amber-500/20">
-                    <h4 className="text-sm uppercase tracking-wider text-amber-600 font-medium mb-2">Benefits</h4>
-                    <ul className="space-y-1.5 text-sm text-muted-foreground">
+                  <div className="p-4 rounded-lg bg-amber-500/5 border border-amber-500/20">
+                    <h4 className="text-sm uppercase tracking-wider text-amber-600 font-medium mb-3">Benefits</h4>
+                    <ul className="space-y-2 text-sm text-muted-foreground leading-relaxed">
                       <li>• Clear, standardized requests</li>
                       <li>• One-tap Accept/Decline</li>
                       <li>• Live pickup location links</li>
@@ -3122,33 +3122,33 @@ const CaseStudy = () => {
               </div>
 
               {/* Patient Party WhatsApp */}
-              <div className="p-5 rounded-xl border border-border bg-background">
-                <div className="flex items-center justify-between mb-4">
+              <div className="p-6 rounded-xl border border-border/50 bg-card/50">
+                <div className="flex items-center justify-between mb-5">
                   <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-sm font-medium">PP</div>
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-sm font-semibold">PP</div>
                     <div>
-                      <h3 className="font-serif text-base">Patient Party</h3>
-                      <p className="text-xs text-muted-foreground">WhatsApp, IVR, SMS</p>
+                      <h3 className="font-serif text-lg">Patient Party</h3>
+                      <p className="text-sm text-muted-foreground">WhatsApp, IVR, SMS</p>
                     </div>
                   </div>
                   <div className="cursor-pointer group" onClick={() => setLightboxImage(merryWhatsappPatient)}>
-                    <div className="w-12 h-16 overflow-hidden rounded border border-border bg-muted/20">
+                    <div className="w-14 h-20 overflow-hidden rounded-lg border border-border/50 bg-muted/20">
                       <img src={merryWhatsappPatient} alt="Patient Party WhatsApp" className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300" />
                     </div>
                   </div>
                 </div>
-                <div className="space-y-3">
-                  <div className="p-3 rounded bg-muted/20 border border-border/50">
-                    <h4 className="text-sm font-semibold mb-2">Channels</h4>
-                    <ul className="space-y-1.5 text-sm text-muted-foreground">
-                      <li><span className="text-blue-600">•</span> <strong>WhatsApp:</strong> Real-time updates</li>
-                      <li><span className="text-blue-600">•</span> <strong>IVR:</strong> Regional language info</li>
-                      <li><span className="text-blue-600">•</span> <strong>SMS:</strong> Feature phone fallback</li>
+                <div className="space-y-4">
+                  <div className="p-4 rounded-lg bg-muted/30 border border-border/30">
+                    <h4 className="text-sm font-semibold mb-3">Channels</h4>
+                    <ul className="space-y-2 text-sm text-muted-foreground leading-relaxed">
+                      <li><span className="text-blue-600 font-medium">•</span> <strong>WhatsApp:</strong> Real-time updates</li>
+                      <li><span className="text-blue-600 font-medium">•</span> <strong>IVR:</strong> Regional language info</li>
+                      <li><span className="text-blue-600 font-medium">•</span> <strong>SMS:</strong> Feature phone fallback</li>
                     </ul>
                   </div>
-                  <div className="p-3 rounded bg-blue-500/5 border border-blue-500/20">
-                    <h4 className="text-sm uppercase tracking-wider text-blue-600 font-medium mb-2">Benefits</h4>
-                    <ul className="space-y-1.5 text-sm text-muted-foreground">
+                  <div className="p-4 rounded-lg bg-blue-500/5 border border-blue-500/20">
+                    <h4 className="text-sm uppercase tracking-wider text-blue-600 font-medium mb-3">Benefits</h4>
+                    <ul className="space-y-2 text-sm text-muted-foreground leading-relaxed">
                       <li>• Instant confirmation</li>
                       <li>• Driver details shared automatically</li>
                       <li>• Live tracking link</li>
