@@ -4374,15 +4374,15 @@ const CaseStudy = () => {
           </div>
         </section>}
 
-      {/* Learnings / Reflection */}
-      <section id={slug === 'merry-health' ? 'merry-reflection' : undefined} className={`px-6 lg:px-12 py-16 ${slug === 'merry-health' ? 'scroll-mt-20' : ''}`}>
+      {/* Learnings / Reflection - exclude BrynQ which has its own */}
+      {slug !== 'brynq' && <section id={slug === 'merry-health' ? 'merry-reflection' : undefined} className={`px-6 lg:px-12 py-16 ${slug === 'merry-health' ? 'scroll-mt-20' : ''}`}>
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">{slug === 'merry-health' ? 'Reflection' : 'Learnings'}</h2>
           <div className="space-y-4">
             {study.learnings.map((learning, i) => <p key={i} className="text-lg text-muted-foreground leading-relaxed">{learning}</p>)}
           </div>
         </div>
-      </section>
+      </section>}
 
       {/* Footer Navigation */}
       <footer className="px-6 lg:px-12 py-16 border-t border-border">
