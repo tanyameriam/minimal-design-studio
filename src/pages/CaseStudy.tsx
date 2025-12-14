@@ -1633,7 +1633,7 @@ const CaseStudy = () => {
             </div>
           </section>
           
-          <section id="merry-context" className="px-6 lg:px-12 xl:pl-48 pt-16 pb-16 scroll-mt-20">
+          <section id="merry-context" className="px-6 lg:px-12 pt-16 pb-16 scroll-mt-20">
             <div className="container mx-auto max-w-5xl">
               {/* Background Content */}
               <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Context</p>
@@ -1991,7 +1991,7 @@ const CaseStudy = () => {
       {study.brynqNdaNote && <section className="px-6 lg:px-12 py-8 bg-muted/30 border-y border-border"><div className="container mx-auto max-w-4xl text-center"><p className="text-sm text-muted-foreground italic">{study.brynqNdaNote}</p></div></section>}
 
       {/* Merry Health Problem Section */}
-      {slug === 'merry-health' && <section id="merry-problem" className="px-6 lg:px-12 xl:pl-48 py-16 bg-card scroll-mt-20">
+      {slug === 'merry-health' && <section id="merry-problem" className="px-6 lg:px-12 py-16 bg-card scroll-mt-20">
           <div className="container mx-auto max-w-5xl">
             {/* Section Header */}
             <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Problem</p>
@@ -2115,7 +2115,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* Merry Health Research Section */}
-      {slug === 'merry-health' && <section id="merry-research" className="px-6 lg:px-12 xl:pl-48 py-16 scroll-mt-20">
+      {slug === 'merry-health' && <section id="merry-research" className="px-6 lg:px-12 py-16 scroll-mt-20">
           <div className="container mx-auto max-w-5xl">
             {/* Section Header */}
             <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Research & Insights</p>
@@ -2171,7 +2171,7 @@ const CaseStudy = () => {
 
 
       {/* Merry Health Platform Audit - Phase-by-Phase Analysis */}
-      {slug === 'merry-health' && <section id="merry-audit" className="px-6 lg:px-12 xl:pl-48 py-16 scroll-mt-20">
+      {slug === 'merry-health' && <section id="merry-audit" className="px-6 lg:px-12 py-16 scroll-mt-20">
           <div className="container mx-auto max-w-5xl">
             <h2 className="font-serif text-3xl mb-4">Deep-Dive Audit Across All Phases</h2>
             <p className="text-muted-foreground mb-10 max-w-3xl">We conducted a data and platform audit for each phase to understand exactly where we can align better with user needs and business goals.</p>
@@ -2299,7 +2299,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* Merry Health System Flow & Opportunity Mapping */}
-      {slug === 'merry-health' && study.merrySystemFlow && <section id="merry-mapping" className="px-6 lg:px-12 xl:pl-48 py-16 bg-card scroll-mt-20">
+      {slug === 'merry-health' && study.merrySystemFlow && <section id="merry-mapping" className="px-6 lg:px-12 py-16 bg-card scroll-mt-20">
           <div className="container mx-auto max-w-5xl">
             <h2 className="font-serif text-3xl mb-4">Understanding the System & Opportunities</h2>
             <p className="text-muted-foreground mb-10 max-w-3xl">{study.merrySystemFlow.intro}</p>
@@ -2504,7 +2504,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* Merry Health User Journey & Findings */}
-      {slug === 'merry-health' && <section id="merry-findings" className="px-6 lg:px-12 xl:pl-48 py-16 scroll-mt-20">
+      {slug === 'merry-health' && <section id="merry-findings" className="px-6 lg:px-12 py-16 scroll-mt-20">
           <div className="container mx-auto max-w-5xl">
             <h2 className="font-serif text-3xl mb-4">Key Insights from User Journeys</h2>
             <p className="text-muted-foreground mb-10 max-w-3xl">We mapped current and ideal journeys for all actors to validate if our identified opportunities would truly make a difference.</p>
@@ -2731,7 +2731,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* Merry Health Strategy & Recommendations */}
-      {slug === 'merry-health' && <section id="merry-strategy" className="px-6 lg:px-12 xl:pl-48 py-16 bg-card scroll-mt-20">
+      {slug === 'merry-health' && <section id="merry-strategy" className="px-6 lg:px-12 py-16 bg-card scroll-mt-20">
           <div className="container mx-auto max-w-5xl">
             <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2 block">Solution</span>
             <h2 className="font-serif text-3xl mb-4">Recommendations to Improve Adoption</h2>
@@ -2841,7 +2841,7 @@ const CaseStudy = () => {
 
 
       {/* Merry Health Proposed Workflow */}
-      {slug === 'merry-health' && <section id="merry-workflow" className="px-6 lg:px-12 xl:pl-48 py-16 scroll-mt-20">
+      {slug === 'merry-health' && <section id="merry-workflow" className="px-6 lg:px-12 py-16 scroll-mt-20">
           <div className="container mx-auto max-w-5xl">
             <h3 className="font-serif text-2xl mb-4">Proposed Workflow</h3>
             <p className="text-muted-foreground mb-10">Based on the research findings, we designed a new workflow that addresses the identified pain points and leverages opportunities for automation and clarity.</p>
@@ -2900,7 +2900,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* Merry Health Scenario Mapping & Modules */}
-      {slug === 'merry-health' && <section className="px-6 lg:px-12 xl:pl-48 py-16 bg-card">
+      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16 bg-card">
           <div className="container mx-auto max-w-5xl">
             <h3 className="font-serif text-2xl mb-4">Scenario Mapping & Module Definition</h3>
             <p className="text-muted-foreground mb-10">After the proposed workflow, we conducted scenario mapping to understand the exact screens and workflows required for both WhatsApp integration and the desktop application.</p>
@@ -2948,7 +2948,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* Merry Health Wireframes */}
-      {slug === 'merry-health' && <section id="merry-solution" className="px-6 lg:px-12 xl:pl-48 py-16 scroll-mt-20">
+      {slug === 'merry-health' && <section id="merry-solution" className="px-6 lg:px-12 py-16 scroll-mt-20">
           <div className="container mx-auto max-w-5xl">
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-serif text-2xl">Wireframing</h3>
@@ -2987,7 +2987,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* Merry Health Hi-Fi Screens */}
-      {slug === 'merry-health' && <section className="px-6 lg:px-12 xl:pl-48 py-16 bg-card">
+      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16 bg-card">
           <div className="container mx-auto max-w-5xl">
             <h3 className="font-serif text-2xl mb-4">High-Fidelity Screens</h3>
             <p className="text-muted-foreground mb-6">The final high-fidelity designs bring together all research insights into a new Merry Heath platform</p>
@@ -3020,7 +3020,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* Merry Health WhatsApp Integration */}
-      {slug === 'merry-health' && <section className="px-6 lg:px-12 xl:pl-48 py-16">
+      {slug === 'merry-health' && <section className="px-6 lg:px-12 py-16">
           <div className="container mx-auto max-w-5xl">
             <h3 className="font-serif text-2xl mb-4">WhatsApp Integration Design</h3>
             <p className="text-muted-foreground mb-6 leading-relaxed">Given that 95% of hospital admins currently use WhatsApp for intake, we designed a structured WhatsApp experience that respects existing mental models while enabling automated workflows.</p>
