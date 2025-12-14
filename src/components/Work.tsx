@@ -3,7 +3,7 @@ import ProjectCard from './ProjectCard';
 import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
 import streeCover from '@/assets/stree-cover.png';
-import merryHealthCover from '@/assets/merry-health-logo.png';
+import merryHealthCover from '@/assets/merry-health-cover.png';
 import brynqCover from '@/assets/brynq-cover.png';
 import foodWasteCover from '@/assets/food-waste-cover.png';
 type ProjectTag = 'UI' | 'UX' | 'Research';
