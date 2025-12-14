@@ -267,7 +267,7 @@ const CV = () => {
               <div>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
                   <div>
-                    <h3 className="font-medium text-xl">UX/UI Designer</h3>
+                    <h3 className="font-medium text-2xl">UX/UI Designer</h3>
                     <p className="text-muted-foreground text-sm">BrynQ, Netherlands</p>
                   </div>
                   <span className="text-sm text-muted-foreground">2023 – Present</span>
@@ -287,7 +287,7 @@ const CV = () => {
               <div>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
                   <div>
-                    <h3 className="font-medium">UI Designer (Contract)</h3>
+                    <h3 className="font-medium text-2xl">UI Designer (Contract)</h3>
                     <p className="text-muted-foreground text-sm">Multiple Startups, India</p>
                   </div>
                   <span className="text-sm text-muted-foreground">2022 – 2023</span>
@@ -303,7 +303,7 @@ const CV = () => {
               <div>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
                   <div>
-                    <h3 className="font-medium">UI Designer</h3>
+                    <h3 className="font-medium text-2xl">UI Designer</h3>
                     <p className="text-muted-foreground text-sm">Segments Cloud LLC, Dubai, UAE</p>
                   </div>
                   <span className="text-sm text-muted-foreground">2021 – 2022</span>
@@ -318,7 +318,7 @@ const CV = () => {
               <div>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
                   <div>
-                    <h3 className="font-medium">UX/UI Intern</h3>
+                    <h3 className="font-medium text-2xl">UX/UI Intern</h3>
                     <p className="text-muted-foreground text-sm">Curateus, Bangalore, India</p>
                   </div>
                   <span className="text-sm text-muted-foreground">2021</span>
@@ -333,7 +333,7 @@ const CV = () => {
               <div>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
                   <div>
-                    <h3 className="font-medium">Technical Support Engineer</h3>
+                    <h3 className="font-medium text-2xl">Technical Support Engineer</h3>
                     <p className="text-muted-foreground text-sm">SAP Ariba, Bangalore, India</p>
                   </div>
                   <span className="text-sm text-muted-foreground">2018 – 2021</span>
@@ -352,15 +352,15 @@ const CV = () => {
             <h2 className="font-serif text-lg mb-6 pb-2 border-b border-border">Education</h2>
             <div className="space-y-4">
               <div>
-                <h3 className="font-medium">Master's in UX (Specialization: AI) <span className="text-muted-foreground font-normal">(Ongoing)</span></h3>
+                <h3 className="font-medium text-2xl">Master's in UX (Specialization: AI) <span className="text-muted-foreground font-normal">(Ongoing)</span></h3>
                 <p className="text-sm text-muted-foreground">Jindal School of Art & Architecture, 2025–2026</p>
               </div>
               <div>
-                <h3 className="font-medium">Post Graduate Programme in UX Design</h3>
+                <h3 className="font-medium text-2xl">Post Graduate Programme in UX Design</h3>
                 <p className="text-sm text-muted-foreground">IDC, Indian Institute of Technology Bombay, 2021–2022</p>
               </div>
               <div>
-                <h3 className="font-medium">Bachelor of Technology in Computer Science</h3>
+                <h3 className="font-medium text-2xl">Bachelor of Technology in Computer Science</h3>
                 <p className="text-sm text-muted-foreground">University of Calicut, 2013–2017</p>
               </div>
             </div>
@@ -370,7 +370,7 @@ const CV = () => {
           <section className="mb-12">
             <h2 className="font-serif text-lg mb-4 pb-2 border-b border-border">Community</h2>
             <div>
-              <h3 className="font-medium">Co-organiser</h3>
+              <h3 className="font-medium text-2xl">Co-organiser</h3>
               <a href="https://www.linkedin.com/company/design-reimagined-utrecht" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1.5">
                 <Linkedin className="w-3.5 h-3.5" />
                 Design Reimagined Utrecht
