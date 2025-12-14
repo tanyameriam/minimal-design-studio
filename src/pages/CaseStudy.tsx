@@ -1588,22 +1588,28 @@ const CaseStudy = () => {
       </nav>
 
       {/* Merry Health Sidebar Navigation */}
-      {slug === 'merry-health' && (
-        <CaseStudySidebar
-          sections={[
-            { id: 'merry-context', label: 'Context' },
-            { id: 'merry-problem', label: 'Problem' },
-            { id: 'merry-research', label: 'Research' },
-            { id: 'merry-solution', label: 'Solution' },
-            { id: 'merry-impact', label: 'Impact' },
-            { id: 'merry-reflection', label: 'Reflection' },
-          ]}
-        />
-      )}
+      {slug === 'merry-health' && <CaseStudySidebar sections={[{
+      id: 'merry-context',
+      label: 'Context'
+    }, {
+      id: 'merry-problem',
+      label: 'Problem'
+    }, {
+      id: 'merry-research',
+      label: 'Research'
+    }, {
+      id: 'merry-solution',
+      label: 'Solution'
+    }, {
+      id: 'merry-impact',
+      label: 'Impact'
+    }, {
+      id: 'merry-reflection',
+      label: 'Reflection'
+    }]} />}
 
       {/* Hero - Hidden for merry-health since context heading serves as main */}
-      {slug !== 'merry-health' && (
-        <header className="pt-32 pb-20 px-6 lg:px-12">
+      {slug !== 'merry-health' && <header className="pt-32 pb-20 px-6 lg:px-12">
           <div className="container mx-auto max-w-4xl">
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-4 animate-fade-up">
               {study.title}
@@ -1612,14 +1618,12 @@ const CaseStudy = () => {
               {study.subtitle}
             </p>
           </div>
-        </header>
-      )}
+        </header>}
 
       {/* Hero Image */}
 
       {/* Overview / Context - Merry Health specific layout */}
-      {slug === 'merry-health' ? (
-        <>
+      {slug === 'merry-health' ? <>
           {/* Hero Banner with Platform Screenshots */}
           <section className="w-full bg-gradient-to-b from-muted/60 to-background pt-16 pb-8 border-b border-border/30">
             <div className="container mx-auto max-w-6xl px-6 lg:px-12">
@@ -1627,56 +1631,46 @@ const CaseStudy = () => {
                 {/* Overlapping Screenshots Layout - Horizontal spread like reference */}
                 <div className="relative w-full h-[200px] md:h-[280px] lg:h-[320px] mb-6">
                   {/* Far Left Screenshot */}
-                  <div 
-                    className="absolute left-0 top-[20%] z-10 cursor-pointer group hidden sm:block"
-                    onClick={() => setLightboxImage(merryHealthMap)}
-                  >
-                    <div className="w-[160px] md:w-[200px] lg:w-[240px] rounded-lg overflow-hidden bg-background transition-all duration-300 hover:z-30"
-                      style={{ boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 12px 24px -8px rgba(0, 0, 0, 0.15)' }}>
+                  <div className="absolute left-0 top-[20%] z-10 cursor-pointer group hidden sm:block" onClick={() => setLightboxImage(merryHealthMap)}>
+                    <div className="w-[160px] md:w-[200px] lg:w-[240px] rounded-lg overflow-hidden bg-background transition-all duration-300 hover:z-30" style={{
+                  boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 12px 24px -8px rgba(0, 0, 0, 0.15)'
+                }}>
                       <img src={merryHealthMap} alt="Find Ambulance Map" className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-300" />
                     </div>
                   </div>
                   
                   {/* Left-Center Screenshot */}
-                  <div 
-                    className="absolute left-[15%] md:left-[18%] top-[5%] z-20 cursor-pointer group hidden md:block"
-                    onClick={() => setLightboxImage(merryHealthBooking)}
-                  >
-                    <div className="w-[180px] md:w-[220px] lg:w-[260px] rounded-lg overflow-hidden bg-background transition-all duration-300 hover:z-30"
-                      style={{ boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.3), 0 15px 30px -10px rgba(0, 0, 0, 0.2)' }}>
+                  <div className="absolute left-[15%] md:left-[18%] top-[5%] z-20 cursor-pointer group hidden md:block" onClick={() => setLightboxImage(merryHealthBooking)}>
+                    <div className="w-[180px] md:w-[220px] lg:w-[260px] rounded-lg overflow-hidden bg-background transition-all duration-300 hover:z-30" style={{
+                  boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.3), 0 15px 30px -10px rgba(0, 0, 0, 0.2)'
+                }}>
                       <img src={merryHealthBooking} alt="Add Ride Flow" className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-300" />
                     </div>
                   </div>
                   
                   {/* Center Main Screenshot - Largest and most prominent */}
-                  <div 
-                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30 cursor-pointer group"
-                    onClick={() => setLightboxImage(merryHealthDashboard)}
-                  >
-                    <div className="w-[240px] md:w-[320px] lg:w-[380px] rounded-lg overflow-hidden bg-background transition-all duration-300"
-                      style={{ boxShadow: '0 40px 80px -20px rgba(0, 0, 0, 0.35), 0 20px 40px -15px rgba(0, 0, 0, 0.25)' }}>
+                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30 cursor-pointer group" onClick={() => setLightboxImage(merryHealthDashboard)}>
+                    <div className="w-[240px] md:w-[320px] lg:w-[380px] rounded-lg overflow-hidden bg-background transition-all duration-300" style={{
+                  boxShadow: '0 40px 80px -20px rgba(0, 0, 0, 0.35), 0 20px 40px -15px rgba(0, 0, 0, 0.25)'
+                }}>
                       <img src={merryHealthDashboard} alt="Hospital Dashboard" className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-300" />
                     </div>
                   </div>
                   
                   {/* Right-Center Screenshot */}
-                  <div 
-                    className="absolute right-[15%] md:right-[18%] top-[8%] z-20 cursor-pointer group hidden md:block"
-                    onClick={() => setLightboxImage(merryHealthRides)}
-                  >
-                    <div className="w-[180px] md:w-[220px] lg:w-[260px] rounded-lg overflow-hidden bg-background transition-all duration-300 hover:z-30"
-                      style={{ boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.3), 0 15px 30px -10px rgba(0, 0, 0, 0.2)' }}>
+                  <div className="absolute right-[15%] md:right-[18%] top-[8%] z-20 cursor-pointer group hidden md:block" onClick={() => setLightboxImage(merryHealthRides)}>
+                    <div className="w-[180px] md:w-[220px] lg:w-[260px] rounded-lg overflow-hidden bg-background transition-all duration-300 hover:z-30" style={{
+                  boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.3), 0 15px 30px -10px rgba(0, 0, 0, 0.2)'
+                }}>
                       <img src={merryHealthRides} alt="Ride Management" className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-300" />
                     </div>
                   </div>
                   
                   {/* Far Right Screenshot */}
-                  <div 
-                    className="absolute right-0 top-[25%] z-10 cursor-pointer group hidden sm:block"
-                    onClick={() => setLightboxImage(merryHealthMap)}
-                  >
-                    <div className="w-[160px] md:w-[200px] lg:w-[240px] rounded-lg overflow-hidden bg-background transition-all duration-300 hover:z-30"
-                      style={{ boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 12px 24px -8px rgba(0, 0, 0, 0.15)' }}>
+                  <div className="absolute right-0 top-[25%] z-10 cursor-pointer group hidden sm:block" onClick={() => setLightboxImage(merryHealthMap)}>
+                    <div className="w-[160px] md:w-[200px] lg:w-[240px] rounded-lg overflow-hidden bg-background transition-all duration-300 hover:z-30" style={{
+                  boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 12px 24px -8px rgba(0, 0, 0, 0.15)'
+                }}>
                       <img src={merryHealthBooking} alt="Booking Flow" className="w-full h-auto group-hover:scale-[1.02] transition-transform duration-300" />
                     </div>
                   </div>
@@ -1772,9 +1766,7 @@ const CaseStudy = () => {
             </div>
           </div>
         </section>
-        </>
-      ) : (
-        <section className="px-6 lg:px-12 py-16 border-t border-border scroll-mt-20">
+        </> : <section className="px-6 lg:px-12 py-16 border-t border-border scroll-mt-20">
           <div className="container mx-auto max-w-4xl">
             <div className="grid md:grid-cols-3 gap-12">
               <div className="md:col-span-2">
@@ -1807,8 +1799,7 @@ const CaseStudy = () => {
               </div>
             </div>
           </div>
-        </section>
-      )}
+        </section>}
 
       {/* Challenge */}
       {study.challenge && <section className="px-6 lg:px-12 py-16 bg-card">
@@ -2296,60 +2287,60 @@ const CaseStudy = () => {
 
                 {/* Phase 1: Intake */}
                 <PlatformAuditPhase phase="Phase 1" title="Intake" severity="high" description="First point of contact where hospital staff capture patient and case details during an emergency. It sets the foundation for the entire dispatch workflow by collecting the minimum critical information needed to initiate an ambulance request." taskGoal="Capture dispatch-critical information quickly and reliably" actorsInvolved="Patient/Patient Family, Hospital Receptionist, Merry Health Associate" issues={["Intake workflow requires full data upfront; staff rely on paper/WhatsApp.", "Data easily lost/mixed due to multitasking; no protection for in-progress entries.", "No priority context; admins rely on memory & manual judgment during panic."]} businessImpact={["Dispatch delays, errors, low hospital adoption.", "Inaccurate cases, rework, SLA inconsistencies.", "Wrong ambulance type, poor triage, slower response."]} recommendations={["Enable progressive intake (critical info first → rest later).", "Introduce workflow safeguards (preserve partial data, prevent overwrite).", "Surface priority & critical context early in intake workflow."]} platformFindings={[{
-            number: 1,
-            title: "Intake workflow is not designed for emergency-mode, leading to slow, error-prone data capture.",
-            description: "The intake process demands complete, structured data upfront, forcing staff to use paper, memory, and WhatsApp during emergencies — slowing dispatch and increasing errors.",
-            recommendations: ["Allow critical-first intake, complete the rest later.", "Auto-preserve early inputs during interruptions.", "Align flow with speed-first emergency behavior."]
-          }, {
-            number: 2,
-            title: "Intake input is fragile and easily overwritten, causing lost or mixed case data.",
-            description: "Ongoing intake entries are frequently reset, overwritten, or mixed between cases due to multitasking, interruptions, and lack of workflow protection.",
-            recommendations: ["Auto-save partial entries continuously.", "Prevent overwrites when switching cases or calls.", "Support resume-from-where-left workflows.", "Ensure no re-entry of previously captured data."]
-          }]} onImageClick={setLightboxImage} />
+              number: 1,
+              title: "Intake workflow is not designed for emergency-mode, leading to slow, error-prone data capture.",
+              description: "The intake process demands complete, structured data upfront, forcing staff to use paper, memory, and WhatsApp during emergencies — slowing dispatch and increasing errors.",
+              recommendations: ["Allow critical-first intake, complete the rest later.", "Auto-preserve early inputs during interruptions.", "Align flow with speed-first emergency behavior."]
+            }, {
+              number: 2,
+              title: "Intake input is fragile and easily overwritten, causing lost or mixed case data.",
+              description: "Ongoing intake entries are frequently reset, overwritten, or mixed between cases due to multitasking, interruptions, and lack of workflow protection.",
+              recommendations: ["Auto-save partial entries continuously.", "Prevent overwrites when switching cases or calls.", "Support resume-from-where-left workflows.", "Ensure no re-entry of previously captured data."]
+            }]} onImageClick={setLightboxImage} />
 
                 {/* Phase 2: Assign */}
                 <PlatformAuditPhase phase="Phase 2" title="Assign" severity="high" description="Connects a new case to an available ambulance through validation, coordination, and confirmation. Delays here slow dispatch and break workflow continuity." taskGoal="Match the right ambulance to the right case, fast and with full clarity" actorsInvolved="Merry Health Associate, Ambulance Driver, Hospital Admins" issues={["Manual driver coordination.", "No urgency/multi-case visibility.", "Weak ambulance discovery."]} businessImpact={["Slow dispatch, high ops load, low trust.", "Mis-prioritization, SLA failures, patient risk.", "Delayed decisions, wrong selection, dependency on manual channels."]} recommendations={["Enable system-led assignment & real-time driver status.", "Surface urgency & separate simultaneous cases.", "Improve availability-led discovery & streamline assignment path."]} platformFindings={[{
-            number: 1,
-            title: "Assignment depends on manual driver coordination, causing delays and uncertainty.",
-            description: "MHA must call and follow up with multiple drivers to confirm availability, leading to unpredictable delays and inconsistent dispatch times.",
-            recommendations: ["Provide real-time driver status to reduce repeated follow-ups.", "Support a single, streamlined assignment flow with clear confirmation."]
-          }, {
-            number: 2,
-            title: "System does not surface urgency or simultaneous requests, resulting in wrong prioritization and case mix-ups.",
-            description: "Urgency cues and simultaneous requests are not surfaced, forcing MHAs to rely on memory and guesswork, causing wrong prioritization or missed critical cases.",
-            recommendations: ["Surface priority context early during assignment.", "Clearly separate concurrent cases to prevent mix-ups.", "Provide guided triage cues to support accurate decision-making."]
-          }, {
-            number: 3,
-            title: "Ambulance discovery provides weak decision support — no clarity, no availability logic, no booking confidence.",
-            description: "Ambulance list provides poor decision support — no sorting, no availability logic, unclear booking path — slowing down assignment and increasing reliance on manual channels.",
-            recommendations: ["Use availability-driven discovery aligned with workflow needs.", "Support quick narrowing of options (urgency, type, proximity).", "Create a clear, confident assignment path with predictable next steps."]
-          }]} onImageClick={setLightboxImage} />
+              number: 1,
+              title: "Assignment depends on manual driver coordination, causing delays and uncertainty.",
+              description: "MHA must call and follow up with multiple drivers to confirm availability, leading to unpredictable delays and inconsistent dispatch times.",
+              recommendations: ["Provide real-time driver status to reduce repeated follow-ups.", "Support a single, streamlined assignment flow with clear confirmation."]
+            }, {
+              number: 2,
+              title: "System does not surface urgency or simultaneous requests, resulting in wrong prioritization and case mix-ups.",
+              description: "Urgency cues and simultaneous requests are not surfaced, forcing MHAs to rely on memory and guesswork, causing wrong prioritization or missed critical cases.",
+              recommendations: ["Surface priority context early during assignment.", "Clearly separate concurrent cases to prevent mix-ups.", "Provide guided triage cues to support accurate decision-making."]
+            }, {
+              number: 3,
+              title: "Ambulance discovery provides weak decision support — no clarity, no availability logic, no booking confidence.",
+              description: "Ambulance list provides poor decision support — no sorting, no availability logic, unclear booking path — slowing down assignment and increasing reliance on manual channels.",
+              recommendations: ["Use availability-driven discovery aligned with workflow needs.", "Support quick narrowing of options (urgency, type, proximity).", "Create a clear, confident assignment path with predictable next steps."]
+            }]} onImageClick={setLightboxImage} />
 
                 {/* Phase 3: En-Route */}
                 <PlatformAuditPhase phase="Phase 3" title="En-Route" severity="high" description="The En Route phase covers everything that happens after an ambulance has been assigned and the driver begins traveling toward the pickup location. This is a high-dependency, high-visibility phase where hospitals, MHAs, and patient families all expect accurate, real-time updates." taskGoal="To provide reliable, continuous visibility of the ambulance's movement, status, and ETA across all parties" actorsInvolved="Ambulance Driver, Merry Health Associate, Hospital Admins, Patient Party" issues={["No reliable real-time tracking causing uncertainty and delays.", "Active rides not surfaced or prioritized causing delayed monitoring and missed escalations.", "Ride information hard to parse — unclear, long, and inconsistent."]} businessImpact={["Constant manual follow-ups.", "SLA Failures.", "Delayed decisions, dependency on manual channels."]} recommendations={["Provide continuous, system-led tracking with auto-updating ETA visible to all roles.", "Prioritize and clearly surface ongoing trips for quick access and proactive monitoring.", "Present critical information upfront with structured, consistent ride detail organization."]} platformFindings={[{
-            number: 1,
-            title: "Active rides aren't clearly surfaced → delays in monitoring & intervention",
-            description: "Ongoing rides are visually buried, not distinguishable from other records, and lack clear prioritization — making it hard for MHAs and admins to monitor critical trips.",
-            recommendations: ["Highlight in-progress trips as priority states in the workflow.", "Ensure quick access to active ride details without searching.", "Support proactive monitoring, reducing missed updates or delays."]
-          }, {
-            number: 2,
-            title: "Poor ride detail structure → situational awareness is slow and error-prone",
-            description: "Ride details are long, undifferentiated, and inconsistent, making it hard to extract status, timestamps, or critical info quickly during high-pressure moments.",
-            recommendations: ["Present status-critical information upfront for fast scanning.", "Organize ride details into logical, workflow-aligned sections.", "Ensure consistent, clear time/event formatting for reliable reporting and decision-making."]
-          }]} onImageClick={setLightboxImage} />
+              number: 1,
+              title: "Active rides aren't clearly surfaced → delays in monitoring & intervention",
+              description: "Ongoing rides are visually buried, not distinguishable from other records, and lack clear prioritization — making it hard for MHAs and admins to monitor critical trips.",
+              recommendations: ["Highlight in-progress trips as priority states in the workflow.", "Ensure quick access to active ride details without searching.", "Support proactive monitoring, reducing missed updates or delays."]
+            }, {
+              number: 2,
+              title: "Poor ride detail structure → situational awareness is slow and error-prone",
+              description: "Ride details are long, undifferentiated, and inconsistent, making it hard to extract status, timestamps, or critical info quickly during high-pressure moments.",
+              recommendations: ["Present status-critical information upfront for fast scanning.", "Organize ride details into logical, workflow-aligned sections.", "Ensure consistent, clear time/event formatting for reliable reporting and decision-making."]
+            }]} onImageClick={setLightboxImage} />
 
                 {/* Phase 4: Handover & Close */}
                 <PlatformAuditPhase phase="Phase 4" title="Handover & Close" severity="high" description="This phase covers the moment the ambulance reaches the hospital, the patient is handed over, and the trip is officially closed. It is a data-critical phase where timestamps, arrival confirmation, and final trip details must be accurately captured." taskGoal="To accurately confirm arrival, document the handover, and close the trip with complete and consistent data so that operations, reporting, billing, and SLAs stay reliable" actorsInvolved="Ambulance Driver, Merry Health Associate, Hospital Admins, Management / Reporting Teams" issues={["Inaccurate or missing timestamps due to manual confirmation.", "Overwritten or incomplete data due to manual, unchecked trip closure.", "Inaccurate case records & unsynced reports."]} businessImpact={["Unreliable SLAs and weak hospital trust.", "Poor data quality → broken reports, billing disputes, and audit failures.", "Inconsistent or incorrect reports, harming credibility."]} recommendations={["Enable system-led arrival validation to ensure accurate, consistent timestamps.", "Introduce closure validation workflow that checks required data before finalizing.", "Support guided, real-time closure with prompts."]} platformFindings={[{
-            number: 1,
-            title: "Manual arrival & closure entries → inaccurate, inconsistent timestamps",
-            description: "Arrival and closure are entered manually (often delayed or in bulk), resulting in incorrect timestamps, missing events, and unreliable trip history.",
-            recommendations: ["Enable workflow-driven arrival & handover confirmation aligned with real-world events.", "Reduce reliance on manual timestamps through system-assisted verification.", "Ensure closure requires complete event data before submission."]
-          }, {
-            number: 2,
-            title: "No drill-down or visibility → inconsistent reporting & weak operational insight",
-            description: "Static KPIs and limited reporting views prevent HAs and management from verifying trip details, diagnosing issues, or reconciling discrepancies across hospitals.",
-            recommendations: ["Provide workflow-aligned drill-downs from KPIs to individual trip data.", "Standardize event labels and timestamps across all reporting surfaces.", "Ensure reports reflect synced, consistent, end-to-end trip data."]
-          }]} onImageClick={setLightboxImage} />
+              number: 1,
+              title: "Manual arrival & closure entries → inaccurate, inconsistent timestamps",
+              description: "Arrival and closure are entered manually (often delayed or in bulk), resulting in incorrect timestamps, missing events, and unreliable trip history.",
+              recommendations: ["Enable workflow-driven arrival & handover confirmation aligned with real-world events.", "Reduce reliance on manual timestamps through system-assisted verification.", "Ensure closure requires complete event data before submission."]
+            }, {
+              number: 2,
+              title: "No drill-down or visibility → inconsistent reporting & weak operational insight",
+              description: "Static KPIs and limited reporting views prevent HAs and management from verifying trip details, diagnosing issues, or reconciling discrepancies across hospitals.",
+              recommendations: ["Provide workflow-aligned drill-downs from KPIs to individual trip data.", "Standardize event labels and timestamps across all reporting surfaces.", "Ensure reports reflect synced, consistent, end-to-end trip data."]
+            }]} onImageClick={setLightboxImage} />
               </CollapsibleContent>
             </Collapsible>
           </div>
@@ -2906,7 +2897,8 @@ const CaseStudy = () => {
 
             {/* Proposed Workflow Diagram */}
             <div className="mb-8">
-              <h3 className="font-serif text-lg mb-4">Proposed Workflow Diagram</h3>
+              <h3 className="font-serif text-lg mb-4">
+          </h3>
               <p className="text-sm text-muted-foreground mb-6">The workflow integrates WhatsApp API, automated trip creation, driver assignment with priority rules, and automated notifications—while accounting for edge cases like driver unavailability and tracking issues.</p>
               
               <div className="rounded-xl border-2 border-primary/20 bg-gradient-to-b from-primary/5 to-background shadow-sm overflow-hidden">
@@ -4295,25 +4287,21 @@ const CaseStudy = () => {
         </section>}
 
       {/* Merry Health Impact Section */}
-      {slug === 'merry-health' && study.businessOutcomes && (
-        <section id="merry-impact" className="px-6 lg:px-12 py-16 bg-card scroll-mt-20">
+      {slug === 'merry-health' && study.businessOutcomes && <section id="merry-impact" className="px-6 lg:px-12 py-16 bg-card scroll-mt-20">
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Impact</h2>
             <p className="text-lg text-muted-foreground mb-8">Expected outcomes from the redesign:</p>
             <div className="grid md:grid-cols-2 gap-4">
               {study.businessOutcomes.map((outcome, i) => {
-                const [title, description] = outcome.split(': ');
-                return (
-                  <div key={i} className="p-4 rounded-lg border border-border bg-background">
+            const [title, description] = outcome.split(': ');
+            return <div key={i} className="p-4 rounded-lg border border-border bg-background">
                     <h4 className="text-sm font-medium mb-1">{title}</h4>
                     <p className="text-xs text-muted-foreground">{description}</p>
-                  </div>
-                );
-              })}
+                  </div>;
+          })}
             </div>
           </div>
-        </section>
-      )}
+        </section>}
 
       {/* Learnings / Reflection */}
       <section id={slug === 'merry-health' ? 'merry-reflection' : undefined} className={`px-6 lg:px-12 py-16 ${slug === 'merry-health' ? 'scroll-mt-20' : ''}`}>
