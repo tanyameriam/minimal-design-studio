@@ -2900,10 +2900,7 @@ const CaseStudy = () => {
       {/* Merry Health Proposed Workflow */}
       {slug === 'merry-health' && <section id="merry-workflow" className="px-6 lg:px-12 xl:pl-48 py-16 scroll-mt-20">
           <div className="container mx-auto max-w-5xl">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">5</span>
-              <h2 className="font-serif text-2xl">Proposed Workflow</h2>
-            </div>
+            <h3 className="font-serif text-2xl mb-4">Proposed Workflow</h3>
             <p className="text-muted-foreground mb-10">Based on the research findings, we designed a new workflow that addresses the identified pain points and leverages opportunities for automation and clarity.</p>
 
 
@@ -2961,10 +2958,7 @@ const CaseStudy = () => {
       {/* Merry Health Scenario Mapping & Modules */}
       {slug === 'merry-health' && <section className="px-6 lg:px-12 xl:pl-48 py-16 bg-card">
           <div className="container mx-auto max-w-5xl">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">5</span>
-              <h2 className="font-serif text-2xl">Scenario Mapping & Module Definition</h2>
-            </div>
+            <h3 className="font-serif text-2xl mb-4">Scenario Mapping & Module Definition</h3>
             <p className="text-muted-foreground mb-10">After the proposed workflow, we conducted scenario mapping to understand the exact screens and workflows required for both WhatsApp integration and the desktop application.</p>
 
             <div className="grid md:grid-cols-2 gap-8 mb-10">
@@ -3012,10 +3006,9 @@ const CaseStudy = () => {
       {/* Merry Health Wireframes */}
       {slug === 'merry-health' && <section id="merry-solution" className="px-6 lg:px-12 xl:pl-48 py-16 scroll-mt-20">
           <div className="container mx-auto max-w-5xl">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">6</span>
-              <h2 className="font-serif text-2xl">Wireframing</h2>
-              <a href="https://www.figma.com/design/yH9NNuzOQov4XIgkz5D2jo/Project-Merry-Health?node-id=14-5439&t=D4QoBAFlTIFjCBK6-1" target="_blank" rel="noopener noreferrer" className="ml-auto flex items-center gap-2 text-xs text-primary hover:underline">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="font-serif text-2xl">Wireframing</h3>
+              <a href="https://www.figma.com/design/yH9NNuzOQov4XIgkz5D2jo/Project-Merry-Health?node-id=14-5439&t=D4QoBAFlTIFjCBK6-1" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs text-primary hover:underline">
                 <svg className="w-3.5 h-3.5" viewBox="0 0 38 57" fill="currentColor">
                   <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" />
                   <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" />
@@ -3052,10 +3045,7 @@ const CaseStudy = () => {
       {/* Merry Health Hi-Fi Screens */}
       {slug === 'merry-health' && <section className="px-6 lg:px-12 xl:pl-48 py-16 bg-card">
           <div className="container mx-auto max-w-5xl">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">6</span>
-              <h2 className="font-serif text-2xl">High-Fidelity Screens</h2>
-            </div>
+            <h3 className="font-serif text-2xl mb-4">High-Fidelity Screens</h3>
             <p className="text-muted-foreground mb-6">The final high-fidelity designs bring together all research insights into a new Merry Heath platform</p>
 
             <a href="https://www.figma.com/proto/yH9NNuzOQov4XIgkz5D2jo/Project-Merry-Health?node-id=15-36521&t=31Fmb4tJRbqNkLny-1&scaling=min-zoom&content-scaling=fixed&page-id=14%3A5438&starting-point-node-id=15%3A36521" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-6 py-4 rounded-xl border border-primary/20 bg-primary/5 hover:bg-primary/10 transition-colors mb-12">
@@ -3088,10 +3078,7 @@ const CaseStudy = () => {
       {/* Merry Health WhatsApp Integration */}
       {slug === 'merry-health' && <section className="px-6 lg:px-12 xl:pl-48 py-16">
           <div className="container mx-auto max-w-5xl">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">6</span>
-              <h2 className="font-serif text-2xl">WhatsApp Integration Design</h2>
-            </div>
+            <h3 className="font-serif text-2xl mb-4">WhatsApp Integration Design</h3>
             <p className="text-muted-foreground mb-4">Given that 95% of hospital admins currently use WhatsApp for intake, we designed a structured WhatsApp experience that respects existing mental models while enabling automated workflows.</p>
             <p className="text-sm text-muted-foreground mb-10">The system parses incoming messages to extract required data points (as identified in our data audit), requests missing information, and pushes automated status updates to all stakeholders.</p>
 
