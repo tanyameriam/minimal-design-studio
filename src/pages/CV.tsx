@@ -225,8 +225,8 @@ const CV = () => {
           
           {/* Header */}
           <header className="mb-12">
-            <h1 className="font-serif text-4xl md:text-5xl mb-2">Tanya Sunny</h1>
-            <p className="text-xl text-muted-foreground mb-6">UX/UI Designer</p>
+            <h1 className="font-serif text-3xl md:text-4xl mb-2">Tanya Sunny</h1>
+            <p className="text-lg text-muted-foreground mb-6">UX/UI Designer</p>
             
             <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
               <span className="flex items-center gap-1.5">
