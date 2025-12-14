@@ -89,9 +89,7 @@ const Work = () => {
       <div className="container mx-auto">
         <div className="flex justify-between items-end mb-16">
           <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">
-              Selected Work
-            </p>
+            <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">CURATED WORKS</p>
             <h2 className="font-serif text-4xl md:text-5xl">Projects</h2>
           </div>
           
