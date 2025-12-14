@@ -1830,7 +1830,7 @@ const CaseStudy = () => {
             </div>
           </div>
         </section>
-        </> : slug !== 'stree-safety-app' && <section id={slug === 'food-waste-ngo' ? 'foodwaste-context' : slug === 'brynq' ? 'brynq-context' : undefined} className={`px-6 lg:px-12 py-16 border-t border-border scroll-mt-20`}>
+        </> : slug !== 'stree-safety-app' && <section id={slug === 'food-waste-ngo' ? 'foodwaste-context' : slug === 'brynq' ? 'brynq-context' : undefined} className={`px-6 lg:px-12 pt-32 pb-16 border-t border-border scroll-mt-20`}>
           <div className="container mx-auto max-w-5xl">
             {/* Context Header */}
             <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Context</p>
