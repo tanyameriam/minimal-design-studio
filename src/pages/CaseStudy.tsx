@@ -100,6 +100,7 @@ import foodWasteRestWireframeListings from '@/assets/food-waste-rest-wireframe-l
 import foodWasteRestWireframeAddlisting from '@/assets/food-waste-rest-wireframe-addlisting.png';
 import foodWasteRestWireframeAccount from '@/assets/food-waste-rest-wireframe-account.png';
 import foodWasteRestWireframeInsights from '@/assets/food-waste-rest-wireframe-insights.png';
+import brynqScenarioRedacted from '@/assets/brynq-scenario-redacted.png';
 import { PlatformAuditPhase } from '@/components/ResearchPhaseCard';
 interface CaseStudySection {
   title: string;
@@ -1975,7 +1976,18 @@ const CaseStudy = () => {
       {study.brynqResponsibility && <section className="px-6 lg:px-12 py-16 bg-card"><div className="container mx-auto max-w-5xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">My Responsibility & Design Framing</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqResponsibility}</p></div></section>}
 
       {/* BrynQ: Research */}
-      {study.brynqResearch && <section className="px-6 lg:px-12 py-16"><div className="container mx-auto max-w-5xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Research & Understanding the Work</h2><p className="text-lg leading-relaxed text-muted-foreground mb-8">{study.brynqResearch}</p><div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center"><span className="text-sm text-muted-foreground italic">[ Research artifacts / process sketch ]</span></div></div></section>}
+      {study.brynqResearch && <section className="px-6 lg:px-12 py-16">
+        <div className="container mx-auto max-w-5xl">
+          <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Research & Understanding the Work</h2>
+          <p className="text-lg leading-relaxed text-muted-foreground mb-8">{study.brynqResearch}</p>
+          <div className="bg-background border border-border rounded-lg overflow-hidden">
+            <img src={brynqScenarioRedacted} alt="Sample scenario file (redacted)" className="w-full h-auto" />
+            <div className="px-4 py-3 bg-muted/30 border-t border-border">
+              <p className="text-xs text-muted-foreground italic">Sample scenario file (redacted for confidentiality)</p>
+            </div>
+          </div>
+        </div>
+      </section>}
 
       {/* BrynQ: Key Insight */}
       {study.brynqKeyInsight && <section className="px-6 lg:px-12 py-16 bg-card">
