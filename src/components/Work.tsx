@@ -5,6 +5,7 @@ import { Search } from 'lucide-react';
 import streeCover from '@/assets/stree-cover.png';
 import merryHealthCover from '@/assets/merry-health-cover.png';
 import brynqCover from '@/assets/brynq-cover.png';
+import foodWasteCover from '@/assets/food-waste-cover.png';
 type ProjectTag = 'UI' | 'UX' | 'Research';
 interface Project {
   title: string;
@@ -35,7 +36,7 @@ const projects: Project[] = [{
   title: "Food Waste Solution",
   category: "UX Design • Social Impact",
   year: "2024",
-  image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80",
+  image: foodWasteCover,
   slug: "food-waste-ngo",
   tags: ['UX', 'Research', 'UI'],
   published: true
