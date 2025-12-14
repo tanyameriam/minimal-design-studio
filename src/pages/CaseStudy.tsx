@@ -1831,7 +1831,7 @@ const CaseStudy = () => {
           <div className="container mx-auto max-w-5xl">
             {/* Context Header */}
             <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Context</p>
-            <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-6 max-w-3xl leading-tight">
+            <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-6 leading-tight">
               {slug === 'food-waste-ngo' && 'Bridging Surplus Food with Hunger Hotspots Through Coordinated Redistribution'}
               {slug === 'brynq' && 'Transforming a Legacy Integration Platform into a Scalable B2B iPaaS'}
               {slug !== 'food-waste-ngo' && slug !== 'brynq' && study.title}
