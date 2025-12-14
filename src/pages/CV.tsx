@@ -267,7 +267,7 @@ const CV = () => {
               <div>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
                   <div>
-                    <h3 className="font-medium text-2xl">UX/UI Designer</h3>
+                    <h3 className="font-medium text-lg">UX/UI Designer</h3>
                     <p className="text-muted-foreground text-sm">BrynQ, Netherlands</p>
                   </div>
                   <span className="text-sm text-muted-foreground">2023 – Present</span>
@@ -287,7 +287,7 @@ const CV = () => {
               <div>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
                   <div>
-                    <h3 className="font-medium text-2xl">UI Designer (Contract)</h3>
+                    <h3 className="font-medium text-lg">UI Designer (Contract)</h3>
                     <p className="text-muted-foreground text-sm">Multiple Startups, India</p>
                   </div>
                   <span className="text-sm text-muted-foreground">2022 – 2023</span>
@@ -303,7 +303,7 @@ const CV = () => {
               <div>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
                   <div>
-                    <h3 className="font-medium text-xl">UI Designer</h3>
+                    <h3 className="font-medium text-lg">UI Designer</h3>
                     <p className="text-muted-foreground text-sm">Segments Cloud LLC, Dubai, UAE</p>
                   </div>
                   <span className="text-sm text-muted-foreground">2021 – 2022</span>
@@ -318,7 +318,7 @@ const CV = () => {
               <div>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
                   <div>
-                    <h3 className="font-medium text-2xl">UX/UI Intern</h3>
+                    <h3 className="font-medium text-lg">UX/UI Intern</h3>
                     <p className="text-muted-foreground text-sm">Curateus, Bangalore, India</p>
                   </div>
                   <span className="text-sm text-muted-foreground">2021</span>
@@ -333,7 +333,7 @@ const CV = () => {
               <div>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
                   <div>
-                    <h3 className="font-medium text-2xl">Technical Support Engineer</h3>
+                    <h3 className="font-medium text-lg">Technical Support Engineer</h3>
                     <p className="text-muted-foreground text-sm">SAP Ariba, Bangalore, India</p>
                   </div>
                   <span className="text-sm text-muted-foreground">2018 – 2021</span>
