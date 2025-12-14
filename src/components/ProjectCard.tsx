@@ -29,7 +29,7 @@ const ProjectCard = ({
   }}>
       <div className="relative overflow-hidden mb-6 rounded-lg shadow-lg group-hover:shadow-xl transition-shadow duration-500 bg-card">
         <div className="aspect-[16/9] overflow-hidden">
-          <img src={image} alt={title} className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:brightness-110" />
+          <img src={image} alt={title} className="w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-105 group-hover:brightness-110" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       </div>
