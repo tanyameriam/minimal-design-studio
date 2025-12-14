@@ -2,11 +2,9 @@ import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Download, Mail, MapPin, Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
 const CV = () => {
   const navigate = useNavigate();
   const cvRef = useRef<HTMLDivElement>(null);
-
   const handleDownloadPDF = () => {
     // Create a printable version for PDF download
     const printWindow = window.open('', '_blank');
@@ -198,16 +196,11 @@ const CV = () => {
       printWindow.document.close();
     }
   };
-
-  return (
-    <main className="bg-background min-h-screen">
+  return <main className="bg-background min-h-screen">
       {/* Header */}
       <div className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md py-4">
         <div className="container mx-auto px-6 lg:px-12 flex justify-between items-center">
-          <button 
-            onClick={() => navigate('/')}
-            className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-          >
+          <button onClick={() => navigate('/')} className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
             <ArrowLeft className="w-4 h-4" />
             <span className="text-sm">Back to Portfolio</span>
           </button>
@@ -233,19 +226,11 @@ const CV = () => {
                 <MapPin className="w-4 h-4" />
                 Netherlands
               </span>
-              <a 
-                href="mailto:tanyameriamsunny@gmail.com" 
-                className="flex items-center gap-1.5 hover:text-foreground transition-colors"
-              >
+              <a href="mailto:tanyameriamsunny@gmail.com" className="flex items-center gap-1.5 hover:text-foreground transition-colors">
                 <Mail className="w-4 h-4" />
                 tanyameriamsunny@gmail.com
               </a>
-              <a 
-                href="https://www.linkedin.com/in/tanya-sunny/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 hover:text-foreground transition-colors"
-              >
+              <a href="https://www.linkedin.com/in/tanya-sunny/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-foreground transition-colors">
                 <Linkedin className="w-4 h-4" />
                 LinkedIn
               </a>
@@ -267,11 +252,9 @@ const CV = () => {
           <section className="mb-12">
             <h2 className="font-serif text-lg mb-4 pb-2 border-b border-border">Key Competencies</h2>
             <div className="flex flex-wrap gap-2">
-              {['UX Auditing', 'Systems Thinking', 'Workflow & Process Design', 'Problem Framing', 'UI & Interaction Design', 'AI-Integrated UX Workflows'].map((skill) => (
-                <span key={skill} className="px-3 py-1.5 bg-muted text-sm rounded-md">
+              {['UX Auditing', 'Systems Thinking', 'Workflow & Process Design', 'Problem Framing', 'UI & Interaction Design', 'AI-Integrated UX Workflows'].map(skill => <span key={skill} className="px-3 py-1.5 bg-muted text-sm rounded-md">
                   {skill}
-                </span>
-              ))}
+                </span>)}
             </div>
           </section>
 
@@ -284,7 +267,7 @@ const CV = () => {
               <div>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
                   <div>
-                    <h3 className="font-medium">UX/UI Designer</h3>
+                    <h3 className="font-medium text-xl">UX/UI Designer</h3>
                     <p className="text-muted-foreground text-sm">BrynQ, Netherlands</p>
                   </div>
                   <span className="text-sm text-muted-foreground">2023 – Present</span>
@@ -388,12 +371,7 @@ const CV = () => {
             <h2 className="font-serif text-lg mb-4 pb-2 border-b border-border">Community</h2>
             <div>
               <h3 className="font-medium">Co-organiser</h3>
-              <a 
-                href="https://www.linkedin.com/company/design-reimagined-utrecht" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1.5"
-              >
+              <a href="https://www.linkedin.com/company/design-reimagined-utrecht" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1.5">
                 <Linkedin className="w-3.5 h-3.5" />
                 Design Reimagined Utrecht
               </a>
@@ -407,11 +385,9 @@ const CV = () => {
           <section className="mb-12">
             <h2 className="font-serif text-lg mb-4 pb-2 border-b border-border">Tools</h2>
             <div className="flex flex-wrap gap-2">
-              {['Figma', 'FigJam', 'Miro', 'Zeplin'].map((tool) => (
-                <span key={tool} className="px-3 py-1.5 bg-muted text-sm rounded-md">
+              {['Figma', 'FigJam', 'Miro', 'Zeplin'].map(tool => <span key={tool} className="px-3 py-1.5 bg-muted text-sm rounded-md">
                   {tool}
-                </span>
-              ))}
+                </span>)}
             </div>
           </section>
 
@@ -425,8 +401,6 @@ const CV = () => {
           </section>
         </div>
       </div>
-    </main>
-  );
+    </main>;
 };
-
 export default CV;
