@@ -1,33 +1,17 @@
-import { ArrowDown } from 'lucide-react';
 const Hero = () => {
-  const scrollToWork = () => {
-    const element = document.getElementById('work');
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth'
-      });
-    }
-  };
-  return <section id="hero" className="min-h-screen flex flex-col justify-center px-6 lg:px-12 pt-20">
-      <div className="container mx-auto">
-        <div className="max-w-4xl">
-          <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6 animate-fade-up">
-            Product Designer
-          </p>
-          
-          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-medium leading-[1.15] mb-8 animate-fade-up-delay-1">
-            Turning complexity into clarity
-          </h1>
-          
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed animate-fade-up-delay-2">
-            A designer who brings 5 years of experience turning complex workflows into intuitive systems, creating alignment, usability, and efficiency where it matters most.
-          </p>
-        </div>
+  return (
+    <section id="hero" className="flex flex-col justify-center px-6 lg:px-12 pt-32 pb-16 md:pt-40 md:pb-20">
+      <div className="container mx-auto max-w-4xl text-center">
+        <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.2] mb-6 animate-fade-up">
+          Enterprise Product Designer
+        </h1>
         
-        <button onClick={scrollToWork} className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-fade-up-delay-3 group" aria-label="Scroll to work">
-          <ArrowDown className="w-5 h-5 animate-bounce" />
-        </button>
+        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed animate-fade-up-delay-1">
+          Combining 5 years of enterprise UX expertise with research-driven design process to solve complex problems
+        </p>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Hero;
