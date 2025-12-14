@@ -1598,7 +1598,7 @@ const CaseStudy = () => {
       id: 'merry-research',
       label: 'Research'
     }, {
-      id: 'merry-solution',
+      id: 'merry-strategy',
       label: 'Solution'
     }, {
       id: 'merry-impact',
@@ -2791,28 +2791,28 @@ const CaseStudy = () => {
                 <span className="absolute -top-4 -left-2 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">01</span>
                 <div className="relative z-10">
                   <h3 className="font-serif text-base mb-2">Fix Workflow Gaps</h3>
-                  <p className="text-xs text-muted-foreground">Fix core booking → dispatch → closure sequence first.</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">Fix core booking → dispatch → closure sequence first.</p>
                 </div>
               </div>
               <div className="relative overflow-hidden p-6 rounded-2xl border border-border bg-background">
                 <span className="absolute -top-4 -left-2 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">02</span>
                 <div className="relative z-10">
                   <h3 className="font-serif text-base mb-2">Mobile-First Model</h3>
-                  <p className="text-xs text-muted-foreground">Match real hospital behavior for higher adoption.</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">Match real hospital behavior for higher adoption.</p>
                 </div>
               </div>
               <div className="relative overflow-hidden p-6 rounded-2xl border border-border bg-background">
                 <span className="absolute -top-4 -left-2 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">03</span>
                 <div className="relative z-10">
                   <h3 className="font-serif text-base mb-2">Smart Dispatch</h3>
-                  <p className="text-xs text-muted-foreground">Use distance, ETA, and ratings for recommendations.</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">Use distance, ETA, and ratings for recommendations.</p>
                 </div>
               </div>
               <div className="relative overflow-hidden p-6 rounded-2xl border border-border bg-background">
                 <span className="absolute -top-4 -left-2 text-[120px] font-serif font-bold text-primary/[0.07] leading-none select-none pointer-events-none">04</span>
                 <div className="relative z-10">
                   <h3 className="font-serif text-base mb-2">Automated Tracking</h3>
-                  <p className="text-xs text-muted-foreground">Live tracking, auto updates, guided closure.</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">Live tracking, auto updates, guided closure.</p>
                 </div>
               </div>
             </div>
@@ -3071,8 +3071,8 @@ const CaseStudy = () => {
       {slug === 'merry-health' && <section className="px-6 lg:px-12 xl:pl-48 py-16">
           <div className="container mx-auto max-w-5xl">
             <h3 className="font-serif text-2xl mb-4">WhatsApp Integration Design</h3>
-            <p className="text-muted-foreground mb-4">Given that 95% of hospital admins currently use WhatsApp for intake, we designed a structured WhatsApp experience that respects existing mental models while enabling automated workflows.</p>
-            <p className="text-sm text-muted-foreground mb-10">The system parses incoming messages to extract required data points (as identified in our data audit), requests missing information, and pushes automated status updates to all stakeholders.</p>
+            <p className="text-muted-foreground mb-6 leading-relaxed">Given that 95% of hospital admins currently use WhatsApp for intake, we designed a structured WhatsApp experience that respects existing mental models while enabling automated workflows.</p>
+            <p className="text-base text-muted-foreground mb-10 leading-relaxed">The system parses incoming messages to extract required data points (as identified in our data audit), requests missing information, and pushes automated status updates to all stakeholders.</p>
 
             <div className="grid md:grid-cols-3 gap-4">
               {/* Hospital Admin WhatsApp */}
