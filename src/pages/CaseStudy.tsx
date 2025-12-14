@@ -1562,6 +1562,42 @@ const CaseStudy = () => {
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
   const [showInterviewGallery, setShowInterviewGallery] = useState(false);
   const [showAffinityGallery, setShowAffinityGallery] = useState(false);
+  const [showWireframeGallery, setShowWireframeGallery] = useState(false);
+  const [galleryImages, setGalleryImages] = useState<string[]>([]);
+  const [galleryIndex, setGalleryIndex] = useState(0);
+
+  // Wireframe images array
+  const wireframeImages = [streeWireframe1, streeWireframe2, streeWireframe3, streeWireframe4, streeWireframe5, streeWireframe6, streeWireframe7, streeWireframe8, streeWireframe9, streeWireframe10, streeWireframe11, streeWireframe12, streeWireframe13, streeWireframe14];
+
+  // Open gallery with specific images starting at index
+  const openGallery = (images: string[], startIndex: number) => {
+    setGalleryImages(images);
+    setGalleryIndex(startIndex);
+  };
+
+  // Close gallery
+  const closeGallery = () => {
+    setGalleryImages([]);
+    setGalleryIndex(0);
+  };
+
+  // Handle keyboard navigation in gallery
+  useEffect(() => {
+    if (galleryImages.length === 0) return;
+    
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeGallery();
+      } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        setGalleryIndex(prev => (prev + 1) % galleryImages.length);
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        setGalleryIndex(prev => (prev - 1 + galleryImages.length) % galleryImages.length);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [galleryImages]);
   const study = slug ? caseStudies[slug] : null;
   if (!study) {
     return <div className="min-h-screen flex items-center justify-center">
@@ -1581,6 +1617,43 @@ const CaseStudy = () => {
           </button>
           <img src={lightboxImage} alt="Enlarged view" className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl" onClick={e => e.stopPropagation()} />
           <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/60 text-sm">Press ESC or click outside to close</p>
+        </div>}
+
+      {/* Gallery Modal with Navigation */}
+      {galleryImages.length > 0 && <div className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 animate-fade-in" onClick={closeGallery} tabIndex={0} ref={el => el?.focus()}>
+          <button className="absolute top-6 right-6 text-white/80 hover:text-white transition-colors z-10" onClick={closeGallery}>
+            <X className="w-8 h-8" />
+          </button>
+          
+          {/* Previous button */}
+          <button 
+            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition-colors p-2 rounded-full bg-white/10 hover:bg-white/20"
+            onClick={(e) => { e.stopPropagation(); setGalleryIndex(prev => (prev - 1 + galleryImages.length) % galleryImages.length); }}
+          >
+            <ArrowLeft className="w-6 h-6" />
+          </button>
+          
+          {/* Image */}
+          <img 
+            src={galleryImages[galleryIndex]} 
+            alt={`Gallery image ${galleryIndex + 1}`} 
+            className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl" 
+            onClick={e => e.stopPropagation()} 
+          />
+          
+          {/* Next button */}
+          <button 
+            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition-colors p-2 rounded-full bg-white/10 hover:bg-white/20"
+            onClick={(e) => { e.stopPropagation(); setGalleryIndex(prev => (prev + 1) % galleryImages.length); }}
+          >
+            <ArrowRight className="w-6 h-6" />
+          </button>
+          
+          {/* Counter and instructions */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center">
+            <p className="text-white/80 text-sm mb-1">{galleryIndex + 1} / {galleryImages.length}</p>
+            <p className="text-white/50 text-xs">Use ← → keys to navigate • ESC to close</p>
+          </div>
         </div>}
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 px-6 lg:px-12 py-6 bg-background/80 backdrop-blur-sm">
@@ -4033,28 +4106,50 @@ const CaseStudy = () => {
 
       {/* STREE: Wireframing - placed before usability testing */}
       {study.wireframing && 'approach' in study.wireframing && <section className="px-6 lg:px-12 py-12 bg-card overflow-hidden">
-          <div className="container mx-auto max-w-5xl mb-8">
+          <div className="container mx-auto max-w-5xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">WIREFRAMES</h2>
-            <p className="text-muted-foreground text-sm">{study.wireframing.approach}</p>
-          </div>
-          
-          {/* Wireframe images for STREE - Marquee style */}
-          {slug === 'stree-safety-app' && <div className="relative overflow-x-auto xl:ml-32">
-              <div className="flex gap-6 pb-4 px-6 lg:px-12">
-                {[streeWireframe1, streeWireframe2, streeWireframe3, streeWireframe4, streeWireframe5, streeWireframe6, streeWireframe7, streeWireframe8, streeWireframe9, streeWireframe10, streeWireframe11, streeWireframe12, streeWireframe13, streeWireframe14].map((img, i) => <div key={i} className="flex-shrink-0 w-40 md:w-48 bg-background rounded-xl border border-border shadow-sm overflow-hidden hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLightboxImage(img)}>
-                    <div className="aspect-[9/16] overflow-hidden">
-                      <img src={img} alt={`Wireframe ${i + 1}`} className="w-full h-full object-cover object-top" />
-                    </div>
-                  </div>)}
-              </div>
-            </div>}
+            <p className="text-muted-foreground text-sm mb-6">{study.wireframing.approach}</p>
+            
+            {/* Wireframe images for STREE - Collapsible card */}
+            {slug === 'stree-safety-app' && <>
+                {/* Collapsible Wireframe Preview Card */}
+                <div 
+                  className="group bg-background border border-border rounded-lg p-4 cursor-pointer hover:border-primary/40 transition-all mb-6" 
+                  onClick={() => setShowWireframeGallery(!showWireframeGallery)}
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-sm font-medium text-foreground">View Wireframe Explorations</span>
+                    <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform ${showWireframeGallery ? 'rotate-180' : ''}`} />
+                  </div>
+                  {!showWireframeGallery && <div className="flex gap-2 overflow-hidden">
+                      {wireframeImages.slice(0, 5).map((img, i) => <div key={i} className="w-16 h-24 rounded overflow-hidden border border-border flex-shrink-0">
+                          <img src={img} alt={`Wireframe preview ${i + 1}`} className="w-full h-full object-cover object-top opacity-70 group-hover:opacity-100 transition-opacity" />
+                        </div>)}
+                      <div className="w-16 h-24 rounded overflow-hidden border border-border flex-shrink-0 bg-muted/50 flex items-center justify-center">
+                        <span className="text-xs text-muted-foreground">+{wireframeImages.length - 5}</span>
+                      </div>
+                    </div>}
+                </div>
+                
+                {/* Expanded Gallery */}
+                {showWireframeGallery && <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-3 animate-fade-in">
+                    {wireframeImages.map((img, i) => <div 
+                        key={i} 
+                        className="bg-background rounded-lg border border-border p-2 hover:shadow-md hover:border-primary/40 transition-all cursor-pointer" 
+                        onClick={(e) => { e.stopPropagation(); openGallery(wireframeImages, i); }}
+                      >
+                        <div className="aspect-[9/16] overflow-hidden rounded">
+                          <img src={img} alt={`Wireframe ${i + 1}`} className="w-full h-full object-cover object-top" />
+                        </div>
+                      </div>)}
+                  </div>}
+              </>}
 
-          {/* Placeholder for non-STREE */}
-          {slug !== 'stree-safety-app' && study.wireframing.imagePlaceholder && <div className="container mx-auto max-w-5xl">
-              <div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
+            {/* Placeholder for non-STREE */}
+            {slug !== 'stree-safety-app' && study.wireframing.imagePlaceholder && <div className="aspect-video bg-muted/30 border-2 border-dashed border-border flex items-center justify-center">
                 <span className="text-sm text-muted-foreground">[ Wireframe Explorations ]</span>
-              </div>
-            </div>}
+              </div>}
+          </div>
         </section>}
 
       {/* STREE: Usability Testing */}
