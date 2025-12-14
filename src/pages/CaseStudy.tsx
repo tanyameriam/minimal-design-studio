@@ -1608,8 +1608,31 @@ const CaseStudy = () => {
       label: 'Reflection'
     }]} />}
 
-      {/* Hero - Hidden for merry-health since context heading serves as main */}
-      {slug !== 'merry-health' && <header className="pt-32 pb-20 px-6 lg:px-12">
+      {/* STREE Sidebar Navigation */}
+      {slug === 'stree-safety-app' && <CaseStudySidebar sections={[{
+        id: 'stree-context',
+        label: 'Context'
+      }, {
+        id: 'stree-brief',
+        label: 'Brief'
+      }, {
+        id: 'stree-research',
+        label: 'Research'
+      }, {
+        id: 'stree-synthesis',
+        label: 'Synthesis'
+      }, {
+        id: 'stree-solution',
+        label: 'Solution'
+      }, {
+        id: 'stree-design',
+        label: 'Design'
+      }, {
+        id: 'stree-impact',
+        label: 'Impact'
+      }]} />}
+
+      {slug !== 'merry-health' && <header id={slug === 'stree-safety-app' ? 'stree-context' : undefined} className="pt-32 pb-20 px-6 lg:px-12 scroll-mt-20">
           <div className="container mx-auto max-w-4xl">
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-4 animate-fade-up">
               {study.title}
@@ -3550,7 +3573,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* STREE: Brief Section */}
-      {study.brief && <section className="px-6 lg:px-12 py-12">
+      {study.brief && <section id="stree-brief" className="px-6 lg:px-12 py-12 scroll-mt-20">
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">The Brief</h2>
             <p className="text-muted-foreground mb-6">{study.brief.intro}</p>
@@ -3567,7 +3590,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* STREE: Research Phase */}
-      {study.research && <section className="px-6 lg:px-12 py-12 bg-card">
+      {study.research && <section id="stree-research" className="px-6 lg:px-12 py-12 bg-card scroll-mt-20">
           <div className="container mx-auto max-w-4xl">
             <div className="flex items-center gap-3 mb-6">
               <span className="text-xs uppercase tracking-[0.3em] text-primary/70 font-medium">Phase 1</span>
@@ -3692,7 +3715,7 @@ const CaseStudy = () => {
           </div>
         </section>}
 
-      {study.synthesis && <section className="px-6 lg:px-12 py-12">
+      {study.synthesis && <section id="stree-synthesis" className="px-6 lg:px-12 py-12 scroll-mt-20">
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Affinity Mapping & Synthesis</h2>
             <p className="text-muted-foreground mb-8">{study.synthesis.method}</p>
@@ -3827,7 +3850,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* Product Strategy - handles both formats */}
-      {study.productStrategy && <section className="px-6 lg:px-12 py-12">
+      {study.productStrategy && <section id="stree-solution" className="px-6 lg:px-12 py-12 scroll-mt-20">
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Product Strategy</h2>
             {'reframe' in study.productStrategy ?
@@ -3962,7 +3985,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* STREE: Final Design */}
-      {study.finalDesign && <section className="px-6 lg:px-12 py-12 bg-card overflow-hidden">
+      {study.finalDesign && <section id="stree-design" className="px-6 lg:px-12 py-12 bg-card overflow-hidden scroll-mt-20">
           <div className="container mx-auto max-w-4xl mb-8">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-8">Final Design</h2>
             
@@ -3987,7 +4010,7 @@ const CaseStudy = () => {
         </section>}
 
       {/* STREE: Impact */}
-      {study.impact && 'functional' in study.impact && <section className="px-6 lg:px-12 py-12">
+      {study.impact && 'functional' in study.impact && <section id="stree-impact" className="px-6 lg:px-12 py-12 scroll-mt-20">
           <div className="container mx-auto max-w-4xl">
             <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Projected Impact</h2>
             <div className="grid md:grid-cols-2 gap-4 mb-6">
