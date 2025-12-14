@@ -1866,6 +1866,13 @@ const CaseStudy = () => {
                     <p className="text-sm">{study.tools.join(', ')}</p>
                   </div>
                 </div>}
+                {study.brynqHeroMeta?.focus && <div className="p-5 flex items-center">
+                  <div className="hidden md:block w-px h-8 bg-border mr-5" />
+                  <div>
+                    <h3 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">Focus</h3>
+                    <p className="text-sm">{study.brynqHeroMeta.focus}</p>
+                  </div>
+                </div>}
               </div>
             </div>
           </div>
@@ -1887,16 +1894,6 @@ const CaseStudy = () => {
           </div>
         </section>}
 
-      {/* BrynQ Hero Meta */}
-      {study.brynqHeroMeta && <section className="px-6 lg:px-12 py-8 bg-card border-y border-border">
-          <div className="container mx-auto max-w-5xl">
-            <div className="grid md:grid-cols-3 gap-6 text-sm">
-              <div><span className="text-xs uppercase tracking-[0.2em] text-muted-foreground block mb-2">Scope</span><span>{study.brynqHeroMeta.scope}</span></div>
-              <div><span className="text-xs uppercase tracking-[0.2em] text-muted-foreground block mb-2">Context</span><span>{study.brynqHeroMeta.context}</span></div>
-              <div><span className="text-xs uppercase tracking-[0.2em] text-muted-foreground block mb-2">Focus</span><span>{study.brynqHeroMeta.focus}</span></div>
-            </div>
-          </div>
-        </section>}
 
       {/* BrynQ: Background & Context */}
       {study.brynqBackground && <section className="px-6 lg:px-12 py-16"><div className="container mx-auto max-w-5xl"><h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Background & Context</h2><p className="text-lg leading-relaxed text-muted-foreground">{study.brynqBackground}</p></div></section>}
