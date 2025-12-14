@@ -20,14 +20,21 @@ const CaseStudySidebar = ({ sections }: CaseStudySidebarProps) => {
     const calculateSidebarPosition = () => {
       // Calculate position to stay close to a max-w-5xl (64rem = 1024px) centered container
       const maxContentWidth = 1024; // 64rem
-      const sidebarOffset = 160; // Distance from content edge
       const viewportWidth = window.innerWidth;
       
-      if (viewportWidth > 1280) {
-        // Center the content area, sidebar sits to the left of it
+      // Different offsets for different screen sizes
+      if (viewportWidth >= 1536) {
+        // 2xl screens - more space, sidebar further from content
         const contentStart = (viewportWidth - maxContentWidth) / 2;
-        setSidebarLeft(Math.max(24, contentStart - sidebarOffset));
+        const sidebarOffset = 180;
+        setSidebarLeft(Math.max(48, contentStart - sidebarOffset));
+      } else if (viewportWidth >= 1280) {
+        // xl screens - sidebar closer to content
+        const contentStart = (viewportWidth - maxContentWidth) / 2;
+        const sidebarOffset = 140;
+        setSidebarLeft(Math.max(32, contentStart - sidebarOffset));
       } else {
+        // Below xl - sidebar hidden via CSS
         setSidebarLeft(24);
       }
     };
