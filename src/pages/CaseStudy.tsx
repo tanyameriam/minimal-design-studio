@@ -340,7 +340,7 @@ const caseStudies: Record<string, CaseStudyData> = {
   'merry-health': {
     title: "Redesigning India's Hospital Dispatch System",
     subtitle: "for Speed, Clarity & Operational Reliability",
-    overview: "Merry Health is a platform focused on emergency ambulance dispatch management. The system connects hospitals, drivers, and patients to ensure faster, reliable ambulance deployment especially in Tier 2 and Tier 3 cities, where hospitals rely heavily on phone calls and WhatsApp due to low digital adoption and staff shortages.",
+    overview: "Merry Health is a hospital technology platform focused on emergency ambulance dispatch management. The system connects hospitals, drivers, and patients to ensure faster, reliable ambulance deployment especially in Tier 2 and Tier 3 cities, where hospitals rely heavily on phone calls and WhatsApp due to low digital adoption and staff shortages.",
     role: "Research & Discovery, Strategy & Systems Thinking, Design Execution, Collaboration & Delivery",
     tools: ["Figma", "Miro", "Prototyping tools"],
     heroImage: "https://images.unsplash.com/photo-1587745416684-47953f16f02f?w=1200&q=80",
@@ -1862,7 +1862,7 @@ const CaseStudy = () => {
             <div className="mb-16">
               <h3 className="font-serif text-2xl md:text-3xl mb-4">The Problem</h3>
               <div className="p-6 rounded-xl bg-destructive/5 border border-destructive/20">
-                <p className="text-lg leading-relaxed text-foreground mb-4">Manual workflows were slowing down emergency response. Hospital admins relied on phone calls and WhatsApp messages to coordinate ambulance dispatch, leading to delays. Driver availability was unclear, tracking links weren't shared consistently, and critical data was lost in the process.<span className="font-medium">Manual workflows were slowing down emergency response.</span> Hospital admins relied on phone calls and WhatsApp messages to coordinate ambulance dispatch, leading to delays of 8–10 minutes per request. Driver availability was unclear, tracking links weren't shared consistently, and critical data was lost in the process.
+                <p className="text-lg leading-relaxed text-foreground mb-4">Manual workflows were slowing down emergency response. Hospital admins relied on phone calls and WhatsApp messages to coordinate ambulance dispatch, leading to delays. Driver availability was unclear, tracking links weren't shared consistently, and critical data was lost in the process.<span className="font-medium">Manual workflows were slowing down emergency response.</span> ​
                 </p>
                 <p className="text-muted-foreground">This is where we stepped in to streamline the dispatch process, reduce coordination overhead, and build a system that works with existing behaviors rather than against them.</p>
               </div>
