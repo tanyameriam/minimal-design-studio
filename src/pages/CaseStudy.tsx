@@ -1589,7 +1589,6 @@ const CaseStudy = () => {
   // Handle keyboard navigation in gallery
   useEffect(() => {
     if (galleryImages.length === 0) return;
-    
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         closeGallery();
@@ -1599,7 +1598,6 @@ const CaseStudy = () => {
         setGalleryIndex(prev => (prev - 1 + galleryImages.length) % galleryImages.length);
       }
     };
-
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [galleryImages]);
@@ -1631,26 +1629,21 @@ const CaseStudy = () => {
           </button>
           
           {/* Previous button */}
-          <button 
-            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition-colors p-2 rounded-full bg-white/10 hover:bg-white/20"
-            onClick={(e) => { e.stopPropagation(); setGalleryIndex(prev => (prev - 1 + galleryImages.length) % galleryImages.length); }}
-          >
+          <button className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition-colors p-2 rounded-full bg-white/10 hover:bg-white/20" onClick={e => {
+        e.stopPropagation();
+        setGalleryIndex(prev => (prev - 1 + galleryImages.length) % galleryImages.length);
+      }}>
             <ArrowLeft className="w-6 h-6" />
           </button>
           
           {/* Image */}
-          <img 
-            src={galleryImages[galleryIndex]} 
-            alt={`Gallery image ${galleryIndex + 1}`} 
-            className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl" 
-            onClick={e => e.stopPropagation()} 
-          />
+          <img src={galleryImages[galleryIndex]} alt={`Gallery image ${galleryIndex + 1}`} className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl" onClick={e => e.stopPropagation()} />
           
           {/* Next button */}
-          <button 
-            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition-colors p-2 rounded-full bg-white/10 hover:bg-white/20"
-            onClick={(e) => { e.stopPropagation(); setGalleryIndex(prev => (prev + 1) % galleryImages.length); }}
-          >
+          <button className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition-colors p-2 rounded-full bg-white/10 hover:bg-white/20" onClick={e => {
+        e.stopPropagation();
+        setGalleryIndex(prev => (prev + 1) % galleryImages.length);
+      }}>
             <ArrowRight className="w-6 h-6" />
           </button>
           
@@ -1831,7 +1824,7 @@ const CaseStudy = () => {
             <div className="container mx-auto max-w-5xl">
               {/* Background Content */}
               <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Context</p>
-              <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-6 max-w-3xl leading-tight">Streamlining Emergency Dispatch for 50+ Hospitals Across Tier 2 & 3 Cities</h1>
+              <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-6 max-w-3xl leading-tight">Simplifying Emergency Dispatch Across Tier 2 & 3 Cities in India</h1>
               <p className="text-lg leading-relaxed text-muted-foreground mb-12 max-w-3xl">{study.overview}</p>
 
             {/* Meta Card - Combined with dividers */}
@@ -3833,14 +3826,10 @@ const CaseStudy = () => {
                 
                 {/* Expanded Gallery */}
                 {showInterviewGallery && <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 animate-fade-in">
-                    {[streeInterview1, streeInterview2, streeInterview3, streeInterview4, streeInterview5].map((img, i) => <div 
-                        key={i}
-                        className="bg-background rounded-lg border border-border p-3 hover:shadow-md hover:border-primary/40 transition-all cursor-pointer" 
-                        onClick={e => {
-                          e.stopPropagation();
-                          openGallery([streeInterview1, streeInterview2, streeInterview3, streeInterview4, streeInterview5], i);
-                        }}
-                      >
+                    {[streeInterview1, streeInterview2, streeInterview3, streeInterview4, streeInterview5].map((img, i) => <div key={i} className="bg-background rounded-lg border border-border p-3 hover:shadow-md hover:border-primary/40 transition-all cursor-pointer" onClick={e => {
+              e.stopPropagation();
+              openGallery([streeInterview1, streeInterview2, streeInterview3, streeInterview4, streeInterview5], i);
+            }}>
                         <img src={img} alt={`Interview analysis ${i + 1}`} className="w-full rounded" />
                       </div>)}
                   </div>}
@@ -3900,14 +3889,10 @@ const CaseStudy = () => {
                 
                 {/* Expanded Gallery */}
                 {showAffinityGallery && <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8 animate-fade-in">
-                    {[streeAffinity1, streeAffinity2, streeAffinity3, streeAffinity4, streeAffinity5, streeAffinity6].map((img, i) => <div 
-                        key={i}
-                        className="bg-background rounded-lg border border-border p-3 hover:shadow-md hover:border-primary/40 transition-all cursor-pointer" 
-                        onClick={e => {
-                          e.stopPropagation();
-                          openGallery([streeAffinity1, streeAffinity2, streeAffinity3, streeAffinity4, streeAffinity5, streeAffinity6], i);
-                        }}
-                      >
+                    {[streeAffinity1, streeAffinity2, streeAffinity3, streeAffinity4, streeAffinity5, streeAffinity6].map((img, i) => <div key={i} className="bg-background rounded-lg border border-border p-3 hover:shadow-md hover:border-primary/40 transition-all cursor-pointer" onClick={e => {
+              e.stopPropagation();
+              openGallery([streeAffinity1, streeAffinity2, streeAffinity3, streeAffinity4, streeAffinity5, streeAffinity6], i);
+            }}>
                         <img src={img} alt={`Affinity mapping ${i + 1}`} className="w-full rounded" />
                       </div>)}
                   </div>}
@@ -4072,10 +4057,7 @@ const CaseStudy = () => {
             {/* Wireframe images for STREE - Collapsible card */}
             {slug === 'stree-safety-app' && <>
                 {/* Collapsible Wireframe Preview Card */}
-                <div 
-                  className="group bg-background border border-border rounded-lg p-4 cursor-pointer hover:border-primary/40 transition-all mb-6" 
-                  onClick={() => setShowWireframeGallery(!showWireframeGallery)}
-                >
+                <div className="group bg-background border border-border rounded-lg p-4 cursor-pointer hover:border-primary/40 transition-all mb-6" onClick={() => setShowWireframeGallery(!showWireframeGallery)}>
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-sm font-medium text-foreground">View Wireframe Explorations</span>
                     <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform ${showWireframeGallery ? 'rotate-180' : ''}`} />
@@ -4092,11 +4074,10 @@ const CaseStudy = () => {
                 
                 {/* Expanded Gallery */}
                 {showWireframeGallery && <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-3 animate-fade-in">
-                    {wireframeImages.map((img, i) => <div 
-                        key={i} 
-                        className="bg-background rounded-lg border border-border p-2 hover:shadow-md hover:border-primary/40 transition-all cursor-pointer" 
-                        onClick={(e) => { e.stopPropagation(); openGallery(wireframeImages, i); }}
-                      >
+                    {wireframeImages.map((img, i) => <div key={i} className="bg-background rounded-lg border border-border p-2 hover:shadow-md hover:border-primary/40 transition-all cursor-pointer" onClick={e => {
+              e.stopPropagation();
+              openGallery(wireframeImages, i);
+            }}>
                         <div className="aspect-[9/16] overflow-hidden rounded">
                           <img src={img} alt={`Wireframe ${i + 1}`} className="w-full h-full object-cover object-top" />
                         </div>
