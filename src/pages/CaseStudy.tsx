@@ -1566,6 +1566,11 @@ const CaseStudy = () => {
   const [galleryImages, setGalleryImages] = useState<string[]>([]);
   const [galleryIndex, setGalleryIndex] = useState(0);
 
+  // Scroll to top when case study opens
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
+
   // Wireframe images array
   const wireframeImages = [streeWireframe1, streeWireframe2, streeWireframe3, streeWireframe4, streeWireframe5, streeWireframe6, streeWireframe7, streeWireframe8, streeWireframe9, streeWireframe10, streeWireframe11, streeWireframe12, streeWireframe13, streeWireframe14];
 
