@@ -340,7 +340,7 @@ const caseStudies: Record<string, CaseStudyData> = {
   'merry-health': {
     title: "Redesigning India's Hospital Dispatch System",
     subtitle: "for Speed, Clarity & Operational Reliability",
-    overview: "Merry Health is a hospital technology platform focused on emergency ambulance dispatch management. The system connects hospitals, drivers, and patients to ensure faster, reliable ambulance deployment especially in Tier 2 and Tier 3 cities, where hospitals rely heavily on phone calls and WhatsApp due to low digital adoption and staff shortages.",
+    overview: "Merry Health is a platform focused on emergency ambulance dispatch management. The system connects hospitals, drivers, and patients to ensure faster, reliable ambulance deployment especially in Tier 2 and Tier 3 cities, where hospitals rely heavily on phone calls and WhatsApp due to low digital adoption and staff shortages.",
     role: "Research & Discovery, Strategy & Systems Thinking, Design Execution, Collaboration & Delivery",
     tools: ["Figma", "Miro", "Prototyping tools"],
     heroImage: "https://images.unsplash.com/photo-1587745416684-47953f16f02f?w=1200&q=80",
