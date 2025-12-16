@@ -2191,7 +2191,18 @@ const CaseStudy = () => {
           <div className="container mx-auto max-w-5xl">
             {/* Section Header */}
             <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Problem</p>
-            <h2 className="font-serif text-3xl md:text-4xl mb-8">Understanding the Challenges</h2>
+            <h2 className="font-serif text-3xl md:text-4xl mb-4">Understanding the Challenges</h2>
+            
+            {/* What We're Building Intro */}
+            <div className="p-8 rounded-2xl bg-primary/5 border border-primary/20 mb-12">
+              <h3 className="font-serif text-xl mb-4">What are we trying to build?</h3>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+                Merry Health connects hospitals with ambulances for emergency patient transfers across Tier 2 and Tier 3 cities. The existing dashboard was underutilized — hospital admins preferred phone calls, leading to delays, lost data, and coordination breakdowns.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Our goal was to redesign the dispatch system to be faster, more intuitive, and seamlessly integrated with existing communication habits (like WhatsApp) — reducing manual coordination while capturing structured data for operational insights.
+              </p>
+            </div>
 
             {/* User Problems - Reference Style Cards */}
             <div className="mb-12">
