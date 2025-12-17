@@ -22,10 +22,10 @@ const characterSketches = [
 const charcoalSketches = [
   { id: 1, title: "Liberate", thumbnail: charcoal1 },
   { id: 2, title: "Joker", thumbnail: charcoal2 },
-  { id: 3, title: "Skull", thumbnail: charcoal3 },
-  { id: 4, title: "Masks", thumbnail: charcoal4 },
-  { id: 5, title: "Primate", thumbnail: charcoal5 },
-  { id: 6, title: "Meditation", thumbnail: charcoal6 }
+  { id: 3, title: "Primate", thumbnail: charcoal3 },
+  { id: 4, title: "Mask", thumbnail: charcoal4 },
+  { id: 5, title: "Beast", thumbnail: charcoal5 },
+  { id: 6, title: "Fire", thumbnail: charcoal6 }
 ];
 
 const splineProjects = [
