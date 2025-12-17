@@ -62,6 +62,10 @@ import streeHifi15 from '@/assets/stree-hifi-15.png';
 import streeHifi16 from '@/assets/stree-hifi-16.png';
 import streeHifi17 from '@/assets/stree-hifi-17.png';
 import streeHifi18 from '@/assets/stree-hifi-18.png';
+import streeLockscreen1 from '@/assets/stree-lockscreen-1.png';
+import streeLockscreen2 from '@/assets/stree-lockscreen-2.png';
+import streeLockscreen3 from '@/assets/stree-lockscreen-3.png';
+import streeLockscreen4 from '@/assets/stree-lockscreen-4.png';
 // Merry Health screenshots
 import merryHealthDashboard from '@/assets/merry-health-dashboard.png';
 import merryHealthBooking from '@/assets/merry-health-booking.png';
@@ -4186,6 +4190,18 @@ const CaseStudy = () => {
                 {[streeHifi1, streeHifi2, streeHifi3, streeHifi4, streeHifi5, streeHifi6, streeHifi7, streeHifi8, streeHifi9, streeHifi10, streeHifi11, streeHifi12, streeHifi13, streeHifi14, streeHifi15, streeHifi16, streeHifi17, streeHifi18].map((img, i) => <div key={i} className="flex-shrink-0 bg-background border border-border p-2 cursor-pointer hover:border-primary/50 transition-colors" onClick={() => setLightboxImage(img)}>
                     <img src={img} alt={`HiFi screen ${i + 1}`} className="h-[400px] w-auto object-contain" />
                   </div>)}
+              </div>
+            </div>}
+
+          {/* Lock Screen Designs Carousel */}
+          {slug === 'stree-safety-app' && <div className="mt-12 px-6 lg:px-12 xl:pl-32">
+              <h3 className="font-serif text-xl mb-6">Lock Screen Designs</h3>
+              <div className="flex gap-4 overflow-x-auto pb-4">
+                {[streeLockscreen1, streeLockscreen2, streeLockscreen3, streeLockscreen4].map((img, i) => (
+                  <div key={i} className="flex-shrink-0 bg-background border border-border p-2 rounded-lg cursor-pointer hover:border-primary/50 transition-colors" onClick={() => setLightboxImage(img)}>
+                    <img src={img} alt={`Lock screen ${i + 1}`} className="h-[200px] w-auto object-contain" />
+                  </div>
+                ))}
               </div>
             </div>}
         </section>}
