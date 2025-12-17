@@ -9,7 +9,7 @@ const Contact = () => {
               <Users className="w-5 h-5 text-background" />
             </div>
             <div>
-              <h3 className="font-serif text-xl mb-2">Want to speak at Design Reimagined?</h3>
+              <h3 className="font-serif text-xl mb-2">Passionate about sharing design knowledge?</h3>
               <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                 I co-organise{' '}
                 <a href="https://www.linkedin.com/company/design-reimagined-utrecht" target="_blank" rel="noopener noreferrer" className="text-foreground underline underline-offset-2 hover:no-underline">
