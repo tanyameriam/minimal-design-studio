@@ -381,15 +381,6 @@ const CV = () => {
             </div>
           </section>
 
-          {/* Tools */}
-          <section className="mb-12">
-            <h2 className="font-serif text-lg mb-4 pb-2 border-b border-border">Tools</h2>
-            <div className="flex flex-wrap gap-2">
-              {['Figma', 'FigJam', 'Miro', 'Zeplin'].map(tool => <span key={tool} className="px-3 py-1.5 bg-muted text-sm rounded-md">
-                  {tool}
-                </span>)}
-            </div>
-          </section>
 
           {/* Languages */}
           <section>
