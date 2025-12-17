@@ -3989,7 +3989,36 @@ const CaseStudy = () => {
           </div>
         </section>}
 
-      {/* Product Strategy - handles both formats */}
+      {/* Storyboard Section for STREE - after Persona, before Product Strategy */}
+      {slug === 'stree-safety-app' && (
+        <section className="px-6 lg:px-12 py-12 bg-background">
+          <div className="container mx-auto max-w-5xl">
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Storyboard</h2>
+            
+            <Collapsible defaultOpen>
+              <CollapsibleTrigger className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group mb-4">
+                <ChevronDown className="w-4 h-4 transition-transform group-data-[state=open]:rotate-180" />
+                <span>View Storyboard</span>
+              </CollapsibleTrigger>
+              <CollapsibleContent>
+                <figure className="overflow-hidden rounded-lg border border-border bg-card shadow-sm">
+                  <img 
+                    src={streeStoryboard} 
+                    alt="Storyboard showing user journey of a young woman navigating safety challenges" 
+                    className="w-full cursor-pointer" 
+                    onClick={() => setLightboxImage(streeStoryboard)} 
+                  />
+                  <figcaption className="px-4 py-3 text-sm text-muted-foreground border-t border-border bg-muted/30">
+                    Alayah, an 18-year-old from Pune, moves to Bangalore alone for higher studies—defying family concerns about safety. While navigating her new independence, she encounters harassment on her commute. Feeling isolated due to language barriers, she struggles to seek help. When the situation escalates, she uses the SOS button—police arrive, and the situation is resolved. STREE gives her the confidence to live independently.
+                  </figcaption>
+                </figure>
+              </CollapsibleContent>
+            </Collapsible>
+          </div>
+        </section>
+      )}
+
+
       {study.productStrategy && <section id="stree-solution" className="px-6 lg:px-12 py-16 scroll-mt-20">
           <div className="container mx-auto max-w-5xl">
             <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Solution</p>
@@ -4019,38 +4048,9 @@ const CaseStudy = () => {
       {/* STREE: Solution Phase */}
       {study.solutionPhase && <section className="px-6 lg:px-12 py-12 bg-card">
           <div className="container mx-auto max-w-5xl">
-            <div className="flex items-center gap-3 mb-6">
-              <span className="text-xs uppercase tracking-[0.3em] text-primary/70 font-medium">
-          </span>
-              <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground">STORY BOARD</h2>
-            </div>
-            
             <div className="mb-8">
               <p className="text-sm text-muted-foreground">{study.solutionPhase.storyboard}</p>
             </div>
-
-            {/* Collapsible Storyboard Image for STREE */}
-            {slug === 'stree-safety-app' && (
-              <Collapsible defaultOpen className="mb-8">
-                <CollapsibleTrigger className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group">
-                  <ChevronDown className="w-4 h-4 transition-transform group-data-[state=open]:rotate-180" />
-                  <span>View Storyboard</span>
-                </CollapsibleTrigger>
-                <CollapsibleContent className="mt-4">
-                  <figure className="overflow-hidden rounded-lg border border-border bg-background shadow-sm">
-                    <img 
-                      src={streeStoryboard} 
-                      alt="Storyboard showing user journey of a young woman navigating safety challenges" 
-                      className="w-full cursor-pointer" 
-                      onClick={() => setLightboxImage(streeStoryboard)} 
-                    />
-                    <figcaption className="px-4 py-3 text-sm text-muted-foreground border-t border-border bg-muted/30">
-                      Alayah, an 18-year-old from Pune, moves to Bangalore alone for higher studies—defying family concerns about safety. While navigating her new independence, she encounters harassment on her commute. Feeling isolated due to language barriers, she struggles to seek help. When the situation escalates, she uses the SOS button—police arrive, and the situation is resolved. STREE gives her the confidence to live independently.
-                    </figcaption>
-                  </figure>
-                </CollapsibleContent>
-              </Collapsible>
-            )}
 
             <div className="grid md:grid-cols-2 gap-6">
               {study.solutionPhase.modes.map((mode, i) => <div key={i} className="p-5 bg-background border border-border">
@@ -4421,8 +4421,6 @@ const CaseStudy = () => {
             <p className="font-serif text-xl leading-relaxed">{study.closingReflection}</p>
           </div>
         </section>}
-
-
 
       {/* Next Steps */}
       {study.nextSteps && <section className="px-6 lg:px-12 py-16 bg-card">
