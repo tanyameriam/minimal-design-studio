@@ -24,7 +24,7 @@ const charcoalSketches = [
   { id: 2, title: "Joker", thumbnail: charcoal2 },
   { id: 3, title: "Skull", thumbnail: charcoal3 },
   { id: 4, title: "Masks", thumbnail: charcoal4 },
-  { id: 5, title: "Lion", thumbnail: charcoal5 },
+  { id: 5, title: "Primate", thumbnail: charcoal5 },
   { id: 6, title: "Meditation", thumbnail: charcoal6 }
 ];
 
