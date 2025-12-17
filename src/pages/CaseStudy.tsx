@@ -26,6 +26,7 @@ import streeInterview14 from '@/assets/stree-interview-14.png';
 import streeInterview15 from '@/assets/stree-interview-15.png';
 import streeSosFlow from '@/assets/stree-sos-flow.png';
 import streeUserFlow from '@/assets/stree-user-flow.png';
+import streeStoryboard from '@/assets/stree-storyboard.png';
 import streeWireframe1 from '@/assets/stree-wireframe-1.png';
 import streeWireframe2 from '@/assets/stree-wireframe-2.png';
 import streeWireframe3 from '@/assets/stree-wireframe-3.png';
@@ -4025,9 +4026,28 @@ const CaseStudy = () => {
             </div>
             
             <div className="mb-8">
-              
               <p className="text-sm text-muted-foreground">{study.solutionPhase.storyboard}</p>
             </div>
+
+            {/* Collapsible Storyboard Image for STREE */}
+            {slug === 'stree-safety-app' && (
+              <Collapsible className="mb-8">
+                <CollapsibleTrigger className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group">
+                  <ChevronDown className="w-4 h-4 transition-transform group-data-[state=open]:rotate-180" />
+                  <span>View Storyboard</span>
+                </CollapsibleTrigger>
+                <CollapsibleContent className="mt-4">
+                  <div className="overflow-hidden rounded-lg border border-border bg-background shadow-sm">
+                    <img 
+                      src={streeStoryboard} 
+                      alt="Storyboard showing user journey of a young woman navigating safety challenges" 
+                      className="w-full cursor-pointer" 
+                      onClick={() => setLightboxImage(streeStoryboard)} 
+                    />
+                  </div>
+                </CollapsibleContent>
+              </Collapsible>
+            )}
 
             <div className="grid md:grid-cols-2 gap-6">
               {study.solutionPhase.modes.map((mode, i) => <div key={i} className="p-5 bg-background border border-border">
