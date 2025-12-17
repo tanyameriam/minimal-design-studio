@@ -48,18 +48,6 @@ const About = () => {
           </div>
         </div>
         
-        <div className="mt-16 pt-16 border-t border-border">
-          <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-8">
-            Tools
-          </p>
-          <div className="flex flex-wrap gap-3">
-            {['Figma', 'FigJam', 'Miro', 'Zeplin', 'Affinity', 'Illustrator'].map((tool) => (
-              <span key={tool} className="px-4 py-2 bg-muted rounded-md text-sm">
-                {tool}
-              </span>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
