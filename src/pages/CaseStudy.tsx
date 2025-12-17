@@ -4037,14 +4037,17 @@ const CaseStudy = () => {
                   <span>View Storyboard</span>
                 </CollapsibleTrigger>
                 <CollapsibleContent className="mt-4">
-                  <div className="overflow-hidden rounded-lg border border-border bg-background shadow-sm">
+                  <figure className="overflow-hidden rounded-lg border border-border bg-background shadow-sm">
                     <img 
                       src={streeStoryboard} 
                       alt="Storyboard showing user journey of a young woman navigating safety challenges" 
                       className="w-full cursor-pointer" 
                       onClick={() => setLightboxImage(streeStoryboard)} 
                     />
-                  </div>
+                    <figcaption className="px-4 py-3 text-sm text-muted-foreground border-t border-border bg-muted/30">
+                      A day in the life of Priya navigating safety challenges during her daily commute—from crowded public transport to poorly lit streets—and how STREE provides peace of mind through discreet SOS triggers, real-time location sharing, and trusted contact alerts.
+                    </figcaption>
+                  </figure>
                 </CollapsibleContent>
               </Collapsible>
             )}
