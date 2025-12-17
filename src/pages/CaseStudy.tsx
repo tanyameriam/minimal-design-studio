@@ -14,6 +14,16 @@ import streeInterview2 from '@/assets/stree-interview-2.png';
 import streeInterview3 from '@/assets/stree-interview-3.png';
 import streeInterview4 from '@/assets/stree-interview-4.png';
 import streeInterview5 from '@/assets/stree-interview-5.png';
+import streeInterview6 from '@/assets/stree-interview-6.png';
+import streeInterview7 from '@/assets/stree-interview-7.png';
+import streeInterview8 from '@/assets/stree-interview-8.png';
+import streeInterview9 from '@/assets/stree-interview-9.png';
+import streeInterview10 from '@/assets/stree-interview-10.png';
+import streeInterview11 from '@/assets/stree-interview-11.png';
+import streeInterview12 from '@/assets/stree-interview-12.png';
+import streeInterview13 from '@/assets/stree-interview-13.png';
+import streeInterview14 from '@/assets/stree-interview-14.png';
+import streeInterview15 from '@/assets/stree-interview-15.png';
 import streeSosFlow from '@/assets/stree-sos-flow.png';
 import streeUserFlow from '@/assets/stree-user-flow.png';
 import streeWireframe1 from '@/assets/stree-wireframe-1.png';
@@ -3835,10 +3845,10 @@ const CaseStudy = () => {
                 </div>
                 
                 {/* Expanded Gallery */}
-                {showInterviewGallery && <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 animate-fade-in">
-                    {[streeInterview1, streeInterview2, streeInterview3, streeInterview4, streeInterview5].map((img, i) => <div key={i} className="bg-background rounded-lg border border-border p-3 hover:shadow-md hover:border-primary/40 transition-all cursor-pointer" onClick={e => {
+{showInterviewGallery && <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 animate-fade-in">
+                    {[streeInterview1, streeInterview2, streeInterview3, streeInterview4, streeInterview5, streeInterview6, streeInterview7, streeInterview8, streeInterview9, streeInterview10, streeInterview11, streeInterview12, streeInterview13, streeInterview14, streeInterview15].map((img, i) => <div key={i} className="bg-background rounded-lg border border-border p-3 hover:shadow-md hover:border-primary/40 transition-all cursor-pointer" onClick={e => {
               e.stopPropagation();
-              openGallery([streeInterview1, streeInterview2, streeInterview3, streeInterview4, streeInterview5], i);
+              openGallery([streeInterview1, streeInterview2, streeInterview3, streeInterview4, streeInterview5, streeInterview6, streeInterview7, streeInterview8, streeInterview9, streeInterview10, streeInterview11, streeInterview12, streeInterview13, streeInterview14, streeInterview15], i);
             }}>
                         <img src={img} alt={`Interview analysis ${i + 1}`} className="w-full rounded" />
                       </div>)}
