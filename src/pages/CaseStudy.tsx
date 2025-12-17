@@ -4031,7 +4031,7 @@ const CaseStudy = () => {
 
             {/* Collapsible Storyboard Image for STREE */}
             {slug === 'stree-safety-app' && (
-              <Collapsible className="mb-8">
+              <Collapsible defaultOpen className="mb-8">
                 <CollapsibleTrigger className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group">
                   <ChevronDown className="w-4 h-4 transition-transform group-data-[state=open]:rotate-180" />
                   <span>View Storyboard</span>
