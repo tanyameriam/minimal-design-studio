@@ -6,187 +6,266 @@ const CV = () => {
   const navigate = useNavigate();
   const cvRef = useRef<HTMLDivElement>(null);
   const handleDownloadPDF = () => {
-    // Create a printable version for PDF download
     const printWindow = window.open('', '_blank');
     if (printWindow) {
       printWindow.document.write(`
         <!DOCTYPE html>
         <html>
         <head>
-          <title>Tanya Sunny - CV</title>
+          <title>Tanya Sunny - UX Designer</title>
           <style>
+            @page { size: A4; margin: 0; }
             * { margin: 0; padding: 0; box-sizing: border-box; }
             body { 
-              font-family: Arial, Helvetica, sans-serif; 
-              font-size: 11pt; 
-              line-height: 1.4; 
-              color: #000; 
-              padding: 40px 50px;
-              max-width: 800px;
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+              font-size: 9pt; 
+              line-height: 1.35; 
+              color: #333; 
+              max-width: 210mm;
+              min-height: 297mm;
               margin: 0 auto;
+              background: white;
             }
-            h1 { font-size: 20pt; font-weight: 700; margin-bottom: 4px; }
-            h2 { font-size: 12pt; font-weight: 600; margin-top: 20px; margin-bottom: 10px; border-bottom: 1px solid #000; padding-bottom: 4px; }
-            h3 { font-size: 11pt; font-weight: 600; margin-bottom: 2px; }
-            .subtitle { font-size: 12pt; color: #444; margin-bottom: 8px; }
-            .contact { font-size: 10pt; color: #333; margin-bottom: 16px; }
-            .contact a { color: #333; text-decoration: none; }
-            .section { margin-bottom: 16px; }
-            .job { margin-bottom: 14px; }
-            .job-header { display: flex; justify-content: space-between; align-items: baseline; }
-            .job-title { font-weight: 600; }
-            .job-company { color: #333; }
-            .job-date { font-size: 10pt; color: #555; }
-            ul { margin-left: 18px; margin-top: 4px; }
-            li { margin-bottom: 3px; }
-            .profile { margin-bottom: 16px; }
-            .skills { display: flex; flex-wrap: wrap; gap: 8px; }
-            .skill { background: #f0f0f0; padding: 2px 8px; border-radius: 2px; font-size: 10pt; }
+            .container { padding: 24px 28px; }
+            
+            /* Header */
+            .header { display: flex; justify-content: space-between; margin-bottom: 16px; }
+            .header-left { flex: 1; }
+            .header-right { text-align: right; font-size: 8.5pt; color: #555; }
+            .header-right a { color: #555; text-decoration: none; }
+            .header-right div { margin-bottom: 3px; display: flex; align-items: center; justify-content: flex-end; gap: 6px; }
+            h1 { font-size: 22pt; font-weight: 700; color: #1a1a1a; margin-bottom: 2px; letter-spacing: -0.5px; }
+            .title { font-size: 11pt; color: #666; margin-bottom: 8px; }
+            .summary { font-size: 8.5pt; color: #444; line-height: 1.4; max-width: 380px; }
+            .summary strong { font-weight: 600; }
+            
+            /* Two columns */
+            .columns { display: flex; gap: 28px; }
+            .left-col { flex: 1; }
+            .right-col { width: 200px; }
+            
+            /* Section headings */
+            .section-title { 
+              font-size: 10pt; 
+              font-weight: 700; 
+              color: #2a7ab8; 
+              text-transform: uppercase; 
+              letter-spacing: 0.5px;
+              margin-bottom: 10px; 
+              padding-bottom: 4px;
+              border-bottom: 2px solid #2a7ab8;
+            }
+            .section { margin-bottom: 14px; }
+            
+            /* Experience */
+            .job { margin-bottom: 10px; }
+            .job-title { font-size: 10pt; font-weight: 600; color: #1a1a1a; }
+            .job-company { font-size: 9pt; color: #555; }
+            .job-date { font-size: 8pt; color: #777; font-style: italic; margin-bottom: 3px; }
+            .job ul { margin-left: 14px; margin-top: 3px; }
+            .job li { margin-bottom: 2px; font-size: 8.5pt; color: #444; }
+            .job li strong { font-weight: 600; color: #333; }
+            
+            /* Education */
             .edu-item { margin-bottom: 8px; }
-            .edu-title { font-weight: 600; }
-            .edu-school { color: #333; font-size: 10pt; }
+            .edu-title { font-size: 9.5pt; font-weight: 600; color: #1a1a1a; }
+            .edu-school { font-size: 8.5pt; color: #555; }
+            .edu-date { font-size: 8pt; color: #777; font-style: italic; }
+            
+            /* Languages */
+            .lang-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+            .lang-item { }
+            .lang-name { font-size: 9pt; font-weight: 600; color: #333; }
+            .lang-level { font-size: 8pt; color: #666; font-style: italic; }
+            
+            /* Skills */
+            .skill-category { margin-bottom: 10px; }
+            .skill-label { font-size: 9pt; font-weight: 600; color: #333; margin-bottom: 3px; }
+            .skill-items { font-size: 8.5pt; color: #555; line-height: 1.4; }
+            
+            /* Tags */
+            .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+            .tag { 
+              font-size: 8pt; 
+              color: #2a7ab8; 
+              border: 1px solid #d0e3f0; 
+              background: #f5f9fc;
+              padding: 2px 8px; 
+              border-radius: 3px; 
+            }
+            
+            /* Community */
+            .community-item { margin-bottom: 6px; }
+            .community-name { font-size: 9pt; color: #333; }
+            
             @media print {
-              body { padding: 20px 30px; }
+              body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+              .container { padding: 20px 24px; }
             }
           </style>
         </head>
         <body>
-          <h1>Tanya Sunny</h1>
-          <div class="subtitle">UX/UI Designer</div>
-          <div class="contact">
-            Netherlands · tanyameriamsunny@gmail.com · <a href="https://www.linkedin.com/in/tanya-sunny/">linkedin.com/in/tanya-sunny</a>
-          </div>
-
-          <div class="section profile">
-            <h2>Profile</h2>
-            <p>UX/UI Designer with 5 years of professional design experience and a broader corporate background since 2018. Experienced in UI execution, UX auditing, and workflow design for digital products. Currently working on BrynQ, an HR/Payroll integration product, focusing on improving usability, clarity, and decision-making within complex system-driven flows. Strong technical foundation and academic focus on UX for AI-supported systems.</p>
-          </div>
-
-          <div class="section">
-            <h2>Key Competencies</h2>
-            <div class="skills">
-              <span class="skill">UX Auditing</span>
-              <span class="skill">Systems Thinking</span>
-              <span class="skill">Workflow & Process Design</span>
-              <span class="skill">Problem Framing</span>
-              <span class="skill">UI & Interaction Design</span>
-              <span class="skill">AI-Integrated UX Workflows</span>
+          <div class="container">
+            <!-- Header -->
+            <div class="header">
+              <div class="header-left">
+                <h1>Tanya Sunny</h1>
+                <div class="title">UX/UI Designer</div>
+                <div class="summary">
+                  UX Designer with <strong>5+ years of experience</strong> in UI execution, UX auditing, and workflow design. 
+                  Currently at BrynQ, improving usability within complex HR/Payroll integration flows. 
+                  Strong technical foundation with focus on AI-integrated UX systems.
+                </div>
+              </div>
+              <div class="header-right">
+                <div>tanyameriamsunny@gmail.com ✉</div>
+                <div>Netherlands 📍</div>
+                <div><a href="https://linkedin.com/in/tanya-sunny">linkedin.com/in/tanya-sunny</a> 🔗</div>
+              </div>
             </div>
-          </div>
-
-          <div class="section">
-            <h2>Professional Experience</h2>
             
-            <div class="job">
-              <div class="job-header">
-                <div>
-                  <span class="job-title">UX/UI Designer</span> · <span class="job-company">BrynQ, Netherlands</span>
+            <!-- Two Column Layout -->
+            <div class="columns">
+              <!-- Left Column -->
+              <div class="left-col">
+                <div class="section">
+                  <div class="section-title">Work Experience</div>
+                  
+                  <div class="job">
+                    <div class="job-title">UX/UI Designer</div>
+                    <div class="job-company">BrynQ, Netherlands</div>
+                    <div class="job-date">2023 – Present</div>
+                    <ul>
+                      <li>Design and improve user flows, <strong>simplifying complex configuration tasks</strong></li>
+                      <li>Conduct UX audits and propose iterative improvements</li>
+                      <li>Apply systems thinking to data mappings and interface states</li>
+                      <li>Led design for internal task-tracking feature</li>
+                      <li>Contribute to <strong>AI-assisted workflows</strong> for setup and validation</li>
+                    </ul>
+                  </div>
+                  
+                  <div class="job">
+                    <div class="job-title">UI Designer (Contract)</div>
+                    <div class="job-company">Multiple Startups, India</div>
+                    <div class="job-date">2022 – 2023</div>
+                    <ul>
+                      <li>Designed UI for early-stage products: Amphisoft Ventures, Lymdata Labs</li>
+                      <li>Delivered visual designs focused on clarity and consistency</li>
+                    </ul>
+                  </div>
+                  
+                  <div class="job">
+                    <div class="job-title">UI Designer</div>
+                    <div class="job-company">Segments Cloud LLC, Dubai, UAE</div>
+                    <div class="job-date">2021 – 2022</div>
+                    <ul>
+                      <li>Designed UI for a Bitcoin mining and warehousing product</li>
+                    </ul>
+                  </div>
+                  
+                  <div class="job">
+                    <div class="job-title">UX/UI Intern</div>
+                    <div class="job-company">Curateus, Bangalore, India</div>
+                    <div class="job-date">2021</div>
+                    <ul>
+                      <li>Designed wireframes and prototypes for content discovery product</li>
+                    </ul>
+                  </div>
+                  
+                  <div class="job">
+                    <div class="job-title">Technical Support Engineer</div>
+                    <div class="job-company">SAP Ariba, Bangalore, India</div>
+                    <div class="job-date">2018 – 2021</div>
+                    <ul>
+                      <li>Supported enterprise clients through troubleshooting and resolution</li>
+                      <li>Built understanding of <strong>enterprise software user pain points</strong></li>
+                    </ul>
+                  </div>
                 </div>
-                <span class="job-date">2023 – Present</span>
-              </div>
-              <ul>
-                <li>Design and improve user flows within the BrynQ product, simplifying complex configuration and operational tasks.</li>
-                <li>Identify usability issues through UX audits and propose iterative improvements.</li>
-                <li>Apply systems thinking to structure interactions around data mappings, transformations, and interface states.</li>
-                <li>Support design governance by guiding a junior designer and maintaining a clear Figma file structure.</li>
-                <li>Collaborate with Product Owners and Product Managers to align design work with product priorities.</li>
-                <li>Led design for an internal task-tracking feature to improve clarity around actions and responsibilities.</li>
-                <li>Contribute to AI-assisted workflows that support users during setup and validation processes.</li>
-              </ul>
-            </div>
-
-            <div class="job">
-              <div class="job-header">
-                <div>
-                  <span class="job-title">UI Designer (Contract)</span> · <span class="job-company">Multiple Startups, India</span>
+                
+                <div class="section">
+                  <div class="section-title">Education</div>
+                  <div class="edu-item">
+                    <div class="edu-title">Master's in UX (AI Specialization)</div>
+                    <div class="edu-school">Jindal School of Art & Architecture</div>
+                    <div class="edu-date">2025 – 2026 (Ongoing)</div>
+                  </div>
+                  <div class="edu-item">
+                    <div class="edu-title">PG Programme in UX Design</div>
+                    <div class="edu-school">IDC, IIT Bombay</div>
+                    <div class="edu-date">2021 – 2022</div>
+                  </div>
+                  <div class="edu-item">
+                    <div class="edu-title">B.Tech in Computer Science</div>
+                    <div class="edu-school">University of Calicut</div>
+                    <div class="edu-date">2013 – 2017</div>
+                  </div>
                 </div>
-                <span class="job-date">2022 – 2023</span>
-              </div>
-              <ul>
-                <li>Designed UI screens based on defined requirements for early-stage products.</li>
-                <li>Delivered visual designs with a focus on clarity, consistency, and usability.</li>
-                <li>Clients: Amphisoft Ventures · Lymdata Labs · Amphisoft (Stealth EdTech Product)</li>
-              </ul>
-            </div>
-
-            <div class="job">
-              <div class="job-header">
-                <div>
-                  <span class="job-title">UI Designer</span> · <span class="job-company">Segments Cloud LLC, Dubai, UAE</span>
+                
+                <div class="section">
+                  <div class="section-title">Languages</div>
+                  <div class="lang-grid">
+                    <div class="lang-item">
+                      <div class="lang-name">English</div>
+                      <div class="lang-level">Fluent</div>
+                    </div>
+                    <div class="lang-item">
+                      <div class="lang-name">Dutch</div>
+                      <div class="lang-level">Beginner</div>
+                    </div>
+                  </div>
                 </div>
-                <span class="job-date">2021 – 2022</span>
               </div>
-              <ul>
-                <li>Designed UI screens and page layouts for a Bitcoin mining and warehousing product.</li>
-                <li>Translated business requirements into structured and visually consistent interfaces.</li>
-              </ul>
-            </div>
-
-            <div class="job">
-              <div class="job-header">
-                <div>
-                  <span class="job-title">UX/UI Intern</span> · <span class="job-company">Curateus, Bangalore, India</span>
+              
+              <!-- Right Column -->
+              <div class="right-col">
+                <div class="section">
+                  <div class="section-title">Skills</div>
+                  <div class="skill-category">
+                    <div class="skill-label">UX Design:</div>
+                    <div class="skill-items">UX Auditing, User Research, Workflow Design, Information Architecture, Usability Testing</div>
+                  </div>
+                  <div class="skill-category">
+                    <div class="skill-label">UI Design:</div>
+                    <div class="skill-items">Interface Design, Visual Design, Prototyping, Design Systems, Responsive Design</div>
+                  </div>
+                  <div class="skill-category">
+                    <div class="skill-label">Methods:</div>
+                    <div class="skill-items">Systems Thinking, Problem Framing, Journey Mapping, Wireframing</div>
+                  </div>
                 </div>
-                <span class="job-date">2021</span>
-              </div>
-              <ul>
-                <li>Designed UI screens, wireframes, and prototypes for a content discovery product.</li>
-                <li>Supported rapid design execution for web and mobile platforms.</li>
-              </ul>
-            </div>
-
-            <div class="job">
-              <div class="job-header">
-                <div>
-                  <span class="job-title">Technical Support Engineer</span> · <span class="job-company">SAP Ariba, Bangalore, India</span>
+                
+                <div class="section">
+                  <div class="section-title">Tools</div>
+                  <div class="tags">
+                    <span class="tag">Figma</span>
+                    <span class="tag">FigJam</span>
+                    <span class="tag">Miro</span>
+                    <span class="tag">Zeplin</span>
+                  </div>
                 </div>
-                <span class="job-date">2018 – 2021</span>
+                
+                <div class="section">
+                  <div class="section-title">Key Strengths</div>
+                  <div class="tags">
+                    <span class="tag">Systems Thinking</span>
+                    <span class="tag">Problem Framing</span>
+                    <span class="tag">AI-Integrated UX</span>
+                    <span class="tag">Collaboration</span>
+                  </div>
+                </div>
+                
+                <div class="section">
+                  <div class="section-title">Community</div>
+                  <div class="community-item">
+                    <div class="community-name"><strong>Co-organiser</strong> — Design Reimagined Utrecht</div>
+                    <div class="skill-items">Design community hosting sessions and workshops in Netherlands</div>
+                  </div>
+                </div>
               </div>
-              <ul>
-                <li>Supported enterprise clients through system troubleshooting and incident resolution.</li>
-                <li>Collaborated with engineering teams on workflow and system-level issues.</li>
-                <li>Developed a strong understanding of enterprise software behavior and user pain points.</li>
-              </ul>
             </div>
           </div>
-
-          <div class="section">
-            <h2>Education</h2>
-            <div class="edu-item">
-              <div class="edu-title">Master's in UX (Specialization: AI), Ongoing</div>
-              <div class="edu-school">Jindal School of Art & Architecture, 2025–2026</div>
-            </div>
-            <div class="edu-item">
-              <div class="edu-title">Post Graduate Programme in UX Design</div>
-              <div class="edu-school">IDC, Indian Institute of Technology Bombay, 2021–2022</div>
-            </div>
-            <div class="edu-item">
-              <div class="edu-title">Bachelor of Technology in Computer Science</div>
-              <div class="edu-school">University of Calicut, 2013–2017</div>
-            </div>
-          </div>
-
-          <div class="section">
-            <h2>Community</h2>
-            <p><strong>Co-organiser</strong> — Design Reimagined Utrecht</p>
-            <p style="font-size: 10pt; color: #555;">A design community in the Netherlands hosting sessions and workshops on design learnings.</p>
-          </div>
-
-          <div class="section">
-            <h2>Tools</h2>
-            <div class="skills">
-              <span class="skill">Figma</span>
-              <span class="skill">FigJam</span>
-              <span class="skill">Miro</span>
-              <span class="skill">Zeplin</span>
-            </div>
-          </div>
-
-          <div class="section">
-            <h2>Languages</h2>
-            <p>English: Fluent · Dutch: Beginner</p>
-          </div>
-
+          
           <script>
             window.onload = function() { window.print(); }
           </script>
