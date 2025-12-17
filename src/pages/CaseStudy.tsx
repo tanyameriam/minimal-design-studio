@@ -4045,7 +4045,7 @@ const CaseStudy = () => {
                       onClick={() => setLightboxImage(streeStoryboard)} 
                     />
                     <figcaption className="px-4 py-3 text-sm text-muted-foreground border-t border-border bg-muted/30">
-                      A day in the life of Priya navigating safety challenges during her daily commute—from crowded public transport to poorly lit streets—and how STREE provides peace of mind through discreet SOS triggers, real-time location sharing, and trusted contact alerts.
+                      Alayah, an 18-year-old from Pune, moves to Bangalore alone for higher studies—defying family concerns about safety. While navigating her new independence, she encounters harassment on her commute. Feeling isolated due to language barriers, she struggles to seek help. When the situation escalates, she uses the SOS button—police arrive, and the situation is resolved. STREE gives her the confidence to live independently.
                     </figcaption>
                   </figure>
                 </CollapsibleContent>
