@@ -3993,7 +3993,8 @@ const CaseStudy = () => {
       {slug === 'stree-safety-app' && (
         <section className="px-6 lg:px-12 py-12 bg-background">
           <div className="container mx-auto max-w-5xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">Storyboard</h2>
+            <h2 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">Storyboard</h2>
+            <p className="text-sm text-muted-foreground mb-6">{study.solutionPhase?.storyboard}</p>
             
             <Collapsible defaultOpen>
               <CollapsibleTrigger className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors group mb-4">
@@ -4048,9 +4049,6 @@ const CaseStudy = () => {
       {/* STREE: Solution Phase */}
       {study.solutionPhase && <section className="px-6 lg:px-12 py-12 bg-card">
           <div className="container mx-auto max-w-5xl">
-            <div className="mb-8">
-              <p className="text-sm text-muted-foreground">{study.solutionPhase.storyboard}</p>
-            </div>
 
             <div className="grid md:grid-cols-2 gap-6">
               {study.solutionPhase.modes.map((mode, i) => <div key={i} className="p-5 bg-background border border-border">
