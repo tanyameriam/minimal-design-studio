@@ -4187,21 +4187,9 @@ const CaseStudy = () => {
               <div className="flex gap-4 px-6 lg:px-12" style={{
           width: 'max-content'
         }}>
-                {[streeHifi1, streeHifi2, streeHifi3, streeHifi4, streeHifi5, streeHifi6, streeHifi7, streeHifi8, streeHifi9, streeHifi10, streeHifi11, streeHifi12, streeHifi13, streeHifi14, streeHifi15, streeHifi16, streeHifi17, streeHifi18].map((img, i) => <div key={i} className="flex-shrink-0 bg-background border border-border p-2 cursor-pointer hover:border-primary/50 transition-colors" onClick={() => setLightboxImage(img)}>
+                {[streeHifi1, streeHifi2, streeHifi3, streeHifi4, streeHifi5, streeHifi6, streeHifi7, streeHifi8, streeHifi9, streeHifi10, streeHifi11, streeHifi12, streeHifi13, streeHifi14, streeHifi15, streeHifi16, streeHifi17, streeHifi18, streeLockscreen1, streeLockscreen2, streeLockscreen3, streeLockscreen4].map((img, i) => <div key={i} className="flex-shrink-0 bg-background border border-border p-2 cursor-pointer hover:border-primary/50 transition-colors" onClick={() => setLightboxImage(img)}>
                     <img src={img} alt={`HiFi screen ${i + 1}`} className="h-[400px] w-auto object-contain" />
                   </div>)}
-              </div>
-            </div>}
-
-          {/* Lock Screen Designs Carousel */}
-          {slug === 'stree-safety-app' && <div className="mt-12 px-6 lg:px-12 xl:pl-32">
-              <h3 className="font-serif text-xl mb-6">Lock Screen Designs</h3>
-              <div className="flex gap-4 overflow-x-auto pb-4">
-                {[streeLockscreen1, streeLockscreen2, streeLockscreen3, streeLockscreen4].map((img, i) => (
-                  <div key={i} className="flex-shrink-0 bg-background border border-border p-2 rounded-lg cursor-pointer hover:border-primary/50 transition-colors" onClick={() => setLightboxImage(img)}>
-                    <img src={img} alt={`Lock screen ${i + 1}`} className="h-[200px] w-auto object-contain" />
-                  </div>
-                ))}
               </div>
             </div>}
         </section>}
