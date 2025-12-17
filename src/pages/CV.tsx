@@ -236,16 +236,6 @@ const CV = () => {
                 </div>
                 
                 <div class="section">
-                  <div class="section-title">Tools</div>
-                  <div class="tags">
-                    <span class="tag">Figma</span>
-                    <span class="tag">FigJam</span>
-                    <span class="tag">Miro</span>
-                    <span class="tag">Zeplin</span>
-                  </div>
-                </div>
-                
-                <div class="section">
                   <div class="section-title">Key Strengths</div>
                   <div class="tags">
                     <span class="tag">Systems Thinking</span>
