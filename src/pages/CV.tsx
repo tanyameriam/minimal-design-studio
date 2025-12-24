@@ -239,9 +239,9 @@ const CV = () => {
                   <div class="section-title">Key Strengths</div>
                   <div class="tags">
                     <span class="tag">Systems Thinking</span>
-                    <span class="tag">Problem Framing</span>
-                    <span class="tag">AI-Integrated UX</span>
-                    <span class="tag">Collaboration</span>
+                    <span class="tag">Product Audit</span>
+                    <span class="tag">Transactional Design</span>
+                    <span class="tag">UI Design</span>
                   </div>
                 </div>
                 
@@ -321,7 +321,7 @@ const CV = () => {
           <section className="mb-12">
             <h2 className="font-serif text-lg mb-4 pb-2 border-b border-border">Key Competencies</h2>
             <div className="flex flex-wrap gap-2">
-              {['UX Auditing', 'Systems Thinking', 'Workflow & Process Design', 'Problem Framing', 'UI & Interaction Design', 'AI-Integrated UX Workflows'].map(skill => <span key={skill} className="px-3 py-1.5 bg-muted text-sm rounded-md">
+              {['UX Auditing', 'Systems Thinking', 'Product Audit', 'Transactional Design', 'UI Design', 'Workflow & Process Design', 'Problem Framing', 'UI & Interaction Design', 'AI-Integrated UX Workflows'].map(skill => <span key={skill} className="px-3 py-1.5 bg-muted text-sm rounded-md">
                   {skill}
                 </span>)}
             </div>
