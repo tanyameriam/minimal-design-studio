@@ -241,7 +241,6 @@ const CV = () => {
                     <span class="tag">Systems Thinking</span>
                     <span class="tag">Product Audit</span>
                     <span class="tag">Transactional Design</span>
-                    <span class="tag">UI Design</span>
                   </div>
                 </div>
                 
