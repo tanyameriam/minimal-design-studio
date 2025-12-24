@@ -118,6 +118,7 @@ const CV = () => {
                 </div>
               </div>
               <div class="header-right">
+                <div>+31 685 122 140 📞</div>
                 <div>tanyameriamsunny@gmail.com ✉</div>
                 <div>Netherlands 📍</div>
                 <div><a href="https://linkedin.com/in/tanya-sunny">linkedin.com/in/tanya-sunny</a> 🔗</div>
@@ -238,9 +239,14 @@ const CV = () => {
                 <div class="section">
                   <div class="section-title">Key Strengths</div>
                   <div class="tags">
+                    <span class="tag">UX Auditing</span>
                     <span class="tag">Systems Thinking</span>
                     <span class="tag">Product Audit</span>
                     <span class="tag">Transactional Design</span>
+                    <span class="tag">Workflow & Process Design</span>
+                    <span class="tag">Problem Framing</span>
+                    <span class="tag">UI & Interaction Design</span>
+                    <span class="tag">AI-Integrated UX Workflows</span>
                   </div>
                 </div>
                 
