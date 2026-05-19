@@ -94,18 +94,18 @@ const Explorations = () => {
   };
 
   return (
-    <section id="explorations" className="py-24 px-6 lg:px-12 bg-muted/30">
-      <div className="container mx-auto max-w-5xl">
+    <section id="explorations" className="py-24 md:py-32 px-6 lg:px-12 bg-muted border-t-2 border-foreground">
+      <div className="container mx-auto max-w-6xl">
         {/* Header */}
-        <div className="mb-8">
-          <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-3">
-            Creative Playground
+        <div className="mb-10 md:mb-12">
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">
+            [ ✱ ] — Creative Playground
           </p>
-          <h2 className="font-serif text-3xl md:text-4xl mb-3">
-            Explorations
+          <h2 className="font-display text-5xl md:text-7xl mb-4">
+            Explorations<span className="text-accent">.</span>
           </h2>
-          <p className="text-muted-foreground text-base max-w-lg">
-            Experiments with colors, layouts, animations, and 3D — a space for curiosity and craft.
+          <p className="text-base md:text-lg max-w-lg">
+            Experiments with colour, layouts, animation and 3D — a space for curiosity and craft.
           </p>
         </div>
 
@@ -115,10 +115,10 @@ const Explorations = () => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-all duration-200 ${
+              className={`flex items-center gap-2 px-4 py-2 border-2 border-foreground font-mono text-xs uppercase tracking-wider transition-all duration-150 ${
                 activeTab === tab.id
                   ? 'bg-foreground text-background'
-                  : 'bg-background border border-border text-muted-foreground hover:text-foreground hover:border-foreground/50'
+                  : 'bg-background text-foreground hover:bg-secondary'
               }`}
             >
               <tab.icon className="w-3.5 h-3.5" />

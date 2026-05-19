@@ -1,53 +1,79 @@
+const skills = [
+  'UX Auditing',
+  'Systems Thinking',
+  'Workflow Design',
+  'Problem Framing',
+  'UI & Interaction',
+  'AI-Integrated UX',
+];
+
 const About = () => {
   return (
-    <section id="about" className="py-32 px-6 lg:px-12 bg-card">
+    <section
+      id="about"
+      className="py-24 md:py-32 px-6 lg:px-12 bg-foreground text-background border-t-2 border-foreground"
+    >
       <div className="container mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">
-              About
+        <p className="font-mono text-xs uppercase tracking-[0.3em] text-background/60 mb-3">
+          [ 02 ] — About
+        </p>
+        <h2 className="font-display text-5xl md:text-7xl lg:text-8xl mb-12 md:mb-16 max-w-5xl">
+          Designing
+          <br />
+          with <span className="text-primary">intention</span>
+          <br />
+          not decoration.
+        </h2>
+
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
+          <div className="lg:col-span-7 space-y-6">
+            <p className="text-lg md:text-xl leading-relaxed">
+              I'm a UX/UI Designer with 5 years of professional design experience and a broader
+              corporate background since 2018. Experienced in UI execution, UX auditing, and
+              workflow design for digital products.
             </p>
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight mb-8">
-              Designing with
-              <br />
-              <span className="italic">intention</span>
-            </h2>
+            <p className="text-lg md:text-xl leading-relaxed text-background/80">
+              Currently working on BrynQ — an HR/Payroll integration product — focused on usability,
+              clarity, and decision-making inside complex system-driven flows. Strong technical
+              foundation and academic focus on UX for AI-supported systems.
+            </p>
           </div>
-          
-          <div className="space-y-6">
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              I'm a UX/UI Designer with 5 years of professional design experience and a broader corporate background since 2018. Experienced in UI execution, UX auditing, and workflow design for digital products.
-            </p>
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              Currently working on BrynQ, an HR/Payroll integration product, focusing on improving usability, clarity, and decision-making within complex system-driven flows. I have a strong technical foundation and academic focus on UX for AI-supported systems.
-            </p>
-            
-            <div className="pt-8 grid grid-cols-2 gap-8">
-              <div>
-                <p className="text-3xl font-serif mb-2">5</p>
-                <p className="text-sm text-muted-foreground">Years Design Experience</p>
-              </div>
-              <div>
-                <p className="text-3xl font-serif mb-2">2018</p>
-                <p className="text-sm text-muted-foreground">In Tech Since</p>
-              </div>
+
+          <div className="lg:col-span-5 grid grid-cols-2 gap-4 self-start">
+            <div className="brutal-border-thick border-background bg-secondary text-foreground p-6">
+              <p className="font-display text-6xl mb-1">5</p>
+              <p className="font-mono text-xs uppercase tracking-wider">Years Design</p>
+            </div>
+            <div className="brutal-border-thick border-background bg-primary text-primary-foreground p-6">
+              <p className="font-display text-6xl mb-1">'18</p>
+              <p className="font-mono text-xs uppercase tracking-wider">In Tech Since</p>
+            </div>
+            <div className="brutal-border-thick border-background bg-accent text-accent-foreground p-6">
+              <p className="font-display text-6xl mb-1">4+</p>
+              <p className="font-mono text-xs uppercase tracking-wider">Case Studies</p>
+            </div>
+            <div className="brutal-border-thick border-background bg-background text-foreground p-6">
+              <p className="font-display text-6xl mb-1">1</p>
+              <p className="font-mono text-xs uppercase tracking-wider">Community Built</p>
             </div>
           </div>
         </div>
-        
-        <div className="mt-24 pt-16 border-t border-border">
-          <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-8">
+
+        <div className="mt-20 pt-10 border-t-2 border-background/30">
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-background/60 mb-6">
             Key Competencies
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            {['UX Auditing', 'Systems Thinking', 'Workflow & Process Design', 'Problem Framing', 'UI & Interaction Design', 'AI-Integrated UX Workflows'].map((skill) => (
-              <div key={skill} className="py-4 border-b border-border">
-                <p className="font-sans text-sm">{skill}</p>
-              </div>
+          <div className="flex flex-wrap gap-3">
+            {skills.map((skill) => (
+              <span
+                key={skill}
+                className="brutal-tag bg-background text-foreground border-background"
+              >
+                {skill}
+              </span>
             ))}
           </div>
         </div>
-        
       </div>
     </section>
   );

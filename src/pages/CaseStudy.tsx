@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, X, ChevronDown } from 'lucide-react';
 import CaseStudySidebar from '@/components/CaseStudySidebar';
+import PitchDeckView, { ViewToggle } from '@/components/PitchDeckView';
+import { pitchDecks } from '@/data/pitchDecks';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import streeAffinity1 from '@/assets/stree-affinity-1.png';
 import streeAffinity2 from '@/assets/stree-affinity-2.png';
@@ -1580,11 +1582,12 @@ const CaseStudy = () => {
   const [showWireframeGallery, setShowWireframeGallery] = useState(false);
   const [galleryImages, setGalleryImages] = useState<string[]>([]);
   const [galleryIndex, setGalleryIndex] = useState(0);
+  const [view, setView] = useState<'pitch' | 'deep'>('pitch');
 
-  // Scroll to top when case study opens
+  // Scroll to top whenever the slug or view changes
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [slug]);
+  }, [slug, view]);
 
   // Wireframe images array
   const wireframeImages = [streeWireframe1, streeWireframe2, streeWireframe3, streeWireframe4, streeWireframe5, streeWireframe6, streeWireframe7, streeWireframe8, streeWireframe9, streeWireframe10, streeWireframe11, streeWireframe12, streeWireframe13, streeWireframe14];
@@ -1669,12 +1672,33 @@ const CaseStudy = () => {
           </div>
         </div>}
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-6 lg:px-12 py-6 bg-background/80 backdrop-blur-sm">
-        <Link to="/#work" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+      <nav className="fixed top-0 left-0 right-0 z-50 px-6 lg:px-12 py-4 bg-background/95 backdrop-blur-sm border-b-2 border-foreground">
+        <Link to="/#work" className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider hover:bg-foreground hover:text-background px-2 py-1 transition-colors">
           <ArrowLeft className="w-4 h-4" />
           Back to work
         </Link>
       </nav>
+
+      {/* View toggle (pitch vs deep dive) */}
+      {slug && pitchDecks[slug] && (
+        <ViewToggle view={view} onChange={setView} />
+      )}
+
+      {/* Pitch Deck View */}
+      {view === 'pitch' && slug && pitchDecks[slug] && (
+        <PitchDeckView
+          deck={pitchDecks[slug]}
+          projectTitle={study.title}
+          heroImage={study.heroImage}
+          onSwitchToDeep={() => setView('deep')}
+        />
+      )}
+
+      {/* Fallback: if no pitch deck data exists for this slug, force deep view */}
+      {(!slug || !pitchDecks[slug]) && null}
+
+      {/* Deep Dive View — full case study content */}
+      <div className={view === 'deep' || !slug || !pitchDecks[slug] ? '' : 'hidden'}>
 
       {/* Merry Health Sidebar Navigation */}
       {slug === 'merry-health' && <CaseStudySidebar sections={[{
@@ -4459,23 +4483,26 @@ const CaseStudy = () => {
         </div>
       </section>}
 
+      {/* /Deep Dive wrapper */}
+      </div>
+
       {/* Footer Navigation */}
-      <footer className="px-6 lg:px-12 py-16 border-t border-border">
+      <footer className="px-6 lg:px-12 py-16 border-t-2 border-foreground">
         <div className="container mx-auto max-w-5xl flex flex-col gap-8">
           <div className="flex justify-between items-center">
             <a href="/#work" onClick={e => {
             e.preventDefault();
             window.location.href = '/#work';
-          }} className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+          }} className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider hover:bg-foreground hover:text-background px-2 py-1 transition-colors">
               <ArrowLeft className="w-4 h-4" />
               All projects
             </a>
           </div>
-          <div className="p-6 bg-primary/5 border border-primary/20 rounded-lg text-center">
-            <p className="text-muted-foreground mb-3">Interested in working together?</p>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=tanyameriamsunny@gmail.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-lg font-medium text-primary hover:text-primary/80 transition-colors">
+          <div className="brutal-card bg-primary text-primary-foreground p-6 text-center">
+            <p className="font-mono text-xs uppercase tracking-wider opacity-80 mb-3">Interested in working together?</p>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=tanyameriamsunny@gmail.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 font-display text-2xl md:text-3xl">
               Get in touch
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-6 h-6" />
             </a>
           </div>
         </div>

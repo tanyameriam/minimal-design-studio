@@ -14,31 +14,31 @@ export default {
   	},
   	extend: {
   		fontFamily: {
+  			display: [
+  				'Archivo Black',
+  				'Space Grotesk',
+  				'system-ui',
+  				'sans-serif'
+  			],
   			serif: [
-  				'Merriweather',
-  				'ui-serif',
-  				'Georgia',
-  				'Cambria',
-  				'Times New Roman',
-  				'Times',
-  				'serif'
+  				'Space Grotesk',
+  				'system-ui',
+  				'sans-serif'
   			],
   			sans: [
-  				'Poppins',
-  				'ui-sans-serif',
+  				'Space Grotesk',
+  				'Inter',
   				'system-ui',
   				'-apple-system',
   				'BlinkMacSystemFont',
   				'Segoe UI',
   				'Roboto',
-  				'Helvetica Neue',
-  				'Arial',
-  				'Noto Sans',
   				'sans-serif'
   			],
   			handwritten: [
-  				'Caveat',
-  				'cursive'
+  				'Space Grotesk',
+  				'system-ui',
+  				'sans-serif'
   			],
   			mono: [
   				'JetBrains Mono',
@@ -47,8 +47,6 @@ export default {
   				'Menlo',
   				'Monaco',
   				'Consolas',
-  				'Liberation Mono',
-  				'Courier New',
   				'monospace'
   			]
   		},

@@ -8,31 +8,21 @@ const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on resize to desktop
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setIsMobileMenuOpen(false);
-      }
+      if (window.innerWidth >= 768) setIsMobileMenuOpen(false);
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'unset';
     return () => {
       document.body.style.overflow = 'unset';
     };
@@ -41,9 +31,7 @@ const Navigation = () => {
   const scrollToSection = (id: string) => {
     setIsMobileMenuOpen(false);
     const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleNavigate = (path: string) => {
@@ -61,66 +49,60 @@ const Navigation = () => {
 
   return (
     <>
-      <nav 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled ? 'bg-background/90 backdrop-blur-md py-4' : 'bg-transparent py-6'
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? 'bg-background/95 backdrop-blur-md border-b-2 border-foreground py-3'
+            : 'bg-transparent py-5'
         }`}
       >
         <div className="container mx-auto px-6 lg:px-12 flex justify-between items-center">
-          <button 
+          <button
             onClick={() => scrollToSection('hero')}
-            className="font-handwritten text-3xl md:text-4xl tracking-tight"
+            className="font-display text-2xl md:text-3xl tracking-tight flex items-center gap-2"
           >
-            Tanya Sunny
+            <span className="inline-block w-3 h-3 bg-primary" aria-hidden />
+            TANYA SUNNY
           </button>
-          
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+
+          <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
-              <button 
+              <button
                 key={link.label}
                 onClick={link.action}
-                className="text-sm font-sans tracking-wide link-underline"
+                className="px-3 py-2 text-sm font-mono uppercase tracking-wider hover:bg-foreground hover:text-background transition-colors"
               >
                 {link.label}
               </button>
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
-          <button 
+          <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 -mr-2"
+            className="md:hidden brutal-border-thick p-2 bg-background"
             aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
+            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
-      <div 
-        className={`fixed inset-0 z-40 bg-background/95 backdrop-blur-md transition-all duration-300 md:hidden ${
+      <div
+        className={`fixed inset-0 z-40 bg-background border-b-2 border-foreground transition-all duration-200 md:hidden ${
           isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
-        <div className="flex flex-col items-center justify-center h-full gap-8">
+        <div className="flex flex-col items-start justify-center h-full gap-6 px-8">
           {navLinks.map((link, index) => (
-            <button 
+            <button
               key={link.label}
               onClick={link.action}
-              className={`text-2xl font-sans tracking-wide transition-all duration-300 ${
-                isMobileMenuOpen 
-                  ? 'opacity-100 translate-y-0' 
-                  : 'opacity-0 translate-y-4'
+              className={`font-display text-5xl uppercase tracking-tight transition-all duration-200 hover:text-primary ${
+                isMobileMenuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
               }`}
-              style={{ transitionDelay: isMobileMenuOpen ? `${index * 75}ms` : '0ms' }}
+              style={{ transitionDelay: isMobileMenuOpen ? `${index * 60}ms` : '0ms' }}
             >
-              {link.label}
+              {String(index + 1).padStart(2, '0')} — {link.label}
             </button>
           ))}
         </div>
