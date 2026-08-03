@@ -13,39 +13,30 @@ export default {
   		}
   	},
   	extend: {
-  		fontFamily: {
-  			display: [
-  				'Archivo Black',
-  				'Space Grotesk',
-  				'system-ui',
-  				'sans-serif'
-  			],
-  			serif: [
-  				'Space Grotesk',
-  				'system-ui',
-  				'sans-serif'
-  			],
+  		transitionTimingFunction: {
+			smooth: 'cubic-bezier(0.22, 1, 0.36, 1)'
+		},
+		fontFamily: {
   			sans: [
-  				'Space Grotesk',
-  				'Inter',
+  				'Geist',
+  				'ui-sans-serif',
   				'system-ui',
   				'-apple-system',
-  				'BlinkMacSystemFont',
   				'Segoe UI',
   				'Roboto',
   				'sans-serif'
   			],
-  			handwritten: [
-  				'Space Grotesk',
-  				'system-ui',
-  				'sans-serif'
+  			serif: [
+  				'Instrument Serif',
+  				'ui-serif',
+  				'Georgia',
+  				'serif'
   			],
   			mono: [
-  				'JetBrains Mono',
+  				'Geist Mono',
   				'ui-monospace',
   				'SFMono-Regular',
   				'Menlo',
-  				'Monaco',
   				'Consolas',
   				'monospace'
   			]

@@ -1,112 +1,118 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+
+interface NavItem {
+  label: string;
+  to: string;
+  /** Section id on the home page, if this scrolls rather than navigates. */
+  section?: string;
+}
+
+const navItems: NavItem[] = [
+  { label: 'Work', to: '/', section: 'work' },
+  { label: 'Playground', to: '/playground' },
+  { label: 'About', to: '/', section: 'about' },
+  { label: 'CV', to: '/cv' },
+];
 
 const Navigation = () => {
   const navigate = useNavigate();
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const [isOpen, setIsOpen] = useState(false);
 
+  // Close the menu on route change.
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    setIsOpen(false);
+  }, [location.pathname]);
 
+  // Lock the body while the menu is open.
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768) setIsMobileMenuOpen(false);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'unset';
+    document.body.style.overflow = isOpen ? 'hidden' : '';
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
     };
-  }, [isMobileMenuOpen]);
+  }, [isOpen]);
 
-  const scrollToSection = (id: string) => {
-    setIsMobileMenuOpen(false);
-    const element = document.getElementById(id);
-    if (element) element.scrollIntoView({ behavior: 'smooth' });
+  // Escape closes the menu.
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [isOpen]);
+
+  const handleClick = (item: NavItem) => (e: React.MouseEvent) => {
+    setIsOpen(false);
+    if (!item.section) return;
+
+    e.preventDefault();
+    if (location.pathname === '/') {
+      document.getElementById(item.section)?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      navigate('/', { state: { scrollTo: item.section } });
+    }
   };
 
-  const handleNavigate = (path: string) => {
-    setIsMobileMenuOpen(false);
-    navigate(path);
-  };
-
-  const navLinks = [
-    { label: 'Work', action: () => scrollToSection('work') },
-    { label: 'Explorations', action: () => scrollToSection('explorations') },
-    { label: 'About', action: () => scrollToSection('about') },
-    { label: 'Contact', action: () => scrollToSection('contact') },
-    { label: 'CV', action: () => handleNavigate('/cv') },
-  ];
+  const isActive = (item: NavItem) => !item.section && location.pathname === item.to;
 
   return (
     <>
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? 'bg-background/95 backdrop-blur-md border-b-2 border-foreground py-3'
-            : 'bg-transparent py-5'
-        }`}
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-6 focus:top-6 focus:z-[60] focus:bg-background focus:px-4 focus:py-2 focus:text-sm"
       >
-        <div className="container mx-auto px-6 lg:px-12 flex justify-between items-center">
-          <button
-            onClick={() => scrollToSection('hero')}
-            className="font-display text-2xl md:text-3xl tracking-tight flex items-center gap-2"
-          >
-            <span className="inline-block w-3 h-3 bg-primary" aria-hidden />
-            TANYA SUNNY
-          </button>
+        Skip to content
+      </a>
 
-          <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <button
-                key={link.label}
-                onClick={link.action}
-                className="px-3 py-2 text-sm font-mono uppercase tracking-wider hover:bg-foreground hover:text-background transition-colors"
+      <nav
+        aria-label="Primary"
+        className="fixed inset-x-0 top-0 z-50 bg-background/80 backdrop-blur-md"
+      >
+        <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-5 md:px-10 lg:px-16">
+          <Link to="/" className="text-sm rule-link">
+            Tanya Sunny
+          </Link>
+
+          <div className="hidden items-center gap-7 md:flex">
+            {navItems.map((item) => (
+              <Link
+                key={item.label}
+                to={item.to}
+                onClick={handleClick(item)}
+                data-active={isActive(item)}
+                aria-current={isActive(item) ? 'page' : undefined}
+                className="nav-link text-sm text-ink-600 transition-colors hover:text-foreground"
               >
-                {link.label}
-              </button>
+                {item.label}
+              </Link>
             ))}
           </div>
 
           <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden brutal-border-thick p-2 bg-background"
-            aria-label="Toggle menu"
+            type="button"
+            onClick={() => setIsOpen((v) => !v)}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
+            className="label text-ink-600 md:hidden"
           >
-            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {isOpen ? 'Close' : 'Menu'}
           </button>
         </div>
       </nav>
 
-      <div
-        className={`fixed inset-0 z-40 bg-background border-b-2 border-foreground transition-all duration-200 md:hidden ${
-          isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
-      >
-        <div className="flex flex-col items-start justify-center h-full gap-6 px-8">
-          {navLinks.map((link, index) => (
-            <button
-              key={link.label}
-              onClick={link.action}
-              className={`font-display text-5xl uppercase tracking-tight transition-all duration-200 hover:text-primary ${
-                isMobileMenuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
-              }`}
-              style={{ transitionDelay: isMobileMenuOpen ? `${index * 60}ms` : '0ms' }}
-            >
-              {String(index + 1).padStart(2, '0')} — {link.label}
-            </button>
-          ))}
+      {isOpen && (
+        <div id="mobile-menu" className="fixed inset-0 z-40 bg-background px-6 pt-28 md:hidden">
+          <div className="flex flex-col items-start gap-6">
+            {navItems.map((item) => (
+              <Link key={item.label} to={item.to} onClick={handleClick(item)} className="text-3xl">
+                {item.label}
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

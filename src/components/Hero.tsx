@@ -1,42 +1,31 @@
-import { ArrowDown } from 'lucide-react';
-
 const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative flex flex-col justify-center px-6 lg:px-12 pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden"
+      className="px-6 md:px-10 lg:px-16 pt-32 md:pt-44 pb-20 md:pb-28"
     >
-      <div className="absolute inset-0 brutal-grid pointer-events-none opacity-60" />
+      <div className="mx-auto max-w-3xl">
+        <p className="label text-ink-400 mb-8 reveal" data-shown="true">
+          Hello, I&rsquo;m Tanya
+        </p>
 
-      <div className="container mx-auto max-w-6xl relative">
-        <div className="flex flex-wrap items-center gap-2 mb-8 animate-fade-up">
-          <span className="brutal-tag bg-secondary">Available · 2026</span>
-          <span className="brutal-tag">Utrecht, NL</span>
-          <span className="brutal-tag">Product Design</span>
-        </div>
-
-        <h1 className="font-display text-[15vw] md:text-[10vw] lg:text-[9rem] leading-[0.9] mb-8 animate-fade-up-delay-1">
-          Tanya
-          <br />
-          <span className="text-primary">Sunny.</span>
+        <h1
+          className="reveal text-[2.5rem] leading-[1.05] md:text-[3.75rem] lg:text-[4.5rem] max-w-[16ch]"
+          data-shown="true"
+          style={{ transitionDelay: '80ms' }}
+        >
+          I design the workflows nobody{' '}
+          <span className="em-serif">wants</span> to touch.
         </h1>
 
-        <div className="grid md:grid-cols-12 gap-8 items-end">
-          <p className="md:col-span-7 text-lg md:text-2xl leading-snug font-medium animate-fade-up-delay-2">
-            Product Designer turning <span className="bg-secondary px-2">complex systems</span> into
-            decisions people can actually make. UX research, systems thinking, AI-enhanced workflows.
-          </p>
-
-          <div className="md:col-span-5 flex flex-wrap gap-3 animate-fade-up-delay-3">
-            <a href="#work" className="brutal-button brutal-button-primary">
-              See the work
-              <ArrowDown className="w-4 h-4" />
-            </a>
-            <a href="#contact" className="brutal-button brutal-button-outline">
-              Get in touch
-            </a>
-          </div>
-        </div>
+        <p
+          className="reveal mt-8 max-w-xl text-lg md:text-xl leading-[1.45] text-ink-600"
+          data-shown="true"
+          style={{ transitionDelay: '160ms' }}
+        >
+          Currently designing HR and payroll integration flows at BrynQ, a B2B
+          iPaaS platform. Based in the Netherlands.
+        </p>
       </div>
     </section>
   );

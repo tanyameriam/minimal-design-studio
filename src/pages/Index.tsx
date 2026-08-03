@@ -1,20 +1,33 @@
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import Work from '@/components/Work';
-import Explorations from '@/components/Explorations';
 import About from '@/components/About';
 import Contact from '@/components/Contact';
 
 const Index = () => {
+  const location = useLocation();
+
+  // Honour a section target passed by the nav from another route.
+  useEffect(() => {
+    const target = (location.state as { scrollTo?: string } | null)?.scrollTo;
+    if (!target) return;
+    requestAnimationFrame(() => {
+      document.getElementById(target)?.scrollIntoView({ behavior: 'smooth' });
+    });
+  }, [location.state]);
+
   return (
-    <main className="bg-background min-h-screen">
+    <>
       <Navigation />
-      <Hero />
-      <Work />
-      <Explorations />
-      <About />
+      <main id="main" className="min-h-screen bg-background">
+        <Hero />
+        <Work />
+        <About />
+      </main>
       <Contact />
-    </main>
+    </>
   );
 };
 

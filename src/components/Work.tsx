@@ -1,85 +1,37 @@
-import ProjectCard from './ProjectCard';
-import streeCover from '@/assets/stree-cover.png';
-import merryHealthCover from '@/assets/merry-health-cover.png';
-import brynqCover from '@/assets/brynq-cover.png';
-import hungerProjectCover from '@/assets/hunger-project-cover.png';
-
-interface Project {
-  title: string;
-  category: string;
-  year: string;
-  image: string;
-  slug: string;
-  published?: boolean;
-}
-
-const projects: Project[] = [
-  {
-    title: 'STREE Safety App',
-    category: 'UX Research • Mobile App',
-    year: '2022',
-    image: streeCover,
-    slug: 'stree-safety-app',
-    published: true,
-  },
-  {
-    title: 'Merry Health',
-    category: 'Systems Design • Healthcare',
-    year: '2024',
-    image: merryHealthCover,
-    slug: 'merry-health',
-    published: true,
-  },
-  {
-    title: 'BrynQ Platform',
-    category: 'Product Design • B2B iPaaS',
-    year: '2021–2024',
-    image: brynqCover,
-    slug: 'brynq',
-    published: true,
-  },
-  {
-    title: 'The Hunger Project',
-    category: 'UX Design • Social Impact',
-    year: '2024',
-    image: hungerProjectCover,
-    slug: 'food-waste-ngo',
-    published: true,
-  },
-];
+import ProjectRow from './ProjectRow';
+import { projects, earlierWork } from '@/data/projects';
+import { useReveal } from '@/hooks/use-reveal';
 
 const Work = () => {
-  const publishedProjects = projects.filter((p) => p.published !== false);
+  const published = projects.filter((p) => p.published);
+  const earlierRef = useReveal<HTMLDivElement>();
 
   return (
-    <section id="work" className="py-24 md:py-32 px-6 lg:px-12 border-t-2 border-foreground">
-      <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 md:mb-16">
-          <div>
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">
-              [ 01 ] — Selected Work
-            </p>
-            <h2 className="font-display text-5xl md:text-7xl">
-              Projects<span className="text-primary">.</span>
-            </h2>
-          </div>
-          <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground max-w-xs">
-            Each project ships with a quick pitch + deep dive. Pick your depth.
-          </p>
+    <section id="work" className="px-6 md:px-10 lg:px-16 pb-24 md:pb-32">
+      <div className="mx-auto max-w-3xl">
+        <p className="label text-ink-400 mb-2">Projects ( 2021 - 25 )</p>
+
+        <div>
+          {published.map((project, index) => (
+            <ProjectRow key={project.title} project={project} index={index} />
+          ))}
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-          {publishedProjects.map((project, index) => (
-            <ProjectCard
-              key={project.title}
-              title={project.title}
-              category={project.category}
-              year={project.year}
-              image={project.image}
-              slug={project.slug}
-              index={index}
-            />
-          ))}
+        <div ref={earlierRef} className="reveal border-t border-border pt-10 md:pt-14">
+          <p className="label text-ink-400 mb-8">Selected earlier work</p>
+          <ul className="space-y-6">
+            {earlierWork.map((item) => (
+              <li key={item.title} className="flex flex-col sm:flex-row sm:gap-6">
+                <div className="flex items-baseline gap-3 sm:w-52 sm:shrink-0">
+                  <span className="text-base">{item.title}</span>
+                  <span className="label text-ink-400 tabular-nums">{item.year}</span>
+                </div>
+                <p className="text-sm leading-relaxed text-ink-500 mt-1 sm:mt-0">
+                  <span className="text-ink-600">{item.role}.</span> {item.note}
+                </p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ExternalLink, Sparkles, Pencil, Box, X } from 'lucide-react';
+import { ExternalLink, X } from 'lucide-react';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import splineFrogs from '@/assets/spline-frogs.png';
 import spline3dRoom from '@/assets/spline-3d-room.png';
@@ -66,6 +66,8 @@ const ImageCard = ({
     className={`group relative ${aspectRatio} overflow-hidden rounded-lg bg-muted cursor-pointer w-full`}
   >
     <img
+              loading="lazy"
+              decoding="async"
       src={src}
       alt={title}
       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -82,11 +84,11 @@ const Explorations = () => {
 
   const totalCount = splineProjects.length + characterSketches.length + charcoalSketches.length;
 
-  const tabs = [
-    { id: 'all' as Tab, label: 'All', icon: Sparkles, count: totalCount },
-    { id: '3d' as Tab, label: '3D', icon: Box, count: splineProjects.length },
-    { id: 'character' as Tab, label: 'Characters', icon: Sparkles, count: characterSketches.length },
-    { id: 'charcoal' as Tab, label: 'Charcoal', icon: Pencil, count: charcoalSketches.length },
+  const tabs: { id: Tab; label: string; count: number }[] = [
+    { id: 'all' as Tab, label: 'All', count: totalCount },
+    { id: '3d' as Tab, label: '3D', count: splineProjects.length },
+    { id: 'character' as Tab, label: 'Characters', count: characterSketches.length },
+    { id: 'charcoal' as Tab, label: 'Charcoal', count: charcoalSketches.length },
   ];
 
   const openLightbox = (src: string, title: string) => {
@@ -94,38 +96,22 @@ const Explorations = () => {
   };
 
   return (
-    <section id="explorations" className="py-24 md:py-32 px-6 lg:px-12 bg-muted border-t-2 border-foreground">
-      <div className="container mx-auto max-w-6xl">
-        {/* Header */}
-        <div className="mb-10 md:mb-12">
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">
-            [ ✱ ] — Creative Playground
-          </p>
-          <h2 className="font-display text-5xl md:text-7xl mb-4">
-            Explorations<span className="text-accent">.</span>
-          </h2>
-          <p className="text-base md:text-lg max-w-lg">
-            Experiments with colour, layouts, animation and 3D — a space for curiosity and craft.
-          </p>
-        </div>
-
+    <section id="explorations" className="px-6 md:px-10 lg:px-16 pb-24">
+      <div className="mx-auto max-w-3xl">
         {/* Tab Navigation */}
-        <div className="flex gap-2 mb-6">
+        <div className="flex flex-wrap gap-x-6 gap-y-2 border-t border-border pt-8 mb-8">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-2 px-4 py-2 border-2 border-foreground font-mono text-xs uppercase tracking-wider transition-all duration-150 ${
+              aria-pressed={activeTab === tab.id}
+              className={`label transition-colors ${
                 activeTab === tab.id
-                  ? 'bg-foreground text-background'
-                  : 'bg-background text-foreground hover:bg-secondary'
+                  ? 'text-foreground'
+                  : 'text-ink-400 hover:text-ink-600'
               }`}
             >
-              <tab.icon className="w-3.5 h-3.5" />
-              <span>{tab.label}</span>
-              <span className={`text-xs ${activeTab === tab.id ? 'text-background/60' : 'text-muted-foreground/60'}`}>
-                {tab.count}
-              </span>
+              {tab.label} ( {tab.count} )
             </button>
           ))}
         </div>
@@ -148,6 +134,8 @@ const Explorations = () => {
                       className="group relative overflow-hidden rounded-xl aspect-video bg-neutral-900"
                     >
                       <img
+              loading="lazy"
+              decoding="async"
                         src={project.thumbnail}
                         alt={project.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -209,6 +197,8 @@ const Explorations = () => {
                   className="group relative overflow-hidden rounded-xl aspect-video bg-neutral-900"
                 >
                   <img
+              loading="lazy"
+              decoding="async"
                     src={project.thumbnail}
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -257,7 +247,7 @@ const Explorations = () => {
 
         {/* Footer */}
         <p className="text-center text-muted-foreground text-xs mt-10 opacity-50">
-          Always learning, always experimenting
+          Always learning, always experimenting.
         </p>
       </div>
 
@@ -273,6 +263,8 @@ const Explorations = () => {
           {lightboxImage && (
             <div className="relative">
               <img
+              loading="lazy"
+              decoding="async"
                 src={lightboxImage.src}
                 alt={lightboxImage.title}
                 className="w-full h-auto max-h-[85vh] object-contain rounded-lg"
