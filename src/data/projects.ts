@@ -1,3 +1,5 @@
+import { publishableProject } from './drafts';
+
 export type ProjectStatus = 'shipped' | 'concept' | 'self-initiated';
 
 export interface Project {
@@ -15,7 +17,7 @@ export interface Project {
   published: boolean;
 }
 
-export const projects: Project[] = [
+const projectList: Project[] = [
   {
     slug: 'brynq',
     title: 'BrynQ',
@@ -80,6 +82,12 @@ export const projects: Project[] = [
     published: true,
   },
 ];
+
+/**
+ * Draft markers in the rows above are stripped before anything renders.
+ * See src/data/drafts.ts.
+ */
+export const projects: Project[] = projectList.map(publishableProject);
 
 export interface EarlierWork {
   title: string;
