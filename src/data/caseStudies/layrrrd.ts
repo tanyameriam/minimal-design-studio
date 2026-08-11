@@ -11,12 +11,12 @@ export const layrrrd: CaseStudy = {
 
   intro: [
     'Layrrrd starts from a reframe: you do not have a discovery problem, you have a revisit problem. People already save content constantly, across bookmarks, screenshots, notes apps, and Telegram saved messages, and almost none of it is ever opened again. Layrrrd saves from anywhere, summarises what you saved, and pushes a curated digest back to you on a schedule you chose. It is live at layrrrd.com.',
-    'It began as a nine day team challenge. I led design, from product direction through the design system to the brand. By the final day we had paying customers, and the same team has kept building since. This is the project where every judgment call had a deadline measured in hours, which makes it the clearest record I have of how I actually decide.',
+    'We gave ourselves nine days to validate it, and we got the numbers. I led design, from product direction through the design system to the brand. By day nine we had paying customers, and the same team has kept building since. This is the project where every judgment call had a deadline measured in hours, which makes it the clearest record I have of how I actually decide.',
   ],
 
   meta: [
     { label: 'Role', value: 'Design Lead. Product direction, design system, brand' },
-    { label: 'Engagement', value: '9 day team challenge, now an ongoing product' },
+    { label: 'Engagement', value: 'Validated in 9 days, now an ongoing product' },
     { label: 'Timeline', value: 'June 2026 to present' },
     { label: 'Team', value: '[NEED: team size and roles]' },
     { label: 'Stage', value: 'Live, revenue' },
@@ -32,17 +32,17 @@ export const layrrrd: CaseStudy = {
       'Because the failure was never in saving, it was in returning. A better archive still waits for the user to come back. A digest does not wait, so the product was built around the push, and everything else, capture, summaries, even the mascot, exists to serve that one loop.',
     resultsLabel: 'Results',
     results:
-      '15 paying customers and 126 freemium signups by day nine, tracked in PostHog from launch. Live since, with the same team improving it: payments, referrals, a published Chrome extension, and two chat channels shipped after the challenge ended.',
+      '15 paying customers and 126 freemium signups by day nine, tracked in PostHog from launch. Live since, with the same team improving it: payments, referrals, a published Chrome extension, and two chat channels shipped since validation.',
   },
 
   challenge: {
-    question: 'What does a design process look like when the whole product has nine days?',
+    question: 'What does a design process look like when you give a product nine days to prove itself?',
     blocks: [
       {
         kind: 'prose',
         body: [
           'Nine days does not permit a discovery phase, so the discovery had to already exist: our own saved-content graveyards, and the shared observation that the people we were building for dump links into Telegram saved messages and never look again. The bet was placed on day one and every scoping decision descended from it. Anything that made saving easier or the digest better shipped. Anything else waited.',
-          'The discipline was tested mid-build. User testing during the challenge surfaced three problems worth reacting to: people did not trust that a save had worked, retrieval fell apart past a hundred items, and the digest cadence felt imposed rather than chosen. We repositioned around a curated feed, made save-state explicit, and let users pick their digest day. Reacting to evidence inside a nine day window, instead of defending the original plan, is the part of this project I would show a hiring panel first.',
+          'The discipline was tested mid-build. User testing inside the validation window surfaced three problems worth reacting to: people did not trust that a save had worked, retrieval fell apart past a hundred items, and the digest cadence felt imposed rather than chosen. We repositioned around a curated feed, made save-state explicit, and let users pick their digest day. Reacting to evidence inside a nine day window, instead of defending the original plan, is the part of this project I would show a hiring panel first.',
         ],
       },
       {
@@ -100,7 +100,7 @@ export const layrrrd: CaseStudy = {
           kind: 'prose',
           body: [
             'The system is editorial and deliberate: light only, zero corner radius, hairline rules instead of cards and shadows, a documented type and colour foundation. Brand sits in a second layer that is opt-in by rule, never applied by default, so the marketing surface can be expressive while the product stays quiet.',
-            'The part I consider genuinely senior work: the constraints live in the repository as written rules that the AI coding tools are bound to. When a machine is generating interface code at challenge speed, taste does not scale unless it is written down and enforced. The system held through the challenge and is still holding as the product grows.',
+            'The part I consider genuinely senior work: the constraints live in the repository as written rules that the AI coding tools are bound to. When a machine is generating interface code at validation speed, taste does not scale unless it is written down and enforced. The system held through those nine days and is still holding as the product grows.',
             'The brand carries real weight. Rudolf, the dog mascot, is not decoration: he is the loading state, the chat persona in both messaging channels, and the pricing metaphor. Chat time is play time, top-ups are biscuits. One character doing four jobs kept a nine day brand coherent.',
           ],
         },
@@ -115,7 +115,7 @@ export const layrrrd: CaseStudy = {
           kind: 'prose',
           body: [
             'A weekly-touch product has to earn a subscription every month, which is a bad fight to pick at launch. Instead: a lifetime founding membership, one hundred spots, early spots cheaper, gone means gone. Saves, summaries, and digests stay free for everyone. The only metered thing is chat time with Rudolf, because that is the only place where cost genuinely scales with use.',
-            'Payments went live during the challenge, which is what made the day nine number mean something. Fifteen people paid real money for a nine day old product, and that fact shaped the roadmap more than any interview could have.',
+            'Payments went live inside the validation window, which is what made the day nine number mean something. Fifteen people paid real money for a nine day old product, and that fact validated the bet more than any interview could have.',
           ],
         },
       ],
@@ -142,12 +142,12 @@ export const layrrrd: CaseStudy = {
 
   outcomes: {
     label: 'Outcomes',
-    heading: 'Paying customers before the challenge ended, and a product still alive after it',
+    heading: 'Validated with paying customers in nine days, and still shipping',
     blocks: [
       {
         kind: 'prose',
         body: [
-          'PostHog ran from day one, so the numbers are not reconstructed: 15 paying customers and 126 freemium signups by the final day of the challenge. Since then the same team has shipped the published Chrome extension, referral loops, both chat channels, and a steady stream of trust and privacy work, including full account deletion that actually cascades.',
+          'PostHog ran from day one, so the numbers are not reconstructed: 15 paying customers and 126 freemium signups by day nine. Since then the same team has shipped the published Chrome extension, referral loops, both chat channels, and a steady stream of trust and privacy work, including full account deletion that actually cascades.',
           'The nine days also left debts, and they are named rather than hidden: no automated test suite yet, and a digest job whose current design is the first known scaling ceiling. Writing the ceilings down before hitting them is what makes them engineering backlog instead of surprises.',
         ],
       },
@@ -160,7 +160,7 @@ export const layrrrd: CaseStudy = {
       {
         title: 'Paying customers',
         emphasis: 'by day nine',
-        body: '15 people paid for a product that was nine days old, through payments that went live mid-challenge.',
+        body: '15 people paid for a product that was nine days old, through payments that went live inside the validation window.',
       },
       {
         title: '126 signups',
@@ -181,7 +181,7 @@ export const layrrrd: CaseStudy = {
       {
         kind: 'prose',
         body: [
-          'The challenge compressed a full product arc, positioning, system, brand, pricing, evidence, into nine days, and the compression made the priorities legible. Writing the design system down before generating interfaces mattered more than any single screen. Reacting to user testing mid-sprint mattered more than the original plan. And instrumenting from day one, a lesson I carried from earlier work, is why the results section of this case study contains numbers instead of adjectives.',
+          'Validating in nine days compressed a full product arc, positioning, system, brand, pricing, evidence, and the compression made the priorities legible. Writing the design system down before generating interfaces mattered more than any single screen. Reacting to user testing mid-sprint mattered more than the original plan. And instrumenting from day one, a lesson I carried from earlier work, is why the results section of this case study contains numbers instead of adjectives.',
           'The product is not finished and does not claim to be. The recommendation layer is still scoped out, the test suite is still owed, and the digest job will need rework before the user base outgrows it. Continuing to ship against a named debt list is the ongoing part of the work, and it is the part I enjoy most.',
         ],
       },

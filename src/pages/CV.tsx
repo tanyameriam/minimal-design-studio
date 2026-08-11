@@ -153,7 +153,7 @@ const CV = () => {
                     <div class="job-company">Layrrrd (layrrrd.com)</div>
                     <div class="job-date">2026 to Present</div>
                     <ul>
-                      <li>Led design for a content curation product launched as a 9 day team challenge: <strong>15 paying customers and 126 freemium signups by day nine</strong></li>
+                      <li>Led design for a content curation product validated in 9 days: <strong>15 paying customers and 126 freemium signups by day nine</strong></li>
                       <li>Own the design system and brand; live and in active development with the same team</li>
                     </ul>
                   </div>
@@ -389,7 +389,7 @@ const CV = () => {
                   <span className="text-sm text-muted-foreground">2026 to Present</span>
                 </div>
                 <ul className="list-disc list-outside ml-5 text-muted-foreground text-sm space-y-1">
-                  <li>Led design for a content curation product launched as a 9 day team challenge: 15 paying customers and 126 freemium signups by day nine.</li>
+                  <li>Led design for a content curation product validated in 9 days: 15 paying customers and 126 freemium signups by day nine.</li>
                   <li>Own the design system and brand. Live and in active development with the same team.</li>
                 </ul>
               </div>

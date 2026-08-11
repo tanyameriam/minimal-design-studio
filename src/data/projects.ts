@@ -39,7 +39,7 @@ const projectList: Project[] = [
     year: '2026',
     status: 'live',
     outcome:
-      'Saving content is frictionless and going back to it never happens, so I led the design of the revisit loop and we shipped it in nine days.',
+      'Saving content is frictionless and going back to it never happens, so I led the design of the revisit loop, validated in nine days with paying customers.',
     chips: [
       '15 paying customers by day 9',
       '126 freemium signups',
