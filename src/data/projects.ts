@@ -1,6 +1,6 @@
 import { publishableProject } from './drafts';
 
-export type ProjectStatus = 'shipped' | 'concept' | 'self-initiated';
+export type ProjectStatus = 'shipped' | 'live' | 'concept' | 'self-initiated';
 
 export interface Project {
   /** Route slug. Null means no case study page yet. */
@@ -21,15 +21,30 @@ const projectList: Project[] = [
   {
     slug: 'brynq',
     title: 'BrynQ',
-    year: '[NEED: dates]',
+    year: '2023 - 26',
     status: 'shipped',
     outcome:
-      'Integration projects ran weeks late before a single line of code was written, so I moved the bottleneck upstream.',
+      'Integration projects ran weeks late before a single line of code was written, so I moved the bottleneck upstream. One workstream from an ongoing role.',
     chips: [
-      '[NEED: setup time]',
+      '6 months to 1 week per interface',
       'Requirements moved in-product',
       'Templates to self-serve setup',
       'Dev-approved review flow',
+    ],
+    published: true,
+  },
+  {
+    slug: 'layrrrd',
+    title: 'Layrrrd',
+    year: '2026',
+    status: 'live',
+    outcome:
+      'Saving content is frictionless and going back to it never happens, so I led the design of the revisit loop and we shipped it in nine days.',
+    chips: [
+      '15 paying customers by day 9',
+      '126 freemium signups',
+      '4 capture channels, 1 pipeline',
+      'Live at layrrrd.com',
     ],
     published: true,
   },

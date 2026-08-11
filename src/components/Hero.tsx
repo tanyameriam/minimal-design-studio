@@ -24,7 +24,8 @@ const Hero = () => {
           style={{ transitionDelay: '160ms' }}
         >
           Currently designing HR and payroll integration flows at BrynQ, a B2B
-          iPaaS platform. Based in the Netherlands.
+          iPaaS platform, and building Layrrrd, a live content product. Based in
+          the Netherlands.
         </p>
       </div>
     </section>

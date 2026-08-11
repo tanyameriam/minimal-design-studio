@@ -9,7 +9,7 @@ const Work = () => {
   return (
     <section id="work" className="px-6 md:px-10 lg:px-16 pb-24 md:pb-32">
       <div className="mx-auto max-w-3xl">
-        <p className="label text-ink-400 mb-2">Projects ( 2021 - 25 )</p>
+        <p className="label text-ink-400 mb-2">Projects ( 2021 - 26 )</p>
 
         <div>
           {published.map((project, index) => (

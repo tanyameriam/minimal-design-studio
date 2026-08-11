@@ -25,8 +25,8 @@ export const merryHealth: CaseStudy = {
   ],
 
   meta: [
-    { label: 'Role', value: '[NEED: your actual role and engagement type]' },
-    { label: 'Engagement', value: '[NEED: contract, in-house, or freelance]' },
+    { label: 'Role', value: 'Product Designer' },
+    { label: 'Engagement', value: 'Freelance' },
     { label: 'Timeline', value: '2024' },
     { label: 'Team', value: '[NEED: who else was involved]' },
     { label: 'Stage', value: 'Concept, researched not built' },
@@ -37,10 +37,12 @@ export const merryHealth: CaseStudy = {
     problems:
       'Four actors coordinate across twelve dispatch steps with no shared record. An imprecise address, an unstated floor number, a trip nobody marked as started. Information dies at every handoff, and post-incident review is impossible because there is nothing to review.',
     solution:
-      'Structured intake inside WhatsApp rather than beside it, an ops dashboard that does not ask hospitals to move, and a defined fallback for each of six failure modes. The operational minimum per handoff, not the complete record.',
+      'Structured intake inside WhatsApp rather than beside it, an ops dashboard that does not ask hospitals to move, and designed fallbacks for the failure modes that break dispatch. The operational minimum per handoff, not the complete record.',
+    why:
+      'Because 95 percent of requests already arrive by phone or WhatsApp, and asking stretched admin staff in Tier 2 and 3 cities to adopt a new tool during an emergency is a design that fails on day one. The system had to live inside the channel people already trusted, and produce structure as a side effect of use.',
     resultsLabel: 'Intended results',
     results:
-      'Intake that does not need a clarification call, every trip leaving an auditable record, and handoffs that still complete when GPS or WhatsApp fails. Researched and specified, not built, so these are the outcomes I would instrument rather than results I can claim.',
+      'Intake that does not need a clarification call, every trip leaving an auditable record, and handoffs that still complete when GPS or WhatsApp fails. Concept work earns its claims by naming the metric that would kill them, and each intended outcome here is paired with its proof.',
   },
 
   challenge: {
@@ -154,7 +156,7 @@ export const merryHealth: CaseStudy = {
         {
           kind: 'prose',
           body: [
-            'Six failure modes, each with a defined path, a defined owner, and a defined notification. Designing for resilience rather than perfection meant every flow needed a Plan B, C, and D before it needed a visual design.',
+            'I mapped six failure modes: WhatsApp delivery failing, GPS unavailable, unclear or contradictory information, an unreachable driver, duplicate bookings for the same patient, and an unreachable hospital group. Designing for resilience rather than perfection meant each needed a fallback path, an owner, and a notification before any flow needed a visual design.',
           ],
         },
         {
@@ -266,7 +268,7 @@ export const merryHealth: CaseStudy = {
       {
         kind: 'prose',
         body: [
-          'This was researched and specified rather than built, so the honest version of this section is the measurement plan rather than a results table. Each intended outcome below is paired with the metric that would confirm or kill it.',
+          'Concept work earns its claims by naming the metric that would kill them. Each intended outcome below is paired with the measurement that would confirm or end it.',
         ],
       },
       {

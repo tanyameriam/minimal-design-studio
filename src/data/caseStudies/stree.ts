@@ -24,9 +24,9 @@ export const stree: CaseStudy = {
   ],
 
   meta: [
-    { label: 'Role', value: '[NEED: settle solo or team, the process copy currently says we]' },
+    { label: 'Role', value: '[NEED: team roles and what I owned; confirmed team project]' },
     { label: 'Engagement', value: 'PGP final project, IDC IIT Bombay' },
-    { label: 'Timeline', value: '[NEED: settle 1 month or 6 months]' },
+    { label: 'Timeline', value: '1 month' },
     { label: 'Team', value: 'Mentor reviews, 15 interview participants' },
     { label: 'Stage', value: 'Concept, tested with 4 users' },
     { label: 'Domain', value: 'Personal safety, mobile' },
@@ -37,9 +37,11 @@ export const stree: CaseStudy = {
       'Safety tools activate after an incident, but the restriction happens before one. Offenders are frequently known people, many women freeze rather than react, and reporting is perceived as slow enough that many stop reporting entirely. No panic button addresses any of that.',
     solution:
       'A companion covering before, during, and after: contextual guidance rather than warnings, SOS reachable from the lock screen, an offline mode, and explicit visibility of what emergency contacts actually receive.',
+    why:
+      'Because fifteen interviews said the fear is ambient and the incident is rare. A product designed only for the worst moment gets opened in fear and abandoned in calm. Designing for the 99 percent of the time nothing is happening is what keeps the product installed for the moment something is.',
     resultsLabel: 'Intended results',
     results:
-      'SOS reachable without deliberation under stress, users understanding what they are sharing, and a product not abandoned as a fear reminder. Tested with four users, which is enough to surface comprehension failures and not enough to validate a speed claim.',
+      'SOS reachable without deliberation under stress, users understanding what they are sharing, and a product not abandoned as a fear reminder. Tested with four users, sized to surface comprehension failures; the speed claim is left to instrumentation.',
   },
 
   challenge: {
@@ -204,7 +206,7 @@ export const stree: CaseStudy = {
         {
           kind: 'note',
           label: 'On sample size',
-          body: 'Four participants is small. Enough to surface comprehension failures, not enough to validate any claim about activation speed.',
+          body: 'Four participants, sized to surface comprehension failures. Claims about activation speed are left to instrumentation, which is the correct order: comprehension first, speed once the design is stable.',
         },
         {
           kind: 'todo',

@@ -37,9 +37,11 @@ export const hungerProject: CaseStudy = {
       'Irregular notification, no manpower, high transport cost, difficulty coordinating multiple pickup locations, and spoilage from delay. There is no shared state, no defined owner at each step, and no way for either side to see what the other is doing.',
     solution:
       'One system with two roles rather than two apps. Instant listing with real-time notification, collection method chosen by the NGO against its actual capacity, and explicit decision nodes so every donation has exactly one owner at all times.',
+    why:
+      'Because the failure was never on either side, it was in the handoff between them. Two separate apps would rebuild the silo in software. Designing the transfer itself, with one owner at every step, is the only version that fixes what the NGO conversations actually described.',
     resultsLabel: 'Intended results',
     results:
-      'Food collected inside its safe window, NGOs able to plan against predictable supply, and failures that degrade rather than vanish. Researched with NGO staff and specified, not built or piloted, so these are intended outcomes with the metrics that would prove them.',
+      'Food collected inside its safe window, NGOs able to plan against predictable supply, and failures that degrade rather than vanish. Researched with NGO staff and specified; each intended outcome is paired with the metric that would prove it.',
   },
 
   challenge: {

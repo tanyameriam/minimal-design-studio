@@ -19,8 +19,10 @@ const About = () => {
           <p>
             At BrynQ I design HR and payroll integration flows, which means most of my
             time goes to workflow logic, data mappings, and the coordination between
-            teams that has to happen before a screen is worth drawing. I also guide a
-            junior designer and own how our Figma files are structured.
+            teams that has to happen before a screen is worth drawing. I also own how
+            our Figma files are structured. Alongside that, I lead design on Layrrrd,
+            a live content curation product our team took from first commit to paying
+            customers in nine days.
           </p>
           <p>
             Outside work I co-organise{' '}
@@ -33,7 +35,7 @@ const About = () => {
               Design Reimagined Utrecht
             </a>
             , a design community that runs sessions and workshops in the Netherlands.
-            I am currently finishing a Master&rsquo;s in UX with a specialisation in AI.
+            I hold a Master&rsquo;s in UX with a specialisation in AI, completed in 2026.
           </p>
         </div>
       </div>

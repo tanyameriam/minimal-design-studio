@@ -128,6 +128,7 @@ export const publishable = (study: CaseStudy): CaseStudy => {
       ...study.summary,
       problems: clean(study.summary.problems),
       solution: clean(study.summary.solution),
+      why: clean(study.summary.why),
       results: clean(study.summary.results),
     },
     challenge: {

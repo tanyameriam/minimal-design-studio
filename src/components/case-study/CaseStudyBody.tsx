@@ -49,13 +49,14 @@ const ProcessSection = ({
 
 const CaseStudyBody = ({ study, onOpenFigure }: CaseStudyBodyProps) => (
   <div className="mt-16 space-y-14 md:mt-20 md:space-y-20">
-    {/* Problems, solution, results. The whole case in about 140 words. */}
-    <Band>
-      <dl className="grid gap-10 md:grid-cols-3 md:gap-8">
+    {/* The quick pitch. A reader who stops here still has the whole case. */}
+    <Band label="Quick pitch">
+      <dl className="grid gap-10 md:grid-cols-2 md:gap-x-8 md:gap-y-12">
         {(
           [
-            ['Problems', study.summary.problems],
-            ['Solution', study.summary.solution],
+            ['The problem', study.summary.problems],
+            ['The solution', study.summary.solution],
+            ['Why this way', study.summary.why],
             [study.summary.resultsLabel, study.summary.results],
           ] as const
         ).map(([term, value]) => (
@@ -65,10 +66,14 @@ const CaseStudyBody = ({ study, onOpenFigure }: CaseStudyBodyProps) => (
           </div>
         ))}
       </dl>
+      <p className="mt-10 text-sm leading-relaxed text-ink-400">
+        Short on time? The pitch above is the whole case. The journey below is how it
+        actually went.
+      </p>
     </Band>
 
-    {/* Process. Opens with the question, then the problem and intervention pairs. */}
-    <Band label="Process">
+    {/* The full journey. Opens with the question, then the problem and intervention pairs. */}
+    <Band label="The full journey">
       <h2 className="max-w-3xl text-[1.75rem] md:text-[2.5rem] leading-[1.1]">
         {study.challenge.question}
       </h2>

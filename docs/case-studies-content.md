@@ -1,5 +1,9 @@
 # Case Study Content System — Two Views
 
+> **Superseded, August 2026.** The data files under `src/data/caseStudies/` are now
+> the source of truth for all case study copy. This document reflects the
+> pre-rewrite state and is kept for its method sections.
+
 Working document. Rewrites every case study into two views, written for senior-level
 signal and outcome-based framing.
 

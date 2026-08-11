@@ -1,8 +1,8 @@
-export type Status = 'shipped' | 'built-not-measured' | 'concept' | 'self-initiated';
+export type Status = 'shipped' | 'live' | 'concept' | 'self-initiated';
 
 export const statusLabel: Record<Status, string> = {
   shipped: 'Shipped',
-  'built-not-measured': 'Built, not measured',
+  live: 'Live',
   concept: 'Concept',
   'self-initiated': 'Self-initiated concept',
 };
@@ -55,12 +55,15 @@ export interface MetaItem {
 }
 
 /**
- * The three-block summary that sits above the process.
- * A reader who stops here should still have the whole case.
+ * The quick pitch that sits above the full journey.
+ * A reader who stops here should still have the whole case:
+ * the problem, the solution, why that solution, and what came of it.
  */
 export interface Summary {
   problems: string;
   solution: string;
+  /** Why this approach and not another. The pitch's judgment line. */
+  why: string;
   /** "Results" for shipped work, "Intended results" for everything else. */
   resultsLabel: string;
   results: string;

@@ -1,6 +1,7 @@
 import type { CaseStudy } from './types';
 import { publishable } from '../drafts';
 import { brynq } from './brynq';
+import { layrrrd } from './layrrrd';
 import { merryHealth } from './merryHealth';
 import { stree } from './stree';
 import { hungerProject } from './hungerProject';
@@ -12,7 +13,7 @@ export * from './types';
  * Everything passes through `publishable`, which strips the draft markers the
  * source files carry. See src/data/drafts.ts.
  */
-export const caseStudyList: CaseStudy[] = [brynq, merryHealth, stree, hungerProject].map(
+export const caseStudyList: CaseStudy[] = [brynq, layrrrd, merryHealth, stree, hungerProject].map(
   publishable
 );
 

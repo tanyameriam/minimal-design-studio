@@ -9,7 +9,7 @@ export const brynq: CaseStudy = {
   title: 'BrynQ',
   headline:
     'Turning the spreadsheet every integration started with into the product surface it should have been',
-  year: '[NEED: dates]',
+  year: '2023 to present',
   status: 'shipped',
   tagline: 'B2B iPaaS . HR and payroll integrations',
   cover,
@@ -17,14 +17,15 @@ export const brynq: CaseStudy = {
   intro: [
     'BrynQ is a B2B integration platform connecting HRM and payroll systems across the EU, moving and transforming employee data between applications. When I joined it was still operating under its legacy identity, SalureConnect. Technically it worked. The problem was everything that happened before the technology got involved.',
     'Every integration began with a requirements document called a Scenario: an Excel file describing which fields map to which, and how data transforms in between. Interface developers gathered these from customers across calls, follow-ups, and clarification threads. The file was the contract, the specification, and the project tracker at once, and it lived entirely outside the product. As BrynQ scaled, that stopped being a documentation problem and became a product one.',
+    'I have been the product designer at BrynQ since 2023, working across the integration platform. This case study goes deep on one workstream, the requirements wizard and the template system it enabled, because it best shows how I work. The role is wider than this story, and the ongoing parts of it are summarised at the end.',
   ],
 
   meta: [
     { label: 'Role', value: 'Product Designer. Research, workflow design, UI systems' },
     { label: 'Engagement', value: 'In-house, product team' },
-    { label: 'Timeline', value: '[NEED: dates]' },
+    { label: 'Timeline', value: '2023 to present' },
     { label: 'Team', value: 'Product Owner, interface team, engineering, customer success' },
-    { label: 'Stage', value: 'Scaling B2B platform' },
+    { label: 'Stage', value: 'Ongoing role. This study covers one workstream' },
     { label: 'Domain', value: 'iPaaS, HR and payroll' },
   ],
 
@@ -33,9 +34,11 @@ export const brynq: CaseStudy = {
       'Customers frequently lacked technical clarity about their own systems. Developers spent hours translating business intent into technical mappings. Incomplete information cost weeks, nobody could say where a project stood, and nothing learned on one integration transferred to the next.',
     solution:
       'A three-phase requirements wizard inside the platform, mirroring the workflow the interface team already used, with review as a system state rather than an email thread. Structured data first, optimisation second.',
+    why:
+      'Because the team already thought in phases and the business ran on the Scenario. Digitising the existing workflow before improving it bought adoption and structured data at once. A cleverer redesign would have been rejected by the people it needed most, and there was no data yet to design the clever version from.',
     resultsLabel: 'Results',
     results:
-      'Requirements moved into the product. Incomplete information surfaced at submission instead of mid-build, and the structured data the wizard produced made templates possible, shifting setup from developer-led toward self-serve. [NEED: completion time before and after]',
+      'An interface build that took up to six months now ships in about one week when started from a template. Incomplete information surfaces at submission instead of mid-build, customer feedback has been positive, and setup shifted from developer-led toward self-serve.',
   },
 
   challenge: {
@@ -94,10 +97,6 @@ export const brynq: CaseStudy = {
             },
           ],
         },
-        {
-          kind: 'todo',
-          body: 'Add the number: typical integration lead time, and roughly how much of it was pre-development.',
-        },
       ],
     },
     {
@@ -146,7 +145,7 @@ export const brynq: CaseStudy = {
         {
           kind: 'prose',
           body: [
-            'Once patterns emerged across structured Scenario data, templates became possible for common system combinations. Templates cut input time further and moved BrynQ from a fully custom, developer-driven model toward self-serve setup. That is the payoff of digitising before optimising: the boring first version generated the asset the interesting second version needed.',
+            'Once patterns emerged across structured Scenario data, templates became possible for common system combinations. An interface build that previously took up to six months now ships in about one week when started from a template, and BrynQ moved from a fully custom, developer-driven model toward self-serve setup. That is the payoff of digitising before optimising: the boring first version generated the asset the interesting second version needed.',
             'The same foundation enabled lightweight project management and AI-assisted interface creation. What began as digitising an Excel file became a cornerstone of the platform’s modernisation.',
           ],
         },
@@ -189,24 +188,20 @@ export const brynq: CaseStudy = {
       {
         kind: 'prose',
         body: [
-          'Without touching core integration logic, the wizard reduced friction across the process. Scenario completion time dropped, missing information surfaced earlier, and internal coordination became visible. Most importantly, structured requirements data now lived inside the platform, which is what made everything after it possible.',
+          'Without touching core integration logic, the wizard changed where integration time went. An interface build that took up to six months now ships in about one week when started from a template. Missing information surfaces at submission rather than mid-build, internal coordination became visible, and customer feedback on the template-based setup has been positive. Most importantly, structured requirements data now lives inside the platform, which is what made everything after it possible.',
         ],
       },
       {
         kind: 'note',
-        label: 'On measurement',
-        body: 'We did not instrument this properly at launch, which I would correct now. The metric I would put on it today is time from request to development-ready, split by whether the customer had integrated with us before.',
-      },
-      {
-        kind: 'todo',
-        body: 'Replace the paragraph above with real figures from the Product Owner: completion time before and after, rework rate, and percentage of integrations now started from a template.',
+        label: 'What I would measure next',
+        body: 'The next figures worth putting on this are the requirements rework rate and the share of new integrations that start from a template. [NEED: rework rate and share of integrations started from templates]',
       },
     ],
     callouts: [
       {
-        title: 'Requirements moved',
-        emphasis: 'in-product',
-        body: 'The Scenario stopped living in email and spreadsheets, and became a record the platform owned.',
+        title: 'Build time, from',
+        emphasis: '6 months to 1 week',
+        body: 'Templates for repeat system combinations turned interface setup from a months-long custom build into about a week of work.',
       },
       {
         title: 'Gaps surfaced',
@@ -216,7 +211,7 @@ export const brynq: CaseStudy = {
       {
         title: 'Setup shifted toward',
         emphasis: 'self-serve',
-        body: 'Structured data made templates possible for repeat system combinations.',
+        body: 'Structured data made templates possible, and customers responded well to starting from one.',
       },
     ],
   },
@@ -232,12 +227,13 @@ export const brynq: CaseStudy = {
         kind: 'prose',
         body: [
           'Digitising before optimising is unglamorous, and it was right. You cannot template patterns you have not captured yet. The harder lesson was that in enterprise B2B, adoption and governance decide whether a design succeeds more than usability does. I spent as much time aligning the interface team and the Product Owner as I did designing screens.',
-          'What I would change: instrument before shipping, name the adoption metric on day one rather than after, and test the unassisted path, the one my research never actually saw.',
+          'What I would change: name the adoption metric on day one rather than after, and test the unassisted path, the one my research never actually saw. The measurement lesson stuck. On Layrrrd, the next product I led design on, analytics ran from the first day.',
         ],
       },
       {
-        kind: 'todo',
-        body: 'Working across the team is on your CV and in none of your case studies, and it is your clearest seniority evidence. Cover: guiding a junior designer and through what work; how you reviewed and what you standardised; the Figma file structure you own and the problem it solved; how you worked with POs and PMs to sequence design against product priorities; and the internal task-tracking feature you led design on, what it was for, and what changed for the team using it.',
+        kind: 'note',
+        label: 'Also at BrynQ',
+        body: 'The wizard is one workstream of an ongoing role. Alongside it I own the Figma file structure and design governance for the product, run UX audits across the integration flows, work with Product Owners and Product Managers to sequence design against product priorities, and led design for an internal task-tracking feature the team runs its work on. [NEED: other BrynQ workstreams worth naming]',
       },
     ],
   },

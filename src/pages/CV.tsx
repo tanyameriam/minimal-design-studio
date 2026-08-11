@@ -14,7 +14,7 @@ const CV = () => {
         <!DOCTYPE html>
         <html>
         <head>
-          <title>Tanya Sunny - UX Designer</title>
+          <title>Tanya Sunny - Product Designer</title>
           <style>
             @page { size: A4; margin: 0; }
             * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -112,11 +112,11 @@ const CV = () => {
             <div class="header">
               <div class="header-left">
                 <h1>Tanya Sunny</h1>
-                <div class="title">UX/UI Designer</div>
+                <div class="title">Product Designer</div>
                 <div class="summary">
-                  UX Designer with <strong>5+ years of experience</strong> in UI execution, UX auditing, and workflow design. 
-                  Currently at BrynQ, improving usability within complex HR/Payroll integration flows. 
-                  Strong technical foundation with focus on AI-integrated UX systems.
+                  Product Designer with <strong>5+ years of experience</strong> in UI execution, UX auditing, and workflow design.
+                  Currently at BrynQ, improving usability within complex HR/Payroll integration flows, and leading design on Layrrrd, a live content product.
+                  MDes in UX with an AI specialization. Strong technical foundation.
                 </div>
               </div>
               <div class="header-right">
@@ -135,10 +135,11 @@ const CV = () => {
                   <div class="section-title">Work Experience</div>
                   
                   <div class="job">
-                    <div class="job-title">UX/UI Designer</div>
+                    <div class="job-title">Product Designer</div>
                     <div class="job-company">BrynQ, Netherlands</div>
                     <div class="job-date">2023 to Present</div>
                     <ul>
+                      <li>Designed the interface requirements wizard and template system that <strong>cut interface build time from 6 months to 1 week</strong></li>
                       <li>Design and improve user flows, <strong>simplifying complex configuration tasks</strong></li>
                       <li>Conduct UX audits and propose iterative improvements</li>
                       <li>Apply systems thinking to data mappings and interface states</li>
@@ -146,7 +147,26 @@ const CV = () => {
                       <li>Contribute to <strong>AI-assisted workflows</strong> for setup and validation</li>
                     </ul>
                   </div>
-                  
+
+                  <div class="job">
+                    <div class="job-title">Design Lead</div>
+                    <div class="job-company">Layrrrd (layrrrd.com)</div>
+                    <div class="job-date">2026 to Present</div>
+                    <ul>
+                      <li>Led design for a content curation product launched as a 9 day team challenge: <strong>15 paying customers and 126 freemium signups by day nine</strong></li>
+                      <li>Own the design system and brand; live and in active development with the same team</li>
+                    </ul>
+                  </div>
+
+                  <div class="job">
+                    <div class="job-title">Product Designer (Freelance)</div>
+                    <div class="job-company">Merry Health, India</div>
+                    <div class="job-date">2024</div>
+                    <ul>
+                      <li>Researched and specified a dispatch coordination system for emergency ambulance operations across hospitals, drivers, and patients</li>
+                    </ul>
+                  </div>
+
                   <div class="job">
                     <div class="job-title">UI Designer (Contract)</div>
                     <div class="job-company">Multiple Startups, India</div>
@@ -191,7 +211,7 @@ const CV = () => {
                   <div class="edu-item">
                     <div class="edu-title">Master's in UX (AI Specialization)</div>
                     <div class="edu-school">Jindal School of Art & Architecture</div>
-                    <div class="edu-date">2025 to 2026 (Ongoing)</div>
+                    <div class="edu-date">2025 to 2026</div>
                   </div>
                   <div class="edu-item">
                     <div class="edu-title">PG Programme in UX Design</div>
@@ -294,7 +314,7 @@ const CV = () => {
           {/* Header */}
           <header className="mb-12">
             <h1 className="font-sans text-3xl md:text-4xl mb-2">Tanya Sunny</h1>
-            <p className="text-lg text-muted-foreground mb-6">UX/UI Designer</p>
+            <p className="text-lg text-muted-foreground mb-6">Product Designer</p>
             
             <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
               <span className="flex items-center gap-1.5">
@@ -316,10 +336,10 @@ const CV = () => {
           <section className="mb-12">
             <h2 className="font-sans text-lg mb-4 pb-2 border-b border-border">Profile</h2>
             <p className="text-muted-foreground leading-relaxed">
-              UX/UI Designer with 5 years of professional design experience and a broader corporate background since 2018. 
-              Experienced in UI execution, UX auditing, and workflow design for digital products. Currently working on BrynQ, 
-              an HR/Payroll integration product, focusing on improving usability, clarity, and decision-making within complex 
-              system-driven flows. Strong technical foundation and academic focus on UX for AI-supported systems.
+              Product Designer with 5 years of professional design experience and a broader corporate background since 2018.
+              Experienced in UI execution, UX auditing, and workflow design for digital products. Currently working on BrynQ,
+              an HR/Payroll integration product, and leading design on Layrrrd, a live content curation product.
+              MDes in UX with a specialisation in AI, completed 2026. Strong technical foundation.
             </p>
           </section>
 
@@ -342,19 +362,49 @@ const CV = () => {
               <div>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
                   <div>
-                    <h3 className="font-medium text-lg">UX/UI Designer</h3>
+                    <h3 className="font-medium text-lg">Product Designer</h3>
                     <p className="text-muted-foreground text-sm">BrynQ, Netherlands</p>
                   </div>
                   <span className="text-sm text-muted-foreground">2023 to Present</span>
                 </div>
                 <ul className="list-disc list-outside ml-5 text-muted-foreground text-sm space-y-1">
+                  <li>Designed the interface requirements wizard and template system that cut interface build time from 6 months to 1 week.</li>
                   <li>Design and improve user flows within the BrynQ product, simplifying complex configuration and operational tasks.</li>
                   <li>Identify usability issues through UX audits and propose iterative improvements.</li>
                   <li>Apply systems thinking to structure interactions around data mappings, transformations, and interface states.</li>
-                  <li>Support design governance by guiding a junior designer and maintaining a clear Figma file structure.</li>
+                  <li>Support design governance by owning and maintaining a clear Figma file structure.</li>
                   <li>Collaborate with Product Owners and Product Managers to align design work with product priorities.</li>
                   <li>Led design for an internal task-tracking feature to improve clarity around actions and responsibilities.</li>
                   <li>Contribute to AI-assisted workflows that support users during setup and validation processes.</li>
+                </ul>
+              </div>
+
+              {/* Layrrrd */}
+              <div>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
+                  <div>
+                    <h3 className="font-medium text-lg">Design Lead</h3>
+                    <p className="text-muted-foreground text-sm">Layrrrd (layrrrd.com)</p>
+                  </div>
+                  <span className="text-sm text-muted-foreground">2026 to Present</span>
+                </div>
+                <ul className="list-disc list-outside ml-5 text-muted-foreground text-sm space-y-1">
+                  <li>Led design for a content curation product launched as a 9 day team challenge: 15 paying customers and 126 freemium signups by day nine.</li>
+                  <li>Own the design system and brand. Live and in active development with the same team.</li>
+                </ul>
+              </div>
+
+              {/* Merry Health */}
+              <div>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
+                  <div>
+                    <h3 className="font-medium text-lg">Product Designer (Freelance)</h3>
+                    <p className="text-muted-foreground text-sm">Merry Health, India</p>
+                  </div>
+                  <span className="text-sm text-muted-foreground">2024</span>
+                </div>
+                <ul className="list-disc list-outside ml-5 text-muted-foreground text-sm space-y-1">
+                  <li>Researched and specified a dispatch coordination system for emergency ambulance operations across hospitals, drivers, and patients.</li>
                 </ul>
               </div>
 
@@ -427,7 +477,7 @@ const CV = () => {
             <h2 className="font-sans text-lg mb-6 pb-2 border-b border-border">Education</h2>
             <div className="space-y-4">
               <div>
-                <h3 className="font-medium text-lg">Master's in UX (Specialization: AI) <span className="text-muted-foreground font-normal">(Ongoing)</span></h3>
+                <h3 className="font-medium text-lg">Master's in UX (Specialization: AI)</h3>
                 <p className="text-sm text-muted-foreground">Jindal School of Art & Architecture, 2025 to 2026</p>
               </div>
               <div>
