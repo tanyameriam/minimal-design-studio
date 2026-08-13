@@ -1,10 +1,24 @@
-import type { Block } from '@/data/caseStudies';
+import type { Block, BlockWidth } from '@/data/caseStudies';
+import BeforeAfter from './BeforeAfter';
 import Figure from './Figure';
+
+const widthClass = (width?: BlockWidth) =>
+  width === 'wide' ? 'block-wide' : width === 'full' ? 'block-full' : '';
 
 interface BlocksProps {
   blocks: Block[];
   onOpenFigure: (src: string, alt: string) => void;
+  /**
+   * Step sections indent their body under the numbered heading. Wide and
+   * full media escape the indent so the breakout math stays centered on
+   * the reading column.
+   */
+  indent?: boolean;
 }
+
+const breaksOut = (block: Block): boolean =>
+  (block.kind === 'figures' || block.kind === 'beforeAfter') &&
+  (block.width === 'wide' || block.width === 'full');
 
 const BlockRenderer = ({
   block,
@@ -41,7 +55,9 @@ const BlockRenderer = ({
           {block.items.map((item) => (
             <li key={item.title} className="border-b border-border py-5">
               <p className="text-base">{item.title}</p>
-              <p className="mt-2 text-base leading-relaxed text-ink-600">{item.body}</p>
+              {item.body && (
+                <p className="mt-2 text-base leading-relaxed text-ink-600">{item.body}</p>
+              )}
             </li>
           ))}
         </ul>
@@ -102,13 +118,29 @@ const BlockRenderer = ({
         </div>
       );
 
-    case 'figures':
+    case 'figures': {
+      const layout =
+        block.items.length > 1 ? 'grid gap-6 sm:grid-cols-2' : block.width ? '' : 'max-w-2xl';
       return (
-        <div className={block.items.length > 1 ? 'grid gap-6 sm:grid-cols-2' : 'max-w-2xl'}>
+        <div className={`${layout} ${widthClass(block.width)}`.trim()}>
           {block.items.map((f) => (
             <Figure key={f.src} {...f} onOpen={onOpenFigure} />
           ))}
         </div>
+      );
+    }
+
+    case 'beforeAfter':
+      return (
+        <BeforeAfter
+          before={block.before}
+          after={block.after}
+          beforeLabel={block.beforeLabel}
+          afterLabel={block.afterLabel}
+          caption={block.caption}
+          width={block.width}
+          onOpen={onOpenFigure}
+        />
       );
 
     case 'note':
@@ -132,10 +164,12 @@ const BlockRenderer = ({
   }
 };
 
-const Blocks = ({ blocks, onOpenFigure }: BlocksProps) => (
+const Blocks = ({ blocks, onOpenFigure, indent }: BlocksProps) => (
   <div className="space-y-8">
     {blocks.map((block, i) => (
-      <BlockRenderer key={i} block={block} onOpenFigure={onOpenFigure} />
+      <div key={i} className={indent && !breaksOut(block) ? 'md:pl-[3.25rem]' : undefined}>
+        <BlockRenderer block={block} onOpenFigure={onOpenFigure} />
+      </div>
     ))}
   </div>
 );

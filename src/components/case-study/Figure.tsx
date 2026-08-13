@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { Figure as FigureData } from '@/data/caseStudies';
+import FadeInImage from '@/components/FadeInImage';
 import { useReveal } from '@/hooks/use-reveal';
 
 interface FigureProps extends FigureData {
@@ -20,7 +21,7 @@ const Figure = ({ src, alt, caption, reveal, onOpen }: FigureProps) => {
             className="block w-full cursor-zoom-in border border-border bg-card"
             aria-label={`Enlarge: ${alt}`}
           >
-            <img src={src} alt={alt} loading="lazy" decoding="async" className="w-full" />
+            <FadeInImage src={src} alt={alt} loading="lazy" decoding="async" className="w-full" />
           </button>
           {(caption || reveal) && (
             <figcaption className="mt-3 flex items-start justify-between gap-6 text-sm leading-relaxed text-ink-500">

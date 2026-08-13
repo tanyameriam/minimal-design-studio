@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { ExternalLink, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { ChevronLeft, ChevronRight, ExternalLink, X } from 'lucide-react';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import splineFrogs from '@/assets/spline-frogs.png';
 import spline3dRoom from '@/assets/spline-3d-room.png';
@@ -45,10 +45,11 @@ const splineProjects = [
 
 type Tab = 'all' | '3d' | 'character' | 'charcoal';
 
-interface LightboxImage {
-  src: string;
-  title: string;
-}
+/** Every image the lightbox can show, in display order, for prev/next. */
+const gallery = [...characterSketches, ...charcoalSketches].map((s) => ({
+  src: s.thumbnail,
+  title: s.title,
+}));
 
 const ImageCard = ({ 
   src, 
@@ -80,7 +81,8 @@ const ImageCard = ({
 
 const Explorations = () => {
   const [activeTab, setActiveTab] = useState<Tab>('all');
-  const [lightboxImage, setLightboxImage] = useState<LightboxImage | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const lightboxImage = lightboxIndex !== null ? gallery[lightboxIndex] : null;
 
   const totalCount = splineProjects.length + characterSketches.length + charcoalSketches.length;
 
@@ -91,9 +93,24 @@ const Explorations = () => {
     { id: 'charcoal' as Tab, label: 'Charcoal', count: charcoalSketches.length },
   ];
 
-  const openLightbox = (src: string, title: string) => {
-    setLightboxImage({ src, title });
+  const openLightbox = (src: string) => {
+    setLightboxIndex(gallery.findIndex((g) => g.src === src));
   };
+
+  const step = (delta: number) => {
+    setLightboxIndex((i) => (i === null ? i : (i + delta + gallery.length) % gallery.length));
+  };
+
+  // Arrow keys browse the gallery while the lightbox is open.
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') step(-1);
+      if (e.key === 'ArrowRight') step(1);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [lightboxIndex]);
 
   return (
     <section id="explorations" className="px-6 md:px-10 lg:px-16 pb-24">
@@ -161,7 +178,7 @@ const Explorations = () => {
                       src={sketch.thumbnail}
                       title={sketch.title}
                       aspectRatio="aspect-[4/3]"
-                      onClick={() => openLightbox(sketch.thumbnail, sketch.title)}
+                      onClick={() => openLightbox(sketch.thumbnail)}
                     />
                   ))}
                 </div>
@@ -177,7 +194,7 @@ const Explorations = () => {
                       src={sketch.thumbnail}
                       title={sketch.title}
                       aspectRatio="aspect-[3/4]"
-                      onClick={() => openLightbox(sketch.thumbnail, sketch.title)}
+                      onClick={() => openLightbox(sketch.thumbnail)}
                     />
                   ))}
                 </div>
@@ -223,7 +240,7 @@ const Explorations = () => {
                   src={sketch.thumbnail}
                   title={sketch.title}
                   aspectRatio="aspect-square"
-                  onClick={() => openLightbox(sketch.thumbnail, sketch.title)}
+                  onClick={() => openLightbox(sketch.thumbnail)}
                 />
               ))}
             </div>
@@ -238,24 +255,21 @@ const Explorations = () => {
                   src={sketch.thumbnail}
                   title={sketch.title}
                   aspectRatio="aspect-[3/4]"
-                  onClick={() => openLightbox(sketch.thumbnail, sketch.title)}
+                  onClick={() => openLightbox(sketch.thumbnail)}
                 />
               ))}
             </div>
           )}
         </div>
 
-        {/* Footer */}
-        <p className="text-center text-muted-foreground text-xs mt-10 opacity-50">
-          Always learning, always experimenting.
-        </p>
       </div>
 
       {/* Lightbox Modal */}
-      <Dialog open={!!lightboxImage} onOpenChange={() => setLightboxImage(null)}>
+      <Dialog open={!!lightboxImage} onOpenChange={() => setLightboxIndex(null)}>
         <DialogContent className="max-w-4xl p-0 bg-transparent border-none shadow-none">
           <button
-            onClick={() => setLightboxImage(null)}
+            onClick={() => setLightboxIndex(null)}
+            aria-label="Close"
             className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center hover:bg-background transition-colors"
           >
             <X className="w-5 h-5" />
@@ -263,14 +277,31 @@ const Explorations = () => {
           {lightboxImage && (
             <div className="relative">
               <img
-              loading="lazy"
-              decoding="async"
+                loading="lazy"
+                decoding="async"
                 src={lightboxImage.src}
                 alt={lightboxImage.title}
                 className="w-full h-auto max-h-[85vh] object-contain rounded-lg"
               />
-              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent rounded-b-lg">
+              <button
+                onClick={() => step(-1)}
+                aria-label="Previous image"
+                className="absolute left-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/80 backdrop-blur-sm transition-colors hover:bg-background"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <button
+                onClick={() => step(1)}
+                aria-label="Next image"
+                className="absolute right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/80 backdrop-blur-sm transition-colors hover:bg-background"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+              <div className="absolute bottom-0 left-0 right-0 flex items-baseline justify-between p-4 bg-gradient-to-t from-black/60 to-transparent rounded-b-lg">
                 <p className="text-white font-medium">{lightboxImage.title}</p>
+                <p aria-live="polite" className="text-xs text-white/70 tabular-nums">
+                  {(lightboxIndex ?? 0) + 1} / {gallery.length}
+                </p>
               </div>
             </div>
           )}

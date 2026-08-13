@@ -1,6 +1,7 @@
 import { Suspense, lazy } from 'react';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import BackToTop from '@/components/BackToTop';
 import Index from './pages/Index';
 
 // Split the heavy routes out of the landing bundle.
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
+      <BackToTop />
     </BrowserRouter>
   </TooltipProvider>
 );

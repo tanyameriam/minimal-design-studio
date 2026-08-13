@@ -29,44 +29,57 @@ export const brynq: CaseStudy = {
     { label: 'Domain', value: 'iPaaS, HR and payroll' },
   ],
 
-  summary: {
-    problems:
-      'Customers frequently lacked technical clarity about their own systems. Developers spent hours translating business intent into technical mappings. Incomplete information cost weeks, nobody could say where a project stood, and nothing learned on one integration transferred to the next.',
-    solution:
-      'A three-phase requirements wizard inside the platform, mirroring the workflow the interface team already used, with review as a system state rather than an email thread. Structured data first, optimisation second.',
-    why:
-      'Because the team already thought in phases and the business ran on the Scenario. Digitising the existing workflow before improving it bought adoption and structured data at once. A cleverer redesign would have been rejected by the people it needed most, and there was no data yet to design the clever version from.',
-    resultsLabel: 'Results',
-    results:
-      'An interface build that took up to six months now ships in about one week when started from a template. Incomplete information surfaces at submission instead of mid-build, customer feedback has been positive, and setup shifted from developer-led toward self-serve.',
-  },
-
-  challenge: {
-    question:
-      'How do you replace a tool everyone depends on without asking anyone to change how they think?',
-    blocks: [
-      {
-        kind: 'prose',
-        body: [
-          'I wanted the process as it actually happened, not as it was described. That meant contextual interviews with the interface team and the Product Owner, a review of real Scenario files including the ones that had gone wrong, shadowing interface developers during live customer calls, and observing support conversations where the consequences of a bad Scenario surfaced weeks downstream.',
-          'The most useful thing I saw was what people did around the file. Developers annotated it. Customers sent screenshots alongside it. Threads referenced cell ranges. The Excel file was not a form being filled in. It was a coordination tool, and a poor one. Any digital replacement had to preserve that role before improving on it, which made adoption, not usability, the thing that would decide whether this worked.',
-        ],
-      },
-      {
-        kind: 'quote',
-        text: 'Most integration delays did not occur during development. They occurred before development even started.',
-      },
-      {
-        kind: 'note',
-        label: 'What this evidence did not cover',
-        body: 'Every session I observed had a developer present to interpret. I never watched a customer complete a Scenario alone, which is exactly the situation a self-serve wizard creates. That gap mattered later.',
-      },
-    ],
-  },
-
-  process: [
+  sections: [
     {
+      kind: 'pitch',
+      id: 'pitch',
+      label: 'Quick pitch',
+      footnote:
+        'Short on time? The pitch above is the whole case. The journey below is how it actually went.',
+      summary: {
+        problems:
+          'Customers frequently lacked technical clarity about their own systems. Developers spent hours translating business intent into technical mappings. Incomplete information cost weeks, nobody could say where a project stood, and nothing learned on one integration transferred to the next.',
+        solution:
+          'A three-phase requirements wizard inside the platform, mirroring the workflow the interface team already used, with review as a system state rather than an email thread. Structured data first, optimisation second.',
+        why:
+          'Because the team already thought in phases and the business ran on the Scenario. Digitising the existing workflow before improving it bought adoption and structured data at once. A cleverer redesign would have been rejected by the people it needed most, and there was no data yet to design the clever version from.',
+        resultsLabel: 'Results',
+        results:
+          'An interface build that took up to six months now ships in about one week when started from a template. Incomplete information surfaces at submission instead of mid-build, customer feedback has been positive, and setup shifted from developer-led toward self-serve.',
+      },
+    },
+
+    {
+      kind: 'journey',
+      id: 'journey',
+      label: 'The full journey',
+      question:
+        'How do you replace a tool everyone depends on without asking anyone to change how they think?',
+      blocks: [
+        {
+          kind: 'prose',
+          body: [
+            'I wanted the process as it actually happened, not as it was described. That meant contextual interviews with the interface team and the Product Owner, a review of real Scenario files including the ones that had gone wrong, shadowing interface developers during live customer calls, and observing support conversations where the consequences of a bad Scenario surfaced weeks downstream.',
+            'The most useful thing I saw was what people did around the file. Developers annotated it. Customers sent screenshots alongside it. Threads referenced cell ranges. The Excel file was not a form being filled in. It was a coordination tool, and a poor one. Any digital replacement had to preserve that role before improving on it, which made adoption, not usability, the thing that would decide whether this worked.',
+          ],
+        },
+        {
+          kind: 'quote',
+          text: 'Most integration delays did not occur during development. They occurred before development even started.',
+        },
+        {
+          kind: 'note',
+          label: 'What this evidence did not cover',
+          body: 'Every session I observed had a developer present to interpret. I never watched a customer complete a Scenario alone, which is exactly the situation a self-serve wizard creates. That gap mattered later.',
+        },
+      ],
+    },
+
+    {
+      kind: 'step',
+      id: 'step-01',
       index: '01',
+      nav: '01 Digitise the Scenario',
       problem: 'Requirements lived outside the product',
       intervention: 'so I digitised the Scenario before trying to improve it',
       blocks: [
@@ -96,11 +109,15 @@ export const brynq: CaseStudy = {
               caption: 'Fig 1. A real Scenario file, redacted. The contract, the spec, and the tracker in one place.',
             },
           ],
+          width: 'wide',
         },
       ],
     },
     {
+      kind: 'step',
+      id: 'step-02',
       index: '02',
+      nav: '02 Split along the seams',
       problem: 'The team already thought in phases',
       intervention: 'so the wizard split along the seams that were already there',
       blocks: [
@@ -120,11 +137,15 @@ export const brynq: CaseStudy = {
               caption: 'Fig 2. The wizard, abstracted. Three phases that already existed implicitly in how the team worked.',
             },
           ],
+          width: 'wide',
         },
       ],
     },
     {
+      kind: 'step',
+      id: 'step-03',
       index: '03',
+      nav: '03 Review as a state',
       problem: 'Approval lived in an email thread',
       intervention: 'so review became a state the system could hold',
       blocks: [
@@ -138,7 +159,10 @@ export const brynq: CaseStudy = {
       ],
     },
     {
+      kind: 'step',
+      id: 'step-04',
       index: '04',
+      nav: '04 Templates',
       problem: 'Structured data made repeat patterns visible',
       intervention: 'so templates moved setup toward self-serve',
       blocks: [
@@ -158,83 +182,98 @@ export const brynq: CaseStudy = {
               caption: 'Fig 3. Templates. Repeat system combinations became reusable starting points.',
             },
           ],
+          width: 'wide',
+        },
+      ],
+    },
+
+    {
+      kind: 'decision',
+      id: 'decisions',
+      label: 'What I considered and did not do',
+      items: [
+        {
+          option: 'Redesign the requirements process from scratch',
+          why: 'Highest ceiling, but it asked the interface team to abandon a mental model the business ran on. Adoption risk outweighed the gain, and with no structured data yet we would have been designing the optimisation blind.',
+        },
+        {
+          option: 'Guided or conversational intake instead of a form',
+          why: 'Better suited to customers who lack technical clarity, which was the actual root cause. Rejected for the MVP because it needed a structured data model that did not exist yet. It became viable later, once the wizard produced that model.',
+        },
+        {
+          option: 'Keep Excel, build validation tooling around it',
+          why: 'Cheapest, near-zero adoption cost. Rejected because the data would still live outside the platform, killing the review flow, the templates, and everything downstream.',
+        },
+      ],
+    },
+
+    {
+      kind: 'outcomes',
+      id: 'outcomes',
+      label: 'Outcomes',
+      heading: 'Requirements stopped being the thing that ran late',
+      blocks: [
+        {
+          kind: 'prose',
+          body: [
+            'Without touching core integration logic, the wizard changed where integration time went. An interface build that took up to six months now ships in about one week when started from a template. Missing information surfaces at submission rather than mid-build, internal coordination became visible, and customer feedback on the template-based setup has been positive. Most importantly, structured requirements data now lives inside the platform, which is what made everything after it possible.',
+          ],
+        },
+        {
+          kind: 'note',
+          label: 'What I would measure next',
+          body: 'The next figures worth putting on this are the requirements rework rate and the share of new integrations that start from a template.',
+        },
+        {
+          kind: 'todo',
+          body: 'Get the requirements rework rate and the share of integrations started from templates, then add the numbers to the note above.',
+        },
+      ],
+      callouts: [
+        {
+          title: 'Build time, from',
+          emphasis: '6 months to 1 week',
+          body: 'Templates for repeat system combinations turned interface setup from a months-long custom build into about a week of work.',
+        },
+        {
+          title: 'Gaps surfaced',
+          emphasis: 'at submission',
+          body: 'Incomplete information was caught before development started rather than mid-build.',
+        },
+        {
+          title: 'Setup shifted toward',
+          emphasis: 'self-serve',
+          body: 'Structured data made templates possible, and customers responded well to starting from one.',
+        },
+      ],
+    },
+
+    {
+      kind: 'reflection',
+      id: 'reflection',
+      label: 'Where I was wrong',
+      blocks: [
+        {
+          kind: 'todo',
+          body: 'Your paragraph. The strongest candidate is the research gap above: I assumed customers could self-serve the mapping definitions, because every session I observed had a developer present to interpret the questions. When customers filled it in alone, what actually happened? The research had shown me an assisted process and I designed for an unassisted one without noticing the substitution.',
+        },
+        {
+          kind: 'prose',
+          body: [
+            'Digitising before optimising is unglamorous, and it was right. You cannot template patterns you have not captured yet. The harder lesson was that in enterprise B2B, adoption and governance decide whether a design succeeds more than usability does. I spent as much time aligning the interface team and the Product Owner as I did designing screens.',
+            'What I would change: name the adoption metric on day one rather than after, and test the unassisted path, the one my research never actually saw. The measurement lesson stuck. On Layrrrd, the next product I led design on, analytics ran from the first day.',
+          ],
+        },
+        {
+          kind: 'note',
+          label: 'Also at BrynQ',
+          body: 'The wizard is one workstream of an ongoing role. Alongside it I own the Figma file structure and design governance for the product, run UX audits across the integration flows, work with Product Owners and Product Managers to sequence design against product priorities, and led design for an internal task-tracking feature the team runs its work on.',
+        },
+        {
+          kind: 'todo',
+          body: 'Decide whether other BrynQ workstreams are worth naming in the note above.',
         },
       ],
     },
   ],
-
-  rejected: {
-    title: 'What I considered and did not do',
-    items: [
-      {
-        option: 'Redesign the requirements process from scratch',
-        why: 'Highest ceiling, but it asked the interface team to abandon a mental model the business ran on. Adoption risk outweighed the gain, and with no structured data yet we would have been designing the optimisation blind.',
-      },
-      {
-        option: 'Guided or conversational intake instead of a form',
-        why: 'Better suited to customers who lack technical clarity, which was the actual root cause. Rejected for the MVP because it needed a structured data model that did not exist yet. It became viable later, once the wizard produced that model.',
-      },
-      {
-        option: 'Keep Excel, build validation tooling around it',
-        why: 'Cheapest, near-zero adoption cost. Rejected because the data would still live outside the platform, killing the review flow, the templates, and everything downstream.',
-      },
-    ],
-  },
-
-  outcomes: {
-    label: 'Outcomes',
-    heading: 'Requirements stopped being the thing that ran late',
-    blocks: [
-      {
-        kind: 'prose',
-        body: [
-          'Without touching core integration logic, the wizard changed where integration time went. An interface build that took up to six months now ships in about one week when started from a template. Missing information surfaces at submission rather than mid-build, internal coordination became visible, and customer feedback on the template-based setup has been positive. Most importantly, structured requirements data now lives inside the platform, which is what made everything after it possible.',
-        ],
-      },
-      {
-        kind: 'note',
-        label: 'What I would measure next',
-        body: 'The next figures worth putting on this are the requirements rework rate and the share of new integrations that start from a template. [NEED: rework rate and share of integrations started from templates]',
-      },
-    ],
-    callouts: [
-      {
-        title: 'Build time, from',
-        emphasis: '6 months to 1 week',
-        body: 'Templates for repeat system combinations turned interface setup from a months-long custom build into about a week of work.',
-      },
-      {
-        title: 'Gaps surfaced',
-        emphasis: 'at submission',
-        body: 'Incomplete information was caught before development started rather than mid-build.',
-      },
-      {
-        title: 'Setup shifted toward',
-        emphasis: 'self-serve',
-        body: 'Structured data made templates possible, and customers responded well to starting from one.',
-      },
-    ],
-  },
-
-  reflection: {
-    title: 'Where I was wrong',
-    blocks: [
-      {
-        kind: 'todo',
-        body: 'Your paragraph. The strongest candidate is the research gap above: I assumed customers could self-serve the mapping definitions, because every session I observed had a developer present to interpret the questions. When customers filled it in alone, what actually happened? The research had shown me an assisted process and I designed for an unassisted one without noticing the substitution.',
-      },
-      {
-        kind: 'prose',
-        body: [
-          'Digitising before optimising is unglamorous, and it was right. You cannot template patterns you have not captured yet. The harder lesson was that in enterprise B2B, adoption and governance decide whether a design succeeds more than usability does. I spent as much time aligning the interface team and the Product Owner as I did designing screens.',
-          'What I would change: name the adoption metric on day one rather than after, and test the unassisted path, the one my research never actually saw. The measurement lesson stuck. On Layrrrd, the next product I led design on, analytics ran from the first day.',
-        ],
-      },
-      {
-        kind: 'note',
-        label: 'Also at BrynQ',
-        body: 'The wizard is one workstream of an ongoing role. Alongside it I own the Figma file structure and design governance for the product, run UX audits across the integration flows, work with Product Owners and Product Managers to sequence design against product priorities, and led design for an internal task-tracking feature the team runs its work on. [NEED: other BrynQ workstreams worth naming]',
-      },
-    ],
-  },
 };

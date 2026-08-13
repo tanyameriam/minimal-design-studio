@@ -204,6 +204,25 @@
     opacity: 1;
     transform: none;
   }
+
+  /*
+   * Editorial width system. Case-study media can escape the centered
+   * max-w-3xl reading column: `block-wide` for diagrams and hero media,
+   * `block-full` for full bleed. The case-study article carries
+   * overflow-x-clip so neither can scroll the viewport sideways.
+   * Below lg the column is the viewport, so wide stays in-column.
+   */
+  .block-full {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+  }
+
+  @media (min-width: 1024px) {
+    .block-wide {
+      width: min(64rem, 100vw - 8rem);
+      margin-left: calc(50% - min(64rem, 100vw - 8rem) / 2);
+    }
+  }
 }
 
 @layer utilities {

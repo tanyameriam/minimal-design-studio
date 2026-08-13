@@ -1,4 +1,8 @@
 import { publishableProject } from './drafts';
+import brynqCover from '@/assets/brynq-cover.png';
+import merryHealthCover from '@/assets/merry-health-cover.png';
+import streeCover from '@/assets/stree-cover.png';
+import hungerProjectCover from '@/assets/hunger-project-cover.png';
 
 export type ProjectStatus = 'shipped' | 'live' | 'concept' | 'self-initiated';
 
@@ -14,6 +18,8 @@ export interface Project {
   outcome: string;
   /** Four chips. Outcomes or countable design facts, never process volume. */
   chips: string[];
+  /** Small thumbnail beside the row. The same cover the case study opens with. */
+  cover?: string;
   published: boolean;
 }
 
@@ -31,6 +37,7 @@ const projectList: Project[] = [
       'Templates to self-serve setup',
       'Dev-approved review flow',
     ],
+    cover: brynqCover,
     published: true,
   },
   {
@@ -62,6 +69,7 @@ const projectList: Project[] = [
       '4 actors, 1 record',
       'Intake kept in-channel',
     ],
+    cover: merryHealthCover,
     published: true,
   },
   {
@@ -73,11 +81,12 @@ const projectList: Project[] = [
     outcome:
       "Safety apps design for the worst moment. Fifteen interviews said that is not where women actually live.",
     chips: [
-      '[NEED: N] to 2 taps to SOS',
+      '[NEED: tap-count chip, wording "N to 2 taps to SOS", N counted from the Figma flow]',
       '15 contextual interviews',
       'Works with no network',
       'Reframed from panic to autonomy',
     ],
+    cover: streeCover,
     published: true,
   },
   {
@@ -89,11 +98,12 @@ const projectList: Project[] = [
     outcome:
       'NGOs do not lack food. They lack notice and transport, so I designed the handoff rather than the two apps.',
     chips: [
-      '[NEED: N] handoff points defined',
+      '[NEED: handoff-count chip, wording "N handoff points defined", N counted from the service blueprint]',
       '2 roles, 1 shared state',
       'Pickup or delivery by capacity',
       'Fallback when delivery declines',
     ],
+    cover: hungerProjectCover,
     published: true,
   },
 ];

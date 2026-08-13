@@ -1,4 +1,4 @@
-import type { Block, CaseStudy, ProcessSection } from './caseStudies/types';
+import type { Block, CaseStudy, Section } from './caseStudies/types';
 import type { Project } from './projects';
 
 /**
@@ -10,9 +10,11 @@ import type { Project } from './projects';
  *
  * Two shapes exist, and they are removed differently.
  *
- * A `[NEED: ...]` span sits inside copy that is otherwise finished, so only
- * the span is cut and the sentence around it survives. If the span was the
- * entire value, whatever held it is dropped instead of rendering blank.
+ * A `[NEED: ...]` marker must be the entire string value. A value carrying a
+ * marker is not publishable at all, so it cleans to empty and whatever held
+ * it is dropped instead of rendering blank. (The build plugin in
+ * vite.config.ts enforces the whole-value rule: an embedded marker fails the
+ * production build rather than shipping a broken sentence.)
  *
  * A `todo` block is a note written to Tanya in the second person, so the
  * whole block goes.
@@ -21,16 +23,16 @@ import type { Project } from './projects';
  * forget while writing, and vanish in the production build.
  */
 
-const NEED_SPAN = /\s*\[NEED:[^\]]*\]/g;
+const DRAFT_MARKER = /\[NEED:/;
 
 /** Dev keeps the markers on screen; the published build never shows them. */
 export const showDrafts = import.meta.env.DEV;
 
-/** Cuts `[NEED: ...]` spans, preserving any finished prose around them. */
+/** Whole-value rule: a value carrying a marker is not publishable at all. */
 const clean = (value: string): string =>
-  showDrafts ? value : value.replace(NEED_SPAN, '').replace(/\s{2,}/g, ' ').trim();
+  showDrafts || !DRAFT_MARKER.test(value) ? value : '';
 
-/** True when a value was nothing but a marker, so its row should vanish. */
+/** True when a value is unpublishable, so its row should vanish. */
 const blank = (value: string): boolean => clean(value).length === 0;
 
 const cleanAll = (values: string[]): string[] => values.map(clean).filter((v) => v.length > 0);
@@ -56,9 +58,14 @@ const cleanBlock = (block: Block): Block | null => {
       return blank(block.body) ? null : { ...block, body: clean(block.body) };
 
     case 'points': {
+      // A titled point survives without its body: the title is real content
+      // (a named failure mode, say) even while its description is still owed.
       const items = block.items
-        .filter((i) => !blank(i.body))
-        .map((i) => ({ ...i, body: clean(i.body) }));
+        .filter((i) => !blank(i.title))
+        .map((i) => {
+          const body = i.body ? clean(i.body) : '';
+          return body ? { ...i, body } : { title: i.title };
+        });
       return items.length ? { ...block, items } : null;
     }
 
@@ -83,8 +90,21 @@ const cleanBlock = (block: Block): Block | null => {
       return items.length ? { ...block, items } : null;
     }
 
-    case 'figures':
-      return block;
+    case 'beforeAfter': {
+      // The images are never drafts; only the shared caption can be.
+      const caption = block.caption ? clean(block.caption) : undefined;
+      return { ...block, caption: caption || undefined };
+    }
+
+    case 'figures': {
+      // Figures themselves are never drafts, but a caption can be.
+      const items = block.items.map((f) => {
+        if (!f.caption) return f;
+        const caption = clean(f.caption);
+        return caption ? { ...f, caption } : { ...f, caption: undefined };
+      });
+      return { ...block, items };
+    }
 
     default:
       return block;
@@ -94,61 +114,80 @@ const cleanBlock = (block: Block): Block | null => {
 const cleanBlocks = (blocks: Block[]): Block[] =>
   blocks.map(cleanBlock).filter((b): b is Block => b !== null);
 
-const cleanSection = (section: ProcessSection): ProcessSection => ({
-  ...section,
-  problem: clean(section.problem),
-  intervention: clean(section.intervention),
-  blocks: cleanBlocks(section.blocks),
-});
+/**
+ * Rebuilds one section without its draft content, or returns null when
+ * nothing publishable is left, so the section vanishes rather than
+ * rendering as an empty band.
+ */
+const cleanStudySection = (section: Section): Section | null => {
+  switch (section.kind) {
+    case 'pitch':
+      return {
+        ...section,
+        summary: {
+          ...section.summary,
+          problems: clean(section.summary.problems),
+          solution: clean(section.summary.solution),
+          why: clean(section.summary.why),
+          results: clean(section.summary.results),
+        },
+      };
+
+    case 'journey':
+      return { ...section, question: clean(section.question), blocks: cleanBlocks(section.blocks) };
+
+    case 'step':
+      return {
+        ...section,
+        problem: clean(section.problem),
+        intervention: clean(section.intervention),
+        blocks: cleanBlocks(section.blocks),
+      };
+
+    case 'decision': {
+      const items = section.items
+        .filter((r) => !blank(r.why))
+        .map((r) => ({ ...r, why: clean(r.why) }));
+      return items.length ? { ...section, items } : null;
+    }
+
+    case 'outcomes':
+      return {
+        ...section,
+        heading: clean(section.heading),
+        blocks: cleanBlocks(section.blocks),
+        callouts: section.callouts
+          .filter((c) => !blank(c.body))
+          .map((c) => ({ ...c, body: clean(c.body) })),
+      };
+
+    case 'reflection':
+    case 'appendix':
+    case 'custom': {
+      const blocks = cleanBlocks(section.blocks);
+      return blocks.length ? { ...section, blocks } : null;
+    }
+  }
+};
 
 /** Strips every draft marker from one case study. */
-export const publishable = (study: CaseStudy): CaseStudy => {
-  const rejected = study.rejected && {
-    ...study.rejected,
-    items: study.rejected.items
-      .filter((r) => !blank(r.why))
-      .map((r) => ({ ...r, why: clean(r.why) })),
-  };
-
-  const reflection = study.reflection && {
-    ...study.reflection,
-    blocks: cleanBlocks(study.reflection.blocks),
-  };
-
-  return {
-    ...study,
-    headline: clean(study.headline),
-    tagline: clean(study.tagline),
-    year: clean(study.year),
-    intro: cleanAll(study.intro),
-    // A metadata row with no value tells the reader nothing, so it is removed
-    // rather than left as a dangling label.
-    meta: study.meta.filter((m) => !blank(m.value)).map((m) => ({ ...m, value: clean(m.value) })),
-    summary: {
-      ...study.summary,
-      problems: clean(study.summary.problems),
-      solution: clean(study.summary.solution),
-      why: clean(study.summary.why),
-      results: clean(study.summary.results),
-    },
-    challenge: {
-      ...study.challenge,
-      question: clean(study.challenge.question),
-      blocks: cleanBlocks(study.challenge.blocks),
-    },
-    process: study.process.map(cleanSection),
-    rejected: rejected && rejected.items.length ? rejected : undefined,
-    outcomes: {
-      ...study.outcomes,
-      heading: clean(study.outcomes.heading),
-      blocks: cleanBlocks(study.outcomes.blocks),
-      callouts: study.outcomes.callouts
-        .filter((c) => !blank(c.body))
-        .map((c) => ({ ...c, body: clean(c.body) })),
-    },
-    reflection: reflection && reflection.blocks.length ? reflection : undefined,
-  };
-};
+export const publishable = (study: CaseStudy): CaseStudy => ({
+  ...study,
+  headline: clean(study.headline),
+  tagline: clean(study.tagline),
+  year: clean(study.year),
+  intro: cleanAll(study.intro),
+  // A metadata row whose value is still a draft falls back to its honest
+  // minimum when one exists, and is removed rather than left as a dangling
+  // label when one does not.
+  meta: study.meta.flatMap((m) => {
+    if (!blank(m.value)) return [{ ...m, value: clean(m.value) }];
+    return m.fallback ? [{ label: m.label, value: m.fallback }] : [];
+  }),
+  sections: study.sections
+    .map(cleanStudySection)
+    .filter((s): s is Section => s !== null),
+});
 
 /** Strips every draft marker from one project row. */
 export const publishableProject = (project: Project): Project => ({

@@ -32,74 +32,87 @@ export const hungerProject: CaseStudy = {
     { label: 'Domain', value: 'Social impact, two-sided logistics' },
   ],
 
-  summary: {
-    problems:
-      'Irregular notification, no manpower, high transport cost, difficulty coordinating multiple pickup locations, and spoilage from delay. There is no shared state, no defined owner at each step, and no way for either side to see what the other is doing.',
-    solution:
-      'One system with two roles rather than two apps. Instant listing with real-time notification, collection method chosen by the NGO against its actual capacity, and explicit decision nodes so every donation has exactly one owner at all times.',
-    why:
-      'Because the failure was never on either side, it was in the handoff between them. Two separate apps would rebuild the silo in software. Designing the transfer itself, with one owner at every step, is the only version that fixes what the NGO conversations actually described.',
-    resultsLabel: 'Intended results',
-    results:
-      'Food collected inside its safe window, NGOs able to plan against predictable supply, and failures that degrade rather than vanish. Researched with NGO staff and specified; each intended outcome is paired with the metric that would prove it.',
-  },
-
-  challenge: {
-    question:
-      'How do you design the space between two parties who are both already trying?',
-    blocks: [
-      {
-        kind: 'prose',
-        body: [
-          'Interviews with NGO staff, including Manav Charities, who collect surplus from weddings, parties, and corporate events and distribute it to hunger hotspots. Their pain points clustered tightly, and none of them were about willingness.',
-        ],
-      },
-      {
-        kind: 'quote',
-        text: 'There have been a lot of instances when we could not collect food from parties because they were informed at odd timings.',
-        source: 'NGO field staff',
-      },
-      {
-        kind: 'quote',
-        text: 'The logistics in transporting the food on time to reach the hunger hotspots was very difficult to arrange and manage.',
-        source: 'NGO field staff',
-      },
-      {
-        kind: 'points',
-        items: [
-          {
-            title: 'Fragmented, unpredictable notification',
-            body: 'Restaurants notify after service or at irregular hours. With no central platform, NGOs miss the window entirely. Food is wasted because the information arrived too late, not because nobody wanted it.',
-          },
-          {
-            title: 'No logistics infrastructure',
-            body: 'Most NGOs have no dedicated vehicle or staff for cross-city pickups. Even when notified, they cannot retrieve it in time.',
-          },
-          {
-            title: 'No matching between supply and need',
-            body: 'No way to estimate quantity, match it to demand, coordinate transport, or confirm the donation landed. The process runs on luck.',
-          },
-          {
-            title: 'Human-dependent coordination',
-            body: 'Phone calls, manual planning, and volunteer transport are fragile under any pressure. The ecosystem fails daily, not for lack of food but for lack of system design.',
-          },
-        ],
-      },
-      {
-        kind: 'note',
-        label: 'What this evidence did not cover',
-        body: 'The restaurant side. The research here is one-sided, which matters for a product whose entire premise is the handoff between two parties.',
-      },
-      {
-        kind: 'todo',
-        body: 'Confirm how many NGO conversations and with whom. The quotes are strong enough that naming the sample size only helps you.',
-      },
-    ],
-  },
-
-  process: [
+  sections: [
     {
+      kind: 'pitch',
+      id: 'pitch',
+      label: 'Quick pitch',
+      footnote:
+        'Short on time? The pitch above is the whole case. The journey below is how it actually went.',
+      summary: {
+        problems:
+          'Irregular notification, no manpower, high transport cost, difficulty coordinating multiple pickup locations, and spoilage from delay. There is no shared state, no defined owner at each step, and no way for either side to see what the other is doing.',
+        solution:
+          'One system with two roles rather than two apps. Instant listing with real-time notification, collection method chosen by the NGO against its actual capacity, and explicit decision nodes so every donation has exactly one owner at all times.',
+        why:
+          'Because the failure was never on either side, it was in the handoff between them. Two separate apps would rebuild the silo in software. Designing the transfer itself, with one owner at every step, is the only version that fixes what the NGO conversations actually described.',
+        resultsLabel: 'Intended results',
+        results:
+          'Food collected inside its safe window, NGOs able to plan against predictable supply, and failures that degrade rather than vanish. Researched with NGO staff and specified; each intended outcome is paired with the metric that would prove it.',
+      },
+    },
+
+    {
+      kind: 'journey',
+      id: 'journey',
+      label: 'The full journey',
+      question:
+        'How do you design the space between two parties who are both already trying?',
+      blocks: [
+        {
+          kind: 'prose',
+          body: [
+            'Interviews with NGO staff, including Manav Charities, who collect surplus from weddings, parties, and corporate events and distribute it to hunger hotspots. Their pain points clustered tightly, and none of them were about willingness.',
+          ],
+        },
+        {
+          kind: 'quote',
+          text: 'There have been a lot of instances when we could not collect food from parties because they were informed at odd timings.',
+          source: 'NGO field staff',
+        },
+        {
+          kind: 'quote',
+          text: 'The logistics in transporting the food on time to reach the hunger hotspots was very difficult to arrange and manage.',
+          source: 'NGO field staff',
+        },
+        {
+          kind: 'points',
+          items: [
+            {
+              title: 'Fragmented, unpredictable notification',
+              body: 'Restaurants notify after service or at irregular hours. With no central platform, NGOs miss the window entirely. Food is wasted because the information arrived too late, not because nobody wanted it.',
+            },
+            {
+              title: 'No logistics infrastructure',
+              body: 'Most NGOs have no dedicated vehicle or staff for cross-city pickups. Even when notified, they cannot retrieve it in time.',
+            },
+            {
+              title: 'No matching between supply and need',
+              body: 'No way to estimate quantity, match it to demand, coordinate transport, or confirm the donation landed. The process runs on luck.',
+            },
+            {
+              title: 'Human-dependent coordination',
+              body: 'Phone calls, manual planning, and volunteer transport are fragile under any pressure. The ecosystem fails daily, not for lack of food but for lack of system design.',
+            },
+          ],
+        },
+        {
+          kind: 'note',
+          label: 'What this evidence did not cover',
+          body: 'The restaurant side. The research here is one-sided, which matters for a product whose entire premise is the handoff between two parties.',
+        },
+        {
+          kind: 'todo',
+          body: 'Confirm how many NGO conversations and with whom. The quotes are strong enough that naming the sample size only helps you.',
+        },
+      ],
+    },
+
+    {
+      kind: 'step',
+      id: 'step-01',
       index: '01',
+      nav: '01 The decision node',
       problem: 'Nothing held the transfer together',
       intervention: 'so the unit of design became the decision node, not the screen',
       blocks: [
@@ -119,11 +132,15 @@ export const hungerProject: CaseStudy = {
               caption: 'Fig 1. The system flow. Every branch is a point where responsibility transfers.',
             },
           ],
+          width: 'wide',
         },
       ],
     },
     {
+      kind: 'step',
+      id: 'step-02',
       index: '02',
+      nav: '02 One system, two roles',
       problem: 'Two apps would rebuild the silo in software',
       intervention: 'so it became two roles inside one system with shared state',
       blocks: [
@@ -158,11 +175,15 @@ export const hungerProject: CaseStudy = {
               caption: 'Fig 3. NGO IA. Built around browsing, evaluating, and planning.',
             },
           ],
+          width: 'wide',
         },
       ],
     },
     {
+      kind: 'step',
+      id: 'step-03',
       index: '03',
+      nav: '03 Pickup or delivery',
       problem: 'NGO transport capacity varies day to day',
       intervention: 'so the NGO chooses pickup or delivery, and the system plans for refusal',
       blocks: [
@@ -201,7 +222,10 @@ export const hungerProject: CaseStudy = {
       ],
     },
     {
+      kind: 'step',
+      id: 'step-04',
       index: '04',
+      nav: '04 Forecastability',
       problem: 'Optimising for volume gave NGOs food they could not use',
       intervention: 'so the system optimises for forecastability instead',
       blocks: [
@@ -234,74 +258,80 @@ export const hungerProject: CaseStudy = {
         },
       ],
     },
+
+    {
+      kind: 'decision',
+      id: 'decisions',
+      label: 'What I considered and did not do',
+      items: [
+        {
+          option: 'A single mandatory logistics path',
+          why: 'Simpler system, one flow to design. Rejected because NGO transport capacity varies day to day. Forcing pickup excludes NGOs without vehicles; forcing delivery adds cost where it is not needed.',
+        },
+        {
+          option: 'Separate apps for restaurants and NGOs',
+          why: 'Easier to scope and ship. Rejected because it recreates the silo that causes the problem in the first place.',
+        },
+        {
+          option: 'Optimise for donation volume',
+          why: 'The intuitive impact metric. Rejected because NGOs said the opposite: unpredictable large donations are harder to use than reliable small ones. I designed for rhythm instead.',
+        },
+      ],
+    },
+
+    {
+      kind: 'outcomes',
+      id: 'outcomes',
+      label: 'Intended outcomes',
+      heading: 'What I would instrument, and what would prove it',
+      blocks: [
+        {
+          kind: 'intended',
+          items: [
+            { outcome: 'Food is collected inside its safe window', metric: 'Percentage of listings collected before expiry' },
+            { outcome: 'NGOs can plan against supply', metric: 'Lead time from listing to notification' },
+            { outcome: 'Every donation has a clear owner', metric: 'Percentage of listings reaching a terminal state' },
+            { outcome: 'Failures degrade rather than vanish', metric: 'Percentage of declined deliveries that find a fallback' },
+          ],
+        },
+        {
+          kind: 'note',
+          label: 'Status',
+          body: 'Self-initiated concept. Researched with NGO staff, not built or piloted. The outcomes above are intended, not measured.',
+        },
+      ],
+      callouts: [
+        {
+          title: 'Two roles,',
+          emphasis: 'one shared state',
+          body: 'Both sides read the same record, rather than each app holding half the truth.',
+        },
+        {
+          title: 'Collection method set by',
+          emphasis: 'actual capacity',
+          body: 'The NGO picks pickup or delivery per donation, with fallback rules when a partner declines.',
+        },
+        {
+          title: 'Every donation has',
+          emphasis: 'exactly one owner',
+          body: 'Responsibility is named at each decision node instead of dissolving between the two parties.',
+        },
+      ],
+    },
+
+    {
+      kind: 'reflection',
+      id: 'reflection',
+      label: 'What this taught me',
+      blocks: [
+        {
+          kind: 'prose',
+          body: [
+            'Two-sided social products fail when one side is an afterthought. The design work that mattered was not either app. It was the decision nodes between them, where responsibility transfers and everything currently breaks.',
+            'Designing for variable capacity taught me not to over-standardise. The clean systems answer would have been one logistics path, and it would have excluded most of the NGOs I spoke to. And forecastability beat volume as the thing worth optimising, which was the opposite of my starting assumption.',
+          ],
+        },
+      ],
+    },
   ],
-
-  rejected: {
-    title: 'What I considered and did not do',
-    items: [
-      {
-        option: 'A single mandatory logistics path',
-        why: 'Simpler system, one flow to design. Rejected because NGO transport capacity varies day to day. Forcing pickup excludes NGOs without vehicles; forcing delivery adds cost where it is not needed.',
-      },
-      {
-        option: 'Separate apps for restaurants and NGOs',
-        why: 'Easier to scope and ship. Rejected because it recreates the silo that causes the problem in the first place.',
-      },
-      {
-        option: 'Optimise for donation volume',
-        why: 'The intuitive impact metric. Rejected because NGOs said the opposite: unpredictable large donations are harder to use than reliable small ones. I designed for rhythm instead.',
-      },
-    ],
-  },
-
-  outcomes: {
-    label: 'Intended outcomes',
-    heading: 'What I would instrument, and what would prove it',
-    blocks: [
-      {
-        kind: 'intended',
-        items: [
-          { outcome: 'Food is collected inside its safe window', metric: 'Percentage of listings collected before expiry' },
-          { outcome: 'NGOs can plan against supply', metric: 'Lead time from listing to notification' },
-          { outcome: 'Every donation has a clear owner', metric: 'Percentage of listings reaching a terminal state' },
-          { outcome: 'Failures degrade rather than vanish', metric: 'Percentage of declined deliveries that find a fallback' },
-        ],
-      },
-      {
-        kind: 'note',
-        label: 'Status',
-        body: 'Self-initiated concept. Researched with NGO staff, not built or piloted. The outcomes above are intended, not measured.',
-      },
-    ],
-    callouts: [
-      {
-        title: 'Two roles,',
-        emphasis: 'one shared state',
-        body: 'Both sides read the same record, rather than each app holding half the truth.',
-      },
-      {
-        title: 'Collection method set by',
-        emphasis: 'actual capacity',
-        body: 'The NGO picks pickup or delivery per donation, with fallback rules when a partner declines.',
-      },
-      {
-        title: 'Every donation has',
-        emphasis: 'exactly one owner',
-        body: 'Responsibility is named at each decision node instead of dissolving between the two parties.',
-      },
-    ],
-  },
-
-  reflection: {
-    title: 'What this taught me',
-    blocks: [
-      {
-        kind: 'prose',
-        body: [
-          'Two-sided social products fail when one side is an afterthought. The design work that mattered was not either app. It was the decision nodes between them, where responsibility transfers and everything currently breaks.',
-          'Designing for variable capacity taught me not to over-standardise. The clean systems answer would have been one logistics path, and it would have excluded most of the NGOs I spoke to. And forecastability beat volume as the thing worth optimising, which was the opposite of my starting assumption.',
-        ],
-      },
-    ],
-  },
 };

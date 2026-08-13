@@ -10,12 +10,12 @@ const Hero = () => {
         </p>
 
         <h1
-          className="reveal text-[2.5rem] leading-[1.05] md:text-[3.75rem] lg:text-[4.5rem] max-w-[16ch]"
+          className="reveal text-[2.5rem] leading-[1.05] md:text-[3.75rem] lg:text-[4.5rem]"
           data-shown="true"
           style={{ transitionDelay: '80ms' }}
         >
-          I design the workflows nobody{' '}
-          <span className="em-serif">wants</span> to touch.
+          I design complex,{' '}
+          <span className="em-serif">system-driven</span> products.
         </h1>
 
         <p
@@ -23,9 +23,9 @@ const Hero = () => {
           data-shown="true"
           style={{ transitionDelay: '160ms' }}
         >
-          Currently designing HR and payroll integration flows at BrynQ, a B2B
-          iPaaS platform, and building Layrrrd, a live content product. Based in
-          the Netherlands.
+          Product designer based in the Netherlands. Currently designing HR and
+          payroll integration flows at BrynQ, a B2B iPaaS platform, and leading
+          design on Layrrrd, a live content curation product.
         </p>
       </div>
     </section>
