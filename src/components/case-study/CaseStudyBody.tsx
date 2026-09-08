@@ -17,7 +17,7 @@ const Band = ({ id, label, children }: { id: string; label?: string; children: R
 
   return (
     <section ref={ref} id={id} className="reveal scroll-mt-28 border-t border-border pt-8 md:pt-10">
-      {label && <p className="label text-ink-400 mb-8">{label}</p>}
+      {label && <p className="label text-ink-500 mb-8">{label}</p>}
       {children}
     </section>
   );
@@ -36,7 +36,7 @@ const PitchSection = ({ section }: { section: Extract<Section, { kind: 'pitch' }
         ] as const
       ).map(([term, value]) => (
         <div key={term}>
-          <dt className="label text-ink-400 mb-4">{term}</dt>
+          <dt className="label text-ink-500 mb-4">{term}</dt>
           <dd className="text-base leading-relaxed text-ink-600">{value}</dd>
         </div>
       ))}
@@ -60,11 +60,11 @@ const StepSection = ({
   return (
     <section ref={ref} id={section.id} className="reveal scroll-mt-28">
       <div className="mb-6 flex gap-4 md:gap-6">
-        <span className="label text-ink-400 mt-[0.55em] shrink-0 tabular-nums">
+        <span className="label text-ink-500 mt-[0.55em] shrink-0 tabular-nums">
           {section.index}
         </span>
         <h3 className="max-w-2xl text-2xl md:text-[2rem] leading-[1.15]">
-          {section.problem} <span className="em-serif">{section.intervention}</span>
+          {section.problem} <span className="em">{section.intervention}</span>
         </h3>
       </div>
       <Blocks blocks={section.blocks} onOpenFigure={onOpenFigure} indent />
@@ -95,7 +95,7 @@ const OutcomesSection = ({
         <li key={c.title}>
           <p className="text-xl leading-[1.2]">
             {c.title}
-            {c.emphasis && <span className="em-serif"> {c.emphasis}</span>}
+            {c.emphasis && <span className="em"> {c.emphasis}</span>}
           </p>
           <p className="mt-3 text-base leading-relaxed text-ink-600">{c.body}</p>
         </li>
@@ -105,7 +105,7 @@ const OutcomesSection = ({
     {section.quote && (
       <blockquote className="mt-12 max-w-2xl border-l border-foreground pl-6">
         <p className="text-2xl md:text-3xl leading-[1.2]">{section.quote.text}</p>
-        <cite className="label text-ink-400 mt-4 block not-italic">{section.quote.source}</cite>
+        <cite className="label text-ink-500 mt-4 block not-italic">{section.quote.source}</cite>
       </blockquote>
     )}
   </Band>
@@ -130,7 +130,7 @@ const AppendixSection = ({
             type="button"
             onClick={() => setOpen(false)}
             aria-expanded={true}
-            className="label rule-link mt-8 text-ink-400"
+            className="label rule-link mt-8 text-ink-500"
           >
             Hide
           </button>

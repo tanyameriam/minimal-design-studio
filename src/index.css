@@ -1,13 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Geist+Mono:wght@400&family=Instrument+Serif:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  :root {
-    /* Surface: warm off-white, not pure white */
-    --background: 30 100% 99.5%;
+  /*
+   * The light palette. Declared once for three cases: the document when the
+   * theme is light, an explicit `.light` island (the story decks, print
+   * views), and a `.theme-invert` region on a dark page.
+   */
+  :root,
+  .light,
+  .dark .theme-invert {
+    color-scheme: light;
+
+    /*
+     * Surface: a soft grey ground with white panels on top. The ground used
+     * to be a warm off-white and the cards pure white, which is a half-step
+     * of difference: not enough for a panel to read as raised, so every
+     * grouping had to be drawn with a hairline instead. Separating the two
+     * is what lets the borders come off.
+     */
+    --background: 220 14% 96%;
     --foreground: 240 10% 4%;
 
     --card: 0 0% 100%;
@@ -20,8 +35,9 @@
     --ink-900: 240 6% 10%;
     --ink-800: 240 4% 16%;
     --ink-600: 240 5% 34%;
-    --ink-500: 240 4% 46%;
-    --ink-400: 240 5% 65%;
+    --ink-500: 240 4% 44%;
+    /* Was 65%, which left the small uppercase labels under 3:1 on white. */
+    --ink-400: 240 5% 54%;
 
     --primary: 240 6% 10%;
     --primary-foreground: 0 0% 98%;
@@ -36,31 +52,93 @@
     --accent: 49 100% 50%;
     --accent-foreground: 240 10% 4%;
 
+    /*
+     * The one blue. Reserved for things a visitor can act on: a call to
+     * action, the marker on the active project. Never decoration, never a
+     * fill, and never next to the yellow, which stays the emphasis mark.
+     */
+    --link: 220 72% 42%;
+
     --destructive: 0 72% 45%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 6% 90%;
-    --input: 240 6% 90%;
+    /* Still here for inputs, focus rings and the few rules worth keeping. */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
     --ring: 240 5% 65%;
 
-    --radius: 0.125rem;
+    /*
+     * The corner. Everything soft-edged derives from this, including
+     * Tailwind's rounded-sm / md / lg, so the whole site turns together.
+     */
+    --radius: 1rem;
+
+    /*
+     * Elevation. tailwind.config.ts has mapped shadow-sm ... shadow-2xl to
+     * these variables all along, but nothing ever defined them, so all
+     * twenty-odd shadow utilities in the codebase rendered nothing. Defined
+     * here, tinted rather than pure black, and restated on the dark side
+     * where a shadow has to be far heavier to register at all.
+     */
+    --shadow-color: 225 25% 25%;
+    --shadow-2xs: 0 1px 2px 0 hsl(var(--shadow-color) / 0.04);
+    --shadow-xs: 0 1px 3px 0 hsl(var(--shadow-color) / 0.05);
+    --shadow-sm: 0 2px 6px -1px hsl(var(--shadow-color) / 0.07);
+    --shadow-md: 0 6px 16px -4px hsl(var(--shadow-color) / 0.09);
+    --shadow-lg: 0 12px 28px -8px hsl(var(--shadow-color) / 0.11);
+    --shadow-xl: 0 20px 44px -12px hsl(var(--shadow-color) / 0.13);
+    --shadow-2xl: 0 32px 64px -16px hsl(var(--shadow-color) / 0.17);
+
+    /*
+     * The measure of the whole site. Every page's content sits inside a
+     * .shell of this width and centres in the viewport, so on a wide monitor
+     * the page reads as a page rather than as edge-to-edge text. The nav, the
+     * home page and a case-study slide all line up on the same left edge.
+     *
+     * Widened from 84rem: the case studies carry diagrams, wide tables and
+     * two-column slides that were being squeezed into narrow columns while a
+     * few hundred pixels sat unused down either side of a large display.
+     */
+    --shell: 96rem;
+
+    /*
+     * How much room the storyline rail reserves on a case study. The rail
+     * writes this on the document when it is collapsed, so the page beside it
+     * reflows without every study needing its own state.
+     */
+    --rail-w: 15rem;
   }
 
-  .dark {
+  /*
+   * The dark palette. Same three cases mirrored: the document when the theme
+   * is dark, and a `.theme-invert` region sitting on light ground, whether
+   * that ground is the document or an explicit `.light` island.
+   */
+  .dark,
+  html:not(.dark) .theme-invert,
+  .light .theme-invert {
+    color-scheme: dark;
+
     --background: 240 10% 4%;
     --foreground: 0 0% 98%;
 
-    --card: 240 6% 8%;
+    /* Lifted well clear of the 4% ground so a panel reads as raised without
+       a hairline around it. Checked against the ink scale: ink-400, the
+       faintest step, still clears 4.5:1 on this surface. */
+    --card: 240 5% 10%;
     --card-foreground: 0 0% 98%;
 
     --popover: 240 6% 8%;
     --popover-foreground: 0 0% 98%;
 
+    /* Lifted one step each. On the 4% ground these now clear 4.5:1 down to
+       ink-400, which carries the small uppercase metadata, while the three
+       steps stay far enough apart to still read as a hierarchy. */
     --ink-900: 0 0% 98%;
-    --ink-800: 240 5% 90%;
-    --ink-600: 240 5% 65%;
-    --ink-500: 240 4% 55%;
-    --ink-400: 240 4% 46%;
+    --ink-800: 240 5% 92%;
+    --ink-600: 240 5% 72%;
+    --ink-500: 240 4% 63%;
+    --ink-400: 240 4% 55%;
 
     --primary: 0 0% 98%;
     --primary-foreground: 240 6% 10%;
@@ -74,12 +152,105 @@
     --accent: 49 100% 50%;
     --accent-foreground: 240 10% 4%;
 
+    /* Lifted for the near-black ground: 8:1 on the 4% background. */
+    --link: 214 88% 68%;
+
     --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 240 4% 16%;
     --input: 240 4% 16%;
     --ring: 240 5% 34%;
+
+    /* On near-black, a tinted shadow is invisible. These go pure and deep. */
+    --shadow-color: 0 0% 0%;
+    --shadow-2xs: 0 1px 2px 0 hsl(var(--shadow-color) / 0.3);
+    --shadow-xs: 0 1px 3px 0 hsl(var(--shadow-color) / 0.35);
+    --shadow-sm: 0 2px 6px -1px hsl(var(--shadow-color) / 0.45);
+    --shadow-md: 0 6px 16px -4px hsl(var(--shadow-color) / 0.55);
+    --shadow-lg: 0 12px 28px -8px hsl(var(--shadow-color) / 0.6);
+    --shadow-xl: 0 20px 44px -12px hsl(var(--shadow-color) / 0.65);
+    --shadow-2xl: 0 32px 64px -16px hsl(var(--shadow-color) / 0.7);
+  }
+
+  /*
+   * Layrrrd's paper. The case study for that project runs on its own
+   * palette: warm cream, near-black ink, a hairline the colour of old
+   * card. It is declared as a token island exactly like .light, so every
+   * existing utility (border-border, the ink scale, bg-card) keeps working
+   * inside it without a parallel set of classes.
+   *
+   * The values come from the product's own decks, not from the portfolio.
+   */
+  .paper-layrrrd {
+    --background: 38 75% 94%;
+    --foreground: 0 0% 10%;
+
+    --card: 39 50% 90%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 38 75% 94%;
+    --popover-foreground: 0 0% 10%;
+
+    /* Warm greys, so the hierarchy sits on the cream instead of on white. */
+    --ink-900: 0 0% 8%;
+    --ink-800: 30 6% 16%;
+    --ink-600: 34 8% 32%;
+    --ink-500: 36 9% 43%;
+    --ink-400: 37 14% 52%;
+
+    --primary: 0 0% 10%;
+    --primary-foreground: 38 75% 94%;
+
+    --secondary: 39 50% 90%;
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 39 45% 91%;
+    --muted-foreground: 36 9% 45%;
+
+    --accent: 39 50% 90%;
+    --accent-foreground: 0 0% 10%;
+
+    --link: 220 72% 40%;
+
+    --border: 38 25% 78%;
+    --input: 38 25% 78%;
+    --ring: 36 9% 45%;
+
+    /* Its own shadow tint. Without this the cream inherits whatever the
+       document is on, and on a dark page that is a near-opaque black. */
+    --shadow-color: 30 30% 25%;
+  }
+
+  /*
+   * Layrrrd's ink block. The turns in that story invert to near-black, and
+   * everything inside them has to keep reading: muted copy, cards, the
+   * hairlines. Flipping the token island once here is cheaper and safer
+   * than restating colours at every call site.
+   */
+  .ink-block {
+    background-color: hsl(0 0% 10%);
+    color: hsl(38 75% 94%);
+
+    --background: 0 0% 10%;
+    --foreground: 38 75% 94%;
+    --card: 0 0% 17%;
+    --card-foreground: 38 75% 94%;
+
+    --ink-900: 38 75% 96%;
+    --ink-800: 38 40% 88%;
+    --ink-600: 38 20% 78%;
+    --ink-500: 37 13% 66%;
+    --ink-400: 36 10% 54%;
+
+    --link: 214 80% 72%;
+
+    --border: 36 12% 30%;
+    --muted: 0 0% 17%;
+    --muted-foreground: 37 13% 66%;
+
+    /* A dark island keeps dark-side shadows whatever the page around it is. */
+    --shadow-color: 0 0% 0%;
   }
 }
 
@@ -117,7 +288,7 @@
   :focus-visible {
     outline: 2px solid hsl(var(--foreground));
     outline-offset: 3px;
-    border-radius: 1px;
+    border-radius: calc(var(--radius) - 0.5rem);
   }
 
   ::selection {
@@ -127,20 +298,204 @@
 }
 
 @layer components {
+  /*
+   * The page measure. Sits outside the section padding, so the familiar
+   * px-6 / md:px-10 / lg:px-16 rhythm is preserved inside it and only the
+   * outer bound changes. Full-bleed helpers (.block-full) deliberately do
+   * not live inside a shell.
+   */
+  .shell {
+    width: 100%;
+    max-width: var(--shell);
+    margin-inline: auto;
+  }
+
+  /*
+   * The panel. A raised, round-cornered surface with no outline: grouping is
+   * carried by the surface and the shadow rather than by a drawn rule.
+   *
+   * The site used to group everything with hairlines, which is why so many
+   * lists here are grids of border-t / border-l cells. Those cells become
+   * panels with a gap between them; the rules come off with the borders.
+   */
+  /*
+   * The gutter a case study leaves for the storyline rail. Only from xl,
+   * which is the width at which the rail is rendered at all; below that the
+   * storyline lives in the chapter bar and the panel, and the page is full
+   * width.
+   */
+  @media (min-width: 1280px) {
+    .rail-offset {
+      padding-left: var(--rail-w);
+      transition: padding-left 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+  }
+
+  /*
+   * A staggered sequence. The parent carries .reveal, so one observer drives
+   * the whole run: each child steps in behind the one before it and a
+   * three-beat turn reads as a turn rather than arriving all at once.
+   *
+   * Delays are on the children rather than in JS because the reduced-motion
+   * rule at the foot of this file collapses every transition-duration in one
+   * place. Under that setting the steps simply appear, in order, instantly.
+   */
+  .sequence > * {
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /*
+   * Shown either when the sequence is itself the revealed element, or when it
+   * sits inside one, which is the common case: a slide already carries
+   * .reveal, so a grid inside it only has to be marked .sequence. Without the
+   * second selector such a grid would stay at opacity 0 for good.
+   */
+  .sequence[data-shown='true'] > *,
+  .reveal[data-shown='true'] .sequence > * {
+    opacity: 1;
+    transform: none;
+  }
+
+  .sequence[data-shown='true'] > *:nth-child(2),
+  .reveal[data-shown='true'] .sequence > *:nth-child(2) {
+    transition-delay: 180ms;
+  }
+
+  .sequence[data-shown='true'] > *:nth-child(3),
+  .reveal[data-shown='true'] .sequence > *:nth-child(3) {
+    transition-delay: 360ms;
+  }
+
+  .sequence[data-shown='true'] > *:nth-child(4),
+  .reveal[data-shown='true'] .sequence > *:nth-child(4) {
+    transition-delay: 540ms;
+  }
+
+  /* Anything past the fourth arrives with the fourth's delay rather than
+     none, which would have put a fifth step on screen before its fourth. */
+  .sequence[data-shown='true'] > *:nth-child(n + 5),
+  .reveal[data-shown='true'] .sequence > *:nth-child(n + 5) {
+    transition-delay: 700ms;
+  }
+
+  /*
+   * The line between two steps. It grows downward as its step arrives, so the
+   * sequence looks drawn rather than assembled.
+   */
+  .sequence .connector {
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .sequence[data-shown='true'] .connector,
+  .reveal[data-shown='true'] .sequence .connector {
+    transform: scaleY(1);
+  }
+
+  .panel {
+    border-radius: var(--radius);
+    background-color: hsl(var(--card));
+    box-shadow: var(--shadow-sm);
+    transition:
+      box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Only for panels that are themselves a link or contain the whole target. */
+  .panel-hover:hover,
+  .panel-hover:focus-within {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  /*
+   * The muted round square behind a panel's icon or index number. Same corner
+   * language as the panel, one surface step down.
+   */
+  .panel-chip {
+    border-radius: calc(var(--radius) - 0.25rem);
+    background-color: hsl(var(--muted));
+  }
+
+  /*
+   * Line drawing for the connector arrows. A stroke marked .draw sits
+   * undrawn until its .reveal ancestor enters the viewport, then inks
+   * itself in once. Pure stroke-dashoffset, so it composites cheaply.
+   * Under reduced motion the global rule collapses the duration and the
+   * stroke simply appears.
+   */
+  .draw {
+    stroke-dasharray: 600;
+    stroke-dashoffset: 600;
+  }
+
+  .reveal[data-shown='true'] .draw {
+    animation: draw-in 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  @keyframes draw-in {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  /*
+   * Entrance for the story-deck overlay: a short settle, so the deck reads
+   * as a layer arriving over the page it was opened from. Reduced motion
+   * collapses the duration through the global rule.
+   */
+  .deck-pop {
+    animation: deck-pop 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @keyframes deck-pop {
+    from {
+      opacity: 0;
+      transform: translateY(10px) scale(0.985);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
   /* Mono eyebrow label. PROJECTS ( 2021 - 25 ) */
   .label {
     @apply font-mono uppercase;
-    font-size: 0.6875rem;
+    font-size: clamp(0.6875rem, 0.652rem + 0.143vw, 0.8125rem);
     letter-spacing: 0.14em;
     line-height: 1;
   }
 
-  /* Editorial serif italic, for the single emphasised word. */
-  .em-serif {
-    font-family: 'Instrument Serif', ui-serif, Georgia, serif;
-    font-style: italic;
-    font-weight: 400;
-    letter-spacing: -0.01em;
+  /*
+   * A section heading, in the same mono idiom as .label but at full strength.
+   *
+   * Section headings and metadata had been sharing one treatment: small mono
+   * uppercase at ink-400. That is right for a caption or a year and wrong for
+   * the line naming what a reader is about to look at, and at eleven pixels
+   * ink-400 also sits near 3:1 on the page ground, under the 4.5:1 that text
+   * this size needs. This is a step larger, a step heavier, and set in the
+   * foreground, so a heading announces its section instead of apologising
+   * for it. Use .label for genuine metadata and this for headings.
+   */
+  .label-strong {
+    @apply font-mono uppercase;
+    font-size: clamp(0.75rem, 0.714rem + 0.143vw, 0.875rem);
+    letter-spacing: 0.12em;
+    line-height: 1.2;
+    font-weight: 500;
+    color: hsl(var(--foreground));
+  }
+
+  /* The single emphasised word. Weight, not a second typeface. */
+  .em {
+    font-weight: 500;
+    letter-spacing: -0.015em;
   }
 
   /* Link with a rule that wipes in from the left. */
@@ -191,6 +546,72 @@
     transform-origin: left;
   }
 
+  /*
+   * The page ground.
+   *
+   * This used to paint a graph-paper grid from two hairline gradients, which
+   * belonged to the ruled-and-hairlined version of the site. Under floating
+   * rounded panels it read as two ideas competing, so the ruling came out and
+   * what is left is the flat ground with a single soft lift at the top, which
+   * keeps the masthead from starting on a hard edge of colour.
+   */
+  .page-ground {
+    background-color: hsl(var(--background));
+    background-image: linear-gradient(
+      to bottom,
+      hsl(var(--card) / 0.85) 0%,
+      hsl(var(--card) / 0) 34rem
+    );
+    background-repeat: no-repeat;
+  }
+
+  /*
+   * Cursor label. The inner pill is centred on the pointer; the outer element
+   * carries the per-frame translate, so the two transforms never fight.
+   */
+  .cursor-label {
+    transition: transform 0.14s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .cursor-label > span {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.85);
+    transition:
+      opacity 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .cursor-label[data-shown='true'] > span {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  /* The label stands in for the pointer, so the pointer itself goes away. */
+  @media (hover: hover) and (pointer: fine) {
+    [data-cursor] {
+      cursor: none;
+    }
+  }
+
+  /*
+   * Writing strands. One muted hue per section of the writing: human-centred
+   * AI, interaction design, visual design. Used only as a small mark and a
+   * hairline rule, never as text, so the hue never has to carry contrast.
+   * The site accent stays reserved for emphasis and is louder than these on
+   * purpose: an essay is not a call to action.
+   */
+  [data-strand='ai'] {
+    --strand: 168 42% 52%;
+  }
+
+  [data-strand='ixd'] {
+    --strand: 214 52% 62%;
+  }
+
+  [data-strand='vxd'] {
+    --strand: 28 62% 60%;
+  }
+
   /* Scroll reveal. Transform and opacity only. */
   .reveal {
     opacity: 0;
@@ -226,6 +647,15 @@
 }
 
 @layer utilities {
+  /*
+   * The ink scale as utilities. --ink-800 has existed as a token since the
+   * palette was written, but the utility never did, so every `text-ink-800`
+   * on the site was silently inheriting its parent's colour instead of
+   * stepping down from it.
+   */
+  .text-ink-800 {
+    color: hsl(var(--ink-800));
+  }
   .text-ink-600 {
     color: hsl(var(--ink-600));
   }
@@ -234,6 +664,29 @@
   }
   .text-ink-400 {
     color: hsl(var(--ink-400));
+  }
+
+  .text-link {
+    color: hsl(var(--link));
+  }
+
+  .bg-link {
+    background-color: hsl(var(--link));
+  }
+
+  .border-link {
+    border-color: hsl(var(--link));
+  }
+
+  /* Same scale as fills, for diagram rules, dots, and bars. */
+  .bg-ink-600 {
+    background-color: hsl(var(--ink-600));
+  }
+  .bg-ink-500 {
+    background-color: hsl(var(--ink-500));
+  }
+  .bg-ink-400 {
+    background-color: hsl(var(--ink-400));
   }
 }
 

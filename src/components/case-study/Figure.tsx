@@ -30,7 +30,7 @@ const Figure = ({ src, alt, caption, reveal, onOpen }: FigureProps) => {
                 <button
                   type="button"
                   onClick={() => setShown(false)}
-                  className="label rule-link shrink-0 text-ink-400"
+                  className="label rule-link shrink-0 text-ink-500"
                 >
                   Hide
                 </button>
@@ -47,7 +47,7 @@ const Figure = ({ src, alt, caption, reveal, onOpen }: FigureProps) => {
           className="group flex w-full items-center justify-between gap-6 border border-border bg-card px-5 py-4 text-left transition-colors hover:bg-muted"
         >
           <span>
-            <span className="label text-ink-400 mb-2 block">Diagram</span>
+            <span className="label text-ink-500 mb-2 block">Diagram</span>
             <span className="text-base leading-snug">{caption ?? alt}</span>
           </span>
           <span className="label shrink-0 text-ink-500">

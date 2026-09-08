@@ -36,7 +36,7 @@ const BackToTop = () => {
       onClick={toTop}
       tabIndex={shown ? 0 : -1}
       aria-hidden={!shown}
-      className={`label fixed bottom-6 right-6 z-40 border border-border bg-background/80 px-3 py-2 text-ink-500 backdrop-blur-md transition-all duration-500 ease-smooth hover:text-foreground ${
+      className={`label panel fixed bottom-6 right-6 z-40 bg-card/85 px-3 py-2 text-ink-500 backdrop-blur-md transition-all duration-500 ease-smooth hover:text-foreground ${
         shown ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-2 opacity-0'
       }`}
     >

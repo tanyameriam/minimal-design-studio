@@ -33,9 +33,12 @@ Interpretation band: 26 to 30 is "excellent portfolio story", 21 to 25 is
 
 **BrynQ (28).** Visual communication: three diagrams but no screen of the
 wizard itself; the case argues a product surface it never shows. Outcome: the
-6-months-to-1-week figure is confirmed but observed rather than instrumented,
-and the rework rate and template-share numbers are still owed (todo in the
-outcomes section).
+~6-months-to-~2-weeks figure is estimated from the template-led delivery
+model rather than instrumented in production, and the rework rate and
+template-share numbers are still owed (todo in the outcomes section). The
+one-week variant that used to appear on the story deck and the CV has been
+removed: 92% and 13x are the arithmetic of 26 weeks down to 2, not down to 1.
+See CONTENT_VERIFICATION.md.
 
 **Layrrrd (25).** Visual communication: zero imagery anywhere; the cover and
 2 to 3 screenshots are the single highest-leverage fix on the site. Evidence:
@@ -44,10 +47,13 @@ trace from finding to change. Stakes: consumer stakes are argued but soft next
 to the operational studies. Contribution: team size and roles are a draft
 marker, so "I led design" has no visible boundary.
 
-**Merry Health (26).** Evidence: the flow audit is described, but whether it
-came from observed dispatches or reconstruction is unstated (todo in the
-journey section). Contribution: team unknown. Outcome: intended only, correctly
-framed. Reflection: the "where I was wrong" paragraph is still a todo.
+**Merry Health (26, scored before the 29 Aug 2026 rebuild).** Evidence: the
+flow audit is described, but whether it came from observed dispatches or
+reconstruction is unstated. Contribution: team unknown. Outcome: intended
+only, correctly framed. Reflection: the "where I was wrong" paragraph is
+still a todo. The rebuilt page at `/case-study/merry-health` closes the
+contribution and reflection gaps and leaves the evidence one open; it has
+not been rescored.
 
 **STREE (26).** Contribution: the only zero on the board. Role is a draft
 marker with a "Team project" fallback; until roles are named, a reviewer
@@ -88,9 +94,16 @@ LinkedIn.
   (extension, digest, Rudolf states).
 - **STREE**: team roles and what she owned; taps-to-SOS count (derivable from
   her Figma flow, belongs on the project card chip).
-- **Merry Health**: who else was involved; the six failure-mode fallback
-  descriptions; observed-vs-reconstructed evidence statement; the "where I
-  was wrong" paragraph.
+- **Merry Health**: mostly resolved on 29 Aug 2026, when the scroll case
+  study was built. Team is five designers; the engagement is an MDes
+  practicum apprenticeship with the company, 2026, not freelance 2024; the
+  failure-mode fallbacks are named on the proposed-workflow board and are
+  now written out. Still open: whether the current-state flow was observed
+  live or reconstructed with the operations team (the page hedges rather
+  than claims either), the duplicate-booking reconciliation rule, and the
+  Figma prototype URL for the call to action. The "where I was wrong"
+  paragraph is replaced on the new page by a stated limit: the system has
+  never met a real dispatch.
 - **BrynQ**: requirements rework rate; share of integrations started from
   templates; the "where I was wrong" paragraph (drafted as a todo in the
   reflection); whether other workstreams are worth naming.

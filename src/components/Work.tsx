@@ -1,41 +1,23 @@
-import ProjectRow from './ProjectRow';
-import { projects, earlierWork } from '@/data/projects';
-import { useReveal } from '@/hooks/use-reveal';
+import FeaturedProjects from '@/components/FeaturedProjects';
+import SelectedIndex from '@/components/SelectedIndex';
 
-const Work = () => {
-  const published = projects.filter((p) => p.published);
-  const earlierRef = useReveal<HTMLDivElement>();
-
-  return (
-    <section id="work" className="px-6 md:px-10 lg:px-16 pb-24 md:pb-32">
-      <div className="mx-auto max-w-3xl">
-        <p className="label text-ink-400 mb-2">Projects ( 2021 - 26 )</p>
-
-        <div>
-          {published.map((project, index) => (
-            <ProjectRow key={project.title} project={project} index={index} />
-          ))}
-        </div>
-
-        <div ref={earlierRef} className="reveal border-t border-border pt-10 md:pt-14">
-          <p className="label text-ink-400 mb-8">Selected earlier work</p>
-          <ul className="space-y-6">
-            {earlierWork.map((item) => (
-              <li key={item.title} className="flex flex-col sm:flex-row sm:gap-6">
-                <div className="flex items-baseline gap-3 sm:w-52 sm:shrink-0">
-                  <span className="text-base">{item.title}</span>
-                  <span className="label text-ink-400 tabular-nums">{item.year}</span>
-                </div>
-                <p className="text-sm leading-relaxed text-ink-500 mt-1 sm:mt-0">
-                  <span className="text-ink-600">{item.role}.</span> {item.note}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </section>
-  );
-};
+/**
+ * The work section: three projects at full weight, then everything else as
+ * an index.
+ *
+ * There used to be a grid of large project cards here, and briefly an
+ * expanding ledger. Both were wrong in the same direction: the cards made a
+ * recruiter scroll five screens to compare three projects, and the ledger
+ * made them hover to see one at a time. Three fixed rows let all three be
+ * compared without moving anything. The cards were not deleted, they moved:
+ * /work still renders every project at full weight.
+ */
+const Work = () => (
+  <section id="work" className="scroll-mt-24 overflow-x-clip px-5 pb-20 md:px-8 md:pb-24 lg:px-12">
+    <h2 className="label-strong">Selected work</h2>
+    <FeaturedProjects />
+    <SelectedIndex />
+  </section>
+);
 
 export default Work;

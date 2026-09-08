@@ -113,7 +113,7 @@ const Explorations = () => {
   }, [lightboxIndex]);
 
   return (
-    <section id="explorations" className="px-6 md:px-10 lg:px-16 pb-24">
+    <section id="explorations" className="px-5 md:px-8 lg:px-12 pb-24">
       <div className="mx-auto max-w-3xl">
         {/* Tab Navigation */}
         <div className="flex flex-wrap gap-x-6 gap-y-2 border-t border-border pt-8 mb-8">

@@ -23,9 +23,11 @@ export const caseStudyList: CaseStudy[] = [
   brynq,
   layrrrd,
   merryHealth,
+  ...(showDrafts ? [curateus] : []),
+  educaitors,
+  // Concept work sits at the end, in the same order as the home page.
   stree,
   hungerProject,
-  ...(showDrafts ? [educaitors, curateus] : []),
 ].map(publishable);
 
 export const caseStudies: Record<string, CaseStudy> = Object.fromEntries(

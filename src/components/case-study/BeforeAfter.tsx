@@ -35,11 +35,11 @@ const BeforeAfter = ({
     <figure ref={ref} className={`reveal ${widthClass(width)}`.trim()}>
       <div className="grid gap-6 md:grid-cols-2">
         <div>
-          <p className="label text-ink-400 mb-3">{beforeLabel}</p>
+          <p className="label text-ink-500 mb-3">{beforeLabel}</p>
           <Figure src={before.src} alt={before.alt} caption={before.caption} onOpen={onOpen} />
         </div>
         <div>
-          <p className="label text-ink-400 mb-3">{afterLabel}</p>
+          <p className="label text-ink-500 mb-3">{afterLabel}</p>
           <Figure src={after.src} alt={after.alt} caption={after.caption} onOpen={onOpen} />
         </div>
       </div>

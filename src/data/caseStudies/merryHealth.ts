@@ -13,8 +13,8 @@ export const merryHealth: CaseStudy = {
   title: 'Merry Health',
   headline:
     'Turning the WhatsApp threads ambulance dispatch already ran on into a system that leaves a record',
-  qualifier: 'Concept',
-  year: '2024',
+  qualifier: 'Apprenticeship',
+  year: '2026',
   status: 'concept',
   tagline: 'Healthcare ops . Emergency dispatch . Tier 2 and 3 India',
   cover,
@@ -26,10 +26,10 @@ export const merryHealth: CaseStudy = {
 
   meta: [
     { label: 'Role', value: 'Product Designer' },
-    { label: 'Engagement', value: 'Freelance' },
-    { label: 'Timeline', value: '2024' },
-    { label: 'Team', value: '[NEED: who else was involved]' },
-    { label: 'Stage', value: 'Concept, researched not built' },
+    { label: 'Engagement', value: 'MDes practicum apprenticeship with Merry Health, JSAA' },
+    { label: 'Timeline', value: '2026' },
+    { label: 'Team', value: 'Team of 5 designers' },
+    { label: 'Stage', value: 'Proposed system, researched not rolled out' },
     { label: 'Domain', value: 'Emergency healthcare operations' },
   ],
 
@@ -63,7 +63,7 @@ export const merryHealth: CaseStudy = {
         {
           kind: 'prose',
           body: [
-            'I audited every data point in the dispatch flow against three questions: who owns it, who initiates it, and what decision it enables. That covered four actors across twelve dispatch steps. For each data point I recorded its source, who consumes it, its purpose, how often it appears, and how it fails.',
+            'We audited every data point in the dispatch flow against three questions: who owns it, who initiates it, and what decision it enables. That covered four actors across twelve dispatch steps. For each data point we recorded its source, who consumes it, its purpose, how often it appears, and how it fails.',
             'The audit pointed the opposite way to the brief. WhatsApp was the only component of the system that had achieved full adoption, and it had done so because it demanded nothing. No login, no training, no bandwidth. It was not a workaround. It was the operating system.',
           ],
         },
@@ -127,7 +127,7 @@ export const merryHealth: CaseStudy = {
           kind: 'prose',
           body: [
             'The data loss was not carelessness. It was a caller under stress being asked open questions. Structured prompts replaced free text in the channel people were already using, so the information a dispatch needs is collected once, at the point where somebody is willing to answer.',
-            'Building inside WhatsApp rather than beside it meant inheriting its limits, and I took that deliberately.',
+            'Building inside WhatsApp rather than beside it meant inheriting its limits, and we took that deliberately.',
           ],
         },
         {
@@ -168,23 +168,38 @@ export const merryHealth: CaseStudy = {
       index: '02',
       nav: '02 Failure modes',
       problem: 'In an emergency system the exception is the operating condition',
-      intervention: 'so I designed the failure modes before the happy path',
+      intervention: 'so we designed the failure modes before the happy path',
       blocks: [
         {
           kind: 'prose',
           body: [
-            'I mapped six failure modes: WhatsApp delivery failing, GPS unavailable, unclear or contradictory information, an unreachable driver, duplicate bookings for the same patient, and an unreachable hospital group. Designing for resilience rather than perfection meant each needed a fallback path, an owner, and a notification before any flow needed a visual design.',
+            'We mapped six failure modes: WhatsApp delivery failing, GPS unavailable, unclear or contradictory information, an unreachable driver, duplicate bookings for the same patient, and an unreachable hospital group. Designing for resilience rather than perfection meant each needed a fallback path, an owner, and a notification before any flow needed a visual design.',
           ],
         },
         {
           kind: 'points',
           items: [
-            { title: 'WhatsApp delivery fails', body: '[NEED: what the system does instead, and who gets told]' },
-            { title: 'GPS unavailable', body: '[NEED: the fallback path]' },
-            { title: 'Information unclear or contradictory', body: '[NEED: the resolution path]' },
-            { title: 'Driver unreachable', body: '[NEED: the escalation path]' },
+            {
+              title: 'WhatsApp delivery fails',
+              body: 'Automatic retry, then SMS, then a dashboard alert, so a failed message never fails silently. Operations owns it.',
+            },
+            {
+              title: 'GPS unavailable',
+              body: 'Tracking falls back to manual ETA updates and the ride is flagged on the dashboard. The system owns the switch, operations owns the updates.',
+            },
+            {
+              title: 'Information unclear or contradictory',
+              body: 'The system replies on the same thread asking for the one field it is missing. A voice note or photo routes to operations, who complete the record by hand.',
+            },
+            {
+              title: 'Driver unreachable',
+              body: 'Pending responses are tracked, and no reply inside two minutes escalates to the next driver. A driver with no smartphone or no network is called, and operations updates the ride on their behalf.',
+            },
             { title: 'Duplicate bookings for the same patient', body: '[NEED: the reconciliation rule]' },
-            { title: 'Hospital group unreachable', body: '[NEED: the fallback contact chain]' },
+            {
+              title: 'Hospital group unreachable',
+              body: 'An unmapped hospital number is selected manually by operations and mapped for next time. A hospital with no WhatsApp calls Merry Health, and the trip is created against the same record.',
+            },
           ],
         },
         {
@@ -266,7 +281,7 @@ export const merryHealth: CaseStudy = {
         },
         {
           option: 'Capture the complete dataset at intake',
-          why: 'Better reporting, cleaner records. Rejected because every additional required field is a chance for intake to stall. I specified the operational minimum per handoff instead, and accepted weaker analytics as the price.',
+          why: 'Better reporting, cleaner records. Rejected because every additional required field is a chance for intake to stall. We specified the operational minimum per handoff instead, and accepted weaker analytics as the price.',
         },
         {
           option: 'A dedicated driver app',

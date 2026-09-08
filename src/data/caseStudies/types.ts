@@ -91,7 +91,7 @@ export interface Summary {
   results: string;
 }
 
-/** A short result claim. The emphasis fragment is set in editorial italic. */
+/** A short result claim. The emphasis fragment is set in medium weight. */
 export interface Callout {
   title: string;
   emphasis?: string;
@@ -128,7 +128,7 @@ export type Section =
       index: string;
       /** The problem clause. Set plain. */
       problem: string;
-      /** The intervention clause. Set in editorial italic. */
+      /** The intervention clause. Set in medium weight. */
       intervention: string;
       blocks: Block[];
     })
@@ -170,4 +170,9 @@ export interface CaseStudy {
   intro: string[];
   meta: MetaItem[];
   sections: Section[];
+  /**
+   * Optional slide-deck companion to the long-form study. Renders as a
+   * band under the metadata; the deck itself is its own route.
+   */
+  story?: { href: string; note: string };
 }

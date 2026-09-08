@@ -44,7 +44,7 @@ const BlockRenderer = ({
         <blockquote className="max-w-2xl border-l border-foreground pl-6">
           <p className="text-2xl md:text-3xl leading-[1.2]">{block.text}</p>
           {block.source && (
-            <cite className="label text-ink-400 mt-4 block not-italic">{block.source}</cite>
+            <cite className="label text-ink-500 mt-4 block not-italic">{block.source}</cite>
           )}
         </blockquote>
       );
@@ -71,11 +71,11 @@ const BlockRenderer = ({
               <p className="text-base">{t.title}</p>
               <dl className="mt-4 grid gap-4 sm:grid-cols-2">
                 <div>
-                  <dt className="label text-ink-400 mb-2">What it cost</dt>
+                  <dt className="label text-ink-500 mb-2">What it cost</dt>
                   <dd className="text-base leading-relaxed text-ink-600">{t.cost}</dd>
                 </div>
                 <div>
-                  <dt className="label text-ink-400 mb-2">What it bought</dt>
+                  <dt className="label text-ink-500 mb-2">What it bought</dt>
                   <dd className="text-base leading-relaxed text-ink-600">{t.gain}</dd>
                 </div>
               </dl>
@@ -90,7 +90,7 @@ const BlockRenderer = ({
           {block.items.map((item) => (
             <li key={item.option} className="border-b border-border py-5">
               <p className="flex items-start gap-3 text-base">
-                <span className="label text-ink-400 mt-[0.4em] shrink-0">Not</span>
+                <span className="label text-ink-500 mt-[0.4em] shrink-0">Not</span>
                 <span>{item.option}</span>
               </p>
               <p className="mt-2 pl-[3.25rem] text-base leading-relaxed text-ink-600">{item.why}</p>
@@ -103,8 +103,8 @@ const BlockRenderer = ({
       return (
         <div className="max-w-2xl border-t border-border">
           <div className="hidden gap-8 border-b border-border pb-3 sm:grid sm:grid-cols-2">
-            <p className="label text-ink-400">Intended outcome</p>
-            <p className="label text-ink-400">Metric I would instrument</p>
+            <p className="label text-ink-500">Intended outcome</p>
+            <p className="label text-ink-500">Metric I would instrument</p>
           </div>
           {block.items.map((row) => (
             <div
@@ -146,7 +146,7 @@ const BlockRenderer = ({
     case 'note':
       return (
         <div className="max-w-2xl border-l border-border pl-6">
-          <p className="label text-ink-400 mb-3">{block.label}</p>
+          <p className="label text-ink-500 mb-3">{block.label}</p>
           <p className="text-base leading-relaxed text-ink-600">{block.body}</p>
         </div>
       );

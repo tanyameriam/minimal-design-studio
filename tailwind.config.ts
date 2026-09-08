@@ -16,6 +16,25 @@ export default {
   		transitionTimingFunction: {
 			smooth: 'cubic-bezier(0.22, 1, 0.36, 1)'
 		},
+		/*
+		 * Fluid type scale. Every step interpolates between a 400px and an
+		 * 1800px viewport, so type grows continuously with the window instead
+		 * of jumping at breakpoints. Line heights are unitless ratios on
+		 * purpose: Tailwind's defaults are fixed rem values, which would stay
+		 * put while the font size grew and progressively crush the leading.
+		 */
+		fontSize: {
+			sm: ['clamp(0.875rem, 0.839rem + 0.143vw, 1rem)', '1.5'],
+			base: ['clamp(1rem, 0.946rem + 0.214vw, 1.1875rem)', '1.6'],
+			lg: ['clamp(1.125rem, 1.054rem + 0.286vw, 1.375rem)', '1.55'],
+			xl: ['clamp(1.25rem, 1.143rem + 0.429vw, 1.625rem)', '1.5'],
+			'2xl': ['clamp(1.5rem, 1.357rem + 0.571vw, 2rem)', '1.3'],
+			'3xl': ['clamp(1.75rem, 1.5rem + 1vw, 2.625rem)', '1.2'],
+			'4xl': ['clamp(2rem, 1.571rem + 1.714vw, 3.5rem)', '1.12'],
+			'5xl': ['clamp(2.25rem, 1.607rem + 2.571vw, 4.5rem)', '1.08'],
+			'6xl': ['clamp(2.5rem, 1.643rem + 3.429vw, 5.5rem)', '1.05'],
+			'7xl': ['clamp(2.75rem, 1.679rem + 4.286vw, 6.5rem)', '1.03']
+		},
 		fontFamily: {
   			sans: [
   				'Geist',
@@ -27,7 +46,6 @@ export default {
   				'sans-serif'
   			],
   			serif: [
-  				'Instrument Serif',
   				'ui-serif',
   				'Georgia',
   				'serif'
@@ -42,6 +60,20 @@ export default {
   			]
   		},
   		colors: {
+  			/*
+  			 * The ink scale as first-class colors, so opacity variants like
+  			 * bg-ink-400/15 compile. The hand-written .text-ink-* utilities in
+  			 * index.css predate this and keep working; classes Tailwind can
+  			 * now generate natively simply stop depending on them.
+  			 */
+  			ink: {
+  				'900': 'hsl(var(--ink-900) / <alpha-value>)',
+  				'800': 'hsl(var(--ink-800) / <alpha-value>)',
+  				'600': 'hsl(var(--ink-600) / <alpha-value>)',
+  				'500': 'hsl(var(--ink-500) / <alpha-value>)',
+  				'400': 'hsl(var(--ink-400) / <alpha-value>)'
+  			},
+  			link: 'hsl(var(--link) / <alpha-value>)',
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',

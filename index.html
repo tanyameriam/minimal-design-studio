@@ -1,23 +1,24 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
 
-    <title>Tanya Sunny, Product Designer</title>
+    <title>Tanya Sunny, Product Designer for Complex Systems</title>
     <meta
       name="description"
-      content="Product designer working on complex B2B systems. Currently designing HR and payroll integration flows at BrynQ. Based in the Netherlands."
+      content="Product designer based in the Netherlands, working across research, systems thinking, interaction design, and delivery for complex B2B and multi-stakeholder products."
     />
     <meta name="author" content="Tanya Sunny" />
 
     <link rel="canonical" href="https://tanyasunny.com" />
 
     <meta property="og:site_name" content="Tanya Sunny" />
-    <meta property="og:title" content="Tanya Sunny, Product Designer" />
+    <meta property="og:title" content="Tanya Sunny, Product Designer for Complex Systems" />
     <meta
       property="og:description"
-      content="Product designer working on complex B2B systems. Currently designing HR and payroll integration flows at BrynQ."
+      content="Product designer based in the Netherlands, working across research, systems thinking, interaction design, and delivery for complex B2B and multi-stakeholder products."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://tanyasunny.com" />
@@ -26,14 +27,45 @@
     <meta property="og:image:height" content="630" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Tanya Sunny, Product Designer" />
+    <meta name="twitter:title" content="Tanya Sunny, Product Designer for Complex Systems" />
     <meta
       name="twitter:description"
-      content="Product designer working on complex B2B systems. Currently designing HR and payroll integration flows at BrynQ."
+      content="Product designer based in the Netherlands, working across research, systems thinking, interaction design, and delivery for complex B2B and multi-stakeholder products."
     />
     <meta name="twitter:image" content="https://tanyasunny.com/og.png" />
 
-    <meta name="theme-color" content="#fffefd" />
+    <meta name="theme-color" content="#09090b" />
+
+    <!--
+      Theme boot. Runs before the first paint so the page never renders in one
+      palette and then snaps to the other. The stored preference wins; with
+      none stored we follow the OS. Kept in step with src/hooks/use-theme.ts,
+      which owns the same logic once React is up.
+
+      The document ships with class="dark", so a visitor with JavaScript off
+      still gets a coherent page rather than an unstyled one.
+    -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var dark =
+            stored === 'dark' ||
+            (stored !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          var root = document.documentElement;
+          root.classList.toggle('dark', dark);
+          root.style.colorScheme = dark ? 'dark' : 'light';
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute('content', dark ? '#09090b' : '#f3f4f6');
+          document
+            .querySelector('meta[name="color-scheme"]')
+            .setAttribute('content', dark ? 'dark' : 'light');
+        } catch (e) {
+          /* Storage or matchMedia unavailable: keep the shipped default. */
+        }
+      })();
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

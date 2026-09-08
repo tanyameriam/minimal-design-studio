@@ -14,6 +14,8 @@ export const layrrrd: CaseStudy = {
     'We gave ourselves nine days to validate it, and we got the numbers. I led design, from product direction through the design system to the brand. By day nine we had paying customers, and the same team has kept building since. This is the project where every judgment call had a deadline measured in hours, which makes it the clearest record I have of how I actually decide.',
   ],
 
+  story: { href: '/case-study/layrrrd/story', note: '16 slides' },
+
   meta: [
     { label: 'Role', value: 'Design Lead. Product direction, design system, brand' },
     { label: 'Engagement', value: 'Validated in 9 days, now an ongoing product' },

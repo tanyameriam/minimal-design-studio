@@ -1,12 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useReveal } from '@/hooks/use-reveal';
 
-const socials = [
-  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/tanya-sunny/' },
+/**
+ * The links a recruiter actually needs, in the order they need them. The
+ * visual-portfolio profiles sit a step below on purpose: they are galleries,
+ * and this portfolio's argument is not a gallery.
+ */
+const secondary = [
   { name: 'Medium', url: 'https://medium.com/@tanyameriamsunny' },
   { name: 'Dribbble', url: 'https://dribbble.com/TanyaSunny' },
   { name: 'Behance', url: 'https://www.behance.net/tanyasunny' },
 ];
+
+const LINKEDIN = 'https://www.linkedin.com/in/tanya-sunny/';
 
 const EMAIL = 'tanyameriamsunny@gmail.com';
 const MAIL = `mailto:${EMAIL}`;
@@ -31,15 +38,18 @@ const Contact = () => {
   };
 
   return (
-    <footer id="contact" ref={ref} className="reveal px-6 md:px-10 lg:px-16 pb-16">
-      <div className="mx-auto max-w-3xl border-t border-border pt-10 md:pt-14">
-        <h2 className="text-3xl md:text-5xl max-w-[18ch]">
+    <footer id="contact" ref={ref} className="reveal shell scroll-mt-24 px-5 pb-16 md:px-8 lg:px-12">
+      <div className="border-t border-border pt-10 md:pt-14">
+        <h2 className="max-w-[18ch] text-5xl">
           Let&rsquo;s connect. I&rsquo;m always up for a{' '}
-          <span className="em-serif">chat</span>.
+          <span className="em">chat</span>.
         </h2>
 
         <div className="mt-8 flex flex-wrap items-baseline gap-x-5 gap-y-2">
-          <a href={MAIL} className="group inline-flex items-center gap-3 text-lg md:text-xl rule-link">
+          <a
+            href={MAIL}
+            className="rule-link group inline-flex items-center gap-3 break-all text-lg md:text-xl"
+          >
             {EMAIL}
             <span
               aria-hidden="true"
@@ -58,7 +68,28 @@ const Contact = () => {
           </button>
         </div>
 
-        <p className="mt-10 max-w-xl text-sm leading-relaxed text-ink-500">
+        {/* The other two things a hiring reader wants, at the same weight. */}
+        <div className="mt-6 flex flex-wrap items-baseline gap-x-8 gap-y-3">
+          <a
+            href={LINKEDIN}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rule-link text-lg text-ink-600 transition-colors hover:text-foreground"
+          >
+            LinkedIn
+            <span aria-hidden="true" className="ml-1 text-ink-400">
+              &#8599;
+            </span>
+          </a>
+          <Link
+            to="/cv"
+            className="rule-link text-lg text-ink-600 transition-colors hover:text-foreground"
+          >
+            CV
+          </Link>
+        </div>
+
+        <p className="mt-10 max-w-2xl text-sm leading-relaxed text-ink-500">
           I co-organise Design Reimagined Utrecht. If you would like to speak at a
           session,{' '}
           <a
@@ -72,7 +103,7 @@ const Contact = () => {
 
         <div className="mt-16 flex flex-col gap-6 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-wrap gap-x-6 gap-y-2">
-            {socials.map((social) => (
+            {secondary.map((social) => (
               <a
                 key={social.name}
                 href={social.url}
@@ -87,7 +118,7 @@ const Contact = () => {
               </a>
             ))}
           </div>
-          <p className="label text-ink-400">&copy; {year} Tanya Sunny</p>
+          <p className="label text-ink-500">&copy; {year} Tanya Sunny</p>
         </div>
       </div>
     </footer>

@@ -193,8 +193,25 @@ export const publishable = (study: CaseStudy): CaseStudy => ({
 export const publishableProject = (project: Project): Project => ({
   ...project,
   year: clean(project.year),
-  outcome: clean(project.outcome),
-  // Chips render with separators between them, so an empty one would leave a
-  // stray divider behind.
-  chips: cleanAll(project.chips),
+  headline: clean(project.headline),
+  decision: clean(project.decision),
+  // The home-page entry obeys the same rule. Its single evidence point is a
+  // figure and its caption together, so a draft in either half drops the
+  // whole point rather than leaving a labelled blank in the row.
+  featured: project.featured && {
+    ...project.featured,
+    headline: clean(project.featured.headline),
+    description: clean(project.featured.description),
+    evidence: {
+      ...project.featured.evidence,
+      figure: clean(project.featured.evidence.figure),
+      note: clean(project.featured.evidence.note),
+    },
+  },
+  // A metric is a figure and its caption together, so a draft in either half
+  // drops the whole cell rather than leaving a labelled blank in the row. A
+  // project left with nothing loses the row, not just its contents.
+  metrics: project.metrics
+    ?.filter((m) => !blank(m.figure) && !blank(m.note))
+    .map((m) => ({ ...m, figure: clean(m.figure), note: clean(m.note) })),
 });

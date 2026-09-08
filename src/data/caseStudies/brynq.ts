@@ -20,6 +20,8 @@ export const brynq: CaseStudy = {
     'I have been the product designer at BrynQ since 2023, working across the integration platform. This case study goes deep on one workstream, the requirements wizard and the template system it enabled, because it best shows how I work. The role is wider than this story, and the ongoing parts of it are summarised at the end.',
   ],
 
+  story: { href: '/case-study/brynq/story', note: '16 slides' },
+
   meta: [
     { label: 'Role', value: 'Product Designer. Research, workflow design, UI systems' },
     { label: 'Engagement', value: 'In-house, product team' },
@@ -45,7 +47,7 @@ export const brynq: CaseStudy = {
           'Because the team already thought in phases and the business ran on the Scenario. Digitising the existing workflow before improving it bought adoption and structured data at once. A cleverer redesign would have been rejected by the people it needed most, and there was no data yet to design the clever version from.',
         resultsLabel: 'Results',
         results:
-          'An interface build that took up to six months now ships in about one week when started from a template. Incomplete information surfaces at submission instead of mid-build, customer feedback has been positive, and setup shifted from developer-led toward self-serve.',
+          'Standard integrations historically took roughly six months. Under the template-led delivery model the same category of integration could be implemented in roughly two weeks, an estimated 92% reduction in lead time drawn from the implementation model rather than measured in production. Incomplete information surfaces at submission instead of mid-build, the project manager described template-led setup as twice as easy, and setup shifted from developer-led toward self-serve.',
       },
     },
 
@@ -169,7 +171,7 @@ export const brynq: CaseStudy = {
         {
           kind: 'prose',
           body: [
-            'Once patterns emerged across structured Scenario data, templates became possible for common system combinations. An interface build that previously took up to six months now ships in about one week when started from a template, and BrynQ moved from a fully custom, developer-driven model toward self-serve setup. That is the payoff of digitising before optimising: the boring first version generated the asset the interesting second version needed.',
+            'Once patterns emerged across structured Scenario data, templates became possible for common system combinations. An interface build that previously took roughly six months could, starting from a template, be implemented in roughly two weeks, and BrynQ moved from a fully custom, developer-driven model toward self-serve setup. That two-week figure comes from the delivery model, not from a production measurement. That is the payoff of digitising before optimising: the boring first version generated the asset the interesting second version needed.',
             'The same foundation enabled lightweight project management and AI-assisted interface creation. What began as digitising an Excel file became a cornerstone of the platform’s modernisation.',
           ],
         },
@@ -216,7 +218,7 @@ export const brynq: CaseStudy = {
         {
           kind: 'prose',
           body: [
-            'Without touching core integration logic, the wizard changed where integration time went. An interface build that took up to six months now ships in about one week when started from a template. Missing information surfaces at submission rather than mid-build, internal coordination became visible, and customer feedback on the template-based setup has been positive. Most importantly, structured requirements data now lives inside the platform, which is what made everything after it possible.',
+            'Without touching core integration logic, the wizard changed where integration time went. An interface build that historically took roughly six months is estimated at roughly two weeks when started from a template, a figure derived from the delivery model rather than observed in production. What was observed is narrower and firmer: missing information surfaces at submission rather than mid-build, internal coordination became visible, and the project manager described template-led setup as twice as easy. Most importantly, structured requirements data now lives inside the platform, which is what made everything after it possible.',
           ],
         },
         {
@@ -232,8 +234,8 @@ export const brynq: CaseStudy = {
       callouts: [
         {
           title: 'Build time, from',
-          emphasis: '6 months to 1 week',
-          body: 'Templates for repeat system combinations turned interface setup from a months-long custom build into about a week of work.',
+          emphasis: '~6 months to ~2 weeks',
+          body: 'Templates for repeat system combinations put a months-long custom build within reach of roughly two weeks. Estimated from the template-led delivery model, not yet measured in production.',
         },
         {
           title: 'Gaps surfaced',

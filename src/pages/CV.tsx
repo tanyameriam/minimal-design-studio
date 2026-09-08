@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Download, Mail, MapPin, Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { usePageMeta } from '@/hooks/use-page-meta';
+import ThemeToggle from '@/components/ThemeToggle';
+
 const CV = () => {
   usePageMeta('CV', 'Curriculum vitae for Tanya Sunny, product designer based in the Netherlands.');
   const navigate = useNavigate();
@@ -115,7 +117,7 @@ const CV = () => {
                 <div class="title">Product Designer</div>
                 <div class="summary">
                   Product Designer with <strong>5+ years of experience</strong> in UI execution, UX auditing, and workflow design.
-                  Currently at BrynQ, improving usability within complex HR/Payroll integration flows, and leading design on Layrrrd, a live content product.
+                  Currently at BrynQ, improving usability within complex HR/Payroll integration flows.
                   MDes in UX with an AI specialization. Strong technical foundation.
                 </div>
               </div>
@@ -139,31 +141,12 @@ const CV = () => {
                     <div class="job-company">BrynQ, Netherlands</div>
                     <div class="job-date">2023 to Present</div>
                     <ul>
-                      <li>Designed the interface requirements wizard and template system that <strong>cut interface build time from 6 months to 1 week</strong></li>
+                      <li>Designed the interface requirements wizard and template system, putting an interface build that historically took <strong>~6 months on a modelled path to ~2 weeks</strong></li>
                       <li>Design and improve user flows, <strong>simplifying complex configuration tasks</strong></li>
                       <li>Conduct UX audits and propose iterative improvements</li>
                       <li>Apply systems thinking to data mappings and interface states</li>
                       <li>Led design for internal task-tracking feature</li>
                       <li>Contribute to <strong>AI-assisted workflows</strong> for setup and validation</li>
-                    </ul>
-                  </div>
-
-                  <div class="job">
-                    <div class="job-title">Design Lead</div>
-                    <div class="job-company">Layrrrd (layrrrd.com)</div>
-                    <div class="job-date">2026 to Present</div>
-                    <ul>
-                      <li>Led design for a content curation product validated in 9 days: <strong>15 paying customers and 126 freemium signups by day nine</strong></li>
-                      <li>Own the design system and brand; live and in active development with the same team</li>
-                    </ul>
-                  </div>
-
-                  <div class="job">
-                    <div class="job-title">Product Designer (Freelance)</div>
-                    <div class="job-company">Merry Health, India</div>
-                    <div class="job-date">2024</div>
-                    <ul>
-                      <li>Researched and specified a dispatch coordination system for emergency ambulance operations across hospitals, drivers, and patients</li>
                     </ul>
                   </div>
 
@@ -300,10 +283,15 @@ const CV = () => {
             <span className="text-sm">Back to Portfolio</span>
           </button>
           
-          <Button onClick={handleDownloadPDF} variant="outline" size="sm" className="gap-2">
-            <Download className="w-4 h-4" />
-            Download PDF
-          </Button>
+          {/* This page carries its own header rather than the site nav, so the
+              theme switch has to be repeated here to stay reachable. */}
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <Button onClick={handleDownloadPDF} variant="outline" size="sm" className="gap-2">
+              <Download className="w-4 h-4" />
+              Download PDF
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -338,8 +326,7 @@ const CV = () => {
             <p className="text-muted-foreground leading-relaxed">
               Product Designer with 5 years of professional design experience and a broader corporate background since 2018.
               Experienced in UI execution, UX auditing, and workflow design for digital products. Currently working on BrynQ,
-              an HR/Payroll integration product, and leading design on Layrrrd, a live content curation product.
-              MDes in UX with a specialisation in AI, completed 2026. Strong technical foundation.
+              an HR/Payroll integration product. MDes in UX with a specialisation in AI, completed 2026. Strong technical foundation.
             </p>
           </section>
 
@@ -368,7 +355,7 @@ const CV = () => {
                   <span className="text-sm text-muted-foreground">2023 to Present</span>
                 </div>
                 <ul className="list-disc list-outside ml-5 text-muted-foreground text-sm space-y-1">
-                  <li>Designed the interface requirements wizard and template system that cut interface build time from 6 months to 1 week.</li>
+                  <li>Designed the interface requirements wizard and template system, putting an interface build that historically took ~6 months on a modelled path to ~2 weeks. Estimated from the template-led delivery model, not measured in production.</li>
                   <li>Design and improve user flows within the BrynQ product, simplifying complex configuration and operational tasks.</li>
                   <li>Identify usability issues through UX audits and propose iterative improvements.</li>
                   <li>Apply systems thinking to structure interactions around data mappings, transformations, and interface states.</li>
@@ -376,35 +363,6 @@ const CV = () => {
                   <li>Collaborate with Product Owners and Product Managers to align design work with product priorities.</li>
                   <li>Led design for an internal task-tracking feature to improve clarity around actions and responsibilities.</li>
                   <li>Contribute to AI-assisted workflows that support users during setup and validation processes.</li>
-                </ul>
-              </div>
-
-              {/* Layrrrd */}
-              <div>
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
-                  <div>
-                    <h3 className="font-medium text-lg">Design Lead</h3>
-                    <p className="text-muted-foreground text-sm">Layrrrd (layrrrd.com)</p>
-                  </div>
-                  <span className="text-sm text-muted-foreground">2026 to Present</span>
-                </div>
-                <ul className="list-disc list-outside ml-5 text-muted-foreground text-sm space-y-1">
-                  <li>Led design for a content curation product validated in 9 days: 15 paying customers and 126 freemium signups by day nine.</li>
-                  <li>Own the design system and brand. Live and in active development with the same team.</li>
-                </ul>
-              </div>
-
-              {/* Merry Health */}
-              <div>
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
-                  <div>
-                    <h3 className="font-medium text-lg">Product Designer (Freelance)</h3>
-                    <p className="text-muted-foreground text-sm">Merry Health, India</p>
-                  </div>
-                  <span className="text-sm text-muted-foreground">2024</span>
-                </div>
-                <ul className="list-disc list-outside ml-5 text-muted-foreground text-sm space-y-1">
-                  <li>Researched and specified a dispatch coordination system for emergency ambulance operations across hospitals, drivers, and patients.</li>
                 </ul>
               </div>
 
