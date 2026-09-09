@@ -14,9 +14,9 @@ import rudolf from '@/assets/rudolf.png';
  * character now renders the real mark. Every call site passed only
  * `className` and `aria-hidden`, which is why nothing else had to change.
  *
- * The export is one pose. `RudolfThinking` therefore shows the same hound
- * rather than a second invented pose: a drawn approximation standing beside
- * the real artwork on the same page would read as two different dogs.
+ * The case study no longer shows him at all: the mascot is argued for there
+ * in words and in product stills, not illustrated. What is left is the
+ * homepage cover and the paw.
  *
  * The paw is still drawn. It is a marker rather than a portrait, it has to
  * stay legible at 16px along the sprint rail where a whole dog is a smudge,
@@ -41,9 +41,6 @@ const Pose = ({ className = '', ...props }: PoseProps) => (
 
 /** Sitting, upright, attentive. The listening pose. */
 export const RudolfSitting = (props: PoseProps) => <Pose {...props} />;
-
-/** The same hound, used where the story is thinking. */
-export const RudolfThinking = (props: PoseProps) => <Pose {...props} />;
 
 /**
  * A paw print. Rudolf's other mark, and the one that scales down: it is

@@ -12,7 +12,7 @@ import { useReveal } from '@/hooks/use-reveal';
  *
  * Read at two speeds. `Headline`, `Statement` and `Metric` carry the entire
  * argument on their own, so a scan of the page tells the story; `Lede`,
- * `Voice` and `Panel` carry the reasoning underneath for anyone who wants it.
+ * `Decision` and `Panel` carry the reasoning underneath for anyone who wants it.
  */
 
 export type SlideHeight = 'full' | 'tall' | 'short' | 'auto';
@@ -127,22 +127,20 @@ export const Em = ({ children }: { children: ReactNode }) => (
 );
 
 /**
- * The two voices the story alternates between: what I noticed as design
- * lead, and what it meant for the business. Different treatments, so a
- * scanner can tell them apart without reading either.
+ * One decision, pulled out of the copy so a scan catches it.
+ *
+ * This replaces the two narrated voices the page used to alternate between.
+ * A labelled "my read" after every section turns every observation into a
+ * verdict, and a reader stops believing them somewhere around the fourth.
+ * What is left is the thing worth interrupting for: what we decided, or
+ * what the evidence obliged the design to do. The label names which.
  */
-export const Voice = ({ kind, children }: { kind: 'mine' | 'business'; children: ReactNode }) =>
-  kind === 'mine' ? (
-    <div className="mt-10 max-w-3xl border-l-2 border-foreground pl-5 md:mt-12 md:pl-6">
-      <p className="label mb-3 text-ink-500">My read</p>
-      <p className="text-lg leading-[1.4] md:text-2xl">{children}</p>
-    </div>
-  ) : (
-    <div className="mt-10 max-w-3xl rounded-[3px] bg-card p-5 md:mt-12 md:p-6">
-      <p className="label mb-3 text-ink-500">The business read</p>
-      <p className="text-base leading-[1.55] text-ink-600 md:text-lg">{children}</p>
-    </div>
-  );
+export const Decision = ({ label, children }: { label: string; children: ReactNode }) => (
+  <div className="mt-10 max-w-3xl border-l-2 border-foreground pl-5 md:mt-12 md:pl-6">
+    <p className="label mb-3 text-ink-500">{label}</p>
+    <p className="text-lg leading-[1.4] md:text-2xl">{children}</p>
+  </div>
+);
 
 /** One number and what it counts. */
 export const Metric = ({
@@ -224,13 +222,18 @@ export const AssetSlot = ({
   ratio?: string;
   children?: ReactNode;
 }) => (
-  <figure
-    className={`relative flex flex-col justify-center rounded-[3px] border border-dashed border-border ${ratio}`}
-  >
-    <div className="flex flex-1 items-center justify-center p-6 text-ink-400 md:p-8">
+  <figure className="flex flex-col rounded-[3px] border border-dashed border-border">
+    {/* The ratio is the picture area's minimum, not the frame's fixed size.
+        On the frame it clipped a caption that wrapped to two lines; as a
+        fixed ratio here it stranded the caption mid-frame whenever a grid
+        row stretched the figure taller. flex-1 lets the picture take the
+        slack instead, so the caption always sits on the bottom rule. */}
+    <div
+      className={`flex flex-1 items-center justify-center p-6 text-ink-400 md:p-8 ${ratio}`}
+    >
       {children ?? <span className="label">Screenshot</span>}
     </div>
-    <figcaption className="label border-t border-dashed border-border px-4 py-2.5 text-ink-500">
+    <figcaption className="label border-t border-dashed border-border px-4 py-2.5 leading-[1.5] text-ink-500">
       Asset pending · {label}
       {note ? ` · ${note}` : ''}
     </figcaption>

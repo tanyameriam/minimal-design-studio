@@ -17,12 +17,10 @@ import {
   Kicker,
   Headline,
   Lede,
-  Statement,
   Em,
-  Voice,
+  Decision,
   Metric,
   MetricRow,
-  Panel,
   Note,
   AssetSlot,
   Points,
@@ -31,165 +29,120 @@ import { CaseStudyEntry } from '@/components/case-study/slides/Slide';
 import {
   AfterTimeline,
   Beside,
+  BeforeAfterRows,
   Chain,
-  CostSteps,
-  DecisionChain,
-  DirectionCards,
-  EvidenceLadder,
+  DirectionShift,
   Fragments,
-  Graveyard,
-  Pipeline,
+  LoopPipeline,
   Pivots,
-  ProductLoop,
+  Progression,
   Reframe,
-  RudolfJobs,
+  SavedThenForgotten,
   ScopeBoundary,
-  SprintLine,
-  Streams,
+  SynthesisColumns,
+  Thumb,
   TrustFlow,
   Verdicts,
-  WideningStack,
 } from '@/components/case-study/layrrrd/diagrams';
-import { RudolfSitting, RudolfThinking } from '@/components/case-study/layrrrd/Rudolf';
 import { usePageMeta } from '@/hooks/use-page-meta';
 
 /**
  * Layrrrd, told as a product story rather than as a process report.
  *
  * The page runs on its own island of tokens (`.paper-layrrrd`, see
- * index.css): cream ground, near-black ink, hairlines, low radius, Rudolf.
- * It deliberately does not look like the BrynQ case study, because it is
- * not the same kind of work. BrynQ is a system being reshaped inside an
+ * index.css): cream ground, near-black ink, hairlines, low radius. It
+ * deliberately does not look like the BrynQ case study, because it is not
+ * the same kind of work. BrynQ is a system being reshaped inside an
  * existing company; this is nine days of deciding under pressure.
  *
- * Two speeds. The headlines, statements and metrics carry the entire
- * argument on their own, so a scan takes about a minute; the copy
- * underneath carries the reasoning. Every slide alternates the two voices
- * the project needs: what I noticed as design lead, and what the business
- * needed to prove.
+ * ---------------------------------------------------------------------
+ * STRUCTURE
+ *
+ * Nineteen sections, where there used to be forty-seven slides and five
+ * chapter splash pages. The splash pages are gone: they spent a full
+ * screen each on a single word and told a reader nothing they could not
+ * get from the rail. What replaces them is one horizontal run of the whole
+ * sprint near the top, so a two-minute reader leaves with the shape of the
+ * project rather than with an atmosphere.
+ *
+ * Two depths, as before, but the layers are drawn differently. The scan is
+ * headings, metrics, product stills and the pulled-out decisions. The read
+ * is the copy underneath. The page no longer ends every section with a
+ * narrated verdict, because a verdict after every observation stops being
+ * read as one.
  *
  * ---------------------------------------------------------------------
  * PLACEHOLDERS TO REPLACE
  *
- * Product artwork: search this file for `<AssetSlot`. Each one names the
- * exact screenshot it is waiting for. Swap the whole element for a
- * <FadeInImage /> when the file lands in src/assets. Nothing here invents a
- * product screenshot, so the gaps are visible on purpose.
+ * Search this file for `<AssetSlot` and `<Thumb`. Every hole names the
+ * exact file it is waiting for, matching the agreed asset list, so filling
+ * one is a find-and-replace: swap the element for a <FadeInImage /> once
+ * the file is in src/assets. Nothing here invents a product screenshot.
  *
- * Rudolf: the real mascot artwork, wrapped in a component
- * (components/case-study/layrrrd/Rudolf.tsx). The paw is still a drawn
- * mark, because it has to hold at 16px.
+ * The mascot artwork itself is not on this page. Rudolf appears only where
+ * he appears in the real product, through product stills.
  * ---------------------------------------------------------------------
  */
 
 const chapters: SprintChapter[] = [
-  { n: '01', name: 'Frame', target: 'ch-frame' },
-  { n: '02', name: 'Validate', target: 'ch-validate' },
-  { n: '03', name: 'Build', target: 'ch-build' },
-  { n: '04', name: 'Learn', target: 'ch-learn' },
-  { n: '05', name: 'Prove', target: 'ch-prove' },
+  { n: '01', name: 'Finding the problem', target: 'behaviour' },
+  { n: '02', name: 'Learning from use', target: 'testing' },
+  { n: '03', name: 'Validating value', target: 'pricing' },
 ];
 
-/**
- * The same five chapters, opened out slide by slide. The sprint rail keeps
- * the coarse view and the run of days; this is what the reader sees in the
- * left rail, and it is the only place the whole argument is visible at once.
- */
 const storyline: Storyline = [
   {
     n: '00',
     name: 'Opening',
     slides: [
-      { id: 'sprint-line', title: 'The sprint ended, the product did not' },
-      { id: 'process', title: 'The process at a glance' },
+      { id: 'product', title: 'The product' },
+      { id: 'summary', title: 'What happened in nine days' },
     ],
   },
   {
     n: '01',
-    name: 'Frame',
-    target: 'ch-frame',
+    name: 'Finding the problem',
+    target: 'behaviour',
     slides: [
-      { id: 'observation', title: 'Hundreds saved, barely any remembered' },
-      { id: 'survey', title: 'Asking the market what was broken' },
-      { id: 'reframe', title: 'The problem was what happened after saving' },
+      { id: 'behaviour', title: 'Good at saving, bad at finding' },
+      { id: 'survey', title: 'The survey changed the problem' },
+      { id: 'interviews', title: 'Why the behaviour happened' },
+      { id: 'proposition', title: 'Testing the idea before building it' },
+      { id: 'direction', title: 'The direction changed mid-build' },
+      { id: 'scope', title: 'Defining the MVP' },
+      { id: 'loop', title: 'The core product loop' },
+      { id: 'system', title: 'Design rules the team could use' },
+      { id: 'brand', title: 'Giving the brand a role' },
     ],
   },
   {
     n: '02',
-    name: 'Validate',
-    target: 'ch-validate',
+    name: 'Learning from use',
+    target: 'testing',
     slides: [
-      { id: 'interviews', title: 'Behind the percentages' },
-      { id: 'proposition', title: 'The marketing page as the prototype' },
-      { id: 'identity', title: 'What Layrrrd should be known for' },
-      { id: 'proposition-shift', title: 'Evidence moved the proposition' },
+      { id: 'testing', title: 'Eight usability sessions' },
+      { id: 'save-state', title: 'The save-state problem' },
+      { id: 'decisions', title: 'Four decisions that changed' },
     ],
   },
   {
     n: '03',
-    name: 'Build',
-    target: 'ch-build',
+    name: 'Validating value',
+    target: 'pricing',
     slides: [
-      { id: 'scope', title: 'Defining the MVP' },
-      { id: 'loop', title: 'Capture, understand, return' },
-      { id: 'surfaces', title: 'Meeting the habit where it already is' },
-      { id: 'taste', title: 'Speed against coherence' },
-      { id: 'system', title: 'The design system' },
-      { id: 'rudolf', title: 'One dog, several product jobs' },
-    ],
-  },
-  {
-    n: '04',
-    name: 'Learn',
-    target: 'ch-learn',
-    slides: [
-      { id: 'testing', title: 'Behaviour mattered more than opinions' },
-      { id: 'verdicts', title: 'What testing said' },
-      { id: 'trust', title: 'The save-state problem' },
-      { id: 'pivots', title: 'Research kept interrupting the plan' },
-    ],
-  },
-  {
-    n: '05',
-    name: 'Prove',
-    target: 'ch-prove',
-    slides: [
-      { id: 'willingness', title: 'Interest is not validation' },
-      { id: 'pricing', title: 'Pricing as a commitment test' },
-      { id: 'day-nine', title: 'Day nine: people had paid' },
-      { id: 'channels', title: 'Where the first customers came from' },
-      { id: 'after', title: 'After the sprint' },
-      { id: 'architecture', title: 'The product today' },
-      { id: 'role', title: 'What I actually led' },
-      { id: 'panel', title: 'The short version' },
-      { id: 'reflection', title: 'What I learned' },
+      { id: 'pricing', title: 'Asking people to pay' },
+      { id: 'outcome', title: 'Nine days later, 15 people had paid' },
+      { id: 'after', title: 'After day nine' },
+      { id: 'today', title: 'The product today' },
+      { id: 'reflection', title: 'What the nine days changed' },
     ],
   },
 ];
 
-/** Chapter divider. Number, name, and the question the chapter answers. */
-const ChapterOpen = ({
-  id,
-  n,
-  name,
-  question,
-}: {
-  id: string;
-  n: string;
-  name: string;
-  question: string;
-}) => (
-  <Slide id={id} chapter={n} height="short" tone="ink">
-    <p className="label opacity-70">Project {n}</p>
-    <h2 className="mt-6 text-[3rem] font-medium leading-none md:text-[6rem]">{name}</h2>
-    <p className="mt-7 max-w-2xl text-lg leading-snug opacity-80 md:text-2xl">{question}</p>
-  </Slide>
-);
-
 const LayrrrdCaseStudy = () => {
   usePageMeta(
     'Layrrrd',
-    'From an idea to paying customers in nine days, then not stopping. A compressed product-validation sprint: research, proposition, MVP, testing, brand, pricing and commercial validation in one loop.'
+    'From an untested idea to 15 paying customers in nine days. A zero-to-one product sprint: research, proposition, MVP, usability testing, design system, brand and paid validation in one continuous loop.'
   );
 
   useEffect(() => {
@@ -216,80 +169,96 @@ const LayrrrdCaseStudy = () => {
       />
 
       <main>
-        {/* ============================= HERO ============================= */}
+        {/* ============================= 01 HERO ============================ */}
         <section id="top" className="border-t border-border">
           <div className="mx-auto grid w-full max-w-[var(--shell)] gap-14 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-[1.15fr_1fr] lg:gap-20 lg:px-12">
             <div>
               <StudyOpening
                 slug="layrrrd"
-                client="Layrrrd · Content curation"
+                client="Layrrrd · Zero-to-one product · 2026"
                 headline={
                   <>
-                    From an idea to paying customers in nine days,{' '}
-                    <Em>then not stopping.</Em>
+                    From an untested idea to{' '}
+                    <Em>15 paying customers in nine days.</Em>
                   </>
                 }
               />
 
-              <p className="mt-8 max-w-2xl text-base leading-[1.6] text-ink-600 md:text-lg">
-                We gave ourselves nine days to find out whether a product built around
-                saved-content rediscovery deserved to exist. I led design across product
-                direction, experience, visual system and brand while the team researched,
-                built, tested, changed direction and sold the product inside the same
-                validation window.
-              </p>
-
-              <dl className="mt-12 grid max-w-2xl gap-x-10 gap-y-7 border-t border-border pt-8 sm:grid-cols-2">
-                <div>
-                  <dt className="label mb-2.5 text-ink-500">Role</dt>
-                  <dd className="text-base md:text-lg">Design Lead</dd>
-                </div>
-                <div>
-                  <dt className="label mb-2.5 text-ink-500">Timeline</dt>
-                  <dd className="text-base md:text-lg">June 2026 to present</dd>
-                </div>
-                <div className="sm:col-span-2">
-                  <dt className="label mb-2.5 text-ink-500">Scope</dt>
-                  <dd className="text-base leading-snug md:text-lg">
-                    Product direction · User research · UX · Design system · Brand · Product
-                    validation
-                  </dd>
-                </div>
-                <div className="sm:col-span-2">
-                  <dt className="label mb-2.5 text-ink-500">Status</dt>
-                  <dd className="text-base md:text-lg">
-                    Live · Revenue · Ongoing ·{' '}
-                    <a
-                      href="https://layrrrd.com"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="rule-link"
-                    >
-                      layrrrd.com
-                    </a>
-                  </dd>
-                </div>
-              </dl>
+              <div className="mt-8 max-w-2xl space-y-5 text-base leading-[1.6] text-ink-600 md:text-lg">
+                {/* The disciplines on both sides used to be listed here and
+                    again in the metadata below, which is the same list twice
+                    before the reader has learned anything. Prose keeps the
+                    part the table cannot say: the streams ran at once. */}
+                <p>
+                  Layrrrd started with a behaviour we recognised in ourselves. We saved
+                  articles and links constantly, and rarely returned to them. We gave
+                  ourselves nine days to find out whether that was a problem worth building a
+                  product around.
+                </p>
+                <p>
+                  I led the team through the sprint. Everything happened at once, so
+                  decisions moved quickly between research, design and engineering.
+                </p>
+                <p>
+                  By day nine, Layrrrd had 126 freemium sign-ups and 15 paying customers. We
+                  carried on developing the product after the sprint.
+                </p>
+              </div>
 
               <CaseStudyEntry
                 storyHref="/case-study/layrrrd/story"
-                scanMinutes={6}
-                readMinutes={18}
+                scanMinutes={3}
+                readMinutes={12}
               />
             </div>
 
-            <div className="flex flex-col justify-between gap-12">
-              <RudolfSitting
-                aria-hidden="true"
-                className="h-32 w-auto self-start text-foreground md:h-44"
-              />
-
+            {/* The facts, moved out of the reading column and set as one card.
+                As a run of dotted lists under the intro they were a third
+                block of grey text on top of two others, and the split between
+                what I led and what the team did, which is the point of the
+                card, was invisible inside two sentences of middots. */}
+            <div className="flex flex-col gap-10">
               <div className="grid grid-cols-2 gap-x-8 gap-y-9">
-                <Metric figure="9 days" caption="idea to paid validation" />
-                <Metric figure="15" caption="paying customers by day nine" />
-                <Metric figure="126" caption="freemium signups, tracked in PostHog" />
-                <Metric figure="Live" caption="still shipping" />
+                <Metric figure="9 days" caption="Idea to paid validation" />
+                <Metric figure="15" caption="Paying customers by day nine" />
+                <Metric figure="126" caption="Freemium sign-ups by day nine" />
               </div>
+
+              <dl className="overflow-hidden rounded-[3px] bg-card">
+                <div className="grid grid-cols-2 gap-x-8 gap-y-6 p-6 md:p-7">
+                  <div>
+                    <dt className="label mb-2.5 text-ink-500">Role</dt>
+                    <dd className="text-base md:text-lg">Team Lead</dd>
+                  </div>
+                  <div>
+                    <dt className="label mb-2.5 text-ink-500">Timeline</dt>
+                    <dd className="text-base md:text-lg">June 2026 to present</dd>
+                  </div>
+                </div>
+
+                {/* One list. It was three bands for a while, which turned a
+                    hero card into an org chart: what I led, what I also
+                    touched, what the team carried. The team's work is the
+                    body of the page, not a column in a spec sheet. */}
+                <div className="border-t border-border p-6 md:p-7">
+                  <dt className="label mb-4 text-ink-500">What I led</dt>
+                  <dd>
+                    <ul className="space-y-2">
+                      {[
+                        'Product direction',
+                        'UX and interaction design',
+                        'Research',
+                        'Engineering',
+                        'Product validation',
+                      ].map((item) => (
+                        <li key={item} className="text-base leading-snug md:text-lg">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </dd>
+                </div>
+              </dl>
 
               <Link to="/case-study/layrrrd/story" className="rule-link self-start text-lg">
                 Watch the story as slides <span aria-hidden="true">&rarr;</span>
@@ -298,956 +267,898 @@ const LayrrrdCaseStudy = () => {
           </div>
         </section>
 
-        {/* The nine days, and everything after them. */}
-        <Slide id="sprint-line" height="auto">
-          <Kicker label="The shape of it" />
-          <Headline size="large">
-            The sprint ended. <Em>The product didn&rsquo;t.</Em>
-          </Headline>
-          <SprintLine />
+        {/* ===================== VISUAL 01 · THE PRODUCT ==================== */}
+        {/* The product, before any more prose. Someone who reads one screen of
+            this page should already know that it shipped. */}
+        <Slide id="product" height="auto">
+          <div className="grid gap-4 lg:grid-cols-[1.9fr_1fr] lg:gap-5">
+            <AssetSlot
+              label="Web library"
+              note="layrrrd-library-current.png"
+              ratio="aspect-[16/10]"
+            />
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 lg:gap-5">
+              <AssetSlot
+                label="Chrome extension"
+                note="layrrrd-chrome-extension.png"
+                ratio="aspect-[4/3]"
+              />
+              <AssetSlot
+                label="Retrieval in Telegram"
+                note="layrrrd-telegram-retrieval.png"
+                ratio="aspect-[4/3]"
+              />
+            </div>
+          </div>
+
+          <div className="mt-4 grid gap-4 sm:grid-cols-[2fr_1fr] lg:mt-5 lg:gap-5">
+            <AssetSlot
+              label="Weekly digest"
+              note="layrrrd-weekly-digest.png"
+              ratio="aspect-[21/9]"
+            />
+            <AssetSlot
+              label="Rudolf in a loading state"
+              note="layrrrd-rudolf-loading.png"
+              ratio="aspect-[21/9]"
+            />
+          </div>
+
+          <p className="mt-6 text-base leading-snug text-ink-600 md:text-lg">
+            One product, several ways to save and return to what matters.
+          </p>
         </Slide>
 
-        {/* ===================== PROCESS AT A GLANCE ====================== */}
-        <Slide id="process" height="auto">
-          <Kicker label="The process at a glance" />
-          <Headline>
-            Nine days did not remove discovery. <Em>It compressed the whole loop.</Em>
-          </Headline>
-          <Lede wide>
-            The deadline is the interesting part only because of what it did not delete. We
-            still surveyed, still interviewed, still tested a proposition before writing
-            product code, and still let user testing change the plan afterwards.
-          </Lede>
+        {/* ================ 02 THE PROJECT IN 30 SECONDS =================== */}
+        <Slide id="summary" height="auto">
+          <Kicker label="The project in 30 seconds" />
+          <Headline>What happened in nine days</Headline>
 
-          <Chain
+          <Progression
             steps={[
-              'Observation',
-              'Survey',
-              'Interviews',
-              'Proposition',
-              'MVP',
-              'Usability testing',
-              'Iteration',
-              'Pricing',
-              'Paid',
-            ]}
-          />
-
-          <EvidenceLadder
-            rungs={[
               {
-                level: '01',
-                method: 'Survey',
-                question: 'Do people say the problem exists, and where does it hurt most?',
+                name: 'Observation',
+                body: 'We were saving constantly and rarely returning.',
               },
               {
-                level: '02',
-                method: 'Interviews',
-                question: 'Why does the behaviour happen, and what do they expect instead?',
+                name: '82-person survey',
+                body: 'The stronger problem was retrieval, not saving.',
               },
               {
-                level: '03',
-                method: 'Marketing page',
-                question: 'Do people understand the proposition, and does it interest them?',
+                name: 'Interviews',
+                body: 'People wanted value without maintaining another organisation system.',
               },
               {
-                level: '04',
-                method: 'MVP',
-                question: 'With the thing in their hands, will they actually use it?',
+                name: 'Proposition test',
+                body: 'We tested the idea before committing to the full product.',
               },
               {
-                level: '05',
-                method: 'Payment',
-                question: 'Is the problem valuable enough that they part with money?',
+                name: 'Working MVP',
+                body: 'Capture, retrieval, library and resurfacing.',
+              },
+              {
+                name: '8 usability tests',
+                body: 'We changed onboarding, save feedback and navigation.',
+              },
+              {
+                name: 'Payment',
+                body: '15 people paid by day nine.',
               },
             ]}
           />
-
-          <Statement>At every stage, we raised the cost of being wrong.</Statement>
         </Slide>
 
-        {/* ======================= 01 FRAME ============================== */}
-        <ChapterOpen
-          id="ch-frame"
-          n="01"
-          name="Frame"
-          question="Is this actually a problem worth solving?"
-        />
+        {/* ============= 03 STARTING WITH A BEHAVIOUR ====================== */}
+        <Slide id="behaviour" chapter="01" height="auto">
+          <Kicker n="01" label="Finding the problem" />
 
-        <Slide id="observation" chapter="01" height="auto">
-          <Kicker n="01" label="The observation" />
+          {/* Not our line. Someone said this to us before there was a
+              product, and it is where the project starts, so it is set as
+              what it is: a quotation, with the observation underneath it
+              rather than dressed up as our own insight. */}
           <Headline>
-            I had hundreds of things saved. <Em>I could barely remember any of them.</Em>
+            &ldquo;I was good at saving things. I was bad at finding them again.&rdquo;
           </Headline>
-          <Lede>
-            Bookmarks, open tabs, screenshots, links sent to myself on Telegram and WhatsApp,
-            half-used notes apps. Saving costs nothing, so the pile grows every day.
-            Returning costs attention, so it mostly does not happen.
-          </Lede>
-          <Graveyard />
-          <Voice kind="mine">
-            Before treating this as a product opportunity, I wanted to know whether anyone
-            else lived like this, or whether I was designing for my own bad habit.
-          </Voice>
-          <Statement>
-            We had an idea. <Em>We did not have a validated problem.</Em>
-          </Statement>
-        </Slide>
+          <p className="label mt-6 text-ink-500">The remark we started from</p>
 
-        <Slide id="survey" chapter="01" height="auto">
-          <Kicker n="01" label="Testing the problem" />
-          <Headline>
-            Before designing the solution, we asked the market what was actually broken.
-          </Headline>
           <Lede wide>
-            The survey asked how people save, where they save, whether they ever go back,
-            whether organising is the problem or retrieval is, which channels they already
-            live in, and how they want things to come back to them.
+            We recognised it immediately. Our own browsers were full of open tabs and
+            bookmarks. We sent links to ourselves on Telegram and WhatsApp, took screenshots,
+            and used several notes apps. Saving something took almost no effort. Finding it
+            again weeks later was different.
+          </Lede>
+          <Lede wide>
+            Before turning that behaviour into a product idea, we needed to know whether it
+            was a habit a few of us shared, or something a lot of people struggled with.
+          </Lede>
+
+          <SavedThenForgotten />
+        </Slide>
+
+        {/* ============ 04 RESEARCH CHANGED THE PROBLEM ==================== */}
+        <Slide id="survey" chapter="01" height="auto">
+          <Kicker label="The survey" />
+          <Headline>The survey told us that saving wasn&rsquo;t the main problem.</Headline>
+
+          <Lede wide>
+            We surveyed 82 people about what they saved, where they saved it, whether they
+            returned to it, and how they wanted useful content to come back.
           </Lede>
 
           <MetricRow>
-            <Metric figure="82" caption="survey responses" />
-            <Metric figure="54%" caption="rarely revisit what they save" />
-            <Metric figure="59%" caption="named retrieval as an important need" />
-            <Metric figure="73%" caption="trust recommendations from familiar sources" />
-            <Metric figure="60%" caption="chose WhatsApp as a preferred access point" />
+            <Metric figure="54%" caption="Rarely revisited what they saved" />
+            <Metric figure="59%" caption="Identified retrieval as an important need" />
+            <Metric figure="73%" caption="Trusted recommendations from familiar sources" />
+            <Metric figure="60%" caption="Selected WhatsApp as a preferred access point" />
           </MetricRow>
 
-          <Note>
-            Source: our own survey, n = 82, run inside the sprint. Percentages are of all
-            respondents.
-          </Note>
+          <Lede wide>
+            The important change for us was conceptual. We started by thinking about content
+            overload. The research showed that people already had plenty of ways to save
+            things. What was breaking was the journey afterwards: useful material disappeared
+            into different places and became difficult to retrieve when it mattered.
+          </Lede>
 
-          <Voice kind="mine">
-            The survey was not there to prove our idea right. It was there to tell us which
-            problem was actually worth solving.
-          </Voice>
-        </Slide>
-
-        <Slide id="reframe" chapter="01" height="auto">
-          <Kicker n="01" label="The first reframe" />
-          <Headline>
-            We thought the problem might be content overload. The stronger pattern was what
-            happened <Em>after</Em> people saved something.
-          </Headline>
-
+          {/* VISUAL 02 · the reframe, kept analytical rather than campaign-like. */}
           <Reframe
             steps={[
-              { label: 'We started with', body: 'There is too much content.' },
+              { label: 'We started here', body: 'Too much content' },
+              { label: 'Research showed', body: 'Saving isn’t the difficult part' },
+              { label: 'We focused on', body: 'Returning to useful saved content' },
+            ]}
+          />
+
+          <div className="mt-10 max-w-xs">
+            <Thumb file="layrrrd-survey-results.png" ratio="aspect-[4/3]" />
+            <p className="label mt-3 text-ink-500">The survey results</p>
+          </div>
+
+          <Note>
+            n = 82, self-selected respondents recruited through our own networks during the
+            sprint. Enough to redirect the work, not enough to size a market.
+          </Note>
+        </Slide>
+
+        {/* ============ 05 INTERVIEWS EXPLAINED THE BEHAVIOUR ============== */}
+        <Slide id="interviews" chapter="01" height="auto">
+          <Kicker label="The conversations" />
+          <Headline>
+            The survey narrowed the problem. <Em>Conversations explained why it happened.</Em>
+          </Headline>
+
+          <Beside>
+            <div>
+              <Lede>We followed the survey with conversations about:</Lede>
+              <Points
+                items={[
+                  'What people chose to save',
+                  'When they expected to use something again',
+                  'Where they looked when they could not find it',
+                  'Whether they wanted organisation, retrieval or recommendations',
+                  'How much maintenance they were willing to do',
+                ]}
+              />
+            </div>
+            <div>
+              <Lede>
+                A repeated behaviour was sending links to oneself, because messaging apps were
+                already part of daily life. Another was postponing organisation indefinitely.
+              </Lede>
+              <Fragments
+                lines={[
+                  'I know I saved it somewhere.',
+                  'I send links to myself.',
+                  'I don’t want another folder system.',
+                  'I’ll read it later.',
+                ]}
+              />
+            </div>
+          </Beside>
+
+          <Decision label="Design implication">
+            The product needed to create value before asking anyone to organise anything.
+          </Decision>
+
+          {/* VISUAL 03 · synthesis, reconstructed. The messy original sits
+              underneath it at thumbnail size, as evidence rather than as art. */}
+          <SynthesisColumns
+            columns={[
               {
-                label: 'The research showed',
-                body: 'People already have ways to save. Saving is not the hard part.',
+                label: 'Behaviour',
+                items: ['Send links to self', 'Save quickly', 'Postpone organisation'],
               },
               {
-                label: 'The real problem',
-                body: 'They do not return to what mattered.',
+                label: 'Problem',
+                items: ['Fragmented storage', 'Weak recall', 'Effort required to return'],
+              },
+              {
+                label: 'Design implication',
+                items: ['Meet existing habits', 'Minimise filing', 'Prioritise retrieval'],
               },
             ]}
           />
 
-          <Statement>
-            You do not have a discovery problem. <Em>You have a revisit problem.</Em>
-          </Statement>
-
-          <Voice kind="business">
-            A better bookmark manager would have entered a crowded behaviour and competed on
-            an axis people had already stopped caring about. The opening was the thing every
-            saving tool leaves undone: bringing it back.
-          </Voice>
+          <div className="mt-10 max-w-xs">
+            <Thumb file="layrrrd-research-board.png" ratio="aspect-[4/3]" />
+            <p className="label mt-3 text-ink-500">The research board it came from</p>
+          </div>
         </Slide>
 
-        {/* ====================== 02 VALIDATE ============================ */}
-        <ChapterOpen
-          id="ch-validate"
-          n="02"
-          name="Validate"
-          question="What exactly is broken, and what do people expect instead?"
-        />
-
-        <Slide id="interviews" chapter="02" height="auto">
-          <Kicker n="02" label="Behind the percentages" />
+        {/* ========= 06 TESTING THE IDEA BEFORE BUILDING THE PRODUCT ======= */}
+        <Slide id="proposition" chapter="01" height="auto">
+          <Kicker label="Testing the proposition" />
           <Headline>
-            The survey narrowed the problem. <Em>Conversations told us why.</Em>
+            We used the first marketing page to test{' '}
+            <Em>whether people understood the proposition.</Em>
           </Headline>
 
           <Beside>
             <div>
               <Lede>
-                Once the survey had pointed at the strongest pain, we went and talked to
-                people about it: what they save, why they save it, when they expect to need
-                it, what they do when they cannot find it, and how much maintenance they are
-                willing to do for a system that promises to help.
+                Before committing to the full MVP, we published an early version of the
+                Layrrrd landing page. The goal was not visual polish.
               </Lede>
+              <Lede>We wanted to see:</Lede>
               <Points
                 items={[
-                  'What they save, and what they never bother saving',
-                  'When they expected to use it again, and what actually happened',
-                  'How they search for it later, and where that search starts',
-                  'Whether they wanted organisation, recommendations or retrieval',
-                  'How much upkeep they would tolerate before abandoning a system',
+                  'Whether someone unfamiliar with Layrrrd could explain what it did',
+                  'Which part of the proposition they remembered',
+                  'What they expected to happen after signing up',
+                  'Whether the wording created the wrong expectation',
+                  'Whether they were interested enough to leave their details',
                 ]}
               />
+              <Lede>
+                That gave us a cheaper way to test the proposition before putting more
+                engineering time behind it.
+              </Lede>
             </div>
-            <div className="flex flex-col gap-6">
-              <Fragments
-                lines={[
-                  'I know I saved it somewhere.',
-                  'I send links to myself.',
-                  "I'll read it later.",
-                  "I don't want another folder system.",
-                ]}
-              />
-              <RudolfThinking
-                aria-hidden="true"
-                className="h-28 w-auto self-end text-foreground md:h-36"
-              />
-            </div>
-          </Beside>
 
-          <Voice kind="mine">
-            I used the interviews to understand the behaviour behind the percentages, not to
-            turn survey answers straight into a feature list.
-          </Voice>
-        </Slide>
-
-        <Slide id="proposition" chapter="02" height="auto">
-          <Kicker n="02" label="Testing the proposition" />
-          <Headline>
-            Before building the product, <Em>the marketing page was the prototype.</Em>
-          </Headline>
-          <Lede wide>
-            We put up an early version of the Layrrrd site to explain the concept to people
-            who had never heard it. The point was not polish. The point was to find out
-            whether the proposition survived being read by a stranger.
-          </Lede>
-
-          <Beside>
-            <AssetSlot
-              label="First Layrrrd marketing page"
-              note="early concept version, annotated"
-              ratio="aspect-[4/3]"
-            />
+            {/* VISUAL 04 · first proposition beside the current one. */}
             <div>
-              <p className="label mb-5 text-ink-500">What we were watching for</p>
-              <Points
-                items={[
-                  'Did people understand what Layrrrd did, unprompted?',
-                  'Which part of the promise did they repeat back to us?',
-                  'What did they assume would happen after signing up?',
-                  'Did the wording create the wrong expectation?',
-                  'Would they leave their details, or just nod politely?',
-                ]}
+              <AssetSlot
+                label="The first landing page"
+                note="layrrrd-first-landing-page.png"
+                ratio="aspect-[4/3]"
               />
+              <div className="mt-5 flex items-center gap-3">
+                <span className="label text-ink-500">First proposition</span>
+                <span aria-hidden="true" className="h-px flex-1 bg-border" />
+                <span className="label text-ink-500">Current proposition</span>
+              </div>
+              <div className="mt-5">
+                <AssetSlot
+                  label="The landing page today"
+                  note="layrrrd-current-landing-page.png"
+                  ratio="aspect-[4/3]"
+                />
+              </div>
             </div>
           </Beside>
-
-          <Statement>Marketing became part of product research.</Statement>
         </Slide>
 
-        <Slide id="identity" chapter="02" height="auto">
-          <Kicker n="02" label="The hardest early question" />
+        {/* ====== 07 THE DIRECTION CHANGED BEFORE THE MVP WAS FINISHED ===== */}
+        <Slide id="direction" chapter="01" height="auto">
+          <Kicker label="Changing direction" />
           <Headline>
-            The hardest question was not which feature to build. It was{' '}
-            <Em>what Layrrrd should be known for.</Em>
-          </Headline>
-          <Lede>
-            Four honest directions were open to us, and each one implied a different product,
-            a different competitor set and a different reason to come back.
-          </Lede>
-
-          <DirectionCards
-            options={[
-              { name: 'Bookmark manager' },
-              { name: 'Content recommendation platform' },
-              { name: 'AI chatbot' },
-              { name: 'Personal knowledge companion', kept: true },
-            ]}
-          />
-
-          <Voice kind="mine">
-            We were not looking for the biggest feature set. We were looking for the
-            strongest behavioural promise, the one sentence the product could be held to.
-          </Voice>
-
-          <Statement>A better organiser still waits for the user to come back.</Statement>
-        </Slide>
-
-        <Slide id="proposition-shift" chapter="02" height="auto">
-          <Kicker n="02" label="Evidence moved the proposition" />
-          <Headline>
-            The product changed <Em>before the MVP was finished.</Em>
+            We designed around scheduled resurfacing.{' '}
+            <Em>Research pushed us toward retrieval.</Em>
           </Headline>
 
-          <DecisionChain
-            thought="A scheduled digest would be the main experience. We push, you read."
-            evidence="A meaningful share of people said they would rather ask for something when they need it than receive it on a timetable."
-            decision="Retrieval became the core interaction model, and the digest became one of its outputs."
-          />
-
-          <Beside>
-            <Panel label="The second finding" title="Trust had a shape">
-              Recommendations had to feel relevant, grounded and familiar. Popularity was not
-              the signal people wanted; a source they already trusted was.
-            </Panel>
-            <Panel label="What it meant" title="Relevance over reach">
-              Ranking on trusted sources and topic relevance rather than on what was popular
-              made the feed defensible, and made it something a person could keep believing.
-            </Panel>
-          </Beside>
-
-          <Voice kind="mine">
-            The plan was allowed to change because the goal was validation, not defending the
-            first concept.
-          </Voice>
-        </Slide>
-
-        {/* ======================== 03 BUILD ============================= */}
-        <ChapterOpen
-          id="ch-build"
-          n="03"
-          name="Build"
-          question="What is the smallest product that can test the behaviour?"
-        />
-
-        <Slide id="scope" chapter="03" height="auto">
-          <Kicker n="03" label="Defining the MVP" />
-          <Headline>
-            Only after the problem and the proposition survived contact with users did we
-            start building.
-          </Headline>
           <Lede wide>
-            The MVP was never meant to be a complete knowledge-management platform. It had
-            one job: put the core behaviour in front of real people and see whether it held.
+            Our first concept centred on a scheduled digest: Layrrrd would periodically bring
+            saved content back to the user. Research showed that some people preferred to ask
+            for something when a need arose, instead of waiting for a scheduled delivery.
+            That changed the product hierarchy.
           </Lede>
+
+          {/* VISUAL 05 · the shape of the change, not a description of it. */}
+          <DirectionShift
+            before={{
+              label: 'Early idea',
+              chain: ['Saved content', 'Scheduled digest', 'User reads later'],
+            }}
+            after={{
+              label: 'After research',
+              chain: ['Saved content', 'Personal library'],
+              branches: ['Ask and retrieve', 'Recommendations', 'Digest'],
+            }}
+          />
+
+          <Lede wide>
+            The research also showed that recommendations needed to feel relevant and grounded
+            in familiar sources, rather than simply popular. Those decisions affected the MVP,
+            the messaging, and the way we organised the experience.
+          </Lede>
+        </Slide>
+
+        {/* ==================== 08 DEFINING THE MVP ======================== */}
+        <Slide id="scope" chapter="01" height="auto">
+          <Kicker label="Scope" />
+          <Headline>We built only what was needed to test the core behaviour.</Headline>
+
+          <Lede wide>
+            With nine days, scope was part of the experiment. The first product needed to
+            answer three questions.
+          </Lede>
+
+          <ol className="mt-10 grid gap-5 md:mt-12 md:grid-cols-3 md:gap-6">
+            {[
+              'Can saving something feel effortless?',
+              'Can Layrrrd understand enough about it to make it useful later?',
+              'Will people come back to retrieve it?',
+            ].map((question, i) => (
+              <li key={question} className="border-t-2 border-foreground pt-5">
+                <span className="label tabular-nums text-ink-500">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <p className="mt-3 text-xl leading-snug md:text-2xl">{question}</p>
+              </li>
+            ))}
+          </ol>
 
           <ScopeBoundary
             inScope={[
-              'Capture, from where people already are',
+              'Capture from existing contexts',
               'Automatic summaries',
-              'A library worth opening',
-              'Retrieval, by asking',
-              'The digest',
-              'Onboarding, only enough of it',
+              'A personal library',
+              'Retrieval',
+              'Digest',
+              'Lightweight onboarding',
             ]}
             outScope={[
               'Advanced organisation',
-              'A large taxonomy system',
-              'A social feed',
+              'Large taxonomy systems',
+              'Social features',
               'Collaboration',
               'Deep customisation',
-              'Polish that proves nothing',
+              'Visual polish that did not help test the behaviour',
             ]}
           />
-
-          <Statement>
-            If a feature did not test saving, returning or retrieval, <Em>it waited.</Em>
-          </Statement>
-
-          <Voice kind="mine">
-            Nine days made scope a design decision rather than a project-management
-            afterthought. Every item on the right cost something real to leave out, and
-            saying so is the honest version of this slide.
-          </Voice>
         </Slide>
 
-        <Slide id="loop" chapter="03" height="auto">
-          <Kicker n="03" label="The core loop" />
-          <Headline size="large">Capture, understand, return.</Headline>
+        {/* ================== 09 THE CORE PRODUCT LOOP ==================== */}
+        <Slide id="loop" chapter="01" height="auto">
+          <Kicker label="The product" />
+          <Headline size="large">
+            Save it where you find it. Let Layrrrd do the organisation.{' '}
+            <Em>Return when you need it.</Em>
+          </Headline>
 
-          <ProductLoop
-            stages={[
+          <div className="mt-12 grid gap-8 md:mt-14 md:grid-cols-3 md:gap-10">
+            {[
               {
                 n: '01',
                 name: 'Capture',
-                body: 'Save where the behaviour already exists, not where we would prefer it to be.',
-                items: ['Chrome extension', 'Paste bar', 'Telegram', 'WhatsApp'],
+                body: 'People could save content from places they were already using.',
               },
               {
                 n: '02',
                 name: 'Understand',
-                body: 'The system reads it so the person does not have to file it.',
-                items: ['Summary', 'Topic', 'Context', 'Source'],
+                body: 'Layrrrd processed the content into useful context: summary, topic, source.',
               },
               {
                 n: '03',
                 name: 'Return',
-                body: 'Value comes back without being chased, and answers only from your own library.',
-                items: ['Library', 'Digest', 'Retrieval', 'Recommendations'],
+                body: 'Saved material came back through the library, retrieval, recommendations or the digest.',
               },
+            ].map((stage) => (
+              <div key={stage.name}>
+                <span className="label tabular-nums text-ink-500">{stage.n}</span>
+                <h3 className="mt-2.5 text-2xl font-medium leading-none md:text-[2rem]">
+                  {stage.name}
+                </h3>
+                <p className="mt-4 text-base leading-[1.5] text-ink-600 md:text-lg">
+                  {stage.body}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* VISUAL 06 · four ways in, one library, four ways back out. */}
+          <LoopPipeline
+            inputs={[
+              { name: 'Chrome extension', file: 'layrrrd-chrome-extension.png' },
+              { name: 'Telegram', file: 'layrrrd-telegram-retrieval.png' },
+              { name: 'WhatsApp', file: 'layrrrd-whatsapp-retrieval.png' },
+              { name: 'Web', file: 'layrrrd-library-current.png' },
+            ]}
+            outputs={[
+              { name: 'Library', file: 'layrrrd-library-current.png' },
+              { name: 'Ask' },
+              { name: 'Recommended' },
+              { name: 'Digest', file: 'layrrrd-weekly-digest.png' },
             ]}
           />
 
-          <Statement>
-            Do not make people build a system <Em>before the system helps them.</Em>
-          </Statement>
+          <Decision label="The decision that shaped the loop">
+            Users did not have to construct an organisational system before receiving value.
+          </Decision>
         </Slide>
 
-        <Slide id="surfaces" chapter="03" height="auto">
-          <Kicker n="03" label="Meeting the habit" />
+        {/* =============== 10 DESIGN RULES THE TEAM COULD USE ============== */}
+        <Slide id="system" chapter="01" height="auto">
+          <Kicker label="The design system" />
           <Headline>
-            We didn&rsquo;t ask users to learn <Em>a new saving habit.</Em>
+            The interface was changing daily, so <Em>the design rules had to be explicit.</Em>
           </Headline>
-          <Lede wide>
-            People were already saving in messaging apps, browsers and improvised
-            workarounds. Rather than trying to replace those habits, Layrrrd moved into them.
-          </Lede>
-
-          <Pipeline
-            surfaces={['Chrome extension', 'Web app', 'Telegram', 'WhatsApp']}
-            outputs={['Summaries', 'Library', 'Retrieval', 'Recommendations', 'Digest']}
-          />
-
-          <Beside>
-            <Panel label="What it cost" title="Every surface started thinner">
-              Four entry points inside one sprint meant none of them could be deep. Each one
-              shipped with less than it deserved.
-            </Panel>
-            <Panel label="What it bought" title="A real test of the premise">
-              We got to test the actual behavioural claim, that people will save from where
-              they already are, instead of testing whether they would adopt a new habit
-              first.
-            </Panel>
-          </Beside>
-
-          <Voice kind="business">
-            One beautifully polished capture surface would have made a better bookmarking
-            app. That was not the thing we were trying to find out.
-          </Voice>
-        </Slide>
-
-        <Slide id="taste" chapter="03" height="auto">
-          <Kicker n="03" label="Speed against coherence" />
-          <Headline>
-            A nine-day product built with AI tools can become <Em>a visual junk drawer.</Em>
-          </Headline>
-          <Lede wide>
-            Development was moving at validation speed. Interface code could be generated
-            faster than I could review it, which meant the design system could not live in
-            Figma or in my head. It had to be written where the tools would read it.
-          </Lede>
-
-          <Chain
-            steps={[
-              'Design decisions',
-              'Written rules in the repository',
-              'AI coding tools',
-              'Interface that stays coherent',
-            ]}
-          />
 
           <Beside>
             <div>
-              <p className="label mb-5 text-ink-500">What I wrote down</p>
+              <Lede>
+                Engineering and design were happening in parallel. Relying only on finished
+                Figma screens would have slowed the team down, and made the product
+                inconsistent as new states and surfaces were added.
+              </Lede>
+              <Lede>
+                So we documented the visual and interaction rules, in the repository rather
+                than in a design file, and anyone could apply them without waiting on a new
+                screen. Some implementation work used AI-assisted coding, which made having
+                the rules written down useful there as well.
+              </Lede>
+              <Lede>They covered:</Lede>
               <Points
                 items={[
-                  'Type hierarchy and the scale it moves on',
-                  'Spacing, and what is never allowed between elements',
-                  'Colour, and how little of it to use',
-                  'Component principles rather than component screenshots',
-                  'Where brand is allowed, and where it is not',
-                  'Interaction conventions, including feedback states',
+                  'Type hierarchy and spacing',
+                  'Colour usage',
+                  'Component behaviour, buttons and inputs',
+                  'Navigation patterns',
+                  'Loading, success and error states',
+                  'Where the product should stay visually quiet',
+                  'Where the brand could be more expressive',
                 ]}
               />
+              <Decision label="What the rules were for">
+                Not control over every screen. Enough shared ground that new work still felt
+                like the same product.
+              </Decision>
             </div>
-            <AssetSlot
-              label="Design rules as committed to the repository"
-              note="the file the coding tools are bound to"
-              ratio="aspect-[4/3]"
-            />
+
+            {/* VISUAL 07 · the system sheet. */}
+            <div className="space-y-4">
+              <AssetSlot
+                label="Type, spacing and colour"
+                note="layrrrd-design-system.png"
+                ratio="aspect-[4/3]"
+              />
+              <div className="grid gap-4 sm:grid-cols-2">
+                <Thumb file="layrrrd-components.png" ratio="aspect-[4/3]" />
+                <Thumb file="layrrrd-repository-design-rules.png" ratio="aspect-[4/3]" />
+              </div>
+
+              <div className="grid gap-4 pt-2 sm:grid-cols-2">
+                <div className="rounded-[3px] bg-card p-5">
+                  <p className="label mb-3 text-ink-500">Product</p>
+                  <p className="text-base leading-snug md:text-lg">
+                    Quiet, editorial, low distraction
+                  </p>
+                </div>
+                <div className="rounded-[3px] bg-foreground p-5 text-background">
+                  <p className="label mb-3 opacity-70">Brand moments</p>
+                  <p className="text-base leading-snug md:text-lg">
+                    Rudolf, membership, campaign, playful
+                  </p>
+                </div>
+              </div>
+            </div>
           </Beside>
-
-          <Statement>
-            If machines are producing interface code, <Em>taste has to become executable.</Em>
-          </Statement>
         </Slide>
 
-        <Slide id="system" chapter="03" height="auto">
-          <Kicker n="03" label="The design system" />
-          <Headline>Fast did not mean visually disposable.</Headline>
+        {/* ============== 11 GIVING THE BRAND A ROLE ====================== */}
+        <Slide id="brand" chapter="01" height="auto">
+          <Kicker label="Brand" />
+          <Headline>Rudolf gave the product personality where it was useful.</Headline>
 
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 md:mt-16">
-            <AssetSlot label="Type scale and hierarchy" ratio="aspect-[4/3]" />
-            <AssetSlot label="Colour and hairline rules" ratio="aspect-[4/3]" />
-            <AssetSlot label="Buttons, inputs, navigation" ratio="aspect-[4/3]" />
-            <AssetSlot label="Feedback and loading states" ratio="aspect-[4/3]" />
-            <AssetSlot label="Library and dashboard surfaces" ratio="aspect-[4/3]" />
-            <AssetSlot label="Digest layout" ratio="aspect-[4/3]" />
-          </div>
-
-          <div className="mt-10 grid gap-6 lg:grid-cols-2 lg:gap-10">
-            <div className="rounded-[3px] bg-card p-6 md:p-8">
-              <p className="label mb-4 text-ink-500">Product</p>
-              <p className="text-2xl leading-snug md:text-[2rem]">
-                Quiet, functional, editorial, low distraction.
-              </p>
-            </div>
-            <div className="rounded-[3px] bg-foreground p-6 text-background md:p-8">
-              <p className="label mb-4 opacity-70">Brand</p>
-              <p className="text-2xl leading-snug md:text-[2rem]">
-                Expressive, character-led, Rudolf, campaign moments.
-              </p>
-            </div>
-          </div>
-
-          <Statement>
-            Brand is opt-in, <Em>not applied everywhere by default.</Em>
-          </Statement>
-        </Slide>
-
-        <Slide id="rudolf" chapter="03" height="auto">
-          <Kicker n="03" label="The mascot as infrastructure" />
-          <Headline size="large">One dog. Multiple product jobs.</Headline>
-
-          <RudolfJobs
-            jobs={[
-              { role: 'Mascot', body: 'The thing people recognise before they read a word.' },
-              {
-                role: 'Loading state',
-                body: 'Turns waiting into something intentional rather than something broken.',
-              },
-              {
-                role: 'Chat persona',
-                body: 'The voice of retrieval in Telegram and WhatsApp, answering only from your library.',
-              },
-              {
-                role: 'Commercial metaphor',
-                body: 'Gives pricing and membership a language the product already speaks.',
-              },
-            ]}
-          />
-
-          <Voice kind="mine">
-            With nine days, the brand could not afford unrelated metaphors on every surface.
-            Rudolf became the connective tissue between the product, the chat channels and
-            the way we asked for money.
-          </Voice>
-
-          <Statement>Character became infrastructure.</Statement>
-        </Slide>
-
-        {/* ======================== 04 LEARN ============================= */}
-        <ChapterOpen
-          id="ch-learn"
-          n="04"
-          name="Learn"
-          question="What changes when real users start touching it?"
-        />
-
-        <Slide id="testing" chapter="04" height="auto">
-          <Kicker n="04" label="A new kind of evidence" />
-          <Headline>
-            Once the product was usable, <Em>opinions mattered less than behaviour.</Em>
-          </Headline>
           <Lede wide>
-            The first working build exposed problems that no interview and no landing page
-            could have surfaced. People stopped telling us what they would do and started
-            doing it in front of us.
+            We designed Rudolf as part of the Layrrrd identity, and deliberately kept the core
+            interface restrained. The character appeared where personality or reassurance
+            helped: loading states, empty states, retrieval conversations, Telegram and
+            WhatsApp, onboarding and membership communication. That let Layrrrd have a
+            recognisable character without turning every functional screen into a branded
+            illustration.
           </Lede>
 
+
+          {/* VISUAL 08 · one large, three small. */}
+          <div className="mt-12 grid gap-4 md:mt-16 lg:grid-cols-[1.4fr_1fr] lg:gap-5">
+            <AssetSlot
+              label="Loading, while content is processing"
+              note="layrrrd-rudolf-loading.png"
+              ratio="aspect-[4/3]"
+            />
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 lg:gap-5">
+              <AssetSlot
+                label="Empty state"
+                note="layrrrd-rudolf-empty.png"
+                ratio="aspect-[16/9]"
+              />
+              <AssetSlot
+                label="Conversational identity in WhatsApp"
+                note="layrrrd-whatsapp-retrieval.png"
+                ratio="aspect-[16/9]"
+              />
+              <AssetSlot
+                label="Founding Membership"
+                note="layrrrd-founding-membership.png"
+                ratio="aspect-[16/9]"
+              />
+            </div>
+          </div>
+        </Slide>
+
+        {/* ========= 12 PUTTING THE PRODUCT IN FRONT OF USERS ============== */}
+        <Slide id="testing" chapter="02" height="auto">
+          <Kicker n="02" label="Learning from use" />
+          <Headline>
+            Once people could use the product,{' '}
+            <Em>we learned things interviews couldn&rsquo;t tell us.</Em>
+          </Headline>
+
+          <Lede wide>We ran eight usability sessions on the working product.</Lede>
+
           <MetricRow>
-            <Metric figure="82" caption="survey responses" />
-            <Metric figure="8" caption="usability tests on the working product" />
-            <Metric figure="32" caption="product signups at that point" />
-            <Metric figure="37" caption="on the waitlist" />
+            <Metric figure="82" caption="Survey responses" />
+            <Metric figure="8" caption="Usability tests" />
+            <Metric figure="32" caption="Product sign-ups at that point" />
+            <Metric figure="37" caption="People on the waitlist at that point" />
           </MetricRow>
 
           <Note>
-            Snapshot taken midway through the sprint, at the point of usability testing.
-            Signups kept climbing to day nine.
+            The sign-up and waitlist figures are a midway snapshot taken during usability
+            testing, not the day-nine totals.
           </Note>
-
-          <Chain
-            dense
-            steps={['Survey', 'Interviews', 'Marketing page', 'Actual product behaviour']}
-          />
-        </Slide>
-
-        <Slide id="verdicts" chapter="04" height="auto">
-          <Kicker n="04" label="What testing said" />
-          <Headline>
-            Users showed us where the product earned trust, <Em>and where it lost it.</Em>
-          </Headline>
 
           <Verdicts
             worked={[
-              'Retrieval felt effortless',
-              'Saving required no thought',
-              'Recommendations felt earned rather than generic',
+              'Retrieving saved content felt easy',
+              'Saving required little effort',
+              'Recommendations felt relevant rather than generic',
             ]}
             broke={[
-              'Onboarding ran too long',
-              'People could not tell whether a save had worked',
-              'Reminders arrived without judgment',
-              'Navigation asked too much of new users',
+              'Onboarding was too long',
+              'People could not always tell whether saving had succeeded',
+              'Reminders needed better judgment',
+              'Navigation asked too much of first-time users',
             ]}
           />
 
-          <Voice kind="mine">
-            The goal was never to prove the MVP was good. It was to find whatever was
-            stopping the core loop from closing, while there was still time to fix it.
-          </Voice>
+          <Decision label="What testing was actually for">
+            Not confirming the concept. Identifying where the main product loop still broke.
+          </Decision>
+
+          <div className="mt-10 max-w-xs">
+            <Thumb file="layrrrd-usability-notes.png" ratio="aspect-[4/3]" />
+            <p className="label mt-3 text-ink-500">Notes from the sessions</p>
+          </div>
+
+          {/* VISUAL 09 · what changed, as four before-and-afters. */}
+          <BeforeAfterRows
+            rows={[
+              {
+                area: 'Onboarding',
+                before: 'Too many steps before the first save',
+                after: 'A shortened entry into the product',
+                beforeFile: 'layrrrd-onboarding-before.png',
+                afterFile: 'layrrrd-onboarding-after.png',
+                finding:
+                  'People wanted to save something before being asked to set the product up.',
+              },
+              {
+                area: 'Save feedback',
+                before: 'Processing happened silently',
+                after: 'An immediate pending state, resolving to saved',
+                beforeFile: 'layrrrd-save-processing.png',
+                afterFile: 'layrrrd-save-complete.png',
+                finding:
+                  'Without visible confirmation, testers repeated the save or assumed it had failed.',
+              },
+              {
+                area: 'Navigation',
+                before: 'Everything visible at once',
+                after: 'A simpler first-use hierarchy',
+                beforeFile: 'layrrrd-navigation-before.png',
+                afterFile: 'layrrrd-navigation-after.png',
+                finding:
+                  'First-time users had to decide what mattered before they had any content to judge it with.',
+              },
+              {
+                area: 'Reminders',
+                before: 'Automatic resurfacing',
+                after: 'More selective, more relevant delivery',
+                beforeFile: 'layrrrd-reminders-before.png',
+                afterFile: 'layrrrd-reminders-after.png',
+                finding:
+                  'Resurfacing something the user had already dealt with cost more trust than it earned.',
+              },
+            ]}
+          />
         </Slide>
 
-        <Slide id="trust" chapter="04" height="auto">
-          <Kicker n="04" label="The save-state problem" />
+        {/* ============ 13 DEEP DIVE: THE SAVE-STATE PROBLEM ============== */}
+        <Slide id="save-state" chapter="02" height="auto">
+          <Kicker label="A closer look" />
           <Headline>
-            The system was fast. <Em>Users still did not trust it.</Em>
+            The save was fast. <Em>The feedback wasn&rsquo;t clear enough.</Em>
           </Headline>
+
           <Lede wide>
-            We had treated processing latency as a technical detail. Testing showed it was a
-            trust problem: a save that happens silently is, to the person who made it, a save
-            that might not have happened.
+            One usability issue was especially revealing. The system could process a saved
+            link quickly, but the interface did not immediately show that anything had
+            happened. From the user&rsquo;s side that created a simple question: did that
+            save?
           </Lede>
 
           <TrustFlow
             before={{
               label: 'Before',
-              steps: ['User saves a link', 'Processing happens in the background', 'Nothing visible changes'],
+              steps: ['Save', 'Processing happens silently', 'No immediate confirmation'],
               end: 'Did that save?',
             }}
             after={{
               label: 'After',
               steps: [
-                'User saves a link',
-                'A pending state appears immediately',
-                'Processing is visible while it runs',
+                'Save',
+                'Pending state appears immediately',
+                'Processing stays visible',
                 'The card resolves in place',
               ],
-              end: 'Saved.',
+              end: 'Saved',
             }}
           />
 
-          <Beside>
-            <Panel label="What we changed" title="Confirmation, and duplicate detection">
-              Save confirmations became explicit, and saving something already in the library
-              says so instead of quietly making a second copy.
-            </Panel>
-            <Panel label="Why it counts" title="Feedback beat raw speed">
-              The engineering was not the bottleneck. The absence of a signal was. This is the
-              clearest example on the project of a design fix outperforming an optimisation.
-            </Panel>
-          </Beside>
+          {/* VISUAL 10 · the sequence itself, in real frames. */}
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 md:mt-16 lg:grid-cols-4">
+            <AssetSlot label="Save clicked" note="layrrrd-save-pending.png" ratio="aspect-[4/3]" />
+            <AssetSlot label="Saving" note="layrrrd-save-processing.png" ratio="aspect-[4/3]" />
+            <AssetSlot label="Processing" note="layrrrd-save-processing.png" ratio="aspect-[4/3]" />
+            <AssetSlot label="Saved" note="layrrrd-save-complete.png" ratio="aspect-[4/3]" />
+          </div>
+
+          <div className="mt-10 max-w-md">
+            <AssetSlot
+              label="Already in your library"
+              note="layrrrd-save-duplicate.png"
+              ratio="aspect-[16/9]"
+            />
+          </div>
+
+          <Lede wide>
+            We also added explicit duplicate detection, so saving an existing item produced a
+            clear response instead of silently creating another copy. It was a small interface
+            change, and it solved a confidence problem without requiring the backend to become
+            faster.
+          </Lede>
         </Slide>
 
-        <Slide id="pivots" chapter="04" height="auto">
-          <Kicker n="04" label="Research kept interrupting" />
-          <Headline>
-            Research was not a phase. <Em>It kept interrupting the plan.</Em>
-          </Headline>
+        {/* ========= 14 THE PRODUCT CHANGED BECAUSE OF WHAT WE LEARNED ===== */}
+        <Slide id="decisions" chapter="02" height="auto">
+          <Kicker label="What changed" />
+          <Headline>Four decisions changed during the sprint.</Headline>
 
           <Pivots
             rows={[
               {
                 from: 'Empty library',
-                to: 'Instant value',
-                evidence:
-                  'Interest in early access was high, but interest does not survive an empty product waiting to be filled.',
-                unlocked: 'Retention from the first session instead of the third week.',
+                to: 'Useful first session',
+                problem: 'A new personal library has no value in it yet.',
+                change:
+                  'Give people something useful immediately, instead of waiting for weeks of saved content.',
               },
               {
-                from: 'Delivery-led',
-                to: 'Retrieval-led',
-                evidence:
-                  'A meaningful share of respondents said they would rather ask on demand than receive a scheduled digest.',
-                unlocked: 'The core mechanic the product is actually known for.',
+                from: 'Scheduled delivery',
+                to: 'Retrieval first',
+                problem:
+                  'Some users wanted information when they needed it, not only on a schedule.',
+                change: 'Retrieval moved to the centre of the experience.',
               },
               {
-                from: 'A job title',
-                to: 'Serial Savers',
-                evidence:
-                  'The behaviour showed up across professions. The job title was never what the people had in common.',
-                unlocked: 'A market that is not capped by one profession.',
+                from: 'Job-title audience',
+                to: 'Saving behaviour',
+                problem: 'The behaviour appeared across professions.',
+                change:
+                  'We stopped defining the initial audience mainly by profession, and focused on people who habitually save content.',
               },
               {
-                from: 'Subscription',
+                from: 'Subscription setup',
                 to: 'Founding Membership',
-                evidence:
-                  'Recurring billing was overhead we could not justify mid-sprint, and it slowed the moment of commitment.',
-                unlocked: 'Real urgency, and a faster answer to the only question that mattered.',
+                problem:
+                  'Recurring billing added overhead during a nine-day validation sprint.',
+                change:
+                  'We used a limited one-time Founding Membership to test whether people were willing to pay.',
               },
             ]}
           />
-
-          <Statement>
-            The plan wasn&rsquo;t sacred. <Em>The evidence was.</Em>
-          </Statement>
         </Slide>
 
-        {/* ======================== 05 PROVE ============================= */}
-        <ChapterOpen
-          id="ch-prove"
-          n="05"
-          name="Prove"
-          question="Will anyone actually pay for it, and is there enough evidence to keep going?"
-        />
-
-        <Slide id="willingness" chapter="05" height="auto">
-          <Kicker n="05" label="Interest is not validation" />
-          <Headline>People saying &ldquo;I would use this&rdquo; was not enough.</Headline>
-
-          <CostSteps steps={['Survey interest', 'Signup', 'Usage', 'Payment']} />
-
-          <Statement>Would they pay?</Statement>
-
-          <Voice kind="business">
-            Every step up that ladder costs the person more, which is exactly why it is worth
-            more to us. A payment and a friendly interview answer are not the same evidence,
-            and only one of them survives contact with a spreadsheet.
-          </Voice>
-        </Slide>
-
-        <Slide id="pricing" chapter="05" height="auto">
-          <Kicker n="05" label="Pricing as a mechanism" />
+        {/* ================== 15 ASKING PEOPLE TO PAY ===================== */}
+        <Slide id="pricing" chapter="03" height="auto">
+          <Kicker n="03" label="Validating value" />
           <Headline>
-            Pricing was designed to test commitment, <Em>not to maximise lifetime value on
-            day nine.</Em>
+            Sign-ups showed interest. <Em>Payment tested commitment.</Em>
           </Headline>
+
+          <Lede wide>
+            We did not want to finish the sprint with only survey responses and people saying
+            they would use the product. The evidence became progressively harder.
+          </Lede>
+
+          <Chain steps={['Interest', 'Sign-up', 'Use', 'Payment']} />
 
           <Beside>
             <div>
-              <p className="label mb-5 text-ink-500">Considered, then set aside</p>
-              <p className="text-2xl leading-snug text-ink-500 line-through decoration-ink-400 md:text-[2rem]">
-                Monthly subscription
-              </p>
-              <p className="mt-6 text-base leading-[1.55] text-ink-600 md:text-lg">
-                Recurring billing is the right model for the product. It was the wrong
-                instrument for the question we had nine days to answer.
-              </p>
+              <Lede>
+                For the sprint we chose a limited Founding Membership rather than implementing
+                the full recurring subscription model. It gave us a simpler way to answer the
+                immediate question: did people care enough about this product to pay for it
+                now?
+              </Lede>
+              <Points
+                items={[
+                  'A limited cohort',
+                  'One payment',
+                  'Early access',
+                  'Influence over what we developed next',
+                ]}
+              />
+              <Note>
+                This was a validation instrument for the sprint, not a statement of the
+                long-term commercial model.
+              </Note>
             </div>
-            <div className="rounded-[3px] bg-foreground p-6 text-background md:p-8">
-              <p className="label mb-4 opacity-70">Chosen for validation</p>
-              <p className="text-2xl leading-snug md:text-[2rem]">Founding Membership</p>
-              <ul className="mt-6 space-y-2.5 text-base opacity-80 md:text-lg">
-                <li>A limited cohort, capped on purpose</li>
-                <li>One payment, no billing overhead</li>
-                <li>Scarcity that is real rather than announced</li>
-                <li>Early influence over what gets built next</li>
-                <li>A founder identity worth keeping</li>
-              </ul>
+
+            {/* VISUAL 11 · the real commercial surfaces. */}
+            <div className="grid gap-4">
+              <AssetSlot
+                label="Founding Membership"
+                note="layrrrd-founding-membership.png"
+                ratio="aspect-[4/3]"
+              />
+              <AssetSlot label="Checkout" note="layrrrd-checkout.png" ratio="aspect-[16/9]" />
             </div>
           </Beside>
-
-          <AssetSlot
-            label="Founding Membership and checkout"
-            note="pricing page and payment confirmation"
-            ratio="aspect-[16/7]"
-          />
-
-          <Voice kind="mine">
-            I needed to know whether people cared enough to hand over money for a product
-            that was nine days old. Not whether they liked the idea in theory.
-          </Voice>
         </Slide>
 
-        <Slide id="day-nine" chapter="05" height="full" tone="ink" center>
+        {/* ========================= 16 OUTCOME =========================== */}
+        <Slide id="outcome" chapter="03" height="auto" tone="ink">
           <p className="label opacity-70">Day nine</p>
-          <h2 className="mt-8 max-w-[16ch] text-[2.5rem] font-medium leading-[1.02] md:text-[4.5rem]">
-            Nine days later, people had paid.
+          <h2 className="mt-6 max-w-[18ch] text-[2.5rem] font-medium leading-[1.0] md:text-[4.5rem]">
+            Nine days later, 15 people had paid.
           </h2>
 
-          <div className="mt-14 flex flex-wrap justify-center gap-x-16 gap-y-10 md:mt-20">
-            <Metric figure="15" caption="paying customers" size="large" />
-            <Metric figure="126" caption="freemium signups" size="large" />
-            <Metric figure="9" caption="days from first commit to paid validation" size="large" />
+          <MetricRow>
+            <Metric figure="15" caption="Paying customers" size="large" />
+            <Metric figure="126" caption="Freemium sign-ups" size="large" />
+            <Metric figure="9 days" caption="From first build to paid validation" size="large" />
+          </MetricRow>
+
+          <p className="mt-12 max-w-3xl text-base leading-[1.6] opacity-90 md:text-lg">
+            Fifteen people paying for a nine-day-old product gave us enough evidence to keep
+            building. The product did not stop at the sprint.
+          </p>
+
+          {/* VISUAL 12 · the evidence, rather than large typography alone. */}
+          <div className="mt-12 grid gap-4 md:mt-16 md:grid-cols-2 md:gap-5">
+            <AssetSlot
+              label="Sign-ups in PostHog"
+              note="layrrrd-posthog-signups.png"
+              ratio="aspect-[16/10]"
+            />
+            <AssetSlot
+              label="Payments, with customer details hidden"
+              note="layrrrd-payments-dashboard.png"
+              ratio="aspect-[16/10]"
+            />
           </div>
 
-          <p className="mt-14 max-w-2xl text-base leading-[1.6] opacity-80 md:text-lg">
-            Real payments turned the sprint from an idea experiment into a product worth
-            continuing. PostHog ran from launch, so these are dashboards rather than
-            recollections.
-          </p>
+          <Chain steps={['Day 1', 'Day 9', '15 paying customers']} dense />
         </Slide>
 
-        <Slide id="channels" chapter="05" height="auto">
-          <Kicker n="05" label="Where the customers came from" />
+        {/* ======================= 17 AFTER DAY NINE ====================== */}
+        <Slide id="after" chapter="03" height="auto">
+          <Kicker label="After the sprint" />
           <Headline>
-            The first customers did not all come <Em>from the same place.</Em>
+            The sprint ended. <Em>We kept building.</Em>
           </Headline>
 
-          <Streams
-            streams={[
-              {
-                name: 'Organic',
-                body: 'People who found the product and understood it without us in the room.',
-              },
-              {
-                name: 'Referral',
-                body: 'Existing members bringing the next ones in, unprompted.',
-              },
-              {
-                name: 'Founder-led',
-                body: 'Direct conversations, and a direct close at the end of them.',
-              },
-            ]}
-            outcome="Three routes, converting independently."
-          />
-
-          <Voice kind="business">
-            Payment showed the value was real. Channel diversity is the first hint that growth
-            could become repeatable rather than heroic.
-          </Voice>
-
-          <Note>
-            The open question, stated honestly: whether this mix holds once every sale is not
-            being closed by hand. That is what decides whether this scales.
-          </Note>
-        </Slide>
-
-        <Slide id="after" chapter="05" height="auto">
-          <Kicker n="05" label="After the sprint" />
-          <Headline>
-            Validation bought us <Em>the right to keep building.</Em>
-          </Headline>
+          <Lede wide>
+            Day nine answered whether there was enough early demand to continue. Afterwards,
+            the same core product expanded into more of the places people were already saving
+            and retrieving content.
+          </Lede>
 
           <AfterTimeline
             steps={[
-              'Day nine, paid validation',
+              'Day 9: paid validation',
               'Payments live',
-              'Chrome extension published',
+              'Chrome extension',
               'Telegram',
               'WhatsApp',
-              'Referral loops',
+              'Referral loop',
               'Trust and privacy work',
               'Today',
             ]}
           />
-
-          <Lede wide>
-            The same team kept improving the product after the deadline instead of treating
-            the sprint as a demo. That continuation is the part that turns a nine-day result
-            into a product.
-          </Lede>
-
-          <Statement>
-            The sprint ended. <Em>The product didn&rsquo;t.</Em>
-          </Statement>
         </Slide>
 
-        <Slide id="architecture" chapter="05" height="auto">
-          <Kicker n="05" label="The product today" />
-          <Headline>Multiple surfaces. One product loop.</Headline>
+        {/* ====================== 18 THE PRODUCT TODAY ==================== */}
+        <Slide id="today" chapter="03" height="auto">
+          <Kicker label="The product today" />
+          <Headline>Different entry points, one product underneath.</Headline>
+
           <Lede wide>
-            The four entry points are not four products. They are doors into the same save,
-            process, retrieve and refine pipeline, which is why adding the next one is
-            additive rather than a second thing to maintain.
+            Chrome, the web app, Telegram and WhatsApp are not separate products. They are
+            different ways into the same loop: save, process, retrieve, refine. Someone can
+            save a link from one surface and return to it through another without learning a
+            different system each time.
           </Lede>
 
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 md:mt-16">
-            <AssetSlot label="Chrome extension" ratio="aspect-[3/4]" />
-            <AssetSlot label="Library and dashboard" ratio="aspect-[3/4]" />
-            <AssetSlot label="Rudolf in Telegram" ratio="aspect-[3/4]" />
-            <AssetSlot label="The weekly digest" ratio="aspect-[3/4]" />
-          </div>
-
-          <Voice kind="business">
-            One engine behind every surface means a new channel costs a connector, not a
-            roadmap.
-          </Voice>
-        </Slide>
-
-        <Slide id="role" chapter="05" height="auto">
-          <Kicker n="05" label="What I actually led" />
-          <Headline>
-            My role was not <Em>making the MVP look coherent.</Em>
-          </Headline>
-
-          <WideningStack
-            layers={[
-              'Visual design',
-              'Experience design',
-              'Product direction',
-              'Validation decisions',
-              'Brand system',
-              'Build constraints',
-              'Commercial framing',
-            ]}
-          />
-
-          <Beside>
-            <div>
-              <p className="label mb-5 text-ink-500">Across the sprint that meant</p>
-              <Points
-                items={[
-                  'Framing the problem, and testing it before committing',
-                  'Survey and interview synthesis',
-                  'Shaping the proposition, and the marketing page that tested it',
-                  'MVP definition, flows and interaction design',
-                  'The design system, and the rules the AI tools were bound to',
-                  'Brand, and Rudolf across every surface',
-                  'Usability testing and what we fixed first',
-                  'How pricing was presented and asked for',
-                ]}
+          {/* VISUAL 13 · the second product showcase. */}
+          <div className="mt-12 grid gap-4 md:mt-16 lg:grid-cols-[1.6fr_1fr] lg:gap-5">
+            <AssetSlot
+              label="The library"
+              note="layrrrd-library-current.png"
+              ratio="aspect-[16/10]"
+            />
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 lg:gap-5">
+              <AssetSlot
+                label="Chrome extension"
+                note="layrrrd-chrome-extension.png"
+                ratio="aspect-[16/10]"
+              />
+              <AssetSlot
+                label="Retrieval in WhatsApp"
+                note="layrrrd-whatsapp-retrieval.png"
+                ratio="aspect-[16/10]"
               />
             </div>
-            <div className="flex items-end">
-              <Statement>The design role expanded with the uncertainty.</Statement>
-            </div>
-          </Beside>
-        </Slide>
-
-        <Slide id="panel" chapter="05" height="auto">
-          <Kicker n="05" label="The short version" />
-          <Headline>
-            This is less about what I designed in nine days. <Em>It is about how I decided.</Em>
-          </Headline>
-
-          <ol className="mt-12 divide-y divide-border border-y border-border md:mt-16">
-            {[
-              'I tested the problem before committing to the solution.',
-              'I used conversations to understand the behaviour behind the survey.',
-              'I used the marketing site as a proposition prototype.',
-              'I changed the product when the research disagreed with us.',
-              'I wrote design constraints into the build system so speed would not destroy coherence.',
-              'I asked people to pay before the product felt finished.',
-            ].map((line, i) => (
-              <li key={line} className="flex gap-5 py-5">
-                <span className="label w-6 shrink-0 pt-2 tabular-nums text-ink-500">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <span className="text-lg leading-snug md:text-2xl">{line}</span>
-              </li>
-            ))}
-          </ol>
-
-          <Lede wide>
-            Layrrrd is the clearest record I have of how I make product decisions when every
-            judgment call has a deadline measured in hours.
-          </Lede>
-        </Slide>
-
-        <Slide id="reflection" chapter="05" height="full" tone="ink">
-          <p className="label opacity-70">What I learned</p>
-
-          <div className="mt-10 max-w-3xl space-y-6 text-base leading-[1.6] opacity-90 md:text-lg">
-            <p>
-              Nine days forced a different kind of discipline. There was no room to treat
-              research, design, development, testing and commercial validation as separate
-              phases. Each one had to feed the next immediately.
-            </p>
-            <p>
-              The biggest lesson was that speed does not mean skipping evidence. It means
-              choosing the cheapest useful evidence first, raising the cost of being wrong
-              gradually, and being willing to change direction before sunk effort turns into
-              attachment.
-            </p>
-            <p>
-              The product that reached day nine was not the product we imagined on day one.
-              That is exactly why the process worked.
-            </p>
           </div>
 
-          <p className="mt-14 max-w-[20ch] text-[2.25rem] font-medium leading-[1.02] md:mt-20 md:text-[4rem]">
-            Fast did not mean guessing faster. It meant learning faster.
-          </p>
+          <div className="mt-4 lg:mt-5">
+            <AssetSlot
+              label="The weekly digest"
+              note="layrrrd-weekly-digest.png"
+              ratio="aspect-[24/7]"
+            />
+          </div>
+
+          <p className="label mt-6 text-ink-500">One library</p>
+        </Slide>
+
+        {/* ======================= 19 REFLECTION ========================== */}
+        <Slide id="reflection" chapter="03" height="auto">
+          <Kicker label="Reflection" />
+          <Headline>What the nine days changed in how I work</Headline>
+
+          <div className="mt-10 max-w-3xl space-y-6 text-base leading-[1.6] text-ink-600 md:mt-12 md:text-lg">
+            <p>
+              The sprint compressed research, design, engineering, testing and commercial
+              validation into one continuous loop.
+            </p>
+            <p>
+              The biggest lesson for me was not that design can happen faster. It was that
+              speed makes the order of evidence more important.
+            </p>
+            <p>
+              We started with inexpensive evidence: observation, a survey and conversations.
+              We then increased the commitment gradually, through a proposition, a working
+              product, usability testing and finally payment.
+            </p>
+            <p>
+              Several parts of the product changed along the way, because the evidence
+              disagreed with our original assumptions. The product we were selling on day nine
+              was not quite the product we imagined on day one.
+            </p>
+            <p>
+              That is the part of the project I would keep. Move quickly, but make each
+              decision earn the next investment.
+            </p>
+          </div>
 
           <div className="mt-14 flex flex-wrap gap-x-8 gap-y-3">
             <Link to="/case-study/layrrrd/story" className="rule-link text-lg">
               The same story as slides <span aria-hidden="true">&rarr;</span>
             </Link>
-            <Link to="/case-study/layrrrd/deep" className="rule-link text-lg opacity-80">
-              The long-form write-up <span aria-hidden="true">&rarr;</span>
-            </Link>
-            <Link to="/#work" className="rule-link text-lg opacity-80">
+            <Link to="/#work" className="rule-link text-lg text-ink-600">
               Back to the work <span aria-hidden="true">&rarr;</span>
             </Link>
           </div>

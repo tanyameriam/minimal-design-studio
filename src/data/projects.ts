@@ -276,8 +276,12 @@ const projectList: Project[] = [
     status: 'live',
     tier: 'flagship',
     disciplines: ['Zero to one', 'Product strategy', 'Design systems', 'UX research'],
+    // The pills on the case study, kept separate from `disciplines` so the
+    // /work filters still find this under design systems while the page
+    // itself only claims what Tanya led.
+    contributions: ['Zero to one', 'Product strategy', 'UX research', 'Product validation'],
     context: 'Consumer content product, nine-day validation sprint',
-    role: 'Led product direction, UX, brand and the design system',
+    role: 'Team lead: product direction, UX, research and product validation',
     headline: 'From first commit to paying customers in nine days',
     decision:
       'Everyone builds a better archive, and archives sit there waiting for people who never come back. Research moved the proposition from better organisation to retrieval and resurfacing, so we built around a pushed digest instead. The team validated, built, tested, changed direction, and reached 15 paying customers by day nine.',
