@@ -55,6 +55,14 @@ import { usePageMeta } from '@/hooks/use-page-meta';
  * the same kind of work. BrynQ is a system being reshaped inside an
  * existing company; this is nine days of deciding under pressure.
  *
+ * The island is paired here with `.paper-layrrrd-page`, which is what
+ * carries the dark side of that palette. `.paper-layrrrd` alone is a fixed
+ * cream swatch, correct for the cover chip on the home page and wrong for a
+ * whole page, which has to follow the visitor's theme. With both classes the
+ * study reads as the same paper in either mode, warm rather than the site's
+ * blue-black, and the ink block flips to cream so the turns still land as a
+ * reversal.
+ *
  * ---------------------------------------------------------------------
  * STRUCTURE
  *
@@ -155,7 +163,7 @@ const LayrrrdCaseStudy = () => {
   const closeStory = useCallback(() => setStoryOpen(false), []);
 
   return (
-    <div className="paper-layrrrd min-h-screen bg-background text-foreground rail-offset">
+    <div className="paper-layrrrd paper-layrrrd-page min-h-screen bg-background text-foreground rail-offset">
       <ReadingProgress />
       <Navigation />
 

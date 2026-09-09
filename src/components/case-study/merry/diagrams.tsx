@@ -301,10 +301,13 @@ export const Lifecycle = ({
   caption,
   stages,
   lanes,
+  highlight,
 }: {
   caption: string;
   stages: string[];
   lanes: Lane[];
+  /** Index of the one stage worked through as an example underneath. */
+  highlight?: number;
 }) => (
   <div className="mt-12 md:mt-16">
     {/* A scroll container is only reachable by keyboard once it is
@@ -326,7 +329,9 @@ export const Lifecycle = ({
               <th
                 key={stage}
                 scope="col"
-                className="border-b border-foreground pb-4 pr-4 align-bottom"
+                className={`border-b border-foreground pb-4 align-bottom ${
+                  i === highlight ? 'bg-card px-3' : 'pr-4'
+                }`}
               >
                 <span className="label block tabular-nums text-ink-500">
                   {String(i + 1).padStart(2, '0')}
@@ -349,7 +354,10 @@ export const Lifecycle = ({
               {stages.map((stage, i) => {
                 const fires = lane.at.includes(i);
                 return (
-                  <td key={stage} className="py-4 pr-4 align-middle">
+                  <td
+                    key={stage}
+                    className={`py-4 align-middle ${i === highlight ? 'bg-card px-3' : 'pr-4'}`}
+                  >
                     {fires ? (
                       <>
                         <span aria-hidden="true" className="block h-2.5 w-2.5 bg-foreground" />
@@ -367,6 +375,33 @@ export const Lifecycle = ({
       </table>
     </div>
     <p className="label mt-6 text-ink-500">{caption}</p>
+
+    {/* One column worked through in words, so the reader does not have to
+        read a grid to get the idea. The outputs are derived from the same
+        `at` arrays the marks are drawn from, so the two cannot drift. */}
+    {highlight !== undefined && (
+      <div className="mt-8 border-l border-foreground pl-5 md:pl-6">
+        <p className="label-strong">Worked through: {stages[highlight]}</p>
+        <ul className="mt-4 space-y-2">
+          {lanes
+            .filter((lane) => lane.at.includes(highlight))
+            .map((lane) => (
+              <li
+                key={lane.label}
+                className="flex items-baseline gap-3 text-base leading-snug text-ink-600 md:text-lg"
+              >
+                <span aria-hidden="true" className="text-ink-400">
+                  &rarr;
+                </span>
+                {lane.label}
+              </li>
+            ))}
+        </ul>
+        <p className="mt-5 max-w-2xl text-base leading-[1.55] text-ink-600 md:text-lg">
+          One event. Four destinations, and not one of them is a message anybody composes.
+        </p>
+      </div>
+    )}
   </div>
 );
 
@@ -494,62 +529,186 @@ export const PhaseBlueprint = ({
   </div>
 );
 
-/** An opportunity, stated as the coordination it removes. */
-export const Opportunities = ({
-  items,
+/* ------------------------------------------------------------------ *
+ * Intake                                                              *
+ * ------------------------------------------------------------------ */
+
+/**
+ * Progressive intake, drawn as the only thing it really is: a line between
+ * what has to be known before an ambulance can move and what can be
+ * collected while it is already moving. The dashed pane is the one that
+ * used to block dispatch.
+ */
+export const IntakeSplit = ({
+  now,
+  later,
 }: {
-  items: { title: string; body: string; replaces: string }[];
+  now: { label: string; note: string; items: string[] };
+  later: { label: string; note: string; items: string[] };
 }) => (
-  <div className="mt-12 grid gap-px border border-border bg-border md:mt-16 sm:grid-cols-2 lg:grid-cols-4">
-    {items.map((item) => (
-      <div key={item.title} className="flex flex-col bg-background p-5 md:p-6">
-        <p className="text-xl leading-snug md:text-2xl">{item.title}</p>
-        <p className="mt-4 flex-1 text-sm leading-[1.5] text-ink-600 md:text-base">{item.body}</p>
-        <p className="label mt-6 border-t border-border pt-4 text-ink-500">
-          Replaces &middot; {item.replaces}
+  <div className="mt-12 grid gap-px border border-border bg-border md:mt-16 md:grid-cols-2">
+    {[now, later].map((pane, i) => (
+      <div key={pane.label} className="bg-background p-6 md:p-8">
+        <p className={`label ${i === 0 ? 'label-strong' : 'text-ink-500'}`}>{pane.label}</p>
+        <p className="mt-4 max-w-[36ch] text-base leading-[1.55] text-ink-600 md:text-lg">
+          {pane.note}
         </p>
+        <ul className="mt-8 space-y-3">
+          {pane.items.map((item) => (
+            <li key={item} className="flex items-start gap-4">
+              <span
+                aria-hidden="true"
+                className={`mt-[0.5em] h-2.5 w-2.5 shrink-0 ${
+                  i === 0 ? 'bg-foreground' : 'border border-dashed border-ink-400'
+                }`}
+              />
+              <span className="text-base leading-snug md:text-lg">{item}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     ))}
   </div>
 );
 
+/**
+ * A worked exchange. Short enough to read at a glance, and set as a
+ * transcript rather than as chat bubbles, because the point is not that it
+ * looks like WhatsApp. The point is that the structure is a side effect of
+ * a message somebody was already going to send.
+ */
+export const Exchange = ({
+  turns,
+  note,
+}: {
+  turns: { who: string; lines: string[] }[];
+  note?: string;
+}) => (
+  <div className="mt-12 max-w-xl md:mt-16">
+    <ol className="space-y-5">
+      {turns.map((turn) => (
+        <li key={turn.who} className="border-l border-foreground pl-5 md:pl-6">
+          <p className="label text-ink-500">{turn.who}</p>
+          <div className="mt-3 space-y-1.5">
+            {turn.lines.map((line) => (
+              <p key={line} className="text-base leading-snug md:text-lg">
+                {line}
+              </p>
+            ))}
+          </div>
+        </li>
+      ))}
+    </ol>
+    {note && <p className="label mt-6 text-ink-500">{note}</p>}
+  </div>
+);
+
 /* ------------------------------------------------------------------ *
- * The messaging layer                                                 *
+ * Assignment                                                          *
  * ------------------------------------------------------------------ */
 
 /**
- * What each party actually exchanges with the system, in the order they
- * exchange it. Three short scripts side by side: the same ride, read from
- * three seats.
+ * The driver-calling loop, and what replaces it. The left column is drawn
+ * as a loop because that is the shape of the problem: it has no defined
+ * end, only somebody eventually saying yes. The right column has two
+ * exits, and a timer decides which one is taken.
  */
-export const ChannelScripts = ({
-  columns,
+export const AssignmentLoop = ({
+  before,
+  after,
 }: {
-  columns: { who: string; note: string; steps: string[] }[];
+  before: { label: string; steps: string[]; loop: string };
+  after: { label: string; step: string; branches: { on: string; then: string }[] };
 }) => (
-  <div className="mt-12 grid gap-px border border-border bg-border md:mt-16 md:grid-cols-3">
-    {columns.map((column) => (
-      <div key={column.who} className="bg-background p-5 md:p-6">
-        <p className="text-xl leading-snug md:text-2xl">{column.who}</p>
-        <p className="mt-3 text-sm leading-snug text-ink-500">{column.note}</p>
-        <ol className="mt-7">
-          {column.steps.map((step, i) => (
-            <li key={step}>
-              {i > 0 && (
-                <div aria-hidden="true" className="ml-[0.3125rem] h-4 w-px bg-border" />
-              )}
-              <div className="flex items-start gap-4">
-                <span
-                  aria-hidden="true"
-                  className={`mt-[0.55em] h-2.5 w-2.5 shrink-0 ${
-                    i === column.steps.length - 1 ? 'bg-foreground' : 'border border-ink-400'
-                  }`}
-                />
-                <span className="text-sm leading-snug text-ink-600 md:text-base">{step}</span>
-              </div>
+  <div className="mt-12 grid gap-px border border-border bg-border md:mt-16 md:grid-cols-2">
+    <div className="bg-background p-6 md:p-8">
+      <p className="label text-ink-500">{before.label}</p>
+      <ol className="mt-8">
+        {before.steps.map((step, i) => (
+          <li key={step}>
+            {i > 0 && <div aria-hidden="true" className="ml-[0.3125rem] h-5 w-px bg-border" />}
+            <div className="flex items-start gap-4">
+              <span
+                aria-hidden="true"
+                className="mt-[0.5em] h-2.5 w-2.5 shrink-0 border border-ink-400"
+              />
+              <span className="text-base leading-snug md:text-lg">{step}</span>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <p className="mt-6 flex items-baseline gap-3 border-t border-dashed border-border pt-6 text-base leading-snug text-ink-600 md:text-lg">
+        <span aria-hidden="true" className="text-ink-400">
+          &#8635;
+        </span>
+        {before.loop}
+      </p>
+    </div>
+
+    <div className="bg-background p-6 md:p-8">
+      <p className="label label-strong">{after.label}</p>
+      <div className="mt-8 flex items-start gap-4">
+        <span aria-hidden="true" className="mt-[0.5em] h-2.5 w-2.5 shrink-0 bg-foreground" />
+        <span className="text-base leading-snug md:text-lg">{after.step}</span>
+      </div>
+      <div aria-hidden="true" className="ml-[0.3125rem] h-5 w-px bg-border" />
+      <ul className="space-y-4">
+        {after.branches.map((branch) => (
+          <li key={branch.on} className="flex items-start gap-4">
+            <span aria-hidden="true" className="mt-[0.55em] h-px w-4 shrink-0 bg-foreground" />
+            <span>
+              <span className="block text-base leading-snug md:text-lg">{branch.on}</span>
+              <span className="mt-1.5 block text-sm leading-snug text-ink-600 md:text-base">
+                {branch.then}
+              </span>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+);
+
+/* ------------------------------------------------------------------ *
+ * What was delivered, and what it does not claim                      *
+ * ------------------------------------------------------------------ */
+
+/**
+ * The outcome, stated in two halves. The second half is the one that
+ * matters on a page about a system that never ran: it is drawn in dashes
+ * and given equal width, so a scanning reader cannot take the first
+ * column for a results list.
+ */
+export const Delivered = ({
+  delivered,
+  withheld,
+}: {
+  delivered: { label: string; note: string; items: string[] };
+  withheld: { label: string; note: string; items: string[] };
+}) => (
+  <div className="mt-12 grid gap-px border border-border bg-border md:mt-16 md:grid-cols-2">
+    {[delivered, withheld].map((pane, i) => (
+      <div key={pane.label} className="bg-background p-6 md:p-8">
+        <p className={`label ${i === 0 ? 'label-strong' : 'text-ink-500'}`}>{pane.label}</p>
+        <p className="mt-4 max-w-[38ch] text-base leading-[1.55] text-ink-600 md:text-lg">
+          {pane.note}
+        </p>
+        <ul
+          className={`mt-8 divide-y border-y ${
+            i === 0 ? 'divide-border border-border' : 'divide-dashed divide-border border-dashed border-border'
+          }`}
+        >
+          {pane.items.map((item) => (
+            <li
+              key={item}
+              className={`py-3 text-base leading-snug md:text-lg ${
+                i === 0 ? '' : 'text-ink-500'
+              }`}
+            >
+              {item}
             </li>
           ))}
-        </ol>
+        </ul>
       </div>
     ))}
   </div>
@@ -652,28 +811,6 @@ export const Targets = ({
 /* ------------------------------------------------------------------ *
  * Small repeating layouts                                             *
  * ------------------------------------------------------------------ */
-
-/** The findings, the principles, the modules. One shape, used sparingly. */
-export const Notes = ({
-  items,
-  columns = 4,
-}: {
-  items: { title: string; body: string }[];
-  columns?: 2 | 3 | 4;
-}) => (
-  <div
-    className={`mt-12 grid gap-px border border-border bg-border md:mt-16 sm:grid-cols-2 ${
-      columns === 4 ? 'lg:grid-cols-4' : columns === 3 ? 'lg:grid-cols-3' : ''
-    }`}
-  >
-    {items.map((item) => (
-      <div key={item.title} className="flex flex-col bg-background p-5 md:p-6">
-        <p className="text-xl leading-snug md:text-2xl">{item.title}</p>
-        <p className="mt-4 flex-1 text-sm leading-[1.5] text-ink-600 md:text-base">{item.body}</p>
-      </div>
-    ))}
-  </div>
-);
 
 /** Callouts read off a screenshot. Sits beside the plate it annotates. */
 export const Callouts = ({ items }: { items: string[] }) => (

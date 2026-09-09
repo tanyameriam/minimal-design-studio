@@ -183,6 +183,8 @@
    * The values come from the product's own decks, not from the portfolio.
    */
   .paper-layrrrd {
+    color-scheme: light;
+
     --background: 38 75% 94%;
     --foreground: 0 0% 10%;
 
@@ -223,6 +225,67 @@
   }
 
   /*
+   * The paper after dark.
+   *
+   * `.paper-layrrrd` on its own is a fixed swatch of the product's palette,
+   * which is exactly right for the cover chip on the home page: one cream
+   * panel carrying the real brand, sitting on whatever ground the section
+   * is on. It is wrong for the case study, which runs the island as its
+   * entire page ground and so has to follow the visitor's theme, or the
+   * site's dark mode simply stops applying halfway through the work.
+   *
+   * So the dark values are scoped to `.paper-layrrrd-page`, which only the
+   * case study carries. The character is kept rather than swapped for the
+   * portfolio's own greys: a warm near-black instead of the site's blue
+   * black, cream type instead of white, and a border the colour of old card
+   * seen in low light. Read side by side the two themes are the same paper,
+   * lit differently.
+   *
+   * Contrast is checked at the faintest step: ink-400, which carries the
+   * small uppercase metadata, sits at about 5.8:1 on this ground.
+   */
+  .dark .paper-layrrrd-page {
+    color-scheme: dark;
+
+    --background: 30 8% 7%;
+    --foreground: 38 44% 93%;
+
+    --card: 32 7% 13%;
+    --card-foreground: 38 44% 93%;
+
+    --popover: 30 8% 9%;
+    --popover-foreground: 38 44% 93%;
+
+    /* Warm greys, so the hierarchy sits on the warm black rather than on a
+       neutral one. Same five steps, same spacing, mirrored. */
+    --ink-900: 38 44% 95%;
+    --ink-800: 38 26% 88%;
+    --ink-600: 37 16% 74%;
+    --ink-500: 36 12% 64%;
+    --ink-400: 35 10% 55%;
+
+    --primary: 38 44% 93%;
+    --primary-foreground: 30 8% 7%;
+
+    --secondary: 32 7% 14%;
+    --secondary-foreground: 38 44% 93%;
+
+    --muted: 32 7% 14%;
+    --muted-foreground: 36 12% 64%;
+
+    --accent: 32 7% 14%;
+    --accent-foreground: 38 44% 93%;
+
+    --link: 214 82% 72%;
+
+    --border: 34 8% 20%;
+    --input: 34 8% 20%;
+    --ring: 36 10% 40%;
+
+    --shadow-color: 0 0% 0%;
+  }
+
+  /*
    * Layrrrd's ink block. The turns in that story invert to near-black, and
    * everything inside them has to keep reading: muted copy, cards, the
    * hairlines. Flipping the token island once here is cheaper and safer
@@ -251,6 +314,43 @@
 
     /* A dark island keeps dark-side shadows whatever the page around it is. */
     --shadow-color: 0 0% 0%;
+  }
+
+  /*
+   * The ink block, reversed.
+   *
+   * The block exists to mark the turns in the story, and it does that by
+   * being the opposite of the page around it. On a dark page a near-black
+   * block is not a turn, it is the same slide again, so the reversal flips:
+   * the turns become the cream, and the paper the rest of the study is
+   * printed on shows up as the exception.
+   */
+  .dark .paper-layrrrd-page .ink-block {
+    color-scheme: light;
+
+    background-color: hsl(38 70% 92%);
+    color: hsl(24 10% 10%);
+
+    --background: 38 70% 92%;
+    --foreground: 24 10% 10%;
+    --card: 39 48% 87%;
+    --card-foreground: 24 10% 10%;
+
+    --ink-900: 0 0% 8%;
+    --ink-800: 30 6% 16%;
+    --ink-600: 34 8% 32%;
+    --ink-500: 36 9% 43%;
+    --ink-400: 37 14% 50%;
+
+    --link: 220 72% 40%;
+
+    --border: 38 24% 74%;
+    --muted: 39 44% 89%;
+    --muted-foreground: 36 9% 45%;
+
+    /* Back to the warm tint: a pure black shadow under a cream block reads
+       as a hole rather than as lift. */
+    --shadow-color: 30 30% 25%;
   }
 }
 

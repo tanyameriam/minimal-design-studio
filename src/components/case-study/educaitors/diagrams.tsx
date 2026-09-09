@@ -407,20 +407,21 @@ export const Decisions = ({
  * ------------------------------------------------------------------ */
 
 /**
- * What was delivered beside what is still unproven, at the same weight.
- * The right column is the point of the section: a prototype is not a pilot,
- * and the page should say so before a reader has to ask.
+ * What was delivered beside what the work does not claim, at the same
+ * weight. The right column is the point of the section: a prototype is not
+ * a pilot, and the page should say so before a reader has to ask. It is
+ * drawn in dashes so a scanning reader cannot take the two for one list.
  */
 export const Ledger = ({
   delivered,
-  validate,
+  notClaimed,
 }: {
   delivered: string[];
-  validate: { title: string; body: string }[];
+  notClaimed: { note: string; items: string[] };
 }) => (
   <div className="mt-12 grid gap-px border border-border bg-border md:mt-16 lg:grid-cols-2">
     <div className="bg-background p-6 md:p-8">
-      <p className="label text-ink-500">Delivered</p>
+      <p className="label label-strong">What we delivered</p>
       <ul className="mt-8 space-y-5">
         {delivered.map((item) => (
           <li key={item} className="flex gap-4">
@@ -432,15 +433,17 @@ export const Ledger = ({
     </div>
 
     <div className="bg-background p-6 md:p-8">
-      <p className="label text-ink-500">Still to validate</p>
-      <dl className="mt-8 space-y-6">
-        {validate.map((item) => (
-          <div key={item.title}>
-            <dt className="text-base leading-snug md:text-lg">{item.title}</dt>
-            <dd className="mt-2 text-sm leading-[1.55] text-ink-600 md:text-base">{item.body}</dd>
-          </div>
+      <p className="label text-ink-500">What we do not claim</p>
+      <p className="mt-4 max-w-[38ch] text-base leading-[1.55] text-ink-600 md:text-lg">
+        {notClaimed.note}
+      </p>
+      <ul className="mt-8 divide-y divide-dashed divide-border border-y border-dashed border-border">
+        {notClaimed.items.map((item) => (
+          <li key={item} className="py-3 text-base leading-snug text-ink-500 md:text-lg">
+            {item}
+          </li>
         ))}
-      </dl>
+      </ul>
     </div>
   </div>
 );
@@ -470,14 +473,6 @@ export const Principle = ({ children }: { children: ReactNode }) => (
   <p className="mt-12 max-w-3xl border-l border-foreground pl-5 text-xl leading-snug md:mt-14 md:pl-6 md:text-[1.75rem]">
     {children}
   </p>
-);
-
-/** A framed aside. Used for the trust patterns the story keeps returning to. */
-export const Callout = ({ label, children }: { label: string; children: ReactNode }) => (
-  <div className="mt-12 max-w-3xl border border-border p-5 md:mt-14 md:p-6">
-    <p className="label mb-3.5 text-ink-500">{label}</p>
-    <p className="text-base leading-[1.55] md:text-lg">{children}</p>
-  </div>
 );
 
 /** A row of method names. Evidence that the work happened, at label size. */

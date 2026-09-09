@@ -19,7 +19,6 @@ import {
 import {
   AnnotatedPlate,
   BigQuote,
-  Callout,
   Chain,
   Decisions,
   Ledger,
@@ -52,21 +51,31 @@ import appeals from '@/assets/educaitors-appeals.jpg';
  */
 
 /**
- * EducAItors, told as what it actually was: an accountability system for
- * academic judgment, not an AI gradebook.
+ * EducAItors, told in the language of the work rather than the language of
+ * a conference talk.
  *
- * The page runs on the portfolio's own tokens and the shared slide kit, and
- * keeps its own diagram vocabulary in components/case-study/educaitors. It
- * deliberately does not share a shape with Merry Health, the other practicum
- * study: that one argues about how an emergency moves between four parties,
- * this one argues about where a human decision enters an automated one.
+ * Rewritten on 9 September 2026 against Tanya's brief. The previous version
+ * was accurate but reached for slogans that made concrete product work
+ * sound conceptual: "the trust layer", "defensible judgment", "a chain of
+ * knowledge quality", "supervise uncertainty at scale", "we made
+ * disagreement useful", "transparency over theatre", "appeals are the
+ * product's highest-value learning signals", and an AI-policy line to
+ * close on. Every one of those ideas is still on the page. Each is now
+ * stated as what was actually built and why.
  *
- * Three rules govern the writing.
+ * The structural changes that came with it: the calibration reasoning is
+ * separated from the calibration screen so the screen can carry itself; the
+ * instructor's own actions get their own section rather than being implied;
+ * the outcome splits into what was delivered and what is still unvalidated;
+ * and personal contribution is stated separately from the team's, because
+ * this is the one study where Tanya led rather than executed alone.
  *
- * 1. Nothing here was deployed. The deliverable was a development-ready
- *    interactive prototype, so there is no adoption, accuracy or time-saving
- *    figure anywhere on the page, and the outcome section says so in as many
- *    words rather than leaving a reader to infer it.
+ * Three rules govern the writing, unchanged.
+ *
+ * 1. Nothing here was deployed. The deliverable was an interactive
+ *    prototype, so there is no adoption, accuracy or time-saving figure
+ *    anywhere on the page, and the outcome section says so in as many words
+ *    rather than leaving a reader to infer it.
  *
  * 2. Ownership is exact. I led the Instructor Evaluation and Supervision
  *    module, so my own decisions and leadership are first person, and team
@@ -84,46 +93,60 @@ import appeals from '@/assets/educaitors-appeals.jpg';
 const storyline: Storyline = [
   {
     n: '01',
-    name: 'In 60 seconds',
-    slides: [
-      { id: 'overview', title: 'Not an AI gradebook' },
-      { id: 'framing', title: 'Rules turned into a dependable decision system' },
-    ],
+    name: 'The work',
+    target: 'overview',
+    slides: [{ id: 'overview', title: 'When a score deserves to be accepted' }],
   },
   {
     n: '02',
     name: 'Research',
+    target: 'research',
     slides: [
-      { id: 'research', title: 'How evaluation actually works in Indian colleges' },
-      { id: 'reframe', title: 'The problem was defensible judgment' },
-      { id: 'principles', title: 'Every finding had to change an interaction' },
+      { id: 'research', title: 'How evaluation works in Indian colleges' },
+      { id: 'requirements', title: 'Findings turned into requirements' },
+      { id: 'question', title: 'The product question changed' },
     ],
   },
   {
     n: '03',
     name: 'The product',
+    target: 'calibration',
     slides: [
-      { id: 'architecture', title: 'Supervision as the connective tissue' },
-      { id: 'calibration', title: 'Making disagreement useful' },
-      { id: 'grading', title: 'Evidence, judgment and action together' },
-      { id: 'appeals', title: 'A re-evaluation is not a support ticket' },
+      { id: 'calibration', title: 'Calibration before full-batch grading' },
+      { id: 'why-calibration', title: 'Why a confidence score was not enough' },
+      { id: 'grading', title: 'The grading workspace' },
+      { id: 'authority', title: 'The instructor decides' },
+      { id: 'appeals', title: 'Re-evaluation is part of the product' },
+      { id: 'patterns', title: 'Corrections should not disappear' },
     ],
   },
   {
     n: '04',
-    name: 'Decisions',
+    name: 'Scope and decisions',
+    target: 'decisions',
     slides: [
-      { id: 'decisions', title: 'Transparency over theatre' },
-      { id: 'outcome', title: 'What we delivered, and did not claim' },
+      { id: 'decisions', title: 'What we chose not to automate' },
+      { id: 'architecture', title: 'Connecting three modules' },
     ],
   },
   {
     n: '05',
     name: 'Leading it',
+    target: 'leadership',
     slides: [
-      { id: 'leadership', title: 'Shared structure, distributed ownership' },
-      { id: 'way-of-working', title: 'From an ambiguous brief to one product' },
-      { id: 'reflection', title: 'Changing what we believed the product was' },
+      { id: 'leadership', title: 'How I led the team' },
+      { id: 'contribution', title: 'What I personally worked on' },
+    ],
+  },
+  {
+    n: '06',
+    name: 'Outcome',
+    target: 'outcome',
+    slides: [
+      { id: 'outcome', title: 'What we delivered' },
+      { id: 'validate', title: 'What still needs validating' },
+      { id: 'reflection', title: 'Reflection' },
+      { id: 'closing', title: 'Closing' },
     ],
   },
 ];
@@ -136,7 +159,7 @@ const EducaitorsCaseStudy = () => {
 
   usePageMeta(
     'EducAItors',
-    'A product design case study on building instructor trust, control and accountability into AI-supported academic evaluation. Led the Instructor Evaluation and Supervision module, from faculty research in Indian higher education through to a development-ready prototype.'
+    'Designing how instructors review and control AI-supported grading. Led the Instructor Evaluation and Supervision module, from faculty research in Indian higher education through to an interactive prototype covering calibration, grading, re-evaluation and result insights.'
   );
 
   useEffect(() => {
@@ -150,31 +173,39 @@ const EducaitorsCaseStudy = () => {
       <StorylineNav chapters={storyline} />
 
       <main>
-        {/* ========================= 01, HERO ========================= */}
+        {/* ============================== HERO ============================== */}
         <section id="top" className="border-t border-border">
           <div className="mx-auto w-full max-w-[var(--shell)] px-5 py-20 md:px-8 md:py-28 lg:px-12">
             <div className="grid gap-14 lg:grid-cols-[1.05fr_minmax(0,1fr)] lg:gap-20">
               <div>
                 <StudyOpening
                   slug="educaitors"
-                  client="EducAItors &middot; AI in education &middot; 2026"
+                  client="EducAItors &middot; Higher education &middot; 2026"
                   headline={
                     <>
-                      Designing the <span className="em">trust layer</span> for AI-supported
-                      evaluation.
+                      Designing how instructors <span className="em">review and control</span>{' '}
+                      AI-supported grading.
                     </>
                   }
                 />
 
                 <div className="mt-8 max-w-2xl space-y-5 text-base leading-[1.6] text-ink-600 md:text-lg">
                   <p>
-                    When AI enters grading, accuracy is only half the problem. Instructors still
-                    need to understand the evidence, supervise uncertainty, correct the system, and
-                    stand behind the final decision.
+                    EducAItors was an academic project exploring how AI could support assessment in
+                    higher education. The broader product was divided into three connected modules:
+                    submission readiness, instructor evaluation and supervision, and continuous
+                    improvement.
                   </p>
                   <p className="text-foreground">
-                    I led the product design team responsible for Instructor Evaluation and
-                    Supervision within EducAItors.
+                    I led the team working on Instructor Evaluation and Supervision, the part of
+                    the system where instructors review evidence, compare scores, handle
+                    uncertainty, override results and approve final grades.
+                  </p>
+                  <p>
+                    Research with faculty in Indian colleges changed the direction of the work. The
+                    challenge was not simply making grading faster. Instructors needed to
+                    understand how a score had been reached, and remain responsible for the final
+                    decision.
                   </p>
                 </div>
 
@@ -198,8 +229,8 @@ const EducaitorsCaseStudy = () => {
                 <div className="sm:col-span-2">
                   <dt className="label mb-2.5 text-ink-500">Scope</dt>
                   <dd className="text-base leading-snug md:text-lg">
-                    Research and discovery &middot; Strategy and systems thinking &middot; Product
-                    design &middot; Team leadership &middot; Integration and delivery
+                    Research &middot; Systems thinking &middot; Workflow design &middot; Interaction
+                    design &middot; Team leadership &middot; Integration
                   </dd>
                 </div>
                 <div>
@@ -210,16 +241,11 @@ const EducaitorsCaseStudy = () => {
                   <dt className="label mb-2.5 text-ink-500">Team</dt>
                   <dd className="text-base leading-snug md:text-lg">Cross-module design team</dd>
                 </div>
-                <div>
+                <div className="sm:col-span-2">
                   <dt className="label mb-2.5 text-ink-500">Outcome</dt>
                   <dd className="text-base leading-snug md:text-lg">
-                    Development-ready interactive prototype
-                  </dd>
-                </div>
-                <div>
-                  <dt className="label mb-2.5 text-ink-500">Domain</dt>
-                  <dd className="text-base leading-snug md:text-lg">
-                    AI in education &middot; Higher education &middot; Human-in-the-loop systems
+                    Interactive prototype spanning setup, calibration, grading, re-evaluation and
+                    result insights
                   </dd>
                 </div>
               </dl>
@@ -237,325 +263,51 @@ const EducaitorsCaseStudy = () => {
               caption="The instructor home. Preparation, grading and result insights are three doors into the same supervision workflow, with calibration and pattern alerts surfaced rather than buried."
               onOpen={open}
             />
+
+            <div className="mt-6 grid gap-6 md:mt-8 md:grid-cols-3 md:gap-8">
+              <Plate
+                src={calibration}
+                alt="The calibration comparison screen, showing instructor scores against the system baseline across four criteria and six sample papers."
+                width={3368}
+                height={1895}
+                caption="Calibration comparison"
+                onOpen={open}
+              />
+              <Plate
+                src={grading}
+                alt="The grading desk, showing cohort triage, the student submission and a rubric evaluation panel side by side."
+                width={2055}
+                height={1158}
+                caption="The grading desk"
+                onOpen={open}
+              />
+              <Plate
+                src={appeals}
+                alt="The re-evaluation review queue, showing requests by concern type, disputed criterion, status and ageing."
+                width={3368}
+                height={1895}
+                caption="Re-evaluation queue"
+                onOpen={open}
+              />
+            </div>
           </div>
         </section>
 
-        {/* =================== 01, THE ONE-MINUTE VERSION =================== */}
+        {/* ========================= 01, THE WORK =========================== */}
         <Slide id="overview" chapter="01" height="auto">
-          <Kicker n="01" label="If you have a minute, read only this chapter" />
+          <Kicker n="01" label="The project in 30 seconds" />
           <Headline size="large">
-            We were not designing an <span className="em">AI gradebook</span>.
+            The challenge was not generating a score. It was deciding when that score{' '}
+            <span className="em">deserved to be accepted</span>.
           </Headline>
           <Lede wide>
-            We were designing the moment an instructor decides whether an AI-supported judgment
-            deserves to be trusted.
-          </Lede>
-          <Lede wide>
-            The original brief divided EducAItors into three connected projects: submission
-            readiness, instructor evaluation and supervision, and continuous improvement. I led the
-            middle layer, where evidence, confidence, scoring logic and human authority had to come
-            together in one workable experience.
-          </Lede>
-          <Lede wide>
-            Our research in Indian higher education changed the emphasis. The operational pain was
-            real, but speed alone was not the hardest problem. Instructors needed a system they
-            could understand, supervise, correct and defend.
-          </Lede>
-
-          <Principle>
-            That became our product north star: reduce verification effort without reducing
-            academic judgment.
-          </Principle>
-
-          <Chain
-            caption="The three connected modules of EducAItors and the moment each one owns"
-            columns={3}
-            items={[
-              {
-                name: 'Submission readiness',
-                body: 'Students fix missing, blocked or unreadable evidence before grading starts.',
-              },
-              {
-                name: 'Evaluation and supervision',
-                body: 'Instructors calibrate, inspect evidence, override, approve and release.',
-                emphasis: true,
-              },
-              {
-                name: 'Continuous improvement',
-                body: 'Corrections and patterns improve rubrics, teaching and future reviews.',
-              },
-            ]}
-            footnote="Our module became the trust layer between clean student inputs and a system that learns from instructor decisions. The shaded block is the one my team owned, and we designed its handshakes with both neighbours."
-          />
-        </Slide>
-
-        {/* ================== 01, THE BRIEF AND THE SYSTEM ================== */}
-        <Slide id="framing" chapter="01" height="auto">
-          <Kicker n="01" label="System framing" />
-          <Headline>
-            The brief described rules. We had to turn them into a{' '}
-            <span className="em">dependable decision system</span>.
-          </Headline>
-          <Lede wide>
-            The three project briefs were tightly connected. Student submissions had to be complete
-            and readable before evaluation. Evaluation had to produce criterion-level evidence, one
-            defensible level per criterion, confidence signals and explicit human approval.
-            Corrections then had to feed the continuous-improvement module.
-          </Lede>
-          <Lede wide>
-            Instead of translating every rule into a screen, we first mapped how a decision travels
-            through the assessment system.
+            The system needed to support instructors across five moments. Our module focused mainly
+            on the middle of that journey, but we designed its handoffs with the modules before and
+            after it.
           </Lede>
 
           <Chain
-            caption="How one grading decision travels through the assessment system"
-            items={[
-              {
-                name: 'Assignment setup',
-                body: 'The task, expected artifacts, rubric and outcome mapping are defined.',
-              },
-              {
-                name: 'Submission',
-                body: 'Work arrives, often as a photographed or scanned handwritten document.',
-              },
-              {
-                name: 'Evaluation',
-                body: 'Criterion-level evidence, one level per criterion, and a confidence signal.',
-              },
-              {
-                name: 'Release',
-                body: 'The instructor approves, adjusts or overrides, then publishes the result.',
-              },
-              {
-                name: 'Appeal and learning',
-                body: 'Re-evaluation requests and correction patterns feed the next cycle.',
-              },
-            ]}
-          />
-
-          <p className="label mt-16 text-ink-500 md:mt-20">The five constraints we designed to</p>
-          <Numbered
-            size="compact"
-            items={[
-              { title: 'Validate before evaluating.' },
-              { title: 'Anchor every score to evidence and a rubric criterion.' },
-              { title: 'Surface uncertainty rather than hiding it.' },
-              { title: 'Keep the instructor as final authority.' },
-              { title: 'Record changes in an auditable learning loop.' },
-            ]}
-          />
-        </Slide>
-
-        {/* ======================= 02, RESEARCH ======================= */}
-        <Slide id="research" chapter="02" height="auto">
-          <Kicker n="02" label="Research in context" />
-          <Headline>
-            We studied how evaluation actually works in{' '}
-            <span className="em">Indian colleges</span>.
-          </Headline>
-          <Lede wide>
-            I interviewed three faculty members at autonomous colleges in Kerala, including a vice
-            principal. A teammate added perspectives from other instructors and students. We
-            combined those conversations with desk research on NEP 2020, Outcome Based Education,
-            Bloom&rsquo;s Taxonomy, accreditation requirements, rubric standards, AI-supported
-            grading and faculty trust.
-          </Lede>
-
-          <Methods
-            items={[
-              'Faculty interviews',
-              'Student perspectives',
-              'Policy desk research',
-              'Rubric and OBE standards',
-              'Competitive review',
-            ]}
-          />
-
-          <Notes
-            items={[
-              {
-                title: 'Institution type changes autonomy',
-                body: 'Affiliated, deemed and autonomous colleges do not create or use rubrics in the same way, so a single setup flow would have fitted almost nobody.',
-              },
-              {
-                title: 'Evaluation is increasingly traceable',
-                body: 'NEP 2020 and Outcome Based Education are pushing institutions toward Bloom’s levels, CO to PO mapping and explicit assessment criteria.',
-              },
-              {
-                title: 'The input is not always clean',
-                body: 'Handwritten assignments photographed or scanned into PDFs remain common, so extraction quality is a product problem, not an implementation detail.',
-              },
-              {
-                title: 'Teachers grade reasoning',
-                body: 'Step marking rewards the method even when the final answer is wrong, which means a single number per submission cannot represent the judgment being made.',
-              },
-              {
-                title: 'Trust depends on visibility',
-                body: 'Faculty were more open to AI support when they could inspect its evidence and remain accountable for the final grade.',
-              },
-            ]}
-          />
-
-          <BigQuote source="Vice principal, autonomous college">
-            We are not just grading the student&rsquo;s answer. We are measuring whether our
-            teaching achieved what the course was designed to achieve.
-          </BigQuote>
-
-          <SmallQuote source="Professor, Kerala">
-            If students type, they use ChatGPT. So we ask them to handwrite, photograph it, and
-            upload it.
-          </SmallQuote>
-        </Slide>
-
-        {/* ======================= 02, THE REFRAME ======================= */}
-        <Slide id="reframe" chapter="02" height="auto" invert>
-          <Kicker n="02" label="The reframe" />
-          <Headline size="large">
-            The core problem was not grading. It was{' '}
-            <span className="em">defensible judgment</span>.
-          </Headline>
-          <Lede wide>
-            Across the briefs, interviews and whiteboarding, the same pattern kept appearing: weak
-            inputs create weak evidence; weak evidence makes scoring uncertain; uncertainty creates
-            rechecking; rechecking destroys the promised efficiency.
-          </Lede>
-          <Lede wide>
-            So we reframed the product as a chain of knowledge quality rather than a collection of
-            grading features.
-          </Lede>
-
-          <Chain
-            caption="Grading reframed as a knowledge-quality chain"
-            items={[
-              {
-                name: 'Usable evidence',
-                body: 'Can the system actually read and access the work?',
-              },
-              {
-                name: 'Clear standards',
-                body: 'What does good look like for this criterion?',
-              },
-              {
-                name: 'Explainable match',
-                body: 'Which evidence supports which rubric level?',
-              },
-              {
-                name: 'Human judgment',
-                body: 'Where must the instructor intervene or override?',
-              },
-              {
-                name: 'Learning loop',
-                body: 'What should change before the next grading cycle?',
-              },
-            ]}
-            footnote={
-              <>
-                A failure at any stage reappears later as an &ldquo;AI problem&rdquo;, a trust
-                problem, or an appeal.
-              </>
-            }
-          />
-
-          <Statement>
-            How might we let instructors supervise uncertainty at scale, without making them
-            re-grade every paper?
-          </Statement>
-
-          <Footnote>
-            Trust had to be earned across the workflow, not added later through a confidence badge.
-          </Footnote>
-        </Slide>
-
-        {/* ================= 02, RESEARCH BECAME INTERACTION ================= */}
-        <Slide id="principles" chapter="02" height="auto">
-          <Kicker n="02" label="Principles" />
-          <Headline>
-            Every major finding had to <span className="em">change an interaction</span>.
-          </Headline>
-          <Lede wide>
-            We used research as a decision filter. If a finding did not change the flow, hierarchy,
-            content or error handling, it was not yet a design insight.
-          </Lede>
-
-          <Numbered
-            items={[
-              {
-                title: 'Evidence before score',
-                body: 'A number without its source sends instructors back to manual verification.',
-              },
-              {
-                title: 'Uncertainty should route attention',
-                body: 'Confidence matters only when it changes what the instructor reviews next.',
-              },
-              {
-                title: 'The instructor remains the final authority',
-                body: 'Accept, adjust, override and release must stay legible and accountable.',
-              },
-              {
-                title: 'Calibration comes before scale',
-                body: 'The system should learn how the instructor applies the rubric before grading a large batch.',
-              },
-              {
-                title: 'Corrections should compound',
-                body: 'Repeated interventions should improve rubrics, teaching, or future system behaviour.',
-              },
-            ]}
-          />
-
-          <p className="label mt-16 text-ink-500 md:mt-20">
-            Research signal, design response, product moment
-          </p>
-          <SignalMap
-            caption="How each research signal became a design response and a specific product moment"
-            rows={[
-              {
-                signal: 'Handwritten and scanned work is common',
-                response: 'Make extraction quality and missing pages visible',
-                moment: 'Original and extracted document views',
-              },
-              {
-                signal: 'Rubric freedom varies by institution',
-                response: 'Support setup, normalisation and explicit criteria',
-                moment: 'Assignment health and rubric setup',
-              },
-              {
-                signal: 'Faculty cannot verify every AI score',
-                response: 'Route attention to disagreement and uncertainty',
-                moment: 'Calibration delta review and triage',
-              },
-              {
-                signal: 'Step marking rewards process, not only answers',
-                response: 'Keep criterion evidence and rationale inspectable',
-                moment: 'Evidence-linked criterion scoring',
-              },
-              {
-                signal: 'Overrides must remain meaningful',
-                response: 'Keep instructor authority and record why it changed',
-                moment: 'Adjust, accept, keep mine, and an audit trail',
-              },
-              {
-                signal: 'Outcome Based Education requires traceability',
-                response: 'Turn grading patterns into teaching and rubric actions',
-                moment: 'Post-result insights',
-              },
-            ]}
-          />
-        </Slide>
-
-        {/* ==================== 03, PRODUCT ARCHITECTURE ==================== */}
-        <Slide id="architecture" chapter="03" height="auto">
-          <Kicker n="03" label="Architecture" />
-          <Headline>
-            Supervision became the <span className="em">connective tissue</span> of the whole
-            journey.
-          </Headline>
-          <Lede wide>
-            The final prototype gives instructors control before evaluation, support while grading,
-            and a way to act on patterns afterwards.
-          </Lede>
-
-          <Chain
-            caption="The five moments of the instructor supervision workflow"
+            caption="The five moments of the instructor workflow, and the three our team owned most directly"
             items={[
               {
                 name: 'Prepare',
@@ -568,43 +320,179 @@ const EducaitorsCaseStudy = () => {
               },
               {
                 name: 'Grade',
-                body: 'Inspect the submission, criterion-level evidence, score, rationale and confidence.',
+                body: 'Review the student’s work, the criterion-level evidence and the proposed score.',
                 emphasis: true,
               },
               {
                 name: 'Resolve',
-                body: 'Handle uncertainty, overrides, scan failures and re-evaluation requests.',
+                body: 'Handle uncertain cases, overrides, scan failures and re-evaluation requests.',
+                emphasis: true,
               },
               {
                 name: 'Learn',
-                body: 'Use repeated corrections and patterns to improve the next assessment cycle.',
+                body: 'Use repeated corrections and assessment patterns to improve future grading and teaching.',
               },
             ]}
-            footnote="The instructor is never reduced to a final approve click. Judgment enters before, during and after evaluation. The two shaded moments are the ones this case study opens up."
+            footnote="The three shaded moments are the ones this case study opens up. The instructor is never reduced to a final approve click: judgment enters before, during and after evaluation."
           />
-
-          <Callout label="Why the loop, not a review screen">
-            A review screen alone would not solve rubric quality, calibration, appeals or repeated
-            correction work. The end-to-end loop places human judgment where it adds value.
-          </Callout>
         </Slide>
 
-        {/* ======================= 03, CALIBRATION ======================= */}
-        <Slide id="calibration" chapter="03" height="auto">
-          <Kicker n="03" label="Key experience" />
+        {/* ========================= 02, RESEARCH =========================== */}
+        <Slide id="research" chapter="02" height="auto">
+          <Kicker n="02" label="Starting with the real context" />
           <Headline>
-            We made <span className="em">disagreement useful</span>.
+            We studied how evaluation actually happens in{' '}
+            <span className="em">Indian colleges</span>.
           </Headline>
           <Lede wide>
-            Instead of asking instructors to inspect every AI-supported score, the calibration flow
-            compares their ratings on a small sample and brings the meaningful differences forward.
-            The instructor sees where the score diverged, which criterion caused it, and whether
-            the gap is isolated or systematic.
+            I interviewed three faculty members at autonomous colleges in Kerala, including a vice
+            principal. Other team members added perspectives from instructors and students. We
+            combined those conversations with desk research on NEP 2020, Outcome Based Education,
+            Bloom&rsquo;s Taxonomy, accreditation requirements, rubric standards, AI-supported
+            grading and faculty trust.
+          </Lede>
+
+          <BigQuote source="Vice principal, autonomous college">
+            We are not just grading the student&rsquo;s answer. We are measuring whether our
+            teaching achieved what the course was designed to achieve.
+          </BigQuote>
+
+          <Methods
+            items={[
+              'Faculty interviews',
+              'Student perspectives',
+              'Policy desk research',
+              'Rubric and OBE standards',
+              'Competitive review',
+            ]}
+          />
+
+          <p className="label mt-16 text-ink-500 md:mt-20">
+            Four constraints that mattered directly to the product
+          </p>
+          <Notes
+            columns={2}
+            items={[
+              {
+                title: 'Institution type changes what instructors control',
+                body: 'Affiliated, deemed and autonomous colleges do not all create and use rubrics in the same way. The product could not assume every instructor had full freedom over assessment setup.',
+              },
+              {
+                title: 'Student work is not always clean digital input',
+                body: 'Handwritten assignments photographed or scanned into PDFs are still common. Instructors needed access to the original submission as well as any extracted text.',
+              },
+              {
+                title: 'Teachers often grade reasoning, not just the final answer',
+                body: 'Step marking can reward method even when the final answer is wrong. Evaluation had to work at criterion and evidence level rather than reducing everything to one number.',
+              },
+              {
+                title: 'Instructors cannot manually verify every automated score',
+                body: 'If the product asked teachers to re-grade every paper, it would remove most of the intended efficiency. The interface had to help them decide where to look first.',
+              },
+            ]}
+          />
+
+          <SmallQuote source="Professor, Kerala">
+            If students type, they use ChatGPT. So we ask them to handwrite, photograph it, and
+            upload it.
+          </SmallQuote>
+        </Slide>
+
+        <Slide id="requirements" chapter="02" height="auto">
+          <Kicker n="02" label="Turning research into design requirements" />
+          <Headline>
+            Each finding had to <span className="em">change the interaction</span>.
+          </Headline>
+          <Lede wide>
+            Rather than treating the research as background, we translated every finding into a
+            specific design response and the place in the product where it shows up. If a finding
+            did not change the flow, hierarchy, content or error handling, it was not yet a design
+            insight.
+          </Lede>
+
+          <SignalMap
+            caption="Each research finding, the design response it produced, and where it appears in the product"
+            rows={[
+              {
+                signal: 'Extraction from handwritten and scanned work can be incomplete or wrong',
+                response: 'Keep the original document available alongside the extracted content',
+                moment: 'Original and extracted document views',
+              },
+              {
+                signal: 'Not every instructor controls the assessment structure',
+                response: 'Make rubric setup and assumptions explicit rather than silently normalising them',
+                moment: 'Assignment health and rubric setup',
+              },
+              {
+                signal: 'Reviewing every suggested score defeats the purpose',
+                response: 'Direct attention toward disagreement, uncertainty and validation issues',
+                moment: 'Calibration comparison and cohort triage',
+              },
+              {
+                signal: 'Teachers need to understand how the answer relates to the criterion',
+                response: 'Link scores to criterion-level evidence and reasoning',
+                moment: 'Evidence-linked criterion scoring',
+              },
+              {
+                signal: 'Instructors remain accountable for the final grade',
+                response: 'Allow accept, adjust and override while preserving the reason and audit history',
+                moment: 'Instructor actions and audit trail',
+              },
+              {
+                signal: 'Outcome Based Education requires traceability',
+                response: 'Turn grading patterns into teaching and rubric actions',
+                moment: 'Post-result insights',
+              },
+            ]}
+          />
+        </Slide>
+
+        <Slide id="question" chapter="02" height="auto" invert>
+          <Kicker n="02" label="The product question changed" />
+          <Headline size="large">
+            We stopped treating the product as an <span className="em">automated gradebook</span>.
+          </Headline>
+          <Lede wide>
+            The initial brief was easy to read as a grading workflow: a student submits work, the
+            system evaluates it, the instructor reviews it, the result is released. Research made
+            that too simplistic. A proposed score was only useful if the instructor could answer
+            six questions about it.
+          </Lede>
+
+          <Numbered
+            size="compact"
+            items={[
+              { title: 'What evidence is this based on?' },
+              { title: 'Which rubric criterion is being applied?' },
+              { title: 'Where is the system uncertain?' },
+              { title: 'Where does my judgment differ?' },
+              { title: 'Can I change it?' },
+              { title: 'Will that decision be recorded?' },
+            ]}
+          />
+
+          <Principle>
+            Reduce unnecessary rechecking, while keeping academic judgment visible and
+            controllable.
+          </Principle>
+        </Slide>
+
+        {/* ======================== 03, THE PRODUCT ========================= */}
+        <Slide id="calibration" chapter="03" height="auto">
+          <Kicker n="03" label="Calibration before full-batch grading" />
+          <Headline>
+            We used <span className="em">disagreement</span> to decide what needed review.
+          </Headline>
+          <Lede wide>
+            Before grading a full batch, the instructor reviews a smaller representative sample.
+            The system then compares the instructor score against its own result at criterion
+            level. Instead of showing one generic confidence score, the interface highlights where
+            the two differ.
           </Lede>
           <Lede wide>
-            A generic confidence score would still leave the instructor asking, what do I do? So we
-            designed calibration around concrete differences between human and system judgment. The
-            gap itself becomes the queue, which makes review bounded and actionable.
+            That lets the instructor tell apart a criterion being interpreted differently, a
+            disagreement repeating across several papers, a broader calibration problem, and a case
+            that simply needs manual review.
           </Lede>
 
           <AnnotatedPlate
@@ -619,38 +507,49 @@ const EducaitorsCaseStudy = () => {
             }}
             callouts={[
               {
-                title: 'Overall alignment gives context',
-                body: 'The aggregate delta frames the batch. It is not permission to auto-approve, and the screen never offers that.',
+                title: 'Overall alignment',
+                body: 'The aggregate delta gives context for the sample. It is not permission to auto-approve, and the screen never offers that.',
               },
               {
-                title: 'Criterion-level deltas show where interpretation differs',
-                body: 'A single criterion out of alignment is a rubric wording problem. Four of them is a calibration problem. The matrix separates the two.',
+                title: 'Criterion-level differences',
+                body: 'One criterion out of alignment is usually a rubric wording problem. Four of them is a calibration problem. The matrix separates the two.',
               },
               {
-                title: 'Review discrepancies turns disagreement into a task',
-                body: 'The divergent cells become a finite queue with an end, rather than an instruction to look at everything again.',
+                title: 'Review discrepancies',
+                body: 'The divergent cells become a finite review queue with an end, rather than an instruction to look at everything again.',
               },
             ]}
           />
-
-          <Callout label="Trust pattern">
-            Do not ask users to trust the model. Let them shape the conditions under which they
-            will rely on it.
-          </Callout>
         </Slide>
 
-        {/* ======================= 03, THE GRADING DESK ======================= */}
-        <Slide id="grading" chapter="03" height="auto">
-          <Kicker n="03" label="Key experience" />
+        <Slide id="why-calibration" chapter="03" height="auto">
+          <Kicker n="03" label="Why this mattered" />
           <Headline>
-            We kept evidence, judgment and action <span className="em">together</span>.
+            A confidence percentage alone would not tell the instructor{' '}
+            <span className="em">what to do next</span>.
           </Headline>
           <Lede wide>
-            The grading desk was designed as a supervision surface, not a scorecard. The instructor
-            can move between the original submission and the extracted content, see criterion-level
-            scoring, inspect reasoning, link evidence, adjust the score, and retain internal
-            context. The layout keeps the student&rsquo;s work visible while the rubric decision is
-            being made.
+            A number such as 78 percent confidence still leaves the practical question unanswered:
+            should I review this paper or not? Using the differences between instructor and system
+            scoring instead turns the same uncertainty into a review process someone can act on.
+          </Lede>
+
+          <Statement>
+            The goal was not to ask instructors to trust the system. It was to make it easier to
+            see when their judgment was needed.
+          </Statement>
+        </Slide>
+
+        <Slide id="grading" chapter="03" height="auto">
+          <Kicker n="03" label="The grading workspace" />
+          <Headline>
+            The student&rsquo;s work, the evidence and the decision,{' '}
+            <span className="em">in the same view</span>.
+          </Headline>
+          <Lede wide>
+            The grading desk was designed so the instructor did not have to jump between screens to
+            verify a score. They can inspect the evidence, change the score and record the reason
+            without losing their place in the submission.
           </Lede>
 
           <Plate
@@ -659,7 +558,7 @@ const EducaitorsCaseStudy = () => {
             width={2055}
             height={1158}
             className="mt-12 md:mt-16"
-            caption="The grading desk. Cohort triage, the student's own work, and the criterion decision, all on screen at once, so a score can be defended without a full reread."
+            caption="The grading desk. Cohort triage, the student's own work, and the criterion decision, all on screen at once."
             onOpen={open}
           />
 
@@ -667,50 +566,75 @@ const EducaitorsCaseStudy = () => {
             items={[
               {
                 title: 'Cohort triage',
-                body: 'Directs attention to the submissions with uncertainty or validation issues, rather than presenting sixty identical rows.',
+                body: 'Shows which submissions carry uncertainty, validation issues or another reason for review, rather than presenting sixty identical rows.',
               },
               {
-                title: 'Student evidence',
-                body: 'Keeps the original work visible, which matters most for scanned and OCR-dependent submissions where extraction can be wrong.',
+                title: 'Original student evidence',
+                body: 'Keeps the original document visible, which matters most for scanned and handwritten submissions where the extracted text may be incomplete.',
               },
               {
-                title: 'Criterion control',
-                body: 'Lets the instructor inspect evidence, reasoning, confidence and score, and change it, without losing the place they were reading.',
+                title: 'Criterion review and action',
+                body: 'Shows the criterion, the proposed score, the evidence, the reasoning, the confidence, and the instructor action, in one panel.',
               },
             ]}
           />
+        </Slide>
 
-          <div className="mt-14 max-w-3xl space-y-5 text-base leading-[1.6] text-ink-600 md:mt-16 md:text-lg">
-            <p>
-              Criterion-level evidence makes a score defensible without forcing a full reread of
-              the paper.
-            </p>
-            <p>
-              One-click adjustment preserves authority. The rationale and the audit history
-              preserve accountability.
-            </p>
-            <p>
-              Confidence is used to prioritise exceptions rather than to decorate every output.
-            </p>
+        <Slide id="authority" chapter="03" height="auto">
+          <Kicker n="03" label="Who decides" />
+          <Headline>
+            Automation could assist the evaluation. It could not own{' '}
+            <span className="em">the final grade</span>.
+          </Headline>
+          <Lede wide>
+            We kept explicit instructor actions in the flow, and made a changed score carry the
+            record of why it changed. That made the decision traceable without forcing the
+            instructor into a separate administrative workflow.
+          </Lede>
+
+          <div className="mt-12 grid gap-px border border-border bg-border md:mt-16 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              ['Accept', 'Take the proposed score as it stands.'],
+              ['Adjust', 'Change the score against the criterion, in place.'],
+              ['Override', 'Replace the system result with the instructor’s own judgment.'],
+              ['Release', 'Publish the result. Always an instructor action.'],
+            ].map(([action, body]) => (
+              <div key={action} className="bg-background p-5 md:p-6">
+                <p className="text-xl leading-snug md:text-2xl">{action}</p>
+                <p className="mt-4 text-sm leading-[1.5] text-ink-600 md:text-base">{body}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 border-l border-foreground p-6 pl-6 md:p-8 md:pl-8">
+            <p className="label-strong">What a changed score preserves</p>
+            <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
+              {[
+                'The original value',
+                'The updated value',
+                'The reason',
+                'The evidence',
+                'Instructor identity',
+                'Timestamp',
+              ].map((item) => (
+                <li key={item} className="text-base leading-snug md:text-lg">
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
         </Slide>
 
-        {/* ==================== 03, APPEALS AND LEARNING ==================== */}
         <Slide id="appeals" chapter="03" height="auto">
-          <Kicker n="03" label="Exceptions" />
+          <Kicker n="03" label="Re-evaluation is part of the product" />
           <Headline>
-            A re-evaluation request is not just a <span className="em">support ticket</span>.
+            An appeal can expose <span className="em">different kinds of problems</span>.
           </Headline>
           <Lede wide>
-            An appeal may reveal a missed page, broken extraction, an ambiguous rubric, a feedback
-            mismatch, a calculation issue, or a genuine grading dispute. We designed a review queue
-            that separates these concerns and preserves their context, so oversight is possible
-            without flattening every request into the same workflow.
-          </Lede>
-          <Lede wide>
-            The system keeps the original score, the updated score, the reason, the evidence, the
-            instructor identity and the timestamp. Post-evaluation patterns then help reveal where
-            rubrics or teaching may need attention.
+            A re-evaluation request does not always mean the original score was wrong. It could
+            point to a missing page, broken extraction, an ambiguous rubric, incorrect feedback, a
+            calculation issue, or a genuine grading disagreement. So the review queue keeps those
+            concerns distinct instead of flattening every request into one workflow.
           </Lede>
 
           <AnnotatedPlate
@@ -720,176 +644,153 @@ const EducaitorsCaseStudy = () => {
               width: 3368,
               height: 1895,
               caption:
-                'The re-evaluation desk. Each request carries its concern type, the criterion it disputes, and the student’s own reasoning, so the queue can be triaged rather than worked through in order.',
+                'The re-evaluation desk. Each request carries its concern type, the criterion it disputes, and the student’s own reasoning.',
               onOpen: open,
             }}
             heading="How the queue is structured"
             callouts={[
               {
-                title: 'The concern type is the sort key',
-                body: 'A scan failure, an unclear rubric and a genuine dispute need different people and different fixes. Typing them at intake is what makes triage possible.',
+                title: 'Concern type',
+                body: 'A scan failure, an unclear rubric and a genuine dispute need different people and different fixes, so typing them at intake is what lets them be routed differently.',
               },
               {
-                title: 'The student reasoning travels with the request',
-                body: 'The instructor reads the claim in the student’s words next to the criterion it disputes, instead of opening a separate thread.',
+                title: 'Student reasoning',
+                body: 'Keeps the request attached to the actual criterion being disputed, in the student’s own words, instead of in a separate thread.',
               },
               {
-                title: 'Ageing and escalation are visible',
+                title: 'Ageing and escalation',
                 body: 'Overdue requests and anything awaiting institutional review are separated from new arrivals, because an appeal window is a deadline.',
               },
             ]}
           />
-
-          <Callout label="Where the value is">
-            Appeals, overrides and calibration gaps are not edge cases around the product. They are
-            the product&rsquo;s highest-value learning signals.
-          </Callout>
         </Slide>
 
-        {/* ================ 04, DECISIONS AND TRADE-OFFS ================ */}
+        <Slide id="patterns" chapter="03" height="auto">
+          <Kicker n="03" label="After the case is closed" />
+          <Headline>
+            Repeated corrections can reveal a problem with{' '}
+            <span className="em">more than one grade</span>.
+          </Headline>
+          <Lede wide>
+            If instructors keep changing the same criterion, several things might be happening: the
+            rubric wording is unclear, teaching may not align with the intended outcome, the system
+            is interpreting the criterion differently, or extraction is failing consistently. That
+            is why the product included a post-evaluation layer. The goal was to help instructors
+            see patterns worth acting on before the next assessment cycle, rather than treating
+            every override as an isolated correction.
+          </Lede>
+
+          <Plate
+            src={home}
+            alt="The instructor home screen, with result insights and pattern alerts surfaced alongside active assignment progress."
+            width={3059}
+            height={1684}
+            className="mt-12 md:mt-16"
+            caption="Result insights sit on the instructor home, next to the work in progress, so a pattern is something you meet rather than something you go looking for."
+            onOpen={open}
+          />
+        </Slide>
+
+        {/* ==================== 04, SCOPE AND DECISIONS ===================== */}
         <Slide id="decisions" chapter="04" height="auto">
           <Kicker n="04" label="Decisions" />
           <Headline>
-            We chose transparency over <span className="em">theatre</span>.
+            What we chose <span className="em">not to automate</span>.
           </Headline>
+          <Lede wide>
+            Several decisions were about where automation should stop. Each of these could have
+            been made the other way, and each would have made the product feel smoother and trust
+            it less.
+          </Lede>
 
           <Decisions
             items={[
               {
-                tension: 'Hide the AI to reduce fear?',
+                tension: 'Hide that AI is involved?',
                 verdict: 'No',
-                body: 'Research showed real anxiety about replacement. But hiding the source of a recommendation would undermine informed supervision, so we name AI at decision moments and keep the instructor’s judgment primary.',
+                body: 'Research showed real anxiety about replacement. But if the system contributes to a grading recommendation, the instructor should know where that recommendation came from.',
               },
               {
-                tension: 'Automate missing rubric weights?',
-                verdict: 'Make it visible',
-                body: 'Equal weighting is treated as an assumption requiring review, not a silent default. Silent normalisation creates false confidence in a number nobody chose.',
-              },
-              {
-                tension: 'Show every confidence signal?',
+                tension: 'Automatically resolve missing rubric weights?',
                 verdict: 'No',
-                body: 'Confidence appears when it changes review priority, explains uncertainty, or supports an appeal. Decorative percentages train people to ignore the ones that matter.',
+                body: 'Equal weighting may be reasonable, but it should remain an explicit assumption the instructor can see and change, rather than becoming a silent default nobody chose.',
               },
               {
-                tension: 'Keep our module isolated?',
+                tension: 'Show confidence everywhere?',
                 verdict: 'No',
-                body: 'Submission quality determines evaluation quality, and override patterns determine improvement. We designed explicit handshakes with both adjacent modules instead of three disconnected concepts.',
+                body: 'Confidence is useful when it changes what needs attention. Putting a percentage on every output would add noise, and train people to ignore the ones that matter.',
               },
               {
-                tension: 'Optimise only for the happy path?',
+                tension: 'Treat OCR failures as edge cases?',
                 verdict: 'No',
-                body: 'OCR failures, missing artifacts, ambiguous evidence, instructor and system disagreement, and appeals are core product states here, not exceptions bolted on at the end.',
+                body: 'Scanned and handwritten submissions were common enough that extraction failures had to be designed into the main workflow rather than bolted on at the end.',
               },
               {
-                tension: 'Claim a time saving?',
-                verdict: 'Not yet',
-                body: 'Lower review effort is the intended value, but it was not measured in a field pilot. Expected value stays separate from validated outcome, on this page as well as in the product.',
+                tension: 'Auto-approve when instructor and system align?',
+                verdict: 'No',
+                body: 'Alignment reduces review effort, which is the point of calibration. But the final release stays an instructor action.',
               },
             ]}
           />
         </Slide>
 
-        {/* ================= 04, OUTCOME AND VALIDATION ================= */}
-        <Slide id="outcome" chapter="04" height="auto">
-          <Kicker n="04" label="Outcome" />
+        <Slide id="architecture" chapter="04" height="auto">
+          <Kicker n="04" label="Scope" />
           <Headline>
-            What we delivered, and what we did not <span className="em">pretend to prove</span>.
-          </Headline>
-
-          <Ledger
-            delivered={[
-              'A development-ready interactive prototype spanning assignment preparation, calibration, grading, re-evaluation and result insights.',
-              'Criterion-level states for evidence, confidence, scoring, overrides and internal instructor context.',
-              'Cross-module data and decision handshakes, instead of three disconnected concepts.',
-              'A research-backed direction grounded in Indian higher education, institution-level constraints and scanned handwritten work.',
-              'Detailed workflows, error states, decision objects and audit requirements for handoff.',
-            ]}
-            validate={[
-              {
-                title: 'Comprehension',
-                body: 'Can instructors explain why the system produced a score, and what needs review?',
-              },
-              {
-                title: 'Efficiency',
-                body: 'Does confidence-based triage reduce review time without increasing missed errors?',
-              },
-              {
-                title: 'Control',
-                body: 'Can instructors override and document decisions without losing context?',
-              },
-              {
-                title: 'Consistency',
-                body: 'Does calibration reduce variance across a grading batch?',
-              },
-              {
-                title: 'Institutional fit',
-                body: 'How should setup differ between affiliated and autonomous colleges?',
-              },
-              {
-                title: 'Technical fit',
-                body: 'How reliably can the product recover from handwritten OCR and missing-page failures?',
-              },
-            ]}
-          />
-
-          <Footnote>
-            This case demonstrates workflow completeness, design rationale and a coherent
-            human-in-the-loop model. It does not claim production adoption, measured accuracy, or
-            measured time savings.
-          </Footnote>
-        </Slide>
-
-        {/* ==================== 05, HOW I LED THE WORK ==================== */}
-        <Slide id="leadership" chapter="05" height="auto">
-          <Kicker n="05" label="Leadership" />
-          <Headline>
-            Shared structure. Distributed ownership.{' '}
-            <span className="em">Frequent integration.</span>
+            Our module could not work <span className="em">independently</span>.
           </Headline>
           <Lede wide>
-            The project was too broad for one designer to own every workflow, but too
-            interconnected for us to work as independent contributors. My role was to create enough
-            structure for people to move quickly without losing the logic of one product.
+            Submission quality determines evaluation quality, and instructor corrections determine
+            what improves next. Those two integration points meant we needed shared states,
+            vocabulary and data handoffs across all three modules, rather than three good concepts
+            that did not meet.
           </Lede>
 
           <Chain
-            caption="The team operating model, from a shared map to one reviewed product"
+            caption="The three connected modules of EducAItors and the moment each one owns"
+            columns={3}
             items={[
               {
-                name: 'Build the shared map',
-                body: 'Research, system rules and dependencies visible to everyone.',
+                name: 'Submission readiness',
+                body: 'Student work is checked for missing, blocked or unreadable evidence before evaluation starts.',
+              },
+              {
+                name: 'Evaluation and supervision',
+                body: 'Instructors calibrate, inspect evidence, change results and release grades. My team’s primary scope.',
                 emphasis: true,
               },
               {
-                name: 'Assign clear ownership',
-                body: 'Each designer carried a module or a critical workflow end to end.',
-              },
-              {
-                name: 'Pair across boundaries',
-                body: 'Owners reviewed adjacent flows where data and decisions crossed.',
-              },
-              {
-                name: 'Integrate frequently',
-                body: 'Shared language, states and interaction patterns stayed coherent.',
-              },
-              {
-                name: 'Review as one product',
-                body: 'The team critiqued decisions, not isolated screens or authors.',
+                name: 'Continuous improvement',
+                body: 'Corrections and patterns feed future rubric, teaching and evaluation decisions.',
               },
             ]}
-            footnote="Ownership stayed distributed. Coherence and decision quality were the lead’s responsibility."
+            footnote="The shaded block is the one my team owned, and we designed its handshakes with both neighbours: submission quality flows in, instructor corrections flow out."
           />
+        </Slide>
 
-          <p className="label mt-16 text-ink-500 md:mt-20">What I owned as lead</p>
+        {/* ======================== 05, LEADING IT ========================== */}
+        <Slide id="leadership" chapter="05" height="auto">
+          <Kicker n="05" label="How I led the team" />
+          <Headline>
+            The project was too connected for each designer to{' '}
+            <span className="em">work independently</span>.
+          </Headline>
+          <Lede wide>
+            The work was divided across several modules and workflows. My role as lead was not to
+            design every screen. It was to make sure the pieces still became one product.
+          </Lede>
+
+          <p className="label mt-16 text-ink-500 md:mt-20">What I led</p>
           <ul className="mt-8 max-w-3xl space-y-5">
             {[
-              'Framed the problem across the full three-module ecosystem before narrowing our scope.',
-              'Led faculty research and brought institutional realities into product decisions.',
-              'Facilitated whiteboarding to turn rules and findings into workflows, data objects, states and dependencies.',
-              'Divided work by module and critical workflow, with clear owners and explicit handoffs.',
-              'Paired designers across module boundaries and established regular peer reviews.',
-              'Reviewed logic, edge cases, vocabulary and data exchanges, not only visual consistency.',
-              'Integrated the final experience and protected one product narrative through the prototype and the presentation.',
+              'Framing the complete system before narrowing to our module.',
+              'Part of the faculty research, and bringing institutional realities into product decisions.',
+              'Whiteboarding sessions that turned rules and findings into workflows, data objects and states.',
+              'Workflow and dependency mapping across the three modules.',
+              'Assignment of module and workflow ownership.',
+              'Cross-module reviews at the points where information crossed a boundary.',
+              'Vocabulary and state alignment.',
+              'Integration of the final experience.',
             ].map((item) => (
               <li key={item} className="flex gap-4">
                 <span aria-hidden="true" className="mt-[0.7em] h-px w-4 shrink-0 bg-foreground" />
@@ -898,102 +799,223 @@ const EducaitorsCaseStudy = () => {
             ))}
           </ul>
 
+          <p className="label mt-16 text-ink-500 md:mt-20">How we worked</p>
+          <Numbered
+            items={[
+              {
+                title: 'Build a shared map',
+                body: 'Research, system rules and dependencies visible to the whole team.',
+              },
+              {
+                title: 'Assign clear workflow ownership',
+                body: 'Each designer carried a meaningful piece end to end.',
+              },
+              {
+                title: 'Review across boundaries',
+                body: 'Adjacent module owners reviewed the points where information crossed.',
+              },
+              {
+                title: 'Integrate frequently',
+                body: 'Navigation, vocabulary, states and interaction patterns were aligned throughout the project, not at the end.',
+              },
+              {
+                title: 'Review as one product',
+                body: 'Final critique focused on the instructor journey, not on who had designed each screen.',
+              },
+            ]}
+          />
+
           <Principle>
             Give people ownership of the work. Keep ownership of coherence.
           </Principle>
         </Slide>
 
-        {/* ================== 05, HOW THE TEAM MOVED ================== */}
-        <Slide id="way-of-working" chapter="05" height="auto">
-          <Kicker n="05" label="Way of working" />
+        <Slide id="contribution" chapter="05" height="auto">
+          <Kicker n="05" label="What I personally worked on" />
+          <Headline>My contribution</Headline>
+
+          <div className="mt-12 grid gap-px border border-border bg-border md:mt-16 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              [
+                'Research',
+                [
+                  'Faculty interviews',
+                  'Synthesis',
+                  'Institutional constraints',
+                  'Workflow implications',
+                ],
+              ],
+              [
+                'Product framing',
+                [
+                  'Evaluation and supervision scope',
+                  'The decision flow',
+                  'Calibration logic',
+                  'Review and override states',
+                ],
+              ],
+              [
+                'Interaction design',
+                [
+                  'Grading workflow',
+                  'Calibration',
+                  'Evidence review',
+                  'Re-evaluation',
+                  'Instructor actions',
+                ],
+              ],
+              [
+                'Leadership',
+                ['Whiteboarding', 'Task ownership', 'Cross-team reviews', 'Integration'],
+              ],
+              [
+                'Final delivery',
+                [
+                  'Prototype integration',
+                  'Workflow completeness',
+                  'Product narrative',
+                  'Presentation',
+                ],
+              ],
+            ].map(([title, items]) => (
+              <div key={title as string} className="bg-background p-5 md:p-6">
+                <p className="label text-ink-500">{title as string}</p>
+                <ul className="mt-6 space-y-2.5">
+                  {(items as string[]).map((item) => (
+                    <li key={item} className="text-base leading-snug text-ink-600 md:text-lg">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+            <div className="bg-background p-5 md:p-6">
+              <p className="label text-ink-500">Developed by the team</p>
+              <ul className="mt-6 space-y-2.5">
+                {[
+                  'The broader three-module ecosystem',
+                  'Shared research',
+                  'Adjacent workflows',
+                  'Final visual language',
+                  'The overall prototype',
+                ].map((item) => (
+                  <li key={item} className="text-base leading-snug text-ink-500 md:text-lg">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Slide>
+
+        {/* ========================= 06, OUTCOME =========================== */}
+        <Slide id="outcome" chapter="06" height="auto">
+          <Kicker n="06" label="Outcome" />
           <Headline>
-            From an ambiguous brief to <span className="em">one integrated product</span>.
+            An interactive prototype, and an <span className="em">academic one</span>.
+          </Headline>
+          <Lede wide>
+            The work established a coherent direction for instructor supervision. It was a
+            prototype rather than a deployed product, and the page separates those two things
+            deliberately.
+          </Lede>
+
+          <Ledger
+            delivered={[
+              'An interactive prototype covering assignment preparation, calibration, grading, re-evaluation and result insights.',
+              'Criterion-level evidence, confidence and disagreement states.',
+              'Instructor overrides with the reason, the evidence and the audit information preserved.',
+              'Cross-module data and decision handoffs, instead of three disconnected concepts.',
+              'A research-backed direction grounded in Indian higher education, institution-level constraints and scanned handwritten work.',
+              'Detailed workflows, error states, decision objects and audit requirements for handoff.',
+            ]}
+            notClaimed={{
+              note: 'It was an academic prototype, never run with real cohorts, so none of these were measured.',
+              items: [
+                'Grading-time reduction',
+                'Production accuracy',
+                'Live adoption',
+                'Improvement in consistency',
+                'Instructor trust',
+              ],
+            }}
+          />
+        </Slide>
+
+        <Slide id="validate" chapter="06" height="auto">
+          <Kicker n="06" label="What still needs to be validated" />
+          <Headline>
+            The next questions are <span className="em">practical, not conceptual</span>.
           </Headline>
 
-          <Numbered
+          <Notes
             items={[
               {
-                title: 'Ground the brief',
-                body: 'Unpack the rules, assumptions and success conditions across all three projects.',
+                title: 'Comprehension',
+                body: 'Can instructors explain why a particular score was suggested?',
               },
               {
-                title: 'Research the real context',
-                body: 'Interview faculty and students. Understand policy, grading practices and institutional differences.',
+                title: 'Review effort',
+                body: 'Does calibration and triage actually reduce how much work instructors need to recheck?',
               },
               {
-                title: 'Externalise the system',
-                body: 'Whiteboard evidence flows, rubric decisions, confidence, overrides, appeals and learning signals.',
+                title: 'Control',
+                body: 'Can instructors override decisions without losing context?',
               },
               {
-                title: 'Divide by workflow, not by screen',
-                body: 'Give modules and critical flows clear owners while making the dependencies explicit.',
+                title: 'Consistency',
+                body: 'Does calibration reduce scoring variation across a batch?',
               },
               {
-                title: 'Pair and review',
-                body: 'Review one another’s work where journeys and data cross module boundaries.',
+                title: 'Institutional fit',
+                body: 'How should the system change for affiliated colleges, where instructors may not control the rubric?',
               },
               {
-                title: 'Converge on one product',
-                body: 'Align vocabulary, states, navigation, interaction patterns and visual language.',
-              },
-              {
-                title: 'Inspect end to end',
-                body: 'Review the final prototype as an instructor journey, not a collection of assigned screens.',
+                title: 'Technical fit',
+                body: 'How reliable are handwritten OCR and missing-page recovery on real submissions?',
               },
             ]}
           />
+        </Slide>
+
+        <Slide id="reflection" chapter="06" height="auto">
+          <Kicker n="06" label="Reflection" />
+          <Headline>
+            The biggest change was where we placed{' '}
+            <span className="em">the instructor&rsquo;s judgment</span>.
+          </Headline>
+          <Lede wide>
+            At the beginning we were thinking mostly about an AI-supported grading flow. After
+            research and system mapping, the instructor&rsquo;s role became much more explicit.
+            Their judgment needed to appear before grading, through rubric setup and calibration;
+            during grading, through evidence review, adjustments and overrides; and after grading,
+            through re-evaluation and repeated correction patterns. That shift changed the product
+            more than any individual screen.
+          </Lede>
+          <Lede wide>
+            The second lesson came from leading the team. Dividing the project into modules made
+            the work manageable, but it also created a risk of three good concepts becoming three
+            different products. Shared maps, explicit handoffs and frequent integration reviews
+            were what kept the final system coherent.
+          </Lede>
 
           <Footnote>
-            Shared boards and critiques were not coordination overhead. They were how we prevented
-            locally good screens from becoming a fragmented product.
+            Shared boards and critiques were not coordination overhead. They were how we stopped
+            locally good screens from adding up to a fragmented product.
           </Footnote>
         </Slide>
 
-        {/* ====================== 05, REFLECTION ====================== */}
-        <Slide id="reflection" chapter="05" height="auto" invert>
-          <Kicker n="05" label="Reflection" />
-          <Headline size="large">
-            The best design decision was changing{' '}
-            <span className="em">what we believed the product was</span>.
-          </Headline>
-          <Lede wide>
-            At the beginning, EducAItors looked like an AI-assisted grading workflow. After
-            research and system mapping, I saw it differently: it was an accountability system for
-            academic judgment. That shift made calibration, evidence, re-evaluation and learning
-            central rather than secondary.
-          </Lede>
-          <Lede wide>
-            Leading the team reinforced a second lesson. Modular ownership works only when
-            integration is designed into the process. Shared boards, explicit handoffs and peer
-            reviews were how we kept the product coherent while letting each designer own
-            meaningful work.
-          </Lede>
+        <Slide id="closing" chapter="06" height="auto" invert>
+          <p className="label text-ink-500">In closing</p>
 
-          <p className="label mt-16 text-ink-500 md:mt-20">What I would do next</p>
-          <Numbered
-            size="compact"
-            items={[
-              {
-                title: 'Test calibration language with instructors at different levels of AI familiarity.',
-              },
-              {
-                title: 'Prototype explicitly for affiliated-college constraints, where teachers may not control the rubric.',
-              },
-              {
-                title: 'Validate OCR recovery and missed-page workflows with real handwritten submissions.',
-              },
-              {
-                title: 'Separate teaching signals from rubric-quality signals through longitudinal research.',
-              },
-              {
-                title: 'Define institutional governance for overrides, appeals, audit access and escalation before production.',
-              },
-            ]}
-          />
+          <p className="mt-10 max-w-[22ch] text-[2rem] leading-[1.05] md:text-[3.5rem]">
+            The system could propose a score.{' '}
+            <span className="em">The instructor still had to understand and own the decision.</span>
+          </p>
 
-          <p className="mt-16 max-w-[24ch] text-[2rem] leading-[1.05] md:mt-24 md:text-[3.5rem]">
-            AI earns a place in high-stakes education only when human judgment becomes more
-            visible, not less.
+          <p className="mt-12 max-w-3xl text-base leading-[1.6] text-ink-600 md:text-lg">
+            EducAItors became a project about designing the review process around automated
+            evaluation, rather than automating the instructor out of it.
           </p>
 
           <nav
