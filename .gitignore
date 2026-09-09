@@ -26,3 +26,6 @@ dist-ssr
 
 # WSL download markers
 *:Zone.Identifier
+
+# Generated PDF exports of the case studies (see exports/)
+exports

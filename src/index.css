@@ -705,3 +705,90 @@
     transform: none;
   }
 }
+
+/*
+ * Paper.
+ *
+ * The case studies are built for a scroll: wayfinding rails follow the
+ * viewport, sections arrive as they are reached, and diagrams ink themselves
+ * in. None of that survives a page, and most of it actively damages one, so
+ * print resets the page to what it would be if the reader had already
+ * scrolled through the whole thing.
+ *
+ * Three moves. Viewport-pinned chrome is dropped, because navigation is
+ * meaningless on paper and a fixed bar would otherwise stamp itself on every
+ * sheet. Every reveal, sequence and drawn stroke is forced to its finished
+ * state, since nothing here will ever intersect a viewport. And each slide
+ * takes its own sheet, which is the structure the pages were written in:
+ * one argument per slide, one slide per page.
+ */
+@media print {
+  :root {
+    color-scheme: light;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Wayfinding does not print: nav, reading progress, rails, back-to-top. */
+  .fixed,
+  .sticky {
+    display: none !important;
+  }
+
+  /* The rail is gone, so the gutter it reserved goes with it. */
+  .rail-offset {
+    padding-left: 0 !important;
+  }
+
+  /* Everything has already been scrolled past. */
+  .reveal,
+  .sequence > *,
+  .sequence .connector {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .draw {
+    stroke-dashoffset: 0 !important;
+    animation: none !important;
+  }
+
+  /* One slide, one sheet. The hero opens the document rather than following
+     a blank one, which is why the first section is exempt. */
+  main > section {
+    break-before: page;
+    break-inside: avoid;
+  }
+
+  main > section:first-child {
+    break-before: auto;
+  }
+
+  /* A heading stranded at the foot of a sheet reads as an orphan section. */
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+
+  figure,
+  blockquote,
+  li {
+    break-inside: avoid;
+  }
+
+  /* Hover shadows are ink on paper, and buy nothing. */
+  .panel {
+    box-shadow: none !important;
+  }
+}
