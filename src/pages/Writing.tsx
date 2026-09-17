@@ -32,7 +32,7 @@ const Writing = () => {
           <div ref={introRef} className="reveal">
             <p className="label-strong">Writing</p>
             <h1 className="mt-6 max-w-[16ch] text-5xl leading-[1.05] md:text-6xl">
-              Notes on designing systems people can <span className="em">trust</span>.
+              Articles on designing systems people can <span className="em">trust</span>.
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-[1.6] text-ink-600 md:text-xl">
               These essays grew out of things I built, tested, reconsidered, and occasionally

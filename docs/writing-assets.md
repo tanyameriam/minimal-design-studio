@@ -1,60 +1,72 @@
-# Writing, process visuals still owed
+# Writing, process visuals
 
-The three essays at `/writing` are written, built, and complete as copy. Every
-process visual in them is currently a slot: a dashed frame naming the export it
-is waiting for, with the caption already written underneath it. Nothing on the
-page pretends otherwise, and nothing stands in for the missing evidence.
+The three essays at `/writing` carry eleven figures between them. Five are
+filled. Six are still slots: a dashed frame naming the export it is waiting
+for, with the caption already written underneath it. Nothing on the page
+pretends otherwise, and nothing stands in for missing evidence.
 
-Ten exports are owed in total. The alt text for each one is already written, in
-the article data files, so an export cannot arrive without it.
+An earlier version of this file said ten were owed. There are eleven slots in
+total, counting each article's lead.
 
 ## How to fill one
 
-1. Export to `src/assets/<filename>.webp` (or `.png` if the diagram has fine
-   line work that WebP softens). Aim for about 2000px wide.
-2. In the article's data file, import it and add `src` (plus `width` and
-   `height`) to that figure. The alt text and caption are already there.
+1. Export to `src/assets/writing/<asset-name>.png` (or `.webp` where the
+   diagram has no fine line work). Aim for about 2000px wide or more.
+2. In the article's data file, import it and add `src`, `width` and `height`
+   to that figure, and set `ratio` to the export's real proportions rather
+   than a guessed one. The alt text and caption are already there.
 3. `npm run build` to confirm nothing broke.
 
-The slot becomes an image that opens full size in the shared lightbox, which is
-what the dense workflow diagrams need: several of these are unreadable at
-reading-column width.
+A filled slot becomes an image that opens full size in the shared lightbox,
+which is what the dense boards need: several of these are unreadable at
+reading-column width and are meant to be opened.
 
-## Article 1, `src/data/writing/aiAgent.ts`
+## Article 1, `src/data/writing/aiAgent.ts` — complete
 
-| Asset | What it shows |
+| Asset | State |
 | --- | --- |
-| `ai-agent-interface` | Lead. The final agent UI: clarification, the map, the trust and refinement panel |
-| `ai-agent-linear-pipeline` | The original Make.com flow, webhook through PDF and storage |
-| `ai-agent-four-responsibilities` | Context Clarity, Knowledge Validator, Structure Builder, Quality Checker |
+| `ai-agent-interface` | **Filled.** Captured from the live agent at mindmap-agent.vercel.app on a real run: topic entered, all three Context Clarity questions answered, map generated. Shows clarification, the map and the quality panel together, which is what the caption claims. |
+| `ai-agent-linear-pipeline` | **Filled.** Tanya's Make.com scenario, supplied 17 Sep 2026. Eight modules: webhook, compose id, Gemini call, JSON parse, PlantUML PDF, Drive upload, iterator, Sheets. |
+| `ai-agent-four-responsibilities` | **Filled.** The architecture diagram, supplied 17 Sep 2026. Confirms all four agents named in the prose, under an Orchestrator, reaching providers through one LLM adapter. |
 
-Optional extra named in the brief: a small before and after of the first
-automation beside the evolved agent. There is no slot for it; add one if the
-export exists.
+The caption on the pipeline figure no longer asserts a stage count, because
+the screenshot shows eight modules while the prose names seven
+responsibilities. Both are true; printing one number next to the other was
+not.
 
-## Article 2, `src/data/writing/interactionDesign.ts`
+A second Make.com screenshot (`1st version.png`, the Claude variant) was
+**not** used: it shows only six modules, ending at Sheets with no PlantUML,
+PDF or Drive step, and it carries account usage, credit balance and an error
+history. If it is ever wanted, crop to the module row.
 
-| Asset | What it shows |
+## Article 2, `src/data/writing/interactionDesign.ts` — two of five
+
+| Asset | State |
 | --- | --- |
-| `ixd-final-prototype` | Lead. A representative resource-planning or project-detail screen |
-| `ixd-brief-to-scenario` | BGPOSSTAL brief, experience and scenario map, consolidated scenario |
-| `ixd-three-workflow-variations` | Manual/reactive, suggested/reactive, preventive/conflict-aware |
-| `ixd-detailed-workflow` | The chosen end-to-end workflow |
-| `ixd-workflow-to-wireframe` | One stage: workflow statement, Six-Ups, converged wireframe |
+| `ixd-final-prototype` | Lead, **owed.** A representative resource-planning or project-detail screen. |
+| `ixd-brief-to-scenario` | **Owed.** BGPOSSTAL brief, experience and scenario map, consolidated scenario. Redraw for reading rather than exporting the source spreadsheet, which is illegible at page scale. Its caption already says so. |
+| `ixd-three-workflow-variations` | **Filled.** The three Figma variations, pulled from the IXD03 Notion page and composited into one stacked image at a common width. |
+| `ixd-detailed-workflow` | **Filled.** The full Variation 3 board from the same page: five screens, ten numbered error states, and a goal/description/questions column under each screen. |
+| `ixd-workflow-to-wireframe` | **Owed.** One stage at three levels: workflow statement, Six-Ups, converged wireframe. |
 
-`ixd-brief-to-scenario` should be redrawn for reading rather than exported as
-the source spreadsheet, which is illegible at page scale. Its caption says so.
+The two owed process figures are on the **IXD04** Notion page, as Figma
+embeds Notion renders at 6752x3344 and 4289x7822. Both are reachable in a
+browser but not by script: Notion now answers automated visits to that page
+with a Cloudflare human check, which is not something to work around. Export
+them from Figma, or open the page and save the two embed previews by hand.
 
-## Article 3, `src/data/writing/visualDesign.ts`
+## Article 3, `src/data/writing/visualDesign.ts` — none of three
 
-| Asset | What it shows |
+| Asset | State |
 | --- | --- |
-| `vxd-final-convergence` | Lead. The final combined dashboard direction |
-| `vxd-concept-directions` | Responsible Authority and Calm Assurance territories |
-| `vxd-hero-variations` | The three hero-dashboard alternatives |
+| `vxd-final-convergence` | Lead, **owed.** The final combined dashboard direction. |
+| `vxd-concept-directions` | **Owed.** Responsible Authority and Calm Assurance territories, with the chosen synthesis. |
+| `vxd-hero-variations` | **Owed.** The three hero-dashboard alternatives, each with the hypothesis it tested. |
 
-Optional extra named in the brief: a colour, typography, or composition detail
-from the concept board.
+The two VXD Notion pages hold no images and no embeds at all, only headings
+and prose, so there is no source to pull from. These three have to come out
+of Figma. A concept board is the one case where redrawing would defeat the
+point, since colour, type and composition are the content.
 
 ## Before exporting from the source pages
 

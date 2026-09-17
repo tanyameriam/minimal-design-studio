@@ -182,7 +182,7 @@ const MerryHealthCaseStudy = () => {
 
   usePageMeta(
     'Merry Health',
-    'Redesigning ambulance dispatch around how hospitals actually work. A systems-design project on coordination between hospitals, dispatch operations, drivers and patient families across Tier 2 and Tier 3 India.'
+    'Redesigning emergency ambulance dispatch. A service redesign of the Merry Health dispatch process, so every handoff holds, the patient is picked up, and the ride stays visible in real time, across hospitals, operations, drivers and patient families in Tier 2 and Tier 3 India.'
   );
 
   useEffect(() => {
@@ -205,8 +205,7 @@ const MerryHealthCaseStudy = () => {
                 client="Merry Health &middot; Emergency operations &middot; 2026"
                 headline={
                   <>
-                    Redesigning ambulance dispatch around{' '}
-                    <span className="em">how hospitals actually work</span>.
+                    Redesigning <span className="em">emergency ambulance dispatch</span>.
                   </>
                 }
               />

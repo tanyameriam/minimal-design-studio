@@ -36,12 +36,12 @@ export const layrrrd: CaseStudy = {
         problems:
           'Saving content is frictionless and revisiting it never happens. The read-later pile scatters across bookmarks, tabs, screenshots, and chat apps, and relies on willpower nobody has. Existing tools answer this with better organisation, which is more work at exactly the moment people have none to give.',
         solution:
-          'Remove organising entirely. Four capture surfaces feed one pipeline: a Chrome extension, a paste bar, a Telegram bot, and a WhatsApp bot. AI summarises everything on save, and a weekly digest, delivered on the day each user picked, pushes the backlog back to them grouped by topic.',
+          'Remove organising entirely. Three capture surfaces feed one pipeline: a Chrome extension, a paste bar, and a Telegram bot. AI summarises everything on save, and a weekly digest, delivered on the day each user picked, pushes the backlog back to them grouped by topic.',
         why:
           'Because the failure was never in saving, it was in returning. A better archive still waits for the user to come back. A digest does not wait, so the product was built around the push, and everything else, capture, summaries, even the mascot, exists to serve that one loop.',
         resultsLabel: 'Results',
         results:
-          '15 paying customers and 126 freemium signups by day nine, tracked in PostHog from launch. Live since, with the same team improving it: payments, referrals, a published Chrome extension, and two chat channels shipped since validation.',
+          '15 paying customers and 126 freemium signups by day nine, tracked in PostHog from launch. Payments went live inside the window, which is what made the number mean something. Live since, with the same team improving it: a published Chrome extension, both chat channels, referral loops and trust work shipped after validation.',
       },
     },
 
@@ -76,7 +76,7 @@ export const layrrrd: CaseStudy = {
         {
           kind: 'prose',
           body: [
-            'The target user already saves into Telegram and WhatsApp. Fighting that habit would have meant winning a behaviour change war with a nine day budget, so instead the product moved into those channels: a bot in each, alongside a Chrome extension and a paste bar in the app. All four converge on one pipeline. A save is instant and idempotent, the AI summary happens in the background, and the item appears in the library without the user waiting on it.',
+            'The target user already saves into chat apps. Fighting that habit would have meant winning a behaviour change war with a nine day budget, so instead the product moved into the channel: a Telegram bot, alongside a Chrome extension and a paste bar in the app. All three converge on one pipeline. A save is instant and idempotent, the AI summary happens in the background, and the item appears in the library without the user waiting on it.',
             'Trust turned out to be the design problem, not speed. Testing showed people did not believe the save had worked when nothing visibly happened. The fix was an optimistic pending card that appears immediately and resolves in place, which cost little and changed how the whole capture flow felt.',
           ],
         },

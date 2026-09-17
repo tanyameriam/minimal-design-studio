@@ -1,5 +1,5 @@
 import type { ImgHTMLAttributes, SVGProps } from 'react';
-import rudolf from '@/assets/rudolf.png';
+import rudolf from '@/assets/Layrrrd/rudolf.png';
 
 /**
  * Rudolf, the Layrrrd hound.

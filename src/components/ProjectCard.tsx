@@ -1,5 +1,5 @@
-import type { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { useMemo, type MouseEvent, type ReactNode } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import type { Metric, Project } from '@/data/projects';
 import EvidenceLabel, { DisciplinePills } from '@/components/EvidenceLabel';
 import FadeInImage from '@/components/FadeInImage';
@@ -23,7 +23,63 @@ const drawnCovers: Record<string, ReactNode> = {
 
 /** The card shell. One border, one surface, one hover state, everywhere. */
 const SHELL =
-  'reveal group/card flex flex-col rounded-2xl border border-border bg-card transition-[border-color,transform] duration-500 ease-smooth hover:-translate-y-0.5 hover:border-ink-400';
+  'reveal group/card flex cursor-pointer flex-col rounded-2xl border border-border bg-card transition-[border-color,transform] duration-500 ease-smooth hover:-translate-y-0.5 hover:border-ink-400';
+
+/**
+ * The whole card as one click target.
+ *
+ * A handler rather than the usual stretched-link pseudo-element, because an
+ * overlay covering the card would make every paragraph on it unselectable,
+ * and these cards are mostly prose: the outcome sentence, the role line and
+ * the numbers are all meant to be readable and quotable.
+ *
+ * The real links inside are untouched and still handle their own clicks, so
+ * this adds no tab stop, no duplicate destination in the accessibility tree
+ * and nothing for a keyboard user to get caught on. It is a pointer
+ * convenience layered on top of navigation that already worked.
+ */
+const useCardNavigation = (href: string | null) => {
+  const navigate = useNavigate();
+
+  return useMemo(() => {
+    if (!href) return {};
+
+    /**
+     * A click the card should act on: not already handled by a link or
+     * button inside it, and not the click that ends a text selection.
+     */
+    const isCardClick = (event: MouseEvent<HTMLElement>) => {
+      if (event.defaultPrevented) return false;
+      if ((event.target as Element | null)?.closest('a, button, [role="button"]')) return false;
+
+      const selection = window.getSelection();
+      return !(
+        selection &&
+        !selection.isCollapsed &&
+        selection.anchorNode &&
+        event.currentTarget.contains(selection.anchorNode)
+      );
+    };
+
+    return {
+      onClick: (event: MouseEvent<HTMLElement>) => {
+        if (!isCardClick(event)) return;
+        // Modifier-click opens a tab, the way it would on the real link.
+        if (event.metaKey || event.ctrlKey) {
+          window.open(href, '_blank', 'noopener');
+          return;
+        }
+        navigate(href);
+      },
+      // Middle click, same bargain.
+      onAuxClick: (event: MouseEvent<HTMLElement>) => {
+        if (event.button !== 1 || !isCardClick(event)) return;
+        window.open(href, '_blank', 'noopener');
+      },
+      onMouseEnter: () => prefetchRoute(href),
+    };
+  }, [href, navigate]);
+};
 
 interface MetricRowProps {
   metrics: Metric[];
@@ -116,6 +172,7 @@ const CardLinks = ({ caseHref, storyHref, storyMinutes, featured }: LinksProps) 
         to={storyHref}
         onMouseEnter={() => prefetchRoute(storyHref)}
         onFocus={() => prefetchRoute(storyHref)}
+        data-cursor="View the story"
         className="rule-link"
       >
         View the {storyMinutes ?? 2}-minute story <span aria-hidden="true">&rarr;</span>
@@ -170,6 +227,9 @@ const ProjectCard = ({ project, index, featured }: ProjectCardProps) => {
   } = project;
   const caseHref = slug ? `/case-study/${slug}` : null;
   const delay = { transitionDelay: `${Math.min(index, 4) * 70}ms` };
+  // The card opens what its headline opens, and falls back to the deck for a
+  // project that has no case study yet.
+  const cardNav = useCardNavigation(caseHref ?? storyHref ?? null);
 
   const drawn = slug ? drawnCovers[slug] : undefined;
   /** The Layrrrd cover is still owed, so its card shows the deck panel instead. */
@@ -248,7 +308,13 @@ const ProjectCard = ({ project, index, featured }: ProjectCardProps) => {
 
   if (featured) {
     return (
-      <article ref={ref} style={delay} className={`${SHELL} p-6 md:col-span-2 md:p-9 lg:p-11`}>
+      <article
+      ref={ref}
+      style={delay}
+      {...cardNav}
+      data-cursor="View project"
+      className={`${SHELL} p-6 md:col-span-2 md:p-9 lg:p-11`}
+    >
         <div className="grid gap-9 lg:grid-cols-[1fr_minmax(0,22rem)] lg:gap-14">
           {/* Left rail: name, outcome sentence, numbers, the way in. */}
           <div className="flex flex-col">
@@ -298,7 +364,13 @@ const ProjectCard = ({ project, index, featured }: ProjectCardProps) => {
   }
 
   return (
-    <article ref={ref} style={delay} className={`${SHELL} h-full p-5 md:p-6`}>
+    <article
+      ref={ref}
+      style={delay}
+      {...cardNav}
+      data-cursor="View project"
+      className={`${SHELL} h-full p-5 md:p-6`}
+    >
       {/* The visual sits inside the card, one radius step tighter than the shell. */}
       {cover && caseHref && (
         <Link

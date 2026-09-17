@@ -230,21 +230,26 @@ export const Pivots = ({
   </div>
 );
 
-/** A labelled horizontal run of events, used for what happened after day nine. */
-export const AfterTimeline = ({ steps }: { steps: string[] }) => (
-  <ol className="mt-12 grid gap-px md:mt-16 md:grid-flow-col md:auto-cols-fr">
-    {steps.map((step, i) => (
-      <li
-        key={step}
-        className={`px-4 py-5 ${
-          i === 0 || i === steps.length - 1 ? 'bg-foreground text-background' : 'bg-card'
-        }`}
-      >
-        <span className="label mb-2.5 block opacity-70">{String(i + 1).padStart(2, '0')}</span>
-        <span className="text-sm leading-snug lg:text-base">{step}</span>
+/**
+ * What shipped after validation.
+ *
+ * Deliberately not a timeline. The previous version numbered these 01 to 07
+ * and bracketed them with day nine and "Today", which asserted an order
+ * nobody recorded, opened an "after the sprint" section with something from
+ * inside the sprint, and ended it on a non-event. These are four things that
+ * exist, listed as a set, because a set is all the evidence supports.
+ */
+export const ShippedSince = ({ items }: { items: { name: string; note?: string }[] }) => (
+  <ul className="mt-12 grid gap-px md:mt-16 md:grid-cols-2">
+    {items.map((item) => (
+      <li key={item.name} className="bg-card px-6 py-6 md:px-7 md:py-7">
+        <p className="text-lg leading-snug md:text-xl">{item.name}</p>
+        {item.note ? (
+          <p className="mt-2.5 text-sm leading-[1.55] text-ink-600 md:text-base">{item.note}</p>
+        ) : null}
       </li>
     ))}
-  </ol>
+  </ul>
 );
 
 /**
@@ -461,76 +466,6 @@ export const DirectionShift = ({
     </div>
   );
 };
-
-/**
- * The product architecture: four ways in, one library, four ways back out.
- *
- * Every entry point carries its own still, because the claim of this
- * diagram is that these are real surfaces rather than a plan for some.
- */
-export const LoopPipeline = ({
-  inputs,
-  outputs,
-}: {
-  inputs: { name: string; file: string }[];
-  outputs: { name: string; file?: string }[];
-}) => (
-  <div className="mt-12 md:mt-16">
-    <p className="label mb-5 text-ink-500">Save from</p>
-    <ul className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
-      {inputs.map((input) => (
-        <li key={input.name}>
-          <Thumb file={input.file} ratio="aspect-[5/4]" />
-          <p className="mt-3 text-base leading-snug md:text-lg">{input.name}</p>
-        </li>
-      ))}
-    </ul>
-
-    <div aria-hidden="true" className="py-6">
-      <svg
-        viewBox="0 0 200 40"
-        preserveAspectRatio="none"
-        className="h-10 w-full text-ink-400"
-        fill="none"
-      >
-        <path
-          /* All four arrive at the same point. The earlier path converged
-             in two pairs, which drew two funnels where the claim is one. */
-          d="M12 2v12C12 30 40 34 100 38M70 2v12C70 28 82 34 100 38M130 2v12C130 28 118 34 100 38M188 2v12C188 30 160 34 100 38"
-          stroke="currentColor"
-          strokeWidth="1.2"
-          vectorEffect="non-scaling-stroke"
-        />
-      </svg>
-    </div>
-
-    <div className="rounded-[3px] bg-foreground px-6 py-7 text-center text-background md:py-9">
-      <p className="label mb-3 opacity-70">Layrrrd</p>
-      <p className="text-xl leading-snug md:text-[2rem]">
-        Save <span className="opacity-50">&rarr;</span> process{' '}
-        <span className="opacity-50">&rarr;</span> personal library
-      </p>
-    </div>
-
-    <div aria-hidden="true" className="mx-auto h-10 w-px bg-border" />
-
-    <p className="label mb-5 text-ink-500">Come back through</p>
-    <ul className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
-      {outputs.map((output) => (
-        <li key={output.name}>
-          {output.file ? (
-            <Thumb file={output.file} ratio="aspect-[5/4]" />
-          ) : (
-            /* A way back in that has no screen of its own yet. It still gets
-               a node, because leaving it out would misdescribe the loop. */
-            <div className="aspect-[5/4] rounded-[3px] bg-card" />
-          )}
-          <p className="mt-3 text-base leading-snug md:text-lg">{output.name}</p>
-        </li>
-      ))}
-    </ul>
-  </div>
-);
 
 /**
  * What testing changed, one row per fix: the state before, the state

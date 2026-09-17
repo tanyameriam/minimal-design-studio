@@ -10,8 +10,7 @@ import hifi from '@/assets/stree-hifi-8.png';
 export const stree: CaseStudy = {
   slug: 'stree-safety-app',
   title: 'STREE',
-  headline:
-    'Turning a panic button into a companion for the 99 percent of the time nothing is happening',
+  headline: 'Designing for everyday safety, not just emergency response',
   qualifier: 'Concept',
   year: '2022',
   status: 'concept',

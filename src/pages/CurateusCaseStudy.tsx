@@ -150,7 +150,7 @@ const ChapterOpen = ({
 const CurateusCaseStudy = () => {
   usePageMeta(
     'Curateus',
-    'Making content curation part of the browsing experience. My first product-design project: mobile work on a curator-first MVP, and a browser plugin that let curators recommend an article without leaving it.'
+    'Designing content curation in the browser. My first product-design project: mobile work on a curator-first MVP, and a browser plugin that let curators recommend an article without leaving it.'
   );
 
   useEffect(() => {
@@ -173,8 +173,7 @@ const CurateusCaseStudy = () => {
                 client="Curateus &middot; 2021"
                 headline={
                   <>
-                    Making content curation part of the{' '}
-                    <span className="em">browsing experience</span>.
+                    Designing <span className="em">content curation in the browser</span>.
                   </>
                 }
               />

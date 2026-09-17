@@ -199,11 +199,11 @@ const CaptureSlide = () => (
     </H>
     <Body>
       Fighting the Telegram habit meant winning a behaviour change war on a nine day budget.
-      So the product moved into the habit instead. Four channels, one pipeline.
+      So the product moved into the habit instead. Three channels, one pipeline.
     </Body>
     <div className="mt-10 flex max-w-4xl flex-col items-stretch gap-4 md:flex-row md:items-center">
       <div className="grid flex-1 gap-2">
-        {['Chrome extension', 'Paste bar in the app', 'Telegram bot', 'WhatsApp bot'].map(
+        {['Chrome extension', 'Paste bar in the app', 'Telegram bot'].map(
           (channel) => (
             <div key={channel} className="border border-border px-4 py-3 text-sm md:text-base">
               {channel}
@@ -344,7 +344,7 @@ const BrandSlide = () => (
         Rudolf carries every wait in the product.
       </Panel>
       <Panel label="Job 02" title="The chat persona">
-        The voice of both messaging channels, Telegram and WhatsApp.
+        The voice of the Telegram channel.
       </Panel>
       <Panel label="Job 03" title="The pricing metaphor">
         Chat time is play time. Top-ups are biscuits.

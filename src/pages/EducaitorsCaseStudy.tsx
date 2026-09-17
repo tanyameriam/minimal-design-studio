@@ -159,7 +159,7 @@ const EducaitorsCaseStudy = () => {
 
   usePageMeta(
     'EducAItors',
-    'Designing how instructors review and control AI-supported grading. Led the Instructor Evaluation and Supervision module, from faculty research in Indian higher education through to an interactive prototype covering calibration, grading, re-evaluation and result insights.'
+    'Designing instructor oversight for AI-supported grading. Led the Instructor Evaluation and Supervision module, from faculty research in Indian higher education through to an interactive prototype covering calibration, grading, re-evaluation and result insights.'
   );
 
   useEffect(() => {
@@ -183,8 +183,8 @@ const EducaitorsCaseStudy = () => {
                   client="EducAItors &middot; Higher education &middot; 2026"
                   headline={
                     <>
-                      Designing how instructors <span className="em">review and control</span>{' '}
-                      AI-supported grading.
+                      Designing <span className="em">instructor oversight</span> for AI-supported
+                      grading.
                     </>
                   }
                 />

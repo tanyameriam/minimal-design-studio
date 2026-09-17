@@ -12,15 +12,15 @@ interface ArticleFigureProps {
 /**
  * A process visual, in one of two states.
  *
- * When the export exists it renders as an image that opens full size, the
- * same behaviour as a case-study figure: these are dense workflow diagrams
- * and a diagram scaled to a reading column is a diagram nobody can read.
+ * An image, where the export exists. It opens full size, the same behaviour
+ * as a case-study figure: these are dense workflow diagrams and a diagram
+ * scaled to a reading column is a diagram nobody can read.
  *
- * Until then it renders as a reserved frame carrying the caption and the
- * filename the export has to arrive under. That is deliberately not a grey
- * box with a broken-image icon and it is deliberately not stock imagery:
- * the essays argue from process evidence, so a missing piece of evidence
- * should read as missing, at the size it will eventually occupy.
+ * Otherwise a reserved frame carrying the caption and the filename the
+ * export has to arrive under. That is deliberately not a grey box with a
+ * broken-image icon and it is deliberately not stock imagery: the essays
+ * argue from process evidence, so a missing piece of evidence should read
+ * as missing, at the size it will eventually occupy.
  */
 const ArticleFigure = ({ figure, wide, onOpen }: ArticleFigureProps) => {
   const ref = useReveal<HTMLElement>();

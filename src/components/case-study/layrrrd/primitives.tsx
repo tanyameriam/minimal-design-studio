@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import FadeInImage from '@/components/FadeInImage';
 import { useReveal } from '@/hooks/use-reveal';
 
 /**
@@ -236,6 +237,48 @@ export const AssetSlot = ({
     <figcaption className="label border-t border-dashed border-border px-4 py-2.5 leading-[1.5] text-ink-500">
       Asset pending · {label}
       {note ? ` · ${note}` : ''}
+    </figcaption>
+  </figure>
+);
+
+/**
+ * A screenshot that exists, in the frame AssetSlot holds open for one that
+ * does not. Solid hairline rather than dashed: the dash is what says pending.
+ *
+ * The image keeps its own proportions and is never cropped. An earlier
+ * version put each still in a fixed aspect box and covered it, which
+ * truncated the screenshots, and stretched the figure whenever a grid
+ * neighbour was taller, leaving a band of empty frame under the caption.
+ * A screenshot is evidence: cutting the edges off it to fit a layout is the
+ * wrong trade. The layout works around the image instead, which is why the
+ * grids that hold these are `items-start` and pair stills of one ratio.
+ */
+export const Shot = ({
+  src,
+  alt,
+  caption,
+  width,
+  height,
+}: {
+  src: string;
+  alt: string;
+  caption: string;
+  /** The file's real pixel size. Required: with no aspect box reserving the
+      space any more, these attributes are what stop the page jumping as
+      each still arrives. */
+  width: number;
+  height: number;
+}) => (
+  <figure className="overflow-hidden rounded-[3px] border border-border">
+    <FadeInImage
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      className="block h-auto w-full"
+    />
+    <figcaption className="label border-t border-border px-4 py-2.5 leading-[1.5] text-ink-500">
+      {caption}
     </figcaption>
   </figure>
 );

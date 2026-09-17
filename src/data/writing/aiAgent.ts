@@ -1,5 +1,8 @@
 import { summaries } from './catalogue';
 import type { Article } from './types';
+import agentInterface from '@/assets/writing/ai-agent-interface.png';
+import linearPipeline from '@/assets/writing/ai-agent-linear-pipeline.png';
+import fourResponsibilities from '@/assets/writing/ai-agent-four-responsibilities.png';
 
 /**
  * The mind-map agent essay. Copy is the finished article, edited only for
@@ -15,7 +18,12 @@ export const aiAgent: Article = {
     alt: 'The mind-map agent interface, showing a clarification prompt, the generated map, and the quality and refinement panel beside it.',
     caption:
       'The revised agent: clarification before generation, and the quality criteria kept visible next to the map rather than behind a single score.',
-    ratio: '16 / 9',
+    // Captured from the live agent on a real run, so the ratio is the app's
+    // own rather than a chosen crop.
+    ratio: '16 / 10',
+    src: agentInterface,
+    width: 3360,
+    height: 2100,
   },
   intro: [
     'When I began designing my first AI agent, I thought the difficult part would be writing the right prompt.',
@@ -56,10 +64,16 @@ export const aiAgent: Article = {
           kind: 'figure',
           figure: {
             asset: 'ai-agent-linear-pipeline',
-            alt: 'The original linear automation: webhook, then language model, then parser, then PlantUML, then PDF render, then Drive storage, with clarification questions logged to a spreadsheet.',
+            alt: 'The original Make.com scenario, left to right: a custom webhook, a step composing the mindmap id, a Gemini call generating the map and its questions, a JSON parse, a PlantUML PDF render, an upload to Google Drive, an iterator, and a row added to Google Sheets.',
+            // The module count is visible in the screenshot, so the caption
+            // no longer asserts one: the prose names seven responsibilities,
+            // which is not the same as the eight modules on screen.
             caption:
-              'The first build, end to end. Seven stages, each replaceable, and nowhere in the chain a place to ask whether the result was any good.',
-            ratio: '16 / 7',
+              'The first build, end to end. Every stage replaceable, and nowhere in the chain a place to ask whether the result was any good.',
+            ratio: '2584 / 591',
+            src: linearPipeline,
+            width: 2584,
+            height: 591,
           },
         },
       ],
@@ -142,10 +156,16 @@ export const aiAgent: Article = {
           kind: 'figure',
           figure: {
             asset: 'ai-agent-four-responsibilities',
-            alt: 'The four-agent workflow, each stage labelled with the question it answers: is the intent clear, is this knowledge dependable, how should it be structured, is the result usable.',
+            // Describes the diagram as drawn. The four questions are named
+            // in the list above it, not printed on the boxes, so the alt no
+            // longer promises labels a reader would go looking for.
+            alt: 'The system architecture: an Orchestrator managing Context Clarity, Knowledge Validator and Structure Builder agents, with a Quality Checker that either returns work to the Structure Builder for refinement or releases the final mind map, all reaching the providers through one LLM service adapter.',
             caption:
               'Four agents, four questions. The split earns its keep because each stage fails differently, not because more agents sound more capable.',
-            ratio: '16 / 8',
+            ratio: '1583 / 1329',
+            src: fourResponsibilities,
+            width: 1583,
+            height: 1329,
           },
         },
       ],

@@ -29,3 +29,9 @@ dist-ssr
 
 # Generated PDF exports of the case studies (see exports/)
 exports
+
+# Source recordings the stills are cut from. The Layrrrd walkthrough alone is
+# 225MB, well past GitHub's file limit, and nothing on the site loads a video.
+# Keep them locally; commit the frames, not the footage.
+*.mov
+*.mp4

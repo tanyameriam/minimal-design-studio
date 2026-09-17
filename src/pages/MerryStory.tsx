@@ -368,7 +368,7 @@ const slides: DeckSlide[] = [
 const MerryStory = () => {
   usePageMeta(
     'Merry Health · The story in slides',
-    'Emergency ambulance dispatch, redesigned around how hospitals actually work: WhatsApp as an interaction layer on one shared ride state. A proposed system, not deployed.'
+    'A service redesign of emergency ambulance dispatch: every handoff owned, the ride visible in real time, WhatsApp as an interaction layer on one shared ride state. A proposed system, not deployed.'
   );
 
   return (
