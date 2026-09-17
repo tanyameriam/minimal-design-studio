@@ -281,7 +281,7 @@ const ChapterOpen = ({
 const BrynqCaseStudy = () => {
   usePageMeta(
     'BrynQ',
-    'From developer-led integrations to a scalable self-service product. Turning months of custom implementation into guided, reusable templates.'
+    'Designing a self-service B2B integration platform. Turning months of custom implementation into guided, reusable templates.'
   );
 
   useEffect(() => {
@@ -320,8 +320,7 @@ const BrynqCaseStudy = () => {
                 client="BrynQ · B2B integration platform · 2023 to present"
                 headline={
                   <>
-                    From developer-led integrations to a{' '}
-                    <Em>scalable self-service product.</Em>
+                    Designing a <Em>self-service B2B integration platform.</Em>
                   </>
                 }
               />

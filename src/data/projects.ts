@@ -3,6 +3,7 @@ import brynqCover from '@/assets/brynq-cover.png';
 import brynqTemplateFlow from '@/assets/brynq-template-flow.png';
 import brynqWizardFlow from '@/assets/brynq-wizard-flow.png';
 import brynqCurrent from '@/assets/brynq/brynq-current.png';
+import layrrrdCover from '@/assets/layrrrd.png';
 import merryHifiDashboard from '@/assets/merry-hifi-dashboard.png';
 import merryHifiTracking from '@/assets/merry-hifi-tracking.png';
 import merryWhatsappPatient from '@/assets/merry-whatsapp-patient.png';
@@ -130,6 +131,18 @@ export interface FeaturedMedia {
   height: number;
   /** Tailwind object-position, for images the 16:9 crop would behead. */
   position?: string;
+  /**
+   * How the image meets the frame. Defaults to a cover crop, which is what a
+   * screenshot wants. An image that is already a composed cover, with its own
+   * margins and its own ground, uses `contain` instead, so the crop cannot
+   * eat the wordmark it was laid out around.
+   */
+  fit?: 'cover' | 'contain';
+  /**
+   * The image's own ground, as a CSS colour, painted behind a contained
+   * image so the letterboxing is invisible rather than a grey band.
+   */
+  background?: string;
 }
 
 export interface Project {
@@ -239,9 +252,8 @@ const projectList: Project[] = [
       },
     ],
     featured: {
-      headline: 'From six months to weeks.',
-      description:
-        'Reusable templates moved repeated integration knowledge from spreadsheets and individual developers into the product.',
+      headline: 'Self-service B2B integrations',
+      description: 'Redesigning how customers set up and manage integrations.',
       status: 'B2B integration platform · Ongoing',
       evidence: {
         figure: '~6 mo → ~2 wk',
@@ -305,16 +317,15 @@ const projectList: Project[] = [
         timeframe: 'Nine-day sprint',
       },
       {
-        figure: '82',
+        figure: '86',
         note: 'survey responses before the build',
         status: 'observed',
         source: 'Pre-build survey',
       },
     ],
     featured: {
-      headline: '15 paying customers in nine days.',
-      description:
-        'Research changed the proposition while the team validated, built, tested, launched, and sold the product within the same sprint.',
+      headline: 'Content saving and retrieval',
+      description: 'Building and validating a new product from idea to paying customers.',
       status: 'Live · Revenue · Ongoing',
       // Observed rather than validated: "validated" is the right word for the
       // 15 paying customers on their own, but this figure also carries the
@@ -326,9 +337,19 @@ const projectList: Project[] = [
         status: 'observed',
         source: 'Payment records and PostHog',
       },
-      // No Layrrrd photography exists in the repo. See docs/playbook-qa.md:
-      // the cover and two or three screens are the outstanding asset. The
-      // row draws the project's own cover instead of showing a stand-in.
+      // The product's own cover, exported from Layrrrd rather than composed
+      // here. It is contained rather than cropped: the wordmark and Rudolf
+      // are laid out against the full width, so a 14:9 crop would clip the
+      // L and the tail. Its ground is painted behind it, so the letterbox
+      // reads as margin.
+      media: {
+        src: layrrrdCover,
+        alt: "The Layrrrd cover: the wordmark set in heavy black type above the line 'Good things, saved. Better things, fetched.', with Rudolf, the product's line-drawn dog, sitting beside it.",
+        width: 2292,
+        height: 1216,
+        fit: 'contain',
+        background: '#f7f6f3',
+      },
     },
     published: true,
   },
@@ -360,9 +381,9 @@ const projectList: Project[] = [
       },
     ],
     featured: {
-      headline: 'Four parties. One shared ride state.',
+      headline: 'Emergency ambulance dispatch',
       description:
-        'Hospitals, operations, drivers, and patient families were connected through one structured ride record without replacing familiar emergency channels.',
+        'Redesigning coordination between hospitals, operations, drivers and patients.',
       status: 'Academic practicum · Proposed system',
       storyLabel: 'Read the project story',
       evidence: {
@@ -391,13 +412,13 @@ const projectList: Project[] = [
     status: 'concept',
     tier: 'selected',
     disciplines: ['AI product', 'Workflow design', 'Interaction design'],
-    context: 'Instructor supervision for AI-supported grading',
+    context: 'AI-supported instructor evaluation',
     role: 'Led the team; owned the grading and calibration module',
     headline: 'The AI shows its evidence. The instructor keeps the decision.',
     decision:
       'Faculty cannot verify every AI-supported score, and a confidence badge does not tell them what to do about it. So I led the team to build the supervision layer around disagreement instead: calibration on a small sample, criterion-level evidence behind every number, and an appeal queue typed by what actually went wrong.',
     oneLine:
-      'An instructor-supervision workflow for AI-supported grading: calibration, criterion-level evidence, and appeals.',
+      'Designing how instructors review, correct and approve AI-supported grading.',
     metrics: [
       {
         figure: 'Prototype',
@@ -419,13 +440,13 @@ const projectList: Project[] = [
     status: 'shipped',
     tier: 'selected',
     disciplines: ['Interaction design', 'Workflow design'],
-    context: 'Content curation startup, part-time UI/UX intern',
+    context: 'Browser-based content curation',
     role: 'UI/UX intern with one product owner and three developers',
     headline: 'Seven steps to recommend an article, down to four',
     decision:
       'Curators found things worth passing on while browsing, then had to leave the page, open Curateus and type the article back in. Working with the product owner and three developers, I moved the recommendation flow into the browser itself. My first product-design project.',
     oneLine:
-      'Moved the recommendation flow into the browser, cutting seven steps to four.',
+      'Making it easier to recommend content without leaving the page being read.',
     metrics: [
       {
         figure: '7 → 4 steps',
@@ -448,13 +469,13 @@ const projectList: Project[] = [
     status: 'concept',
     tier: 'selected',
     disciplines: ['UX research', 'Interaction design'],
-    context: "Women's safety, academic concept project",
+    context: "Women's safety and everyday autonomy",
     role: 'Research and interaction design',
     headline: 'Safety designed for every day, not the worst one',
     decision:
       'Fifteen interviews told us panic is not where women actually live, so we designed for daily autonomy instead of the worst moment. The SOS still works with no network. The product stopped being about fear.',
     oneLine:
-      'Fifteen interviews moved the product from emergency panic features to everyday autonomy.',
+      'Reframing a safety concept around what women actually needed day to day.',
     metrics: [
       {
         figure: '15 interviews',
@@ -470,7 +491,7 @@ const projectList: Project[] = [
     slug: 'food-waste-ngo',
     title: 'The Hunger Project',
     qualifier: 'Self-initiated',
-    year: '2024',
+    year: '2021',
     status: 'self-initiated',
     tier: 'selected',
     disciplines: ['Service design', 'Multi-stakeholder'],
@@ -479,8 +500,7 @@ const projectList: Project[] = [
     headline: 'The food was never missing. The handoff was.',
     decision:
       'NGOs were not short of food. They were short of notice and transport. So I designed the handoff between restaurants and NGOs instead of two separate apps: two roles working from one shared state, with pickup or delivery decided by capacity and a fallback for when delivery falls through.',
-    oneLine:
-      'Designed the handoff, not two apps: two roles on one shared state, with a fallback when delivery fails.',
+    oneLine: 'Designing a shared handoff between donors and recipients.',
     cover: hungerProjectCover,
     stack: [foodWasteCover, foodWasteAccount],
     published: true,

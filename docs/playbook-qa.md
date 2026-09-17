@@ -40,8 +40,9 @@ one-week variant that used to appear on the story deck and the CV has been
 removed: 92% and 13x are the arithmetic of 26 weeks down to 2, not down to 1.
 See CONTENT_VERIFICATION.md.
 
-**Layrrrd (25).** Visual communication: zero imagery anywhere; the cover and
-2 to 3 screenshots are the single highest-leverage fix on the site. Evidence:
+**Layrrrd (25).** Visual communication: the product's cover now carries the
+home page row, so what is left owed is 2 to 3 screenshots of the product
+itself. Evidence:
 the mid-sprint user testing is described but its findings deserve one concrete
 trace from finding to change. Stakes: consumer stakes are argued but soft next
 to the operational studies. Contribution: team size and roles are a draft
@@ -90,8 +91,8 @@ Everything here exists as a `[NEED: ...]` marker or todo block in the data
 files. Never fill these by invention; they are checkable against her CV and
 LinkedIn.
 
-- **Layrrrd**: team size and roles; cover image plus 2 to 3 screenshots
-  (extension, digest, Rudolf states).
+- **Layrrrd**: team size and roles; 2 to 3 screenshots (extension, digest,
+  Rudolf states). The cover has landed.
 - **STREE**: team roles and what she owned; taps-to-SOS count (derivable from
   her Figma flow, belongs on the project card chip).
 - **Merry Health**: mostly resolved on 29 Aug 2026, when the scroll case

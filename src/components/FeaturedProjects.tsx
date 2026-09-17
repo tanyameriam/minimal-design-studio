@@ -1,8 +1,6 @@
-import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import EvidenceLabel from '@/components/EvidenceLabel';
 import FadeInImage from '@/components/FadeInImage';
-import { RudolfSitting } from '@/components/case-study/layrrrd/Rudolf';
 import { Button } from '@/components/ui/button';
 import { featuredProjects, type FeaturedProject } from '@/data/projects';
 import { prefetchRoute } from '@/lib/prefetch';
@@ -28,49 +26,16 @@ import { prefetchRoute } from '@/lib/prefetch';
  * and nothing is unavailable without one.
  */
 
-/** Covers that are drawn rather than photographed, registered by slug. */
-const drawnMedia: Record<string, ReactNode> = {
-  layrrrd: <LayrrrdCover />,
-};
-
-/**
- * Layrrrd's cover, drawn rather than exported.
- *
- * The cover is a wordmark, a line and Rudolf, and all three already exist in
- * this repository: the dog is the mascot artwork the case study uses, and the
- * cream is the project's own token island. Composing it rather than exporting
- * a flat image keeps the type sharp at every size and means the one light
- * panel in the section carries the product's real palette, on the product's
- * own paper, rather than a screenshot of one. Rudolf's body is that same
- * cream by design, so on this ground he reads as an ink outline.
- */
-function LayrrrdCover() {
-  return (
-    <div className="paper-layrrrd flex h-full items-center gap-4 bg-background px-6 py-6 text-foreground md:px-8">
-      <div className="min-w-0 flex-1">
-        <p
-          className="font-medium leading-none"
-          style={{ fontSize: 'clamp(1.75rem, 3.4vw, 3rem)', letterSpacing: '-0.02em' }}
-        >
-          LAYRRRD
-        </p>
-        <p className="mt-4 max-w-[32ch] text-sm leading-snug text-ink-600">
-          From a validated pain point to{' '}
-          <span className="font-medium text-foreground">15 paying customers, 3 channels</span> deep,
-          in <span className="font-medium text-foreground">1 sprint</span>.
-        </p>
-      </div>
-
-      <RudolfSitting aria-hidden="true" className="h-[70%] w-auto shrink-0 self-end text-foreground" />
-    </div>
-  );
-}
-
 /**
  * The visual. One ratio for all three rows, so they can be compared at a
- * glance, and object-cover rather than a stretch. A project whose export is
- * still owed gets a drawing; a file that fails to load falls back to the
- * drawing too, so a broken asset never leaves an empty frame.
+ * glance, and a cover crop rather than a stretch.
+ *
+ * A composed cover asks for `fit: 'contain'` instead, because it was laid
+ * out against its own full width and a crop would eat the edges of it. That
+ * image also brings its own ground, which the frame paints so the letterbox
+ * reads as the image's margin rather than as a grey band around it.
+ *
+ * A project with no image at all renders no frame, rather than an empty one.
  */
 const Media = ({
   project,
@@ -83,9 +48,10 @@ const Media = ({
   label: string;
 }) => {
   const { media } = project.featured;
-  const drawn = project.slug ? drawnMedia[project.slug] : undefined;
 
-  const inner = media ? (
+  if (!media) return null;
+
+  const inner = (
     <FadeInImage
       src={media.src}
       alt={media.alt}
@@ -94,18 +60,15 @@ const Media = ({
       sizes="(min-width: 1024px) 45vw, 92vw"
       loading="lazy"
       decoding="async"
-      className={`h-full w-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.03] ${
-        media.position ?? 'object-center'
-      }`}
+      className={`h-full w-full transition-transform duration-700 ease-smooth group-hover:scale-[1.03] ${
+        media.fit === 'contain' ? 'object-contain' : 'object-cover'
+      } ${media.position ?? 'object-center'}`}
     />
-  ) : (
-    drawn
   );
-
-  if (!inner) return null;
 
   const frame =
     'block aspect-[14/9] overflow-hidden rounded-[calc(var(--radius)-0.25rem)] bg-muted shadow-xs transition-transform duration-500 ease-smooth group-hover:-translate-y-1';
+  const ground = media.background ? { backgroundColor: media.background } : undefined;
 
   // The visual is a second way into the case study, but it is never the only
   // way: both calls to action sit beside it in text.
@@ -117,17 +80,20 @@ const Media = ({
       aria-label={label}
       data-cursor="View project"
       className={frame}
+      style={ground}
     >
       {inner}
     </Link>
   ) : (
-    <div className={frame}>{inner}</div>
+    <div className={frame} style={ground}>
+      {inner}
+    </div>
   );
 };
 
 const Row = ({ project, index }: { project: FeaturedProject; index: number }) => {
   const { title, slug, year, storyHref, storyMinutes, featured, context } = project;
-  const { headline, status, evidence } = featured;
+  const { headline, description, status, evidence } = featured;
 
   const caseHref = slug ? `/case-study/${slug}` : null;
   const number = String(index + 1).padStart(2, '0');
@@ -185,9 +151,20 @@ const Row = ({ project, index }: { project: FeaturedProject; index: number }) =>
           </ul>
         </div>
 
-        {/* Centre: the outcome, the sentence, the number. */}
+        {/*
+          Centre: what the project is, what the work was, and the number.
+
+          The heading names the problem space in three or four words, so the
+          three rows can be scanned as a list, and the line under it says what
+          Tanya did about it. The old headings argued the outcome; the evidence
+          chip already does that, and saying it twice made the row slower to
+          read than the thing it was summarising.
+        */}
         <div className="row-start-2 lg:col-start-2 lg:row-start-1 lg:self-end">
           <h4 className="max-w-[24ch] text-[1.75rem] leading-[1.12] lg:text-[2rem]">{headline}</h4>
+          <p className="mt-3 max-w-[44ch] text-base leading-[1.55] text-ink-500 md:text-lg">
+            {description}
+          </p>
 
           <div className="panel-chip mt-5 p-4">
             <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">

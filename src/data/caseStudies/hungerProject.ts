@@ -10,10 +10,9 @@ import track from '@/assets/food-waste-wireframe-track.png';
 export const hungerProject: CaseStudy = {
   slug: 'food-waste-ngo',
   title: 'The Hunger Project',
-  headline:
-    'Turning a two-sided donation problem into a designed handoff, because neither side was ever the failure',
+  headline: 'Designing the handoff between restaurants and NGOs',
   qualifier: 'Self-initiated',
-  year: '2024',
+  year: '2021',
   status: 'self-initiated',
   tagline: 'Social impact . Food redistribution . India',
   cover,
@@ -26,7 +25,7 @@ export const hungerProject: CaseStudy = {
   meta: [
     { label: 'Role', value: 'UX Research, Systems Design, UI' },
     { label: 'Engagement', value: 'Self-initiated' },
-    { label: 'Timeline', value: '2024' },
+    { label: 'Timeline', value: '2021' },
     { label: 'Team', value: 'Solo, with NGO staff interviews' },
     { label: 'Stage', value: 'Concept, researched not piloted' },
     { label: 'Domain', value: 'Social impact, two-sided logistics' },

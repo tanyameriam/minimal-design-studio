@@ -22,25 +22,23 @@ import {
   Metric,
   MetricRow,
   Note,
-  AssetSlot,
+  Shot,
   Points,
 } from '@/components/case-study/layrrrd/primitives';
 import { CaseStudyEntry } from '@/components/case-study/slides/Slide';
 import {
-  AfterTimeline,
   Beside,
   BeforeAfterRows,
   Chain,
   DirectionShift,
   Fragments,
-  LoopPipeline,
   Pivots,
   Progression,
   Reframe,
   SavedThenForgotten,
   ScopeBoundary,
+  ShippedSince,
   SynthesisColumns,
-  Thumb,
   TrustFlow,
   Verdicts,
 } from '@/components/case-study/layrrrd/diagrams';
@@ -66,7 +64,7 @@ import { usePageMeta } from '@/hooks/use-page-meta';
  * ---------------------------------------------------------------------
  * STRUCTURE
  *
- * Nineteen sections, where there used to be forty-seven slides and five
+ * Eighteen sections, where there used to be forty-seven slides and five
  * chapter splash pages. The splash pages are gone: they spent a full
  * screen each on a single word and told a reader nothing they could not
  * get from the rail. What replaces them is one horizontal run of the whole
@@ -80,17 +78,39 @@ import { usePageMeta } from '@/hooks/use-page-meta';
  * read as one.
  *
  * ---------------------------------------------------------------------
- * PLACEHOLDERS TO REPLACE
+ * IMAGERY
  *
- * Search this file for `<AssetSlot` and `<Thumb`. Every hole names the
- * exact file it is waiting for, matching the agreed asset list, so filling
- * one is a find-and-replace: swap the element for a <FadeInImage /> once
- * the file is in src/assets. Nothing here invents a product screenshot.
+ * Every still on this page is real, and the page no longer holds space open
+ * for stills that are not. The dashed <AssetSlot> and <Thumb> frames were
+ * removed on 17 Sep 2026: with eleven slots filled from the product
+ * recording the remaining holes read as damage rather than as intent, and
+ * a section is better ending on its argument than on an empty rectangle.
+ * Both primitives still exist for the next page that needs them.
+ *
+ * Still owed, and worth adding as <Shot /> when they exist: the weekly
+ * digest, the duplicate-save state, the empty state,
+ * checkout, the first landing page, the design-system and component sheets,
+ * the repository rules, the research board, the usability notes, the
+ * PostHog and payments dashboards, and the four before-and-after pairs
+ * (whose rows render text-only until `beforeFile`/`afterFile` come back).
  *
  * The mascot artwork itself is not on this page. Rudolf appears only where
  * he appears in the real product, through product stills.
  * ---------------------------------------------------------------------
  */
+
+// Stills from the product walkthrough recording, which is the only source
+// of real Layrrrd screens this repository has. Filenames match the agreed
+// asset list, so a better export can replace one without touching the page.
+import chromeExtension from '@/assets/Layrrrd/layrrrd-chrome-extension.png';
+import surveyResults from '@/assets/Layrrrd/layrrrd-survey-results.png';
+import currentLandingPage from '@/assets/Layrrrd/layrrrd-current-landing-page.png';
+import foundingMembership from '@/assets/Layrrrd/layrrrd-founding-membership.png';
+import libraryCurrent from '@/assets/Layrrrd/layrrrd-library-current.png';
+import saveComplete from '@/assets/Layrrrd/layrrrd-save-complete.png';
+import savePending from '@/assets/Layrrrd/layrrrd-save-pending.png';
+import saveProcessing from '@/assets/Layrrrd/layrrrd-save-processing.png';
+import telegramConnected from '@/assets/Layrrrd/layrrrd-telegram-connected.png';
 
 const chapters: SprintChapter[] = [
   { n: '01', name: 'Finding the problem', target: 'behaviour' },
@@ -103,7 +123,6 @@ const storyline: Storyline = [
     n: '00',
     name: 'Opening',
     slides: [
-      { id: 'product', title: 'The product' },
       { id: 'summary', title: 'What happened in nine days' },
     ],
   },
@@ -119,7 +138,6 @@ const storyline: Storyline = [
       { id: 'direction', title: 'The direction changed mid-build' },
       { id: 'scope', title: 'Defining the MVP' },
       { id: 'loop', title: 'The core product loop' },
-      { id: 'system', title: 'Design rules the team could use' },
       { id: 'brand', title: 'Giving the brand a role' },
     ],
   },
@@ -150,7 +168,7 @@ const storyline: Storyline = [
 const LayrrrdCaseStudy = () => {
   usePageMeta(
     'Layrrrd',
-    'From an untested idea to 15 paying customers in nine days. A zero-to-one product sprint: research, proposition, MVP, usability testing, design system, brand and paid validation in one continuous loop.'
+    'Building and validating a content retrieval product. A zero-to-one product sprint: research, proposition, MVP, usability testing, design system, brand and paid validation in one continuous loop.'
   );
 
   useEffect(() => {
@@ -186,8 +204,7 @@ const LayrrrdCaseStudy = () => {
                 client="Layrrrd · Zero-to-one product · 2026"
                 headline={
                   <>
-                    From an untested idea to{' '}
-                    <Em>15 paying customers in nine days.</Em>
+                    Building and validating a <Em>content retrieval product.</Em>
                   </>
                 }
               />
@@ -275,48 +292,6 @@ const LayrrrdCaseStudy = () => {
           </div>
         </section>
 
-        {/* ===================== VISUAL 01 · THE PRODUCT ==================== */}
-        {/* The product, before any more prose. Someone who reads one screen of
-            this page should already know that it shipped. */}
-        <Slide id="product" height="auto">
-          <div className="grid gap-4 lg:grid-cols-[1.9fr_1fr] lg:gap-5">
-            <AssetSlot
-              label="Web library"
-              note="layrrrd-library-current.png"
-              ratio="aspect-[16/10]"
-            />
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 lg:gap-5">
-              <AssetSlot
-                label="Chrome extension"
-                note="layrrrd-chrome-extension.png"
-                ratio="aspect-[4/3]"
-              />
-              <AssetSlot
-                label="Retrieval in Telegram"
-                note="layrrrd-telegram-retrieval.png"
-                ratio="aspect-[4/3]"
-              />
-            </div>
-          </div>
-
-          <div className="mt-4 grid gap-4 sm:grid-cols-[2fr_1fr] lg:mt-5 lg:gap-5">
-            <AssetSlot
-              label="Weekly digest"
-              note="layrrrd-weekly-digest.png"
-              ratio="aspect-[21/9]"
-            />
-            <AssetSlot
-              label="Rudolf in a loading state"
-              note="layrrrd-rudolf-loading.png"
-              ratio="aspect-[21/9]"
-            />
-          </div>
-
-          <p className="mt-6 text-base leading-snug text-ink-600 md:text-lg">
-            One product, several ways to save and return to what matters.
-          </p>
-        </Slide>
-
         {/* ================ 02 THE PROJECT IN 30 SECONDS =================== */}
         <Slide id="summary" height="auto">
           <Kicker label="The project in 30 seconds" />
@@ -329,7 +304,7 @@ const LayrrrdCaseStudy = () => {
                 body: 'We were saving constantly and rarely returning.',
               },
               {
-                name: '82-person survey',
+                name: '86-person survey',
                 body: 'The stronger problem was retrieval, not saving.',
               },
               {
@@ -389,7 +364,7 @@ const LayrrrdCaseStudy = () => {
           <Headline>The survey told us that saving wasn&rsquo;t the main problem.</Headline>
 
           <Lede wide>
-            We surveyed 82 people about what they saved, where they saved it, whether they
+            We surveyed 86 people about what they saved, where they saved it, whether they
             returned to it, and how they wanted useful content to come back.
           </Lede>
 
@@ -416,13 +391,20 @@ const LayrrrdCaseStudy = () => {
             ]}
           />
 
-          <div className="mt-10 max-w-xs">
-            <Thumb file="layrrrd-survey-results.png" ratio="aspect-[4/3]" />
-            <p className="label mt-3 text-ink-500">The survey results</p>
+          {/* Portrait, and three charts deep: narrower than this and the
+              questions stop being readable. */}
+          <div className="mt-10 max-w-sm">
+            <Shot
+              src={surveyResults}
+              alt="The survey export: 86 responses rating how likely they would be to try a product like this, 43 per cent asking for early access, and articles and videos leading what people save."
+              caption="The survey results"
+              width={1391}
+              height={1872}
+            />
           </div>
 
           <Note>
-            n = 82, self-selected respondents recruited through our own networks during the
+            n = 86, self-selected respondents recruited through our own networks during the
             sprint. Enough to redirect the work, not enough to size a market.
           </Note>
         </Slide>
@@ -485,11 +467,6 @@ const LayrrrdCaseStudy = () => {
               },
             ]}
           />
-
-          <div className="mt-10 max-w-xs">
-            <Thumb file="layrrrd-research-board.png" ratio="aspect-[4/3]" />
-            <p className="label mt-3 text-ink-500">The research board it came from</p>
-          </div>
         </Slide>
 
         {/* ========= 06 TESTING THE IDEA BEFORE BUILDING THE PRODUCT ======= */}
@@ -500,49 +477,24 @@ const LayrrrdCaseStudy = () => {
             <Em>whether people understood the proposition.</Em>
           </Headline>
 
-          <Beside>
-            <div>
-              <Lede>
-                Before committing to the full MVP, we published an early version of the
-                Layrrrd landing page. The goal was not visual polish.
-              </Lede>
-              <Lede>We wanted to see:</Lede>
-              <Points
-                items={[
-                  'Whether someone unfamiliar with Layrrrd could explain what it did',
-                  'Which part of the proposition they remembered',
-                  'What they expected to happen after signing up',
-                  'Whether the wording created the wrong expectation',
-                  'Whether they were interested enough to leave their details',
-                ]}
-              />
-              <Lede>
-                That gave us a cheaper way to test the proposition before putting more
-                engineering time behind it.
-              </Lede>
-            </div>
-
-            {/* VISUAL 04 · first proposition beside the current one. */}
-            <div>
-              <AssetSlot
-                label="The first landing page"
-                note="layrrrd-first-landing-page.png"
-                ratio="aspect-[4/3]"
-              />
-              <div className="mt-5 flex items-center gap-3">
-                <span className="label text-ink-500">First proposition</span>
-                <span aria-hidden="true" className="h-px flex-1 bg-border" />
-                <span className="label text-ink-500">Current proposition</span>
-              </div>
-              <div className="mt-5">
-                <AssetSlot
-                  label="The landing page today"
-                  note="layrrrd-current-landing-page.png"
-                  ratio="aspect-[4/3]"
-                />
-              </div>
-            </div>
-          </Beside>
+          <Lede wide>
+            Before committing to the full MVP, we published an early version of the Layrrrd
+            landing page. The goal was not visual polish.
+          </Lede>
+          <Lede wide>We wanted to see:</Lede>
+          <Points
+            items={[
+              'Whether someone unfamiliar with Layrrrd could explain what it did',
+              'Which part of the proposition they remembered',
+              'What they expected to happen after signing up',
+              'Whether the wording created the wrong expectation',
+              'Whether they were interested enough to leave their details',
+            ]}
+          />
+          <Lede wide>
+            That gave us a cheaper way to test the proposition before putting more
+            engineering time behind it.
+          </Lede>
         </Slide>
 
         {/* ====== 07 THE DIRECTION CHANGED BEFORE THE MVP WAS FINISHED ===== */}
@@ -663,96 +615,12 @@ const LayrrrdCaseStudy = () => {
             ))}
           </div>
 
-          {/* VISUAL 06 · four ways in, one library, four ways back out. */}
-          <LoopPipeline
-            inputs={[
-              { name: 'Chrome extension', file: 'layrrrd-chrome-extension.png' },
-              { name: 'Telegram', file: 'layrrrd-telegram-retrieval.png' },
-              { name: 'WhatsApp', file: 'layrrrd-whatsapp-retrieval.png' },
-              { name: 'Web', file: 'layrrrd-library-current.png' },
-            ]}
-            outputs={[
-              { name: 'Library', file: 'layrrrd-library-current.png' },
-              { name: 'Ask' },
-              { name: 'Recommended' },
-              { name: 'Digest', file: 'layrrrd-weekly-digest.png' },
-            ]}
-          />
-
           <Decision label="The decision that shaped the loop">
             Users did not have to construct an organisational system before receiving value.
           </Decision>
         </Slide>
 
-        {/* =============== 10 DESIGN RULES THE TEAM COULD USE ============== */}
-        <Slide id="system" chapter="01" height="auto">
-          <Kicker label="The design system" />
-          <Headline>
-            The interface was changing daily, so <Em>the design rules had to be explicit.</Em>
-          </Headline>
-
-          <Beside>
-            <div>
-              <Lede>
-                Engineering and design were happening in parallel. Relying only on finished
-                Figma screens would have slowed the team down, and made the product
-                inconsistent as new states and surfaces were added.
-              </Lede>
-              <Lede>
-                So we documented the visual and interaction rules, in the repository rather
-                than in a design file, and anyone could apply them without waiting on a new
-                screen. Some implementation work used AI-assisted coding, which made having
-                the rules written down useful there as well.
-              </Lede>
-              <Lede>They covered:</Lede>
-              <Points
-                items={[
-                  'Type hierarchy and spacing',
-                  'Colour usage',
-                  'Component behaviour, buttons and inputs',
-                  'Navigation patterns',
-                  'Loading, success and error states',
-                  'Where the product should stay visually quiet',
-                  'Where the brand could be more expressive',
-                ]}
-              />
-              <Decision label="What the rules were for">
-                Not control over every screen. Enough shared ground that new work still felt
-                like the same product.
-              </Decision>
-            </div>
-
-            {/* VISUAL 07 · the system sheet. */}
-            <div className="space-y-4">
-              <AssetSlot
-                label="Type, spacing and colour"
-                note="layrrrd-design-system.png"
-                ratio="aspect-[4/3]"
-              />
-              <div className="grid gap-4 sm:grid-cols-2">
-                <Thumb file="layrrrd-components.png" ratio="aspect-[4/3]" />
-                <Thumb file="layrrrd-repository-design-rules.png" ratio="aspect-[4/3]" />
-              </div>
-
-              <div className="grid gap-4 pt-2 sm:grid-cols-2">
-                <div className="rounded-[3px] bg-card p-5">
-                  <p className="label mb-3 text-ink-500">Product</p>
-                  <p className="text-base leading-snug md:text-lg">
-                    Quiet, editorial, low distraction
-                  </p>
-                </div>
-                <div className="rounded-[3px] bg-foreground p-5 text-background">
-                  <p className="label mb-3 opacity-70">Brand moments</p>
-                  <p className="text-base leading-snug md:text-lg">
-                    Rudolf, membership, campaign, playful
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Beside>
-        </Slide>
-
-        {/* ============== 11 GIVING THE BRAND A ROLE ====================== */}
+        {/* ============== 10 GIVING THE BRAND A ROLE ====================== */}
         <Slide id="brand" chapter="01" height="auto">
           <Kicker label="Brand" />
           <Headline>Rudolf gave the product personality where it was useful.</Headline>
@@ -760,41 +628,15 @@ const LayrrrdCaseStudy = () => {
           <Lede wide>
             We designed Rudolf as part of the Layrrrd identity, and deliberately kept the core
             interface restrained. The character appeared where personality or reassurance
-            helped: loading states, empty states, retrieval conversations, Telegram and
-            WhatsApp, onboarding and membership communication. That let Layrrrd have a
+            helped: loading states, empty states, retrieval conversations in Telegram,
+            onboarding and membership communication. That let Layrrrd have a
             recognisable character without turning every functional screen into a branded
             illustration.
           </Lede>
 
-
-          {/* VISUAL 08 · one large, three small. */}
-          <div className="mt-12 grid gap-4 md:mt-16 lg:grid-cols-[1.4fr_1fr] lg:gap-5">
-            <AssetSlot
-              label="Loading, while content is processing"
-              note="layrrrd-rudolf-loading.png"
-              ratio="aspect-[4/3]"
-            />
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 lg:gap-5">
-              <AssetSlot
-                label="Empty state"
-                note="layrrrd-rudolf-empty.png"
-                ratio="aspect-[16/9]"
-              />
-              <AssetSlot
-                label="Conversational identity in WhatsApp"
-                note="layrrrd-whatsapp-retrieval.png"
-                ratio="aspect-[16/9]"
-              />
-              <AssetSlot
-                label="Founding Membership"
-                note="layrrrd-founding-membership.png"
-                ratio="aspect-[16/9]"
-              />
-            </div>
-          </div>
         </Slide>
 
-        {/* ========= 12 PUTTING THE PRODUCT IN FRONT OF USERS ============== */}
+        {/* ========= 11 PUTTING THE PRODUCT IN FRONT OF USERS ============== */}
         <Slide id="testing" chapter="02" height="auto">
           <Kicker n="02" label="Learning from use" />
           <Headline>
@@ -805,7 +647,7 @@ const LayrrrdCaseStudy = () => {
           <Lede wide>We ran eight usability sessions on the working product.</Lede>
 
           <MetricRow>
-            <Metric figure="82" caption="Survey responses" />
+            <Metric figure="86" caption="Survey responses" />
             <Metric figure="8" caption="Usability tests" />
             <Metric figure="32" caption="Product sign-ups at that point" />
             <Metric figure="37" caption="People on the waitlist at that point" />
@@ -834,11 +676,6 @@ const LayrrrdCaseStudy = () => {
             Not confirming the concept. Identifying where the main product loop still broke.
           </Decision>
 
-          <div className="mt-10 max-w-xs">
-            <Thumb file="layrrrd-usability-notes.png" ratio="aspect-[4/3]" />
-            <p className="label mt-3 text-ink-500">Notes from the sessions</p>
-          </div>
-
           {/* VISUAL 09 · what changed, as four before-and-afters. */}
           <BeforeAfterRows
             rows={[
@@ -846,8 +683,6 @@ const LayrrrdCaseStudy = () => {
                 area: 'Onboarding',
                 before: 'Too many steps before the first save',
                 after: 'A shortened entry into the product',
-                beforeFile: 'layrrrd-onboarding-before.png',
-                afterFile: 'layrrrd-onboarding-after.png',
                 finding:
                   'People wanted to save something before being asked to set the product up.',
               },
@@ -855,8 +690,6 @@ const LayrrrdCaseStudy = () => {
                 area: 'Save feedback',
                 before: 'Processing happened silently',
                 after: 'An immediate pending state, resolving to saved',
-                beforeFile: 'layrrrd-save-processing.png',
-                afterFile: 'layrrrd-save-complete.png',
                 finding:
                   'Without visible confirmation, testers repeated the save or assumed it had failed.',
               },
@@ -864,8 +697,6 @@ const LayrrrdCaseStudy = () => {
                 area: 'Navigation',
                 before: 'Everything visible at once',
                 after: 'A simpler first-use hierarchy',
-                beforeFile: 'layrrrd-navigation-before.png',
-                afterFile: 'layrrrd-navigation-after.png',
                 finding:
                   'First-time users had to decide what mattered before they had any content to judge it with.',
               },
@@ -873,8 +704,6 @@ const LayrrrdCaseStudy = () => {
                 area: 'Reminders',
                 before: 'Automatic resurfacing',
                 after: 'More selective, more relevant delivery',
-                beforeFile: 'layrrrd-reminders-before.png',
-                afterFile: 'layrrrd-reminders-after.png',
                 finding:
                   'Resurfacing something the user had already dealt with cost more trust than it earned.',
               },
@@ -882,7 +711,7 @@ const LayrrrdCaseStudy = () => {
           />
         </Slide>
 
-        {/* ============ 13 DEEP DIVE: THE SAVE-STATE PROBLEM ============== */}
+        {/* ============ 12 DEEP DIVE: THE SAVE-STATE PROBLEM ============== */}
         <Slide id="save-state" chapter="02" height="auto">
           <Kicker label="A closer look" />
           <Headline>
@@ -915,18 +744,30 @@ const LayrrrdCaseStudy = () => {
           />
 
           {/* VISUAL 10 · the sequence itself, in real frames. */}
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 md:mt-16 lg:grid-cols-4">
-            <AssetSlot label="Save clicked" note="layrrrd-save-pending.png" ratio="aspect-[4/3]" />
-            <AssetSlot label="Saving" note="layrrrd-save-processing.png" ratio="aspect-[4/3]" />
-            <AssetSlot label="Processing" note="layrrrd-save-processing.png" ratio="aspect-[4/3]" />
-            <AssetSlot label="Saved" note="layrrrd-save-complete.png" ratio="aspect-[4/3]" />
-          </div>
-
-          <div className="mt-10 max-w-md">
-            <AssetSlot
-              label="Already in your library"
-              note="layrrrd-save-duplicate.png"
-              ratio="aspect-[16/9]"
+          {/* Three frames, not the four this grid used to hold open: two of
+              those slots named the same file, and the recording shows one
+              processing state, not two. */}
+          <div className="mt-12 grid items-start gap-4 sm:grid-cols-2 md:mt-16 lg:grid-cols-3">
+            <Shot
+              src={savePending}
+              alt="The library with an article URL pasted into the save field and the Save button not yet pressed."
+              caption="Link pasted"
+              width={1680}
+              height={1050}
+            />
+            <Shot
+              src={saveProcessing}
+              alt="The same library a moment later: the new item is in place as a blank card still showing its raw URL while Layrrrd reads the page."
+              caption="Processing"
+              width={1680}
+              height={1050}
+            />
+            <Shot
+              src={saveComplete}
+              alt="The library once processing finishes: the card now carries the article title, its image, its source and its reading time."
+              caption="Saved"
+              width={1680}
+              height={1050}
             />
           </div>
 
@@ -938,7 +779,7 @@ const LayrrrdCaseStudy = () => {
           </Lede>
         </Slide>
 
-        {/* ========= 14 THE PRODUCT CHANGED BECAUSE OF WHAT WE LEARNED ===== */}
+        {/* ========= 13 THE PRODUCT CHANGED BECAUSE OF WHAT WE LEARNED ===== */}
         <Slide id="decisions" chapter="02" height="auto">
           <Kicker label="What changed" />
           <Headline>Four decisions changed during the sprint.</Headline>
@@ -978,7 +819,7 @@ const LayrrrdCaseStudy = () => {
           />
         </Slide>
 
-        {/* ================== 15 ASKING PEOPLE TO PAY ===================== */}
+        {/* ================== 14 ASKING PEOPLE TO PAY ===================== */}
         <Slide id="pricing" chapter="03" height="auto">
           <Kicker n="03" label="Validating value" />
           <Headline>
@@ -1015,18 +856,17 @@ const LayrrrdCaseStudy = () => {
             </div>
 
             {/* VISUAL 11 · the real commercial surfaces. */}
-            <div className="grid gap-4">
-              <AssetSlot
-                label="Founding Membership"
-                note="layrrrd-founding-membership.png"
-                ratio="aspect-[4/3]"
-              />
-              <AssetSlot label="Checkout" note="layrrrd-checkout.png" ratio="aspect-[16/9]" />
-            </div>
+            <Shot
+              src={foundingMembership}
+              alt="The founding membership page: lifetime access for a one-time payment, the launch price struck through, and what a founding member gets."
+              caption="Founding Membership"
+              width={1680}
+              height={1050}
+            />
           </Beside>
         </Slide>
 
-        {/* ========================= 16 OUTCOME =========================== */}
+        {/* ========================= 15 OUTCOME =========================== */}
         <Slide id="outcome" chapter="03" height="auto" tone="ink">
           <p className="label opacity-70">Day nine</p>
           <h2 className="mt-6 max-w-[18ch] text-[2.5rem] font-medium leading-[1.0] md:text-[4.5rem]">
@@ -1044,24 +884,10 @@ const LayrrrdCaseStudy = () => {
             building. The product did not stop at the sprint.
           </p>
 
-          {/* VISUAL 12 · the evidence, rather than large typography alone. */}
-          <div className="mt-12 grid gap-4 md:mt-16 md:grid-cols-2 md:gap-5">
-            <AssetSlot
-              label="Sign-ups in PostHog"
-              note="layrrrd-posthog-signups.png"
-              ratio="aspect-[16/10]"
-            />
-            <AssetSlot
-              label="Payments, with customer details hidden"
-              note="layrrrd-payments-dashboard.png"
-              ratio="aspect-[16/10]"
-            />
-          </div>
-
           <Chain steps={['Day 1', 'Day 9', '15 paying customers']} dense />
         </Slide>
 
-        {/* ======================= 17 AFTER DAY NINE ====================== */}
+        {/* ======================= 16 AFTER DAY NINE ====================== */}
         <Slide id="after" chapter="03" height="auto">
           <Kicker label="After the sprint" />
           <Headline>
@@ -1074,65 +900,76 @@ const LayrrrdCaseStudy = () => {
             and retrieving content.
           </Lede>
 
-          <AfterTimeline
-            steps={[
-              'Day 9: paid validation',
-              'Payments live',
-              'Chrome extension',
-              'Telegram',
-              'WhatsApp',
-              'Referral loop',
-              'Trust and privacy work',
-              'Today',
+          <ShippedSince
+            items={[
+              {
+                name: 'Published Chrome extension',
+                note: 'Saving from the page someone is already reading.',
+              },
+              {
+                name: 'Both chat channels',
+                note: 'Telegram and WhatsApp, the two places people were already sending themselves links.',
+              },
+              { name: 'Referral loops' },
+              {
+                name: 'Trust and privacy work',
+                note: 'Including full account deletion that actually cascades.',
+              },
             ]}
           />
         </Slide>
 
-        {/* ====================== 18 THE PRODUCT TODAY ==================== */}
+        {/* ====================== 17 THE PRODUCT TODAY ==================== */}
         <Slide id="today" chapter="03" height="auto">
           <Kicker label="The product today" />
           <Headline>Different entry points, one product underneath.</Headline>
 
           <Lede wide>
-            Chrome, the web app, Telegram and WhatsApp are not separate products. They are
-            different ways into the same loop: save, process, retrieve, refine. Someone can
-            save a link from one surface and return to it through another without learning a
-            different system each time.
+            Chrome, the web app and Telegram are not separate products. They are different
+            ways into the same loop: save, process, retrieve, refine. Someone can save a link
+            from one surface and return to it through another without learning a different
+            system each time.
           </Lede>
 
-          {/* VISUAL 13 · the second product showcase. */}
-          <div className="mt-12 grid gap-4 md:mt-16 lg:grid-cols-[1.6fr_1fr] lg:gap-5">
-            <AssetSlot
-              label="The library"
-              note="layrrrd-library-current.png"
-              ratio="aspect-[16/10]"
+          {/* VISUAL 13 · the four surfaces, two up. Every still here is 16:10,
+              so the rows land level without cropping anything to make them,
+              and `items-start` keeps a figure at its image's height rather
+              than stretching it to its neighbour. */}
+          <div className="mt-12 grid items-start gap-4 md:mt-16 md:grid-cols-2 md:gap-5">
+            <Shot
+              src={libraryCurrent}
+              alt="The Layrrrd web library: saved articles as cards, each carrying its source, its reading time, key insights and a bookmark action."
+              caption="The library"
+              width={1680}
+              height={1050}
             />
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 lg:gap-5">
-              <AssetSlot
-                label="Chrome extension"
-                note="layrrrd-chrome-extension.png"
-                ratio="aspect-[16/10]"
-              />
-              <AssetSlot
-                label="Retrieval in WhatsApp"
-                note="layrrrd-whatsapp-retrieval.png"
-                ratio="aspect-[16/10]"
-              />
-            </div>
-          </div>
-
-          <div className="mt-4 lg:mt-5">
-            <AssetSlot
-              label="The weekly digest"
-              note="layrrrd-weekly-digest.png"
-              ratio="aspect-[24/7]"
+            <Shot
+              src={chromeExtension}
+              alt="The Layrrrd browser extension open over a TechCrunch article, showing the page it has recognised above a single Save this page button."
+              caption="Chrome extension"
+              width={1680}
+              height={1050}
+            />
+            <Shot
+              src={telegramConnected}
+              alt="The Rudolf bot in Telegram, confirming the chat is linked to a Layrrrd account and that any link pasted there will be saved."
+              caption="Rudolf in Telegram"
+              width={1290}
+              height={806}
+            />
+            <Shot
+              src={currentLandingPage}
+              alt="The Layrrrd landing page: the wordmark over the line Good things, saved. Better things, fetched., with Rudolf running beside it."
+              caption="The landing page today"
+              width={1680}
+              height={1050}
             />
           </div>
 
           <p className="label mt-6 text-ink-500">One library</p>
         </Slide>
 
-        {/* ======================= 19 REFLECTION ========================== */}
+        {/* ======================= 18 REFLECTION ========================== */}
         <Slide id="reflection" chapter="03" height="auto">
           <Kicker label="Reflection" />
           <Headline>What the nine days changed in how I work</Headline>

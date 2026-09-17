@@ -1,4 +1,6 @@
 import { summaries } from './catalogue';
+import threeVariations from '@/assets/writing/ixd-three-workflow-variations.png';
+import detailedWorkflow from '@/assets/writing/ixd-detailed-workflow.png';
 import type { Article } from './types';
 
 /**
@@ -177,10 +179,16 @@ export const interactionDesign: Article = {
           kind: 'figure',
           figure: {
             asset: 'ixd-three-workflow-variations',
-            alt: 'The three workflow variations side by side, each marked at the point where risk becomes visible: after assignment, after recommendation, and before commitment.',
+            // Stacked, not side by side, and nothing is annotated: the
+            // difference is structural. In the first two, Conflict alert
+            // comes after Assign task. In the third it comes before.
+            alt: 'The three workflow variations stacked. Variations one and two run roadmap overview, find resource, assign task, conflict alert, resolve conflict, project overview, so conflicts surface after the assignment. Variation three, badged as the chosen flow, runs roadmap overview, project detail, view conflict possibilities, resource suggestion with AI, project overview, so conflicts surface before anyone is assigned.',
             caption:
               'The same job, three times. What separates them is not speed but where the risk becomes visible.',
-            ratio: '16 / 8',
+            ratio: '3325 / 2065',
+            src: threeVariations,
+            width: 3325,
+            height: 2065,
           },
         },
       ],
@@ -219,10 +227,15 @@ export const interactionDesign: Article = {
           kind: 'figure',
           figure: {
             asset: 'ixd-detailed-workflow',
-            alt: 'The chosen end-to-end workflow, from roadmap demand through scoping, resource exploration, conflict review, and feasibility evaluation to commitment.',
+            // Order corrected against the board: conflict review comes
+            // before resource suggestion, which is the point of the variant.
+            alt: 'The chosen workflow in full: roadmap overview, project detail, view conflict possibilities, resource suggestion with AI, and project overview, with ten numbered error states returning the user to the screen that can recover them, and a column under each screen naming its goal, its description and the questions it left open.',
             caption:
               'The chosen workflow in full. Validation sits between exploration and commitment, which is the whole argument of the project in one diagram.',
-            ratio: '16 / 9',
+            ratio: '6752 / 3344',
+            src: detailedWorkflow,
+            width: 6752,
+            height: 3344,
           },
         },
       ],

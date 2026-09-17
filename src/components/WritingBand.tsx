@@ -33,7 +33,7 @@ const WritingBand = () => {
             onFocus={() => prefetchRoute('/writing')}
             className="rule-link text-base text-ink-500 transition-colors hover:text-foreground"
           >
-            All notes <span aria-hidden="true">&rarr;</span>
+            All articles <span aria-hidden="true">&rarr;</span>
           </Link>
         </div>
 

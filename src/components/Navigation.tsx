@@ -16,13 +16,13 @@ interface NavItem {
  * deliberately not one of them: it is a secondary destination reached from
  * the foot of the home page, not one of the main paths through the site.
  *
- * "Notes" is the visible label for /writing. The route keeps its name so
+ * "Articles" is the visible label for /writing. The route keeps its name so
  * every published link to an essay still resolves.
  */
 const navItems: NavItem[] = [
   { label: 'Work', to: '/#work', section: 'work' },
   { label: 'About', to: '/about', match: '/about' },
-  { label: 'Notes', to: '/writing', match: '/writing' },
+  { label: 'Articles', to: '/writing', match: '/writing' },
   { label: 'CV', to: '/cv' },
   { label: 'Contact', to: '/#contact', section: 'contact' },
 ];
