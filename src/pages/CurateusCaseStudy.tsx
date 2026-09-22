@@ -203,7 +203,7 @@ const CurateusCaseStudy = () => {
                   <dt className="label mb-2.5 text-ink-500">Contribution</dt>
                   <dd className="text-base leading-snug md:text-lg">
                     Trying out ideas &middot; Planning the steps &middot; Sketches &middot; Screen
-                    design &middot; Clickable mock-ups &middot; Handing over to developers
+                    design &middot; Interactive prototypes &middot; Handing over to developers
                   </dd>
                 </div>
                 <div>
@@ -344,7 +344,7 @@ const CurateusCaseStudy = () => {
               </p>
               <p className="mt-6 max-w-2xl text-base leading-[1.6] text-ink-600 md:text-lg">
                 I looked at other products, tried out early ideas for the steps, and made sketches,
-                simple layouts, screen designs, clickable mock-ups and files for the developers.
+                simple layouts, screen designs, interactive prototypes and files for the developers.
               </p>
               <p className="mt-6 max-w-2xl text-base leading-[1.6] md:text-lg">
                 We decided together what the product should do. My job was to turn those decisions

@@ -248,7 +248,7 @@ const MerryHealthCaseStudy = () => {
                 <div>
                   <dt className="label mb-2.5 text-ink-500">Tools</dt>
                   <dd className="text-base leading-snug md:text-lg">
-                    Figma &middot; Miro &middot; Clickable mock-ups
+                    Figma &middot; Miro &middot; Interactive prototypes
                   </dd>
                 </div>
                 <div>
@@ -1064,7 +1064,7 @@ const MerryHealthCaseStudy = () => {
               rel="noreferrer"
               className="rule-link mt-break inline-block text-lg md:text-2xl"
             >
-              Try the clickable mock-up <span aria-hidden="true">&#8599;</span>
+              Try the interactive prototype <span aria-hidden="true">&#8599;</span>
             </a>
           ) : (
             import.meta.env.DEV && (

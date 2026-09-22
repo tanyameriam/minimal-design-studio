@@ -74,7 +74,7 @@ const CoverSlide = () => (
     </div>
 
     <div className="mt-break flex flex-wrap gap-3">
-      {['June 2026 to now', 'Design lead', 'Live, making money'].map((chip) => (
+      {['June 2026 to now', 'Design lead', 'Launched with paying customers'].map((chip) => (
         <span key={chip} className="label border border-border px-3 py-2 text-ink-500">
           {chip}
         </span>

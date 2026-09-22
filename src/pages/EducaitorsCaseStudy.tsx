@@ -159,7 +159,7 @@ const EducaitorsCaseStudy = () => {
 
   usePageMeta(
     'EducAItors',
-    'Helping teachers stay in charge when AI helps with grading. I led the part where teachers review grades, from research with college teachers in India to a clickable mock-up covering a practice round, grading, regrade requests and what the results show.'
+    'Helping teachers stay in charge when AI helps with grading. I led the part where teachers review grades, from research with college teachers in India to an interactive prototype covering a practice round, grading, regrade requests and what the results show.'
   );
 
   useEffect(() => {
@@ -189,9 +189,9 @@ const EducaitorsCaseStudy = () => {
                   takeaways={{
                     problem:
                       'Teachers did not need grading to be faster. They needed to see how a grade was worked out, and to stay responsible for it.',
-                    did: 'Led the part where teachers review grades: checking the proof, comparing scores, changing grades and giving the final OK.',
+                    did: 'Led the part where teachers review grades: reviewing the evidence behind a suggested grade, comparing scores, changing grades and approving the final grade.',
                     outcome:
-                      'A clickable mock-up where the AI suggests and the teacher decides. A university project, never launched.',
+                      'An interactive prototype where the AI suggests and the teacher decides. A university project, never launched.',
                   }}
                 />
 
@@ -216,7 +216,7 @@ const EducaitorsCaseStudy = () => {
 
                 <div className="mt-12 flex flex-wrap items-baseline gap-x-10 gap-y-4">
                   <PrototypeLink href={PROTOTYPE_URL} className="text-lg md:text-xl">
-                    Try the clickable mock-up
+                    Try the interactive prototype
                   </PrototypeLink>
                   <a href="#overview" className="rule-link text-lg text-ink-600">
                     Keep reading <span aria-hidden="true">&darr;</span>
@@ -249,7 +249,7 @@ const EducaitorsCaseStudy = () => {
                 <div className="sm:col-span-2">
                   <dt className="label mb-2.5 text-ink-500">Outcome</dt>
                   <dd className="text-base leading-snug md:text-lg">
-                    A clickable mock-up covering setup, a practice round, grading, regrade requests
+                    An interactive prototype covering setup, a practice round, grading, regrade requests
                     and what the results show
                   </dd>
                 </div>
@@ -902,7 +902,7 @@ const EducaitorsCaseStudy = () => {
                   'Shared research',
                   'Adjacent workflows',
                   'The final look and feel',
-                  'The whole clickable mock-up',
+                  'The whole interactive prototype',
                 ].map((item) => (
                   <li key={item} className="text-base leading-snug text-ink-500 md:text-lg">
                     {item}
@@ -917,7 +917,7 @@ const EducaitorsCaseStudy = () => {
         <Slide id="outcome" chapter="06" height="auto">
           <Kicker n="06" label="Result" />
           <Headline>
-            A clickable mock-up, made <span className="em">for university</span>.
+            An interactive prototype, made <span className="em">for university</span>.
           </Headline>
           <Lede wide>
             The work set a clear direction for how teachers can review AI grades. It was a
@@ -927,7 +927,7 @@ const EducaitorsCaseStudy = () => {
 
           <Ledger
             delivered={[
-              'A clickable mock-up covering preparing an assignment, the practice round, grading, regrade requests and what the results show.',
+              'An interactive prototype covering preparing an assignment, the practice round, grading, regrade requests and what the results show.',
               'Proof for each rule, and screens for how sure the AI is and for disagreements.',
               'Teachers can replace a grade, and the reason, the proof and the record of changes are kept.',
               'Data and decisions passed cleanly between the parts, instead of three ideas that do not connect.',
@@ -1028,7 +1028,7 @@ const EducaitorsCaseStudy = () => {
             className="mt-stage flex flex-wrap gap-x-10 gap-y-4 border-t border-border pt-8"
           >
             <PrototypeLink href={PROTOTYPE_URL} className="text-lg">
-              Try the clickable mock-up
+              Try the interactive prototype
             </PrototypeLink>
             <Link to="/#work" className="rule-link text-lg text-ink-600">
               Back to the work <span aria-hidden="true">&rarr;</span>

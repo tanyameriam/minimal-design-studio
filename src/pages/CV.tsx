@@ -173,7 +173,7 @@ const CV = () => {
                     <div class="job-company">Curateus, Bangalore, India</div>
                     <div class="job-date">2021</div>
                     <ul>
-                      <li>Designed sketches and clickable mock-ups for an app for finding good articles</li>
+                      <li>Designed sketches and interactive prototypes for an app for finding good articles</li>
                     </ul>
                   </div>
                   
@@ -403,7 +403,7 @@ const CV = () => {
                   <span className="text-sm text-muted-foreground">2021</span>
                 </div>
                 <ul className="list-disc list-outside ml-5 text-muted-foreground text-sm space-y-1">
-                  <li>Designed screens, sketches and clickable mock-ups for an app for finding good articles.</li>
+                  <li>Designed screens, sketches and interactive prototypes for an app for finding good articles.</li>
                   <li>Helped design quickly for websites and phone apps.</li>
                 </ul>
               </div>

@@ -33,9 +33,9 @@ const facts = [
  */
 const practice = [
   'Planning how work flows',
-  'Fitting the pieces together',
+  'Systems design',
   'Designing AI tools',
-  'Designing screens and clicks',
+  'Interface and interaction design',
 ];
 
 const ProofRail = () => {

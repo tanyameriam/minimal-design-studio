@@ -362,7 +362,7 @@ const RealisationSlide = () => (
 
 const EncyclopediaSlide = () => (
   <div>
-    <Chapter n="02" label="Rethink · The hidden treasure" />
+    <Chapter n="02" label="Rethink · Reusable knowledge within the team" />
     <H>
       The developers had a library of know-how <Em>nobody had built into the product.</Em>
     </H>
@@ -663,8 +663,8 @@ const ScaleSlide = () => (
       What could happen if 26 weeks of work <Em>becomes 2 weeks?</Em>
     </H>
     <Body>
-      Everything in this part is a guess about where templates could lead, not something
-      we have measured yet. The chance here is not only saving time: the same team could
+      These projections have not yet been validated in production.
+      The chance here is not only saving time: the same team could
       help more customers.
     </Body>
 

@@ -54,7 +54,7 @@ export const educaitors: CaseStudy = {
           'Hiding the AI would have taken away the one thing that helps teachers check it properly, and showing how sure it is on everything would have taught people to ignore it. So “how sure” only appears where it changes what gets checked next, and the teacher always has the final say wherever a grade can change.',
         resultsLabel: 'Intended results',
         results:
-          'Less checking work, without less careful judgment. That is the goal, not a measured result: the work was delivered as a clickable mock-up ready to build, and was never tried with real classes. So how well teachers understand it, how long checking takes, how good the grade changes are and how even the grades become are all still untested.',
+          'Less checking work, without less careful judgment. That is the goal, not a measured result: the work was delivered as an interactive prototype ready to build, and was never tried with real classes. So how well teachers understand it, how long checking takes, how good the grade changes are and how even the grades become are all still untested.',
       },
     },
 
@@ -252,7 +252,7 @@ export const educaitors: CaseStudy = {
           kind: 'points',
           items: [
             {
-              title: 'A clickable mock-up, ready to build',
+              title: 'An interactive prototype, ready to build',
               body: 'Covering preparing an assignment, the practice round, grading, regrade requests and what the results show, as one teacher journey instead of five separate screens.',
             },
             {
@@ -289,7 +289,7 @@ export const educaitors: CaseStudy = {
         {
           kind: 'note',
           label: 'Status',
-          body: 'Idea work, delivered as a clickable mock-up with designers across all three parts. None of it was tried with real classes, so every result above is a goal, not a measurement. How well it fits different kinds of colleges, and how well it copes with misread handwriting and missing pages, are both untested.',
+          body: 'Idea work, delivered as an interactive prototype with designers across all three parts. None of it was tried with real classes, so every result above is a goal, not a measurement. How well it fits different kinds of colleges, and how well it copes with misread handwriting and missing pages, are both untested.',
         },
       ],
       callouts: [

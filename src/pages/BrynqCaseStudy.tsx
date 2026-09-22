@@ -1121,7 +1121,7 @@ const BrynqCaseStudy = () => {
         </Slide>
 
         <Slide id="hidden-asset" chapter="02" height="auto">
-          <Kicker label="The hidden treasure" />
+          <Kicker label="Reusable knowledge within the team" />
           <Headline level={3}>
             The developers had already built up{' '}
             <Em>a whole library of know-how about connecting systems.</Em>
@@ -2055,8 +2055,8 @@ const BrynqCaseStudy = () => {
             />
             <div className="flex flex-col justify-center">
               <p className="max-w-md text-base leading-[1.6] text-ink-600 md:text-lg">
-                Everything in this part is a guess about where templates could lead, not something
-                we have measured yet. The chance here is not only saving time: the same team could
+                These projections have not yet been validated in production.
+                The chance here is not only saving time: the same team could
                 help more customers.
               </p>
             </div>
@@ -2098,7 +2098,7 @@ const BrynqCaseStudy = () => {
           </div>
 
           <Footnote>
-            This is a guess based on how long each setup takes, not how many are done today.
+            This projection is based on how long each setup takes, not how many are done today.
             The real number would depend on sales, how hard each connection is, the size of
             the team, how ready customers are, and how much help they need.
           </Footnote>

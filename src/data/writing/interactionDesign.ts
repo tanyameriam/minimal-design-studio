@@ -22,7 +22,7 @@ export const interactionDesign: Article = {
     'I used to think interaction design started when you turned a set of steps into screens.',
     'During my master’s, I was asked to do the opposite: design a whole experience from start to end without using any screen words. No buttons, drop-down menus, sidebars or layouts. Only what the user wants, what the system does, the choices, the other paths, and what should happen when something goes wrong.',
     'At first the rule felt fake. It became one of the most useful ways I learned to keep solving the problem separate from drawing the answer.',
-    'The project was about a tool for planning who works on what. A project manager had to turn a request from the company plan into a real project, find people with the right skills, see how busy they were, sort out clashes, and commit to a plan that could actually work. The work ended up as sketches and a clickable mock-up, but the most important design choices were made before any screen existed.',
+    'The project was about a tool for planning who works on what. A project manager had to turn a request from the company plan into a real project, find people with the right skills, see how busy they were, sort out clashes, and commit to a plan that could actually work. The work ended up as sketches and an interactive prototype, but the most important design choices were made before any screen existed.',
   ],
   sections: [
     {
@@ -413,7 +413,7 @@ export const interactionDesign: Article = {
     },
   ],
   studio: {
-    body: 'This article is based on my master’s interaction design course, where I built a planning journey from a BGPOSSTAL design plan and a map of situations, through combined stories, three sets of steps, a detailed map of how everything works, error screens, Six-Up sketches, digital sketches and a clickable mock-up.',
+    body: 'This article is based on my master’s interaction design course, where I built a planning journey from a BGPOSSTAL design plan and a map of situations, through combined stories, three sets of steps, a detailed map of how everything works, error screens, Six-Up sketches, digital sketches and an interactive prototype.',
   },
   meta: {
     title: 'Design Before the Screen',
