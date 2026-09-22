@@ -152,7 +152,7 @@ const Hero = () => {
             }}
             data-shown="true"
           >
-            Hi, I&rsquo;m Tanya. I design products that are easy for people to use
+            Hi, I&rsquo;m Tanya. Product Designer for human-centered experiences
             <span aria-hidden="true" className="text-accent">
               .
             </span>
@@ -164,9 +164,8 @@ const Hero = () => {
             style={{ transitionDelay: '140ms' }}
             data-shown="true"
           >
-            I have designed apps and websites for five years. Now I focus on AI tools that help
-            people instead of confusing them. I live in Utrecht and I am looking for a mid-level or
-            senior design job.
+            Five years designing products, now advocating for human-centered AI in the automation
+            era. Based in Utrecht, open to medior and senior product-design roles.
           </p>
 
           <div
