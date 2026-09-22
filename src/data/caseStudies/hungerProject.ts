@@ -19,7 +19,7 @@ export const hungerProject: CaseStudy = {
 
   intro: [
     'India grows enough food to feed everyone, and still millions of people go hungry every day. A lot of good leftover food is lost at restaurants, events and food centres: too much gets cooked, it goes bad, or nobody is told in time. Charities that share out food cannot collect it reliably.',
-    'Restaurants tell charities after closing time, or at random times. Most charities have no van or staff of their own. Leftover food is only safe to eat for a short time. So the problem is not that people are unwilling to give. It is that nobody is organising it, and good food is wasted every day. No existing app fixes this, because every app only looks after one side.',
+    'Restaurants tell charities after closing time, or at random times. Most charities have no van or staff of their own. Leftover food is only safe to eat for a short time. So the problem is not that people are unwilling to give. It is that nobody is organising the hand-off, and good food is wasted every day.',
   ],
 
   meta: [
@@ -42,9 +42,9 @@ export const hungerProject: CaseStudy = {
         problems:
           'Messages that arrive at random times, no people to help, high transport costs, trouble collecting from many places, and food going bad while everyone waits. Nobody shares the same information, nobody is clearly in charge at each step, and neither side can see what the other is doing.',
         solution:
-          'One system with two roles, instead of two apps. Food is listed right away and charities are told straight away. The charity chooses how to collect it, based on what it can really manage. And at every step it is clear who is in charge, so every donation always has exactly one owner.',
+          'Two apps, one for restaurants and one for charities, both working from the same shared record of each donation. Food is listed right away and charities are told straight away. The charity chooses how to collect it, based on what it can really manage. And at every step it is clear who is in charge, so every donation always has exactly one owner.',
         why:
-          'Because neither side was the problem. The problem was the hand-off between them. Two separate apps would just rebuild the wall between them, in software. Designing the hand-off itself, with one person in charge at every step, is the only way to fix what the charities told us.',
+          'Because neither side was the problem. The problem was the hand-off between them. What matters is not how many apps there are, but that both sides see the same information and that someone is clearly in charge at every step. That is what fixes what the charities told us.',
         resultsLabel: 'Intended results',
         results:
           'Food collected while it is still safe to eat, charities able to plan because they know what is coming, and problems that get caught instead of food quietly going to waste. Researched with charity staff and fully planned out; each hoped-for result comes with the number that would prove it.',
@@ -119,7 +119,7 @@ export const hungerProject: CaseStudy = {
           kind: 'prose',
           body: [
             'Both sides were already trying. The restaurant wants the food eaten. The charity wants to collect it. What was missing was anything holding the hand-off together: no shared information, nobody clearly in charge at each step, and no way for either side to see what the other was doing.',
-            'So I drew the moments where responsibility passes from one to the other. The restaurant says the food is ready. The charity says how it will collect it. A delivery driver says yes or no. The charity is warned if a delivery fails. Every donation always has exactly one owner, and the two apps almost drew themselves out of that diagram.',
+            'So I drew the moments where responsibility passes from one to the other. The restaurant says the food is ready. The charity says how it will collect it. A delivery driver says yes or no. The charity is warned if a delivery fails. Every donation always has exactly one owner, and the screens for each side almost drew themselves out of that diagram.',
           ],
         },
         {
@@ -139,14 +139,14 @@ export const hungerProject: CaseStudy = {
       kind: 'step',
       id: 'step-02',
       index: '02',
-      nav: '02 One system, two roles',
-      problem: 'Two apps would rebuild the wall between them, in software',
-      intervention: 'so it became two roles in one system, with the same information for both',
+      nav: '02 Shared information, two roles',
+      problem: 'Each side could end up with its own version of a donation',
+      intervention: 'so both apps work from one shared record, with a clear owner at every step',
       blocks: [
         {
           kind: 'prose',
           body: [
-            'Separate apps are easier to plan and build, but they bring back the very gap that causes the problem. In a two-sided system, trust simply means both sides seeing the same thing at the same time. So sharing the same information from start to end was something we could not give up.',
+            'Restaurants and charities do very different things, so each gets its own app. But the apps must not each keep their own version of a donation, or the same gap that causes the problem comes back. In a two-sided system, trust simply means both sides seeing the same thing at the same time. So one shared record from start to end, and a clear owner at each step, was the part we could not give up.',
             'Two different menus sit on top of it, because the two sides behave very differently. Restaurants act quickly and not very often: list it, hand it over, done. Charities browse, weigh things up and plan: find food, check it, arrange collection.',
           ],
         },
@@ -154,9 +154,9 @@ export const hungerProject: CaseStudy = {
           kind: 'tradeoffs',
           items: [
             {
-              title: 'Two roles, one system',
+              title: 'Two apps, one shared record',
               cost: 'A lot more work for a project I started on my own.',
-              gain: 'Both sides see the same information at the same time, instead of rebuilding the wall between them in software.',
+              gain: 'Both sides see the same information at the same time, and always know who is in charge.',
             },
           ],
         },
@@ -268,8 +268,8 @@ export const hungerProject: CaseStudy = {
           why: 'A simpler system, with one set of steps to design. I said no because how much a charity can transport changes every day. Forcing pickup leaves out charities without vans; forcing delivery adds cost where it is not needed.',
         },
         {
-          option: 'Separate apps for restaurants and charities',
-          why: 'Easier to plan and build. I said no because it brings back the gap that causes the problem in the first place.',
+          option: 'Two apps that each keep their own records',
+          why: 'Easier to plan and build. I said no because each side would have its own version of a donation, which brings back the gap that causes the problem in the first place.',
         },
         {
           option: 'Aim for the most food donated',
@@ -303,7 +303,7 @@ export const hungerProject: CaseStudy = {
         {
           title: 'Two roles,',
           emphasis: 'one shared record',
-          body: 'Both sides read the same record, instead of each app holding half the story.',
+          body: 'Both apps read the same record, instead of each one holding half the story.',
         },
         {
           title: 'How it is collected is decided by',
@@ -326,7 +326,7 @@ export const hungerProject: CaseStudy = {
         {
           kind: 'prose',
           body: [
-            'Two-sided products for good causes fail when one side is an afterthought. The design work that mattered was not either app. It was the hand-off points between them, where responsibility passes on and where everything breaks today.',
+            'Two-sided products for good causes fail when one side is an afterthought. The design work that mattered was not either app on its own. It was the shared record and the hand-off points between the two sides, where responsibility passes on and where everything breaks today.',
             'Designing for charities that can do different amounts taught me not to force everything into one shape. The neat answer would have been one way to move food, and it would have left out most of the charities I talked to. And being able to plan beat amount as the thing worth aiming for, which was the opposite of what I first thought.',
           ],
         },

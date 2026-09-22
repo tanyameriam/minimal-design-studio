@@ -19,6 +19,7 @@ import {
   Shot,
   Points,
 } from '@/components/case-study/layrrrd/primitives';
+import { MoreDetail } from '@/components/case-study/slides/Slide';
 import { CaseStudyEntry } from '@/components/case-study/slides/Slide';
 import {
   Beside,
@@ -103,35 +104,21 @@ import telegramConnected from '@/assets/Layrrrd/layrrrd-telegram-connected.png';
 
 const storyline: Storyline = [
   {
-    n: '00',
-    name: 'Opening',
-    slides: [
-      { id: 'summary', title: 'What happened in nine days' },
-    ],
-  },
-  {
     n: '01',
     name: 'Finding the problem',
     target: 'behaviour',
     slides: [
       { id: 'behaviour', title: 'Good at saving, bad at finding' },
       { id: 'survey', title: 'The survey changed the problem' },
-      { id: 'interviews', title: 'Why the behaviour happened' },
-      { id: 'proposition', title: 'Testing the idea before building it' },
       { id: 'direction', title: 'We changed direction halfway' },
-      { id: 'scope', title: 'Deciding what to build first' },
-      { id: 'loop', title: 'How the app works' },
-      { id: 'brand', title: 'Giving the brand a job' },
     ],
   },
   {
     n: '02',
     name: 'Learning from use',
-    target: 'testing',
+    target: 'save-state',
     slides: [
-      { id: 'testing', title: 'Eight test sessions with users' },
       { id: 'save-state', title: 'Did it save?' },
-      { id: 'decisions', title: 'Four decisions that changed' },
     ],
   },
   {
@@ -141,7 +128,6 @@ const storyline: Storyline = [
     slides: [
       { id: 'pricing', title: 'Asking people to pay' },
       { id: 'outcome', title: 'Nine days later, 15 people had paid' },
-      { id: 'after', title: 'After day nine' },
       { id: 'today', title: 'The product today' },
       { id: 'reflection', title: 'What the nine days changed' },
     ],
@@ -277,44 +263,6 @@ const LayrrrdCaseStudy = () => {
           </div>
         </section>
 
-        {/* ================ 02 THE PROJECT IN 30 SECONDS =================== */}
-        <Slide id="summary" height="auto">
-          <Kicker label="The project in 30 seconds" />
-          <Headline>What happened in nine days</Headline>
-
-          <Progression
-            steps={[
-              {
-                name: 'Observation',
-                body: 'We saved things all the time and hardly ever went back.',
-              },
-              {
-                name: '86-person survey',
-                body: 'The bigger problem was finding things, not saving them.',
-              },
-              {
-                name: 'Interviews',
-                body: 'People wanted help without having to keep things tidy themselves.',
-              },
-              {
-                name: 'Testing the idea',
-                body: 'We tested the idea before building the whole product.',
-              },
-              {
-                name: 'A first working version',
-                body: 'Saving, finding, a library, and bringing things back.',
-              },
-              {
-                name: '8 user tests',
-                body: 'We changed the first steps, the save message and the menus.',
-              },
-              {
-                name: 'Payment',
-                body: '15 people paid by day nine.',
-              },
-            ]}
-          />
-        </Slide>
 
         {/* ============= 03 STARTING WITH A BEHAVIOUR ====================== */}
         <Slide id="behaviour" chapter="01" height="auto">
@@ -395,6 +343,7 @@ const LayrrrdCaseStudy = () => {
           </Note>
         </Slide>
 
+        <MoreDetail label="The follow-up conversations">
         {/* ============ 05 INTERVIEWS EXPLAINED THE BEHAVIOUR ============== */}
         <Slide id="interviews" chapter="01" height="auto">
           <Kicker label="The conversations" />
@@ -454,7 +403,9 @@ const LayrrrdCaseStudy = () => {
             ]}
           />
         </Slide>
+        </MoreDetail>
 
+        <MoreDetail label="Testing the idea with a website first">
         {/* ========= 06 TESTING THE IDEA BEFORE BUILDING THE PRODUCT ======= */}
         <Slide id="proposition" chapter="01" height="auto">
           <Kicker label="Testing the idea" />
@@ -481,6 +432,7 @@ const LayrrrdCaseStudy = () => {
             That was a cheaper way to test the idea before spending more coding time on it.
           </Lede>
         </Slide>
+        </MoreDetail>
 
         {/* ====== 07 THE DIRECTION CHANGED BEFORE THE MVP WAS FINISHED ===== */}
         <Slide id="direction" chapter="01" height="auto">
@@ -517,6 +469,7 @@ const LayrrrdCaseStudy = () => {
           </Lede>
         </Slide>
 
+        <MoreDetail label="What we chose to build first, and what we left out">
         {/* ==================== 08 DEFINING THE MVP ======================== */}
         <Slide id="scope" chapter="01" height="auto">
           <Kicker label="What to build first" />
@@ -561,7 +514,9 @@ const LayrrrdCaseStudy = () => {
             ]}
           />
         </Slide>
+        </MoreDetail>
 
+        <MoreDetail label="How the app works, step by step">
         {/* ================== 09 THE CORE PRODUCT LOOP ==================== */}
         <Slide id="loop" chapter="01" height="auto">
           <Kicker label="The product" />
@@ -604,7 +559,9 @@ const LayrrrdCaseStudy = () => {
             Users did not have to set up a way of sorting things before the app was useful.
           </Decision>
         </Slide>
+        </MoreDetail>
 
+        <MoreDetail label="Rudolf, and the brand">
         {/* ============== 10 GIVING THE BRAND A ROLE ====================== */}
         <Slide id="brand" chapter="01" height="auto">
           <Kicker label="Brand" />
@@ -619,10 +576,12 @@ const LayrrrdCaseStudy = () => {
           </Lede>
 
         </Slide>
+        </MoreDetail>
 
+        <MoreDetail label="Everything the eight user tests found">
         {/* ========= 11 PUTTING THE PRODUCT IN FRONT OF USERS ============== */}
         <Slide id="testing" chapter="02" height="auto">
-          <Kicker n="02" label="Learning from use" />
+          <Kicker label="The eight user tests" />
           <Headline>
             Once people could use the product,{' '}
             <Em>we learned things interviews couldn&rsquo;t tell us.</Em>
@@ -694,10 +653,11 @@ const LayrrrdCaseStudy = () => {
             ]}
           />
         </Slide>
+        </MoreDetail>
 
         {/* ============ 12 DEEP DIVE: THE SAVE-STATE PROBLEM ============== */}
         <Slide id="save-state" chapter="02" height="auto">
-          <Kicker label="A closer look" />
+          <Kicker n="02" label="Learning from use" />
           <Headline>
             The save was fast. <Em>But the app did not show it clearly.</Em>
           </Headline>
@@ -761,45 +721,6 @@ const LayrrrdCaseStudy = () => {
           </Lede>
         </Slide>
 
-        {/* ========= 13 THE PRODUCT CHANGED BECAUSE OF WHAT WE LEARNED ===== */}
-        <Slide id="decisions" chapter="02" height="auto">
-          <Kicker label="What changed" />
-          <Headline>Four decisions changed during the sprint.</Headline>
-
-          <Pivots
-            rows={[
-              {
-                from: 'Empty library',
-                to: 'Useful first session',
-                problem: 'A new library has nothing useful in it yet.',
-                change:
-                  'Give people something useful right away, instead of making them wait weeks for saved things to pile up.',
-              },
-              {
-                from: 'Sending on a schedule',
-                to: 'Finding things first',
-                problem:
-                  'Some users wanted information when they needed it, not only on a schedule.',
-                change: 'Finding things became the heart of the app.',
-              },
-              {
-                from: 'Aiming at certain jobs',
-                to: 'Aiming at people who save a lot',
-                problem: 'People in all kinds of jobs had the same habit.',
-                change:
-                  'We stopped choosing our first users by their job, and focused on people who save things all the time.',
-              },
-              {
-                from: 'Monthly payments',
-                to: 'Founding Membership',
-                problem:
-                  'Setting up monthly payments was too much work for a nine-day test.',
-                change:
-                  'We offered a limited, one-time Founding Membership to see if people would pay.',
-              },
-            ]}
-          />
-        </Slide>
 
         {/* ================== 14 ASKING PEOPLE TO PAY ===================== */}
         <Slide id="pricing" chapter="03" height="auto">
@@ -868,6 +789,7 @@ const LayrrrdCaseStudy = () => {
           <Chain steps={['Day 1', 'Day 9', '15 paying customers']} dense />
         </Slide>
 
+        <MoreDetail label="What we added after day nine">
         {/* ======================= 16 AFTER DAY NINE ====================== */}
         <Slide id="after" chapter="03" height="auto">
           <Kicker label="After the nine days" />
@@ -899,6 +821,7 @@ const LayrrrdCaseStudy = () => {
             ]}
           />
         </Slide>
+        </MoreDetail>
 
         {/* ====================== 17 THE PRODUCT TODAY ==================== */}
         <Slide id="today" chapter="03" height="auto">

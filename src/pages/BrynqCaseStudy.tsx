@@ -20,6 +20,7 @@ import FadeInImage from '@/components/FadeInImage';
 import { type Storyline } from '@/components/story/Storyline';
 import { ReadingNav } from '@/design/ReadingNav';
 import {
+  MoreDetail,
   Slide,
   Kicker,
   Headline,
@@ -35,7 +36,6 @@ import {
   Journey,
   Continuum,
   Count,
-  CapacityYear,
   Ecosystem,
   Fan,
   HandoffChain,
@@ -185,7 +185,6 @@ const storyline: Storyline = [
     slides: [
       { id: 'hero', title: 'BrynQ, and what changed' },
       { id: 'reframing', title: 'How the project changed' },
-      { id: 'timeline', title: 'The five parts' },
     ],
   },
   {
@@ -194,9 +193,6 @@ const storyline: Storyline = [
     target: 'ch-understand',
     slides: [
       { id: 'discovery', title: 'Many customers did not think they needed BrynQ' },
-      { id: 'tension', title: 'What customers wanted, and what the business needed' },
-      { id: 'ia', title: 'Sorting out what goes where' },
-      { id: 'into-02', title: 'How does a connection really get made?' },
     ],
   },
   {
@@ -205,12 +201,8 @@ const storyline: Storyline = [
     target: 'ch-reframe',
     slides: [
       { id: 'journey', title: 'Following one connection from sale to launch' },
-      { id: 'the-question', title: 'Connections were not made in BrynQ' },
       { id: 'artefact-scenario', title: 'The real work happened in a spreadsheet' },
-      { id: 'behind', title: 'Looking behind the screens' },
       { id: 'hidden-asset', title: 'Know-how that nobody had built into the product' },
-      { id: 'direction', title: 'From one-off work to reusable steps' },
-      { id: 'into-explore', title: 'How much should customers do on their own?' },
     ],
   },
   {
@@ -219,9 +211,7 @@ const storyline: Storyline = [
     target: 'ch-explore',
     slides: [
       { id: 'ai-concept', title: 'Could a chat set up a connection?' },
-      { id: 'ai-interaction', title: 'How the chat actually works' },
       { id: 'ai-research', title: 'Easier did not mean customers wanted to do it all' },
-      { id: 'ai-pivot', title: 'What the test taught us' },
     ],
   },
   {
@@ -231,22 +221,15 @@ const storyline: Storyline = [
     slides: [
       { id: 'from-ai-to-templates', title: 'From doing it alone to doing it with help' },
       { id: 'template-foundation', title: 'Do not rebuild what BrynQ already knows' },
-      { id: 'template-model', title: 'How templates work' },
-      { id: 'one-to-many', title: 'One template, many customers' },
+      { id: 'template-model', title: 'What customers use today' },
       { id: 'delivery-impact', title: 'Months of setup become weeks' },
     ],
   },
   {
     n: '05',
-    name: 'Grow',
-    target: 'ch-scale',
+    name: 'Looking back',
     slides: [
-      { id: 'why-it-matters', title: 'Why faster setup matters to the business' },
-      { id: 'capacity', title: 'If 26 weeks becomes 2 weeks' },
-      { id: 'business-model', title: 'From repeating the same work to building it once' },
-      { id: 'as-a-designer', title: 'What this meant for me as a designer' },
       { id: 'learned', title: 'What I learned' },
-      { id: 'recap', title: 'The story in fifteen lines' },
     ],
   },
 ];
@@ -378,10 +361,6 @@ const BrynqCaseStudy = () => {
                     caption: 'Expected cut in the time it takes to set up',
                   },
                   {
-                    figure: <Count to={13} prefix="~" suffix="×" />,
-                    caption: 'Expected number of times more setups the same team can do',
-                  },
-                  {
                     figure: '2× easier',
                     caption: 'What the project manager told us after templates arrived',
                   },
@@ -397,9 +376,10 @@ const BrynqCaseStudy = () => {
               </dl>
 
               <Footnote>
-                The first three numbers are estimates. They are based on setup going from about 26
-                weeks of one-off work to about 2 weeks with a template. The fourth is what the
-                project manager told us.
+                The first two numbers are estimates of setup time, based on a standard connection
+                going from about 26 weeks of one-off work to about 2 weeks with a template. They
+                have not yet been validated in production. The third is what the project manager
+                told us.
               </Footnote>
             </div>
           </div>
@@ -493,8 +473,8 @@ const BrynqCaseStudy = () => {
                   integrations themselves?
                 </>
               }
-              next="Deciding how much customers do themselves"
-              nextHref="#timeline"
+              next="Understand: why customers were not using BrynQ"
+              nextHref="#ch-understand"
             >
               That new question changed the project. It was no longer about redesigning screens.
               It was about changing how BrynQ was set up and used.
@@ -502,55 +482,6 @@ const BrynqCaseStudy = () => {
           </Reveal>
         </Slide>
 
-        {/* ==================== TRANSFORMATION TIMELINE ==================== */}
-        <Slide id="timeline" height="tall">
-          <Kicker label="The five parts" />
-          <Headline level={3}>How the project unfolded</Headline>
-          <Lede wide>
-            It started as a problem with an app that was hard to use. Bit by bit, it became a
-            rethink of how BrynQ, its customers and its team work together. Each part below is
-            one step along the way. You can jump into any of them.
-          </Lede>
-
-          <div className="mt-stage">
-            <Journey
-              stages={[
-                {
-                  n: '01',
-                  name: 'Understand',
-                  question: "Why weren't customers using BrynQ?",
-                  href: '#ch-understand',
-                },
-                {
-                  n: '02',
-                  name: 'Rethink',
-                  question: 'Why were connections made outside the product?',
-                  href: '#ch-reframe',
-                  turn: true,
-                },
-                {
-                  n: '03',
-                  name: 'Explore',
-                  question: 'Could a chat take away the technical hard parts?',
-                  href: '#ch-explore',
-                },
-                {
-                  n: '04',
-                  name: 'Build it in',
-                  question:
-                    'How could the team’s repeated know-how become ready-made templates?',
-                  href: '#ch-productise',
-                },
-                {
-                  n: '05',
-                  name: 'Grow',
-                  question: 'What happens when setup drops from months to weeks?',
-                  href: '#ch-scale',
-                },
-              ]}
-            />
-          </div>
-        </Slide>
 
         {/* ========================= 01 UNDERSTAND ========================= */}
         <ChapterOpen
@@ -686,52 +617,8 @@ const BrynqCaseStudy = () => {
           </Pov>
         </Slide>
 
-        <Slide id="tension" chapter="01" height="tall">
-          <Kicker label="What customers wanted vs what the business needed" />
-          <Headline level={3}>
-            Customers wanted things simple. <Em>The business needed customers to manage on their own.</Em>
-          </Headline>
 
-          <div className="mt-stage">
-            <Split
-              left={{
-                label: 'What customers said',
-                children: (
-                  <div className="space-y-8">
-                    <p className="text-xl leading-snug md:text-[1.75rem]">
-                      &ldquo;I just want the integration to work.&rdquo;
-                    </p>
-                    <p className="text-xl leading-snug md:text-[1.75rem]">
-                      &ldquo;I don&rsquo;t want to become an expert in connecting systems.&rdquo;
-                    </p>
-                    <p className="text-xl leading-snug md:text-[1.75rem]">
-                      &ldquo;I still want help when I need it.&rdquo;
-                    </p>
-                  </div>
-                ),
-              }}
-              right={{
-                label: 'What the business needed',
-                children: (
-                  <div className="space-y-8">
-                    <p className="text-lg leading-[1.55] text-ink-600 md:text-xl">
-                      Over time, BrynQ needed customers to get better and better at setting up
-                      and managing their own connections, so the company would not have to
-                      hire more people for every new customer.
-                    </p>
-                  </div>
-                ),
-              }}
-              centre={
-                <>
-                  My job was to find the place where customers could feel confident{' '}
-                  <Em>and the business could still grow.</Em>
-                </>
-              }
-            />
-          </div>
-        </Slide>
-
+        <MoreDetail label="How I mapped and regrouped the product">
         <Slide id="ia" chapter="01" height="auto">
           <Kicker label="Making sense of the product" />
           <Headline level={3}>
@@ -788,21 +675,8 @@ const BrynqCaseStudy = () => {
             </p>
           </div>
         </Slide>
+        </MoreDetail>
 
-        {/* Handoff into chapter 02. */}
-        <Slide id="into-02" chapter="01" height="short">
-          <Headline level={3}>
-            That led to a bigger question:{' '}
-            <Em>how does a BrynQ connection really get made?</Em>
-          </Headline>
-          <div className="mt-break">
-            <Takeaway label="Where part 01 left us" next="A new question" nextHref="#ch-reframe">
-              Customers were not avoiding BrynQ because they were lazy. The product simply was not
-              where connections got made. To redesign it properly, I had to follow the whole
-              journey, from the sale to a working connection.
-            </Takeaway>
-          </div>
-        </Slide>
 
         {/* ========================== 02 REFRAME ========================== */}
         <ChapterOpen
@@ -898,92 +772,6 @@ const BrynqCaseStudy = () => {
           </Pov>
         </Slide>
 
-        <Slide id="the-question" chapter="02" height="auto">
-          <Kicker label="The real connection" />
-
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-16">
-            <div>
-              <Headline level={3}>
-                We called them BrynQ interfaces.{' '}
-                <Em>But they weren&rsquo;t really made in BrynQ.</Em>
-              </Headline>
-              <p className="mt-8 max-w-[36ch] text-base leading-[1.6] text-ink-600 md:mt-10 md:text-lg">
-                The real work happened in places that were never built for it. That was where the
-                work got done, the choices were made and the systems were joined up.
-              </p>
-            </div>
-
-            {/*
-              Four places against two verbs. The panes are sized to the lists
-              they hold, so the imbalance is in the layout as well as the words.
-            */}
-            <div className="grid gap-3 sm:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:self-end">
-              {[
-                {
-                  Icon: Table2,
-                  title: 'Where connections were really made',
-                  items: [
-                    'Meetings',
-                    'Spreadsheets',
-                    'Configuration exchanges',
-                    'Developer work',
-                  ],
-                },
-                {
-                  Icon: PlayCircle,
-                  title: 'What the product ended up doing',
-                  items: ['Run', 'Monitor'],
-                },
-              ].map(({ Icon, title, items }) => (
-                <div key={title} className="panel p-5 md:p-6">
-                  <span className="panel-chip flex h-9 w-9 items-center justify-center rounded-md">
-                    <Icon aria-hidden="true" className="h-4 w-4 text-accent" strokeWidth={1.5} />
-                  </span>
-                  <p className="mt-5 text-base leading-snug md:text-lg">{title}</p>
-                  <ul className="mt-5">
-                    {items.map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-center gap-3 border-b border-border py-3 text-sm leading-snug text-ink-600 last:border-0 last:pb-0 md:text-base"
-                      >
-                        <span
-                          aria-hidden="true"
-                          className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
-                        />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* The question and its answer, kept on one line so neither drifts. */}
-          <div className="panel mt-stage grid items-center gap-8 p-6 md:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)_auto] lg:gap-12">
-            <div className="flex items-center gap-5">
-              <span className="panel-chip flex h-11 w-11 shrink-0 items-center justify-center rounded-lg">
-                <Lightbulb aria-hidden="true" className="h-5 w-5 text-accent" strokeWidth={1.5} />
-              </span>
-              <p className="text-xl leading-snug md:text-2xl">
-                So what was the product actually doing?
-              </p>
-            </div>
-
-            <p className="text-sm leading-[1.6] text-ink-600 md:text-base lg:border-l lg:border-border lg:pl-12">
-              Mostly, it had become a screen where finished connections could be run and watched.
-              Everything else happened somewhere else.
-            </p>
-
-            <a
-              href="#artefact-scenario"
-              className="panel-chip flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition-colors hover:bg-foreground hover:text-background"
-            >
-              <ArrowRight aria-hidden="true" className="h-4 w-4" strokeWidth={1.5} />
-              <span className="sr-only">Where the connection was really made</span>
-            </a>
-          </div>
-        </Slide>
 
         <Slide id="artefact-scenario" chapter="02" height="auto">
           <div className="grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.75fr)] lg:items-start lg:gap-14">
@@ -1067,6 +855,7 @@ const BrynqCaseStudy = () => {
           </ul>
         </Slide>
 
+        <MoreDetail label="What was different for each customer, and what repeated">
         <Slide id="behind" chapter="02" height="auto">
           <Kicker label="Looking behind the product" />
           <Headline level={3}>I started looking behind the screens.</Headline>
@@ -1119,6 +908,7 @@ const BrynqCaseStudy = () => {
             started looking like a feature that nobody had built yet.
           </Pov>
         </Slide>
+        </MoreDetail>
 
         <Slide id="hidden-asset" chapter="02" height="auto">
           <Kicker label="Reusable knowledge within the team" />
@@ -1218,96 +1008,7 @@ const BrynqCaseStudy = () => {
           </p>
         </Slide>
 
-        <Slide id="direction" chapter="02" height="auto">
-          <Kicker label="Before, and the new direction" />
-          <Headline level={3}>From one-off setup work to steps the product can reuse</Headline>
 
-          {/*
-            Seven bespoke steps against six reusable ones, with the strands
-            funnelling through a single point between them. Only the right
-            panel is drawn in the accent, because only one of the two is where
-            the product was going.
-          */}
-          <div className="mt-stage grid items-stretch gap-10 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:gap-6">
-            <div className="panel flex flex-col border border-border p-6 md:p-8">
-              <p className="label inline-flex w-fit rounded-md border border-border px-2.5 py-1.5 text-ink-500">
-                Before
-              </p>
-              <div className="mt-8 flex-1">
-                <NumberedFlow
-                  steps={[
-                    'One customer',
-                    'Project manager',
-                    'Developer',
-                    'Custom mapping',
-                    'Custom implementation',
-                    'Testing',
-                    'Working interface',
-                  ]}
-                />
-              </div>
-              <div className="mt-10 border-t border-border pt-8">
-                <p className="text-[2rem] leading-none md:text-[2.5rem]">~6 months</p>
-                <div className="mt-5">
-                  <Evidence kind="observed" />
-                </div>
-              </div>
-            </div>
-
-            {/* The turn itself: many paths in, one out. */}
-            <div className="hidden lg:flex lg:w-36 lg:flex-col lg:items-center lg:justify-center xl:w-44">
-              <Converge aria-hidden="true" className="h-52 w-full text-ink-400" />
-              <p className="mt-8 max-w-[18ch] text-center text-sm leading-snug text-ink-500">
-                Turning one-off work into steps that can be reused again and again.
-              </p>
-            </div>
-
-            <div className="panel flex flex-col border border-accent p-6 md:p-8">
-              <p className="label inline-flex w-fit rounded-md border border-accent px-2.5 py-1.5 text-accent">
-                New direction
-              </p>
-              <div className="mt-8 flex-1">
-                <NumberedFlow
-                  steps={[
-                    'Steps we already know',
-                    'Reusable template',
-                    'Customer configuration',
-                    'Validation',
-                    'Testing',
-                    'Working interface',
-                  ]}
-                />
-              </div>
-              <div className="mt-10 border-t border-border pt-8">
-                <p className="text-[2rem] leading-none md:text-[2.5rem]">~2 weeks</p>
-                <div className="mt-5">
-                  <Evidence kind="direction" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <p className="mt-stage max-w-[22ch] text-[1.75rem] leading-tight md:text-[3rem]">
-            Build the known parts once. <Em>Ask customers only for what is different.</Em>
-          </p>
-
-          <Pov kind="business">
-            This changed how the money worked. Instead of repeating the same setup work for
-            every customer, the team would build things once and reuse them for all of them.
-          </Pov>
-        </Slide>
-
-        {/* Handoff into chapter 03. */}
-        <Slide id="into-explore" chapter="02" height="short">
-          <Headline level={3}>But how much should customers really do on their own?</Headline>
-          <div className="mt-break">
-            <Takeaway label="Where part 02 left us" next="Trying an idea" nextHref="#ch-explore">
-              The business wanted customers to manage on their own. The customers I spoke with
-              still wanted to feel safe, and to have real people to help. Before choosing a middle
-              point, we tested the most extreme version first.
-            </Takeaway>
-          </div>
-        </Slide>
 
         {/* ========================== 03 EXPLORE ========================== */}
         <ChapterOpen
@@ -1425,6 +1126,7 @@ const BrynqCaseStudy = () => {
           </div>
         </Slide>
 
+        <MoreDetail label="How the chat worked, step by step">
         <Slide id="ai-interaction" chapter="03" height="auto">
           <Kicker label="How the chat works" />
           <Headline level={3}>
@@ -1516,6 +1218,7 @@ const BrynqCaseStudy = () => {
             </p>
           </div>
         </Slide>
+        </MoreDetail>
 
         <Slide id="ai-research" chapter="03" height="auto">
           <Kicker label="The research changed the plan" />
@@ -1623,39 +1326,6 @@ const BrynqCaseStudy = () => {
           </Pov>
         </Slide>
 
-        <Slide id="ai-pivot" chapter="03" height="auto">
-          <Kicker label="The change of plan" />
-          <Headline level={3}>The test showed us how much customers should do on their own.</Headline>
-
-          {/* Four beats of one decision, read left to right. */}
-          <div className="mt-stage">
-            <Stages
-              items={[
-                {
-                  label: 'What we first guessed',
-                  text: 'AI could guide the whole setup.',
-                },
-                {
-                  label: 'What research showed',
-                  text: 'Customers wanted to do more themselves, but still wanted to feel safe.',
-                },
-                { label: 'Where the product went', text: <Em>Doing it yourself, with help.</Em> },
-                {
-                  label: 'What customers touch',
-                  text: 'Templates become the main thing customers work with.',
-                },
-              ]}
-            />
-          </div>
-
-          <div className="mt-stage">
-            <Takeaway label="Where part 03 left us" next="Building it into the product" nextHref="#ch-productise">
-              The test did not fail. It showed us the right way for it to work: the product should
-              bring the steps we already know, and customers should fill in only what is
-              different for them.
-            </Takeaway>
-          </div>
-        </Slide>
 
         {/* ========================= 04 PRODUCTISE ========================= */}
         <ChapterOpen
@@ -1806,48 +1476,11 @@ const BrynqCaseStudy = () => {
         </Slide>
 
         <Slide id="template-model" chapter="04" height="auto">
-          <Kicker label="How templates work" />
+          <Kicker label="What customers use today" />
           <Headline level={3}>
-            Templates turned work the team kept repeating into{' '}
-            <Em>something the product does for you.</Em>
+            Pick a template, see exactly what it will do,{' '}
+            <Em>then fill in only what is yours.</Em>
           </Headline>
-
-          <div className="mt-stage">
-            <div className="grid gap-3 md:grid-cols-3">
-              <ProvideCard
-                label="BrynQ provides"
-                title="The known parts"
-                points={[
-                  'How the connection is built',
-                  'Standard mappings',
-                  'Transformations',
-                  'Steps needed to connect',
-                  'Validation logic',
-                  'Guided setup',
-                ]}
-              />
-              <ProvideCard
-                label="The customer provides"
-                title="Only what is theirs"
-                points={[
-                  'Credentials',
-                  'Details only their company has',
-                  'Required selections',
-                  'Exceptions',
-                ]}
-              />
-              <ProvideCard
-                label="Real people provide"
-                title="The feeling of being safe"
-                points={['Peace of mind', 'Checking', 'Someone to call when stuck', 'Help with hard cases']}
-              />
-            </div>
-            <ConvergeFoot>A working connection</ConvergeFoot>
-          </div>
-
-          <p className="mt-stage max-w-[24ch] text-[1.75rem] leading-tight md:text-[3rem]">
-            One-off setup work becomes <Em>step-by-step setup.</Em>
-          </p>
 
           {/*
             The same model as it actually shipped. Two frames, because guided
@@ -1882,6 +1515,7 @@ const BrynqCaseStudy = () => {
           </div>
         </Slide>
 
+        <MoreDetail label="The template library">
         <Slide id="one-to-many" chapter="04" height="tall">
           <Kicker label="One template, many customers" />
           <Headline level={3}>
@@ -1935,6 +1569,7 @@ const BrynqCaseStudy = () => {
             needs. The cost of setting up stops growing with every new customer.
           </Pov>
         </Slide>
+        </MoreDetail>
 
         <Slide id="delivery-impact" chapter="04" height="auto">
           <Kicker label="What it changes" />
@@ -1964,22 +1599,18 @@ const BrynqCaseStudy = () => {
             </div>
           </div>
 
-          <div className="mt-stage grid gap-10 border-t border-border pt-12 md:grid-cols-3">
+          <div className="mt-stage grid gap-10 border-t border-border pt-12 md:grid-cols-2">
             <Metric
               figure={<Count to={92} prefix="~" suffix="%" />}
               caption="Less time to set up, if it works as planned"
-            />
-            <Metric
-              figure={<Count to={13} prefix="~" suffix="×" />}
-              caption="More setups the same team could do, on paper"
             />
             <Metric figure="2× easier" caption="What the project manager told us" />
           </div>
 
           <Footnote>
-            The 2× easier number is what the project manager told us. The time and team numbers
-            are examples, worked out from setup going from about 26 weeks to about 2 weeks for
-            a standard connection.
+            The 2× easier number is what the project manager told us. The setup-time number is
+            an estimate, worked out from a standard connection going from about 26 weeks to about
+            2 weeks. It has not yet been validated in production.
           </Footnote>
 
           {/*
@@ -2029,158 +1660,9 @@ const BrynqCaseStudy = () => {
         </Slide>
 
         {/* =========================== 05 SCALE =========================== */}
-        <ChapterOpen
-          id="ch-scale"
-          n="05"
-          name="Grow"
-          title="What could change for the business"
-          question="What could happen if setup drops from months to weeks?"
-        />
 
-        <Slide id="why-it-matters" chapter="05" height="tall">
-          <Kicker label="Why faster setup matters to the business" />
-          <Headline level={3}>
-            Faster setup is not only about making the product nicer to use.{' '}
-            <Em>It would change how far the business can grow.</Em>
-          </Headline>
 
-          <div className="mt-stage grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-20">
-            <Cascade
-              steps={[
-                '~2 weeks instead of ~6 months',
-                'The team can do more setups',
-                'More new customers up and running',
-                'Growing without hiring someone for every new customer',
-              ]}
-            />
-            <div className="flex flex-col justify-center">
-              <p className="max-w-md text-base leading-[1.6] text-ink-600 md:text-lg">
-                These projections have not yet been validated in production.
-                The chance here is not only saving time: the same team could
-                help more customers.
-              </p>
-            </div>
-          </div>
-        </Slide>
 
-        <Slide id="capacity" chapter="05" height="auto">
-          <Kicker label="What the team could do" />
-          <Headline level={3}>What could happen if 26 weeks of work becomes 2 weeks?</Headline>
-
-          <div className="mt-stage grid gap-12 lg:grid-cols-2 lg:gap-16">
-            <CapacityYear
-              label="The old way"
-              cycle="~26 weeks per setup"
-              count={2}
-              result="~2 setups a year"
-            />
-            <CapacityYear
-              label="With templates"
-              cycle="~2 weeks per setup"
-              count={26}
-              result="~26 setups a year"
-            />
-          </div>
-
-          <div className="mt-stage grid gap-10 border-t border-border pt-12 md:grid-cols-2">
-            <Metric
-              figure={<Count to={92} prefix="~" suffix="%" />}
-              caption="Expected cut in setup time"
-            />
-            <Metric
-              figure={<Count to={13} prefix="~" suffix="×" />}
-              caption="Expected setups per person, compared with before"
-            />
-          </div>
-
-          <div className="mt-12">
-            <Evidence kind="illustrative" />
-          </div>
-
-          <Footnote>
-            This projection is based on how long each setup takes, not how many are done today.
-            The real number would depend on sales, how hard each connection is, the size of
-            the team, how ready customers are, and how much help they need.
-          </Footnote>
-        </Slide>
-
-        <Slide id="business-model" chapter="05" height="auto">
-          <Kicker label="How the business could change" />
-          <Headline level={3}>
-            The real change is not from six months to two weeks.{' '}
-            <Em>It is from doing the same work by hand to building it into the product once.</Em>
-          </Headline>
-
-          <div className="mt-stage grid gap-8 lg:grid-cols-2">
-            <Ecosystem
-              label="Before"
-              inside={['Run connection', 'Watch it', 'Read logs']}
-              around={[
-                'PM-heavy coordination',
-                'Developers do the setup',
-                'Manual mapping',
-                'Customer dependency',
-                'The same one-off work, again and again',
-              ]}
-            />
-            <Ecosystem
-              label="Where it is heading"
-              inside={['Pick', 'Fill in', 'Check', 'Test', 'Go live', 'Manage']}
-              around={[
-                'Reusable templates',
-                'Customers set up, step by step',
-                'Human support',
-                'Repeatable integrations',
-                'Faster onboarding',
-                'Scalable delivery',
-              ]}
-              emphasis
-            />
-          </div>
-
-          <p className="mt-stage max-w-[26ch] text-[1.75rem] leading-tight md:text-[3rem]">
-            From selling the same setup work again and again, to building{' '}
-            <Em>connections the product can reuse.</Em>
-          </p>
-        </Slide>
-
-        {/* ========================== REFLECTION ========================== */}
-        <Slide id="as-a-designer" chapter="05" height="tall">
-          <Kicker label="What this meant for me as a designer" />
-          <Headline level={3}>This stopped being only about screens.</Headline>
-
-          <div className="mt-stage grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-20">
-            <div>
-              <Lede wide>
-                I started out thinking mostly about making the product easy to use. The more I
-                talked to users and followed how setup really happened, the clearer it became that
-                the screens were only one part of the problem.
-              </Lede>
-              <p className="label mt-12 text-ink-500">The questions that got more interesting</p>
-              <ul className="mt-6 space-y-4">
-                {[
-                  'What should the product take care of?',
-                  'What should the customer be able to do?',
-                  'What should remain human?',
-                  'Which of the team’s know-how should become part of the product?',
-                  'How can good design help the business make money?',
-                ].map((q) => (
-                  <li key={q} className="flex gap-4 text-base leading-snug text-ink-600 md:text-lg">
-                    <span aria-hidden="true" className="mt-3 h-px w-4 shrink-0 bg-ink-400" />
-                    {q}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="flex flex-col justify-center">
-              <p className="label-strong mb-8">How the project grew</p>
-              <Ladder
-                rungs={['Screens', 'How work flows', 'The service', 'What the product does', 'The business']}
-              />
-            </div>
-          </div>
-        </Slide>
 
         <Slide id="learned" chapter="05" height="full" invert center>
           <p className="label-strong">What I learned</p>
@@ -2224,36 +1706,6 @@ const BrynqCaseStudy = () => {
           </div>
         </Slide>
 
-        {/* Quick-scan recap, for anyone who scrolled fast and wants the spine. */}
-        <Slide id="recap" chapter="05" height="auto">
-          <Kicker label="The story in fifteen lines" />
-          <ol className="grid gap-x-16 gap-y-5 md:grid-cols-2">
-            {[
-              'Customers hardly used BrynQ.',
-              'I researched why.',
-              'The real problem was bigger than a hard-to-use app.',
-              'Connections took ~6 months, and were mostly made outside BrynQ.',
-              'I asked what the product should really be in charge of.',
-              'We tried removing the technical hard parts completely, with a chat.',
-              'Research said customers wanted to do it themselves, but not alone.',
-              'The answer: customers do it themselves, with help.',
-              'Developers already knew a lot that could be reused.',
-              'We turned the repeated setup steps into templates.',
-              'AI moved behind the scenes, helping developers build templates faster.',
-              'Our estimate: ~6 months could become ~2 weeks, ~92% less time.',
-              'Our estimate: the same team could do ~13× more setups.',
-              'That would mean more customers, with the same team.',
-              'The project grew from redesigning screens to redesigning the product and the service.',
-            ].map((line, i) => (
-              <li key={line} className="flex gap-5 border-b border-border py-3">
-                <span className="label w-6 shrink-0 pt-1.5 tabular-nums text-ink-500">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <span className="text-base leading-snug md:text-lg">{line}</span>
-              </li>
-            ))}
-          </ol>
-        </Slide>
       </main>
 
       <Lightbox figure={figure} onClose={close} />

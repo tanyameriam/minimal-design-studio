@@ -8,7 +8,6 @@ import {
   StepRail,
 } from '@/components/case-study/slides/boards';
 import {
-  CapacityYear,
   Ecosystem,
   IaMap,
   MappingCanvas,
@@ -63,7 +62,7 @@ import templatePicker from '@/assets/brynq/template-picker.png';
  *
  * Figures are standardised with the long page: ~6 months of custom
  * implementation, observed; ~2 weeks under the template model, projected;
- * ~92% and ~13x, projected. Nothing here claims a measured result.
+ * ~92% shorter setup, projected. Nothing here claims a measured result.
  */
 
 /** The transition, in order. Each milestone deepens on the long case study. */
@@ -660,38 +659,21 @@ const ScaleSlide = () => (
   <div>
     <Chapter n="05" label="Grow · What could change for the business" />
     <H>
-      What could happen if 26 weeks of work <Em>becomes 2 weeks?</Em>
+      Setup could drop from about 26 weeks <Em>to about 2 weeks.</Em>
     </H>
     <Body>
-      These projections have not yet been validated in production.
-      The chance here is not only saving time: the same team could
-      help more customers.
+      These projections have not yet been validated in production. Shorter setup does not by
+      itself mean the team can take on more customers: that would also depend on staffing, how
+      many projects run at once, and demand, none of which we have measured.
     </Body>
 
-    <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-14">
-      <CapacityYear
-        label="The old way"
-        cycle="~26 weeks per setup"
-        count={2}
-        result="~2 setups a year"
-      />
-      <CapacityYear
-        label="With templates, estimated"
-        cycle="~2 weeks per setup"
-        count={26}
-        result="~26 setups a year"
-      />
-    </div>
-
-    <div className="mt-12 grid max-w-2xl gap-x-12 gap-y-8 border-t border-border pt-10 sm:grid-cols-2">
-      <Metric figure="~92%" caption="Expected cut in setup time" />
-      <Metric figure={<>~13&times;</>} caption="Expected setups per person, compared with before" />
+    <div className="mt-12 max-w-sm border-t border-border pt-10">
+      <Metric figure="~92%" caption="Expected cut in setup time for a standard connection" />
     </div>
 
     <p className="label mt-10 inline-block border border-dashed border-border px-2 py-1 text-ink-400">
-      Illustrative
+      Estimate
     </p>
-    <Voice>That would mean more customers, with the same team.</Voice>
   </div>
 );
 

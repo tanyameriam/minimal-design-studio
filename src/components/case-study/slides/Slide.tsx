@@ -290,3 +290,30 @@ export const CaseStudyEntry = ({
     </p>
   </div>
 );
+
+/**
+ * Supporting research and workflows, folded away.
+ *
+ * The main read keeps the decisions, the outcome and the reflection. The
+ * slides that show how the work was done in depth sit behind this, closed
+ * by default, so a reader who wants them is one click away and a reader who
+ * does not is not made to scroll past them. Slides inside are left out of
+ * the page's heading bar, because they are not part of the main story.
+ */
+export const MoreDetail = ({ label, children }: { label: string; children: ReactNode }) => (
+  <details className="group border-t border-border">
+    <summary className="mx-auto flex w-full max-w-[var(--shell)] cursor-pointer list-none items-center justify-between gap-6 px-gutter py-7 text-ink-600 transition-colors hover:text-foreground [&::-webkit-details-marker]:hidden">
+      <span className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+        <span className="label text-ink-500">More detail</span>
+        <span className="text-base md:text-lg">{label}</span>
+      </span>
+      <span
+        aria-hidden="true"
+        className="text-2xl leading-none transition-transform duration-300 ease-smooth group-open:rotate-45"
+      >
+        +
+      </span>
+    </summary>
+    {children}
+  </details>
+);

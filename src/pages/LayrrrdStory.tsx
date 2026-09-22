@@ -16,7 +16,7 @@ import { usePageMeta } from '@/hooks/use-page-meta';
  * own consistency.
  */
 
-const MOVES = ['Capture', 'The digest', 'System and brand', 'Pricing'];
+const MOVES = ['Capture', 'Finding things', 'System and brand', 'Pricing'];
 
 /** Where we are among the four moves. Echoes across the move slides. */
 const MoveStrip = ({ active }: { active: number }) => (
@@ -54,8 +54,8 @@ const CoverSlide = () => (
     </h1>
 
     <p className="mt-8 max-w-2xl text-base leading-[1.55] text-ink-600 md:text-lg">
-      Layrrrd saves the things you collect from anywhere, sums them up, and sends a hand-picked
-      digest back to you. Tested in nine days, and still growing. Live at layrrrd.com.
+      Layrrrd saves the things you collect from anywhere, sums them up, and helps you find them
+      again when you need them. Tested in nine days, and still growing. Live at layrrrd.com.
     </p>
 
     <div className="mt-break grid max-w-2xl gap-x-12 gap-y-8 sm:grid-cols-2">
@@ -166,9 +166,9 @@ const BetSlide = () => (
         In the pitch, but on purpose not in the product. Tips without enough content behind
         them are just noise, and the main idea needed those days.
       </Panel>
-      <Panel label="Option C · Chosen" title="Digest first" strong>
-        Sum things up when they are saved. Send a hand-picked digest back on a schedule. The
-        app stops waiting for people to come back.
+      <Panel label="Option C · Chosen on day one" title="Digest first" strong>
+        Sum things up when they are saved. Send a hand-picked digest back on a schedule. Our
+        first bet. Research later moved finding things to the centre.
       </Panel>
     </div>
   </div>
@@ -182,7 +182,7 @@ const ConstraintSlide = () => (
     </H>
     <div className="mt-10 max-w-3xl border border-foreground p-6 md:p-8">
       <p className="text-xl leading-[1.3] md:text-2xl">
-        Anything that makes saving easier or the digest better gets built.{' '}
+        Anything that makes saving easier or getting things back easier gets built.{' '}
         <Em>Anything else waits.</Em>
       </p>
     </div>
@@ -250,20 +250,23 @@ const CaptureSlide = () => (
 
 const DigestSlide = () => (
   <div>
-    <Chapter n="07" label="Move two of four · The digest" />
+    <Chapter n="07" label="Move two of four · Finding things" />
     <H>
-      The digest is not a feature. <Em>It is the product.</Em>
+      We started with the digest. <Em>Research moved finding things to the centre.</Em>
     </H>
     <Body>
-      Saved items are grouped by topic and summed up, with the unread pile shown too, and
-      sent by email or Telegram every week. Everything else in the app is there to feed it.
+      On day one the plan was a weekly digest: saved items grouped by topic, summed up and
+      sent back by email or Telegram. Talking to people showed that many would rather ask for
+      something when they needed it than wait for a scheduled message. So finding things
+      became the heart of the app, and the digest became one of several ways saved things
+      come back, next to the library, search and tips.
     </Body>
     <div className="mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">
       <Panel label="Holding back 01" title="Asks before it sends">
         The bot asks before sending digests. Nothing arrives that you did not ask for.
       </Panel>
       <Panel label="Holding back 02" title="Never nags">
-        No surprise pings, no streaks, no guilt. The digest earns its place by being wanted.
+        No surprise pings, no streaks, no guilt. The digest has to earn its place by being wanted.
       </Panel>
     </div>
     <Voice>An app that promises to respect your attention cannot waste it.</Voice>
@@ -524,7 +527,7 @@ const slides: DeckSlide[] = [
   { id: 'constraint', chapter: 'The bet', title: 'Nine days to prove it, one rule', render: ConstraintSlide },
   // The four moves
   { id: 'capture', chapter: 'The four moves', title: 'Saving goes where people already save', render: CaptureSlide },
-  { id: 'digest', chapter: 'The four moves', title: 'The digest is the product', render: DigestSlide },
+  { id: 'digest', chapter: 'The four moves', title: 'Digest first, then finding things moved to the centre', render: DigestSlide },
   { id: 'pushback', chapter: 'The four moves', title: 'Testing said the plan was wrong in three places', render: PushbackSlide },
   { id: 'system', chapter: 'The four moves', title: 'Good taste, written down so it keeps up', render: SystemSlide },
   { id: 'brand', chapter: 'The four moves', title: 'One character, four jobs', render: BrandSlide },

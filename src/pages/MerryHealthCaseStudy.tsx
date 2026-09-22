@@ -12,6 +12,7 @@ import {
   Headline,
   Kicker,
   Lede,
+  MoreDetail,
   Slide,
   Statement,
   CaseStudyEntry,
@@ -116,11 +117,9 @@ const storyline: Storyline = [
   {
     n: '01',
     name: 'The service',
-    target: 'summary',
+    target: 'service',
     slides: [
-      { id: 'summary', title: 'The dashboard was only one part' },
       { id: 'service', title: 'Following one ride, end to end' },
-      { id: 'evidence', title: 'Finding where it broke' },
       { id: 'failures', title: 'What we found' },
     ],
   },
@@ -135,12 +134,9 @@ const storyline: Storyline = [
   },
   {
     n: '03',
-    name: 'How the service works',
-    target: 'intake',
+    name: 'When things go wrong',
+    target: 'fallbacks',
     slides: [
-      { id: 'intake', title: 'Ask only for what is needed now' },
-      { id: 'assignment', title: 'No more calling round' },
-      { id: 'lifecycle', title: 'The steps of one ride' },
       { id: 'fallbacks', title: 'Designing for when it goes wrong' },
     ],
   },
@@ -150,21 +146,16 @@ const storyline: Storyline = [
     target: 'product',
     slides: [
       { id: 'product', title: 'Four screens' },
-      { id: 'dashboard', title: 'The operations dashboard' },
-      { id: 'ride', title: 'The live ride' },
     ],
   },
   {
     n: '05',
-    name: 'What it changes',
-    target: 'before-after',
+    name: 'Result',
+    target: 'contribution',
     slides: [
-      { id: 'before-after', title: 'The same ride, two ways' },
-      { id: 'targets', title: 'What we would measure' },
       { id: 'contribution', title: 'My contribution' },
       { id: 'outcome', title: 'What we delivered' },
       { id: 'reflection', title: 'Reflection' },
-      { id: 'closing', title: 'Closing' },
     ],
   },
 ];
@@ -278,34 +269,6 @@ const MerryHealthCaseStudy = () => {
           </div>
         </section>
 
-        {/* ======================== 01, THE SERVICE ========================= */}
-        <Slide id="summary" chapter="01" height="auto">
-          <Kicker n="01" label="The project in 30 seconds" />
-          <Headline size="large">
-            The dashboard was <span className="em">only one part</span> of sending an ambulance.
-          </Headline>
-          <Lede wide>
-            When we mapped the old way of working with the Merry Health team, one request went
-            through four channels and several people before an ambulance moved. The product was
-            there. But most of the work happened next to it.
-          </Lede>
-
-          <Facts
-            source="From the way of working we mapped with the operations team, not measured across the whole product."
-            items={[
-              {
-                figure: '8 to 10 min',
-                note: 'From the request to a driver saying yes, in the rides we watched',
-              },
-              { figure: '3 to 4 calls', note: 'Driver calls before someone accepted' },
-              { figure: 'Four channels', note: 'Phone, WhatsApp, paper and the dashboard' },
-              {
-                figure: 'No shared record',
-                note: 'The hospital, operations team, driver and family could each have a different idea of the same trip',
-              },
-            ]}
-          />
-        </Slide>
 
         <Slide id="service" chapter="01" height="auto">
           <Kicker n="01" label="Starting with the service as it was" />
@@ -397,6 +360,7 @@ const MerryHealthCaseStudy = () => {
           </div>
         </Slide>
 
+        <MoreDetail label="The research boards: flows, service map and journey maps">
         <Slide id="evidence" chapter="01" height="auto">
           <Kicker n="01" label="How we know" />
           <Headline>
@@ -524,6 +488,7 @@ const MerryHealthCaseStudy = () => {
             we measured them across the whole product.
           </Footnote>
         </Slide>
+        </MoreDetail>
 
         <Slide id="failures" chapter="01" height="auto">
           <Kicker n="01" label="What the mapping showed" />
@@ -693,6 +658,7 @@ const MerryHealthCaseStudy = () => {
           </div>
         </Slide>
 
+        <MoreDetail label="How a request is taken, a little at a time">
         {/* ==================== 03, THE OPERATING MODEL ===================== */}
         <Slide id="intake" chapter="03" height="auto">
           <Kicker n="03" label="Asking a little at a time" />
@@ -754,7 +720,9 @@ const MerryHealthCaseStudy = () => {
             The system asks only for what is missing. It never asks again for what it already knows.
           </Principle>
         </Slide>
+        </MoreDetail>
 
+        <MoreDetail label="How a driver is chosen">
         <Slide id="assignment" chapter="03" height="auto">
           <Kicker n="03" label="No more calling round the drivers" />
           <Headline>
@@ -789,7 +757,9 @@ const MerryHealthCaseStudy = () => {
             }}
           />
         </Slide>
+        </MoreDetail>
 
+        <MoreDetail label="Every step of a ride, and what each one records">
         <Slide id="lifecycle" chapter="03" height="auto">
           <Kicker n="03" label="The steps of one ride" />
           <Headline>
@@ -891,6 +861,7 @@ const MerryHealthCaseStudy = () => {
             />
           </div>
         </Slide>
+        </MoreDetail>
 
         <Slide id="fallbacks" chapter="03" height="auto">
           <Kicker n="03" label="Designing for when things go wrong" />
@@ -1076,6 +1047,7 @@ const MerryHealthCaseStudy = () => {
           )}
         </Slide>
 
+        <MoreDetail label="The operations dashboard in detail">
         <Slide id="dashboard" chapter="04" height="auto">
           <Kicker n="04" label="The operations dashboard" />
           <Headline>
@@ -1111,7 +1083,9 @@ const MerryHealthCaseStudy = () => {
             </div>
           </div>
         </Slide>
+        </MoreDetail>
 
+        <MoreDetail label="The live ride screen in detail">
         <Slide id="ride" chapter="04" height="auto">
           <Kicker n="04" label="The live ride" />
           <Headline>
@@ -1147,47 +1121,10 @@ const MerryHealthCaseStudy = () => {
             </div>
           </div>
         </Slide>
+        </MoreDetail>
 
-        {/* ===================== 05, WHAT IT CHANGES ======================== */}
-        <Slide id="before-after" chapter="05" height="auto">
-          <Kicker n="05" label="Before and after" />
-          <Headline>
-            The same ride, handled in <span className="em">two very different ways</span>.
-          </Headline>
 
-          <SystemPanes
-            before={{
-              label: 'Before',
-              verdict: 'People passed the news along by hand.',
-              steps: [
-                { text: 'Hospital calls' },
-                { text: 'Operations writes down the request', relay: true },
-                { text: 'Operations calls drivers', relay: true },
-                { text: 'Someone confirms' },
-                { text: 'Hospital asks for status', relay: true },
-                { text: 'Patient family asks for status', relay: true },
-                { text: 'Operations calls the driver', relay: true },
-                { text: 'Dashboard updated by hand', relay: true },
-                { text: 'Ride closed, later' },
-              ],
-            }}
-            after={{
-              label: 'Proposed',
-              verdict: 'The system passed the news to everyone.',
-              steps: [
-                { text: 'Hospital requests through the channel it already uses' },
-                { text: 'Ride record created' },
-                { text: 'Job sent to a driver' },
-                { text: 'Driver says yes, or it goes to the next one' },
-                { text: 'The shared ride record updates' },
-                { text: 'Updates go out to the hospital and the family' },
-                { text: 'Each step is saved as it happens' },
-                { text: 'Finishing the ride creates the report' },
-              ],
-            }}
-          />
-        </Slide>
-
+        <MoreDetail label="What we would measure if it were built">
         <Slide id="targets" chapter="05" height="auto">
           <Kicker n="05" label="What we would measure" />
           <Headline>
@@ -1230,6 +1167,7 @@ const MerryHealthCaseStudy = () => {
             ]}
           />
         </Slide>
+        </MoreDetail>
 
         <Slide id="contribution" chapter="05" height="auto">
           <Kicker n="05" label="What I worked on" />
@@ -1396,24 +1334,10 @@ const MerryHealthCaseStudy = () => {
           </Footnote>
         </Slide>
 
-        <Slide id="closing" chapter="05" height="auto" invert>
-          <p className="label text-ink-500">In closing</p>
-
-          <p className="mt-10 max-w-[20ch] text-[2rem] leading-[1.05] md:text-[3.5rem]">
-            Design how people work together first. <span className="em">Then design the screens.</span>
-          </p>
-
-          <p className="mt-12 max-w-3xl text-base leading-[1.6] text-ink-600 md:text-lg">
-            Merry Health started as a dashboard project. It became a project about the whole
-            system: how one ambulance ride could stay the same for hospitals, the operations
-            team, drivers and patients’ families.
-          </p>
-
-          <HeroComposition className="mt-stage w-full max-w-4xl" />
-
+        <Slide id="closing" height="auto">
           <nav
             aria-label="Other projects"
-            className="mt-stage flex flex-wrap gap-x-10 gap-y-4 border-t border-border pt-8"
+            className="flex flex-wrap gap-x-10 gap-y-4"
           >
             <Link to="/#work" className="rule-link text-lg">
               Back to the work <span aria-hidden="true">&rarr;</span>

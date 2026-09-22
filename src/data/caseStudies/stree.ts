@@ -18,8 +18,8 @@ export const stree: CaseStudy = {
   cover,
 
   intro: [
-    'Being harassed in public stops women from moving freely, taking part, and feeling well. The safety apps in India are panic buttons for after something has happened, built for the worst moment. But fear is there all the time: taking a longer route, avoiding a street after dark, wondering whether feeling uneasy is enough reason to act. Even when nothing happens, expecting it changes how women live.',
-    'An app built only for emergencies covers a small part of what women go through, and reminds them of danger every day. Fifteen interviews told us that is not how women actually live. So the idea changed from an SOS app to something that helps before, during, and after.',
+    'Being harassed in public stops women from moving freely, taking part, and feeling well. A panic button helps after something has happened. But the women we interviewed described fear that is there much more often: taking a longer route, avoiding a street after dark, wondering whether feeling uneasy is enough reason to act. Even when nothing happens, expecting it changes how they live.',
+    'An app built only for emergencies covers a small part of that, and can remind people of danger every day. We interviewed fifteen women aged 25 to 35 in Pune, Bangalore, Delhi, Mumbai and Kerala. What they told us changed the idea from an SOS app to something that helps before, during, and after.',
   ],
 
   meta: [
@@ -46,9 +46,9 @@ export const stree: CaseStudy = {
         problems:
           'Safety apps start working after something happens, but the fear starts long before. The person causing harm is often someone the woman knows, many women freeze instead of reacting, and reporting feels so slow that many stop reporting at all. No panic button helps with any of that.',
         solution:
-          'A companion for before, during, and after: helpful tips instead of warnings, an SOS button you can reach from the lock screen, a mode that works without internet, and a clear view of exactly what your emergency contacts will see.',
+          'A companion for before, during, and after: helpful tips instead of warnings, an SOS button you can reach from the lock screen, an offline mode that keeps key trip details on the phone, and a clear view of exactly what your emergency contacts will see.',
         why:
-          'Because fifteen interviews told us the fear is always there, and the emergency is rare. An app built only for the worst moment gets opened in fear and deleted when things are calm. Designing for the 99 percent of the time when nothing is happening is what keeps the app on the phone for the moment something does.',
+          'Because the fifteen women we interviewed described fear as something they feel much of the time, while incidents were rarer. An app built only for the worst moment risks being opened in fear and deleted when things are calm. Designing for everyday use as well is what could keep the app on the phone for the moment it is needed.',
         resultsLabel: 'What we hoped would happen',
         results:
           'SOS you can reach without stopping to think under stress, users who understand what they are sharing, and an app that is not deleted for being a reminder of fear. We tested with four users, enough to find where people got confused. How fast it is would need to be measured later.',
@@ -128,7 +128,7 @@ export const stree: CaseStudy = {
         {
           kind: 'prose',
           body: [
-            'Splitting the problem into before, during, and after gave each part its own job. Before is about being aware without being scared: helpful tips instead of warnings. During is about being simple and fast, even when there is no signal. After is about being believed, healing, and holding people responsible, and seeing what happens next.',
+            'Splitting the problem into before, during, and after gave each part its own job. Before is about being aware without being scared: helpful tips instead of warnings. During is about being simple and fast, with key trip details kept on the phone in case the internet drops. After is about being believed, healing, and holding people responsible, and seeing what happens next.',
             'The comic strip showed what a list of requirements cannot: feeling lonely, doubting yourself, and being emotionally worn out are part of the journey. An app that ignores them is designing for one moment, not for a whole life.',
           ],
         },
@@ -184,7 +184,7 @@ export const stree: CaseStudy = {
           kind: 'prose',
           body: [
             'Testing showed the problem was not the tap itself. It was the seconds before it, deciding whether things were bad enough to open the app at all. Putting the SOS button before the unlock removed the part that was really going wrong.',
-            'A mode that works without internet keeps your last known location, the time of the last update, where you are going, and the nearest police station, because a bad signal should never be what puts someone at risk.',
+            'The concept includes an offline mode. It keeps your last known location, the time of the last update, where you are going, and the nearest police station saved on the phone, so they can still be shown without internet. This was designed but not tested on real networks.',
           ],
         },
         {
@@ -289,9 +289,9 @@ export const stree: CaseStudy = {
           body: 'Fifteen interviews described safety as freedom, not protection, which changed the whole plan.',
         },
         {
-          title: 'Works with',
-          emphasis: 'no network',
-          body: 'Last known location, time of the last update, where you are going, and the nearest police station, kept even without internet.',
+          title: 'Trip details kept',
+          emphasis: 'offline',
+          body: 'Last known location, time of the last update, where you are going, and the nearest police station, saved on the phone so they can be shown without internet.',
         },
       ],
     },

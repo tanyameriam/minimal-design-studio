@@ -10,7 +10,7 @@ export const layrrrd: CaseStudy = {
   tagline: 'An app for everyday people . Saving and finding things . Live at layrrrd.com',
 
   intro: [
-    'Layrrrd starts from a new way of seeing the problem: you do not have a problem finding things, you have a problem going back to them. People save things all the time, in bookmarks, screenshots, notes apps and Telegram saved messages, and almost none of it is ever opened again. Layrrrd saves from anywhere, sums up what you saved, and sends a hand-picked digest back to you on a day you choose. It is live at layrrrd.com.',
+    'Layrrrd starts from a simple observation: people save things all the time, in bookmarks, screenshots, notes apps and Telegram saved messages, and almost none of it is ever opened again. Layrrrd saves from anywhere, sums up what you saved, and helps you find it again when you need it, with a weekly digest as one of the ways things come back. It is live at layrrrd.com.',
     'We gave ourselves nine days to prove it worked, and we got the numbers. I led the design, from what the product should be, to the design system, to the brand. By day nine we had paying customers, and the same team has kept building since. In this project every choice had a deadline measured in hours, so it is the clearest record I have of how I really make decisions.',
   ],
 
@@ -36,9 +36,9 @@ export const layrrrd: CaseStudy = {
         problems:
           'Saving things is easy, and going back to them never happens. The read-later pile is spread across bookmarks, tabs, screenshots and chat apps, and it depends on willpower nobody has. Other apps answer this with better ways to sort things, which means more work at exactly the moment people have none to give.',
         solution:
-          'Take away sorting completely. Three ways to save all feed into one system: a Chrome add-on, a paste box and a Telegram bot. AI sums up everything when it is saved, and a weekly digest, sent on the day each user picked, brings the pile back to them, grouped by topic.',
+          'Take away sorting completely. Three ways to save all feed into one system: a Chrome add-on, a paste box and a Telegram bot. AI sums up everything when it is saved. Saved things come back through the library, search, tips and a weekly digest sent on the day each user picked.',
         why:
-          'Because saving was never the problem. Going back was. A better storage box still waits for you to come back. A digest does not wait, so the app was built around sending things back, and everything else (saving, summaries, even the mascot) is there to support that one idea.',
+          'Because saving was never the problem. Going back was. On day one we bet on a scheduled digest that sends things back. Research then showed many people would rather ask for something when they need it, so finding things moved to the centre, and the digest became one of several ways back.',
         resultsLabel: 'Results',
         results:
           '15 paying customers and 126 free sign-ups by day nine, counted in PostHog from launch. Payments went live during the nine days, which is what made the number mean something. It has been live ever since, with the same team improving it: a Chrome add-on now live, both chat channels, ways to invite friends, and work on trust, all added after the nine days.',
@@ -54,8 +54,8 @@ export const layrrrd: CaseStudy = {
         {
           kind: 'prose',
           body: [
-            'Nine days leaves no time for long research, so the research had to exist already: our own forgotten piles of saved things, and the fact that the people we were building for drop links into Telegram saved messages and never look again. We made our bet on day one and every choice about what to build came from it. Anything that made saving easier or the digest better got built. Everything else waited.',
-            'Sticking to that was tested halfway through. Testing with users during the nine days showed three problems worth acting on: people did not trust that saving had worked, finding things broke down after a hundred items, and the digest schedule felt forced on them instead of chosen. We rebuilt it around a hand-picked feed, made it clear when something was saved, and let users pick their digest day. Acting on what we learned within nine days, instead of sticking to the first plan, is the part of this project I would show a hiring team first.',
+            'Nine days leaves no time for long research, so the research had to exist already: our own forgotten piles of saved things, and the fact that the people we were building for drop links into Telegram saved messages and never look again. On day one we bet on a scheduled digest, and anything that made saving easier or getting things back easier got built. Everything else waited.',
+            'That plan was tested halfway through. Conversations after the survey showed that many people wanted to ask for something when they needed it, not wait for a schedule, so finding things moved to the centre. Testing with users then showed three more problems: people did not trust that saving had worked, finding things broke down after a hundred items, and a fixed digest day felt forced. We made it clear when something was saved, built the library around a hand-picked feed, and let users pick their digest day. Changing course on what we learned within nine days, instead of sticking to the first plan, is the part of this project I would show a hiring team first.',
           ],
         },
         {
@@ -96,15 +96,15 @@ export const layrrrd: CaseStudy = {
       kind: 'step',
       id: 'step-02',
       index: '02',
-      nav: '02 The digest',
-      problem: 'A storage box still waits for you to come back',
-      intervention: 'so the digest became the heart of the app, sent on a day each user chose',
+      nav: '02 From digest to finding things',
+      problem: 'We started with a digest, but many people wanted to ask for things when they needed them',
+      intervention: 'so finding things moved to the centre, and the digest became one of several ways back',
       blocks: [
         {
           kind: 'prose',
           body: [
-            'The weekly digest is not a feature of the app. It is the app. Saved items grouped by topic and summed up, with the unread pile shown too, sent by email or Telegram on the day of the week each user picked. Letting each user pick their own day came straight from testing: a fixed day felt like spam, and a chosen day felt like a promise people had made to themselves.',
-            'The same idea, sending things out instead of waiting, also taught us to hold back: the bot asks before sending digests and never nags. An app that promises to respect your attention cannot waste it.',
+            'On day one the plan was a weekly digest: saved items grouped by topic and summed up, with the unread pile shown too, sent by email or Telegram. Research showed that many people would rather ask for something when they needed it than wait for a scheduled message. So finding things became the heart of the app, and the digest became one of several ways saved things come back, next to the library, search and tips. For the digest itself, testing showed a fixed day felt like spam, so each user now picks their own day.',
+            'The digest also taught us to hold back: the bot asks before sending digests and never nags. An app that promises to respect your attention cannot waste it.',
           ],
         },
       ],

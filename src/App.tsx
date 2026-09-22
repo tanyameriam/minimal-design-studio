@@ -1,4 +1,5 @@
 import { Suspense, lazy } from 'react';
+import { showDrafts } from '@/data/drafts';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import BackToTop from '@/components/BackToTop';
@@ -65,8 +66,14 @@ const App = () => (
           <Route path="/case-study/brynq/vault" element={<BrynqVault />} />
           {/* The scroll case study is Curateus's canonical page; the
               data-driven draft keeps its own address. */}
-          <Route path="/case-study/curateus" element={<CurateusCaseStudy />} />
-          <Route path="/case-study/curateus/deep" element={<CaseStudy slug="curateus" />} />
+          {/* Curateus is unfinished (screenshots still owed), so it only routes
+              in development until its images land. */}
+          {showDrafts && (
+            <Route path="/case-study/curateus" element={<CurateusCaseStudy />} />
+          )}
+          {showDrafts && (
+            <Route path="/case-study/curateus/deep" element={<CaseStudy slug="curateus" />} />
+          )}
           {/* The systems narrative is Merry Health's canonical page; the
               data-driven long-form version keeps its own address. */}
           <Route path="/case-study/merry-health/story" element={<MerryStory />} />

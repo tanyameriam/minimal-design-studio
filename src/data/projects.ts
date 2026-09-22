@@ -459,7 +459,9 @@ const projectList: Project[] = [
     // The card renders the drawn plugin composition instead. See the
     // drawnCovers registry in components/ProjectCard.tsx, and
     // docs/curateus-assets.md for the exports still owed.
-    published: true,
+    // Hidden until its screenshots are exported: the page still has
+    // placeholder slots and instructions to crop the Miro board.
+    published: false,
   },
   {
     slug: 'stree-safety-app',
@@ -473,7 +475,7 @@ const projectList: Project[] = [
     role: 'Research, and designing the screens',
     headline: 'Safety for every day, not only the worst day',
     decision:
-      'We talked to fifteen women. They told us they do not spend their days in panic. So we designed for everyday freedom, not only for emergencies. The SOS button still works with no phone signal. The app stopped being about fear.',
+      'We talked to fifteen women aged 25 to 35 in five Indian cities. They told us they do not spend their days in panic. So we designed for everyday freedom, not only for emergencies. An offline mode keeps key trip details on the phone. The app stopped being about fear.',
     oneLine:
       'Changing a safety app to fit what women really needed each day.',
     metrics: [
@@ -499,7 +501,7 @@ const projectList: Project[] = [
     role: 'My own project, from research to the full design',
     headline: 'There was enough food. Getting it there was the problem.',
     decision:
-      'Charities had enough food on offer. What they lacked was warning and a way to move it. So instead of two separate apps, I designed the hand-off between restaurants and charities. Both see the same information. Whoever has room picks up or delivers, and there is a backup plan if a delivery falls through.',
+      'Charities had enough food on offer. What they lacked was warning and a way to move it. So I designed the hand-off between restaurants and charities: two apps working from one shared record, so both see the same information. Whoever has room picks up or delivers, and there is a backup plan if a delivery falls through.',
     oneLine: 'Designing one shared hand-off between restaurants and charities.',
     cover: hungerProjectCover,
     stack: [foodWasteCover, foodWasteAccount],
