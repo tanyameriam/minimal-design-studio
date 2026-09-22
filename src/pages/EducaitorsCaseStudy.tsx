@@ -188,7 +188,7 @@ const EducaitorsCaseStudy = () => {
                   }
                   takeaways={{
                     problem:
-                      'Teachers did not need grading to be faster. They needed to see how a grade was worked out, and to stay responsible for it.',
+                      'Faster grading was only useful if instructors could understand and review the suggested scores.',
                     did: 'Led the part where teachers review grades: reviewing the evidence behind a suggested grade, comparing scores, changing grades and approving the final grade.',
                     outcome:
                       'An interactive prototype where the AI suggests and the teacher decides. A university project, never launched.',

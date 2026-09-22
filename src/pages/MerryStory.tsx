@@ -250,9 +250,9 @@ const FailureSlide = () => (
     </H>
     <Body>
       A system for sending ambulances that only works when everything goes right is not
-      good enough. Every way a ride can go wrong (no driver says yes, an ambulance breaks
-      down, a message never arrives) has a named person in charge and a clear way to fix
-      it, not just an error message and a shrug.
+      good enough. So we defined recovery paths and responsibilities for key failure
+      scenarios, such as no driver saying yes, an ambulance breaking down or a message
+      never arriving, instead of an error message and a shrug.
     </Body>
     <Voice>
       What happens when things go wrong is the real product. When everything goes right is the easy half.

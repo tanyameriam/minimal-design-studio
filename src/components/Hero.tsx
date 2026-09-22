@@ -88,8 +88,16 @@ const useTilt = () => {
   return ref;
 };
 
-/** The two ways on. One is the evidence, one is the conversation. */
-const Cta = ({ to, children }: { to: string; children: string }) => {
+/** The two ways on: the work first, the CV second. */
+const Cta = ({
+  to,
+  children,
+  primary = false,
+}: {
+  to: string;
+  children: string;
+  primary?: boolean;
+}) => {
   const shared =
     'group inline-flex items-center gap-2.5 rounded-full px-5 py-3 text-base transition-colors duration-300';
   const arrow = (
@@ -103,13 +111,17 @@ const Cta = ({ to, children }: { to: string; children: string }) => {
 
   // Internal routes get a Link; the contact anchor stays an anchor so it
   // scrolls rather than re-entering the router.
+  const look = primary
+    ? 'bg-foreground text-background hover:bg-foreground/90'
+    : 'panel-chip text-foreground hover:bg-foreground hover:text-background';
+
   return to.startsWith('#') ? (
-    <a href={to} className={`${shared} panel-chip text-foreground hover:bg-foreground hover:text-background`}>
+    <a href={to} className={`${shared} ${look}`}>
       {children}
       {arrow}
     </a>
   ) : (
-    <Link to={to} className={`${shared} bg-foreground text-background hover:bg-foreground/90`}>
+    <Link to={to} className={`${shared} ${look}`}>
       {children}
       {arrow}
     </Link>
@@ -122,7 +134,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="hero-field relative px-gutter pb-stage pt-masthead"
+      className="hero-field relative px-gutter pb-break pt-[clamp(6.5rem,min(5rem+2vw,13vh),8.5rem)]"
     >
       {/*
         The statement and the face, side by side from lg. Below that the
@@ -131,7 +143,7 @@ const Hero = () => {
         The ground keeps the first screen from reading as a wireframe on a
         phone even before the portrait is scrolled to.
       */}
-      <div className="relative grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] lg:gap-16 xl:grid-cols-[minmax(0,1fr)_minmax(0,23rem)]">
+      <div className="relative grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,15rem)] lg:gap-16 xl:grid-cols-[minmax(0,1fr)_minmax(0,17rem)]">
         <div>
           <p className="reveal label flex items-center gap-2.5 text-ink-500" data-shown="true">
             {/* The one moving dot on the page, and the reason the status
@@ -144,9 +156,9 @@ const Hero = () => {
           </p>
 
           <h1
-            className="reveal mt-7 max-w-[19ch] font-medium leading-[0.98] md:mt-9"
+            className="reveal mt-5 max-w-[19ch] font-medium leading-[0.98] md:mt-6"
             style={{
-              fontSize: 'clamp(2.25rem, 4.1vw + 0.7rem, 4.75rem)',
+              fontSize: 'clamp(2.25rem, 3.3vw + 0.7rem, 4rem)',
               letterSpacing: '-0.035em',
               transitionDelay: '80ms',
             }}
@@ -160,7 +172,7 @@ const Hero = () => {
 
           {/* One sentence, where there used to be two paragraphs. */}
           <p
-            className="reveal mt-6 max-w-[46ch] text-xl leading-[1.45] text-ink-600 md:mt-7"
+            className="reveal mt-5 max-w-[46ch] text-xl leading-[1.45] text-ink-600"
             style={{ transitionDelay: '140ms' }}
             data-shown="true"
           >
@@ -169,40 +181,39 @@ const Hero = () => {
           </p>
 
           <div
-            className="reveal mt-8 flex flex-wrap items-center gap-3 md:mt-9"
+            className="reveal mt-7 flex flex-wrap items-center gap-3"
             style={{ transitionDelay: '200ms' }}
             data-shown="true"
           >
+            <Cta to="#work" primary>
+              Explore my work
+            </Cta>
             <Cta to="/cv">View CV</Cta>
-            <Cta to="#contact">Let&rsquo;s talk</Cta>
           </div>
         </div>
 
         {/*
           The portrait. A panel rather than a bare image, so it belongs to
-          the same surface language as everything below it, and a soft accent
-          bloom behind it so it is lit rather than pasted on.
+          the same surface language as everything below it. Kept small, with
+          no glow and its colour muted, so it introduces the work instead of
+          competing with it.
         */}
         <div
           ref={portrait}
-          className="reveal hero-portrait relative mx-auto w-full max-w-[15rem] sm:max-w-[17rem] lg:mx-0 lg:max-w-none"
+          className="reveal hero-portrait relative mx-auto w-full max-w-[12rem] sm:max-w-[14rem] lg:mx-0 lg:max-w-none"
           style={{ transitionDelay: '260ms' }}
           data-shown="true"
         >
-          <span
-            aria-hidden="true"
-            className="absolute -inset-6 -z-10 rounded-[2.5rem] bg-accent/20 blur-3xl"
-          />
-          <div className="panel overflow-hidden shadow-xl">
+          <div className="panel overflow-hidden shadow-md">
             <img
               src="/tanya-portrait.jpg"
-              alt="Tanya, photographed in daylight against a plain wall."
+              alt="Tanya smiling in round goggles and a dark jacket, shown with a painterly photo filter."
               width={1200}
               height={1600}
-              sizes="(min-width: 1280px) 23rem, (min-width: 1024px) 20rem, 16rem"
+              sizes="(min-width: 1280px) 17rem, (min-width: 1024px) 15rem, 14rem"
               fetchPriority="high"
               decoding="async"
-              className="aspect-[3/4] w-full object-cover"
+              className="aspect-[3/4] w-full object-cover grayscale-[0.85] contrast-[0.95] brightness-[0.95]"
             />
           </div>
         </div>

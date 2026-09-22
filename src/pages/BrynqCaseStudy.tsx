@@ -324,7 +324,7 @@ const BrynqCaseStudy = () => {
                 takeaways={{
                   problem:
                     'Connecting two systems needed a developer and a project manager, and a standard connection took about six months.',
-                  did: 'I was asked to make the screens simpler. Instead, I turned the team’s know-how into ready-made templates.',
+                  did: 'I was asked to make the screens simpler. Instead, I designed the template selection and guided setup experience.',
                   outcome:
                     'With templates, a standard connection should take about two weeks. This is our estimate, not yet measured with real customers.',
                 }}

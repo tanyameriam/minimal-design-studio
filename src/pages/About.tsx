@@ -91,8 +91,8 @@ const About = () => {
                 </p>
                 <p>
                   At <Em>BrynQ</Em>, customers needed a developer every time they connected two
-                  systems. I helped change that, so they can set up connections themselves from
-                  ready-made templates. In my work I do a bit of everything: I talk to people, plan how
+                  systems. I designed the template selection and guided setup experience, so they
+                  need less developer support. In my work I do a bit of everything: I talk to people, plan how
                   the work flows, design the screens, and help the team build them.
                 </p>
                 <p>

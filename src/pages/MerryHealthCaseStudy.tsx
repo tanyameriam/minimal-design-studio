@@ -210,7 +210,7 @@ const MerryHealthCaseStudy = () => {
                 takeaways={{
                   problem:
                     'Rides were arranged over calls, WhatsApp, paper and a dashboard, so four groups each had a different idea of the same ride.',
-                  did: 'Designed one shared record for each ride. People keep using WhatsApp, and every way a ride can go wrong has someone in charge of fixing it.',
+                  did: 'Proposed one shared record for each ride, with people still using WhatsApp. Defined recovery paths and responsibilities for key failure scenarios.',
                   outcome:
                     'Nine hand-offs by phone become one shared record. This is a proposal, researched with the company and never launched.',
                 }}

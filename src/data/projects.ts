@@ -225,11 +225,11 @@ const projectList: Project[] = [
     disciplines: ['Systems design', 'Service design', 'Business software'],
     context: 'Software that connects HR and payroll systems for businesses',
     role: 'Product designer, one part of an ongoing job',
-    headline: 'Letting customers connect their systems without waiting for a developer',
+    headline: 'Helping customers set up integrations with less developer support',
     decision:
-      'Every new connection started from zero. The team gathered the same details again and again over calls and spreadsheets, and projects fell weeks behind before any code was written. I was asked to make the screens simpler. Instead, I turned the steps the team kept repeating into ready-made templates inside the product, so customers could reuse them.',
+      'Every new connection started from zero. The team gathered the same details again and again over calls and spreadsheets, and projects fell weeks behind before any code was written. I was asked to make the screens simpler. Instead, I designed the template selection and guided setup experience, so customers could start from steps the team had already worked out.',
     oneLine:
-      'Turned the steps the team kept repeating into ready-made templates customers can reuse.',
+      'Designed the template selection and guided setup experience, so customers start from steps the team already knows.',
     storyHref: '/case-study/brynq/story',
     storyMinutes: 2,
     // The three surfaces used to disagree: 92% and 13x are the arithmetic of
@@ -252,7 +252,7 @@ const projectList: Project[] = [
       },
     ],
     featured: {
-      headline: 'Connecting business systems, without a developer',
+      headline: 'Helping customers set up integrations with less developer support',
       description: 'Redesigning how customers connect and manage their systems.',
       status: 'Business software · Ongoing',
       evidence: {
@@ -367,9 +367,9 @@ const projectList: Project[] = [
     storyMinutes: 2,
     headline: 'Four groups of people. One shared record of each ride.',
     decision:
-      'Ambulance rides were arranged over phone calls, WhatsApp, paper and a dashboard. So hospitals, the operations team, drivers and families each had a different idea of the same ride. Hospitals were not going to stop using WhatsApp in an emergency. So we kept WhatsApp, and connected it to one shared record of each ride. For every way a ride can go wrong, we named who fixes it and how.',
+      'Ambulance rides were arranged over phone calls, WhatsApp, paper and a dashboard. So hospitals, the operations team, drivers and families each had a different idea of the same ride. Hospitals were not going to stop using WhatsApp in an emergency. So we kept WhatsApp, and connected it to one shared record of each ride. We defined recovery paths and responsibilities for key failure scenarios.',
     oneLine:
-      'Replaced nine hand-offs over the phone with one shared ride record that updates everyone, while people keep using WhatsApp.',
+      'Proposed one shared ride record to reduce nine hand-offs over the phone, while people keep using WhatsApp.',
     metrics: [
       {
         figure: '4 parties',
@@ -388,7 +388,7 @@ const projectList: Project[] = [
       storyLabel: 'Read the project story',
       evidence: {
         figure: '9 manual handoffs',
-        note: 'Replaced by one shared record of the ride',
+        note: 'Proposed a shared ride record to reduce manual coordination',
         status: 'proposed',
         source: 'Proposed operating model, never deployed',
       },
