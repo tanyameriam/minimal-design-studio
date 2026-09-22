@@ -11,32 +11,32 @@ export const visualDesign: Article = {
   ...summaries['visual-design-is-a-decision-system'],
   lead: {
     asset: 'vxd-final-convergence',
-    alt: 'The converged Biller Hero template dashboard, with template status and system health above the operational detail, and client billing separated from internal billing configuration.',
+    alt: 'The final Biller Hero template dashboard, with the template status and system health at the top, the everyday details below, and billing for clients kept apart from the company’s own billing settings.',
     caption:
-      'The converged dashboard. Status and system health come first, because in this product the thing a person needs earliest is whether anything is already wrong.',
+      'The final dashboard. Status and system health come first, because in this product the first thing a person needs to know is whether anything is already wrong.',
     ratio: '16 / 9',
   },
   intro: [
-    'A concept board can easily become a collection of images a designer likes.',
-    'That was the assumption I had to unlearn while developing a visual direction for Biller Hero, a healthcare billing platform used by administrators to manage payment rules across practices and clients.',
-    'The users were not browsing, exploring, or expressing themselves. They were changing rules that could affect revenue, compliance, and live payment flows across several organisations. Their emotional context was responsibility paired with risk.',
-    'The visual-design question was therefore not, “What style should this product have?” It was, “What should the interface help a person feel and understand before they make a consequential change?”',
+    'A mood board can easily turn into a collection of pictures a designer likes.',
+    'That was the idea I had to unlearn while creating a look and feel for Biller Hero, a healthcare billing app that office staff use to manage payment rules for clinics and their clients.',
+    'The users were not browsing, exploring or expressing themselves. They were changing rules that could affect money, legal rules and live payments across several organisations. How they felt was: responsible, and at risk.',
+    'So the question for the visual design was not “What style should this product have?” It was “What should the screen help a person feel and understand before they make an important change?”',
   ],
   sections: [
     {
       id: 'consequence',
-      heading: 'Start with the emotional consequence of the task',
+      heading: 'Start with how the task makes people feel',
       nav: 'The consequence',
       blocks: [
         {
           kind: 'p',
-          text: 'Biller Hero used templates to define billing logic once and apply it across different healthcare practices. A partner-level administrator could deploy an updated template to a location that already had active rules. A client-level administrator could change the fee applied to a specific customer’s payments.',
+          text: 'Biller Hero used templates to set up billing rules once and use them across different clinics. A senior admin could send an updated template to a clinic that already had rules running. A client admin could change the fee charged on one customer’s payments.',
         },
         {
           kind: 'p',
-          text: 'In both cases, small changes could have broad consequences. The user needed to know which rules were active, where they applied, what would change, and whether the new configuration would behave as intended.',
+          text: 'In both cases, small changes could have big effects. The user needed to know which rules were running, where they applied, what would change, and whether the new setup would work as planned.',
         },
-        { kind: 'p', text: 'This produced a set of emotional needs:' },
+        { kind: 'p', text: 'This gave us a set of feelings people needed:' },
         {
           kind: 'list',
           items: [
@@ -50,87 +50,87 @@ export const visualDesign: Article = {
         },
         {
           kind: 'p',
-          text: 'These statements connected visual direction to the lived pressure of the task. They also helped separate useful design qualities from fashionable ones.',
+          text: 'These sentences linked the look and feel to the real pressure of the task. They also helped separate useful design qualities from ones that are just in fashion.',
         },
       ],
     },
     {
       id: 'concepts',
-      heading: 'Separate usability concepts from look and feel',
-      nav: 'Two kinds of concept',
+      heading: 'Keep “how it works” apart from “how it looks”',
+      nav: 'Two kinds of idea',
       blocks: [
         {
           kind: 'p',
-          text: 'One of the most helpful parts of the process was defining two different kinds of concepts.',
+          text: 'One of the most helpful parts of the process was defining two different kinds of ideas.',
         },
-        { kind: 'p', text: 'Usability concepts described how the product should behave:' },
+        { kind: 'p', text: 'Ideas about how it works described how the product should behave:' },
         {
           kind: 'list',
           items: [
             {
-              lead: 'Clarity',
-              text: 'Users understand which rules are active, where they apply, and what will change.',
+              lead: 'Clear',
+              text: 'Users understand which rules are running, where they apply, and what will change.',
             },
             {
-              lead: 'Confidence',
-              text: 'The system supports certainty before revenue- or compliance-sensitive decisions.',
+              lead: 'Confident',
+              text: 'The system helps people feel sure before decisions that affect money or legal rules.',
             },
             {
-              lead: 'Control',
-              text: 'Users feel they are directing the system rather than reacting to it.',
+              lead: 'In control',
+              text: 'Users feel they are steering the system, not just reacting to it.',
             },
             {
-              lead: 'Flexibility',
-              text: 'Exceptions can be handled precisely without destabilising the wider structure.',
+              lead: 'Flexible',
+              text: 'Unusual cases can be handled exactly, without shaking up everything else.',
             },
             {
-              lead: 'Safety',
-              text: 'The interface prevents accidental deployment, unnoticed changes, and unintended financial impact.',
+              lead: 'Safe',
+              text: 'The screen stops people from sending changes by accident, changes going unnoticed, and money being affected by mistake.',
             },
           ],
         },
         {
           kind: 'p',
-          text: 'Look-and-feel concepts described how that behaviour should be perceived: trustworthy, transparent, reliable, precise, calm, responsible, and empowering.',
+          text: 'Ideas about how it looks described how that behaviour should come across: trustworthy, open, reliable, exact, calm, responsible, and empowering.',
         },
         {
           kind: 'p',
-          text: 'The distinction stopped visual design from carrying responsibilities that belonged to interaction design. A muted color palette cannot make a destructive action safe. Typography cannot explain the scope of an override. But visual hierarchy, tone, contrast, spacing, and composition can reinforce the behavioural safeguards already present.',
+          text: 'Keeping them apart stopped the visual design from doing jobs that belonged to how it works. Soft colours cannot make a dangerous action safe. A font cannot explain how far a change reaches. But what stands out most, tone, contrast, spacing and layout can back up the safety features already there.',
         },
       ],
     },
     {
       id: 'theme',
-      heading: 'A theme should eliminate options',
+      heading: 'A theme should rule things out',
       nav: 'The theme',
       blocks: [
         {
           kind: 'p',
-          text: 'I combined the concepts into broader directions and ultimately selected Responsible Authority as the primary theme.',
+          text: 'I grouped the ideas into bigger directions, and finally chose Responsible Authority as the main theme.',
         },
         {
           kind: 'p',
-          text: 'The phrase became a decision filter. “Responsible” meant changes should feel considered, traceable, and safe. “Authority” meant the user should feel capable of directing a professional system, not timid or dependent on it.',
+          text: 'The phrase became a way to make decisions. “Responsible” meant changes should feel thought through, easy to trace, and safe. “Authority” meant the user should feel able to steer a professional system, not nervous or dependent on it.',
         },
         {
           kind: 'p',
-          text: 'The theme ruled out several attractive but inappropriate directions. A playful visual language could undermine the seriousness of financial changes. A dense power-user dashboard could signal capability while increasing anxiety. An excessively minimal interface could hide context users needed before acting.',
+          text: 'The theme ruled out several nice-looking but wrong directions. A playful look could make money changes seem less serious. A crowded dashboard for experts could look powerful but make people more anxious. A very bare screen could hide details users needed before acting.',
         },
         {
           kind: 'p',
-          text: 'I borrowed selected qualities from a softer direction, Calm Assurance, meaning lighter surfaces, readable typography, and generous spacing, without losing the stronger governance tone.',
+          text: 'I borrowed some qualities from a softer direction, Calm Assurance: lighter backgrounds, easy-to-read fonts and plenty of space, without losing the stronger feeling of being in charge.',
         },
         {
           kind: 'p',
-          text: 'That combination was important. Authority without calm can feel intimidating. Calm without authority can feel passive. The final direction needed both.',
+          text: 'That mix was important. Authority without calm can feel scary. Calm without authority can feel weak. The final direction needed both.',
         },
         {
           kind: 'figure',
           figure: {
             asset: 'vxd-concept-directions',
-            alt: 'The two theme territories, Responsible Authority and Calm Assurance, shown side by side with the chosen synthesis beneath them.',
+            alt: 'The two theme directions, Responsible Authority and Calm Assurance, side by side, with the mix we chose underneath.',
             caption:
-              'Two territories and the synthesis between them. The theme is useful mainly for what it refuses.',
+              'Two directions and the mix between them. The theme is most useful for what it says no to.',
             ratio: '16 / 8',
           },
         },
@@ -138,75 +138,75 @@ export const visualDesign: Article = {
     },
     {
       id: 'boards',
-      heading: 'Concept boards are alignment tools, not decoration',
+      heading: 'Mood boards help people agree, they are not decoration',
       nav: 'Concept boards',
       blocks: [
         {
           kind: 'p',
-          text: 'Photography, interface references, color, typography, composition, and iconography were selected to communicate the intended qualities, not simply to match the healthcare domain.',
+          text: 'Photos, examples of screens, colours, fonts, layouts and icons were chosen to show the qualities we wanted, not just to look like healthcare.',
         },
         {
           kind: 'p',
-          text: 'For each reference, I documented what it contributed. Did the composition create focus? Did the type feel precise without becoming cold? Did contrast distinguish risk from routine information? Did the interface make system state visible without creating alarm?',
+          text: 'For each example, I wrote down what it added. Did the layout help you focus? Did the font feel exact without feeling cold? Did the contrast tell risky information apart from everyday information? Did the screen show what the system was doing without causing alarm?',
         },
         {
           kind: 'p',
-          text: 'This made the concept board more useful in a review. A stakeholder could disagree with the rationale, compare alternatives, or point to a mismatch. The discussion did not have to collapse into personal taste.',
+          text: 'This made the mood board more useful in a review. Someone could disagree with the reasons, compare options, or point out something that did not fit. The discussion did not have to turn into “I like this, I don’t like that”.',
         },
         {
           kind: 'p',
-          text: 'The board became a provisional contract: if we agree the product should feel calm, controlled, and professionally accountable, later screen decisions can be evaluated against that agreement.',
+          text: 'The board became a kind of early agreement: if we agree the product should feel calm, in control and professionally responsible, later screen choices can be checked against that agreement.',
         },
         {
           kind: 'p',
-          text: 'I did not conduct a formal stakeholder-alignment study during the coursework, so I would not claim that the board created organisational consensus. What it did demonstrate was a structured way to make alignment possible.',
+          text: 'I did not do a formal study of whether people agreed during the course, so I would not claim the board got a whole company to agree. What it did show was an organised way to make agreeing possible.',
         },
       ],
     },
     {
       id: 'variation',
-      heading: 'Variation is valuable only when it tests a decision',
+      heading: 'Trying options is only useful when each one tests a decision',
       nav: 'Variation',
       blocks: [
         {
           kind: 'p',
-          text: 'For the course project, I selected the template dashboard as the hero screen and created several distinct layout directions.',
+          text: 'For the course project, I chose the template dashboard as the main screen, and made several very different layouts for it.',
         },
         {
           kind: 'p',
-          text: 'Each variation changed more than surface styling. The alternatives tested different answers to questions such as:',
+          text: 'Each option changed more than just the style. The options tested different answers to questions like:',
         },
         {
           kind: 'list',
           items: [
-            { text: 'Should system health or operational detail appear first?' },
+            { text: 'Should system health or everyday details come first?' },
             { text: 'How much performance information can the user scan without losing focus?' },
             {
-              text: 'Should client billing and internal billing appear together or in clearly separated zones?',
+              text: 'Should client billing and company billing appear together, or in clearly separate areas?',
             },
-            { text: 'How prominent should high-impact actions feel?' },
-            { text: 'What visual rhythm communicates control without becoming rigid?' },
+            { text: 'How much should actions with big effects stand out?' },
+            { text: 'What visual rhythm feels in control without feeling stiff?' },
           ],
         },
         {
           kind: 'p',
-          text: 'I evaluated each direction against five criteria: clarity, confidence, control, focus, and safety.',
+          text: 'I judged each direction against five things: clear, confident, in control, focused and safe.',
         },
         {
           kind: 'p',
-          text: 'The final design was a convergence rather than a wholesale selection. It used the calm structure of one layout, simplified performance visibility from another, and adopted clearer separation between client templates and internal billing configuration.',
+          text: 'The final design was a mix, not just picking one. It used the calm structure of one layout, a simpler view of performance from another, and a clearer split between client templates and the company’s own billing settings.',
         },
         {
           kind: 'p',
-          text: 'This was a useful correction to the idea that exploration ends with picking a winner. Sometimes the right design emerges by understanding why each alternative worked, then combining strengths without carrying forward their weaknesses.',
+          text: 'This fixed my idea that trying options ends with picking a winner. Sometimes the right design comes from understanding why each option worked, then mixing their strengths without keeping their weaknesses.',
         },
         {
           kind: 'figure',
           figure: {
             asset: 'vxd-hero-variations',
-            alt: 'Three hero-dashboard alternatives for the template screen, each annotated with the hypothesis it tested.',
+            alt: 'Three options for the main template dashboard, each with notes on the idea it tested.',
             caption:
-              'Three hero variations, each with the question it was built to answer. Convergence took something from all three.',
+              'Three options for the main screen, each with the question it was built to answer. The final design took something from all three.',
             ratio: '16 / 8',
           },
         },
@@ -214,96 +214,96 @@ export const visualDesign: Article = {
     },
     {
       id: 'hierarchy',
-      heading: 'Visual hierarchy is risk architecture',
-      nav: 'Hierarchy as risk',
+      heading: 'What stands out most is how you manage risk',
+      nav: 'What stands out, and risk',
       blocks: [
         {
           kind: 'p',
-          text: 'The final dashboard prioritised template status and system health before detailed operational information. Secondary content was softened. Revenue and profit were combined into one clearer comparison. Client billing templates and internal billing configuration were separated into distinct zones.',
+          text: 'The final dashboard put template status and system health before the detailed information. Less important content was made quieter. Money in and profit were combined into one clearer comparison. Client billing templates and the company’s own billing settings were split into separate areas.',
         },
-        { kind: 'p', text: 'These decisions were visual, but not merely aesthetic:' },
+        { kind: 'p', text: 'These choices were visual, but not just about looks:' },
         {
           kind: 'list',
           items: [
-            { text: 'Prioritising status made risk visible earlier.' },
+            { text: 'Putting status first made risk visible sooner.' },
             {
-              text: 'Reducing clutter lowered the chance that secondary information competed with a consequential issue.',
+              text: 'Less clutter meant less chance of minor information distracting from an important problem.',
             },
-            { text: 'Combining related metrics reduced visual weight and comparison effort.' },
+            { text: 'Combining related numbers made the screen lighter and comparing easier.' },
             {
-              text: 'Separating responsibilities helped users understand which rules affected clients and which affected the organisation itself.',
+              text: 'Keeping responsibilities apart helped users see which rules affected clients and which affected the company itself.',
             },
             {
-              text: 'Keeping important actions visible but visually restrained supported deliberate action rather than urgency theatre.',
+              text: 'Keeping important actions visible but calm helped people act carefully, instead of feeling rushed by alarm bells.',
             },
           ],
         },
         {
           kind: 'quote',
-          text: 'Visual hierarchy determines what a person notices, compares, and treats as consequential. In a high-stakes system, that makes hierarchy part of the product’s risk architecture.',
+          text: 'What stands out on a screen decides what a person notices, compares and treats as important. In a system where mistakes are costly, that makes it part of how the product manages risk.',
         },
       ],
     },
     {
       id: 'workflow',
-      heading: 'A direction is not finished until it survives the workflow',
-      nav: 'Across the workflow',
+      heading: 'A direction is not finished until it works for every step',
+      nav: 'Across every step',
       blocks: [
         {
           kind: 'p',
-          text: 'A strong hero screen can hide a weak design language. The course project therefore required the selected direction to extend across complete workflows and multiple states: empty, error, active, and completed.',
+          text: 'A great main screen can hide a weak design style. So the course project asked for the chosen direction to work across every step and every state: empty, error, active and finished.',
         },
         {
           kind: 'p',
-          text: 'This tested whether the visual foundation was systematic enough to handle different information densities and emotional moments.',
+          text: 'This tested whether the visual base was organised enough to handle screens with lots or little information, and different feelings.',
         },
         {
           kind: 'p',
-          text: 'Trust, for example, could not mean the same visual treatment everywhere. A routine saved state should feel quiet. A configuration conflict should be unmistakable without appearing catastrophic. A high-impact overwrite should create a deliberate pause. An empty state should guide the user without making an enterprise product feel casual.',
+          text: 'Trust, for example, could not look the same everywhere. A normal “saved” message should feel quiet. A clash in the settings should be impossible to miss, without looking like a disaster. Overwriting something important should make you stop and think. An empty screen should guide the user without making a serious business product feel too casual.',
         },
         {
           kind: 'p',
-          text: 'Consistency did not mean making every screen look alike. It meant applying the same principles to different conditions.',
+          text: 'Being consistent did not mean making every screen look the same. It meant using the same rules in different situations.',
         },
       ],
     },
     {
       id: 'process',
-      heading: 'The process I would reuse',
-      nav: 'What carries forward',
+      heading: 'The process I would use again',
+      nav: 'What I take forward',
       blocks: [
-        { kind: 'p', text: 'I would now approach visual direction through these questions:' },
+        { kind: 'p', text: 'Now I would approach the look and feel with these questions:' },
         {
           kind: 'list',
           ordered: true,
           items: [
             { text: 'What responsibility is the user carrying?' },
             { text: 'What should they understand and feel before acting?' },
-            { text: 'Which qualities describe behaviour, and which describe perception?' },
-            { text: 'What theme can guide decisions and rule out unsuitable options?' },
-            { text: 'What hypothesis does each visual variation test?' },
-            { text: 'Which evaluation criteria are more useful than personal preference?' },
-            { text: 'Can the direction handle risk, error, empty, and completion states?' },
-            { text: 'Can another designer explain why the system looks and behaves this way?' },
+            { text: 'Which qualities are about how it works, and which are about how it looks?' },
+            { text: 'What theme can guide decisions and rule out options that do not fit?' },
+            { text: 'What idea does each visual option test?' },
+            { text: 'What ways of judging are more useful than personal taste?' },
+            { text: 'Does the direction work for risk, error, empty and finished screens?' },
+            { text: 'Could another designer explain why the system looks and works this way?' },
           ],
         },
         {
           kind: 'p',
-          text: 'The project taught me that visual design is not the final coat applied after the product has been solved. It is a system for directing attention, communicating consequence, and helping people feel appropriately confident in what they are about to do.',
+          text: 'The project taught me that visual design is not the last coat of paint once the product is solved. It is a system for guiding attention, showing what is at stake, and helping people feel the right amount of confidence about what they are about to do.',
         },
         {
           kind: 'p',
-          text: 'Good visual design does not remove responsibility from a high-stakes task. It makes that responsibility easier to carry.',
+          text: 'Good visual design does not take the responsibility away from an important task. It makes that responsibility easier to carry.',
         },
       ],
     },
   ],
   studio: {
-    body: 'This article is based on graduate visual-design coursework for Biller Hero, covering product framing, usability and look-and-feel concepts, theme development, concept boards, hero-screen variations, evaluated convergence, workflow application, UI states, and a high-fidelity prototype.',
+    body: 'This article is based on my master’s visual design course for Biller Hero. It covers framing the product, ideas about how it works and how it looks, building a theme, mood boards, options for the main screen, choosing between them, using the style across every step, screen states, and a finished mock-up.',
   },
   meta: {
-    title: 'Visual Design Is a Decision System',
+    title: 'How Things Look Is a Set of Decisions',
     description:
-      'How responsibility, risk, concept boards, and evaluated variation shaped a healthcare billing interface.',
+      'How responsibility, risk, mood boards and testing options shaped a healthcare billing screen.',
   },
 };

@@ -2,14 +2,13 @@ import { useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Contact from '@/components/Contact';
-import ReadingProgress from '@/components/ReadingProgress';
+import { ReadingNav, sectionsToChapters } from '@/design/ReadingNav';
 import Lightbox from '@/components/case-study/Lightbox';
 import ArticleBlocks from '@/components/writing/ArticleBlocks';
-import ArticleContents from '@/components/writing/ArticleContents';
 import ArticleFigure from '@/components/writing/ArticleFigure';
 import { adjacentArticles, articles, readingMinutes } from '@/data/writing';
 import { useLightbox } from '@/hooks/use-lightbox';
-import { useReveal } from '@/hooks/use-reveal';
+import { Section } from '@/design/reading';
 import { usePageMeta } from '@/hooks/use-page-meta';
 
 /**
@@ -23,31 +22,12 @@ import { usePageMeta } from '@/hooks/use-page-meta';
  * identity.
  */
 
-/** Section headings carry the id the contents list and the URL hash use. */
-const Section = ({
-  id,
-  heading,
-  children,
-}: {
-  id: string;
-  heading: string;
-  children: React.ReactNode;
-}) => {
-  const ref = useReveal<HTMLElement>();
-
-  return (
-    /* The hairline is what separates a section heading from a sub-heading
-       inside one. Same device the case studies use for their bands. */
-    <section
-      ref={ref}
-      id={id}
-      className="reveal mt-16 scroll-mt-28 border-t border-border pt-8 md:mt-20 md:pt-10"
-    >
-      <h2 className="max-w-[24ch] text-2xl leading-[1.15] md:text-[2rem]">{heading}</h2>
-      <div className="mt-7">{children}</div>
-    </section>
-  );
-};
+/*
+ * The section construction this page used to define for itself now lives in
+ * src/design/reading.tsx, unchanged. It was always the best-behaved piece of
+ * layout on the site - it is the reason this section reads calmer than the
+ * case studies - so it belongs where a case study can reach for it too.
+ */
 
 const Article = () => {
   const { slug } = useParams();
@@ -98,13 +78,18 @@ const Article = () => {
   return (
     <>
       <Navigation />
-      <ReadingProgress />
+      {/* The essays' own contents list was the model for the site-wide one,
+          so this page now imports back what it used to define. */}
+      <ReadingNav
+        chapters={sectionsToChapters(
+          article.sections.map((s) => ({ id: s.id, label: s.nav ?? s.heading }))
+        )}
+      />
 
       <main id="main" className="min-h-screen bg-background" data-strand={article.category.strand}>
-        <ArticleContents sections={article.sections} />
 
         {/* overflow-x-clip absorbs the block-wide figure breakout. */}
-        <article className="overflow-x-clip px-5 pb-20 pt-32 md:px-8 md:pt-40 lg:px-12">
+        <article className="overflow-x-clip px-gutter pb-20 pt-masthead">
           <div className="mx-auto max-w-2xl">
             <Link to="/writing" className="rule-link label text-ink-500">
               <span aria-hidden="true">&larr;</span> Writing

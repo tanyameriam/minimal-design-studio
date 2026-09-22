@@ -158,7 +158,7 @@ export interface FlowStep {
  * loop needs no sentence explaining that it is slow.
  */
 export const CurrentFlow = ({ steps }: { steps: FlowStep[] }) => (
-  <ol className="mt-12 md:mt-16">
+  <ol className="mt-break">
     {steps.map((step, i) => (
       <li key={step.act}>
         {i > 0 && (
@@ -218,7 +218,7 @@ export const Facts = ({
   items: { figure: string; note: string }[];
   source: string;
 }) => (
-  <div className="mt-12 md:mt-16">
+  <div className="mt-break">
     <div className="grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
       {items.map((item) => (
         <div key={item.note} className="flex flex-col bg-background p-5 md:p-6">
@@ -251,7 +251,7 @@ export const ActorHub = ({
   hubNote: string;
   actors: { name: string; needs: string }[];
 }) => (
-  <div className="mt-12 grid gap-px border border-border bg-border md:mt-16 md:grid-cols-3 md:grid-rows-2">
+  <div className="mt-break grid gap-px border border-border bg-border md:grid-cols-3 md:grid-rows-2">
     <div className="order-first bg-background p-6 md:order-none md:col-start-2 md:row-span-2 md:row-start-1 md:flex md:flex-col md:justify-center md:p-8">
       <p className="label text-ink-500">The backbone</p>
       <p className="mt-5 text-2xl leading-none md:text-[2rem]">{hub}</p>
@@ -309,14 +309,14 @@ export const Lifecycle = ({
   /** Index of the one stage worked through as an example underneath. */
   highlight?: number;
 }) => (
-  <div className="mt-12 md:mt-16">
+  <div className="mt-break">
     {/* A scroll container is only reachable by keyboard once it is
         focusable, and it only announces itself once it is a named region. */}
     <div
       role="region"
       aria-label={caption}
       tabIndex={0}
-      className="-mx-5 overflow-x-auto px-5 pb-2 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12"
+      className="-mx-gutter overflow-x-auto px-gutter pb-2"
     >
       <table className="w-full min-w-[52rem] border-collapse text-left">
         <caption className="sr-only">{caption}</caption>
@@ -398,7 +398,7 @@ export const Lifecycle = ({
             ))}
         </ul>
         <p className="mt-5 max-w-2xl text-base leading-[1.55] text-ink-600 md:text-lg">
-          One event. Four destinations, and not one of them is a message anybody composes.
+          One thing happens. Four people are updated, and nobody has to type a single message.
         </p>
       </div>
     )}
@@ -411,7 +411,7 @@ export const StateList = ({
 }: {
   states: { phase: string; state: string; captures: string }[];
 }) => (
-  <ol className="mt-12 divide-y divide-border border-y border-border md:mt-16">
+  <ol className="mt-break divide-y divide-border border-y border-border">
     {states.map((s, i) => (
       <li key={s.state} className="grid gap-3 py-5 md:grid-cols-[3rem_10rem_1fr_1.2fr] md:gap-6">
         <span className="label pt-1 tabular-nums text-ink-500">
@@ -442,7 +442,7 @@ export const EdgeGrid = ({
   columns?: 2 | 3;
 }) => (
   <div
-    className={`mt-12 grid gap-px border border-border bg-border md:mt-16 sm:grid-cols-2 ${
+    className={`mt-break grid gap-px border border-border bg-border sm:grid-cols-2 ${
       columns === 3 ? 'lg:grid-cols-3' : ''
     }`}
   >
@@ -470,7 +470,7 @@ export const Failures = ({
 }: {
   items: { title: string; body: string; quote: string }[];
 }) => (
-  <ol className="mt-12 divide-y divide-border border-y border-border md:mt-16">
+  <ol className="mt-break divide-y divide-border border-y border-border">
     {items.map((item, i) => (
       <li key={item.title} className="grid gap-8 py-9 lg:grid-cols-[1.1fr_1fr] lg:gap-16 md:py-12">
         <div>
@@ -508,7 +508,7 @@ export const PhaseBlueprint = ({
 }: {
   phases: { name: string; actors: string; breaks: string; opportunity: string }[];
 }) => (
-  <div className="mt-12 grid gap-px border border-border bg-border md:mt-16 sm:grid-cols-2 lg:grid-cols-4">
+  <div className="mt-break grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
     {phases.map((phase, i) => (
       <div key={phase.name} className="flex flex-col bg-background p-5 md:p-6">
         <div className="flex items-baseline gap-3">
@@ -546,7 +546,7 @@ export const IntakeSplit = ({
   now: { label: string; note: string; items: string[] };
   later: { label: string; note: string; items: string[] };
 }) => (
-  <div className="mt-12 grid gap-px border border-border bg-border md:mt-16 md:grid-cols-2">
+  <div className="mt-break grid gap-px border border-border bg-border md:grid-cols-2">
     {[now, later].map((pane, i) => (
       <div key={pane.label} className="bg-background p-6 md:p-8">
         <p className={`label ${i === 0 ? 'label-strong' : 'text-ink-500'}`}>{pane.label}</p>
@@ -584,7 +584,7 @@ export const Exchange = ({
   turns: { who: string; lines: string[] }[];
   note?: string;
 }) => (
-  <div className="mt-12 max-w-xl md:mt-16">
+  <div className="mt-break max-w-xl">
     <ol className="space-y-5">
       {turns.map((turn) => (
         <li key={turn.who} className="border-l border-foreground pl-5 md:pl-6">
@@ -620,7 +620,7 @@ export const AssignmentLoop = ({
   before: { label: string; steps: string[]; loop: string };
   after: { label: string; step: string; branches: { on: string; then: string }[] };
 }) => (
-  <div className="mt-12 grid gap-px border border-border bg-border md:mt-16 md:grid-cols-2">
+  <div className="mt-break grid gap-px border border-border bg-border md:grid-cols-2">
     <div className="bg-background p-6 md:p-8">
       <p className="label text-ink-500">{before.label}</p>
       <ol className="mt-8">
@@ -686,7 +686,7 @@ export const Delivered = ({
   delivered: { label: string; note: string; items: string[] };
   withheld: { label: string; note: string; items: string[] };
 }) => (
-  <div className="mt-12 grid gap-px border border-border bg-border md:mt-16 md:grid-cols-2">
+  <div className="mt-break grid gap-px border border-border bg-border md:grid-cols-2">
     {[delivered, withheld].map((pane, i) => (
       <div key={pane.label} className="bg-background p-6 md:p-8">
         <p className={`label ${i === 0 ? 'label-strong' : 'text-ink-500'}`}>{pane.label}</p>
@@ -731,7 +731,7 @@ export const SystemPanes = ({
   before: { label: string; verdict: string; steps: { text: string; relay?: boolean }[] };
   after: { label: string; verdict: string; steps: { text: string; relay?: boolean }[] };
 }) => (
-  <div className="mt-12 grid gap-px border border-border bg-border md:mt-16 md:grid-cols-2">
+  <div className="mt-break grid gap-px border border-border bg-border md:grid-cols-2">
     {[before, after].map((pane, paneIndex) => (
       <div key={pane.label} className="flex flex-col bg-background p-6 md:p-8">
         <p className="label text-ink-500">{pane.label}</p>
@@ -753,7 +753,7 @@ export const SystemPanes = ({
                   <span className="text-base leading-snug md:text-lg">{step.text}</span>
                   {step.relay && (
                     <span className="label border border-dashed border-border px-2 py-1 text-ink-500">
-                      Someone relays it
+                      Someone passes it on by hand
                     </span>
                   )}
                 </span>
@@ -788,7 +788,7 @@ export const Targets = ({
 }: {
   items: { figure: string; outcome: string; how: string }[];
 }) => (
-  <div className="mt-12 divide-y divide-border border-y border-border md:mt-16">
+  <div className="mt-break divide-y divide-border border-y border-border">
     {items.map((item) => (
       <div key={item.outcome} className="grid gap-4 py-7 md:grid-cols-[14rem_1fr] md:gap-10">
         <div>
@@ -828,7 +828,7 @@ export const Callouts = ({ items }: { items: string[] }) => (
 
 /** The line a module is built on. One sentence, sized to be remembered. */
 export const Principle = ({ children }: { children: ReactNode }) => (
-  <p className="mt-12 border-l border-foreground pl-5 text-xl leading-snug md:mt-14 md:pl-6 md:text-[1.75rem]">
+  <p className="mt-break border-l border-foreground pl-5 text-xl leading-snug md:pl-6 md:text-[1.75rem]">
     {children}
   </p>
 );

@@ -8,16 +8,19 @@ import { usePageMeta } from '@/hooks/use-page-meta';
  * as a connected narrative: evidence first, then the bet, then the moves,
  * with a mid-story pushback beat where testing corrected the plan.
  *
- * The deck deliberately obeys the Layrrrd design system it describes:
- * light only, zero corner radius, hairline rules, weighted emphasis for the
- * narrator's voice. One slide points this out.
+ * The deck used to be set in Layrrrd's own design system - light only, zero
+ * corner radius - which made it the one surface on this site that did not
+ * look like this site. It runs on the portfolio's palette now, like every
+ * other deck. The slide that describes Layrrrd's design system still
+ * describes it; it no longer demonstrates it at the cost of the portfolio's
+ * own consistency.
  */
 
 const MOVES = ['Capture', 'The digest', 'System and brand', 'Pricing'];
 
 /** Where we are among the four moves. Echoes across the move slides. */
 const MoveStrip = ({ active }: { active: number }) => (
-  <div className="mt-12 grid gap-x-6 gap-y-4 sm:grid-cols-4 md:mt-16">
+  <div className="mt-break grid gap-x-6 gap-y-4 sm:grid-cols-4">
     {MOVES.map((move, i) => (
       <div key={move}>
         <div
@@ -30,7 +33,7 @@ const MoveStrip = ({ active }: { active: number }) => (
           {i + 1} · {move}
         </p>
         <p className="label mt-1.5 text-ink-500">
-          {i === active ? 'In play' : i < active ? 'Done' : 'Waiting'}
+          {i === active ? 'Now' : i < active ? 'Done' : 'Next'}
         </p>
       </div>
     ))}
@@ -40,22 +43,22 @@ const MoveStrip = ({ active }: { active: number }) => (
 const CoverSlide = () => (
   <div>
     <div className="flex flex-wrap items-center justify-between gap-4">
-      <span className="label text-ink-500">Case study · Layrrrd · Content curation</span>
+      <span className="label text-ink-500">Case study · Layrrrd · Saving and finding things</span>
       <span className="label hidden text-ink-500 md:block">
         Tanya Sunny · tanyameriamsunny@gmail.com
       </span>
     </div>
 
-    <h1 className="mt-12 max-w-4xl text-[2.5rem] leading-[1.02] md:mt-20 md:text-[4.25rem]">
-      First commit to paying customers in <Em>nine days.</Em>
+    <h1 className="mt-stage max-w-4xl text-[2.5rem] leading-[1.02] md:text-[4.25rem]">
+      From the first line of code to paying customers in <Em>nine days.</Em>
     </h1>
 
     <p className="mt-8 max-w-2xl text-base leading-[1.55] text-ink-600 md:text-lg">
-      Layrrrd saves what you hoard from anywhere, summarises it, and pushes a curated digest
-      back to you. Validated in nine days, still shipping. Live at layrrrd.com.
+      Layrrrd saves the things you collect from anywhere, sums them up, and sends a hand-picked
+      digest back to you. Tested in nine days, and still growing. Live at layrrrd.com.
     </p>
 
-    <div className="mt-12 grid max-w-2xl gap-x-12 gap-y-8 sm:grid-cols-2 md:mt-16">
+    <div className="mt-break grid max-w-2xl gap-x-12 gap-y-8 sm:grid-cols-2">
       <div>
         <p className="text-[3rem] leading-none tabular-nums md:text-[3.75rem]">15</p>
         <p className="mt-3 text-sm leading-snug text-ink-600 md:text-base">
@@ -65,13 +68,13 @@ const CoverSlide = () => (
       <div>
         <p className="text-[3rem] leading-none tabular-nums md:text-[3.75rem]">126</p>
         <p className="mt-3 text-sm leading-snug text-ink-600 md:text-base">
-          freemium signups, tracked in PostHog from launch
+          free sign-ups, counted in PostHog from launch
         </p>
       </div>
     </div>
 
-    <div className="mt-12 flex flex-wrap gap-3 md:mt-16">
-      {['June 2026 to present', 'Design lead', 'Live, revenue'].map((chip) => (
+    <div className="mt-break flex flex-wrap gap-3">
+      {['June 2026 to now', 'Design lead', 'Live, making money'].map((chip) => (
         <span key={chip} className="label border border-border px-3 py-2 text-ink-500">
           {chip}
         </span>
@@ -87,18 +90,18 @@ const GraveyardSlide = () => (
       Everyone saves. <Em>Almost nothing is opened again.</Em>
     </H>
     <Body>
-      Bookmarks, tabs, screenshots, notes apps, Telegram saved messages. Saving costs nothing,
-      so the pile grows daily. Revisiting costs willpower, so it never happens.
+      Bookmarks, tabs, screenshots, notes apps, Telegram saved messages. Saving is free,
+      so the pile grows every day. Going back takes effort, so it never happens.
     </Body>
     <div className="mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">
-      <Panel label="Saving" title="Frictionless">
+      <Panel label="Saving" title="Easy">
         Happens constantly, across every app, without a second thought.
       </Panel>
       <Panel label="Revisiting" title="Almost never">
-        Relies on willpower nobody has. The pile is write-only.
+        It takes effort nobody has. Things go in, and never come out.
       </Panel>
     </div>
-    <Voice>Before designing anything, we had to name which half of that was actually broken.</Voice>
+    <Voice>Before designing anything, we had to find out which half of that was really broken.</Voice>
   </div>
 );
 
@@ -106,42 +109,42 @@ const EvidenceSlide = () => (
   <div>
     <Chapter n="02" label="What we already knew" />
     <H>
-      Nine days does not buy a discovery phase. So the discovery had to{' '}
+      Nine days is not enough time for a long research phase. So the research had to{' '}
       <Em>already exist.</Em>
     </H>
     <Body>
-      We did not start with interviews. We started with evidence that had been accumulating
-      for years, in our own pockets and in the pockets of the people we were building for.
+      We did not start with interviews. We started with proof that had been piling up for
+      years, in our own phones and in the phones of the people we were building for.
     </Body>
     <div className="mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">
-      <Panel label="Evidence 01" title="Our own graveyards">
-        Years of saved content, near zero revisits. Every one of us had the same dead pile.
+      <Panel label="Proof 01" title="Our own forgotten piles">
+        Years of saved things, and we almost never went back. Every one of us had the same forgotten pile.
       </Panel>
-      <Panel label="Evidence 02" title="Our target users">
-        They dump links into Telegram saved messages and never look again. The habit already
-        exists. The return trip does not.
+      <Panel label="Proof 02" title="The people we were building for">
+        They drop links into Telegram saved messages and never look again. The habit is
+        already there. Going back is not.
       </Panel>
     </div>
-    <Voice>You do not have a discovery problem. You have a revisit problem.</Voice>
+    <Voice>You do not have a problem finding things. You have a problem going back to them.</Voice>
   </div>
 );
 
 const PatternSlide = () => (
   <div>
-    <Chapter n="03" label="The uncomfortable pattern" />
+    <Chapter n="03" label="The awkward pattern" />
     <H>
-      Every tool in the category answers with <Em>more organisation.</Em>
+      Every app like this answers with <Em>more sorting.</Em>
     </H>
     <Body>
-      Folders, tags, better search. All of it asks the user for more work at exactly the
-      moment they have none to give.
+      Folders, tags, better search. All of it asks for more work at the exact moment
+      people have none to give.
     </Body>
     <div className="mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">
-      <Panel label="What the category assumed">
-        Build a good enough archive and people will come back to it.
+      <Panel label="What other apps assumed">
+        Build a good enough storage box and people will come back to it.
       </Panel>
-      <Panel label="What behaviour showed" strong>
-        A better archive still waits. The failure was never in saving. It was in returning.
+      <Panel label="What people actually did" strong>
+        A better storage box still just waits. Saving was never the problem. Going back was.
       </Panel>
     </div>
   </div>
@@ -151,21 +154,21 @@ const BetSlide = () => (
   <div>
     <Chapter n="04" label="The bet" />
     <H>
-      Stop building a better archive. <Em>Build around the push.</Em>
+      Stop building a better storage box. <Em>Send things back to people instead.</Em>
     </H>
     <Body>Three directions were on the table. Two of them we refused.</Body>
     <div className="mt-10 grid max-w-4xl gap-4 md:grid-cols-3">
       <Panel label="Option A · Rejected" title="A better organiser">
-        Folders, tags, search first. Every hour spent on taxonomy rebuilds the problem we
-        were solving, in nicer colours.
+        Folders, tags and search first. Every hour spent on ways of sorting rebuilds the problem we
+        were trying to fix, just in nicer colours.
       </Panel>
-      <Panel label="Option B · Deferred" title="A discovery feed">
-        In the pitch, deliberately not in the product. Recommendations without density are
-        noise, and the core loop needed the days.
+      <Panel label="Option B · Later" title="A feed of new things to read">
+        In the pitch, but on purpose not in the product. Tips without enough content behind
+        them are just noise, and the main idea needed those days.
       </Panel>
       <Panel label="Option C · Chosen" title="Digest first" strong>
-        Summarise on save. Push a curated digest back on a schedule. The product stops
-        waiting for the user to come back.
+        Sum things up when they are saved. Send a hand-picked digest back on a schedule. The
+        app stops waiting for people to come back.
       </Panel>
     </div>
   </div>
@@ -175,35 +178,35 @@ const ConstraintSlide = () => (
   <div>
     <Chapter n="05" label="The constraint" />
     <H>
-      Nine days to prove it. Scope had <Em>one rule.</Em>
+      Nine days to prove it. What we built had <Em>one rule.</Em>
     </H>
     <div className="mt-10 max-w-3xl border border-foreground p-6 md:p-8">
       <p className="text-xl leading-[1.3] md:text-2xl">
-        Anything that makes saving easier or the digest better ships.{' '}
+        Anything that makes saving easier or the digest better gets built.{' '}
         <Em>Anything else waits.</Em>
       </p>
     </div>
     <Body>
-      Four moves fit inside that rule. Each one exists only because it feeds the loop.
+      Four moves fit inside that rule. Each one is there only because it helps the main idea.
     </Body>
     <MoveStrip active={-1} />
-    <Voice>The bet was placed on day one. Every scoping decision descended from it.</Voice>
+    <Voice>We made our bet on day one. Every choice about what to build came from it.</Voice>
   </div>
 );
 
 const CaptureSlide = () => (
   <div>
-    <Chapter n="06" label="Move one of four · Capture" />
+    <Chapter n="06" label="Move one of four · Saving" />
     <H>
-      Capture went <Em>where saving already happens.</Em>
+      Saving went <Em>where people already save.</Em>
     </H>
     <Body>
-      Fighting the Telegram habit meant winning a behaviour change war on a nine day budget.
-      So the product moved into the habit instead. Three channels, one pipeline.
+      Fighting the Telegram habit meant trying to change how people behave, in nine days.
+      So the app moved into the habit instead. Three ways to save, one system behind them.
     </Body>
     <div className="mt-10 flex max-w-4xl flex-col items-stretch gap-4 md:flex-row md:items-center">
       <div className="grid flex-1 gap-2">
-        {['Chrome extension', 'Paste bar in the app', 'Telegram bot'].map(
+        {['Chrome add-on', 'Paste box in the app', 'Telegram bot'].map(
           (channel) => (
             <div key={channel} className="border border-border px-4 py-3 text-sm md:text-base">
               {channel}
@@ -220,8 +223,8 @@ const CaptureSlide = () => (
       <div className="flex-1 border border-foreground p-5 md:p-6">
         <p className="label text-ink-800">One pipeline</p>
         <p className="mt-3 text-sm leading-relaxed text-ink-600 md:text-base">
-          A save is instant and idempotent. The AI summary lands in the background. The item
-          appears in the library without the user waiting on it.
+          Saving is instant, and saving twice does no harm. The AI summary is made in the
+          background. The item shows up in the library without the user having to wait.
         </p>
       </div>
     </div>
@@ -229,15 +232,15 @@ const CaptureSlide = () => (
       <div>
         <p className="label mb-2 text-ink-500">What it cost</p>
         <p className="text-sm leading-relaxed text-ink-600">
-          Each channel shipped thinner, and two of them are bots whose conversational surface
-          needed its own design work.
+          Each way to save launched with less polish, and two of them are chat bots that needed
+          their own design work.
         </p>
       </div>
       <div>
         <p className="label mb-2 text-ink-500">What it bought</p>
         <p className="text-sm leading-relaxed text-ink-600">
-          Capture met users inside their existing habit. One polished channel would have made
-          a better bookmarking tool, the thing we refused to build.
+          Saving fit into habits people already had. One polished way to save would have made a
+          better bookmarking tool, which is the thing we refused to build.
         </p>
       </div>
     </div>
@@ -252,49 +255,49 @@ const DigestSlide = () => (
       The digest is not a feature. <Em>It is the product.</Em>
     </H>
     <Body>
-      Saved items grouped by topic, summarised, with the unread backlog surfaced, delivered
-      over email or Telegram every week. Everything else in the product exists to feed it.
+      Saved items are grouped by topic and summed up, with the unread pile shown too, and
+      sent by email or Telegram every week. Everything else in the app is there to feed it.
     </Body>
     <div className="mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">
-      <Panel label="Restraint 01" title="Asks before it sends">
-        The bot asks consent before delivering digests. Nothing arrives unrequested.
+      <Panel label="Holding back 01" title="Asks before it sends">
+        The bot asks before sending digests. Nothing arrives that you did not ask for.
       </Panel>
-      <Panel label="Restraint 02" title="Never nudges">
-        No proactive pings, no streaks, no guilt. The push earns its place by being wanted.
+      <Panel label="Holding back 02" title="Never nags">
+        No surprise pings, no streaks, no guilt. The digest earns its place by being wanted.
       </Panel>
     </div>
-    <Voice>A product whose premise is respecting your attention cannot spend it cheaply.</Voice>
+    <Voice>An app that promises to respect your attention cannot waste it.</Voice>
     <MoveStrip active={1} />
   </div>
 );
 
 const PushbackSlide = () => (
   <div>
-    <Chapter n="08" label="Midway · User testing" />
+    <Chapter n="08" label="Halfway · Testing with users" />
     <H>
-      Testing inside the window said the plan was wrong <Em>in three places.</Em>
+      Testing during the nine days showed the plan was wrong <Em>in three places.</Em>
     </H>
     <Body>
-      We tested during the build, not after it. Three findings were worth reacting to, and
-      all three changed the product before day nine.
+      We tested while we were building, not after. Three findings were worth acting on, and
+      all three changed the app before day nine.
     </Body>
     <div className="mt-10 grid max-w-4xl gap-4 md:grid-cols-3">
       <Panel label="Found 01" title="Nobody trusted the save">
-        Nothing visibly happened, so people assumed it had failed. The fix: an optimistic
-        pending card appears instantly and resolves in place.
+        Nothing seemed to happen, so people thought it had failed. The fix: a “saving…” card
+        appears right away and fills in where it is.
       </Panel>
-      <Panel label="Found 02" title="Retrieval broke past a hundred items">
-        A raw library stopped being navigable. The fix: reposition around a curated feed
-        instead of an archive.
+      <Panel label="Found 02" title="Finding things broke after a hundred items">
+        A plain library became too hard to get around. The fix: build it around a hand-picked
+        feed instead of a storage box.
       </Panel>
-      <Panel label="Found 03" title="The cadence felt imposed">
-        A fixed day read as spam. The fix: each user picks their digest day. A chosen day
-        reads as a commitment they made to themselves.
+      <Panel label="Found 03" title="The schedule felt forced on people">
+        A fixed day felt like spam. The fix: each user picks their own digest day. A day you
+        choose feels like a promise you made to yourself.
       </Panel>
     </div>
     <Voice>
-      Reacting to evidence inside nine days, instead of defending the plan, is the part of
-      this project I would show a hiring panel first.
+      Acting on what we learned within nine days, instead of sticking to the plan, is the
+      part of this project I would show a hiring team first.
     </Voice>
   </div>
 );
@@ -303,19 +306,19 @@ const SystemSlide = () => (
   <div>
     <Chapter n="09" label="Move three of four · The system" />
     <H>
-      Taste does not scale at AI speed <Em>unless it is written down.</Em>
+      Good taste cannot keep up with AI speed <Em>unless it is written down.</Em>
     </H>
     <Body>
-      A nine day product built with AI tools could have become a visual junk drawer. So the
-      design system went into the repository as written rules the coding tools are bound to.
-      It held through the nine days and is still holding.
+      An app built in nine days with AI tools could easily have turned into a messy junk
+      drawer. So we wrote the design system into the code as rules the coding tools have
+      to follow. It held up through the nine days and it still does.
     </Body>
     <div className="mt-10 grid max-w-4xl gap-4 sm:grid-cols-2 md:grid-cols-4">
       {[
         'Light only',
-        'Zero corner radius',
-        'Hairline rules, no cards, no shadows',
-        'Documented type and colour',
+        'No rounded corners',
+        'Thin lines, no cards, no shadows',
+        'Fonts and colours written down',
       ].map((rule) => (
         <div key={rule} className="border border-border p-5">
           <p className="text-sm leading-snug md:text-base">{rule}</p>
@@ -336,22 +339,23 @@ const BrandSlide = () => (
       One character, <Em>four jobs.</Em>
     </H>
     <Body>
-      Rudolf, the dog mascot, is not decoration. One character doing four jobs is what kept a
-      nine day brand coherent, while the product surface stayed quiet by rule.
+      Rudolf, the dog mascot, is not just decoration. One character doing four jobs is what
+      kept a brand built in nine days feeling like one thing, while the app itself stayed
+      plain on purpose.
     </Body>
     <div className="mt-10 grid max-w-4xl gap-4 sm:grid-cols-2 md:grid-cols-4">
       <Panel label="Job 01" title="The loading state">
-        Rudolf carries every wait in the product.
+        Rudolf keeps you company whenever the app is loading.
       </Panel>
       <Panel label="Job 02" title="The chat persona">
         The voice of the Telegram channel.
       </Panel>
-      <Panel label="Job 03" title="The pricing metaphor">
-        Chat time is play time. Top-ups are biscuits.
+      <Panel label="Job 03" title="The way we explain prices">
+        Chat time is play time. Buying more is buying biscuits.
       </Panel>
-      <Panel label="Job 04" title="The expressive layer">
-        Brand is opt-in by rule, never applied by default, so marketing can be loud while the
-        product stays calm.
+      <Panel label="Job 04" title="The fun part">
+        The brand only shows up where we choose it to, never by default. So the marketing
+        can be loud while the app stays calm.
       </Panel>
     </div>
     <MoveStrip active={2} />
@@ -360,28 +364,28 @@ const BrandSlide = () => (
 
 const PricingSlide = () => (
   <div>
-    <Chapter n="11" label="Move four of four · Pricing" />
+    <Chapter n="11" label="Move four of four · Prices" />
     <H>
-      Subscriptions punish a product you touch <Em>once a week.</Em>
+      Monthly payments are unfair for an app you use <Em>once a week.</Em>
     </H>
     <Body>
-      A weekly-touch product has to re-earn a monthly charge before the habit even forms.
-      That is a bad fight to pick at launch, so we did not pick it.
+      An app you use once a week has to prove it is worth a monthly charge before the habit
+      even starts. That is a bad fight to pick at launch, so we did not pick it.
     </Body>
     <div className="mt-10 grid max-w-4xl gap-4 md:grid-cols-3">
       <Panel label="Founding membership" title="One time, one hundred spots" strong>
-        Early spots cheaper. Gone means gone. Scarcity converts curiosity into commitment.
+        Early spots cost less. When they are gone, they are gone. Limited spots turn curiosity
+        into commitment.
       </Panel>
       <Panel label="Free for everyone" title="Saves, summaries, digests">
-        The funnel stays open. The core loop is never behind a wall.
+        Anyone can still join. The main features are never locked behind a payment.
       </Panel>
-      <Panel label="Metered" title="Only chat time with Rudolf">
-        The one place where cost genuinely scales with use.
+      <Panel label="Pay as you go" title="Only chat time with Rudolf">
+        The one place where it really costs us more when you use it more.
       </Panel>
     </div>
     <Voice>
-      Payments went live inside the validation window. That is what made day nine mean
-      something.
+      Payments went live during the nine days. That is what made day nine mean something.
     </Voice>
     <MoveStrip active={3} />
   </div>
@@ -397,22 +401,22 @@ const ResultSlide = () => (
       <div>
         <p className="text-[4rem] leading-none tabular-nums md:text-[5.5rem]">15</p>
         <p className="mt-4 text-base leading-snug text-ink-600 md:text-lg">
-          paying customers, through payments that went live inside the window
+          paying customers, through payments that went live during the nine days
         </p>
       </div>
       <div>
         <p className="text-[4rem] leading-none tabular-nums md:text-[5.5rem]">126</p>
         <p className="mt-4 text-base leading-snug text-ink-600 md:text-lg">
-          freemium signups on a deliberately generous free tier
+          free sign-ups on a free plan that is generous on purpose
         </p>
       </div>
     </div>
     <p className="label mt-10 text-ink-500">
-      Source: PostHog, running since day one. Every number here is a dashboard, not a memory.
+      Source: PostHog, running since day one. Every number here comes from a dashboard, not from memory.
     </p>
     <Voice>
-      Fifteen people paid real money for a product that was nine days old. No interview could
-      have validated the bet harder.
+      Fifteen people paid real money for an app that was nine days old. No interview could
+      have tested the bet better.
     </Voice>
   </div>
 );
@@ -421,18 +425,18 @@ const SinceThenSlide = () => (
   <div>
     <Chapter n="13" label="Since then" />
     <H>
-      Validation was the start, <Em>not the story.</Em>
+      Proving the idea was the start, <Em>not the whole story.</Em>
     </H>
     <Body>
-      The same team has kept building on the validated loop. Nothing was thrown away and
-      nothing was rewritten from scratch.
+      The same team has kept building on the idea that worked. Nothing was thrown away and
+      nothing was rebuilt from scratch.
     </Body>
     <div className="mt-10 flex max-w-3xl flex-wrap gap-3">
       {[
-        'Published Chrome extension',
+        'A Chrome add-on, now live',
         'Referral loops',
         'Both chat channels',
-        'Account deletion that actually cascades',
+        'Deleting your account really deletes everything',
       ].map((item) => (
         <span key={item} className="border border-border px-4 py-2.5 text-sm md:text-base">
           {item}
@@ -440,13 +444,13 @@ const SinceThenSlide = () => (
       ))}
     </div>
     <div className="mt-8 max-w-3xl border border-border p-5 md:p-6">
-      <p className="label-strong">Named debts, on the record</p>
+      <p className="label-strong">Known problems, written down</p>
       <p className="mt-3 text-sm leading-relaxed text-ink-600 md:text-base">
-        No automated test suite yet. And the digest job, as designed, is the first known
-        scaling ceiling.
+        There are no automatic tests yet. And the way the digest is built will be the first
+        thing to struggle as the app grows.
       </p>
     </div>
-    <Voice>Writing the ceilings down before hitting them makes them backlog, not surprises.</Voice>
+    <Voice>Writing down the limits before you hit them turns them into a to-do list, not a surprise.</Voice>
   </div>
 );
 
@@ -457,21 +461,21 @@ const LessonsSlide = () => (
       The lessons that survived <Em>day nine.</Em>
     </H>
     <div className="mt-10 grid max-w-4xl gap-4 md:grid-cols-3">
-      <Panel label="01" title="Write the system down first">
-        When machines generate interface code at validation speed, written constraints are
-        the only form of taste that scales.
+      <Panel label="01" title="Write the design rules down first">
+        When computers write screen code this fast, written rules are the only way good taste
+        can keep up.
       </Panel>
-      <Panel label="02" title="React to evidence mid-sprint">
-        The original plan mattered less than the speed of correcting it. Testing during the
-        build is what the window was for.
+      <Panel label="02" title="Act on what you learn, even halfway through">
+        The first plan mattered less than how fast we fixed it. Testing while building is
+        what the nine days were for.
       </Panel>
-      <Panel label="03" title="Instrument from day one">
-        PostHog ran from launch. It is why this story ends in numbers instead of adjectives.
+      <Panel label="03" title="Measure from day one">
+        PostHog ran from launch. That is why this story ends with numbers, not just nice words.
       </Panel>
     </div>
     <Voice>
-      The product is not finished and does not claim to be. Shipping against a named debt
-      list is the part I enjoy most.
+      The app is not finished and does not pretend to be. Launching with a list of known
+      problems is the part I enjoy most.
     </Voice>
   </div>
 );
@@ -482,8 +486,8 @@ const ThanksSlide = () => (
       Thank <Em>you.</Em>
     </p>
     <p className="mt-8 max-w-xl text-base leading-[1.55] text-ink-600 md:text-lg">
-      This deck is the short version of nine days and everything since. Happy to go deeper on
-      any of it.
+      These slides are the short version of nine days and everything since. I am happy to
+      go deeper on any of it.
     </p>
     <a
       href="mailto:tanyameriamsunny@gmail.com"
@@ -501,7 +505,7 @@ const ThanksSlide = () => (
         layrrrd.com
       </a>
       <Link to="/case-study/layrrrd" className="rule-link label text-ink-500">
-        Read the full case study
+        Read the detailed study
       </Link>
     </div>
     <p className="label mt-12 text-ink-500">Tanya Sunny · Product Designer</p>
@@ -512,22 +516,22 @@ const slides: DeckSlide[] = [
   // Opening
   { id: 'cover', chapter: 'Opening', title: 'First customers in nine days', render: CoverSlide },
   // The evidence
-  { id: 'graveyard', chapter: 'The evidence', title: 'Everyone saves, almost nothing gets reopened', render: GraveyardSlide },
-  { id: 'evidence', chapter: 'The evidence', title: 'Nine days buys no discovery phase', render: EvidenceSlide },
-  { id: 'pattern', chapter: 'The evidence', title: 'The category answers with more organisation', render: PatternSlide },
+  { id: 'graveyard', chapter: 'The proof', title: 'Everyone saves, almost nothing gets opened again', render: GraveyardSlide },
+  { id: 'evidence', chapter: 'The proof', title: 'Nine days leaves no time for long research', render: EvidenceSlide },
+  { id: 'pattern', chapter: 'The proof', title: 'Other apps answer with more sorting', render: PatternSlide },
   // The bet
-  { id: 'bet', chapter: 'The bet', title: 'Build around the push, not the archive', render: BetSlide },
-  { id: 'constraint', chapter: 'The bet', title: 'Nine days to prove it, one scope rule', render: ConstraintSlide },
+  { id: 'bet', chapter: 'The bet', title: 'Send things back, instead of storing them better', render: BetSlide },
+  { id: 'constraint', chapter: 'The bet', title: 'Nine days to prove it, one rule', render: ConstraintSlide },
   // The four moves
-  { id: 'capture', chapter: 'The four moves', title: 'Capture goes where saving already happens', render: CaptureSlide },
+  { id: 'capture', chapter: 'The four moves', title: 'Saving goes where people already save', render: CaptureSlide },
   { id: 'digest', chapter: 'The four moves', title: 'The digest is the product', render: DigestSlide },
   { id: 'pushback', chapter: 'The four moves', title: 'Testing said the plan was wrong in three places', render: PushbackSlide },
-  { id: 'system', chapter: 'The four moves', title: 'Taste written down so it scales', render: SystemSlide },
+  { id: 'system', chapter: 'The four moves', title: 'Good taste, written down so it keeps up', render: SystemSlide },
   { id: 'brand', chapter: 'The four moves', title: 'One character, four jobs', render: BrandSlide },
-  { id: 'pricing', chapter: 'The four moves', title: 'Subscriptions punish a weekly product', render: PricingSlide },
+  { id: 'pricing', chapter: 'The four moves', title: 'Monthly payments are unfair for a weekly app', render: PricingSlide },
   // The outcome
   { id: 'result', chapter: 'The outcome', title: 'Day nine: the bet paid', render: ResultSlide },
-  { id: 'since', chapter: 'The outcome', title: 'Since then, and the debts on record', render: SinceThenSlide },
+  { id: 'since', chapter: 'The outcome', title: 'Since then, and the known problems', render: SinceThenSlide },
   { id: 'lessons', chapter: 'The outcome', title: 'The lessons that survived day nine', render: LessonsSlide },
   { id: 'thanks', chapter: 'The outcome', title: 'Thank you, and how to reach me', render: ThanksSlide },
 ];
@@ -535,11 +539,11 @@ const slides: DeckSlide[] = [
 const LayrrrdStory = () => {
   usePageMeta(
     'Layrrrd · The story in slides',
-    'Layrrrd, validated in nine days: the evidence, the bet, the four moves, and the numbers.',
+    'Layrrrd, tested in nine days: the proof, the bet, the four moves, and the numbers.',
   );
 
   return (
-    <Deck label="Layrrrd · Validated in nine days" exitHref="/case-study/layrrrd" slides={slides} />
+    <Deck label="Layrrrd · Tested in nine days" exitHref="/case-study/layrrrd" slides={slides} />
   );
 };
 

@@ -27,7 +27,7 @@ const ArticleFigure = ({ figure, wide, onOpen }: ArticleFigureProps) => {
   const { src, alt, caption, asset, width, height } = figure;
 
   return (
-    <figure ref={ref} className={`reveal my-12 md:my-16 ${wide ? 'lg:block-wide' : ''}`}>
+    <figure ref={ref} className={`reveal my-break ${wide ? 'lg:block-wide' : ''}`}>
       {src ? (
         <button
           type="button"

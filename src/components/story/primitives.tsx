@@ -35,7 +35,7 @@ export const Body = ({ children }: { children: ReactNode }) => (
 
 /** The narrator's voice. Closes a slide and hands off to the next one. */
 export const Voice = ({ children }: { children: ReactNode }) => (
-  <div className="mt-10 max-w-3xl border-l border-foreground pl-5 md:mt-14 md:pl-6">
+  <div className="mt-break max-w-3xl border-l border-foreground pl-5 md:pl-6">
     <p className="em text-xl leading-[1.3] md:text-[1.75rem]">{children}</p>
   </div>
 );

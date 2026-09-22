@@ -38,8 +38,8 @@ const Contact = () => {
   };
 
   return (
-    <footer id="contact" ref={ref} className="reveal shell scroll-mt-24 px-5 pb-16 md:px-8 lg:px-12">
-      <div className="border-t border-border pt-10 md:pt-14">
+    <footer id="contact" ref={ref} className="reveal shell scroll-mt-24 px-gutter pb-16">
+      <div className="border-t border-border pt-break">
         <h2 className="max-w-[18ch] text-5xl">
           Let&rsquo;s connect. I&rsquo;m always up for a{' '}
           <span className="em">chat</span>.
@@ -90,8 +90,8 @@ const Contact = () => {
         </div>
 
         <p className="mt-10 max-w-2xl text-sm leading-relaxed text-ink-500">
-          I co-organise Design Reimagined Utrecht. If you would like to speak at a
-          session,{' '}
+          I help run Design Reimagined Utrecht, a meetup for designers. If you would like to give
+          a talk,{' '}
           <a
             href="mailto:tanyameriamsunny@gmail.com?subject=Speaker%20Inquiry%2C%20Design%20Reimagined"
             className="text-ink-600 rule-link"
@@ -103,6 +103,16 @@ const Contact = () => {
 
         <div className="mt-16 flex flex-col gap-6 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-wrap gap-x-6 gap-y-2">
+            {/* The design language, for anyone reading the site as craft
+                rather than as a list of projects. It sits here rather than
+                in the nav because it is not one of the five paths a hiring
+                reader is looking for. */}
+            <Link
+              to="/design-system"
+              className="rule-link text-sm text-ink-500 transition-colors hover:text-foreground"
+            >
+              Design system
+            </Link>
             {secondary.map((social) => (
               <a
                 key={social.name}

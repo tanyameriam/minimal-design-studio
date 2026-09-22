@@ -10,16 +10,16 @@ import hifi from '@/assets/stree-hifi-8.png';
 export const stree: CaseStudy = {
   slug: 'stree-safety-app',
   title: 'STREE',
-  headline: 'Designing for everyday safety, not just emergency response',
+  headline: 'Designing for everyday safety, not just emergencies',
   qualifier: 'Concept',
   year: '2022',
   status: 'concept',
-  tagline: 'Women’s safety . India . Mobile',
+  tagline: 'Women’s safety . India . Phone app',
   cover,
 
   intro: [
-    'Harassment in public space restricts freedom of movement, participation, and wellbeing. Existing safety tools in India are post-incident panic buttons, built for the worst moment. But fear operates continuously: choosing a longer route, avoiding a street after dark, deciding whether discomfort is enough to act on. Even where nothing happens, anticipation shapes behaviour.',
-    'A product built only for the emergency addresses a fraction of the experience, and functions as a daily reminder of threat. Fifteen contextual interviews said that is not where women actually live, which moved the brief from an SOS tool to something that supports the whole arc: before, during, and after.',
+    'Being harassed in public stops women from moving freely, taking part, and feeling well. The safety apps in India are panic buttons for after something has happened, built for the worst moment. But fear is there all the time: taking a longer route, avoiding a street after dark, wondering whether feeling uneasy is enough reason to act. Even when nothing happens, expecting it changes how women live.',
+    'An app built only for emergencies covers a small part of what women go through, and reminds them of danger every day. Fifteen interviews told us that is not how women actually live. So the idea changed from an SOS app to something that helps before, during, and after.',
   ],
 
   meta: [
@@ -28,11 +28,11 @@ export const stree: CaseStudy = {
       value: '[NEED: team roles and what I owned; confirmed team project]',
       fallback: 'Team project',
     },
-    { label: 'Engagement', value: 'PGP final project, IDC IIT Bombay' },
+    { label: 'Type of project', value: 'Final project for my design course at IDC, IIT Bombay' },
     { label: 'Timeline', value: '1 month' },
-    { label: 'Team', value: 'Mentor reviews, 15 interview participants' },
-    { label: 'Stage', value: 'Concept, tested with 4 users' },
-    { label: 'Domain', value: 'Personal safety, mobile' },
+    { label: 'Team', value: 'Reviews with a mentor, 15 women interviewed' },
+    { label: 'Stage', value: 'An idea, tested with 4 users' },
+    { label: 'Area', value: 'Personal safety, phone app' },
   ],
 
   sections: [
@@ -41,17 +41,17 @@ export const stree: CaseStudy = {
       id: 'pitch',
       label: 'Quick pitch',
       footnote:
-        'Short on time? The pitch above is the whole case. The journey below is how it actually went.',
+        'Short on time? The pitch above is the whole story. The journey below is how it really went.',
       summary: {
         problems:
-          'Safety tools activate after an incident, but the restriction happens before one. Offenders are frequently known people, many women freeze rather than react, and reporting is perceived as slow enough that many stop reporting entirely. No panic button addresses any of that.',
+          'Safety apps start working after something happens, but the fear starts long before. The person causing harm is often someone the woman knows, many women freeze instead of reacting, and reporting feels so slow that many stop reporting at all. No panic button helps with any of that.',
         solution:
-          'A companion covering before, during, and after: contextual guidance rather than warnings, SOS reachable from the lock screen, an offline mode, and explicit visibility of what emergency contacts actually receive.',
+          'A companion for before, during, and after: helpful tips instead of warnings, an SOS button you can reach from the lock screen, a mode that works without internet, and a clear view of exactly what your emergency contacts will see.',
         why:
-          'Because fifteen interviews said the fear is ambient and the incident is rare. A product designed only for the worst moment gets opened in fear and abandoned in calm. Designing for the 99 percent of the time nothing is happening is what keeps the product installed for the moment something is.',
-        resultsLabel: 'Intended results',
+          'Because fifteen interviews told us the fear is always there, and the emergency is rare. An app built only for the worst moment gets opened in fear and deleted when things are calm. Designing for the 99 percent of the time when nothing is happening is what keeps the app on the phone for the moment something does.',
+        resultsLabel: 'What we hoped would happen',
         results:
-          'SOS reachable without deliberation under stress, users understanding what they are sharing, and a product not abandoned as a fear reminder. Tested with four users, sized to surface comprehension failures; the speed claim is left to instrumentation.',
+          'SOS you can reach without stopping to think under stress, users who understand what they are sharing, and an app that is not deleted for being a reminder of fear. We tested with four users, enough to find where people got confused. How fast it is would need to be measured later.',
       },
     },
 
@@ -60,13 +60,13 @@ export const stree: CaseStudy = {
       id: 'journey',
       label: 'The full journey',
       question:
-        'How do you support women before, during, and after safety incidents, without increasing fear or judgement?',
+        'How can we help women before, during, and after something unsafe happens, without making them more afraid or making them feel judged?',
       blocks: [
         {
           kind: 'prose',
           body: [
-            'Fifteen contextual interviews with women aged 25 to 35 across Pune, Bangalore, Delhi, Mumbai, and Kerala. Given the subject, all participants were anonymised and everything was documented with explicit consent.',
-            'Synthesis by affinity mapping: clustering individual observations repeatedly, separating what people said explicitly from what they struggled to articulate from what showed up as behaviour across multiple interviews. The strongest finding was not a feature request.',
+            'Fifteen interviews with women aged 25 to 35 in Pune, Bangalore, Delhi, Mumbai, and Kerala, in the places they live and travel. Because the topic is sensitive, everyone stayed anonymous and everything was written down only with their clear permission.',
+            'We sorted the findings by grouping notes on a board, again and again. We kept apart what people said out loud, what they found hard to put into words, and what they did, again and again, across many interviews. The strongest finding was not a request for a feature.',
           ],
         },
         {
@@ -79,23 +79,23 @@ export const stree: CaseStudy = {
           items: [
             {
               title: 'Safety means independence',
-              body: 'Not protection. Women defined it as the ability to move freely, not as the presence of a rescuer.',
+              body: 'Not protection. Women described safety as being free to move around, not as having someone to rescue them.',
             },
             {
-              title: 'Offenders are often known people',
-              body: 'Which complicates reporting entirely. During incidents many women freeze rather than react, and question whether their discomfort is justified.',
+              title: 'The person causing harm is often someone they know',
+              body: 'That makes reporting much harder. In the moment, many women freeze instead of reacting, and wonder whether feeling uneasy is a good enough reason.',
             },
             {
               title: 'Bystanders rarely intervene',
-              body: 'And reporting systems are perceived as slow enough that many women stop reporting at all.',
+              body: 'And reporting feels so slow that many women stop reporting at all.',
             },
             {
-              title: 'Emotional recovery is long',
-              body: 'Experiences are shared only within close circles, because of shame or fear of judgement.',
+              title: 'Healing takes a long time',
+              body: 'Women only share what happened with people very close to them, because of shame or fear of being judged.',
             },
             {
-              title: 'Safety perception is contextual',
-              body: 'What feels fine at 2pm feels different at 11pm. Behaviour adapts constantly.',
+              title: 'Feeling safe depends on the situation',
+              body: 'What feels fine at 2pm feels different at 11pm. Women change what they do all the time.',
             },
           ],
         },
@@ -104,13 +104,13 @@ export const stree: CaseStudy = {
           items: [
             {
               src: affinity,
-              alt: 'Affinity map clustering interview observations into themes',
-              caption: 'Fig 1. Affinity mapping in Miro. Observations clustered repeatedly until the themes held.',
+              alt: 'A board grouping notes from the interviews into themes',
+              caption: 'Fig 1. Grouping notes in Miro. We sorted the notes again and again until the themes were clear.',
             },
             {
               src: persona,
-              alt: 'User persona summarising goals, motivations, and challenges from the research',
-              caption: 'Fig 2. The persona, built from interview data rather than demographic assumption.',
+              alt: 'A user profile showing the goals, reasons, and struggles we found in the research',
+              caption: 'Fig 2. The user profile, built from what the interviews told us, not from guesses about age or background.',
             },
           ],
         },
@@ -121,15 +121,15 @@ export const stree: CaseStudy = {
       kind: 'step',
       id: 'step-01',
       index: '01',
-      nav: '01 The whole arc',
-      problem: 'A feature list hid the parts of the experience that mattered',
-      intervention: 'so I storyboarded the whole arc before designing a screen',
+      nav: '01 The whole journey',
+      problem: 'A list of features hid the parts of the experience that mattered',
+      intervention: 'so I drew the whole journey as a comic strip before designing any screen',
       blocks: [
         {
           kind: 'prose',
           body: [
-            'Splitting the problem into before, during, and after gave each phase its own job. Before is awareness without alarm, contextual guidance rather than warnings. During is simplicity and speed, including when the network fails. After is validation, recovery, and accountability, with visibility into what happens next.',
-            'The storyboard exposed what a requirements list cannot: loneliness, doubt, and emotional fatigue are part of the flow, and a product that ignores them is designing for a moment rather than a life.',
+            'Splitting the problem into before, during, and after gave each part its own job. Before is about being aware without being scared: helpful tips instead of warnings. During is about being simple and fast, even when there is no signal. After is about being believed, healing, and holding people responsible, and seeing what happens next.',
+            'The comic strip showed what a list of requirements cannot: feeling lonely, doubting yourself, and being emotionally worn out are part of the journey. An app that ignores them is designing for one moment, not for a whole life.',
           ],
         },
         {
@@ -137,8 +137,8 @@ export const stree: CaseStudy = {
           items: [
             {
               src: storyboard,
-              alt: 'Storyboard following a young woman navigating unfamiliar spaces and finding support',
-              caption: 'Fig 3. The storyboard exposed gaps a feature list hides.',
+              alt: 'A comic strip following a young woman finding her way in places she does not know, and finding help',
+              caption: 'Fig 3. The comic strip showed gaps that a feature list hides.',
             },
           ],
           width: 'wide',
@@ -150,23 +150,23 @@ export const stree: CaseStudy = {
       id: 'step-02',
       index: '02',
       nav: '02 The safety map',
-      problem: 'A crowdsourced safety map would have made the fear worse',
-      intervention: 'so safety became contextual and time-sensitive, not an absolute label',
+      problem: 'A safety map filled in by the public would have made the fear worse',
+      intervention: 'so safety became something that changes with time and place, not a fixed label',
       blocks: [
         {
           kind: 'prose',
           body: [
-            'Crowdsourced safety maps were the obvious feature and I had designed one. My mentor challenged it: labelling places unsafe reinforces the exact fear the product claims to reduce, and disproportionately marks the neighbourhoods people already avoid.',
-            'The replacement reads the same street differently at 2pm and 11pm, which matches how the research said women actually assess risk. It cost me a clean signal, and it was the right trade.',
+            'A safety map filled in by the public was the obvious feature, and I had designed one. My mentor pushed back: calling places unsafe feeds the very fear the app is meant to reduce, and unfairly marks the areas people already avoid.',
+            'The new version reads the same street differently at 2pm and at 11pm, which matches how the research said women really judge risk. It cost me a simple, clear signal, and it was the right choice.',
           ],
         },
         {
           kind: 'tradeoffs',
           items: [
             {
-              title: 'Contextual maps, not absolute labels',
-              cost: 'A weaker, fuzzier signal than a simple red and green map, harder to render and harder to explain.',
-              gain: 'A product that does not shrink its users’ world.',
+              title: 'Maps that change with the situation, not fixed labels',
+              cost: 'A weaker, fuzzier signal than a simple red and green map, harder to show and harder to explain.',
+              gain: 'An app that does not make its users’ world smaller.',
             },
           ],
         },
@@ -177,14 +177,14 @@ export const stree: CaseStudy = {
       id: 'step-03',
       index: '03',
       nav: '03 Lock screen SOS',
-      problem: 'Hesitation happened before the phone was unlocked',
-      intervention: 'so SOS moved ahead of the unlock, onto the lock screen',
+      problem: 'People hesitated before they even unlocked the phone',
+      intervention: 'so the SOS button moved in front of the unlock, onto the lock screen',
       blocks: [
         {
           kind: 'prose',
           body: [
-            'Testing showed the failure was not at the tap. It was in the seconds before it, deciding whether the situation warranted opening the app at all. Moving activation ahead of the unlock removed the part of the interaction that was actually failing.',
-            'An offline mode carries the last known location, last update time, destination, and nearest police station, because network unreliability cannot be the thing that compromises safety.',
+            'Testing showed the problem was not the tap itself. It was the seconds before it, deciding whether things were bad enough to open the app at all. Putting the SOS button before the unlock removed the part that was really going wrong.',
+            'A mode that works without internet keeps your last known location, the time of the last update, where you are going, and the nearest police station, because a bad signal should never be what puts someone at risk.',
           ],
         },
         {
@@ -192,13 +192,13 @@ export const stree: CaseStudy = {
           items: [
             {
               src: lockscreen,
-              alt: 'Lock screen SOS shortcut allowing activation without unlocking the phone',
-              caption: 'Fig 4. Lock screen activation. The hesitation was before the unlock, so the trigger moved.',
+              alt: 'An SOS shortcut on the lock screen that works without unlocking the phone',
+              caption: 'Fig 4. SOS from the lock screen. People hesitated before unlocking, so the button moved.',
             },
             {
               src: sosFlow,
-              alt: 'SOS mode user flow showing interactions between the user, officials, and emergency contacts',
-              caption: 'Fig 5. SOS mode, including what each party sees and when.',
+              alt: 'The steps of SOS mode, showing what happens between the user, officials, and emergency contacts',
+              caption: 'Fig 5. SOS mode, including what each person sees and when.',
             },
           ],
           width: 'wide',
@@ -211,13 +211,13 @@ export const stree: CaseStudy = {
       index: '04',
       nav: '04 What contacts see',
       problem: 'Users did not know what they were sharing',
-      intervention: 'so what contacts receive became explicit rather than implied',
+      intervention: 'so what contacts receive was shown clearly, instead of left for users to guess',
       blocks: [
         {
           kind: 'prose',
           body: [
-            'The single biggest confusion in four moderated think-aloud sessions was not speed. It was users not knowing what information went to whom. Making that legible was a bigger win than any activation improvement, because a safety tool nobody trusts is a safety tool nobody opens.',
-            'Testing also asked for profile photos for faster identification, start and end notifications for contacts, and immediate confirmation after pressing SOS.',
+            'In four test sessions where people talked us through what they were thinking, the biggest confusion was not about speed. It was that users did not know which information went to whom. Making that clear mattered more than any speed-up, because a safety app nobody trusts is a safety app nobody opens.',
+            'Testers also asked for profile photos so contacts can recognise them faster, alerts to contacts when a trip starts and ends, and a clear message right after pressing SOS.',
           ],
         },
         {
@@ -225,15 +225,15 @@ export const stree: CaseStudy = {
           items: [
             {
               src: hifi,
-              alt: 'High fidelity screen showing journey status with ETA and contact visibility',
-              caption: 'Fig 6. Journey status. Contact visibility made explicit rather than implied.',
+              alt: 'A finished screen showing trip status, arrival time and what contacts can see',
+              caption: 'Fig 6. Trip status. What contacts can see is shown clearly, not left to guess.',
             },
           ],
         },
         {
           kind: 'note',
           label: 'On sample size',
-          body: 'Four participants, sized to surface comprehension failures. Claims about activation speed are left to instrumentation, which is the correct order: comprehension first, speed once the design is stable.',
+          body: 'Four people took part, enough to find where people got confused. Claims about how fast SOS is are left to be measured later, which is the right order: first make sure people understand it, then measure speed once the design is settled.',
         },
         {
           kind: 'todo',
@@ -245,15 +245,15 @@ export const stree: CaseStudy = {
     {
       kind: 'decision',
       id: 'decisions',
-      label: 'What I considered and did not do',
+      label: 'What I thought about and did not do',
       items: [
         {
-          option: 'A crowdsourced safety map with absolute safe and unsafe labels',
-          why: 'The obvious feature, and I had designed one. My mentor challenged it: labelling places unsafe reinforces the exact fear the product claims to reduce, and disproportionately marks the neighbourhoods people already avoid. Safety became contextual and time-sensitive instead.',
+          option: 'A safety map filled in by the public, with fixed safe and unsafe labels',
+          why: 'The obvious feature, and I had designed one. My mentor pushed back: calling places unsafe feeds the very fear the app is meant to reduce, and unfairly marks the areas people already avoid. So safety became something that changes with time and place instead.',
         },
         {
-          option: 'A feature for every research insight',
-          why: 'Not every insight demands a feature. Emotional recovery and social conditioning shaped the product tone and the storyboard, not a screen each. Some problems cannot, and should not, be solved through technology alone.',
+          option: 'A feature for every thing we learned',
+          why: 'Not everything we learn needs a feature. Healing and how society shapes women’s choices changed the tone of the app and the comic strip, not one screen each. Some problems cannot, and should not, be solved with technology alone.',
         },
       ],
     },
@@ -262,14 +262,14 @@ export const stree: CaseStudy = {
       kind: 'outcomes',
       id: 'outcomes',
       label: 'Intended outcomes',
-      heading: 'What I would instrument, and what would prove it',
+      heading: 'What I would measure, and what would prove it',
       blocks: [
         {
           kind: 'intended',
           items: [
-            { outcome: 'SOS reachable without deliberation under stress', metric: 'Time to activation, unprompted, in simulated conditions' },
-            { outcome: 'Users understand what contacts actually receive', metric: 'Comprehension check after task, the top confusion in testing' },
-            { outcome: 'Not abandoned as a fear reminder', metric: '30-day retention among users who had no incident' },
+            { outcome: 'SOS you can reach without stopping to think under stress', metric: 'Time to press SOS, without help, in a practice situation' },
+            { outcome: 'Users understand what contacts actually receive', metric: 'A quick check of understanding after a task, since this was the biggest confusion in testing' },
+            { outcome: 'Not deleted for being a reminder of fear', metric: 'How many people still use it after 30 days, among those who had nothing happen' },
           ],
         },
         {
@@ -281,17 +281,17 @@ export const stree: CaseStudy = {
         {
           title: 'SOS moved to',
           emphasis: 'the lock screen',
-          body: 'Activation placed ahead of the unlock, where testing showed the hesitation actually was.',
+          body: 'The SOS button moved in front of the unlock, where testing showed people really hesitated.',
         },
         {
-          title: 'Reframed from panic to',
-          emphasis: 'autonomy',
-          body: 'Fifteen interviews defined safety as independence, not protection, which changed the whole brief.',
+          title: 'Changed from panic to',
+          emphasis: 'freedom',
+          body: 'Fifteen interviews described safety as freedom, not protection, which changed the whole plan.',
         },
         {
           title: 'Works with',
           emphasis: 'no network',
-          body: 'Last known location, last update time, destination, and nearest police station, held offline.',
+          body: 'Last known location, time of the last update, where you are going, and the nearest police station, kept even without internet.',
         },
       ],
     },
@@ -304,13 +304,13 @@ export const stree: CaseStudy = {
         {
           kind: 'prose',
           body: [
-            'The safety map is the part I would want to be asked about. I had designed something that would have made the problem worse, and I could not see it from inside the research. It took a mentor outside the project to name the harm.',
-            'Designing for safety is as much emotional as functional. Fear, doubt, and social conditioning shape how risk is experienced, and not every insight demands a feature.',
+            'The safety map is the part I would want to be asked about. I had designed something that would have made the problem worse, and I could not see it while I was deep in the research. It took a mentor from outside the project to point out the harm.',
+            'Designing for safety is as much about feelings as about how things work. Fear, doubt, and the way society raises women shape how risk feels, and not everything we learn needs a feature.',
           ],
         },
         {
           kind: 'quote',
-          text: 'Not every insight demands a feature, and not every problem can, or should, be solved through technology alone.',
+          text: 'Not everything we learn needs a feature, and not every problem can, or should, be solved with technology alone.',
         },
       ],
     },

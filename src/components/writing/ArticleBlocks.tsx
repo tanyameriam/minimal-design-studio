@@ -46,7 +46,7 @@ const PullQuote = ({ text }: { text: string }) => {
   return (
     <blockquote
       ref={ref}
-      className="reveal my-10 border-l border-[hsl(var(--strand))] pl-6 md:my-14 md:pl-8"
+      className="reveal my-break border-l border-[hsl(var(--strand))] pl-6 md:pl-8"
     >
       <p className="max-w-[26ch] text-2xl leading-[1.25] md:text-3xl">{text}</p>
     </blockquote>

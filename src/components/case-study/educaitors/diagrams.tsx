@@ -115,7 +115,7 @@ export const AnnotatedPlate = ({
   heading?: string;
   callouts: { title?: string; body: string }[];
 }) => (
-  <div className="mt-12 md:mt-16">
+  <div className="mt-break">
     {/* The plate takes the full column. These are 3368px screenshots of a
         three-pane interface: set beside the callouts they render at half
         the width and the rubric rows stop being readable, which defeats
@@ -178,7 +178,7 @@ export const Chain = ({
   /** Names the diagram for assistive technology. */
   caption: string;
 }) => (
-  <div className="mt-12 md:mt-16">
+  <div className="mt-break">
     <ol
       aria-label={caption}
       className={`grid gap-px border border-border bg-border sm:grid-cols-2 ${
@@ -245,7 +245,7 @@ export const Numbered = ({
   const paired = items.some((item) => item.body);
 
   return (
-    <ol className="mt-12 divide-y divide-border border-y border-border md:mt-16">
+    <ol className="mt-break divide-y divide-border border-y border-border">
       {items.map((item, i) => (
         <li
           key={item.title}
@@ -289,7 +289,7 @@ export const Notes = ({
   columns?: 2 | 3;
 }) => (
   <div
-    className={`mt-12 grid gap-px border border-border bg-border sm:grid-cols-2 md:mt-16 ${
+    className={`mt-break grid gap-px border border-border bg-border sm:grid-cols-2 ${
       columns === 3 ? 'lg:grid-cols-3' : ''
     }`}
   >
@@ -319,7 +319,7 @@ export const SignalMap = ({
   rows: { signal: string; response: string; moment: string }[];
   caption: string;
 }) => (
-  <div className="mt-12 md:mt-16">
+  <div className="mt-break">
     <table className="hidden w-full border-collapse text-left md:table">
       <caption className="sr-only">{caption}</caption>
       <thead>
@@ -385,7 +385,7 @@ export const Decisions = ({
 }: {
   items: { tension: string; verdict: string; body: string }[];
 }) => (
-  <ol className="mt-12 divide-y divide-border border-y border-border md:mt-16">
+  <ol className="mt-break divide-y divide-border border-y border-border">
     {items.map((item) => (
       <li key={item.tension} className="grid gap-5 py-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] lg:gap-16">
         <p className="max-w-[26ch] text-xl leading-snug md:text-2xl">{item.tension}</p>
@@ -419,7 +419,7 @@ export const Ledger = ({
   delivered: string[];
   notClaimed: { note: string; items: string[] };
 }) => (
-  <div className="mt-12 grid gap-px border border-border bg-border md:mt-16 lg:grid-cols-2">
+  <div className="mt-break grid gap-px border border-border bg-border lg:grid-cols-2">
     <div className="bg-background p-6 md:p-8">
       <p className="label label-strong">What we delivered</p>
       <ul className="mt-8 space-y-5">
@@ -454,7 +454,7 @@ export const Ledger = ({
 
 /** A research quote, sized to be read from across the room. */
 export const BigQuote = ({ children, source }: { children: ReactNode; source: string }) => (
-  <blockquote className="mt-12 max-w-4xl border-l border-foreground pl-6 md:mt-16 md:pl-8">
+  <blockquote className="mt-break max-w-4xl border-l border-foreground pl-6 md:pl-8">
     <p className="text-[1.75rem] leading-[1.15] md:text-[2.75rem]">&ldquo;{children}&rdquo;</p>
     <footer className="label mt-6 text-ink-500">{source}</footer>
   </blockquote>
@@ -470,7 +470,7 @@ export const SmallQuote = ({ children, source }: { children: ReactNode; source: 
 
 /** The line a section is built on. One sentence, sized to be remembered. */
 export const Principle = ({ children }: { children: ReactNode }) => (
-  <p className="mt-12 max-w-3xl border-l border-foreground pl-5 text-xl leading-snug md:mt-14 md:pl-6 md:text-[1.75rem]">
+  <p className="mt-break max-w-3xl border-l border-foreground pl-5 text-xl leading-snug md:pl-6 md:text-[1.75rem]">
     {children}
   </p>
 );

@@ -68,51 +68,51 @@ import templatePicker from '@/assets/brynq/template-picker.png';
 
 /** The transition, in order. Each milestone deepens on the long case study. */
 const milestones = [
-  { year: '2023', label: 'Joined as the solo designer. The ask: a full redesign.' },
-  { year: '', label: 'Learned the platform, then learned why nobody used it.' },
-  { year: '', label: 'Interviews, mapping, and a new information architecture.' },
-  { year: '', label: 'Salure Connect rebrands to BrynQ.' },
-  { year: '', label: 'An AI chat for building interfaces ships, and gets tested with customers.' },
-  { year: '', label: 'The interface creation flow is reimagined as templates.' },
-  { year: '', label: 'The AI moves backstage: it now helps devs build templates faster.' },
-  { year: 'Today', label: 'Six months of implementation, on a modelled path to about two weeks.' },
+  { year: '2023', label: 'Joined as the only designer. The job: redesign everything.' },
+  { year: '', label: 'Learned the product, then learned why nobody used it.' },
+  { year: '', label: 'Interviews, mapping, and a new way of organising the product.' },
+  { year: '', label: 'Salure Connect gets a new name: BrynQ.' },
+  { year: '', label: 'An AI chat for setting up connections launches, and gets tested with customers.' },
+  { year: '', label: 'Setting up a connection is redesigned around templates.' },
+  { year: '', label: 'The AI moves behind the scenes: it now helps developers build templates faster.' },
+  { year: 'Today', label: 'Six months of setup, on track to become about two weeks, by our estimate.' },
 ];
 
 const CoverSlide = () => (
   <div>
     <div className="flex flex-wrap items-center justify-between gap-4">
-      <span className="label text-ink-500">Case study · BrynQ · HR and payroll integrations</span>
+      <span className="label text-ink-500">Case study · BrynQ · Connecting HR and payroll systems</span>
       <span className="label hidden text-ink-500 md:block">
         Tanya Sunny · tanyameriamsunny@gmail.com
       </span>
     </div>
 
-    <h1 className="mt-12 max-w-4xl text-[2.5rem] leading-[1.02] md:mt-20 md:text-[4.25rem]">
-      The platform everyone had an account for, <Em>and nobody opened.</Em>
+    <h1 className="mt-stage max-w-4xl text-[2.5rem] leading-[1.02] md:text-[4.25rem]">
+      The product everyone had an account for, <Em>and nobody opened.</Em>
     </h1>
 
     <p className="mt-8 max-w-2xl text-base leading-[1.55] text-ink-600 md:text-lg">
-      BrynQ connects HRM and payroll systems. When I joined, every interface was built by
-      hand and customers never touched the product. This is the story of that changing.
+      BrynQ connects HR and payroll systems. When I joined, every connection was built by
+      hand, and customers never touched the product. This is the story of how that changed.
     </p>
 
-    <div className="mt-12 grid max-w-2xl gap-x-12 gap-y-8 sm:grid-cols-2 md:mt-16">
+    <div className="mt-break grid max-w-2xl gap-x-12 gap-y-8 sm:grid-cols-2">
       <div>
         <p className="text-[3rem] leading-none md:text-[3.75rem]">6 mo</p>
         <p className="mt-3 text-sm leading-snug text-ink-600 md:text-base">
-          per interface when I joined, three months of it before any code
+          per connection when I joined, three months of it before any code
         </p>
       </div>
       <div>
         <p className="text-[3rem] leading-none md:text-[3.75rem]">~2 wk</p>
         <p className="mt-3 text-sm leading-snug text-ink-600 md:text-base">
-          per interface on the template-led model, projected rather than measured
+          per connection with templates, our estimate, not yet measured
         </p>
       </div>
     </div>
 
-    <div className="mt-12 flex flex-wrap gap-3 md:mt-16">
-      {['2023 to present', 'Solo designer, in-house', 'Multiple projects, one transition'].map(
+    <div className="mt-break flex flex-wrap gap-3">
+      {['2023 to now', 'The only designer, on the team', 'Several projects, one big change'].map(
         (chip) => (
           <span key={chip} className="label border border-border px-3 py-2 text-ink-500">
             {chip}
@@ -127,56 +127,56 @@ const ProjectsSlide = () => (
   <div>
     <Chapter n="00" label="One product, several projects" />
     <H>
-      BrynQ is one transition told through <Em>four projects.</Em>
+      BrynQ is one big change told through <Em>four projects.</Em>
     </H>
     <Body>
-      Everything from here happened inside the rebranded product. The deck tells the projects
-      in story order, the same order as the full case study: the experiment came before the
-      templates. Each of them is told in full on the case study.
+      Everything from here happened after the product got its new name. The slides tell
+      the projects in story order, the same order as the detailed study: the experiment
+      came before the templates. Each one is told in full in the detailed study.
     </Body>
     <div className="mt-10 grid max-w-4xl gap-4 sm:grid-cols-2 md:grid-cols-4">
       <Panel label="Project 01" title="Platform redesign">
-        New structure, new hierarchy, new brand.
+        A new structure, a clearer order, a new brand.
       </Panel>
       <Panel label="Project 02" title="Interface templates" strong>
-        The six-months-to-two-weeks projection.
+        The six-months-to-two-weeks estimate.
       </Panel>
       <Panel label="Project 03" title="The AI chat">
-        Shipped, tested with customers, and what it settled.
+        Launched, tested with customers, and what it taught us.
       </Panel>
-      <Panel label="Project 04" title="AI backstage">
-        Where the AI actually earns its keep.
+      <Panel label="Project 04" title="AI behind the scenes">
+        Where the AI is actually useful.
       </Panel>
     </div>
-    <p className="label mt-8 text-ink-500">More projects are being written up.</p>
+    <p className="label mt-8 text-ink-500">More projects are coming soon.</p>
   </div>
 );
 
 const ArrivalSlide = () => (
   <div>
-    <Chapter n="01" label="Understand · Where the product stood" />
+    <Chapter n="01" label="Understand · Where the product was" />
     <H>
       Customers had accounts. <Em>They never logged in.</Em>
     </H>
     <Body>
-      The platform was then called Salure Connect. Internally, admins used it. Externally,
-      customers whose interfaces were live had accounts and no reason to open them: the
+      The product was called Salure Connect back then. Inside the company, admins used it.
+      Customers whose connections were live had accounts but no reason to open them: the
       building, the code, the fixing, all of it was done by the developers.
     </Body>
     <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center">
       <Ecosystem
-        label="The platform, when I joined"
-        inside={['Admins, running and monitoring', 'Logs, checked by developers']}
+        label="The product, when I joined"
+        inside={['Admins, running and watching', 'Logs, checked by developers']}
         around={[
           'Customer accounts, unopened',
-          'Interfaces built by hand',
-          'Requirements traded over calls',
+          'Connections built by hand',
+          'Details swapped over calls',
           'Everything done for the customer',
         ]}
       />
       <Shot
         src={salureconnectDashboard}
-        alt="The SalureConnect dashboards overview: five dashboard cards, each listing the sheets it contains, with label chips and a last-refresh state."
+        alt="The SalureConnect dashboards page: five dashboard cards, each listing the sheets inside it, with tags and when it was last refreshed."
         width={2563}
         height={1286}
         maxH="max-h-[34vh]"
@@ -184,8 +184,8 @@ const ArrivalSlide = () => (
       />
     </div>
     <Voice>
-      The ask was a redesign. My first job was understanding why nobody used the thing I was
-      redesigning.
+      The job was a redesign. My first task was understanding why nobody used the thing I
+      was redesigning.
     </Voice>
   </div>
 );
@@ -194,11 +194,11 @@ const InterviewsSlide = () => (
   <div>
     <Chapter n="01" label="Understand · What the interviews said" />
     <H>
-      Users did not dislike the platform. <Em>They had no reason to enter it.</Em>
+      Users did not dislike the product. <Em>They had no reason to open it.</Em>
     </H>
     <Body>
-      I interviewed users to understand how they perceived the product. Three answers kept
-      returning, and none of them was about visual design.
+      I talked to users to understand what they thought of the product. Three answers kept
+      coming back, and none of them was about how it looked.
     </Body>
     <div className="mt-10 max-w-3xl">
       <ColumnLabel>Heard in every interview</ColumnLabel>
@@ -207,14 +207,14 @@ const InterviewsSlide = () => (
           Never felt the need: <Em>the developers did everything.</Em>
         </IconRowCard>
         <IconRowCard Icon={Wrench} tall>
-          Too technical: building an interface read as engineering work.
+          Too technical: setting up a connection felt like a job for engineers.
         </IconRowCard>
         <IconRowCard Icon={Route} tall>
-          No clear path: no hierarchy, no obvious steps for the few who did enter.
+          No clear path: nothing showed what mattered, and no obvious steps for the few who did open it.
         </IconRowCard>
       </div>
     </div>
-    <Voice>The product did not have a looks problem. It had a reason-to-exist problem.</Voice>
+    <Voice>The product did not have a looks problem. It had a “why would I use this?” problem.</Voice>
   </div>
 );
 
@@ -222,16 +222,16 @@ const GoalSlide = () => (
   <div>
     <Chapter n="01" label="Understand · The goal" />
     <H>
-      The five year goal: customers build their own interfaces, <Em>without us.</Em>
+      The five-year goal: customers set up their own connections, <Em>without us.</Em>
     </H>
     <Body>
-      That was why the redesign was on the table at all. Not nicer screens: self-sufficiency.
-      A customer should be able to connect their HRM and payroll systems themselves, in the
-      product, without a developer on call.
+      That was the reason for the redesign in the first place. Not nicer screens, but
+      customers who could manage on their own. A customer should be able to connect their
+      HR and payroll systems themselves, in the product, without calling a developer.
     </Body>
     <div className="panel mt-10 max-w-3xl border-l-4 border-l-foreground p-6 md:p-8">
       <p className="text-xl leading-[1.3] md:text-2xl">
-        Every decision that follows in this deck descends from that one sentence.
+        Every choice in these slides comes from that one sentence.
       </p>
     </div>
   </div>
@@ -244,48 +244,48 @@ const GroundworkSlide = () => (
       Before any flow: <Em>map everything, group everything.</Em>
     </H>
     <Body>
-      I mapped the whole platform and regrouped it against what the interviews said people
-      expected to find in each section. Then a second round of interviews, this time with
-      stakeholders, developers, and users together, to understand the technical limits the
-      new design had to respect.
+      I mapped the whole product and regrouped it around what the interviews said people
+      expected to find in each section. Then I did a second round of interviews, this time
+      with managers, developers and users together, to understand the technical limits the
+      new design had to work within.
     </Body>
     <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] lg:items-start">
       <div>
         <IaMap
           groups={[
-            { label: 'Orientation', items: ['Home', 'Activity', 'Monitoring'] },
+            { label: 'Finding your way', items: ['Home', 'Activity', 'Monitoring'] },
             { label: 'Setting up', items: ['Connections', 'Interfaces', 'Templates'] },
             { label: 'Data', items: ['Mapping', 'Runs'] },
-            { label: 'Governance', items: ['Settings', 'Administration'] },
+            { label: 'Rules and settings', items: ['Settings', 'Administration'] },
           ]}
         />
         <p className="label mt-5 text-ink-500">
-          Simplified for this telling. The working map is under NDA.
+          Made simpler for these slides. The real map is private.
         </p>
       </div>
       <div className="grid gap-4">
         <Panel label="From users" title="Where things should live">
-          The grouping came from expectations heard in interviews, not from the org chart.
+          The groups came from what people said in interviews, not from how the company is organised.
         </Panel>
         <Panel label="From devs" title="Where the hard limits are">
-          The technical complexity was real. The design had to work with it, not wish it away.
+          The technical difficulty was real. The design had to work with it, not pretend it was not there.
         </Panel>
       </div>
     </div>
-    <Voice>The rebrand to BrynQ was coming. The new structure had to be ready for it.</Voice>
+    <Voice>The new name, BrynQ, was coming. The new structure had to be ready for it.</Voice>
   </div>
 );
 
 const CostSlide = () => (
   <div>
-    <Chapter n="02" label="Reframe · What building cost" />
+    <Chapter n="02" label="Rethink · What building cost" />
     <H>
-      About six months <Em>per interface.</Em>
+      About six months <Em>per connection.</Em>
     </H>
     <Body>
-      After sales signed, developers and the project manager got on calls to gather technical
-      requirements, credentials, field mappings, value mappings. Around three months of back
-      and forth before a line of code, then around three more to build.
+      After a sale, developers and the project manager got on calls to collect technical
+      details, passwords and which fields and values match. About three months of back and
+      forth before any code was written, then about three more to build it.
     </Body>
     <div className="mt-10 grid max-w-4xl gap-4 md:grid-cols-2">
       <div className="panel p-6 md:p-8">
@@ -296,7 +296,7 @@ const CostSlide = () => (
             'Calls after the sale',
             'Technical requirements',
             'Credentials',
-            'Field and value mappings',
+            'Matching fields and values',
           ]}
         />
       </div>
@@ -305,7 +305,7 @@ const CostSlide = () => (
         <p className="mt-5 text-[2.5rem] leading-none md:text-[3rem]">~3 months</p>
         <MiniFlow
           steps={[
-            'Hand-built by developers',
+            'Built by hand by developers',
             'One customer at a time',
             'Tested and delivered',
             'Developers watch the logs',
@@ -316,26 +316,26 @@ const CostSlide = () => (
     <Shot
       className="mt-10 max-w-4xl"
       src={scenarioFile}
-      alt="The scenario file: a spreadsheet fourteen columns wide, headed Scenario, Objective, Source system, Target system, Sync, Custom and Comments, then the source and target field columns. Row after row maps one field from the source system to the target system, with the team's working notes in the comments column."
+      alt="The planning file: a spreadsheet fourteen columns wide, with columns for the task, the goal, the two systems, sync, custom and comments, then the fields on each side. Each row matches one field in the first system to one in the second, with the team's notes in the comments column."
       width={2516}
       height={1114}
       maxH="max-h-[30vh]"
-      caption="What three months of calls produced: one spreadsheet, per customer, per interface"
+      caption="What three months of calls produced: one spreadsheet, per customer, per connection"
     />
-    <Voice>Every new customer bought months of developer time. That does not scale.</Voice>
+    <Voice>Every new customer cost months of developer time. That cannot keep growing.</Voice>
   </div>
 );
 
 const RealisationSlide = () => (
   <div>
-    <Chapter n="02" label="Reframe · The uncomfortable realisation" />
+    <Chapter n="02" label="Rethink · The awkward truth" />
     <H>
-      Nothing actually lived in the platform. <Em>It was an outer cover.</Em>
+      Nothing really happened in the product. <Em>It was just a cover.</Em>
     </H>
     <Body>
-      The interfaces were built by developers, outside the product. They ran through the
-      platform, and logs were checked there, but they neither started nor ended in it. The
-      platform was a visual layer over work that happened somewhere else.
+      The connections were built by developers, outside the product. They ran through the
+      product, and logs were checked there, but they did not start or end in it. The
+      product was a screen on top of work that happened somewhere else.
     </Body>
     <div className="mt-10 flex max-w-4xl flex-col items-stretch gap-4 md:flex-row md:items-center">
       <div className="panel flex-1 p-6">
@@ -354,35 +354,36 @@ const RealisationSlide = () => (
       </div>
     </div>
     <Voice>
-      So I wondered: why do we even call these the interfaces, when the interfaces do not
-      start or end in the platform at all?
+      So I wondered: why do we call these BrynQ connections, when they do not start or
+      end in the product at all?
     </Voice>
   </div>
 );
 
 const EncyclopediaSlide = () => (
   <div>
-    <Chapter n="02" label="Reframe · The hidden asset" />
+    <Chapter n="02" label="Rethink · The hidden treasure" />
     <H>
-      The developers had an encyclopedia <Em>nobody had productised.</Em>
+      The developers had a library of know-how <Em>nobody had built into the product.</Em>
     </H>
     <Body>
-      Working with the interface team and shadowing the project manager, one thing stood
-      out: the repetitive steps of a connection were already well defined and documented.
-      Knowledge that lived in developers&rsquo; heads and documents could be productised.
+      Working with the developers and following the project manager around, one thing
+      stood out: the repeated steps of a connection were already clear and written down.
+      Know-how that lived in developers&rsquo; heads and documents could become part of the
+      product.
     </Body>
     <div className="mt-10 grid max-w-4xl items-center gap-6 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
-      <Panel label="Today" title="Every interface hand-built">
+      <Panel label="Today" title="Every connection built by hand">
         Each connection started from zero, no matter how many times the same systems had
         been connected before.
       </Panel>
       <Converge aria-hidden="true" className="hidden h-36 w-28 text-ink-400 lg:block" />
-      <Panel label="The direction" title="Reusable integration logic" strong>
-        The known steps could be prepared once and reused. The open question was how much of
-        it customers should do themselves.
+      <Panel label="The direction" title="Steps you can reuse" strong>
+        The known steps could be prepared once and reused. The open question was how much
+        customers should do on their own.
       </Panel>
     </div>
-    <Voice>How much should customers do themselves? We tested the most ambitious answer first.</Voice>
+    <Voice>How much should customers do themselves? We tested the boldest answer first.</Voice>
   </div>
 );
 
@@ -390,12 +391,12 @@ const AiChatSlide = () => (
   <div>
     <Chapter n="03" label="Explore · The AI chat" />
     <H>
-      We also built the ambitious version: <Em>connect two systems by chatting.</Em>
+      We also built the bold version: <Em>connect two systems by chatting.</Em>
     </H>
     <Body>
-      A conversational flow where the fields and the data to be transferred were visualised,
-      and transformations could be applied through chat. Any user, however non-technical,
-      guided by AI through mappings to a working interface. It shipped before templates did.
+      A chat where you could see the fields and the data that would be sent, and change
+      the data just by chatting. Anyone, even with no technical skills, guided by AI to a
+      working connection. It launched before templates did.
     </Body>
     <div className="mt-10 max-w-4xl">
       <MappingCanvas
@@ -414,32 +415,32 @@ const AiChatSlide = () => (
           { from: 'Employee ID', to: 'Employee number', state: 'auto' },
           { from: 'Department', to: 'Cost centre', state: 'input' },
         ]}
-        actions={['Transform', 'Map', 'Validate']}
+        actions={['Change', 'Match', 'Check']}
       />
       <p className="label mt-4 text-ink-500">
-        Concept · the conversation and the data model are one surface
+        Idea · the chat and the data sit on one screen
       </p>
       <Shot
         className="mt-6"
         src={aiChatFrames}
-        alt="Three full-screen wireframes of the conversational interface builder: the chat panel beside a scenario list, then beside a summary rail tracking systems, scenarios, schedule, mappings and settings, then beside an error panel offering fixes for each failed step."
+        alt="Three simple sketches of the chat screen: the chat beside a list of tasks, then beside a summary of systems, tasks, schedule, field matches and settings, then beside a list of errors with a fix for each one."
         width={1804}
         height={474}
         maxH="max-h-[26vh]"
-        caption="The chat never worked alone: scenario list, then summary rail, then the error panel"
+        caption="The chat never worked alone: a task list, then a summary, then a list of errors"
       />
     </div>
     <div className="mt-8 grid max-w-4xl gap-4 sm:grid-cols-2">
-      <Panel label="The promise" title="No expertise needed">
-        Describe what you need; the chat walks you through fields, mappings, and
-        transformations.
+      <Panel label="The promise" title="No expert needed">
+        Say what you need, and the chat walks you through the fields, the matches and the
+        changes to the data.
       </Panel>
-      <Panel label="What we learned" title="Capability was not the barrier" strong>
-        Customers could follow it. What they hesitated over was being the last line of defence
-        on their own payroll data.
+      <Panel label="What we learned" title="Skill was not the problem" strong>
+        Customers could follow it. What worried them was being the only one who could catch
+        a mistake in their own payroll data.
       </Panel>
     </div>
-    <Voice>So I went back to research, this time asking what customers actually wanted to own.</Voice>
+    <Voice>So I went back to research, this time asking what customers really wanted to be in charge of.</Voice>
   </div>
 );
 
@@ -447,84 +448,84 @@ const AiLessonSlide = () => (
   <div>
     <Chapter n="03" label="Explore · What the research found" />
     <H>
-      The company wanted self-sufficient customers. <Em>The customers wanted a human.</Em>
+      The company wanted customers to manage alone. <Em>The customers wanted a real person.</Em>
     </H>
     <Body>
-      The research was blunt: even with an AI guiding them, customers did not want to be
-      alone with something as consequential as their payroll data. They wanted to be able to
-      finish the work themselves, with a person accountable when something went wrong.
+      The research was clear: even with AI guiding them, customers did not want to be on
+      their own with something as important as payroll data. They wanted to be able to
+      finish the work themselves, with a person in charge if something went wrong.
     </Body>
     <div className="mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">
       <Panel label="What the goal assumed">
-        Self-sufficiency means removing the humans from the process.
+        Managing alone means taking the people out of it.
       </Panel>
       <Panel label="What customers taught us" strong>
-        Self-sufficiency means being able to finish yourself, with a person you trust within
-        reach. Independence, not isolation.
+        Managing on your own means finishing it yourself, with a person you trust close by.
+        Doing it yourself, not being left alone.
       </Panel>
     </div>
     <Shot
       className="mt-10 max-w-3xl"
       src={aiResearchSynthesis}
-      alt="A research synthesis board in three rows. Painpoints in blue at the bottom cover navigation, unclear system feedback, error recovery and data transformation. Goals in orange group them into simplifying navigation, interface clarity, error handling and transformation guidance. Design ideas in purple sit above each goal."
+      alt="A research board in three rows. Problems in blue at the bottom: finding your way, unclear messages from the product, fixing errors and changing data. Goals in orange group them: easier navigation, clearer screens, better error help and help with changing data. Design ideas in purple sit above each goal."
       width={1888}
       height={1849}
       maxH="max-h-[30vh]"
-      caption="The synthesis: painpoints, the goals they group into, the design ideas above each"
+      caption="What we learned: problems, the goals they group into, and the design ideas above each"
     />
-    <Voice>The goal was right. The definition of it was wrong.</Voice>
+    <Voice>The goal was right. We just understood it wrong.</Voice>
   </div>
 );
 
 const PivotSlide = () => (
   <div>
-    <Chapter n="03" label="Explore · The better model the experiment defined" />
+    <Chapter n="03" label="Explore · What the test taught us" />
     <H>
-      The answer was not asking customers to build everything themselves.{' '}
+      The answer was not to make customers build everything themselves.{' '}
       <Em>It was giving them a strong starting point.</Em>
     </H>
     <Body>
-      The AI exploration clarified what customers actually needed. They did not want to
-      become integration experts.
+      The AI test showed what customers really needed. They did not want to become experts
+      in connecting systems.
     </Body>
 
     <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-14">
       <div>
         <ColumnLabel>What customers wanted</ColumnLabel>
         <div className="mt-6 space-y-3">
-          <IconRowCard Icon={Puzzle}>Less technical complexity</IconRowCard>
+          <IconRowCard Icon={Puzzle}>Fewer technical parts</IconRowCard>
           <IconRowCard Icon={Clock}>Less waiting</IconRowCard>
           <IconRowCard Icon={SlidersHorizontal}>More control</IconRowCard>
           <IconRowCard Icon={User}>A human available when needed</IconRowCard>
         </div>
       </div>
       <div>
-        <ColumnLabel>What the model does</ColumnLabel>
+        <ColumnLabel>What the new approach does</ColumnLabel>
         <div className="mt-6 flex flex-col gap-3">
           <IconRowCard Icon={Sparkles} tall>
-            The product handles <Em>what is repeatable.</Em>
+            The product handles <Em>what repeats.</Em>
           </IconRowCard>
           <IconRowCard Icon={Fingerprint} tall>
-            The customer provides <Em>what is unique.</Em>
+            The customer adds <Em>what is only theirs.</Em>
           </IconRowCard>
           <IconRowCard Icon={User} tall>
-            A human stays available <Em>where confidence matters.</Em>
+            A real person is there <Em>when you need to feel sure.</Em>
           </IconRowCard>
         </div>
       </div>
     </div>
 
-    <Voice>That led us toward templates: assisted self-service, not autonomous creation.</Voice>
+    <Voice>That led us to templates: doing it yourself with help, not doing it all alone.</Voice>
   </div>
 );
 
 const TemplateModelSlide = () => (
   <div>
-    <Chapter n="04" label="Productise · From autonomous creation to assisted self-service" />
+    <Chapter n="04" label="Build it in · From doing it alone to doing it with help" />
     <H>
-      Do not ask the customer to rebuild <Em>what BrynQ already knows.</Em>
+      Do not ask customers to rebuild <Em>what BrynQ already knows.</Em>
     </H>
-    <Body>Reusable templates became the foundation of the assisted self-service model.</Body>
+    <Body>Ready-made templates became the base for letting customers do it themselves, with help.</Body>
 
     <div className="mt-10">
       <StepRail />
@@ -533,92 +534,92 @@ const TemplateModelSlide = () => (
           n="1"
           Icon={Database}
           title="BrynQ knows"
-          points={['Known integration logic', 'Standard mappings', 'Required steps']}
+          points={['Steps we already know', 'Standard field matches', 'Steps that are always needed']}
         />
         <StepCard
           n="2"
           Icon={FileText}
           title="Template"
-          points={['Prepared starting point', 'Guided setup', 'Built-in validation']}
+          points={['A ready starting point', 'Step-by-step setup', 'Checks built in']}
         />
         <StepCard
           n="3"
           Icon={User}
-          title="Customer configures"
+          title="Customer fills in"
           points={[
             'Credentials',
-            'Organisation-specific values',
+            'Details only their company has',
             'Required selections',
             'Exceptions',
           ]}
         />
       </div>
-      <ConvergeFoot>Result: a working interface</ConvergeFoot>
+      <ConvergeFoot>Result: a working connection</ConvergeFoot>
     </div>
 
     <Shot
       className="mt-10"
       src={guidedSetupWizard}
-      alt="Three frames of the guided setup wizard, stepping through Goal, Source, Target, Data and Summarise. The source and target steps show a searchable grid of applications, and a side panel asks the user to choose or create an authorised connection."
+      alt="Three screens of the step-by-step setup: Goal, Source, Target, Data and Summary. The source and target steps show a grid of apps you can search, and a side panel asks the user to pick or create a connection they have access to."
       width={2271}
       height={546}
       maxH="max-h-[24vh]"
-      caption="The guided setup: Goal, Source, Target, Data, Summarise"
+      caption="The step-by-step setup: Goal, Source, Target, Data, Summary"
     />
   </div>
 );
 
 const CorrectionSlide = () => (
   <div>
-    <Chapter n="04" label="Productise · Where the AI went" />
+    <Chapter n="04" label="Build it in · Where the AI went" />
     <H>
-      The AI did not leave. <Em>It moved backstage.</Em>
+      The AI did not leave. <Em>It moved behind the scenes.</Em>
     </H>
     <Body>
-      The chat was recalled from customers. Templates rolled out with an assigned human
-      point of contact, so customers finish interfaces themselves with a person in reach.
-      And the AI now works where it is wanted: helping developers build the template code
-      faster, so the library grows quicker.
+      The chat was taken away from customers. Templates came out with a named person to
+      contact, so customers finish connections themselves with someone close by. And the AI
+      now works where it is wanted: helping developers write templates faster, so the
+      library grows quicker.
     </Body>
     <div className="mt-10 grid max-w-4xl gap-4 md:grid-cols-2">
       <div className="panel p-6 md:p-8">
         <p className="label text-ink-500">Before</p>
-        <MiniFlow steps={['AI', 'Customer', 'Build one interface']} />
+        <MiniFlow steps={['AI', 'Customer', 'Build one connection']} />
         <p className="mt-6 text-sm leading-snug text-ink-500">
-          One interface, one customer, every time.
+          One connection, one customer, every time.
         </p>
       </div>
       <div className="panel border-l-4 border-l-foreground p-6 md:p-8">
         <p className="label text-ink-500">After</p>
         <MiniFlow steps={['AI', 'Developer', 'Build a template', 'Many customers']} />
         <p className="mt-6 text-sm leading-snug text-ink-500">
-          Every template compounds: the next customer starts further ahead.
+          Every template adds up: the next customer starts further ahead.
         </p>
       </div>
     </div>
     <Shot
       className="mt-10 max-w-3xl"
       src={templateLibrary}
-      alt="The template library in the product: a row of pre-built integration templates each naming a source and target application and how many times it has been used, above a grid of recent interfaces."
+      alt="The template library in the product: a row of ready-made templates, each naming the two apps and how many times it has been used, above a grid of recent connections."
       width={1844}
       height={1526}
       maxH="max-h-[28vh]"
-      caption="The library the AI feeds. Each template names its two systems and its usage count"
+      caption="The library the AI helps fill. Each template names its two systems and how often it is used"
     />
-    <Voice>Customers keep a person in reach. The AI accelerates the library behind them.</Voice>
+    <Voice>Customers keep a person close by. The AI helps the library grow behind them.</Voice>
   </div>
 );
 
 const TemplateResultSlide = () => (
   <div>
-    <Chapter n="04" label="Productise · The result" />
+    <Chapter n="04" label="Build it in · The result" />
     <H>
-      Six months of implementation, <Em>projected down to about two weeks.</Em>
+      Six months of setup, <Em>expected to drop to about two weeks.</Em>
     </H>
     <div className="mt-12 flex max-w-3xl flex-col gap-6">
       <div>
         <div className="flex items-baseline justify-between gap-4">
-          <span className="text-sm text-ink-600 md:text-base">Hand-built interface</span>
+          <span className="text-sm text-ink-600 md:text-base">Connection built by hand</span>
           <span className="label tabular-nums text-ink-500">~6 months</span>
         </div>
         <div aria-hidden="true" className="mt-2 h-2 w-full bg-border" />
@@ -632,65 +633,65 @@ const TemplateResultSlide = () => (
       </div>
     </div>
     <p className="label mt-8 text-ink-500">
-      Repetitive setup happens once, in the template. Customers supply only what is theirs.
+      The repeated setup happens once, in the template. Customers add only what is theirs.
     </p>
     <p className="mt-5 max-w-2xl text-sm leading-relaxed text-ink-500">
-      The two-week figure is projected from the template-led delivery model, not measured in
-      production. What was reported, rather than modelled: the project manager called
-      template-led setup twice as easy.
+      The two-week number is our estimate from the template approach, not measured with
+      real customers. What was actually said, not estimated: the project manager called
+      setting up with templates twice as easy.
     </p>
     <Shot
       className="mt-10 max-w-4xl"
       src={templatePicker}
-      alt="The template picker in the shipped product, headed Let's connect some Apps. The user has chosen a source application and the screen lists the matching pre-built interfaces as cards, each naming its source and target and what it transfers."
+      alt="Choosing a template in the real product, under the heading Let's connect some Apps. The user has picked the first app, and the screen shows matching ready-made connections as cards, each naming the two apps and what it sends."
       width={1594}
       height={733}
       maxH="max-h-[28vh]"
-      caption="Shipped. Pick two applications, and the product answers with what it already knows how to build"
+      caption="Launched. Pick two apps, and the product shows what it already knows how to build"
     />
     <Voice>
       Months of back and forth became a form a customer can finish. That is the whole
-      transition, in one comparison.
+      change, in one comparison.
     </Voice>
   </div>
 );
 
 const ScaleSlide = () => (
   <div>
-    <Chapter n="05" label="Scale · The projected operational impact" />
+    <Chapter n="05" label="Grow · What could change for the business" />
     <H>
-      What could happen if a 26-week process <Em>becomes a 2-week process?</Em>
+      What could happen if 26 weeks of work <Em>becomes 2 weeks?</Em>
     </H>
     <Body>
-      Everything in this chapter is a projection of where the template model points, not
-      results measured yet. The opportunity is not simply time saved: the same team could
-      support more implementations.
+      Everything in this part is a guess about where templates could lead, not something
+      we have measured yet. The chance here is not only saving time: the same team could
+      help more customers.
     </Body>
 
     <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-14">
       <CapacityYear
-        label="Custom model"
-        cycle="~26 weeks per implementation"
+        label="The old way"
+        cycle="~26 weeks per setup"
         count={2}
-        result="~2 implementations / year"
+        result="~2 setups a year"
       />
       <CapacityYear
-        label="Template model, projected"
-        cycle="~2 weeks per implementation"
+        label="With templates, estimated"
+        cycle="~2 weeks per setup"
         count={26}
-        result="~26 implementations / year"
+        result="~26 setups a year"
       />
     </div>
 
     <div className="mt-12 grid max-w-2xl gap-x-12 gap-y-8 border-t border-border pt-10 sm:grid-cols-2">
-      <Metric figure="~92%" caption="Projected shorter implementation cycle" />
-      <Metric figure={<>~13&times;</>} caption="Projected delivery capacity" />
+      <Metric figure="~92%" caption="Expected cut in setup time" />
+      <Metric figure={<>~13&times;</>} caption="Expected setups per person, compared with before" />
     </div>
 
     <p className="label mt-10 inline-block border border-dashed border-border px-2 py-1 text-ink-400">
       Illustrative
     </p>
-    <Voice>More capacity would mean more customers with the same team.</Voice>
+    <Voice>That would mean more customers, with the same team.</Voice>
   </div>
 );
 
@@ -698,7 +699,7 @@ const TimelineSlide = () => (
   <div>
     <Chapter n="06" label="Looking back · The journey, in order" />
     <H>
-      From outer cover <Em>to the product customers finish themselves.</Em>
+      From just a cover <Em>to a product customers finish themselves.</Em>
     </H>
     <ol className="mt-10 max-w-3xl">
       {milestones.map((m, i) => (
@@ -713,7 +714,7 @@ const TimelineSlide = () => (
       ))}
     </ol>
     <p className="label mt-8 text-ink-500">
-      Each milestone has a deeper story, with the screens and flows, on the case study.
+      Each step has a longer story, with the screens and flows, in the detailed study.
     </p>
   </div>
 );
@@ -722,59 +723,59 @@ const LessonsSlide = () => (
   <div>
     <Chapter n="06" label="Looking back · What BrynQ taught me" />
     <H>
-      The redesign was never the project. <Em>The transition was.</Em>
+      The redesign was never the real project. <Em>The change was.</Em>
     </H>
     <div className="mt-10 grid max-w-4xl gap-4 md:grid-cols-3">
       <Panel label="01" title="Start with why nobody uses it">
-        A redesign brief hides a harder question. Answering that question is the work.
+        A request for a redesign hides a harder question. Answering that question is the real work.
       </Panel>
-      <Panel label="02" title="Ship the ambitious version to learn from it">
-        The AI chat was the fastest way to find the real limit of self-service, and what it
-        taught reshaped both the templates and where AI lives in the product.
+      <Panel label="02" title="Launch the bold version to learn from it">
+        The AI chat was the fastest way to find the real limit of doing it yourself. What it
+        taught us changed both the templates and where AI sits in the product.
       </Panel>
-      <Panel label="03" title="Self-sufficiency includes people">
-        Customers did not want fewer humans. They wanted to keep control while one stayed
-        within reach.
+      <Panel label="03" title="Managing on your own still includes people">
+        Customers did not want fewer people. They wanted to stay in control, with someone
+        close by.
       </Panel>
     </div>
     <Voice>
-      Three years in, the goal has not changed. The product finally points at it.
+      Three years in, the goal has not changed. The product is finally heading towards it.
     </Voice>
   </div>
 );
 
 const slides: DeckSlide[] = [
   // Opening
-  { id: 'cover', chapter: 'Opening', title: 'The platform nobody opened', render: CoverSlide },
-  { id: 'projects', chapter: 'Opening', title: 'One transition told through four projects', render: ProjectsSlide },
+  { id: 'cover', chapter: 'Opening', title: 'The product nobody opened', render: CoverSlide },
+  { id: 'projects', chapter: 'Opening', title: 'One big change told through four projects', render: ProjectsSlide },
   // 01 Understand
   { id: 'arrival', chapter: 'Understand', title: 'Customers had accounts, never logged in', render: ArrivalSlide },
-  { id: 'interviews', chapter: 'Understand', title: 'No dislike, just no reason to enter', render: InterviewsSlide },
-  { id: 'goal', chapter: 'Understand', title: 'Customers build their own interfaces', render: GoalSlide },
+  { id: 'interviews', chapter: 'Understand', title: 'Nobody disliked it, they just had no reason to open it', render: InterviewsSlide },
+  { id: 'goal', chapter: 'Understand', title: 'Customers set up their own connections', render: GoalSlide },
   { id: 'groundwork', chapter: 'Understand', title: 'Map everything before any flow', render: GroundworkSlide },
   // 02 Reframe
-  { id: 'cost', chapter: 'Reframe', title: 'About six months per interface', render: CostSlide },
-  { id: 'realisation', chapter: 'Reframe', title: 'The platform was an outer cover', render: RealisationSlide },
-  { id: 'encyclopedia', chapter: 'Reframe', title: 'The integration encyclopedia nobody had productised', render: EncyclopediaSlide },
+  { id: 'cost', chapter: 'Rethink', title: 'About six months per connection', render: CostSlide },
+  { id: 'realisation', chapter: 'Rethink', title: 'The product was just a cover', render: RealisationSlide },
+  { id: 'encyclopedia', chapter: 'Rethink', title: 'Know-how nobody had built into the product', render: EncyclopediaSlide },
   // 03 Explore
-  { id: 'ai-chat', chapter: 'Explore', title: 'The ambitious version: connect by chatting', render: AiChatSlide },
-  { id: 'ai-lesson', chapter: 'Explore', title: 'Self-service, but customers wanted a human', render: AiLessonSlide },
-  { id: 'pivot', chapter: 'Explore', title: 'The better model the experiment defined', render: PivotSlide },
+  { id: 'ai-chat', chapter: 'Explore', title: 'The bold version: connect by chatting', render: AiChatSlide },
+  { id: 'ai-lesson', chapter: 'Explore', title: 'Doing it yourself, but customers wanted a real person', render: AiLessonSlide },
+  { id: 'pivot', chapter: 'Explore', title: 'What the test taught us', render: PivotSlide },
   // 04 Productise
-  { id: 'template-model', chapter: 'Productise', title: 'Do not rebuild what BrynQ already knows', render: TemplateModelSlide },
-  { id: 'correction', chapter: 'Productise', title: 'The AI moved backstage', render: CorrectionSlide },
-  { id: 'template-result', chapter: 'Productise', title: 'Six months, projected down to two weeks', render: TemplateResultSlide },
+  { id: 'template-model', chapter: 'Build it in', title: 'Do not rebuild what BrynQ already knows', render: TemplateModelSlide },
+  { id: 'correction', chapter: 'Build it in', title: 'The AI moved behind the scenes', render: CorrectionSlide },
+  { id: 'template-result', chapter: 'Build it in', title: 'Six months, expected to drop to two weeks', render: TemplateResultSlide },
   // 05 Scale
-  { id: 'scale', chapter: 'Scale', title: 'The projected operational impact', render: ScaleSlide },
+  { id: 'scale', chapter: 'Grow', title: 'What could change for the business', render: ScaleSlide },
   // Looking back
   { id: 'timeline', chapter: 'Looking back', title: 'The journey, in order', render: TimelineSlide },
-  { id: 'lessons', chapter: 'Looking back', title: 'The transition was the project', render: LessonsSlide },
+  { id: 'lessons', chapter: 'Looking back', title: 'The change was the real project', render: LessonsSlide },
 ];
 
 const BrynqStory = () => {
   usePageMeta(
     'BrynQ · The story in slides',
-    'BrynQ, 2023 to present: from a platform nobody opened to interfaces customers finish themselves.',
+    'BrynQ, 2023 to now: from a product nobody opened to connections customers finish themselves.',
   );
 
   return <Deck label="BrynQ · The transition" exitHref="/case-study/brynq" slides={slides} />;

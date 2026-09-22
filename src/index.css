@@ -100,13 +100,6 @@
      * few hundred pixels sat unused down either side of a large display.
      */
     --shell: 96rem;
-
-    /*
-     * How much room the storyline rail reserves on a case study. The rail
-     * writes this on the document when it is collapsed, so the page beside it
-     * reflows without every study needing its own state.
-     */
-    --rail-w: 15rem;
   }
 
   /*
@@ -174,184 +167,21 @@
   }
 
   /*
-   * Layrrrd's paper. The case study for that project runs on its own
-   * palette: warm cream, near-black ink, a hairline the colour of old
-   * card. It is declared as a token island exactly like .light, so every
-   * existing utility (border-border, the ink scale, bg-card) keeps working
-   * inside it without a parallel set of classes.
+   * Three palettes used to live here and they are gone.
    *
-   * The values come from the product's own decks, not from the portfolio.
+   * `.paper-layrrrd` was a warm cream island that the Layrrrd case study ran
+   * as its whole page ground, `.paper-layrrrd-page` was its dark counterpart,
+   * and `.ink-block` was a near-black block used to mark that story's turns.
+   * They were good-looking and they were a second design language: a visitor
+   * moving from the home page into that case study left the portfolio's
+   * palette entirely and arrived somewhere that looked like a different
+   * studio's work.
+   *
+   * The portfolio is one language now, and dark. The turns in that story are
+   * still marked, but with `.theme-invert` below, which is the device the
+   * other case studies already use for an inverted slide. One way to say
+   * "this is a reversal", used everywhere.
    */
-  .paper-layrrrd {
-    color-scheme: light;
-
-    --background: 38 75% 94%;
-    --foreground: 0 0% 10%;
-
-    --card: 39 50% 90%;
-    --card-foreground: 0 0% 10%;
-
-    --popover: 38 75% 94%;
-    --popover-foreground: 0 0% 10%;
-
-    /* Warm greys, so the hierarchy sits on the cream instead of on white. */
-    --ink-900: 0 0% 8%;
-    --ink-800: 30 6% 16%;
-    --ink-600: 34 8% 32%;
-    --ink-500: 36 9% 43%;
-    --ink-400: 37 14% 52%;
-
-    --primary: 0 0% 10%;
-    --primary-foreground: 38 75% 94%;
-
-    --secondary: 39 50% 90%;
-    --secondary-foreground: 0 0% 10%;
-
-    --muted: 39 45% 91%;
-    --muted-foreground: 36 9% 45%;
-
-    --accent: 39 50% 90%;
-    --accent-foreground: 0 0% 10%;
-
-    --link: 220 72% 40%;
-
-    --border: 38 25% 78%;
-    --input: 38 25% 78%;
-    --ring: 36 9% 45%;
-
-    /* Its own shadow tint. Without this the cream inherits whatever the
-       document is on, and on a dark page that is a near-opaque black. */
-    --shadow-color: 30 30% 25%;
-  }
-
-  /*
-   * The paper after dark.
-   *
-   * `.paper-layrrrd` on its own is a fixed swatch of the product's palette,
-   * which is exactly right for the cover chip on the home page: one cream
-   * panel carrying the real brand, sitting on whatever ground the section
-   * is on. It is wrong for the case study, which runs the island as its
-   * entire page ground and so has to follow the visitor's theme, or the
-   * site's dark mode simply stops applying halfway through the work.
-   *
-   * So the dark values are scoped to `.paper-layrrrd-page`, which only the
-   * case study carries. The character is kept rather than swapped for the
-   * portfolio's own greys: a warm near-black instead of the site's blue
-   * black, cream type instead of white, and a border the colour of old card
-   * seen in low light. Read side by side the two themes are the same paper,
-   * lit differently.
-   *
-   * Contrast is checked at the faintest step: ink-400, which carries the
-   * small uppercase metadata, sits at about 5.8:1 on this ground.
-   */
-  .dark .paper-layrrrd-page {
-    color-scheme: dark;
-
-    --background: 30 8% 7%;
-    --foreground: 38 44% 93%;
-
-    --card: 32 7% 13%;
-    --card-foreground: 38 44% 93%;
-
-    --popover: 30 8% 9%;
-    --popover-foreground: 38 44% 93%;
-
-    /* Warm greys, so the hierarchy sits on the warm black rather than on a
-       neutral one. Same five steps, same spacing, mirrored. */
-    --ink-900: 38 44% 95%;
-    --ink-800: 38 26% 88%;
-    --ink-600: 37 16% 74%;
-    --ink-500: 36 12% 64%;
-    --ink-400: 35 10% 55%;
-
-    --primary: 38 44% 93%;
-    --primary-foreground: 30 8% 7%;
-
-    --secondary: 32 7% 14%;
-    --secondary-foreground: 38 44% 93%;
-
-    --muted: 32 7% 14%;
-    --muted-foreground: 36 12% 64%;
-
-    --accent: 32 7% 14%;
-    --accent-foreground: 38 44% 93%;
-
-    --link: 214 82% 72%;
-
-    --border: 34 8% 20%;
-    --input: 34 8% 20%;
-    --ring: 36 10% 40%;
-
-    --shadow-color: 0 0% 0%;
-  }
-
-  /*
-   * Layrrrd's ink block. The turns in that story invert to near-black, and
-   * everything inside them has to keep reading: muted copy, cards, the
-   * hairlines. Flipping the token island once here is cheaper and safer
-   * than restating colours at every call site.
-   */
-  .ink-block {
-    background-color: hsl(0 0% 10%);
-    color: hsl(38 75% 94%);
-
-    --background: 0 0% 10%;
-    --foreground: 38 75% 94%;
-    --card: 0 0% 17%;
-    --card-foreground: 38 75% 94%;
-
-    --ink-900: 38 75% 96%;
-    --ink-800: 38 40% 88%;
-    --ink-600: 38 20% 78%;
-    --ink-500: 37 13% 66%;
-    --ink-400: 36 10% 54%;
-
-    --link: 214 80% 72%;
-
-    --border: 36 12% 30%;
-    --muted: 0 0% 17%;
-    --muted-foreground: 37 13% 66%;
-
-    /* A dark island keeps dark-side shadows whatever the page around it is. */
-    --shadow-color: 0 0% 0%;
-  }
-
-  /*
-   * The ink block, reversed.
-   *
-   * The block exists to mark the turns in the story, and it does that by
-   * being the opposite of the page around it. On a dark page a near-black
-   * block is not a turn, it is the same slide again, so the reversal flips:
-   * the turns become the cream, and the paper the rest of the study is
-   * printed on shows up as the exception.
-   */
-  .dark .paper-layrrrd-page .ink-block {
-    color-scheme: light;
-
-    background-color: hsl(38 70% 92%);
-    color: hsl(24 10% 10%);
-
-    --background: 38 70% 92%;
-    --foreground: 24 10% 10%;
-    --card: 39 48% 87%;
-    --card-foreground: 24 10% 10%;
-
-    --ink-900: 0 0% 8%;
-    --ink-800: 30 6% 16%;
-    --ink-600: 34 8% 32%;
-    --ink-500: 36 9% 43%;
-    --ink-400: 37 14% 50%;
-
-    --link: 220 72% 40%;
-
-    --border: 38 24% 74%;
-    --muted: 39 44% 89%;
-    --muted-foreground: 36 9% 45%;
-
-    /* Back to the warm tint: a pure black shadow under a cream block reads
-       as a hole rather than as lift. */
-    --shadow-color: 30 30% 25%;
-  }
 }
 
 @layer base {
@@ -424,12 +254,13 @@
    * storyline lives in the chapter bar and the panel, and the page is full
    * width.
    */
-  @media (min-width: 1280px) {
-    .rail-offset {
-      padding-left: var(--rail-w);
-      transition: padding-left 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-  }
+  /*
+   * `.rail-offset` used to live here, padding a case study's whole page to
+   * the left to clear a fifteen-rem fixed rail. The rail is gone (see
+   * src/design/ReadingNav.tsx) and the contents list now floats in margin the
+   * centred page was not using, so nothing reserves a gutter any more and the
+   * diagrams got those fifteen rems back.
+   */
 
   /*
    * A staggered sequence. The parent carries .reveal, so one observer drives
@@ -647,6 +478,112 @@
   }
 
   /*
+   * The masthead's ground.
+   *
+   * The first screen used to be flat: type on the page colour, nothing
+   * behind it. That is what made it read as a wireframe rather than as a
+   * designed page, and it is a strange first impression for a portfolio,
+   * because the visitor's first evidence of the craft is the page they are
+   * standing on.
+   *
+   * What sits behind the type now is an aurora: two very large, very soft
+   * radial washes, one accent and one link, drifting slowly past each other.
+   * This is the only place on the site where those two colours are allowed
+   * to share a view, and the reason is that here they are light rather than
+   * instructions - at four to nine per cent they read as a tint on the
+   * ground, not as an emphasis mark or a call to action. Everywhere else the
+   * rule in src/design/system.ts holds.
+   *
+   * Painted on a pseudo-element so it can be masked to nothing at the foot
+   * of the section, which is what keeps the masthead from ending on a hard
+   * edge of colour where the work below it begins.
+   */
+  .hero-field {
+    isolation: isolate;
+    /*
+     * The wash is inset past the section's own edges so it does not end on a
+     * visible boundary, which on a viewport narrower than the shell would
+     * otherwise put a few per cent of gradient outside the page and hand the
+     * document a horizontal scrollbar. Clipped on one axis only, so the
+     * portrait's bloom still spills vertically.
+     */
+    overflow-x: clip;
+  }
+
+  .hero-field::before {
+    content: '';
+    position: absolute;
+    inset: -6rem -10% 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+      radial-gradient(38rem 26rem at 18% 22%, hsl(var(--accent) / 0.16), transparent 68%),
+      radial-gradient(34rem 24rem at 82% 12%, hsl(var(--link) / 0.11), transparent 70%),
+      radial-gradient(30rem 22rem at 62% 78%, hsl(var(--accent) / 0.07), transparent 72%);
+    /* Fades out before the section ends, so the work below starts on the
+       plain ground rather than on the tail of a gradient. */
+    -webkit-mask-image: linear-gradient(to bottom, #000 45%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 45%, transparent 100%);
+    animation: hero-drift 26s ease-in-out infinite alternate;
+  }
+
+  /*
+   * On the dark ground the same washes disappear, because a 16% tint of
+   * anything over a 4% background is very nearly the background. They are
+   * lifted, and the accent is pulled back relative to the link, since a
+   * saturated yellow glows far harder on black than a blue does.
+   */
+  .dark .hero-field::before {
+    background-image:
+      radial-gradient(38rem 26rem at 18% 22%, hsl(var(--accent) / 0.1), transparent 66%),
+      radial-gradient(34rem 24rem at 82% 12%, hsl(var(--link) / 0.22), transparent 68%),
+      radial-gradient(30rem 22rem at 62% 78%, hsl(var(--accent) / 0.06), transparent 72%);
+  }
+
+  @keyframes hero-drift {
+    from {
+      transform: translate3d(-2%, -1%, 0) scale(1);
+    }
+    to {
+      transform: translate3d(2%, 1.5%, 0) scale(1.06);
+    }
+  }
+
+  /*
+   * The availability dot. One slow pulse, which is the difference between a
+   * status line that reads as current and one that reads as a claim someone
+   * left up eighteen months ago.
+   */
+  .hero-ping {
+    animation: hero-ping 2.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  @keyframes hero-ping {
+    0% {
+      opacity: 0.7;
+      transform: scale(1);
+    }
+    70%,
+    100% {
+      opacity: 0;
+      transform: scale(2.6);
+    }
+  }
+
+  /*
+   * The portrait's tilt. The angles come from the pointer (see Hero.tsx) and
+   * are applied here, so the transform, the perspective and the easing stay
+   * in one place and the component only ever writes two numbers.
+   */
+  .hero-portrait {
+    --tilt-x: 0deg;
+    --tilt-y: 0deg;
+    transform: perspective(60rem) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /*
    * The page ground.
    *
    * This used to paint a graph-paper grid from two hairline gradients, which
@@ -804,6 +741,26 @@
     opacity: 1;
     transform: none;
   }
+
+  /*
+   * The two looping animations on the site. The global rule above collapses
+   * their duration, which for an infinite animation leaves it running at
+   * 0.01ms rather than stopping it, so they are switched off by name. The
+   * aurora stays as a static wash and the dot stays as a dot; neither was
+   * carrying information.
+   */
+  .hero-field::before,
+  .hero-ping {
+    animation: none !important;
+  }
+
+  .hero-ping {
+    opacity: 0;
+  }
+
+  .hero-portrait {
+    transform: none !important;
+  }
 }
 
 /*
@@ -841,11 +798,6 @@
   .fixed,
   .sticky {
     display: none !important;
-  }
-
-  /* The rail is gone, so the gutter it reserved goes with it. */
-  .rail-offset {
-    padding-left: 0 !important;
   }
 
   /* Everything has already been scrolled past. */

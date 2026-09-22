@@ -169,7 +169,7 @@ export const DataPanels = ({
   columns?: string;
 }) => (
   <div
-    className="mt-12 grid gap-3 sm:grid-cols-2 md:mt-16 lg:[grid-template-columns:var(--cols)]"
+    className="mt-break grid gap-3 sm:grid-cols-2 lg:[grid-template-columns:var(--cols)]"
     style={{ '--cols': columns } as CSSProperties}
   >
     {children}

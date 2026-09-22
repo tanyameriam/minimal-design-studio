@@ -23,6 +23,26 @@ export default {
 		 * purpose: Tailwind's defaults are fixed rem values, which would stay
 		 * put while the font size grew and progressively crush the leading.
 		 */
+		/*
+		 * Fluid rhythm. The same idea as the type scale below: instead of a
+		 * value that jumps at md and again at lg, each step grows smoothly
+		 * with the window. The vertical steps are also capped by the
+		 * viewport's height, so a short, wide laptop screen does not get
+		 * desktop-sized gaps that push the content off the fold.
+		 *
+		 *   gutter    the page's side margin (was px-5 / md:px-8 / lg:px-12)
+		 *   break     between blocks inside a section (was mt-12 / md:mt-16)
+		 *   stage     between the big parts of a section (was mt-16 / md:mt-20)
+		 *   section   a section's own top and bottom (was py-20 / md:py-28)
+		 *   masthead  a page's top, clearing the fixed nav (was pt-32 / md:pt-40)
+		 */
+		spacing: {
+			gutter: 'clamp(1.25rem, 0.25rem + 4vw, 3rem)',
+			break: 'clamp(2.5rem, min(1.25rem + 3vw, 7vh), 4rem)',
+			stage: 'clamp(3rem, min(1.5rem + 4vw, 9vh), 5.5rem)',
+			section: 'clamp(3.5rem, min(1.5rem + 5vw, 11vh), 7rem)',
+			masthead: 'clamp(7.5rem, min(5.5rem + 3vw, 16vh), 10rem)'
+		},
 		fontSize: {
 			sm: ['clamp(0.875rem, 0.839rem + 0.143vw, 1rem)', '1.5'],
 			base: ['clamp(1rem, 0.946rem + 0.214vw, 1.1875rem)', '1.6'],

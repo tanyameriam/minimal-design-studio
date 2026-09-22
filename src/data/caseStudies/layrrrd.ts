@@ -4,25 +4,25 @@ export const layrrrd: CaseStudy = {
   slug: 'layrrrd',
   title: 'Layrrrd',
   headline:
-    'Taking a revisit problem from first commit to paying customers in nine days, then not stopping',
+    'Taking the problem of never going back to saved things, from the first line of code to paying customers in nine days, and then not stopping',
   year: '2026',
   status: 'live',
-  tagline: 'Consumer product . Content curation . Live at layrrrd.com',
+  tagline: 'An app for everyday people . Saving and finding things . Live at layrrrd.com',
 
   intro: [
-    'Layrrrd starts from a reframe: you do not have a discovery problem, you have a revisit problem. People already save content constantly, across bookmarks, screenshots, notes apps, and Telegram saved messages, and almost none of it is ever opened again. Layrrrd saves from anywhere, summarises what you saved, and pushes a curated digest back to you on a schedule you chose. It is live at layrrrd.com.',
-    'We gave ourselves nine days to validate it, and we got the numbers. I led design, from product direction through the design system to the brand. By day nine we had paying customers, and the same team has kept building since. This is the project where every judgment call had a deadline measured in hours, which makes it the clearest record I have of how I actually decide.',
+    'Layrrrd starts from a new way of seeing the problem: you do not have a problem finding things, you have a problem going back to them. People save things all the time, in bookmarks, screenshots, notes apps and Telegram saved messages, and almost none of it is ever opened again. Layrrrd saves from anywhere, sums up what you saved, and sends a hand-picked digest back to you on a day you choose. It is live at layrrrd.com.',
+    'We gave ourselves nine days to prove it worked, and we got the numbers. I led the design, from what the product should be, to the design system, to the brand. By day nine we had paying customers, and the same team has kept building since. In this project every choice had a deadline measured in hours, so it is the clearest record I have of how I really make decisions.',
   ],
 
   story: { href: '/case-study/layrrrd/story', note: '16 slides' },
 
   meta: [
     { label: 'Role', value: 'Design Lead. Product direction, design system, brand' },
-    { label: 'Engagement', value: 'Validated in 9 days, now an ongoing product' },
+    { label: 'Type of project', value: 'Tested in 9 days, now an ongoing product' },
     { label: 'Timeline', value: 'June 2026 to present' },
     { label: 'Team', value: '[NEED: team size and roles]' },
     { label: 'Stage', value: 'Live, revenue' },
-    { label: 'Domain', value: 'Consumer, content curation' },
+    { label: 'Area', value: 'Consumer, content curation' },
   ],
 
   sections: [
@@ -31,17 +31,17 @@ export const layrrrd: CaseStudy = {
       id: 'pitch',
       label: 'Quick pitch',
       footnote:
-        'Short on time? The pitch above is the whole case. The journey below is how it actually went.',
+        'Short on time? The pitch above is the whole story. The journey below is how it really went.',
       summary: {
         problems:
-          'Saving content is frictionless and revisiting it never happens. The read-later pile scatters across bookmarks, tabs, screenshots, and chat apps, and relies on willpower nobody has. Existing tools answer this with better organisation, which is more work at exactly the moment people have none to give.',
+          'Saving things is easy, and going back to them never happens. The read-later pile is spread across bookmarks, tabs, screenshots and chat apps, and it depends on willpower nobody has. Other apps answer this with better ways to sort things, which means more work at exactly the moment people have none to give.',
         solution:
-          'Remove organising entirely. Three capture surfaces feed one pipeline: a Chrome extension, a paste bar, and a Telegram bot. AI summarises everything on save, and a weekly digest, delivered on the day each user picked, pushes the backlog back to them grouped by topic.',
+          'Take away sorting completely. Three ways to save all feed into one system: a Chrome add-on, a paste box and a Telegram bot. AI sums up everything when it is saved, and a weekly digest, sent on the day each user picked, brings the pile back to them, grouped by topic.',
         why:
-          'Because the failure was never in saving, it was in returning. A better archive still waits for the user to come back. A digest does not wait, so the product was built around the push, and everything else, capture, summaries, even the mascot, exists to serve that one loop.',
+          'Because saving was never the problem. Going back was. A better storage box still waits for you to come back. A digest does not wait, so the app was built around sending things back, and everything else (saving, summaries, even the mascot) is there to support that one idea.',
         resultsLabel: 'Results',
         results:
-          '15 paying customers and 126 freemium signups by day nine, tracked in PostHog from launch. Payments went live inside the window, which is what made the number mean something. Live since, with the same team improving it: a published Chrome extension, both chat channels, referral loops and trust work shipped after validation.',
+          '15 paying customers and 126 free sign-ups by day nine, counted in PostHog from launch. Payments went live during the nine days, which is what made the number mean something. It has been live ever since, with the same team improving it: a Chrome add-on now live, both chat channels, ways to invite friends, and work on trust, all added after the nine days.',
       },
     },
 
@@ -49,13 +49,13 @@ export const layrrrd: CaseStudy = {
       kind: 'journey',
       id: 'journey',
       label: 'The full journey',
-      question: 'What does a design process look like when you give a product nine days to prove itself?',
+      question: 'What does design look like when you give a product nine days to prove itself?',
       blocks: [
         {
           kind: 'prose',
           body: [
-            'Nine days does not permit a discovery phase, so the discovery had to already exist: our own saved-content graveyards, and the shared observation that the people we were building for dump links into Telegram saved messages and never look again. The bet was placed on day one and every scoping decision descended from it. Anything that made saving easier or the digest better shipped. Anything else waited.',
-            'The discipline was tested mid-build. User testing inside the validation window surfaced three problems worth reacting to: people did not trust that a save had worked, retrieval fell apart past a hundred items, and the digest cadence felt imposed rather than chosen. We repositioned around a curated feed, made save-state explicit, and let users pick their digest day. Reacting to evidence inside a nine day window, instead of defending the original plan, is the part of this project I would show a hiring panel first.',
+            'Nine days leaves no time for long research, so the research had to exist already: our own forgotten piles of saved things, and the fact that the people we were building for drop links into Telegram saved messages and never look again. We made our bet on day one and every choice about what to build came from it. Anything that made saving easier or the digest better got built. Everything else waited.',
+            'Sticking to that was tested halfway through. Testing with users during the nine days showed three problems worth acting on: people did not trust that saving had worked, finding things broke down after a hundred items, and the digest schedule felt forced on them instead of chosen. We rebuilt it around a hand-picked feed, made it clear when something was saved, and let users pick their digest day. Acting on what we learned within nine days, instead of sticking to the first plan, is the part of this project I would show a hiring team first.',
           ],
         },
         {
@@ -69,24 +69,24 @@ export const layrrrd: CaseStudy = {
       kind: 'step',
       id: 'step-01',
       index: '01',
-      nav: '01 Capture channels',
-      problem: 'Saved content scatters across apps nobody revisits',
-      intervention: 'so capture went to where saving already happens, four channels into one pipeline',
+      nav: '01 Ways to save',
+      problem: 'Saved things are spread across apps nobody opens again',
+      intervention: 'so saving went where people already save, with every way to save feeding one system',
       blocks: [
         {
           kind: 'prose',
           body: [
-            'The target user already saves into chat apps. Fighting that habit would have meant winning a behaviour change war with a nine day budget, so instead the product moved into the channel: a Telegram bot, alongside a Chrome extension and a paste bar in the app. All three converge on one pipeline. A save is instant and idempotent, the AI summary happens in the background, and the item appears in the library without the user waiting on it.',
-            'Trust turned out to be the design problem, not speed. Testing showed people did not believe the save had worked when nothing visibly happened. The fix was an optimistic pending card that appears immediately and resolves in place, which cost little and changed how the whole capture flow felt.',
+            'The people we built for already save things in chat apps. Fighting that habit would have meant trying to change how people behave in just nine days. So the app moved into the chat instead: a Telegram bot, next to a Chrome add-on and a paste box in the app. All three feed into one system. Saving is instant, saving twice does no harm, the AI summary is made in the background, and the item shows up in the library without the user having to wait.',
+            'The real design problem turned out to be trust, not speed. Testing showed people did not believe saving had worked when nothing seemed to happen. The fix was a “saving…” card that appears right away and fills in where it is. It cost little and changed how the whole saving experience felt.',
           ],
         },
         {
           kind: 'tradeoffs',
           items: [
             {
-              title: 'Four capture channels over one polished one',
-              cost: 'Each channel got a thinner first version, and two of them are bots whose conversational surface needed its own design work.',
-              gain: 'Capture met users where saving already happens, which is the entire premise. A single polished channel would have been a better bookmarking tool, the thing we explicitly did not want to build.',
+              title: 'Several ways to save instead of one polished one',
+              cost: 'Each way to save got a simpler first version, and two of them are chat bots that needed their own design work.',
+              gain: 'Saving fitted in where people already save, which is the whole idea. One polished way to save would have made a better bookmarking tool, which is exactly what we did not want to build.',
             },
           ],
         },
@@ -97,14 +97,14 @@ export const layrrrd: CaseStudy = {
       id: 'step-02',
       index: '02',
       nav: '02 The digest',
-      problem: 'An archive still waits for the user to come back',
-      intervention: 'so the digest became the product core, pushed on a day each user chose',
+      problem: 'A storage box still waits for you to come back',
+      intervention: 'so the digest became the heart of the app, sent on a day each user chose',
       blocks: [
         {
           kind: 'prose',
           body: [
-            'The weekly digest is not a feature of the product. It is the product. Saved items grouped by topic, summarised, with the unread backlog surfaced, delivered over email or Telegram on the day of the week each user picked. The per-user day came directly from testing, where a fixed cadence read as spam and a chosen one read as a commitment the user had made to themselves.',
-            'The same push-not-pull logic shaped restraint later: the bot asks consent before sending digests and does not nudge proactively. A product whose premise is respecting your attention cannot spend it cheaply.',
+            'The weekly digest is not a feature of the app. It is the app. Saved items grouped by topic and summed up, with the unread pile shown too, sent by email or Telegram on the day of the week each user picked. Letting each user pick their own day came straight from testing: a fixed day felt like spam, and a chosen day felt like a promise people had made to themselves.',
+            'The same idea, sending things out instead of waiting, also taught us to hold back: the bot asks before sending digests and never nags. An app that promises to respect your attention cannot waste it.',
           ],
         },
       ],
@@ -114,15 +114,15 @@ export const layrrrd: CaseStudy = {
       id: 'step-03',
       index: '03',
       nav: '03 The design system',
-      problem: 'A nine day product built with AI tools could have become a visual junk drawer',
-      intervention: 'so I wrote the design system down and made the tools obey it',
+      problem: 'An app built in nine days with AI tools could easily have become a messy junk drawer',
+      intervention: 'so I wrote down the design rules and made the coding tools follow them',
       blocks: [
         {
           kind: 'prose',
           body: [
-            'The system is editorial and deliberate: light only, zero corner radius, hairline rules instead of cards and shadows, a documented type and colour foundation. Brand sits in a second layer that is opt-in by rule, never applied by default, so the marketing surface can be expressive while the product stays quiet.',
-            'The part I consider genuinely senior work: the constraints live in the repository as written rules that the AI coding tools are bound to. When a machine is generating interface code at validation speed, taste does not scale unless it is written down and enforced. The system held through those nine days and is still holding as the product grows.',
-            'The brand carries real weight. Rudolf, the dog mascot, is not decoration: he is the loading state, the chat persona in both messaging channels, and the pricing metaphor. Chat time is play time, top-ups are biscuits. One character doing four jobs kept a nine day brand coherent.',
+            'The design is simple and done on purpose: light colours only, no rounded corners, thin lines instead of cards and shadows, and fonts and colours that are written down. The brand sits in a second layer that only shows up where we choose, never by default. So the marketing can be bold while the app itself stays calm.',
+            'The part I am most proud of: the rules live in the code as written instructions that the AI coding tools have to follow. When a computer is writing screen code this fast, good taste cannot keep up unless it is written down and enforced. The rules held up through those nine days and still hold as the app grows.',
+            'The brand does real work. Rudolf, the dog mascot, is not just decoration: he shows up while things load, he is the voice of both chat channels, and he helps explain the prices. Chat time is play time, buying more is buying biscuits. One character doing four jobs kept a brand built in nine days feeling like one thing.',
           ],
         },
       ],
@@ -132,14 +132,14 @@ export const layrrrd: CaseStudy = {
       id: 'step-04',
       index: '04',
       nav: '04 Pricing',
-      problem: 'Subscriptions punish a product people touch once a week',
-      intervention: 'so pricing became a one time founding membership with a hard cap',
+      problem: 'Monthly payments are unfair for an app people use once a week',
+      intervention: 'so pricing became a one-time founding membership, with a strict limit',
       blocks: [
         {
           kind: 'prose',
           body: [
-            'A weekly-touch product has to earn a subscription every month, which is a bad fight to pick at launch. Instead: a lifetime founding membership, one hundred spots, early spots cheaper, gone means gone. Saves, summaries, and digests stay free for everyone. The only metered thing is chat time with Rudolf, because that is the only place where cost genuinely scales with use.',
-            'Payments went live inside the validation window, which is what made the day nine number mean something. Fifteen people paid real money for a nine day old product, and that fact validated the bet more than any interview could have.',
+            'An app you use once a week has to prove it is worth paying for every month, which is a bad fight to pick at launch. Instead: a lifetime founding membership, one hundred spots, early spots cheaper, and when they are gone, they are gone. Saving, summaries and digests stay free for everyone. The only thing you pay per use is chat time with Rudolf, because that is the only thing that really costs more when you use it more.',
+            'Payments went live during the nine days, which is what made the day-nine number mean something. Fifteen people paid real money for an app that was nine days old, and that proved the idea better than any interview could.',
           ],
         },
       ],
@@ -152,15 +152,15 @@ export const layrrrd: CaseStudy = {
       items: [
         {
           option: 'Subscription pricing',
-          why: 'The habit loop is weekly, and a monthly charge against a weekly habit invites churn before the habit forms. Lifetime pricing with scarcity converted curiosity into commitment, and the generous free tier keeps the funnel open.',
+          why: 'People use the app once a week, and a monthly charge for a weekly habit makes people quit before the habit forms. A lifetime price with limited spots turned curiosity into commitment, and the generous free plan keeps the door open for everyone.',
         },
         {
-          option: 'A discovery and recommendation feed',
-          why: 'A social layer was in the pitch and is deliberately not in the product yet. Recommendations without density are noise, and building them would have taken days the core loop needed. The scoping call is recorded in the product docs rather than hidden.',
+          option: 'A feed of tips and new things to read',
+          why: 'A social feature was in the pitch, and on purpose it is not in the app yet. Tips without enough content behind them are just noise, and building them would have taken days the main idea needed. This choice is written down in the product notes, not hidden.',
         },
         {
-          option: 'A better organiser: folders, tags, search-first',
-          why: 'Organising is the work users already refuse to do. Every hour spent on taxonomy would have rebuilt the problem we were solving, in nicer colours.',
+          option: 'A better way to sort: folders, tags, search first',
+          why: 'Sorting is the work users already refuse to do. Every hour spent on ways of sorting would have rebuilt the problem we were trying to fix, just in nicer colours.',
         },
       ],
     },
@@ -169,13 +169,13 @@ export const layrrrd: CaseStudy = {
       kind: 'outcomes',
       id: 'outcomes',
       label: 'Outcomes',
-      heading: 'Validated with paying customers in nine days, and still shipping',
+      heading: 'Proven with paying customers in nine days, and still growing',
       blocks: [
         {
           kind: 'prose',
           body: [
-            'PostHog ran from day one, so the numbers are not reconstructed: 15 paying customers and 126 freemium signups by day nine. Since then the same team has shipped the published Chrome extension, referral loops, both chat channels, and a steady stream of trust and privacy work, including full account deletion that actually cascades.',
-            'The nine days also left debts, and they are named rather than hidden: no automated test suite yet, and a digest job whose current design is the first known scaling ceiling. Writing the ceilings down before hitting them is what makes them engineering backlog instead of surprises.',
+            'PostHog ran from day one, so the numbers are real, not guessed afterwards: 15 paying customers and 126 free sign-ups by day nine. Since then the same team has launched the Chrome add-on, ways to invite friends, both chat channels, and a steady flow of trust and privacy work, including deleting your account so that everything really goes with it.',
+            'The nine days also left some problems, and they are written down, not hidden: there are no automatic tests yet, and the way the digest is built will be the first thing to struggle as the app grows. Writing down the limits before you hit them turns them into a to-do list, not a surprise.',
           ],
         },
         {
@@ -187,17 +187,17 @@ export const layrrrd: CaseStudy = {
         {
           title: 'Paying customers',
           emphasis: 'by day nine',
-          body: '15 people paid for a product that was nine days old, through payments that went live inside the validation window.',
+          body: '15 people paid for an app that was nine days old, through payments that went live during the nine days.',
         },
         {
-          title: '126 signups',
-          emphasis: 'freemium',
-          body: 'The free tier is deliberately generous. Unlimited saves and digests keep the funnel open while chat time stays metered.',
+          title: '126 sign-ups',
+          emphasis: 'free plan',
+          body: 'The free plan is generous on purpose. Unlimited saving and digests keep the door open, while chat time is paid for as you use it.',
         },
         {
           title: 'Instrumented',
           emphasis: 'from day one',
-          body: 'PostHog ran from launch, so every claim here is a dashboard, not a memory.',
+          body: 'PostHog ran from launch, so every claim here comes from a dashboard, not from memory.',
         },
       ],
     },
@@ -210,8 +210,8 @@ export const layrrrd: CaseStudy = {
         {
           kind: 'prose',
           body: [
-            'Validating in nine days compressed a full product arc, positioning, system, brand, pricing, evidence, and the compression made the priorities legible. Writing the design system down before generating interfaces mattered more than any single screen. Reacting to user testing mid-sprint mattered more than the original plan. And instrumenting from day one, a lesson I carried from earlier work, is why the results section of this case study contains numbers instead of adjectives.',
-            'The product is not finished and does not claim to be. The recommendation layer is still scoped out, the test suite is still owed, and the digest job will need rework before the user base outgrows it. Continuing to ship against a named debt list is the ongoing part of the work, and it is the part I enjoy most.',
+            'Proving an idea in nine days squeezed a whole product into a short time: what it is, the design rules, the brand, the prices and the proof. Squeezing it made it clear what really mattered. Writing the design rules down before making screens mattered more than any single screen. Acting on user tests halfway through mattered more than the first plan. And measuring from day one, a lesson I brought from earlier work, is why the results part of this study has numbers instead of just nice words.',
+            'The app is not finished and does not pretend to be. The tips feature is still on hold, the tests still need writing, and the digest will need rebuilding before there are too many users for it. Continuing to build against a list of known problems is the ongoing part of the work, and it is the part I enjoy most.',
           ],
         },
       ],

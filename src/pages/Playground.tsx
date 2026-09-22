@@ -18,7 +18,7 @@ const Playground = () => {
     <>
       <Navigation />
       <main id="main" className="shell min-h-screen bg-background">
-        <section className="px-5 md:px-8 lg:px-12 pt-32 md:pt-44 pb-12">
+        <section className="px-gutter pt-masthead pb-12">
           <div className="mx-auto max-w-3xl">
             <p className="label text-ink-500 mb-8">Off-screen practice</p>
             <h1 className="text-[2.5rem] leading-[1.05] md:text-[3.5rem] max-w-[18ch]">

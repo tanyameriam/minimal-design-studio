@@ -75,7 +75,7 @@ const BlockRenderer = ({
                   <dd className="text-base leading-relaxed text-ink-600">{t.cost}</dd>
                 </div>
                 <div>
-                  <dt className="label text-ink-500 mb-2">What it bought</dt>
+                  <dt className="label text-ink-500 mb-2">What we got for it</dt>
                   <dd className="text-base leading-relaxed text-ink-600">{t.gain}</dd>
                 </div>
               </dl>
@@ -103,7 +103,7 @@ const BlockRenderer = ({
       return (
         <div className="max-w-2xl border-t border-border">
           <div className="hidden gap-8 border-b border-border pb-3 sm:grid sm:grid-cols-2">
-            <p className="label text-ink-500">Intended outcome</p>
+            <p className="label text-ink-500">What we hoped would happen</p>
             <p className="label text-ink-500">Metric I would instrument</p>
           </div>
           {block.items.map((row) => (

@@ -228,7 +228,7 @@ const SectionRenderer = ({
  * appear, and in what order, lives in the data, not here.
  */
 const CaseStudyBody = ({ study, onOpenFigure }: CaseStudyBodyProps) => (
-  <div className="mt-16 space-y-14 md:mt-20 md:space-y-20">
+  <div className="mt-stage space-y-14 md:space-y-20">
     {study.sections.map((section) => (
       <SectionRenderer key={section.id} section={section} onOpenFigure={onOpenFigure} />
     ))}

@@ -14,43 +14,43 @@ import type { Discipline, EvidenceStatus } from '@/data/projects';
  */
 const copy: Record<EvidenceStatus, { short: string; long: string; firm: boolean }> = {
   observed: {
-    short: 'Observed',
-    long: 'Measured directly',
+    short: 'Measured',
+    long: 'We measured this ourselves',
     firm: true,
   },
   'stakeholder-reported': {
-    short: 'Stakeholder reported',
-    long: 'Reported by someone on the project, not instrumented',
+    short: 'Told to us by the team',
+    long: 'Someone on the project told us this. We did not measure it',
     firm: true,
   },
   validated: {
-    short: 'Validated',
-    long: 'Confirmed by real customer behaviour',
+    short: 'Proven by customers',
+    long: 'Real customers proved it by what they did',
     firm: true,
   },
   deployed: {
-    short: 'Deployed',
-    long: 'Live in production',
+    short: 'Live',
+    long: 'Real people use it today',
     firm: true,
   },
   estimated: {
-    short: 'Estimated from the delivery model',
-    long: 'Arithmetic on an operating model, not a production result',
+    short: 'Our estimate',
+    long: 'Worked out on paper, not measured with real customers',
     firm: false,
   },
   proposed: {
-    short: 'Proposed system',
-    long: 'Designed and specified, never rolled out',
+    short: 'A proposal',
+    long: 'Fully designed, but never launched',
     firm: false,
   },
   target: {
-    short: 'Target',
-    long: 'What the design was aiming at',
+    short: 'Goal',
+    long: 'The goal the design was aiming for',
     firm: false,
   },
   'not-deployed': {
-    short: 'Development-ready, not deployed',
-    long: 'Built to a handover standard, never piloted',
+    short: 'Ready to build, never launched',
+    long: 'Ready to hand to developers, but never tried for real',
     firm: false,
   },
 };

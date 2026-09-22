@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { projects } from '@/data/projects';
+import { Takeaways } from '@/design/reading';
 
 /**
  * The masthead every case study opens on.
@@ -33,12 +34,21 @@ export const ContributionPills = ({
 }) => {
   if (!items.length) return null;
 
+  /*
+   * Outlined, not raised.
+   *
+   * These were panels: up to seven lifted surfaces with shadows, stacked
+   * directly under the headline, all of them at the same weight as the
+   * numbers and the intro further down. A list of disciplines is metadata.
+   * It should be findable and it should not be the second thing on the page
+   * a reader's eye lands on, which a row of floating cards guarantees.
+   */
   return (
-    <ul className={`flex flex-wrap gap-2.5 ${className}`} aria-label="What I did on this project">
+    <ul className={`flex flex-wrap gap-2 ${className}`} aria-label="What I did on this project">
       {items.map((item) => (
         <li
           key={item}
-          className="panel px-4 py-2.5 text-sm leading-none text-ink-800 md:text-base"
+          className="rounded-full border border-border px-3.5 py-2 text-sm leading-none text-ink-600"
         >
           {item}
         </li>
@@ -46,6 +56,22 @@ export const ContributionPills = ({
     </ul>
   );
 };
+
+/**
+ * The three questions someone hiring actually asks, in order.
+ *
+ * Fixed labels rather than free text, because the value of this block is
+ * that it is identical on every case study: a reader who has learned to
+ * find it on one page finds it on all five without looking.
+ */
+export interface StudyTakeaways {
+  /** What was wrong. One line, no preamble. */
+  problem: string;
+  /** What I did about it. One line, and the verb is mine. */
+  did: string;
+  /** What changed. A number where there is one, honestly labelled. */
+  outcome: string;
+}
 
 interface StudyOpeningProps {
   /** Project slug, used to look the pills up. */
@@ -58,7 +84,35 @@ interface StudyOpeningProps {
   children?: ReactNode;
   /** Overrides the pills for a page with no project record. */
   contributions?: string[];
+  /**
+   * The thirty-second version, set directly under the headline.
+   *
+   * The feedback these pages kept getting was not that they were long. It
+   * was that a reader could not tell what to read, which is a different
+   * complaint with a different fix: a long page is fine once the reader
+   * knows what they will get from it and can leave at any point holding the
+   * argument. This is that guarantee, and it is what makes the eight minutes
+   * underneath it optional rather than a demand.
+   */
+  takeaways?: StudyTakeaways;
 }
+
+/**
+ * The scan layer, in the shared component, with this page's three fixed
+ * questions poured into it. The labels are fixed here rather than at each
+ * call site so that all five case studies ask the reader the same three
+ * things in the same order.
+ */
+const StudyTakeawayBlock = ({ items }: { items: StudyTakeaways }) => (
+  <Takeaways
+    title="In short"
+    items={[
+      { label: 'The problem', body: items.problem },
+      { label: 'What I did', body: items.did },
+      { label: 'What happened', body: items.outcome },
+    ]}
+  />
+);
 
 export const StudyOpening = ({
   slug,
@@ -66,6 +120,7 @@ export const StudyOpening = ({
   headline,
   children,
   contributions,
+  takeaways,
 }: StudyOpeningProps) => {
   const pills = contributions ?? contributionsFor(slug);
 
@@ -96,12 +151,18 @@ export const StudyOpening = ({
         {headline}
       </h1>
 
+      {takeaways && <StudyTakeawayBlock items={takeaways} />}
+
       {children}
 
+      {/* The pills drop below the intro and lose their heading. "How did I
+          help them" set at 20px was a question the pills underneath it
+          answer in two words each; the label says the same thing at the
+          weight metadata deserves. */}
       {pills.length > 0 && (
-        <div className="mt-12 md:mt-14">
-          <p className="text-lg text-ink-600 md:text-xl">How did I help them</p>
-          <ContributionPills items={pills} className="mt-5" />
+        <div className="mt-10 md:mt-12">
+          <p className="label text-ink-500">What I did</p>
+          <ContributionPills items={pills} className="mt-4" />
         </div>
       )}
     </div>

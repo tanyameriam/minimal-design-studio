@@ -3,52 +3,39 @@ import { useReveal } from '@/hooks/use-reveal';
 /**
  * The thirty-second answer, directly under the masthead.
  *
- * Two rows. The first answers what someone hiring asks first: has she worked
- * in my sector, has she handled products as tangled as mine, and what is she
- * going to want to spend her time on. The second names the four practices, in
- * one line each, and used to be a third column in the hero itself; it reads
- * better as the second half of this block than as a competing list one screen
- * higher.
+ * This used to be seven panels: three long sentences about sectors and
+ * complexity, then four more cards naming the practices. Seven surfaces and
+ * about sixty words, all of it between the headline and the first piece of
+ * actual evidence, which is exactly the stretch of page a recruiter is
+ * least patient with. It was also breaking the rule the rest of the site now
+ * runs on - body text does not go in a panel - four times over.
  *
- * This replaced a rail of four outcome claims, which read as a highlights
- * reel and repeated numbers the project rows below already carry with their
- * provenance attached. Nothing here is a number, so nothing here needs an
- * evidence label.
+ * What is left is a strip: two lines of fact, ruled rather than boxed, and
+ * the practices named once on a single line. Same information, a third of
+ * the words, no surfaces, and the top of the first project moves up a screen.
  *
- * The sectors are the real ones, drawn from the projects in src/data: HR and
- * payroll (BrynQ), healthcare (Merry Health), education (EducAItors),
- * consumer content (Layrrrd, Curateus).
- *
- * Static on purpose. It reveals once on entry and then never moves again.
+ * Nothing here is a number, so nothing here needs an evidence label. The
+ * numbers, with their provenance, are in the projects below.
  */
 
-/** Row one: the ground the work has covered. Set at statement size. */
-const ground = [
-  {
-    label: 'Industries',
-    body: 'HR and payroll, healthcare, education, and consumer products.',
-  },
-  {
-    label: 'Product complexity',
-    body: 'B2B platforms, multi-stakeholder services, and zero to one.',
-  },
-  {
-    label: 'The part I like',
-    body: 'Turning work that lives in calls and spreadsheets into something the product carries.',
-  },
+/** The ground the work has covered. Read as one line each, not as claims. */
+const facts = [
+  { label: 'Where I have worked', body: 'HR and payroll, healthcare, schools, and everyday apps' },
+  { label: 'What I build', body: 'Software for businesses, services with many people involved, and brand-new products' },
+  { label: 'What I am good at', body: 'Taking work people do over calls and spreadsheets, and building it into the product' },
 ];
 
 /**
- * Row two: the four things I actually do, named and left at that. The names
- * carry it on their own, so no gloss underneath. AI system design sits here on
- * the strength of EducAItors, where the work was deciding what the model rules
+ * The four things I do. Named and left at that: the names carry it, and the
+ * projects underneath are the gloss. AI system design sits here on the
+ * strength of EducAItors, where the work was deciding what the model rules
  * on and where a person still has to.
  */
 const practice = [
-  'Workflow design',
-  'Systems design',
-  'AI system design',
-  'Interaction design',
+  'Planning how work flows',
+  'Fitting the pieces together',
+  'Designing AI tools',
+  'Designing screens and clicks',
 ];
 
 const ProofRail = () => {
@@ -58,38 +45,37 @@ const ProofRail = () => {
     <section
       ref={ref}
       aria-label="Where I work, and what I do"
-      className="reveal px-5 pb-20 md:px-8 md:pb-24 lg:px-12"
+      className="reveal px-gutter pb-stage"
     >
       {/*
-        Panels in a gapped grid rather than cells divided by hairlines.
-        Rounded surfaces need no rules between them: the gap does the work the
-        border used to.
+        Hairlines, not panels. Three facts of a few words each do not need a
+        raised surface to be grouped; a rule above them and a gap between
+        them is the whole grouping.
       */}
-      <ul className="grid grid-cols-1 gap-4 md:grid-cols-3">
-        {ground.map(({ label, body }) => (
-          <li key={label} className="panel p-6 md:p-7">
-            <p className="label text-ink-500">{label}</p>
-            <p className="mt-3 max-w-[30ch] text-xl leading-snug tracking-tight text-ink-800">
-              {body}
-            </p>
-          </li>
+      <dl className="grid gap-x-10 gap-y-6 border-t border-border pt-6 sm:grid-cols-3">
+        {facts.map(({ label, body }) => (
+          <div key={label}>
+            <dt className="label text-ink-500">{label}</dt>
+            <dd className="mt-2.5 max-w-[26ch] text-base leading-[1.45] text-ink-800">{body}</dd>
+          </div>
         ))}
-      </ul>
+      </dl>
 
-      {/*
-        Row two is its own grid: four items do not sit on three columns. It
-        keeps the same panel language a step down in size, with a plain
-        eyebrow so the row reads as a list of practices and not a second set
-        of claims. No chips here, since four narrower cards need the width.
-      */}
-      <p className="label mt-4 text-ink-500">What I do</p>
-      <ul className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {practice.map((label) => (
-          <li key={label} className="panel p-6 md:p-7">
-            <p className="text-lg leading-tight text-ink-800">{label}</p>
-          </li>
+      {/* One line. Four cards for four two-word phrases was four times the
+          furniture the content asked for. */}
+      <p className="mt-8 flex flex-wrap items-baseline gap-x-2.5 gap-y-2 border-t border-border pt-6">
+        <span className="label mr-2 text-ink-500">What I do</span>
+        {practice.map((label, i) => (
+          <span key={label} className="text-base leading-snug text-ink-800">
+            {label}
+            {i < practice.length - 1 && (
+              <span aria-hidden="true" className="ml-2.5 text-ink-400">
+                /
+              </span>
+            )}
+          </span>
         ))}
-      </ul>
+      </p>
     </section>
   );
 };

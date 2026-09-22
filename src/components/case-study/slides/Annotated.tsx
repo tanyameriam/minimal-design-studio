@@ -122,7 +122,7 @@ export const InsightSolution = ({
   insight: ReactNode;
   solution: ReactNode;
 }) => (
-  <div className="mt-10 grid gap-3 md:mt-14 md:grid-cols-2">
+  <div className="mt-break grid gap-3 md:grid-cols-2">
     <div className="panel p-6 md:p-7">
       <p className="label text-ink-500">What we found</p>
       <p className="mt-4 text-lg leading-snug text-ink-800 md:text-xl">{insight}</p>

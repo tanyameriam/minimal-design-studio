@@ -28,21 +28,20 @@ const Writing = () => {
       <Navigation />
 
       <div className="page-ground">
-        <main id="main" className="shell min-h-screen px-5 pb-24 pt-32 md:px-8 md:pb-32 md:pt-40 lg:px-12">
+        <main id="main" className="shell min-h-screen px-gutter pb-section pt-masthead">
           <div ref={introRef} className="reveal">
             <p className="label-strong">Writing</p>
             <h1 className="mt-6 max-w-[16ch] text-5xl leading-[1.05] md:text-6xl">
-              Articles on designing systems people can <span className="em">trust</span>.
+              Articles on designing things people can <span className="em">trust</span>.
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-[1.6] text-ink-600 md:text-xl">
-              These essays grew out of things I built, tested, reconsidered, and occasionally
-              broke during my master’s. They are not universal rules. They are working principles
-              on AI, interaction, and visual design, grounded in the projects that helped me form
-              them.
+              I wrote these while studying for my master’s, about things I built, tested, rethought,
+              and sometimes broke. They are not rules for everyone. They are what I learned about
+              AI, interaction and visual design from my own projects.
             </p>
           </div>
 
-          <div className="mt-16 grid items-stretch gap-6 md:mt-20 md:grid-cols-2 md:gap-7">
+          <div className="mt-stage grid items-stretch gap-6 md:grid-cols-2 md:gap-7">
             <ArticleCard article={featured} index={0} featured />
             {rest.map((article, i) => (
               <ArticleCard key={article.slug} article={article} index={i + 1} />
@@ -50,7 +49,7 @@ const Writing = () => {
           </div>
 
           <p ref={noteRef} className="reveal mt-16 max-w-xl text-base leading-relaxed text-ink-500">
-            More writing from current practice will be added over time.
+            I will add more articles over time.
           </p>
         </main>
 

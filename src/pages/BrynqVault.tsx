@@ -24,96 +24,97 @@ interface VaultProject {
 const projects: VaultProject[] = [
   {
     tab: '01 Redesign',
-    title: 'Platform redesign, from Salure Connect to BrynQ',
+    title: 'Redesigning the product, from Salure Connect to BrynQ',
     summary:
-      'The founding project: understanding why a platform with paying customers had no users, mapping and regrouping the whole product against interview expectations, and rebuilding the structure under the new BrynQ brand.',
+      'The first project: finding out why a product with paying customers had no users, mapping the whole product and regrouping it around what interviews said people expected, and rebuilding the structure under the new BrynQ name.',
     facts: [
       {
         label: 'The starting point',
-        body: 'Admins used it internally; customers had accounts and never opened them. Everything was done for them by developers.',
+        body: 'Admins used it inside the company; customers had accounts and never opened them. Developers did everything for them.',
       },
       {
         label: 'The work',
-        body: 'User interviews, stakeholder interviews, full platform mapping, regrouping by expectation rather than org structure, new information architecture under the rebrand.',
+        body: 'Interviews with users and with the team, mapping the whole product, grouping things the way people expected instead of the way the company was organised, and a new structure under the new name.',
       },
     ],
   },
   {
     tab: '02 Templates',
-    title: 'Interface creation, templatised',
+    title: 'Setting up connections, with templates',
     summary:
       'The six-months-to-two-weeks project. The interface team already had an encyclopedia of well-documented, repetitive connection steps; templates turned that knowledge into pre-built interfaces customers finish by filling in what only they know.',
     facts: [
       {
         label: 'The insight',
-        body: 'Repetitive steps were already well defined and documented. What was missing was the product form for them.',
+        body: 'The repeated steps were already clear and written down. What was missing was a way to use them inside the product.',
       },
       {
         label: 'The outcome',
-        body: 'Interfaces that took around six months, half of it back and forth before code, are estimated at about two weeks from a template. The figure comes from the delivery model, not from a production measurement.',
+        body: 'Connections that took about six months, half of it back and forth before any code, are estimated at about two weeks from a template. The number comes from our planning model, not from measuring real customers.',
       },
     ],
   },
   {
     tab: '03 AI chat',
-    title: 'The conversational builder, and what it settled',
+    title: 'The chat builder, and what it taught us',
     summary:
-      'A chat flow that visualised fields and mappings so any user could connect two systems by conversation. It shipped ahead of templates and was tested with customers; the follow-up research showed they wanted a human within reach rather than full self-service, which is what set the level the product went on to build.',
+      'A chat that showed the fields and how they match, so anyone could connect two systems just by chatting. It launched before templates and was tested with customers. The research that followed showed they wanted a real person close by, instead of doing it all alone, and that set how far the product went.',
     facts: [
       {
-        label: 'What it settled',
-        body: 'Capability was never the barrier. Customers did not want to be alone with their payroll data, however good the guidance, so the right model was assisted self-service rather than autonomy.',
+        label: 'What it taught us',
+        body: 'Skill was never the problem. Customers did not want to be alone with their payroll data, however good the help was, so the right answer was doing it yourself with help, not doing it all alone.',
       },
       {
         label: 'What it changed',
-        body: 'Templates rolled out with an assigned human point of contact, and the AI was recalled from the customer surface.',
+        body: 'Templates came out with a named person to contact, and the AI was taken away from what customers see.',
       },
     ],
   },
   {
     tab: '04 AI backstage',
-    title: 'AI where it earns its keep',
+    title: 'AI where it is actually useful',
     summary:
-      'The correction after the chat: AI now assists developers in building template code faster, growing the template library so every next customer starts further ahead.',
+      'The fix after the chat: AI now helps developers write templates faster, growing the library so every new customer starts further ahead.',
     facts: [
       {
         label: 'The shift',
-        body: 'From AI in front of customers to AI behind the developers. Same technology, opposite side of the counter.',
+        body: 'From AI in front of customers to AI helping the developers. The same technology, on the other side of the counter.',
       },
       {
-        label: 'The compounding effect',
-        body: 'Faster template creation means broader coverage of HRM and payroll pairings, which shortens the path for every customer after.',
+        label: 'How it adds up',
+        body: 'Making templates faster means more pairs of HR and payroll systems are covered, which makes things quicker for every customer after.',
       },
     ],
   },
 ];
 
 const BrynqVault = () => {
-  usePageMeta('BrynQ · Detailed case studies', 'The NDA side of the BrynQ work, per project.');
+  usePageMeta('BrynQ · Detailed studies', 'The private side of the BrynQ work, project by project.');
   const [active, setActive] = useState(0);
   const project = projects[active];
 
   return (
     <>
       <Navigation />
-      <main id="main" className="shell min-h-screen bg-background px-5 pt-32 md:px-8 md:pt-40 lg:px-12">
+      <main id="main" className="shell min-h-screen bg-background px-gutter pt-masthead">
         <div className="mx-auto max-w-6xl pb-24">
           <NdaGate
             storageKey="nda-brynq"
             hash={NDA_HASH}
-            label="BrynQ · Detailed case studies"
+            label="BrynQ · Detailed studies"
           >
             <div className="flex flex-wrap items-baseline justify-between gap-4">
               <h1 className="text-3xl md:text-4xl">
                 BrynQ, <span className="em">project by project.</span>
               </h1>
               <Link to="/case-study/brynq/story" className="rule-link label text-ink-500">
-                Back to the public deck
+                Back to the public slides
               </Link>
             </div>
             <p className="mt-4 max-w-2xl text-base leading-[1.55] text-ink-600 md:text-lg">
-              The public deck tells the transition; these tabs hold each project on its own.
-              Detailed walkthroughs with screens land here as they clear NDA review.
+              The public slides tell the story of the big change; these tabs hold each project on
+              its own. Detailed walkthroughs with screens will appear here once they are cleared
+              to share.
             </p>
 
             {/* File tabs. The active tab fuses with its panel below. */}
@@ -164,7 +165,7 @@ const BrynqVault = () => {
                 <p className="label text-ink-500">Status</p>
                 <p className="mt-3 text-sm leading-relaxed text-ink-600 md:text-base">
                   The detailed walkthrough for this project, with screens and flows, is being
-                  prepared. This tab is its home once it clears NDA review.
+                  prepared. It will live in this tab once it is cleared to share.
                 </p>
               </div>
             </div>

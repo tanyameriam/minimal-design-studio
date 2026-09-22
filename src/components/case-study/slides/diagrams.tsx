@@ -114,7 +114,7 @@ export const Rail = ({
   steps: string[];
   terminal?: { label: string; note?: string };
 }) => (
-  <div className="-mx-5 overflow-x-auto px-5 pb-6 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12">
+  <div className="-mx-gutter overflow-x-auto px-gutter pb-6">
     <ol className="flex min-w-max items-stretch">
       {steps.map((step, i) => (
         <li key={step} className="w-[9.5rem] shrink-0 pr-5 md:w-[11rem] md:pr-6">
@@ -247,7 +247,7 @@ export const Split = ({
 
     {/* The reconciliation sits under both, because it belongs to neither. */}
     {centre && (
-      <div className="mt-14 border-t border-border pt-10 md:mt-20">
+      <div className="mt-stage border-t border-border pt-10">
         <p className="max-w-[30ch] text-[1.75rem] leading-[1.1] md:text-[2.75rem]">{centre}</p>
       </div>
     )}
@@ -475,7 +475,7 @@ export const Continuum = ({
   gains?: { Icon: DiagramIcon; text: string }[];
 }) => (
   <div>
-    <div className="relative pt-16 md:pt-20">
+    <div className="relative pt-stage">
       {/* The marked position sits above the axis, centred on it. */}
       <div className="absolute inset-x-0 top-0 flex justify-center">
         <div className="rounded-full border border-accent px-5 py-2.5 text-center md:px-7">

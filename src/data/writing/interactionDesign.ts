@@ -13,95 +13,95 @@ export const interactionDesign: Article = {
   ...summaries['interaction-design-before-the-screen'],
   lead: {
     asset: 'ixd-final-prototype',
-    alt: 'A resource-planning screen from the prototype, showing a project’s required skills alongside candidate people, their capacity, and flagged conflicts.',
+    alt: 'A planning screen from the mock-up, showing the skills a project needs next to people who could do it, how much time they have, and warnings about clashes.',
     caption:
-      'The end of the chain: a planning screen where capacity and conflict sit next to the staffing decision instead of arriving after it.',
+      'The end of the chain: a planning screen where how busy people are, and any clashes, sit right next to the choice of who to put on the project, instead of showing up after it.',
     ratio: '16 / 9',
   },
   intro: [
-    'I used to think interaction design began when a workflow became a set of screens.',
-    'During my master’s, I was asked to do the opposite: define an end-to-end experience without using interface language. No buttons, dropdowns, sidebars, or layouts. Only user goals, system behaviour, decisions, alternative paths, and what should happen when something goes wrong.',
-    'The constraint initially felt artificial. It became one of the most useful ways I learned to separate solving the problem from drawing the solution.',
-    'The project focused on a resource-planning platform. A project manager had to turn roadmap demand into a defined project, find people with the right skills, understand capacity, resolve conflicts, and commit to a feasible plan. The work eventually became wireframes and an interactive prototype, but the most consequential design decisions happened before a screen existed.',
+    'I used to think interaction design started when you turned a set of steps into screens.',
+    'During my master’s, I was asked to do the opposite: design a whole experience from start to end without using any screen words. No buttons, drop-down menus, sidebars or layouts. Only what the user wants, what the system does, the choices, the other paths, and what should happen when something goes wrong.',
+    'At first the rule felt fake. It became one of the most useful ways I learned to keep solving the problem separate from drawing the answer.',
+    'The project was about a tool for planning who works on what. A project manager had to turn a request from the company plan into a real project, find people with the right skills, see how busy they were, sort out clashes, and commit to a plan that could actually work. The work ended up as sketches and a clickable mock-up, but the most important design choices were made before any screen existed.',
   ],
   sections: [
     {
       id: 'brief',
-      heading: 'A design brief is a boundary for decision-making',
+      heading: 'A design plan sets the edges for making decisions',
       nav: 'The brief',
       blocks: [
         {
           kind: 'p',
-          text: 'Before mapping a workflow, I wrote a design brief using the BGPOSSTAL framework: Background, Goals, Problems, Outcomes, Scope, Stakeholders, Timelines, Artifacts, and Learnings.',
+          text: 'Before mapping any steps, I wrote a design plan using a method called BGPOSSTAL: Background, Goals, Problems, Outcomes, Scope, Stakeholders, Timelines, Artifacts, and Learnings.',
         },
         {
           kind: 'p',
-          text: 'The framework initially looked like a documentation checklist. In practice, it forced different kinds of ambiguity to become explicit.',
+          text: 'At first the method looked like a checklist for paperwork. In practice, it made different kinds of unclear things become clear.',
         },
         {
           kind: 'p',
-          text: 'The background located the problem inside a matrix organisation where people worked across platform and client teams. The problems connected pain points to root causes and affected activities. The outcomes separated what should improve for users from what should improve for the business. The scope defined which parts of resource planning the project would address and which parts it would leave alone.',
+          text: 'The background placed the problem in a company where people worked across several teams at once. The problems part linked what hurt to the reasons behind it and the tasks it affected. The outcomes part kept apart what should get better for users and what should get better for the business. The scope said which parts of planning the project would deal with, and which it would leave alone.',
         },
         {
           kind: 'p',
-          text: 'For example, “resource visibility” was too broad to guide design. The brief broke it into more useful problems:',
+          text: 'For example, “seeing who is free” was too broad to guide the design. The plan broke it into more useful problems:',
         },
         {
           kind: 'list',
           items: [
-            { text: 'project managers could not see availability outside their immediate teams;' },
-            { text: 'effort terms such as “50% available” were interpreted differently;' },
-            { text: 'skill discovery depended on memory and personal relationships;' },
-            { text: 'conflicts were often found only after work had begun;' },
-            { text: 'multiple spreadsheets created inconsistent planning data.' },
+            { text: 'project managers could not see who was free outside their own teams;' },
+            { text: 'phrases like “50% available” meant different things to different people;' },
+            { text: 'finding people with the right skills depended on memory and who you knew;' },
+            { text: 'clashes were often found only after the work had started;' },
+            { text: 'lots of different spreadsheets gave different planning numbers.' },
           ],
         },
         {
           kind: 'p',
-          text: 'Those user problems connected directly to business consequences: delivery delays, inefficient use of capacity, burnout among repeatedly selected employees, inconsistent planning quality, and a process that would not scale with the organisation.',
+          text: 'Those user problems led straight to business problems: projects running late, people’s time being wasted, burnout for the people who kept getting picked, planning that was good one time and bad the next, and a process that could not grow with the company.',
         },
         {
           kind: 'p',
-          text: 'This prevented the solution from becoming a generic people directory or scheduling tool. The brief established that the product had to improve visibility, standardise effort, move conflict detection earlier, support fairer staffing, and reduce coordination overhead.',
+          text: 'This stopped the answer from turning into just a list of people or a calendar tool. The plan made it clear the product had to help people see more, describe effort in the same way, spot clashes earlier, share work more fairly, and cut down the back and forth.',
         },
         {
           kind: 'p',
-          text: 'It also made ownership explicit. Naming a driver, approver, informed stakeholders, planned artifacts, and timeline turned the work from an open design exercise into a bounded decision process.',
+          text: 'It also made it clear who was in charge. Naming who leads, who approves, who needs to be told, what we would make and when, turned the work from an open design exercise into a clear way of making decisions.',
         },
       ],
     },
     {
       id: 'scenarios',
-      heading: 'Scenario mapping protects the product from tunnel vision',
+      heading: 'Mapping many situations stops you seeing only one path',
       nav: 'Scenario coverage',
       blocks: [
         {
           kind: 'p',
-          text: 'The next step was not drawing the ideal journey. I mapped the major experiences for project and engineering managers, then developed main, atypical, special, error, and externally influenced scenarios across them.',
+          text: 'The next step was not drawing the perfect journey. I mapped the main experiences for project managers and engineering managers, and then the normal, unusual, special, error and outside-influenced situations across them.',
         },
         {
           kind: 'p',
-          text: 'Using CRUD, meaning Create, Read, Update, and Delete, as a coverage prompt helped reveal interactions that are easy to ignore when a designer thinks only about the main task. Creating an allocation is one scenario. Reading existing commitments, updating effort, removing an assignment, handling stale data, and responding to a conflict are different design obligations.',
+          text: 'Using CRUD, which stands for Create, Read, Update and Delete, as a reminder helped me find actions that are easy to forget when you only think about the main task. Creating a booking is one situation. Looking at existing bookings, changing effort, removing someone, handling old data and dealing with a clash are all different design jobs.',
         },
         {
           kind: 'p',
-          text: 'The value of the scenario map was breadth. The value of prioritisation was restraint.',
+          text: 'The value of the map was that it was wide. The value of picking what mattered most was holding back.',
         },
         {
           kind: 'p',
-          text: 'Not every scenario belonged in the first workflow. I combined the most consequential ones into a consolidated narrative: a project manager turns roadmap demand into a scoped project, identifies the skills required, evaluates people using real capacity, sees conflicts before assignment, and confirms a plan that is feasible for both delivery and team health.',
+          text: 'Not every situation belonged in the first version. I combined the most important ones into one story: a project manager turns a request from the company plan into a clear project, works out the skills it needs, looks at people based on how busy they really are, sees clashes before putting anyone on it, and confirms a plan that works for both the project and the team’s wellbeing.',
         },
         {
           kind: 'p',
-          text: 'That consolidated scenario became the bridge between the broad problem space and workflow ideation. It was detailed enough to include risk and emotion, but still open enough to allow several different system behaviours.',
+          text: 'That one story became the bridge between the big problem and ideas for the steps. It had enough detail to include risk and feelings, but was still open enough to allow several different ways for the system to work.',
         },
         {
           kind: 'figure',
           figure: {
             asset: 'ixd-brief-to-scenario',
-            alt: 'A three-step progression: the BGPOSSTAL design brief, then the experience and scenario map, then the prioritised consolidated scenario.',
+            alt: 'Three steps in a row: the BGPOSSTAL design plan, then the map of experiences and situations, then the one combined story we chose.',
             caption:
-              'Brief to scenario map to one consolidated scenario. Redrawn for reading; the source spreadsheet is unreadable at page scale and says less anyway.',
+              'From the plan, to the map of situations, to one combined story. Redrawn so you can read it; the original spreadsheet is too small to read on a page and says less anyway.',
             ratio: '16 / 7',
           },
         },
@@ -109,71 +109,71 @@ export const interactionDesign: Article = {
     },
     {
       id: 'commitment',
-      heading: 'Begin with the commitment, not the feature',
+      heading: 'Start with the promise, not the feature',
       nav: 'The commitment',
       blocks: [
         {
           kind: 'p',
-          text: 'The obvious interpretation of the project was “design a staffing workflow.” That describes the activity, but not the responsibility.',
+          text: 'The obvious way to read the project was “design the steps for putting people on projects.” That describes the task, but not the responsibility.',
         },
         {
           kind: 'p',
-          text: 'The project manager was making a commitment on behalf of a team. A weak decision could create over-allocation, delivery risk, and burnout across several projects. The user goal was therefore not simply to assign people. It was:',
+          text: 'The project manager was making a promise for a whole team. A bad choice could give people too much work, put the project at risk, and cause burnout across several projects. So the user’s goal was not just to assign people. It was:',
         },
         {
           kind: 'quote',
-          text: 'Create and staff a project from the roadmap in a way that is feasible, conflict-aware, and aligned with real team capacity.',
+          text: 'Create a project from the company plan and put the right people on it, in a way that can really work, spots clashes, and matches how busy the team actually is.',
         },
         {
           kind: 'p',
-          text: 'My designer goal was to structure the journey so risks appeared before the commitment became expensive to reverse.',
+          text: 'My goal as a designer was to plan the journey so that risks showed up before the promise became expensive to undo.',
         },
         {
           kind: 'p',
-          text: 'That goal became an anchor for every workflow decision. Whenever two options seemed equally usable, I asked which one helped the project manager understand feasibility earlier and act with more confidence.',
+          text: 'That goal guided every choice about the steps. Whenever two options seemed just as easy to use, I asked which one helped the project manager see earlier whether the plan could work, and act with more confidence.',
         },
         {
           kind: 'p',
-          text: 'This changed the unit of design. I was not arranging features. I was sequencing decisions.',
+          text: 'This changed what I was designing. I was not arranging features. I was putting decisions in order.',
         },
       ],
     },
     {
       id: 'alternatives',
-      heading: 'Workflow alternatives reveal the real trade-offs',
+      heading: 'Trying different sets of steps shows the real trade-offs',
       nav: 'Three workflows',
       blocks: [
-        { kind: 'p', text: 'I explored three different ways the system could behave.' },
-        { kind: 'h3', text: 'Variation 1: manual discovery, reactive conflict resolution' },
+        { kind: 'p', text: 'I tried three different ways the system could work.' },
+        { kind: 'h3', text: 'Version 1: search by hand, fix clashes afterwards' },
         {
           kind: 'p',
-          text: 'The project manager manually searched for people, assigned them, and handled conflicts after they appeared.',
+          text: 'The project manager searched for people by hand, assigned them, and dealt with clashes after they appeared.',
         },
         {
           kind: 'p',
-          text: 'This preserved control and followed a familiar planning model. But it placed the cognitive burden on the user. Conflict detection happened late, so every problem created rework. The workflow worked in a simple environment but became risky as the number of projects and dependencies grew.',
+          text: 'This kept the project manager in control and followed a way of planning they knew. But it left all the thinking to the user. Clashes were found late, so every problem meant redoing work. It worked when things were simple, but became risky as the number of projects and connections grew.',
         },
-        { kind: 'h3', text: 'Variation 2: suggested resources, reactive conflict resolution' },
+        { kind: 'h3', text: 'Version 2: suggested people, fix clashes afterwards' },
         {
           kind: 'p',
-          text: 'The system recommended people based on skills and availability, making staffing faster. However, capacity conflicts were still surfaced after the assignment decision.',
-        },
-        {
-          kind: 'p',
-          text: 'This variation improved speed without improving confidence. It also introduced a new risk: the project manager might accept a recommendation without understanding why it was appropriate or what it would affect.',
-        },
-        { kind: 'h3', text: 'Variation 3: preventive, conflict-aware planning' },
-        {
-          kind: 'p',
-          text: 'The final variation separated planning, validation, and commitment. The project manager first clarified scope, priority, timeline, and skill needs. The system then surfaced suitable people and potential conflicts before assignment. The user could explore alternatives, adjust the plan, and confirm only when it was feasible.',
+          text: 'The system suggested people based on skills and who was free, which made choosing people faster. But clashes still only showed up after someone had been assigned.',
         },
         {
           kind: 'p',
-          text: 'This required slightly more work upfront and depended on good skills and capacity data. But it moved the most expensive risks earlier in the journey, reduced backtracking, and kept the human responsible for the final decision.',
+          text: 'This version was faster but did not make people more confident. It also added a new risk: the project manager might accept a suggestion without understanding why it was a good one or what it would affect.',
+        },
+        { kind: 'h3', text: 'Version 3: plan ahead and spot clashes first' },
+        {
+          kind: 'p',
+          text: 'The final version split planning, checking and committing. First the project manager made the scope, importance, timeline and skills clear. Then the system showed suitable people and possible clashes before anyone was assigned. The user could look at other options, change the plan, and confirm only when it could really work.',
         },
         {
           kind: 'p',
-          text: 'I chose Variation 3 because it did not merely make staffing faster. It helped the user make a better commitment.',
+          text: 'This took a little more work at the start and needed good information about skills and how busy people are. But it moved the most expensive risks earlier, cut down going back and forth, and kept a person responsible for the final choice.',
+        },
+        {
+          kind: 'p',
+          text: 'I chose version 3 because it did not just make choosing people faster. It helped the user make a better promise.',
         },
         {
           kind: 'figure',
@@ -182,9 +182,9 @@ export const interactionDesign: Article = {
             // Stacked, not side by side, and nothing is annotated: the
             // difference is structural. In the first two, Conflict alert
             // comes after Assign task. In the third it comes before.
-            alt: 'The three workflow variations stacked. Variations one and two run roadmap overview, find resource, assign task, conflict alert, resolve conflict, project overview, so conflicts surface after the assignment. Variation three, badged as the chosen flow, runs roadmap overview, project detail, view conflict possibilities, resource suggestion with AI, project overview, so conflicts surface before anyone is assigned.',
+            alt: 'The three sets of steps, one above the other. Versions one and two go: company plan overview, find a person, assign a task, clash warning, fix the clash, project overview, so clashes show up after someone is assigned. Version three, marked as the chosen one, goes: company plan overview, project details, see possible clashes, AI suggests people, project overview, so clashes show up before anyone is assigned.',
             caption:
-              'The same job, three times. What separates them is not speed but where the risk becomes visible.',
+              'The same job, three times. What makes them different is not speed, but when the risk becomes visible.',
             ratio: '3325 / 2065',
             src: threeVariations,
             width: 3325,
@@ -195,33 +195,33 @@ export const interactionDesign: Article = {
     },
     {
       id: 'sequence',
-      heading: 'Sequence is a design intervention',
+      heading: 'The order of steps is a design choice',
       nav: 'Sequence',
       blocks: [
-        { kind: 'p', text: 'The final journey followed a deliberate order:' },
+        { kind: 'p', text: 'The final journey followed a careful order:' },
         {
           kind: 'list',
           ordered: true,
           items: [
-            { text: 'Review roadmap demand and decide what should become a project.' },
-            { text: 'Define scope, priority, timeline, goals, and required skills.' },
-            { text: 'Explore suitable resources with capacity and skill context.' },
-            { text: 'Review possible conflicts before confirming assignments.' },
-            { text: 'Evaluate the complete project for feasibility.' },
-            { text: 'Resolve remaining issues or make the commitment.' },
+            { text: 'Look at the requests in the company plan and decide which should become a project.' },
+            { text: 'Set the scope, importance, timeline, goals and skills needed.' },
+            { text: 'Look at suitable people, with how busy they are and what they can do.' },
+            { text: 'Check possible clashes before confirming who is on the project.' },
+            { text: 'Look at the whole project to see if it can really work.' },
+            { text: 'Fix any problems left, or make the promise.' },
           ],
         },
         {
           kind: 'p',
-          text: 'None of those stages is unusual on its own. The design value came from their sequence.',
+          text: 'None of these steps is unusual on its own. The design value came from the order they are in.',
         },
         {
           kind: 'p',
-          text: 'Moving conflict awareness earlier changed the system from a detector into a decision aid. Separating recommendation from confirmation prevented the AI from becoming the authority. Keeping a final feasibility review created a clear moment of accountability.',
+          text: 'Moving clash warnings earlier turned the system from something that spots problems into something that helps you decide. Keeping suggestions separate from confirming stopped the AI from becoming the boss. And keeping a final check of the whole plan created a clear moment where someone takes responsibility.',
         },
         {
           kind: 'p',
-          text: 'Interaction design often works this way. A better experience does not always require another feature. Sometimes the intervention is moving information, feedback, or validation to the moment when it can still change the decision.',
+          text: 'Interaction design often works like this. A better experience does not always need another feature. Sometimes the fix is moving information, feedback or a check to the moment when it can still change the decision.',
         },
         {
           kind: 'figure',
@@ -229,9 +229,9 @@ export const interactionDesign: Article = {
             asset: 'ixd-detailed-workflow',
             // Order corrected against the board: conflict review comes
             // before resource suggestion, which is the point of the variant.
-            alt: 'The chosen workflow in full: roadmap overview, project detail, view conflict possibilities, resource suggestion with AI, and project overview, with ten numbered error states returning the user to the screen that can recover them, and a column under each screen naming its goal, its description and the questions it left open.',
+            alt: 'The chosen steps in full: company plan overview, project details, see possible clashes, AI suggests people, and project overview, with ten numbered error cases that send the user back to the screen where they can be fixed, and a column under each screen naming its goal, what it does, and the questions it left open.',
             caption:
-              'The chosen workflow in full. Validation sits between exploration and commitment, which is the whole argument of the project in one diagram.',
+              'The chosen steps in full. Checking sits between looking around and committing, which is the whole idea of the project in one diagram.',
             ratio: '6752 / 3344',
             src: detailedWorkflow,
             width: 6752,
@@ -242,77 +242,77 @@ export const interactionDesign: Article = {
     },
     {
       id: 'ai-role',
-      heading: 'AI should reduce search, not remove judgment',
-      nav: 'The AI’s role',
+      heading: 'AI should cut down searching, not replace judgment',
+      nav: 'What the AI does',
       blocks: [
         {
           kind: 'p',
-          text: 'The project included AI-supported resource suggestions and timeline guidance. The easiest version would have automatically selected a team. I intentionally kept the AI in a supporting role.',
+          text: 'The project included AI suggestions for people and help with timelines. The easiest version would have picked a whole team automatically. I kept the AI as a helper on purpose.',
         },
         { kind: 'p', text: 'The system could:' },
         {
           kind: 'list',
           items: [
-            { text: 'identify people whose skills matched the project;' },
-            { text: 'make capacity and availability visible;' },
-            { text: 'flag unrealistic timelines or overlapping commitments;' },
-            { text: 'suggest alternative staffing combinations;' },
-            { text: 'explain why a conflict might occur.' },
+            { text: 'find people whose skills matched the project;' },
+            { text: 'show how busy people are and when they are free;' },
+            { text: 'warn about timelines that are too tight, or work that overlaps;' },
+            { text: 'suggest other combinations of people;' },
+            { text: 'explain why a clash might happen.' },
           ],
         },
         {
           kind: 'p',
-          text: 'The project manager still reviewed the evidence, adjusted effort and dates, and made the final assignment.',
+          text: 'The project manager still looked at the proof, changed the effort and dates, and made the final choice.',
         },
         {
           kind: 'p',
-          text: 'This balance matters because recommendation interfaces can quietly shift responsibility. If a suggestion is presented as the default and its reasoning is hidden, people may accept it because correcting it feels harder than trusting it.',
+          text: 'This balance matters because suggestions can quietly move responsibility away from people. If a suggestion is shown as the default and its reasons are hidden, people may accept it because changing it feels harder than trusting it.',
         },
         {
           kind: 'p',
-          text: 'The goal was not to make the AI feel intelligent. It was to lower the effort required to consider the right information while preserving human authority.',
+          text: 'The goal was not to make the AI seem clever. It was to make it easier to look at the right information, while keeping people in charge.',
         },
       ],
     },
     {
       id: 'screens',
-      heading: 'Workflows become real when translated into screens',
+      heading: 'Steps become real when they are turned into screens',
       nav: 'Into screens',
       blocks: [
         {
           kind: 'p',
-          text: 'After converging on the workflow, I classified stages as unique screens and sub-screens. This supported effort estimation and forced me to define what each stage had to achieve.',
+          text: 'Once we had agreed on the steps, I sorted them into main screens and smaller screens. This helped me guess how much work each would be, and made me decide what each step had to achieve.',
         },
-        { kind: 'p', text: 'For every stage, I documented:' },
+        { kind: 'p', text: 'For every step, I wrote down:' },
         {
           kind: 'list',
           items: [
-            { text: 'the user’s goal;' },
-            { text: 'the information and functionality required;' },
-            { text: 'the primary action that moved the journey forward;' },
-            { text: 'relevant design problems and opportunities;' },
-            { text: 'possible errors and recovery actions.' },
+            { text: 'what the user wants to do;' },
+            { text: 'the information and features needed;' },
+            { text: 'the main action that moves the journey forward;' },
+            { text: 'design problems and chances to improve;' },
+            { text: 'possible errors and how to recover from them.' },
           ],
         },
         {
           kind: 'p',
-          text: 'Only then did I move into screen-level ideation using Six-Ups, several quick structural alternatives for the same screen.',
+          text: 'Only then did I start sketching screens, using Six-Ups: six quick, different layouts for the same screen.',
         },
         {
           kind: 'p',
-          text: 'This transition exposed gaps that the abstract workflow had hidden. A high-level step such as “review conflicts” became more demanding once I had to represent multiple people, overlapping dates, reasons for risk, alternative actions, and the consequences of each choice.',
+          text: 'This step showed gaps that the steps on paper had hidden. A big step like “check clashes” became much harder once I had to show several people, overlapping dates, reasons for the risk, other options, and what would happen with each choice.',
         },
         {
           kind: 'p',
-          text: 'Wireframing was therefore not a task of illustrating the workflow. It was a test of whether the workflow could survive contact with real information.',
+          text: 'So sketching was not about drawing the steps. It was a test of whether the steps still worked with real information.',
         },
         {
           kind: 'figure',
           figure: {
             asset: 'ixd-workflow-to-wireframe',
-            alt: 'One stage shown at three levels: the workflow statement, six quick Six-Up structural alternatives, and the converged digital wireframe.',
+            alt: 'One step shown three ways: the written step, six quick Six-Up layouts, and the final digital sketch.',
             caption:
-              'One stage, three altitudes. The Six-Ups exist to find out what the workflow statement quietly left undecided.',
+              'One step, seen from three heights. The Six-Ups are there to find out what the written step quietly left undecided.',
             ratio: '16 / 8',
           },
         },
@@ -320,104 +320,104 @@ export const interactionDesign: Article = {
     },
     {
       id: 'states',
-      heading: 'Designing states is designing the product’s honesty',
+      heading: 'Designing every screen state is designing how honest the product is',
       nav: 'States',
       blocks: [
         {
           kind: 'p',
-          text: 'The project required more than the happy path. I considered what the experience should do when there was:',
+          text: 'The project needed more than the path where everything goes right. I thought about what should happen when there was:',
         },
         {
           kind: 'list',
           items: [
-            { text: 'no roadmap demand;' },
-            { text: 'no person matching the required skills;' },
-            { text: 'one suitable resource or too many results;' },
-            { text: 'incomplete project information;' },
-            { text: 'stale or unavailable capacity data;' },
-            { text: 'a conflict the user could not resolve;' },
-            { text: 'a system or recommendation failure;' },
-            { text: 'a completed and confirmed project.' },
+            { text: 'no request in the company plan;' },
+            { text: 'nobody with the skills needed;' },
+            { text: 'only one suitable person, or far too many results;' },
+            { text: 'missing project information;' },
+            { text: 'old or missing information about how busy people are;' },
+            { text: 'a clash the user could not fix;' },
+            { text: 'the system or the suggestions failing;' },
+            { text: 'a finished and confirmed project.' },
           ],
         },
         {
           kind: 'p',
-          text: 'Thinking through nothing, loading, none, one, some, too many, incorrect, correct, and done states changed the wireframes. It affected not only feedback messages but also the data required, available actions, and whether the user could continue safely.',
+          text: 'Thinking through nothing, loading, none, one, some, too many, wrong, right and done changed the sketches. It changed not only the messages, but also the data needed, the actions available, and whether the user could carry on safely.',
         },
         {
           kind: 'p',
-          text: 'An error state is not simply red text. It is a definition of how the relationship between the user and the system continues after something unexpected happens.',
+          text: 'An error screen is not just red text. It decides how the user and the system carry on together after something unexpected happens.',
         },
       ],
     },
     {
       id: 'convergence',
-      heading: 'Convergence needs criteria',
+      heading: 'Choosing needs clear reasons',
       nav: 'Convergence',
       blocks: [
         {
           kind: 'p',
-          text: 'Creating alternatives is easy to celebrate because it produces visible variety. The harder design work is deciding why one direction should survive.',
+          text: 'Coming up with options is easy to celebrate, because you can see lots of variety. The harder design work is deciding why one of them should win.',
         },
         {
           kind: 'p',
-          text: 'Writing pros and cons for each workflow forced me to make the reasoning explicit. I evaluated options against the user goal, business risk, cognitive load, trust, scalability, and the timing of conflict detection.',
+          text: 'Writing the good and bad points of each set of steps made me explain my reasons. I judged each option against what the user wants, the risk to the business, how much thinking it asks for, trust, whether it can grow, and when clashes are spotted.',
         },
-        { kind: 'p', text: 'This helped me avoid two common traps:' },
+        { kind: 'p', text: 'This helped me avoid two common mistakes:' },
         {
           kind: 'list',
           items: [
-            { text: 'choosing the fastest flow even when it created risk later;' },
+            { text: 'choosing the fastest steps even when they caused risk later;' },
             {
-              text: 'choosing the most sophisticated flow simply because it contained more automation.',
+              text: 'choosing the most advanced steps just because they had more automation.',
             },
           ],
         },
         {
           kind: 'p',
-          text: 'The selected workflow was not perfect. It added validation steps and relied on accurate organisational data. But its trade-offs were aligned with the consequence of the user’s decision.',
+          text: 'The chosen steps were not perfect. They added checks and depended on the company having correct information. But the trade-offs matched how serious the user’s decision was.',
         },
       ],
     },
     {
       id: 'process',
-      heading: 'The process I would reuse',
-      nav: 'What carries forward',
+      heading: 'The process I would use again',
+      nav: 'What I take forward',
       blocks: [
-        { kind: 'p', text: 'For future interaction-design work, I would use the following sequence:' },
+        { kind: 'p', text: 'For future interaction design work, I would follow these steps:' },
         {
           kind: 'list',
           ordered: true,
           items: [
-            { text: 'Write the user goal as an outcome, not an activity.' },
-            { text: 'Identify the commitment or risk the user is managing.' },
-            { text: 'Create genuinely different workflow models, not cosmetic variations.' },
-            { text: 'Evaluate where each workflow places effort, uncertainty, and recovery.' },
-            { text: 'Converge using explicit criteria.' },
-            { text: 'Define stage goals and system behaviour without UI language.' },
-            { text: 'Map unique screens, sub-screens, and primary actions.' },
-            { text: 'Document error conditions and what the user can do next.' },
-            { text: 'Generate multiple screen structures before choosing a layout.' },
-            { text: 'Prototype the main path and the states that could invalidate it.' },
+            { text: 'Write what the user wants as a result, not as a task.' },
+            { text: 'Find the promise or risk the user is dealing with.' },
+            { text: 'Create really different sets of steps, not the same one with small changes.' },
+            { text: 'Look at where each set of steps puts effort, doubt and ways to recover.' },
+            { text: 'Choose using clear reasons.' },
+            { text: 'Describe the goal of each step, and what the system does, without screen words.' },
+            { text: 'Map the main screens, the smaller screens and the main actions.' },
+            { text: 'Write down what can go wrong and what the user can do next.' },
+            { text: 'Try several screen layouts before choosing one.' },
+            { text: 'Build a mock-up of the main path and the situations that could break it.' },
           ],
         },
         {
           kind: 'quote',
-          text: 'The biggest change in my practice was understanding that screens are evidence of interaction design; they are not the interaction design itself.',
+          text: 'The biggest change in how I work was understanding that screens are proof of interaction design; they are not the interaction design itself.',
         },
         {
           kind: 'p',
-          text: 'The work begins earlier, when we decide what the system should know, what the user should understand, when risk should become visible, and who remains responsible for the final action.',
+          text: 'The work starts earlier, when we decide what the system should know, what the user should understand, when risk should become visible, and who stays responsible for the final action.',
         },
       ],
     },
   ],
   studio: {
-    body: 'This article is based on graduate interaction-design coursework in which I developed a resource-planning journey from a BGPOSSTAL design brief and scenario map through prioritised consolidated scenarios, three workflow variations, detailed functional mapping, error states, Six-Up screen ideation, digital wireframes, and an interactive prototype.',
+    body: 'This article is based on my master’s interaction design course, where I built a planning journey from a BGPOSSTAL design plan and a map of situations, through combined stories, three sets of steps, a detailed map of how everything works, error screens, Six-Up sketches, digital sketches and a clickable mock-up.',
   },
   meta: {
-    title: 'Interaction Design Before the Screen',
+    title: 'Design Before the Screen',
     description:
-      'A practical reflection on moving from design brief and scenario coverage to workflows, states, recovery, and wireframes.',
+      'A practical look at going from a design plan and many situations to steps, screen states, recovering from errors, and sketches.',
   },
 };

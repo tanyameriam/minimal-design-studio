@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import ThemeToggle from '@/components/ThemeToggle';
 
 interface NavItem {
   label: string;
@@ -123,7 +122,7 @@ const Navigation = () => {
         className="fixed inset-x-0 top-0 z-50 bg-background/80 backdrop-blur-md"
       >
         {/* Matches the hero's full-width frame; narrow pages center within it. */}
-        <div className="shell flex items-center justify-between px-5 py-6 md:px-8 lg:px-12">
+        <div className="shell flex items-center justify-between px-gutter py-6">
           <Link to="/" className="rule-link text-lg">
             Tanya Sunny
           </Link>
@@ -145,8 +144,6 @@ const Navigation = () => {
                 </Link>
               ))}
             </div>
-
-            <ThemeToggle />
 
             <button
               type="button"

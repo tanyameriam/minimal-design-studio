@@ -32,8 +32,8 @@ const Em = ({ children }: { children: React.ReactNode }) => (
 /** Practical facts, all of them already on the CV. Nothing new is claimed here. */
 const details = [
   { label: 'Based in', body: 'The Netherlands' },
-  { label: 'Open to', body: 'Medior to senior product-design roles' },
-  { label: 'Education', body: "Master's in UX, specialising in AI, 2026" },
+  { label: 'Open to', body: 'Mid-level and senior product design jobs' },
+  { label: 'Education', body: "Master's in UX design, focused on AI, 2026" },
   { label: 'Languages', body: 'English, fluent. Dutch, beginner.' },
 ];
 
@@ -42,7 +42,7 @@ const drawings = [charcoal1, charcoal2, charcoal4, charcoal6];
 const About = () => {
   usePageMeta(
     'About',
-    'Tanya Sunny is a product designer in the Netherlands working on B2B platforms and multi-stakeholder services.'
+    'Tanya Sunny is a product designer in the Netherlands, designing software for businesses and services that many people rely on.'
   );
 
   useEffect(() => {
@@ -66,8 +66,12 @@ const About = () => {
           section of its own: split apart, the prose started below the full
           height of the portrait and left a hole under the heading.
         */}
-        <section className="px-5 pb-20 pt-32 md:px-8 md:pb-24 md:pt-44 lg:px-12">
-          <div className="grid items-start gap-x-14 gap-y-10 md:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)]">
+        <section className="px-gutter pb-section pt-masthead">
+          {/* One column now. The portrait that used to sit in the right-hand
+              track moved to the masthead on the home page, where a first-time
+              visitor actually meets it; keeping a second copy here made the
+              picture the thing this page opened with rather than the writing. */}
+          <div>
             <div>
               <p className="label-strong mb-8">About</p>
               <h1 className="max-w-[16ch] text-[2.5rem] leading-[1.05] md:text-[3.5rem]">
@@ -82,21 +86,22 @@ const About = () => {
                 className="reveal mt-10 max-w-[42rem] space-y-5 text-lg leading-[1.55] text-ink-600 md:mt-12"
               >
                 <p>
-                  I&rsquo;m a product designer working on products where the visible interface is
-                  only one part of the problem.
+                  I&rsquo;m a product designer. I work on products where the screens are only one
+                  part of the problem.
                 </p>
                 <p>
-                  At <Em>BrynQ</Em>, I helped move integration delivery from developer-led custom
-                  work toward reusable, template-based setup. Across my work, I move between
-                  research, workflow and system design, interaction detail, and delivery.
+                  At <Em>BrynQ</Em>, customers needed a developer every time they connected two
+                  systems. I helped change that, so they can set up connections themselves from
+                  ready-made templates. In my work I do a bit of everything: I talk to people, plan how
+                  the work flows, design the screens, and help the team build them.
                 </p>
                 <p>
-                  Before product design, I spent three years in enterprise support at{' '}
-                  <Em>SAP Ariba</Em>. That experience showed me what badly designed software costs
-                  the people expected to use it every day.
+                  Before I became a designer, I spent three years helping business customers with
+                  their software at <Em>SAP Ariba</Em>. There I saw how much badly designed software
+                  hurts the people who have to use it every day.
                 </p>
                 <p className="text-base text-ink-500">
-                  Outside work I co-organise{' '}
+                  Outside work I help run{' '}
                   <a
                     href="https://www.linkedin.com/company/design-reimagined-utrecht"
                     target="_blank"
@@ -105,18 +110,11 @@ const About = () => {
                   >
                     Design Reimagined Utrecht
                   </a>
-                  , a design community that runs sessions and workshops in the Netherlands.
+                  , a group for designers that runs talks and workshops in the Netherlands.
                 </p>
               </div>
             </div>
 
-            <img
-              src="/tanya-portrait.jpg"
-              alt="Tanya Sunny"
-              loading="eager"
-              decoding="async"
-              className="w-full max-w-xs rotate-[-1.5deg] rounded-[var(--radius)] object-cover shadow-lg md:justify-self-end"
-            />
           </div>
         </section>
 
@@ -124,7 +122,7 @@ const About = () => {
         <section
           ref={detailRef}
           aria-label="Details"
-          className="reveal px-5 pb-20 md:px-8 md:pb-24 lg:px-12"
+          className="reveal px-gutter pb-section"
         >
           <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
             {details.map(({ label, body }) => (
@@ -142,7 +140,7 @@ const About = () => {
               onFocus={() => prefetchRoute('/cv')}
               className="rule-link group inline-flex items-center gap-2.5 text-lg text-link"
             >
-              The full CV, with dates and detail
+              My full CV, with dates and details
               <span
                 aria-hidden="true"
                 className="transition-transform duration-500 ease-smooth group-hover:translate-x-1"
@@ -161,11 +159,11 @@ const About = () => {
         <section
           ref={drawRef}
           aria-labelledby="drawings-heading"
-          className="reveal px-5 pb-24 md:px-8 md:pb-28 lg:px-12"
+          className="reveal px-gutter pb-section"
         >
           <div>
             <h2 id="drawings-heading" className="label-strong mb-8">
-              Off-screen practice
+              Away from the screen
             </h2>
 
             <Link
@@ -175,8 +173,8 @@ const About = () => {
               className="group block"
             >
               <p className="max-w-2xl text-lg leading-[1.55] text-ink-600">
-                Charcoal, character sketches, and 3D experiments. Keeping a drawing habit is how I
-                stay fast at the parts of design that are not interfaces.
+                Charcoal drawings, character sketches and 3D experiments. Drawing often keeps me quick
+                at the parts of design that are not screens.
               </p>
 
               <ul className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">

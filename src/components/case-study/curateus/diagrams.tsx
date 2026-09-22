@@ -55,7 +55,7 @@ export const JourneyCompare = ({ rows, caption }: { rows: JourneyRow[]; caption?
   const longest = Math.max(...rows.map((r) => r.steps.length));
 
   return (
-    <div className="mt-12 md:mt-16">
+    <div className="mt-break">
       <div className="space-y-10 md:space-y-12">
         {rows.map((row) => (
           <div key={row.label}>
@@ -114,17 +114,17 @@ export const JourneyCompare = ({ rows, caption }: { rows: JourneyRow[]; caption?
 export const Triad = () => {
   const nodes = [
     {
-      title: 'Product Owner / PM',
-      body: 'Requirements, priorities, product direction.',
+      title: 'Product owner',
+      body: 'What is needed, what comes first, where the product is going.',
       mine: false,
     },
     {
       title: 'Design',
-      role: 'Me, UI/UX intern',
+      role: 'Me, design intern',
       body: 'Flows, wireframes, interface, prototypes, handoff.',
       mine: true,
     },
-    { title: '3 developers', body: 'Feasibility, constraints, implementation.', mine: false },
+    { title: '3 developers', body: 'What can be built, the limits, and building it.', mine: false },
   ];
 
   return (
@@ -176,12 +176,12 @@ export const Triad = () => {
 export const CurationLoop = () => {
   const stages = [
     { actor: 'Curator', act: 'Finds something worth passing on' },
-    { actor: 'Curateus', act: 'Holds it, organises it, routes it by interest' },
-    { actor: 'Subscriber', act: 'Discovers it because a person chose it' },
+    { actor: 'Curateus', act: 'Keeps it, sorts it, and sends it to people who are interested' },
+    { actor: 'Subscriber', act: 'Finds it because a real person picked it' },
   ];
 
   return (
-    <div className="mt-12 md:mt-16">
+    <div className="mt-break">
       <div className="flex flex-col gap-3 md:flex-row md:items-stretch md:gap-4">
         {stages.map((stage, i) => (
           <div key={stage.actor} className="flex flex-1 flex-col gap-3 md:flex-row md:items-center">
@@ -195,7 +195,7 @@ export const CurationLoop = () => {
         ))}
       </div>
       <p className="label mt-8 text-ink-500">
-        The value moves between people. The product is the route it takes.
+        The good stuff moves between people. The product is the path it takes.
       </p>
     </div>
   );
@@ -207,7 +207,7 @@ export const TwoSides = ({
 }: {
   sides: { title: string; note: string; items: string[] }[];
 }) => (
-  <div className="mt-12 grid gap-px border border-border bg-border md:mt-16 md:grid-cols-2">
+  <div className="mt-break grid gap-px border border-border bg-border md:grid-cols-2">
     {sides.map((side) => (
       <div key={side.title} className="bg-background p-6 md:p-8">
         <p className="text-2xl leading-snug md:text-3xl">{side.title}</p>
@@ -243,7 +243,7 @@ export const Balance = ({
   left: { title: string; body: string; fail: string };
   right: { title: string; body: string; fail: string };
 }) => (
-  <div className="mt-12 md:mt-16">
+  <div className="mt-break">
     <div aria-hidden="true" className="relative mx-auto max-w-4xl">
       <div className="flex items-end justify-between">
         <span className="h-10 w-px bg-border" />
@@ -274,7 +274,7 @@ export const FlowLine = ({
   steps: string[];
   branch?: { from: string; label: string };
 }) => (
-  <div className="mt-12 md:mt-16">
+  <div className="mt-break">
     <ol className="flex flex-col gap-2 md:flex-row md:flex-wrap md:items-stretch">
       {steps.map((step, i) => (
         <li key={step} className="flex items-center gap-2 md:gap-2.5">
@@ -309,7 +309,7 @@ export const FlowLine = ({
  * feeding each other until the interaction settled.
  */
 export const ReviewLoop = () => (
-  <div className="mt-12 flex flex-col items-stretch gap-3 md:mt-16 md:flex-row md:items-center">
+  <div className="mt-break flex flex-col items-stretch gap-3 md:flex-row md:items-center">
     {['Design exploration', 'Developer and PO feedback', 'Adjusted interaction'].map((node, i) => (
       <div key={node} className="flex flex-1 flex-col gap-3 md:flex-row md:items-center">
         <div className="flex-1 border border-border px-5 py-6 text-center">
@@ -348,7 +348,7 @@ export const Cards = ({
   columns?: 3 | 4;
 }) => (
   <div
-    className={`mt-12 grid gap-px border border-border bg-border md:mt-16 sm:grid-cols-2 ${
+    className={`mt-break grid gap-px border border-border bg-border sm:grid-cols-2 ${
       columns === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'
     }`}
   >
@@ -367,7 +367,7 @@ export const ChangePair = ({
 }: {
   items: { title: string; before: string; after: string }[];
 }) => (
-  <div className="mt-12 space-y-px border border-border bg-border md:mt-16">
+  <div className="mt-break space-y-px border border-border bg-border">
     {items.map((item) => (
       <div key={item.title} className="bg-background p-6 md:p-8">
         <p className="text-xl leading-snug md:text-2xl">{item.title}</p>

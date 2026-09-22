@@ -38,14 +38,14 @@ export type Discipline =
   | 'Systems design'
   | 'Service design'
   | 'Product strategy'
-  | 'B2B platform'
-  | 'Zero to one'
-  | 'AI product'
+  | 'Business software'
+  | 'Brand-new product'
+  | 'AI tools'
   | 'Design systems'
   | 'UX research'
   | 'Interaction design'
   | 'Workflow design'
-  | 'Multi-stakeholder';
+  | 'Many groups of people';
 
 /**
  * What kind of claim a number is. The portfolio mixes things that were
@@ -222,14 +222,14 @@ const projectList: Project[] = [
     year: '2023 - 26',
     status: 'shipped',
     tier: 'flagship',
-    disciplines: ['Systems design', 'Service design', 'B2B platform'],
-    context: 'B2B HR and payroll integration platform',
-    role: 'Product designer, one workstream of an ongoing role',
-    headline: 'From developer-led integrations to a scalable self-service product',
+    disciplines: ['Systems design', 'Service design', 'Business software'],
+    context: 'Software that connects HR and payroll systems for businesses',
+    role: 'Product designer, one part of an ongoing job',
+    headline: 'Letting customers connect their systems without waiting for a developer',
     decision:
-      'Integration projects were slipping weeks before anyone wrote a line of code, and the requirements were being rebuilt from scratch in calls and spreadsheets every time. I reframed the ask from simplifying a technical interface to productising repeated implementation knowledge, and moved known mappings, transformations and validation into the product as reusable templates.',
+      'Every new connection started from zero. The team gathered the same details again and again over calls and spreadsheets, and projects fell weeks behind before any code was written. I was asked to make the screens simpler. Instead, I turned the steps the team kept repeating into ready-made templates inside the product, so customers could reuse them.',
     oneLine:
-      'Reframed a UI request into productising implementation knowledge, as reusable integration templates.',
+      'Turned the steps the team kept repeating into ready-made templates customers can reuse.',
     storyHref: '/case-study/brynq/story',
     storyMinutes: 2,
     // The three surfaces used to disagree: 92% and 13x are the arithmetic of
@@ -238,26 +238,26 @@ const projectList: Project[] = [
     metrics: [
       {
         figure: '~6 mo → ~2 wk',
-        note: 'implementation cycle for a standard integration',
+        note: 'to set up a standard connection',
         status: 'estimated',
         source: 'Template-led delivery model',
         explanation:
-          'Historical standard implementations ran to roughly six months. The template-led model puts the same category of integration at roughly two weeks. Not yet a measured production result.',
+          'A standard connection used to take about six months. With templates, we expect the same kind of connection to take about two weeks. This is a plan based on our model, not yet measured with real customers.',
       },
       {
         figure: '2× easier',
-        note: 'setup, reported after templates were introduced',
+        note: 'to set up, said the project manager after templates arrived',
         status: 'stakeholder-reported',
         source: 'BrynQ project manager',
       },
     ],
     featured: {
-      headline: 'Self-service B2B integrations',
-      description: 'Redesigning how customers set up and manage integrations.',
-      status: 'B2B integration platform · Ongoing',
+      headline: 'Connecting business systems, without a developer',
+      description: 'Redesigning how customers connect and manage their systems.',
+      status: 'Business software · Ongoing',
       evidence: {
         figure: '~6 mo → ~2 wk',
-        note: 'Potential implementation cycle',
+        note: 'Expected time to set up a connection',
         status: 'estimated',
         source: 'Template-led delivery model',
       },
@@ -287,53 +287,53 @@ const projectList: Project[] = [
     year: '2026',
     status: 'live',
     tier: 'flagship',
-    disciplines: ['Zero to one', 'Product strategy', 'Design systems', 'UX research'],
+    disciplines: ['Brand-new product', 'Product strategy', 'Design systems', 'UX research'],
     // The pills on the case study, kept separate from `disciplines` so the
     // /work filters still find this under design systems while the page
     // itself only claims what Tanya led.
-    contributions: ['Zero to one', 'Product strategy', 'UX research', 'Product validation'],
-    context: 'Consumer content product, nine-day validation sprint',
-    role: 'Team lead: product direction, UX, research and product validation',
-    headline: 'From first commit to paying customers in nine days',
+    contributions: ['Brand-new product', 'Product strategy', 'UX research', 'Product validation'],
+    context: 'An app for saving things to read, tested in nine days',
+    role: 'Team lead: I led the product, the design and the research',
+    headline: 'From the first line of code to paying customers in nine days',
     decision:
-      'Everyone builds a better archive, and archives sit there waiting for people who never come back. Research moved the proposition from better organisation to retrieval and resurfacing, so we built around a pushed digest instead. The team validated, built, tested, changed direction, and reached 15 paying customers by day nine.',
+      'Lots of apps help you save things. Almost nobody goes back to look at what they saved. Our research showed that the real problem was finding things again, not storing them. So we built an app that sends you your saved things back. In nine days the team tested the idea, built it, changed direction once, and got 15 paying customers.',
     oneLine:
-      'Led design through a nine-day validation sprint, from survey to paying customers.',
+      'Led the design in a nine-day test, from a survey to paying customers.',
     storyHref: '/case-study/layrrrd/story',
     storyMinutes: 2,
     metrics: [
       {
         figure: '15 paying customers',
-        note: 'by day nine, from first commit',
+        note: 'by day nine, counting from the first line of code',
         status: 'validated',
         source: 'Payment records',
         timeframe: 'Nine-day sprint',
       },
       {
         figure: '126',
-        note: 'freemium signups',
+        note: 'people signed up for the free version',
         status: 'observed',
         source: 'PostHog',
         timeframe: 'Nine-day sprint',
       },
       {
         figure: '86',
-        note: 'survey responses before the build',
+        note: 'people answered our survey before we built anything',
         status: 'observed',
         source: 'Pre-build survey',
       },
     ],
     featured: {
-      headline: 'Content saving and retrieval',
-      description: 'Building and validating a new product from idea to paying customers.',
+      headline: 'Saving things, and finding them again',
+      description: 'Building and testing a new app, from idea to paying customers.',
       status: 'Live · Revenue · Ongoing',
       // Observed rather than validated: "validated" is the right word for the
       // 15 paying customers on their own, but this figure also carries the
       // freemium signups, and both halves are simply things that were
       // measured. One label over a compound number has to be true of all of it.
       evidence: {
-        figure: '15 paying customers · 126 freemium signups',
-        note: 'By day nine, from first commit',
+        figure: '15 paying customers · 126 free signups',
+        note: 'By day nine, counting from the first line of code',
         status: 'observed',
         source: 'Payment records and PostHog',
       },
@@ -360,35 +360,35 @@ const projectList: Project[] = [
     year: '2026',
     status: 'concept',
     tier: 'flagship',
-    disciplines: ['Service design', 'Systems design', 'Multi-stakeholder'],
-    context: 'Emergency medical transport, researched with the company',
-    role: 'Research, service model and system design',
+    disciplines: ['Service design', 'Systems design', 'Many groups of people'],
+    context: 'Emergency ambulance rides, researched with the company',
+    role: 'Research, and designing how the whole service works',
     storyHref: '/case-study/merry-health/story',
     storyMinutes: 2,
-    headline: 'Four parties. One shared ride state.',
+    headline: 'Four groups of people. One shared record of each ride.',
     decision:
-      'Dispatch ran across calls, WhatsApp, paper and a dashboard, so hospitals, operations, drivers and families each held a different version of the same ride. Hospitals were never going to leave WhatsApp mid-emergency, so instead of replacing it we made it an interaction layer on one structured ride record, with a named owner and recovery route for every way a dispatch can fail.',
+      'Ambulance rides were arranged over phone calls, WhatsApp, paper and a dashboard. So hospitals, the operations team, drivers and families each had a different idea of the same ride. Hospitals were not going to stop using WhatsApp in an emergency. So we kept WhatsApp, and connected it to one shared record of each ride. For every way a ride can go wrong, we named who fixes it and how.',
     oneLine:
-      'Turned nine phone-held handoffs into one event-driven ride record, with WhatsApp as an interaction layer.',
+      'Replaced nine hand-offs over the phone with one shared ride record that updates everyone, while people keep using WhatsApp.',
     metrics: [
       {
         figure: '4 parties',
-        note: 'updated by one state change',
+        note: 'kept up to date by one change',
         status: 'proposed',
         source: 'Proposed operating model',
         explanation:
-          'Researched with Merry Health and designed as a proposed system. Never rolled out or instrumented, so there is no adoption or timing figure here.',
+          'Researched with Merry Health and designed as a proposal. It was never launched or measured, so there are no usage or timing numbers here.',
       },
     ],
     featured: {
-      headline: 'Emergency ambulance dispatch',
+      headline: 'Sending ambulances in an emergency',
       description:
-        'Redesigning coordination between hospitals, operations, drivers and patients.',
+        'Redesigning how hospitals, the operations team, drivers and patients work together.',
       status: 'Academic practicum · Proposed system',
       storyLabel: 'Read the project story',
       evidence: {
         figure: '9 manual handoffs',
-        note: 'Redesigned around one shared ride record',
+        note: 'Replaced by one shared record of the ride',
         status: 'proposed',
         source: 'Proposed operating model, never deployed',
       },
@@ -411,21 +411,21 @@ const projectList: Project[] = [
     year: '2026',
     status: 'concept',
     tier: 'selected',
-    disciplines: ['AI product', 'Workflow design', 'Interaction design'],
-    context: 'AI-supported instructor evaluation',
-    role: 'Led the team; owned the grading and calibration module',
-    headline: 'The AI shows its evidence. The instructor keeps the decision.',
+    disciplines: ['AI tools', 'Workflow design', 'Interaction design'],
+    context: 'AI that helps teachers grade work',
+    role: 'Led the team, and designed the grading part myself',
+    headline: 'The AI shows why. The teacher makes the call.',
     decision:
-      'Faculty cannot verify every AI-supported score, and a confidence badge does not tell them what to do about it. So I led the team to build the supervision layer around disagreement instead: calibration on a small sample, criterion-level evidence behind every number, and an appeal queue typed by what actually went wrong.',
+      'Teachers cannot check every grade the AI gives. A label saying how sure the AI is does not tell them what to do next. So we designed around the moments when the teacher and the AI disagree. Teachers first check the AI on a few pieces of work. Every score shows the reason behind it. And when a student asks for a regrade, the request says what went wrong.',
     oneLine:
-      'Designing how instructors review, correct and approve AI-supported grading.',
+      'Designing how teachers check, fix and approve grades suggested by AI.',
     metrics: [
       {
         figure: 'Prototype',
-        note: 'development-ready, never piloted',
+        note: 'ready to build, never tried with real classes',
         status: 'not-deployed',
         explanation:
-          'Academic practicum. Nothing was piloted, so there is no adoption, accuracy or time-saving figure to report.',
+          'A university project. It was never tried with real classes, so there are no numbers for usage, accuracy or time saved.',
       },
     ],
     cover: educaitorsGrading,
@@ -440,17 +440,17 @@ const projectList: Project[] = [
     status: 'shipped',
     tier: 'selected',
     disciplines: ['Interaction design', 'Workflow design'],
-    context: 'Browser-based content curation',
-    role: 'UI/UX intern with one product owner and three developers',
-    headline: 'Seven steps to recommend an article, down to four',
+    context: 'Sharing good articles, right from the browser',
+    role: 'Design intern, working with one product owner and three developers',
+    headline: 'Sharing an article took seven steps. Now it takes four.',
     decision:
-      'Curators found things worth passing on while browsing, then had to leave the page, open Curateus and type the article back in. Working with the product owner and three developers, I moved the recommendation flow into the browser itself. My first product-design project.',
+      'People found good articles while browsing. To share one, they had to leave the page, open Curateus and type the article in again. With the product owner and three developers, I moved sharing into the browser, right where people were reading. This was my first product design project.',
     oneLine:
-      'Making it easier to recommend content without leaving the page being read.',
+      'Making it easy to share an article without leaving the page.',
     metrics: [
       {
         figure: '7 → 4 steps',
-        note: 'to recommend an article',
+        note: 'to share an article',
         status: 'observed',
         source: 'Flow comparison, before and after',
       },
@@ -469,17 +469,17 @@ const projectList: Project[] = [
     status: 'concept',
     tier: 'selected',
     disciplines: ['UX research', 'Interaction design'],
-    context: "Women's safety and everyday autonomy",
-    role: 'Research and interaction design',
-    headline: 'Safety designed for every day, not the worst one',
+    context: "Helping women feel safe and free every day",
+    role: 'Research, and designing the screens',
+    headline: 'Safety for every day, not only the worst day',
     decision:
-      'Fifteen interviews told us panic is not where women actually live, so we designed for daily autonomy instead of the worst moment. The SOS still works with no network. The product stopped being about fear.',
+      'We talked to fifteen women. They told us they do not spend their days in panic. So we designed for everyday freedom, not only for emergencies. The SOS button still works with no phone signal. The app stopped being about fear.',
     oneLine:
-      'Reframing a safety concept around what women actually needed day to day.',
+      'Changing a safety app to fit what women really needed each day.',
     metrics: [
       {
         figure: '15 interviews',
-        note: 'that redirected the proposition',
+        note: 'that changed what we built',
         status: 'observed',
       },
     ],
@@ -494,13 +494,13 @@ const projectList: Project[] = [
     year: '2021',
     status: 'self-initiated',
     tier: 'selected',
-    disciplines: ['Service design', 'Multi-stakeholder'],
-    context: 'Food redistribution between restaurants and NGOs',
-    role: 'Self-initiated; research through to system design',
-    headline: 'The food was never missing. The handoff was.',
+    disciplines: ['Service design', 'Many groups of people'],
+    context: 'Getting leftover restaurant food to charities',
+    role: 'My own project, from research to the full design',
+    headline: 'There was enough food. Getting it there was the problem.',
     decision:
-      'NGOs were not short of food. They were short of notice and transport. So I designed the handoff between restaurants and NGOs instead of two separate apps: two roles working from one shared state, with pickup or delivery decided by capacity and a fallback for when delivery falls through.',
-    oneLine: 'Designing a shared handoff between donors and recipients.',
+      'Charities had enough food on offer. What they lacked was warning and a way to move it. So instead of two separate apps, I designed the hand-off between restaurants and charities. Both see the same information. Whoever has room picks up or delivers, and there is a backup plan if a delivery falls through.',
+    oneLine: 'Designing one shared hand-off between restaurants and charities.',
     cover: hungerProjectCover,
     stack: [foodWasteCover, foodWasteAccount],
     published: true,
@@ -552,7 +552,7 @@ const earlierWorkList: EarlierWork[] = [
     title: 'AlHub',
     year: '2022',
     role: 'Freelance UI Designer',
-    note: 'Full visual redesign of a UAE lifestyle and voucher app under an explicit no-UX-changes constraint, delivered through to developer handoff.',
+    note: 'A new look for a lifestyle and voucher app in the UAE. I was not allowed to change how it worked, only how it looked. I delivered it all the way to the developers.',
     // Held back at Tanya's request. Flip to true to bring it back.
     published: false,
   },

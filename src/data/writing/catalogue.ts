@@ -17,34 +17,34 @@ export type ArticleSlug =
 export const summaries: Record<ArticleSlug, ArticleSummary> = {
   'an-ai-agent-is-more-than-a-prompt': {
     slug: 'an-ai-agent-is-more-than-a-prompt',
-    title: 'An AI Agent Is More Than a Prompt',
+    title: 'An AI Helper Is More Than a Prompt',
     subtitle:
-      'What building a mind-map agent taught me about clarification, evaluation, trust, and failure.',
-    category: { strand: 'ai', label: 'Human-centred AI' },
+      'What building an AI helper for mind maps taught me about asking questions, checking results, trust, and things going wrong.',
+    category: { strand: 'ai', label: 'AI that puts people first' },
     description:
-      'What building a mind-map agent taught me about clarification, evaluation, trust, and failure.',
+      'What building an AI helper for mind maps taught me about asking questions, checking results, trust, and things going wrong.',
     featured: true,
-    origin: 'From my M.Des studio work',
+    origin: 'From my master’s design projects',
     minutes: 7,
   },
   'interaction-design-before-the-screen': {
     slug: 'interaction-design-before-the-screen',
-    title: 'The Most Important Interaction Design Happens Before the Screen',
-    subtitle: 'From design brief and scenario map to workflows, states, and a testable prototype.',
+    title: 'The Most Important Design Work Happens Before the Screen',
+    subtitle: 'From a design plan and a map of situations to the steps, the screens for every case, and a mock-up you can test.',
     category: { strand: 'ixd', label: 'Interaction design' },
     description:
-      'From design brief and scenario map to workflows, states, and a testable prototype.',
-    origin: 'From my M.Des studio work',
+      'From a design plan and a map of situations to the steps, the screens for every case, and a mock-up you can test.',
+    origin: 'From my master’s design projects',
     minutes: 9,
   },
   'visual-design-is-a-decision-system': {
     slug: 'visual-design-is-a-decision-system',
-    title: 'Visual Design Is a Decision System',
+    title: 'How Things Look Is a Set of Decisions',
     subtitle:
-      'How I translated responsibility and risk into a visual direction for healthcare billing.',
+      'How I turned responsibility and risk into a look and feel for a healthcare billing app.',
     category: { strand: 'vxd', label: 'Visual design' },
-    description: 'How responsibility and risk became a visual direction for healthcare billing.',
-    origin: 'From my M.Des studio work',
+    description: 'How responsibility and risk became a look and feel for healthcare billing.',
+    origin: 'From my master’s design projects',
     minutes: 6,
   },
 };

@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Download, Mail, MapPin, Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { usePageMeta } from '@/hooks/use-page-meta';
-import ThemeToggle from '@/components/ThemeToggle';
 
 const CV = () => {
   usePageMeta('CV', 'Curriculum vitae for Tanya Sunny, product designer based in the Netherlands.');
@@ -116,9 +115,9 @@ const CV = () => {
                 <h1>Tanya Sunny</h1>
                 <div class="title">Product Designer</div>
                 <div class="summary">
-                  Product Designer with <strong>5+ years of experience</strong> in UI execution, UX auditing, and workflow design.
-                  Currently at BrynQ, improving usability within complex HR/Payroll integration flows.
-                  MDes in UX with an AI specialization. Strong technical foundation.
+                  Product Designer with <strong>5+ years of experience</strong> designing screens, finding what makes products hard to use, and planning how work flows.
+                  Now at BrynQ, making it easier to connect HR and payroll systems.
+                  Master's in UX design, focused on AI. Background in computer science.
                 </div>
               </div>
               <div class="header-right">
@@ -141,12 +140,12 @@ const CV = () => {
                     <div class="job-company">BrynQ, Netherlands</div>
                     <div class="job-date">2023 to Present</div>
                     <ul>
-                      <li>Designed the interface requirements wizard and template system, putting an interface build that historically took <strong>~6 months on a modelled path to ~2 weeks</strong></li>
-                      <li>Design and improve user flows, <strong>simplifying complex configuration tasks</strong></li>
-                      <li>Conduct UX audits and propose iterative improvements</li>
-                      <li>Apply systems thinking to data mappings and interface states</li>
-                      <li>Led design for internal task-tracking feature</li>
-                      <li>Contribute to <strong>AI-assisted workflows</strong> for setup and validation</li>
+                      <li>Designed a step-by-step planning tool and templates, so a connection that used to take <strong>~6 months could take ~2 weeks</strong> (our estimate)</li>
+                      <li>Design and improve the steps users go through, <strong>making hard setup tasks simpler</strong></li>
+                      <li>Check the product for problems (UX audits) and suggest improvements, step by step</li>
+                      <li>Look at the whole system when designing how data is matched and what each screen shows</li>
+                      <li>Led the design of a task-tracking feature the team uses</li>
+                      <li>Help design <strong>AI features</strong> that help people set things up and check them</li>
                     </ul>
                   </div>
 
@@ -155,8 +154,8 @@ const CV = () => {
                     <div class="job-company">Multiple Startups, India</div>
                     <div class="job-date">2022 to 2023</div>
                     <ul>
-                      <li>Designed UI for early-stage products: Amphisoft Ventures, Lymdata Labs</li>
-                      <li>Delivered visual designs focused on clarity and consistency</li>
+                      <li>Designed screens for new products: Amphisoft Ventures, Lymdata Labs</li>
+                      <li>Made designs that are clear and consistent</li>
                     </ul>
                   </div>
                   
@@ -165,7 +164,7 @@ const CV = () => {
                     <div class="job-company">Segments Cloud LLC, Dubai, UAE</div>
                     <div class="job-date">2021 to 2022</div>
                     <ul>
-                      <li>Designed UI for a Bitcoin mining and warehousing product</li>
+                      <li>Designed screens for a Bitcoin mining and storage product</li>
                     </ul>
                   </div>
                   
@@ -174,7 +173,7 @@ const CV = () => {
                     <div class="job-company">Curateus, Bangalore, India</div>
                     <div class="job-date">2021</div>
                     <ul>
-                      <li>Designed wireframes and prototypes for content discovery product</li>
+                      <li>Designed sketches and clickable mock-ups for an app for finding good articles</li>
                     </ul>
                   </div>
                   
@@ -183,8 +182,8 @@ const CV = () => {
                     <div class="job-company">SAP Ariba, Bangalore, India</div>
                     <div class="job-date">2018 to 2021</div>
                     <ul>
-                      <li>Supported enterprise clients through troubleshooting and resolution</li>
-                      <li>Built understanding of <strong>enterprise software user pain points</strong></li>
+                      <li>Helped business customers find and fix problems with their software</li>
+                      <li>Learned <strong>what frustrates people who use business software</strong></li>
                     </ul>
                   </div>
                 </div>
@@ -258,7 +257,7 @@ const CV = () => {
                   <div class="section-title">Community</div>
                   <div class="community-item">
                     <div class="community-name"><strong>Co-organiser</strong>, Design Reimagined Utrecht</div>
-                    <div class="skill-items">Design community hosting sessions and workshops in Netherlands</div>
+                    <div class="skill-items">A group for designers that runs talks and workshops in the Netherlands</div>
                   </div>
                 </div>
               </div>
@@ -283,10 +282,7 @@ const CV = () => {
             <span className="text-sm">Back to Portfolio</span>
           </button>
           
-          {/* This page carries its own header rather than the site nav, so the
-              theme switch has to be repeated here to stay reachable. */}
           <div className="flex items-center gap-3">
-            <ThemeToggle />
             <Button onClick={handleDownloadPDF} variant="outline" size="sm" className="gap-2">
               <Download className="w-4 h-4" />
               Download PDF
@@ -324,9 +320,9 @@ const CV = () => {
           <section className="mb-12">
             <h2 className="font-sans text-lg mb-4 pb-2 border-b border-border">Profile</h2>
             <p className="text-muted-foreground leading-relaxed">
-              Product Designer with 5 years of professional design experience and a broader corporate background since 2018.
-              Experienced in UI execution, UX auditing, and workflow design for digital products. Currently working on BrynQ,
-              an HR/Payroll integration product. MDes in UX with a specialisation in AI, completed 2026. Strong technical foundation.
+              Product Designer with 5 years of design work, and working in companies since 2018.
+              I design screens, find what makes products hard to use (UX audits), and plan how work flows. Now working on BrynQ,
+              a product that connects HR and payroll systems. Master's in UX design, focused on AI, finished in 2026. Background in computer science.
             </p>
           </section>
 
@@ -355,14 +351,14 @@ const CV = () => {
                   <span className="text-sm text-muted-foreground">2023 to Present</span>
                 </div>
                 <ul className="list-disc list-outside ml-5 text-muted-foreground text-sm space-y-1">
-                  <li>Designed the interface requirements wizard and template system, putting an interface build that historically took ~6 months on a modelled path to ~2 weeks. Estimated from the template-led delivery model, not measured in production.</li>
-                  <li>Design and improve user flows within the BrynQ product, simplifying complex configuration and operational tasks.</li>
-                  <li>Identify usability issues through UX audits and propose iterative improvements.</li>
-                  <li>Apply systems thinking to structure interactions around data mappings, transformations, and interface states.</li>
-                  <li>Support design governance by owning and maintaining a clear Figma file structure.</li>
-                  <li>Collaborate with Product Owners and Product Managers to align design work with product priorities.</li>
-                  <li>Led design for an internal task-tracking feature to improve clarity around actions and responsibilities.</li>
-                  <li>Contribute to AI-assisted workflows that support users during setup and validation processes.</li>
+                  <li>Designed a step-by-step planning tool and templates, so a connection that used to take ~6 months could take ~2 weeks. This is our estimate, not yet measured with real customers.</li>
+                  <li>Design and improve the steps users go through in BrynQ, making hard setup and everyday tasks simpler.</li>
+                  <li>Find what makes the product hard to use (UX audits) and suggest improvements, step by step.</li>
+                  <li>Look at the whole system when designing how data is matched, changed and shown on each screen.</li>
+                  <li>Keep the design files in Figma tidy and organised, and look after the design rules.</li>
+                  <li>Work with Product Owners and Product Managers so design work matches what matters most.</li>
+                  <li>Led the design of a task-tracking feature, so everyone can see what needs doing and who is doing it.</li>
+                  <li>Help design AI features that help users set things up and check them.</li>
                 </ul>
               </div>
 
@@ -376,8 +372,8 @@ const CV = () => {
                   <span className="text-sm text-muted-foreground">2022 to 2023</span>
                 </div>
                 <ul className="list-disc list-outside ml-5 text-muted-foreground text-sm space-y-1">
-                  <li>Designed UI screens based on defined requirements for early-stage products.</li>
-                  <li>Delivered visual designs with a focus on clarity, consistency, and usability.</li>
+                  <li>Designed screens for new products, based on what each one needed.</li>
+                  <li>Made designs that are clear, consistent and easy to use.</li>
                   <li>Clients: Amphisoft Ventures · Lymdata Labs · Amphisoft (Stealth EdTech Product)</li>
                 </ul>
               </div>
@@ -392,8 +388,8 @@ const CV = () => {
                   <span className="text-sm text-muted-foreground">2021 to 2022</span>
                 </div>
                 <ul className="list-disc list-outside ml-5 text-muted-foreground text-sm space-y-1">
-                  <li>Designed UI screens and page layouts for a Bitcoin mining and warehousing product.</li>
-                  <li>Translated business requirements into structured and visually consistent interfaces.</li>
+                  <li>Designed screens and page layouts for a Bitcoin mining and storage product.</li>
+                  <li>Turned what the business needed into clear, consistent screens.</li>
                 </ul>
               </div>
 
@@ -407,8 +403,8 @@ const CV = () => {
                   <span className="text-sm text-muted-foreground">2021</span>
                 </div>
                 <ul className="list-disc list-outside ml-5 text-muted-foreground text-sm space-y-1">
-                  <li>Designed UI screens, wireframes, and prototypes for a content discovery product.</li>
-                  <li>Supported rapid design execution for web and mobile platforms.</li>
+                  <li>Designed screens, sketches and clickable mock-ups for an app for finding good articles.</li>
+                  <li>Helped design quickly for websites and phone apps.</li>
                 </ul>
               </div>
 
@@ -422,9 +418,9 @@ const CV = () => {
                   <span className="text-sm text-muted-foreground">2018 to 2021</span>
                 </div>
                 <ul className="list-disc list-outside ml-5 text-muted-foreground text-sm space-y-1">
-                  <li>Supported enterprise clients through system troubleshooting and incident resolution.</li>
-                  <li>Collaborated with engineering teams on workflow and system-level issues.</li>
-                  <li>Developed a strong understanding of enterprise software behavior and user pain points.</li>
+                  <li>Helped business customers find and fix problems with their software.</li>
+                  <li>Worked with engineers on problems with how the system and its steps worked.</li>
+                  <li>Learned how business software behaves, and what frustrates the people who use it.</li>
                 </ul>
               </div>
             </div>
@@ -461,7 +457,7 @@ const CV = () => {
                 Design Reimagined Utrecht
               </a>
               <p className="text-sm text-muted-foreground mt-1">
-                A design community in the Netherlands hosting sessions and workshops on design learnings.
+                A group for designers in the Netherlands that runs talks and workshops about what we learn.
               </p>
             </div>
           </section>

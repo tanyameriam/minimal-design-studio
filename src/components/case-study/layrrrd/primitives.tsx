@@ -5,11 +5,14 @@ import { useReveal } from '@/hooks/use-reveal';
 /**
  * Layrrrd's slide vocabulary.
  *
- * Deliberately not the BrynQ set. That story is ink-on-dark, diagrammatic
- * and systemic; this one is a founder's story told on paper. Everything
- * here sits on the cream island declared as `.paper-layrrrd` in index.css:
- * warm ground, near-black type, hairlines the colour of old card, low
- * radius, and one ink-block treatment reserved for the turns.
+ * Deliberately not the BrynQ set. That story is diagrammatic and systemic;
+ * this one is a founder's story told under pressure, so it leans on
+ * headlines, metrics and a reversal at each turn rather than on diagrams.
+ *
+ * It used to sit on its own cream palette. That palette is gone, along with
+ * the rest of the site's second and third design languages: the vocabulary
+ * below is a difference in structure now, not in colour, and it runs on the
+ * portfolio's own tokens like everything else.
  *
  * Read at two speeds. `Headline`, `Statement` and `Metric` carry the entire
  * argument on their own, so a scan of the page tells the story; `Lede`,
@@ -31,13 +34,14 @@ const heights: Record<SlideHeight, string> = {
 
 interface SlideProps {
   id: string;
-  /** Chapter this slide belongs to, e.g. '01'. Drives the sticky rail. */
+  /** Chapter this slide belongs to, e.g. '01'. */
   chapter?: string;
   height?: SlideHeight;
   center?: boolean;
-  /** Ink block: cream type on near-black. Kept for the turns in the story.
-   *  Flips the token island (see .ink-block in index.css) so everything
-   *  inside keeps its contrast without restating a single colour. */
+  /** A reversal, marking a turn in the story. Carries `.theme-invert`, the
+   *  same device the other case studies use for an inverted slide, so the
+   *  tokens flip and everything inside keeps its contrast without restating
+   *  a single colour. */
   tone?: 'paper' | 'ink';
   className?: string;
   children: ReactNode;
@@ -61,12 +65,12 @@ export const Slide = ({
       // scroll-mt clears the site nav and the sticky rail, so an anchored
       // slide never opens underneath the chrome.
       className={`relative scroll-mt-[9rem] border-t border-border ${
-        tone === 'ink' ? 'ink-block' : ''
+        tone === 'ink' ? 'theme-invert bg-background text-foreground' : ''
       } ${className}`}
     >
       <div
         ref={ref}
-        className={`reveal mx-auto flex w-full max-w-[var(--shell)] flex-col px-5 py-20 md:px-8 md:py-28 lg:px-12 ${
+        className={`reveal mx-auto flex w-full max-w-[var(--shell)] flex-col px-gutter py-section ${
           heights[height]
         } ${center ? 'items-center justify-center text-center' : 'justify-center'}`}
       >
@@ -117,7 +121,7 @@ export const Lede = ({ children, wide = false }: { children: ReactNode; wide?: b
 
 /** A typographic turn. Used sparingly, and always alone. */
 export const Statement = ({ children }: { children: ReactNode }) => (
-  <p className="mt-12 max-w-[18ch] text-[2.25rem] font-medium leading-[1.02] md:mt-16 md:text-[4rem]">
+  <p className="mt-break max-w-[18ch] text-[2.25rem] font-medium leading-[1.02] md:text-[4rem]">
     {children}
   </p>
 );
@@ -167,7 +171,7 @@ export const Metric = ({
 
 /** A row of metrics that wraps rather than shrinking the figures. */
 export const MetricRow = ({ children }: { children: ReactNode }) => (
-  <div className="mt-10 flex flex-wrap gap-x-14 gap-y-9 md:mt-14">{children}</div>
+  <div className="mt-break flex flex-wrap gap-x-14 gap-y-9">{children}</div>
 );
 
 /** A filled card. The product's own panel: cream, low radius, no shadow. */

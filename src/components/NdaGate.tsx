@@ -57,15 +57,15 @@ const NdaGate = ({ storageKey, hash, label, children }: NdaGateProps) => {
   };
 
   return (
-    <div className="flex min-h-[70vh] items-center px-5 md:px-8 lg:px-12">
+    <div className="flex min-h-[70vh] items-center px-gutter">
       <div className="mx-auto w-full max-w-md">
         <p className="label text-ink-500">{label}</p>
         <h1 className="mt-6 text-3xl md:text-4xl">
           This part is under <span className="em">NDA.</span>
         </h1>
         <p className="mt-5 text-base leading-[1.55] text-ink-600">
-          The detailed case studies contain design work I can only share privately. If you
-          have the password, enter it below; if not, ask me for it.
+          The detailed studies show design work I can only share privately. If you have the
+          password, type it below. If not, ask me for it.
         </p>
 
         <form onSubmit={submit} className="mt-8">

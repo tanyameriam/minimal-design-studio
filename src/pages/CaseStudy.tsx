@@ -2,15 +2,37 @@ import { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Contact from '@/components/Contact';
-import ReadingProgress from '@/components/ReadingProgress';
+import { ReadingNav, sectionsToChapters } from '@/design/ReadingNav';
 import CaseStudyBody from '@/components/case-study/CaseStudyBody';
 import CaseStudyHero from '@/components/case-study/CaseStudyHero';
-import ProgressNav from '@/components/case-study/ProgressNav';
 import Lightbox from '@/components/case-study/Lightbox';
 import { useLightbox } from '@/hooks/use-lightbox';
-import { caseStudies, adjacentCaseStudies, statusLabel } from '@/data/caseStudies';
+import { caseStudies, adjacentCaseStudies, statusLabel, type Section } from '@/data/caseStudies';
 import { readingMinutes } from '@/data/caseStudies/readingTime';
 import { usePageMeta } from '@/hooks/use-page-meta';
+
+/**
+ * Section labels for the contents list.
+ *
+ * Lifted out of the page's own ProgressNav, which is the component the
+ * shared ReadingNav replaced. The labels come from the sections themselves,
+ * so every study's contents read as its own story, with `nav` overriding
+ * where a heading runs too long for the column.
+ */
+const navSections = (sections: Section[]) =>
+  sections
+    .map((section) => {
+      if (section.nav) return { id: section.id, label: section.nav };
+      switch (section.kind) {
+        case 'step':
+          return { id: section.id, label: `${section.index}  ${section.problem}` };
+        case 'custom':
+          return { id: section.id, label: section.label ?? section.heading ?? '' };
+        default:
+          return { id: section.id, label: section.label };
+      }
+    })
+    .filter((entry) => entry.label);
 
 /**
  * `slug` is normally the route param. It is passed explicitly for studies
@@ -63,13 +85,15 @@ const CaseStudy = ({ slug: slugProp }: { slug?: string } = {}) => {
   return (
     <>
       <Navigation />
-      <ReadingProgress />
+      {/* The same navigation the hand-built case studies and the essays use.
+          This page had its own gutter list, at its own breakpoint, in its own
+          markup, doing exactly this job. */}
+      <ReadingNav chapters={sectionsToChapters(navSections(study.sections))} />
 
       <main id="main" className="min-h-screen bg-background">
-        <ProgressNav sections={study.sections} />
 
         {/* overflow-x-clip absorbs the block-wide / block-full breakouts. */}
-        <article className="overflow-x-clip px-5 md:px-8 lg:px-12 pt-32 md:pt-40 pb-20">
+        <article className="overflow-x-clip px-gutter pt-masthead pb-20">
           <div className="mx-auto max-w-3xl">
             {/* Title block. The headline is an outcome, not a project name. */}
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">

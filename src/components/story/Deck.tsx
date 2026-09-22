@@ -1,10 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import {
-  StorylineList,
-  type Storyline,
-  type StorylineChapter,
-} from '@/components/story/Storyline';
+import { type Storyline, type StorylineChapter } from '@/components/story/Storyline';
 
 export interface DeckSlide {
   id: string;
@@ -66,19 +62,19 @@ interface DeckProps {
 }
 
 /**
- * The story-deck chrome shared by every deck: the storyline rail, keyboard,
- * swipe and button navigation, fullscreen, and the progress hairline.
- * Slides carry each deck's own visual strategy.
+ * The story-deck chrome shared by every deck: the storyline strip, keyboard,
+ * swipe and button navigation, and fullscreen. Slides carry each deck's own
+ * visual strategy.
  *
- * The rail is the deck's answer to the problem a linear deck always has:
+ * The strip along the bottom answers the problem a linear deck always has:
  * the reader is one slide deep with no idea how long the story is, what it
  * covers, or whether the part they care about is still coming. It names
- * every slide, marks the one after this one, and jumps.
+ * every chapter, fills in as the reader goes, and jumps. It lives at the
+ * bottom rather than in a sidebar so the slide gets the whole width.
  */
 const Deck = ({ label, exitHref, slides }: DeckProps) => {
   const [index, setIndex] = useState(0);
   const [fullscreen, setFullscreen] = useState(false);
-  const [sheetOpen, setSheetOpen] = useState(false);
   const deckRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const touchX = useRef<number | null>(null);
@@ -109,8 +105,9 @@ const Deck = ({ label, exitHref, slides }: DeckProps) => {
     [total],
   );
 
+  const stripRef = useRef<HTMLOListElement>(null);
+
   const goTo = useCallback((id: string) => {
-    setSheetOpen(false);
     setIndex(slides.findIndex((slide) => slide.id === id));
     scrollRef.current?.scrollTo({ top: 0 });
   }, [slides]);
@@ -122,11 +119,7 @@ const Deck = ({ label, exitHref, slides }: DeckProps) => {
         // closing the whole overlay on the same press would be two exits
         // for one key.
         if (document.fullscreenElement) return;
-        if (sheetOpen) {
-          setSheetOpen(false);
-        } else {
-          exit();
-        }
+        exit();
         return;
       }
       if (e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
@@ -137,7 +130,7 @@ const Deck = ({ label, exitHref, slides }: DeckProps) => {
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [go, total, sheetOpen, exit]);
+  }, [go, total, exit]);
 
   useEffect(() => {
     const onChange = () => setFullscreen(Boolean(document.fullscreenElement));
@@ -154,6 +147,12 @@ const Deck = ({ label, exitHref, slides }: DeckProps) => {
   }, []);
 
   const slide = slides[index];
+
+  useEffect(() => {
+    stripRef.current
+      ?.querySelector('[data-current]')
+      ?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  }, [index]);
   const upcoming = index < total - 1 ? slides[index + 1] : null;
 
   return (
@@ -171,20 +170,12 @@ const Deck = ({ label, exitHref, slides }: DeckProps) => {
         role="dialog"
         aria-modal="true"
         aria-label={label}
-        className="deck-pop light absolute inset-0 flex flex-col overflow-hidden bg-background text-foreground md:inset-4 md:rounded-[var(--radius)] md:border md:border-border md:shadow-2xl lg:inset-6"
+        className="deck-pop absolute inset-0 flex flex-col overflow-hidden bg-background text-foreground md:inset-4 md:rounded-[var(--radius)] md:border md:border-border md:shadow-2xl lg:inset-6"
       >
       {/* Deck chrome: title, storyline, fullscreen, exit. */}
       <header className="flex shrink-0 items-center justify-between gap-4 border-b border-border px-5 py-4 md:px-8">
         <span className="label truncate text-ink-800">{label}</span>
         <div className="flex shrink-0 items-center gap-5">
-          <button
-            type="button"
-            onClick={() => setSheetOpen(true)}
-            aria-expanded={sheetOpen}
-            className="rule-link label text-ink-500 lg:hidden"
-          >
-            Storyline
-          </button>
           <button
             type="button"
             onClick={toggleFullscreen}
@@ -197,8 +188,8 @@ const Deck = ({ label, exitHref, slides }: DeckProps) => {
               one that survives a phone width: a reader who wants the depth
               should never have to reach the last slide to find the door. */}
           <Link to={exitHref} className="rule-link label text-foreground">
-            <span className="hidden sm:inline">Read the full case study</span>
-            <span className="sm:hidden">Full case study</span>{' '}
+            <span className="hidden sm:inline">Read the detailed study</span>
+            <span className="sm:hidden">Detailed study</span>{' '}
             <span aria-hidden="true">&rarr;</span>
           </Link>
           <button type="button" onClick={exit} aria-keyshortcuts="Escape" className="rule-link label text-ink-500">
@@ -208,30 +199,6 @@ const Deck = ({ label, exitHref, slides }: DeckProps) => {
       </header>
 
       <div className="flex min-h-0 flex-1">
-        {/* The storyline, always in view where the width allows. */}
-        <nav
-          aria-label="Storyline"
-          className="hidden w-[15rem] shrink-0 flex-col border-r border-border lg:flex"
-        >
-          <div className="flex shrink-0 items-baseline justify-between gap-3 border-b border-border px-4 py-3.5">
-            <span className="label text-ink-500">Storyline</span>
-            <span className="label tabular-nums text-ink-500">
-              {index + 1} / {total}
-            </span>
-          </div>
-          <div className="min-h-0 flex-1 overflow-y-auto pb-8">
-            <StorylineList
-              chapters={storyline}
-              activeId={slide.id}
-              hrefFor={() => '#'}
-              onSelect={(id, event) => {
-                event.preventDefault();
-                goTo(id);
-              }}
-            />
-          </div>
-        </nav>
-
         {/* Slide area. Tall slides scroll inside it; the page never does. */}
         <div className="relative min-w-0 flex-1">
           <div
@@ -262,8 +229,8 @@ const Deck = ({ label, exitHref, slides }: DeckProps) => {
             </section>
           </div>
 
-          {/* Edge arrows, anchored to the slide area rather than the window,
-              so they never sit on top of the rail. Touch users swipe. */}
+          {/* Edge arrows, anchored to the slide area. Touch users swipe, or
+              use the buttons in the footer. */}
           {index > 0 && (
             <button
               type="button"
@@ -287,7 +254,7 @@ const Deck = ({ label, exitHref, slides }: DeckProps) => {
         </div>
       </div>
 
-      {/* Progress: hairline fill, what is coming, counter. */}
+      {/* Progress: the storyline strip and the counter. */}
       <footer className="shrink-0 border-t border-border px-5 py-4 md:px-8">
         <div className="flex items-center gap-4 md:gap-6">
           {/* Touch screens get real buttons rather than only a swipe: a
@@ -313,29 +280,54 @@ const Deck = ({ label, exitHref, slides }: DeckProps) => {
             </button>
           </div>
 
-          <span className="label hidden shrink-0 text-ink-500 md:block">&larr; &rarr; or swipe</span>
+          {/*
+            The storyline, as a strip. One entry per chapter, one tick per
+            slide, filled up to where the reader is. It scrolls sideways
+            when the chapters do not fit, and keeps the current one in view.
+          */}
+          <nav aria-label="Storyline" className="min-w-0 flex-1 overflow-x-auto [scrollbar-width:none]">
+            <ol ref={stripRef} className="flex min-w-max items-stretch gap-1">
+              {storyline.map((chapter) => {
+                const current = chapter.slides.some((s) => s.id === slide.id);
+                return (
+                  <li key={chapter.n} data-current={current || undefined}>
+                    <button
+                      type="button"
+                      onClick={() => goTo(chapter.slides[0].id)}
+                      aria-current={current ? 'step' : undefined}
+                      className={`group/ch flex h-full flex-col gap-2 rounded-sm px-2.5 py-1.5 text-left transition-colors ${
+                        current ? 'text-foreground' : 'text-ink-500 hover:text-foreground'
+                      }`}
+                    >
+                      <span className="label whitespace-nowrap">
+                        <span className="tabular-nums">{chapter.n}</span> {chapter.name}
+                      </span>
+                      <span aria-hidden="true" className="flex gap-1">
+                        {chapter.slides.map((s) => {
+                          const done = slides.findIndex((d) => d.id === s.id) <= index;
+                          return (
+                            <span
+                              key={s.id}
+                              className={`h-0.5 w-5 transition-colors duration-500 ${
+                                done ? 'bg-foreground' : 'bg-border group-hover/ch:bg-ink-400'
+                              }`}
+                            />
+                          );
+                        })}
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ol>
+          </nav>
 
-          <div className="h-px flex-1 bg-border">
-            <div
-              className="h-px bg-foreground transition-all duration-500 ease-smooth"
-              style={{ width: `${((index + 1) / total) * 100}%` }}
-            />
-          </div>
-
-          {/* What the next slide is about, so the reader is never asked to
-              advance blind. */}
-          {/* What the next slide is about, and at the end of the deck the
-              continuation itself rather than a full stop. */}
-          {upcoming ? (
-            <span className="label hidden min-w-0 max-w-[22rem] shrink truncate text-ink-500 md:block">
-              Next: {upcoming.title}
-            </span>
-          ) : (
+          {!upcoming && (
             <Link
               to={exitHref}
               className="rule-link label hidden shrink-0 text-foreground md:block"
             >
-              End of the story. Read the full case study <span aria-hidden="true">&rarr;</span>
+              Read the detailed study <span aria-hidden="true">&rarr;</span>
             </Link>
           )}
 
@@ -345,44 +337,6 @@ const Deck = ({ label, exitHref, slides }: DeckProps) => {
         </div>
       </footer>
 
-      {/* The same storyline as a panel, for widths with no room for the rail. */}
-      {sheetOpen && (
-        <div className="absolute inset-0 z-[60] flex flex-col bg-background">
-          <div className="flex shrink-0 items-center justify-between border-b border-border px-6 py-4 md:px-8">
-            <span className="label text-ink-500">Storyline</span>
-            <button
-              type="button"
-              onClick={() => setSheetOpen(false)}
-              className="rule-link label"
-            >
-              Close
-            </button>
-          </div>
-          <nav aria-label="Storyline" className="min-h-0 flex-1 overflow-y-auto pb-12">
-            <div className="mx-auto w-full max-w-3xl">
-              <StorylineList
-                chapters={storyline}
-                activeId={slide.id}
-                size="sheet"
-                hrefFor={() => '#'}
-                onSelect={(id, event) => {
-                  event.preventDefault();
-                  goTo(id);
-                }}
-              />
-
-              <div className="mt-10 border-t border-border px-6 pt-6 md:px-8">
-                <Link to={exitHref} className="rule-link text-lg text-foreground">
-                  Read the full case study <span aria-hidden="true">&rarr;</span>
-                </Link>
-                <p className="label mt-2 text-ink-500">
-                  The long version, with the research and the detail
-                </p>
-              </div>
-            </div>
-          </nav>
-        </div>
-      )}
       </div>
     </div>
   );

@@ -69,7 +69,7 @@ export const Slide = ({
     >
       <div
         ref={ref}
-        className={`reveal mx-auto flex w-full max-w-[var(--shell)] flex-col px-5 py-20 md:px-8 md:py-28 lg:px-12 ${
+        className={`reveal mx-auto flex w-full max-w-[var(--shell)] flex-col px-gutter py-section ${
           heights[height]
         } ${center ? 'items-center justify-center text-center' : 'justify-center'}`}
       >
@@ -93,7 +93,7 @@ export const Slide = ({
  * the divider and the storyline rail carry the number.
  */
 export const Kicker = ({ n, label }: { n?: string; label: string }) => (
-  <div className="mb-10 flex flex-wrap items-center gap-x-4 gap-y-3 md:mb-14">
+  <div className="mb-break flex flex-wrap items-center gap-x-4 gap-y-3">
     {n && (
       <span className="label-strong shrink-0 rounded-md bg-foreground px-2.5 py-1.5 tabular-nums text-background">
         {n}
@@ -150,7 +150,7 @@ export const Lede = ({ children, wide = false }: { children: ReactNode; wide?: b
 
 /** A large typographic moment. Used sparingly, for the turns in the story. */
 export const Statement = ({ children }: { children: ReactNode }) => (
-  <p className="mt-14 max-w-[20ch] text-[2.25rem] leading-[1.05] md:mt-20 md:text-[4rem]">
+  <p className="mt-stage max-w-[20ch] text-[2.25rem] leading-[1.05] md:text-[4rem]">
     {children}
   </p>
 );
@@ -176,13 +176,13 @@ export const Statement = ({ children }: { children: ReactNode }) => (
  */
 export const Pov = ({ kind, children }: { kind: 'mine' | 'business'; children: ReactNode }) =>
   kind === 'mine' ? (
-    <div className="panel mt-10 border-l-4 border-l-foreground p-5 md:mt-14 md:p-6 lg:p-8">
-      <p className="label mb-3 text-ink-500">My read</p>
+    <div className="panel mt-break border-l-4 border-l-foreground p-5 md:p-6 lg:p-8">
+      <p className="label mb-3 text-ink-500">What I think</p>
       <p className="max-w-[72ch] text-lg leading-[1.45] md:text-2xl">{children}</p>
     </div>
   ) : (
-    <div className="theme-invert panel mt-10 bg-card p-6 md:mt-14 md:p-8 lg:p-10">
-      <p className="label mb-4 text-accent">Why it mattered to the business</p>
+    <div className="theme-invert panel mt-break bg-card p-6 md:p-8 lg:p-10">
+      <p className="label mb-4 text-accent">Why this mattered to the business</p>
       <p className="max-w-[72ch] text-xl leading-[1.35] text-foreground md:text-[1.625rem]">
         {children}
       </p>
@@ -197,9 +197,9 @@ export const Pov = ({ kind, children }: { kind: 'mine' | 'business'; children: R
 export type EvidenceKind = 'observed' | 'direction' | 'illustrative';
 
 const evidenceCopy: Record<EvidenceKind, string> = {
-  observed: 'Observed',
-  direction: 'Current direction',
-  illustrative: 'Illustrative',
+  observed: 'What we saw',
+  direction: 'Where we are heading',
+  illustrative: 'An example, not real data',
 };
 
 export const Evidence = ({ kind }: { kind: EvidenceKind }) => (

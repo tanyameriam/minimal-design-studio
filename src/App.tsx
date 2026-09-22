@@ -21,6 +21,7 @@ const About = lazy(() => import('./pages/About'));
 const Writing = lazy(() => import('./pages/Writing'));
 const Article = lazy(() => import('./pages/Article'));
 const Playground = lazy(() => import('./pages/Playground'));
+const DesignSystem = lazy(() => import('./pages/DesignSystem'));
 const CV = lazy(() => import('./pages/CV'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -81,6 +82,11 @@ const App = () => (
           <Route path="/writing" element={<Writing />} />
           <Route path="/writing/:slug" element={<Article />} />
           <Route path="/playground" element={<Playground />} />
+          {/* The design language, rendered from the module the components
+              read. Reachable from the foot of the page rather than the nav:
+              it is craft evidence, not one of the five paths a hiring reader
+              is looking for. */}
+          <Route path="/design-system" element={<DesignSystem />} />
           <Route path="/cv" element={<CV />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

@@ -41,7 +41,7 @@ export const SavedThenForgotten = () => {
   const sources = ['Browser tabs', 'Bookmarks', 'Telegram', 'WhatsApp', 'Screenshots', 'Notes'];
 
   return (
-    <div className="mt-12 md:mt-16">
+    <div className="mt-break">
       <div className="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3 lg:grid-cols-6">
         {sources.map((source) => (
           <div key={source} className="flex flex-col">
@@ -62,7 +62,7 @@ export const SavedThenForgotten = () => {
           </p>
         </div>
         <p className="max-w-md text-base leading-[1.55] text-ink-600 md:self-end">
-          Write-only. Everything goes in, almost nothing is ever asked for again.
+          Things go in, and almost nothing ever comes back out.
         </p>
       </div>
     </div>
@@ -71,7 +71,7 @@ export const SavedThenForgotten = () => {
 
 /** A linear chain of stages. Wraps on desktop, stacks on mobile. */
 export const Chain = ({ steps, dense = false }: { steps: string[]; dense?: boolean }) => (
-  <ol className={`flex flex-col gap-2 md:flex-row md:flex-wrap md:items-center ${dense ? 'mt-8' : 'mt-12 md:mt-14'}`}>
+  <ol className={`flex flex-col gap-2 md:flex-row md:flex-wrap md:items-center ${dense ? 'mt-8' : 'mt-break'}`}>
     {steps.map((step, i) => (
       <li key={step} className="flex items-center gap-2 md:gap-3">
         {i > 0 && <Arrow className="h-4 w-4 shrink-0" />}
@@ -99,7 +99,7 @@ export const Reframe = ({
 }: {
   steps: { label: string; body: string }[];
 }) => (
-  <div className="mt-12 flex flex-col gap-4 md:mt-16 md:flex-row md:items-stretch md:gap-5">
+  <div className="mt-break flex flex-col gap-4 md:flex-row md:items-stretch md:gap-5">
     {steps.map((step, i) => (
       <div key={step.label} className="flex flex-1 flex-col gap-4 md:flex-row md:items-center">
         <div
@@ -120,7 +120,7 @@ export const Reframe = ({
 
 /** What was in the MVP and what waited. The boundary is the design work. */
 export const ScopeBoundary = ({ inScope, outScope }: { inScope: string[]; outScope: string[] }) => (
-  <div className="mt-12 grid gap-6 md:mt-16 lg:grid-cols-2 lg:gap-10">
+  <div className="mt-break grid gap-6 lg:grid-cols-2 lg:gap-10">
     <div className="rounded-[3px] bg-foreground p-6 text-background md:p-8">
       <p className="label mb-5 opacity-70">We included</p>
       <ul className="space-y-3">
@@ -155,7 +155,7 @@ export const TrustFlow = ({
   before: { label: string; steps: string[]; end: string };
   after: { label: string; steps: string[]; end: string };
 }) => (
-  <div className="mt-12 grid gap-6 md:mt-16 lg:grid-cols-2 lg:gap-10">
+  <div className="mt-break grid gap-6 lg:grid-cols-2 lg:gap-10">
     {[before, after].map((column, index) => {
       const resolved = index === 1;
       return (
@@ -201,7 +201,7 @@ export const Pivots = ({
 }: {
   rows: { from: string; to: string; problem: string; change: string }[];
 }) => (
-  <div className="mt-12 space-y-px md:mt-16">
+  <div className="mt-break space-y-px">
     {rows.map((row, i) => (
       <div
         key={row.to}
@@ -240,7 +240,7 @@ export const Pivots = ({
  * exist, listed as a set, because a set is all the evidence supports.
  */
 export const ShippedSince = ({ items }: { items: { name: string; note?: string }[] }) => (
-  <ul className="mt-12 grid gap-px md:mt-16 md:grid-cols-2">
+  <ul className="mt-break grid gap-px md:grid-cols-2">
     {items.map((item) => (
       <li key={item.name} className="bg-card px-6 py-6 md:px-7 md:py-7">
         <p className="text-lg leading-snug md:text-xl">{item.name}</p>
@@ -280,7 +280,7 @@ export const Verdicts = ({
   worked: string[];
   broke: string[];
 }) => (
-  <div className="mt-12 grid gap-6 md:mt-16 lg:grid-cols-2 lg:gap-10">
+  <div className="mt-break grid gap-6 lg:grid-cols-2 lg:gap-10">
     <div className="rounded-[3px] bg-card p-6 md:p-8">
       <p className="label mb-5 text-ink-500">What worked</p>
       <ul className="space-y-3.5">
@@ -306,7 +306,7 @@ export const Verdicts = ({
 
 /** A wrapper that lets a slide put a diagram beside its own copy. */
 export const Beside = ({ children }: { children: ReactNode }) => (
-  <div className="mt-12 grid gap-10 md:mt-16 lg:grid-cols-2 lg:gap-16">{children}</div>
+  <div className="mt-break grid gap-10 lg:grid-cols-2 lg:gap-16">{children}</div>
 );
 
 /* ------------------------------------------------------------------ *
@@ -341,7 +341,7 @@ export const Thumb = ({ file, ratio = 'aspect-[4/3]' }: { file: string; ratio?: 
  * shape of the project, which is most of what a two-minute scan is for.
  */
 export const Progression = ({ steps }: { steps: { name: string; body: string }[] }) => (
-  <ol className="mt-12 grid gap-x-5 gap-y-9 sm:grid-cols-2 md:mt-16 lg:grid-cols-4 xl:grid-cols-7">
+  <ol className="mt-break grid gap-x-5 gap-y-9 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7">
     {steps.map((step, i) => (
       <li key={step.name} className="border-t-2 border-foreground pt-4">
         <span className="label tabular-nums text-ink-500">{String(i + 1).padStart(2, '0')}</span>
@@ -362,7 +362,7 @@ export const SynthesisColumns = ({
 }: {
   columns: { label: string; items: string[] }[];
 }) => (
-  <div className="mt-12 grid gap-5 md:mt-16 md:grid-cols-3 md:gap-6">
+  <div className="mt-break grid gap-5 md:grid-cols-3 md:gap-6">
     {columns.map((column, i) => {
       const last = i === columns.length - 1;
       return (
@@ -411,7 +411,7 @@ export const DirectionShift = ({
   const Drop = () => <span aria-hidden="true" className="mx-auto block h-6 w-px bg-border" />;
 
   return (
-    <div className="mt-12 grid gap-8 md:mt-16 lg:grid-cols-2 lg:gap-12">
+    <div className="mt-break grid gap-8 lg:grid-cols-2 lg:gap-12">
       <div>
         <p className="label mb-6 text-ink-500">{before.label}</p>
         {before.chain.map((step, i) => (
@@ -479,7 +479,7 @@ export const BeforeAfterRows = ({
 }: {
   rows: { area: string; before: string; after: string; beforeFile?: string; afterFile?: string; finding: string }[];
 }) => (
-  <div className="mt-12 space-y-10 md:mt-16 md:space-y-12">
+  <div className="mt-break space-y-10 md:space-y-12">
     {rows.map((row) => (
       <div key={row.area} className="border-t border-border pt-6">
         <p className="label mb-5 text-ink-500">{row.area}</p>

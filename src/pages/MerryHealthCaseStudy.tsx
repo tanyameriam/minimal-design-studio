@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import { StudyOpening } from '@/components/case-study/slides/StudyOpening';
 import Contact from '@/components/Contact';
-import ReadingProgress from '@/components/ReadingProgress';
 import Lightbox from '@/components/case-study/Lightbox';
 import { useLightbox } from '@/hooks/use-lightbox';
-import { StorylineNav, type Storyline } from '@/components/story/Storyline';
+import { type Storyline } from '@/components/story/Storyline';
+import { ReadingNav } from '@/design/ReadingNav';
 import {
   Footnote,
   Headline,
@@ -118,29 +118,29 @@ const storyline: Storyline = [
     name: 'The service',
     target: 'summary',
     slides: [
-      { id: 'summary', title: 'The dashboard was one part of it' },
+      { id: 'summary', title: 'The dashboard was only one part' },
       { id: 'service', title: 'Following one ride, end to end' },
-      { id: 'evidence', title: 'Mapping where it broke' },
-      { id: 'failures', title: 'What the mapping showed' },
+      { id: 'evidence', title: 'Finding where it broke' },
+      { id: 'failures', title: 'What we found' },
     ],
   },
   {
     n: '02',
-    name: 'The reframe',
+    name: 'A new way to see it',
     target: 'reframe',
     slides: [
-      { id: 'reframe', title: 'One ride, one shared state' },
+      { id: 'reframe', title: 'One ride, one shared record' },
       { id: 'channels', title: 'Do not replace WhatsApp' },
     ],
   },
   {
     n: '03',
-    name: 'The operating model',
+    name: 'How the service works',
     target: 'intake',
     slides: [
-      { id: 'intake', title: 'Ask for what is needed now' },
-      { id: 'assignment', title: 'Replacing the calling loop' },
-      { id: 'lifecycle', title: 'One ride lifecycle' },
+      { id: 'intake', title: 'Ask only for what is needed now' },
+      { id: 'assignment', title: 'No more calling round' },
+      { id: 'lifecycle', title: 'The steps of one ride' },
       { id: 'fallbacks', title: 'Designing for when it goes wrong' },
     ],
   },
@@ -149,7 +149,7 @@ const storyline: Storyline = [
     name: 'The product',
     target: 'product',
     slides: [
-      { id: 'product', title: 'Four surfaces' },
+      { id: 'product', title: 'Four screens' },
       { id: 'dashboard', title: 'The operations dashboard' },
       { id: 'ride', title: 'The live ride' },
     ],
@@ -182,7 +182,7 @@ const MerryHealthCaseStudy = () => {
 
   usePageMeta(
     'Merry Health',
-    'Redesigning emergency ambulance dispatch. A service redesign of the Merry Health dispatch process, so every handoff holds, the patient is picked up, and the ride stays visible in real time, across hospitals, operations, drivers and patient families in Tier 2 and Tier 3 India.'
+    'Redesigning how emergency ambulances get sent. A redesign of the Merry Health service, so nothing gets dropped, the patient is picked up, and everyone can see the ride as it happens: hospitals, the operations team, drivers and families in smaller Indian cities.'
   );
 
   useEffect(() => {
@@ -190,72 +190,77 @@ const MerryHealthCaseStudy = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground rail-offset">
-      <ReadingProgress />
+    <div className="min-h-screen bg-background text-foreground">
       <Navigation />
-      <StorylineNav chapters={storyline} />
+      <ReadingNav chapters={storyline} />
 
       <main>
         {/* ============================== HERO ============================== */}
         <section id="top" className="border-t border-border">
-          <div className="mx-auto grid w-full max-w-[var(--shell)] gap-14 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-[1fr_1.05fr] lg:gap-20 lg:px-12">
+          <div className="mx-auto grid w-full max-w-[var(--shell)] gap-14 px-gutter py-section lg:grid-cols-[1fr_1.05fr] lg:gap-20">
             <div>
               <StudyOpening
                 slug="merry-health"
-                client="Merry Health &middot; Emergency operations &middot; 2026"
+                client="Merry Health &middot; Emergency ambulances &middot; 2026"
                 headline={
                   <>
-                    Redesigning <span className="em">emergency ambulance dispatch</span>.
+                    Redesigning how <span className="em">emergency ambulances get sent</span>.
                   </>
                 }
+                takeaways={{
+                  problem:
+                    'Rides were arranged over calls, WhatsApp, paper and a dashboard, so four groups each had a different idea of the same ride.',
+                  did: 'Designed one shared record for each ride. People keep using WhatsApp, and every way a ride can go wrong has someone in charge of fixing it.',
+                  outcome:
+                    'Nine hand-offs by phone become one shared record. This is a proposal, researched with the company and never launched.',
+                }}
               />
 
               <div className="mt-8 max-w-2xl space-y-5 text-base leading-[1.6] text-ink-600 md:text-lg">
                 <p>
-                  Merry Health coordinates ambulance requests between hospitals, its operations
-                  team, drivers and patient families across Tier 2 and Tier 3 cities in India.
+                  Merry Health arranges ambulance rides between hospitals, its operations team,
+                  drivers and patients’ families in smaller cities across India.
                 </p>
                 <p>
-                  We approached it as a product redesign. Then we mapped how a ride was actually
-                  dispatched, and found that most of the service happened outside the dashboard:
-                  in phone calls, WhatsApp, paper notes and repeated manual follow-ups.
+                  At first we treated it as a product redesign. Then we mapped how a ride was really
+                  sent out, and found that most of the work happened outside the dashboard: in phone
+                  calls, WhatsApp, paper notes and chasing people again and again.
                 </p>
+                {/* The paragraph that used to close this block described the
+                    dispatch model, which is what "What I did" now says three
+                    lines higher. The turn is kept, because a summary cannot
+                    carry the moment a project changes shape. */}
                 <p className="text-foreground">That changed the project.</p>
-                <p>
-                  Instead of redesigning individual screens, we worked on a dispatch model where
-                  one ride record could coordinate the people, channels and status changes an
-                  emergency actually involves.
-                </p>
               </div>
 
               <dl className="mt-12 grid max-w-2xl gap-x-10 gap-y-7 border-t border-border pt-8 sm:grid-cols-2">
                 <div className="sm:col-span-2">
                   <dt className="label mb-2.5 text-ink-500">Role</dt>
                   <dd className="text-base leading-snug md:text-lg">
-                    Research and discovery &middot; Systems thinking &middot; UX strategy &middot;
-                    Interaction design &middot; UI design
+                    Research &middot; Seeing the whole system &middot; Design planning &middot;
+                    Designing how it works &middot; Screen design
                   </dd>
                 </div>
                 <div>
                   <dt className="label mb-2.5 text-ink-500">Team</dt>
-                  <dd className="text-base leading-snug md:text-lg">Team of 5 designers</dd>
+                  <dd className="text-base leading-snug md:text-lg">A team of 5 designers</dd>
                 </div>
                 <div>
                   <dt className="label mb-2.5 text-ink-500">Tools</dt>
                   <dd className="text-base leading-snug md:text-lg">
-                    Figma &middot; Miro &middot; Prototyping
+                    Figma &middot; Miro &middot; Clickable mock-ups
                   </dd>
                 </div>
                 <div>
                   <dt className="label mb-2.5 text-ink-500">Context</dt>
                   <dd className="text-base leading-snug md:text-lg">
-                    MDes practicum apprenticeship with Merry Health, JSAA
+                    A master’s degree project with Merry Health, at JSAA
                   </dd>
                 </div>
                 <div>
                   <dt className="label mb-2.5 text-ink-500">Stage</dt>
                   <dd className="text-base leading-snug md:text-lg">
-                    Proposed system. Researched with Merry Health, not deployed.
+                    A proposal. Researched with Merry Health, but never launched.
                   </dd>
                 </div>
               </dl>
@@ -277,91 +282,91 @@ const MerryHealthCaseStudy = () => {
         <Slide id="summary" chapter="01" height="auto">
           <Kicker n="01" label="The project in 30 seconds" />
           <Headline size="large">
-            The dashboard was <span className="em">one part</span> of the dispatch process.
+            The dashboard was <span className="em">only one part</span> of sending an ambulance.
           </Headline>
           <Lede wide>
-            When we mapped the existing workflow with Merry Health operations, a single request
-            crossed four channels and several people before an ambulance moved. The product
-            existed. Most of the service ran beside it.
+            When we mapped the old way of working with the Merry Health team, one request went
+            through four channels and several people before an ambulance moved. The product was
+            there. But most of the work happened next to it.
           </Lede>
 
           <Facts
-            source="From the workflow we mapped with the operations team, not from platform-wide instrumentation."
+            source="From the way of working we mapped with the operations team, not measured across the whole product."
             items={[
               {
                 figure: '8 to 10 min',
-                note: 'From request to a confirmed driver, in the workflow we observed',
+                note: 'From the request to a driver saying yes, in the rides we watched',
               },
               { figure: '3 to 4 calls', note: 'Driver calls before someone accepted' },
               { figure: 'Four channels', note: 'Phone, WhatsApp, paper and the dashboard' },
               {
-                figure: 'No shared state',
-                note: 'Hospital, operations, driver and family could each hold a different version of the same trip',
+                figure: 'No shared record',
+                note: 'The hospital, operations team, driver and family could each have a different idea of the same trip',
               },
             ]}
           />
         </Slide>
 
         <Slide id="service" chapter="01" height="auto">
-          <Kicker n="01" label="Starting with the existing service" />
+          <Kicker n="01" label="Starting with the service as it was" />
           <Headline>
-            We followed one ride from the first call <span className="em">to closure</span>.
+            We followed one ride from the first call <span className="em">to the very end</span>.
           </Headline>
           <Lede wide>
-            The dashboard showed rides, maps and operational data, but it did not represent how the
-            work was happening. A typical emergency moved roughly like this. The system was
-            recording parts of the journey. People were holding the service together.
+            The dashboard showed rides, maps and numbers, but it did not show how the work was
+            really done. A typical emergency went roughly like this. The product was recording
+            bits of the journey. People were holding the whole service together.
           </Lede>
 
           <CurrentFlow
             steps={[
               {
-                actor: 'Patient party',
+                actor: 'Patient’s family',
                 act: 'Calls the hospital during an emergency',
                 via: 'Phone',
               },
               {
                 actor: 'Hospital admin',
-                act: 'Collects patient details, often while still on the call',
+                act: 'Writes down the patient’s details, often while still on the call',
                 via: 'Phone, paper',
               },
               {
                 actor: 'Hospital admin',
-                act: 'Forwards the request to Merry Health',
+                act: 'Passes the request on to Merry Health',
                 via: 'WhatsApp or a call',
               },
               {
                 actor: 'Merry Health operations',
-                act: 'Enters the request into the dashboard as a new ride',
+                act: 'Types the request into the dashboard as a new ride',
                 via: 'Dashboard',
               },
               {
                 actor: 'Merry Health operations',
-                act: 'Calls drivers one by one to check availability',
+                act: 'Calls drivers one by one to find someone free',
                 via: 'Phone',
                 repeat: '3 to 4 calls, until somebody picks up and confirms',
               },
               { actor: 'Driver', act: 'Confirms and starts the trip', via: 'Phone' },
               {
-                actor: 'Hospital and patient party',
+                actor: 'Hospital and patient’s family',
                 act: 'Call again to ask where the ambulance is',
                 via: 'Phone',
                 repeat: 'Every time anyone wants to know, because nothing has told them',
               },
               {
                 actor: 'Merry Health operations',
-                act: 'Calls the driver for a status, then relays it back',
+                act: 'Calls the driver for an update, then passes it on',
                 via: 'Phone',
               },
               {
                 actor: 'Merry Health operations',
-                act: 'Closes the ride on the dashboard, sometimes much later',
+                act: 'Marks the ride as done on the dashboard, sometimes much later',
                 via: 'Dashboard',
               },
             ]}
           />
 
-          <p className="label mt-14 border-b border-border pb-3 text-ink-500 md:mt-20">
+          <p className="label mt-stage border-b border-border pb-3 text-ink-500">
             The platform as it was
           </p>
           <div className="mt-6 grid gap-6 md:grid-cols-2 md:gap-8">
@@ -374,13 +379,13 @@ const MerryHealthCaseStudy = () => {
             <Plate
               src={legacyBooking}
               alt="The existing booking form, a long single-column form of required fields"
-              caption="Booking. Every field weighted the same, whatever the emergency."
+              caption="Booking. Every box counted the same, whatever the emergency."
               onOpen={open}
             />
             <Plate
               src={legacyMap}
               alt="The existing find-ambulance map view"
-              caption="Find ambulance. A map, without a ride state attached to it."
+              caption="Find ambulance. A map, with no ride information on it."
               onOpen={open}
             />
             <Plate
@@ -395,20 +400,20 @@ const MerryHealthCaseStudy = () => {
         <Slide id="evidence" chapter="01" height="auto">
           <Kicker n="01" label="How we know" />
           <Headline>
-            Mapping where the system was <span className="em">breaking</span>.
+            Finding where the service was <span className="em">breaking</span>.
           </Headline>
           <Lede wide>
-            We audited the platform, reconstructed the dispatch workflow end to end with the
-            operations team, and traced each actor through it. Blueprinting it by phase was what
-            made the pattern visible: the same breakdowns turned up in every phase, which made
-            them structural rather than local.
+            We checked the whole product, drew out every step of sending a ride with the
+            operations team, and followed each person through it. Drawing it step by step
+            showed a pattern: the same problems came up at every step. That meant they were
+            built into the way things worked, not one-off mistakes.
           </Lede>
 
           <Methods
             items={[
               'Platform audit',
               'Stakeholder analysis',
-              'Current-state workflow mapping',
+              'Mapping how the work was done',
               'Journey mapping',
               'Opportunity mapping',
               'Scenario analysis',
@@ -419,93 +424,93 @@ const MerryHealthCaseStudy = () => {
             phases={[
               {
                 name: 'Intake',
-                actors: 'Patient party, hospital admin, operations',
+                actors: 'Patient’s family, hospital admin, operations',
                 breaks:
-                  'Heavy dependency on manual coordination. Details were collected on a call and retyped somewhere else.',
-                opportunity: 'Capture the request once, in the channel it already arrives in.',
+                  'Lots of work done by hand. Details were written down on a call and typed in again somewhere else.',
+                opportunity: 'Take the request once, in the place it already arrives.',
               },
               {
                 name: 'Assign',
                 actors: 'Operations, driver',
                 breaks:
-                  'No real-time visibility. Assignment ran on repeated calls, which slowed dispatch and made it unpredictable.',
-                opportunity: 'Push the assignment, track the response, escalate on a timer.',
+                  'Nobody could see what was happening right now. Finding a driver took call after call, which was slow and hard to predict.',
+                opportunity: 'Send the job to a driver, watch for a reply, and move on if the timer runs out.',
               },
               {
-                name: 'En route',
-                actors: 'Driver, operations, hospital, patient party',
+                name: 'On the way',
+                actors: 'Driver, operations, hospital, patient’s family',
                 breaks:
-                  'Fragmented data across channels. One ride moved through WhatsApp, calls and the dashboard, and each held a different version of it.',
-                opportunity: 'One ride state, read by every channel.',
+                  'Information was scattered. One ride went through WhatsApp, calls and the dashboard, and each one had a different version of it.',
+                opportunity: 'One ride record that every channel reads.',
               },
               {
-                name: 'Handover and close',
+                name: 'Handover and finish',
                 actors: 'Driver, operations',
                 breaks:
-                  'The system expected structured entry, staff used quick calls, and records were completed late.',
-                opportunity: 'Close the ride from an operational event, not from somebody remembering.',
+                  'The product wanted neat forms, staff made quick calls, and records were filled in late.',
+                opportunity: 'Finish the ride when something actually happens, not when somebody remembers.',
               },
             ]}
           />
 
-          <p className="label mt-14 border-b border-border pb-3 text-ink-500 md:mt-20">
-            The working artifacts
+          <p className="label mt-stage border-b border-border pb-3 text-ink-500">
+            Our working boards
           </p>
           <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <Artifact
               src={currentFlow}
-              alt="The current-state dispatch flowchart, annotated with the loops and gaps found in the workflow"
-              title="Current-state flow"
-              note="Every branch, with the loops marked where the process repeats itself."
+              alt="A flowchart of how rides were sent before, with notes on the loops and gaps we found"
+              title="How it worked before"
+              note="Every path, with the loops marked where the work repeats itself."
               onOpen={open}
             />
             <Artifact
               src={phaseMapping}
-              alt="The service blueprint: four phases across four actors, with the system breakdown reason for each phase"
-              title="Service blueprint"
-              note="Four phases, four actors, and the breakdown reason under each phase."
+              alt="The service map: four steps across four groups of people, with the reason it broke down at each step"
+              title="Service map"
+              note="Four steps, four groups of people, and why it broke down at each step."
               onOpen={open}
             />
             <Artifact
               src={opportunityRefined}
-              alt="The refined opportunity mapping table: each loophole in the workflow against its current issue, mapped opportunity and expected impact"
-              title="Opportunity mapping"
-              note="Eight loopholes, each mapped to an opportunity and the measure it would move."
+              alt="The table of chances to improve: each gap in the work, next to the problem today, the chance to fix it and what that would change"
+              title="Chances to improve"
+              note="Eight gaps, each matched to a fix and the number it would change."
               onOpen={open}
             />
             <Artifact
               src={hospitalJourney}
-              alt="The hospital admin journey map across the dispatch process"
+              alt="The journey map for the hospital admin, from start to end of a ride"
               title="Hospital admin journey"
               onOpen={open}
             />
             <Artifact
               src={adminCurrentJourney}
-              alt="The Merry Health operations journey map, current state"
-              title="Operations journey, current"
+              alt="The journey map for the Merry Health operations team, before"
+              title="Operations journey, before"
               onOpen={open}
             />
             <Artifact
               src={patientCurrentJourney}
-              alt="The patient party journey map, current state"
-              title="Patient party journey, current"
+              alt="The journey map for the patient’s family, before"
+              title="Family journey, before"
               onOpen={open}
             />
             <Artifact
               src={adminIdealJourney}
-              alt="The Merry Health operations journey map, proposed state"
-              title="Operations journey, proposed"
+              alt="The journey map for the Merry Health operations team, with our changes"
+              title="Operations journey, with our changes"
               onOpen={open}
             />
             <Artifact
               src={patientIdealJourney}
-              alt="The patient party journey map, proposed state"
-              title="Patient party journey, proposed"
+              alt="The journey map for the patient’s family, with our changes"
+              title="Family journey, with our changes"
               onOpen={open}
             />
             <Artifact
               src={opportunityMapping}
-              alt="The working opportunity mapping board"
+              alt="Our working board of chances to improve"
               title="The working board"
               note="Where the eight came from."
               onOpen={open}
@@ -513,113 +518,113 @@ const MerryHealthCaseStudy = () => {
           </div>
 
           <Footnote>
-            These are working boards, kept small on purpose and readable at full size. The
-            current-state maps were built with Merry Health operations from the workflow as they
-            ran it, which is why the conditions quoted on this page say they were observed there
-            rather than measured across the platform.
+            These are working boards, kept small on purpose, and you can read them at full
+            size. We built the before-maps with the Merry Health team, from how they really
+            worked. That is why the numbers on this page say we saw them there, and not that
+            we measured them across the whole product.
           </Footnote>
         </Slide>
 
         <Slide id="failures" chapter="01" height="auto">
           <Kicker n="01" label="What the mapping showed" />
           <Headline>
-            Four problems kept appearing <span className="em">across the workflow</span>.
+            Four problems kept coming up <span className="em">at every step</span>.
           </Headline>
 
           <Failures
             items={[
               {
-                title: 'The system expected too much information too early',
-                body: 'The existing flow wanted a complete structured request before anything could move. That did not match an emergency, where staff were trying to get an ambulance moving first and complete the details later.',
+                title: 'The product asked for too much, too soon',
+                body: 'The old way wanted a complete form before anything could happen. That does not fit an emergency, where staff want to get an ambulance moving first and fill in the details later.',
                 quote: 'We can’t fill long forms when a patient is critical.',
               },
               {
-                title: 'Driver assignment depended on repeated calls',
-                body: 'Operations called drivers one after another until someone responded, so dispatch time depended on who picked up rather than on a predictable assignment process.',
+                title: 'Finding a driver meant calling again and again',
+                body: 'The operations team called drivers one after another until someone answered. So how fast an ambulance left depended on who picked up, not on a clear way of choosing a driver.',
                 quote: 'I call 3 to 4 drivers before one confirms.',
               },
               {
-                title: 'Nobody shared the same live status',
-                body: 'ETA and ride progress were not consistently visible, so hospitals and families called for updates. Operations then called the driver and relayed the answer back.',
-                quote: 'Families keep calling us for ETA updates.',
+                title: 'Nobody could see the same live update',
+                body: 'Nobody could easily see when the ambulance would arrive or how the ride was going, so hospitals and families called to ask. The operations team then called the driver and passed the answer back.',
+                quote: 'Families keep calling us to ask when the ambulance will arrive.',
               },
               {
-                title: 'Data was being completed after the event',
-                body: 'Information moved between paper, WhatsApp, calls and the dashboard. When records were completed later, the timestamps stopped representing what had actually happened.',
+                title: 'Records were filled in after it was all over',
+                body: 'Information moved between paper, WhatsApp, calls and the dashboard. When records were filled in later, the times on them no longer showed what had really happened.',
                 quote: 'We update records at the end of the day.',
               },
             ]}
           />
 
           <Footnote>
-            One number in the existing dashboard carries the fourth problem on its own. The
-            platform&rsquo;s own average response time reads 23:41:14. That is not how long an
-            ambulance took. It is what the figure becomes when rides are closed at the end of the
-            day instead of when they end.
+            One number on the old dashboard shows the fourth problem by itself. The product’s
+            own average response time says 23:41:14. That is not how long an ambulance took.
+            It is what the number turns into when rides are marked done at the end of the day,
+            instead of when they really end.
           </Footnote>
         </Slide>
 
         {/* ======================== 02, THE REFRAME ========================= */}
         <Slide id="reframe" chapter="02" height="auto">
-          <Kicker n="02" label="The reframe" />
+          <Kicker n="02" label="A new way to see it" />
           <Headline size="large">
-            One ride. <span className="em">One shared state.</span>
+            One ride. <span className="em">One shared record.</span>
           </Headline>
           <Lede wide>
-            Once we could see the complete journey, it was clear that improving one interface would
-            not remove the coordination work. Four groups were involved, each with a different
-            need, and none of them could see the same thing at the same time. Instead of each
-            person maintaining their own version of the ride, every channel would read from and
-            write to the same record.
+            Once we could see the whole journey, it was clear that fixing one screen would not
+            remove all the back and forth. Four groups were involved. Each needed something
+            different, and none of them could see the same thing at the same time. So instead
+            of each person keeping their own version of the ride, every channel would read from
+            and write to the same record.
           </Lede>
 
           <ActorHub
             hub="MH-REQ-1342"
-            hubNote="One record every channel reads from and writes to. Four seats, one version of the ride."
+            hubNote="One record that every channel reads from and writes to. Four groups, one version of the ride."
             actors={[
               {
                 name: 'Hospital admin',
-                needs: 'To send a request quickly, and know it has been received.',
+                needs: 'To send a request quickly, and know it got through.',
               },
               {
                 name: 'Merry Health operations',
-                needs: 'To see every active ride, know what needs attention, and intervene when something goes wrong.',
+                needs: 'To see every ride that is happening, know what needs attention, and step in when something goes wrong.',
               },
               {
                 name: 'Driver',
-                needs: 'A clear assignment, and as little interaction as possible while driving.',
+                needs: 'A clear job, and as few taps as possible while driving.',
               },
               {
-                name: 'Patient family',
-                needs: 'To know help is coming, and get updates without repeatedly calling.',
+                name: 'Patient’s family',
+                needs: 'To know help is coming, and get updates without calling again and again.',
               },
             ]}
           />
         </Slide>
 
         <Slide id="channels" chapter="02" height="auto" invert>
-          <Kicker n="02" label="The key product decision" />
+          <Kicker n="02" label="The big product choice" />
           <Headline size="large">
             We did not try to <span className="em">replace WhatsApp</span>.
           </Headline>
           <Lede wide>
-            Hospital staff were already using it because it was familiar, fast and available during
-            an emergency. Asking them to move into a new interface would have introduced another
-            behaviour change at exactly the wrong moment. So we separated the service into two
-            layers: the channel could stay familiar, and the structure behind it became consistent.
+            Hospital staff already used it because it was familiar, fast and always there in an
+            emergency. Asking them to switch to a new app would have meant learning something new
+            at exactly the wrong moment. So we split the service into two layers: the chat people
+            use could stay the same, and the system behind it would be the same every time.
           </Lede>
 
-          <div className="mt-14 md:mt-20">
+          <div className="mt-stage">
             <Split
               left={{
-                label: 'Familiar interaction layer',
+                label: 'The part people see',
                 children: (
                   <>
                     <p className="text-2xl leading-snug md:text-3xl">WhatsApp and SMS</p>
                     <Callouts
                       items={[
                         'The ambulance request itself',
-                        'Prompts for missing information',
+                        'Reminders for missing details',
                         'Driver acceptance',
                         'Milestone updates',
                         'Tracking links',
@@ -630,18 +635,18 @@ const MerryHealthCaseStudy = () => {
                 ),
               }}
               right={{
-                label: 'Operational layer',
+                label: 'The part behind it',
                 children: (
                   <>
                     <p className="text-2xl leading-snug md:text-3xl">The Merry Health platform</p>
                     <Callouts
                       items={[
-                        'Structured ride records',
+                        'Neat, complete ride records',
                         'Assignment logic',
-                        'Shared ride state',
+                        'One shared ride record',
                         'Live operations',
                         'Exception handling',
-                        'Reporting and audit',
+                        'Reports and checks',
                       ]}
                     />
                   </>
@@ -649,39 +654,39 @@ const MerryHealthCaseStudy = () => {
               }}
               centre={
                 <>
-                  Meet people in the channel they already trust, and{' '}
-                  <span className="em">structure everything behind the interaction</span>.
+                  Meet people in the app they already trust, and{' '}
+                  <span className="em">organise everything behind it</span>.
                 </>
               }
             />
           </div>
 
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 md:mt-20 md:gap-8">
+          <div className="mt-stage grid gap-6 sm:grid-cols-2 lg:grid-cols-4 md:gap-8">
             <Plate
               src={whatsappAdmin}
-              alt="The Merry Health operations WhatsApp thread, showing an incoming free-text request, an automatic case ID, and a prompt reading patient contact is missing please update"
-              caption="Operations. The system replies asking for the one missing field, not the whole form."
+              alt="The Merry Health operations WhatsApp chat, showing a request typed in normal words, a case number added automatically, and a message saying the patient contact is missing, please update"
+              caption="Operations. The system replies asking for the one missing detail, not the whole form."
               onOpen={open}
               imageClassName="aspect-[9/16] object-cover object-top"
             />
             <Plate
               src={whatsappHospital}
-              alt="The hospital announcement group, showing the case ID and each ride milestone posted as a status update"
-              caption="Hospital. Every milestone lands on one thread, against one case ID."
+              alt="The hospital group chat, showing the case number and each step of the ride posted as an update"
+              caption="Hospital. Every step lands in one chat, under one case number."
               onOpen={open}
               imageClassName="aspect-[9/16] object-cover object-top"
             />
             <Plate
               src={whatsappDriver}
-              alt="The driver thread, showing a ride card with case ID, patient contact, pickup link, distance, and accept or decline buttons"
-              caption="Driver. Case, distance, pickup link, accept or decline."
+              alt="The driver chat, showing a ride card with the case number, patient contact, pickup link, distance, and buttons to accept or decline"
+              caption="Driver. The case, the distance, the pickup link, accept or decline."
               onOpen={open}
               imageClassName="aspect-[9/16] object-cover object-top"
             />
             <Plate
               src={whatsappPatient}
-              alt="The patient party thread, showing driver details, ambulance number, arrival countdown and a tracking link"
-              caption="Patient party. Driver, ambulance, ETA, tracking link, arrival."
+              alt="The family chat, showing the driver’s details, the ambulance number, a countdown to arrival and a tracking link"
+              caption="Patient’s family. The driver, the ambulance, arrival time, a tracking link, arrival."
               onOpen={open}
               imageClassName="aspect-[9/16] object-cover object-top"
             />
@@ -690,22 +695,21 @@ const MerryHealthCaseStudy = () => {
 
         {/* ==================== 03, THE OPERATING MODEL ===================== */}
         <Slide id="intake" chapter="03" height="auto">
-          <Kicker n="03" label="Progressive intake" />
+          <Kicker n="03" label="Asking a little at a time" />
           <Headline>
-            Ask for what is needed now. Complete the rest{' '}
+            Ask for what is needed now. Fill in the rest{' '}
             <span className="em">while the ride moves</span>.
           </Headline>
           <Lede wide>
-            Instead of blocking dispatch until a complete form was filled, the proposed flow
-            prioritised the minimum information needed to act. If something essential was missing,
-            the system asked for that field specifically rather than presenting the whole form
-            again.
+            Instead of holding everything up until a full form was filled in, our plan asked
+            first for the few details needed to act. If something important was missing, the
+            system asked for that one detail, instead of showing the whole form again.
           </Lede>
 
           <IntakeSplit
             now={{
               label: 'Needed immediately',
-              note: 'The fields that determine whether an ambulance can be sent, and which one.',
+              note: 'The details that decide whether an ambulance can be sent, and which one.',
               items: [
                 'Location',
                 'Patient condition',
@@ -714,18 +718,18 @@ const MerryHealthCaseStudy = () => {
               ],
             }}
             later={{
-              label: 'Can be completed afterwards',
-              note: 'Everything that does not change the first dispatch decision.',
+              label: 'Can be filled in later',
+              note: 'Everything that does not change the first choice of ambulance.',
               items: [
-                'Additional administrative details',
+                'Extra paperwork details',
                 'Operational notes',
-                'Anything the record needs but the dispatch does not',
+                'Anything the record needs but sending the ambulance does not',
               ],
             }}
           />
 
           <Exchange
-            note="The record becomes structured as part of the conversation."
+            note="The record fills itself in as the chat goes on."
             turns={[
               {
                 who: 'Hospital sends',
@@ -747,39 +751,39 @@ const MerryHealthCaseStudy = () => {
           />
 
           <Principle>
-            The system asks only for what is missing. It never asks again for what it already has.
+            The system asks only for what is missing. It never asks again for what it already knows.
           </Principle>
         </Slide>
 
         <Slide id="assignment" chapter="03" height="auto">
-          <Kicker n="03" label="Replacing the driver-calling loop" />
+          <Kicker n="03" label="No more calling round the drivers" />
           <Headline>
-            Assignment became a <span className="em">tracked process</span>, not a phone call.
+            Finding a driver became <span className="em">something the system tracks</span>, not a phone call.
           </Headline>
           <Lede wide>
-            Previously, operations called drivers one at a time until somebody answered. The
-            redesigned model treats assignment as an explicit system state, with a timer deciding
-            when it escalates. The driver receives the case ID, patient contact, distance, pickup
-            link, the equipment the trip needs, and two buttons.
+            Before, the operations team called drivers one at a time until somebody answered.
+            In the new plan, the system sends the job and a timer decides when to try the next
+            driver. The driver gets the case number, the patient’s contact, the distance, the
+            pickup link, the equipment the trip needs, and two buttons.
           </Lede>
 
           <AssignmentLoop
             before={{
               label: 'Before',
               steps: ['Call a driver', 'Wait', 'No answer', 'Call the next one'],
-              loop: 'Back to the top, 3 to 4 times, until somebody says yes',
+              loop: 'Back to the start, 3 to 4 times, until somebody says yes',
             }}
             after={{
               label: 'Proposed',
-              step: 'Request ready, assignment sent',
+              step: 'Request ready, job sent to a driver',
               branches: [
                 {
                   on: 'Driver accepts',
-                  then: 'The same ride record updates for operations, the hospital and the patient family.',
+                  then: 'The same ride record updates for the operations team, the hospital and the patient’s family.',
                 },
                 {
-                  on: 'No response inside the defined window',
-                  then: 'The assignment escalates to the next driver, and the wait is on the record rather than in somebody’s head.',
+                  on: 'No reply before the timer runs out',
+                  then: 'The job goes to the next driver, and the wait is written down, not kept in somebody’s head.',
                 },
               ],
             }}
@@ -787,20 +791,20 @@ const MerryHealthCaseStudy = () => {
         </Slide>
 
         <Slide id="lifecycle" chapter="03" height="auto">
-          <Kicker n="03" label="One ride lifecycle" />
+          <Kicker n="03" label="The steps of one ride" />
           <Headline>
-            A ride is a <span className="em">sequence of events</span>, not a collection of
+            A ride is <span className="em">a series of steps</span>, not a pile of
             messages.
           </Headline>
           <Lede wide>
-            Each state is entered by something happening in the world rather than by somebody
-            reporting it, and each one writes to the same record. That record is what the dashboard
-            renders, what the messages are generated from, and what reporting reads later.
-            Previously, someone had to send or enter the same information in several places.
+            Each step starts when something really happens, not when somebody reports it, and
+            each one is saved to the same record. The dashboard shows that record, the messages
+            are made from it, and the reports read it later. Before, someone had to send or
+            type the same information in several places.
           </Lede>
 
           <Lifecycle
-            caption="One state change, five destinations. Every filled square used to be a message somebody sent by hand."
+            caption="One change, five places updated. Every filled square used to be a message somebody sent by hand."
             highlight={1}
             stages={[
               'Request received',
@@ -817,7 +821,7 @@ const MerryHealthCaseStudy = () => {
               { label: 'Patient notified', at: [1, 3, 4, 5, 6] },
               { label: 'Driver action', at: [1, 2, 4, 5, 6] },
               { label: 'Dashboard updated', at: [0, 1, 2, 3, 4, 5, 6, 7] },
-              { label: 'Timestamp stored', at: [0, 2, 4, 5, 6, 7] },
+              { label: 'Time saved', at: [0, 2, 4, 5, 6, 7] },
             ]}
           />
 
@@ -826,63 +830,63 @@ const MerryHealthCaseStudy = () => {
               {
                 phase: 'Intake',
                 state: 'Request received',
-                captures: 'Location, condition, contact, requested ambulance type, timestamp',
+                captures: 'Place, condition, contact, type of ambulance needed, time',
               },
               {
                 phase: 'Assign',
                 state: 'Driver assigned',
-                captures: 'Driver, ambulance number, acceptance, time to acceptance',
+                captures: 'Driver, ambulance number, when they said yes, how long that took',
               },
               {
                 phase: 'Assign',
                 state: 'Trip started',
-                captures: 'Start timestamp, route opened, tracking link issued',
+                captures: 'Start time, route opened, tracking link sent',
               },
               {
-                phase: 'En route',
-                state: 'En route',
-                captures: 'Live position, ETA, distance remaining, deviation and halt alerts',
+                phase: 'On the way',
+                state: 'On the way',
+                captures: 'Live location, arrival time, distance left, alerts if it goes off route or stops',
               },
               {
-                phase: 'En route',
+                phase: 'On the way',
                 state: 'Arrived at pickup',
-                captures: 'Arrival timestamp, response time closed out',
+                captures: 'Arrival time, response time finished',
               },
               {
-                phase: 'En route',
-                state: 'Patient onboarded',
-                captures: 'Onboarding timestamp, facilities actually used',
+                phase: 'On the way',
+                state: 'Patient on board',
+                captures: 'Time the patient got in, equipment actually used',
               },
               {
                 phase: 'Handover',
                 state: 'Reached hospital',
-                captures: 'Arrival timestamp, journey duration, distance travelled',
+                captures: 'Arrival time, how long the trip took, distance travelled',
               },
               {
                 phase: 'Close',
                 state: 'Closed',
-                captures: 'Closure timestamp, turnaround, billing record, full timeline stored',
+                captures: 'Finish time, time until ready again, bill, the whole timeline saved',
               },
             ]}
           />
 
           <Statement>
-            Before, communication created the record. Now the record drives the communication.
+            Before, the messages made the record. Now the record makes the messages.
           </Statement>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:max-w-2xl md:mt-16">
+          <div className="mt-break grid gap-6 sm:grid-cols-2 lg:max-w-2xl">
             <Artifact
               src={proposedWorkflow}
-              alt="The proposed system workflow: twelve numbered steps across hospital admin, WhatsApp API, operations, driver and patient party, with the data, technology and edge-case fallback attached to each"
-              title="The full system logic"
-              note="Twelve steps, with the data, the mechanism and the fallback named at each one."
+              alt="The proposed system: twelve numbered steps across the hospital admin, WhatsApp, the operations team, the driver and the patient’s family, with the data, the technology and the backup plan for each step"
+              title="How the whole system works"
+              note="Twelve steps, with the data, how it works and the backup plan for each one."
               onOpen={open}
             />
             <Artifact
               src={idealFlow}
-              alt="The proposed dispatch flow drawn end to end, with the automatic stretches highlighted"
+              alt="The new way of sending an ambulance, drawn from start to end, with the automatic parts highlighted"
               title="The proposed flow"
-              note="The highlighted stretches are the parts that no longer need a person."
+              note="The highlighted parts no longer need a person."
               onOpen={open}
             />
           </div>
@@ -891,118 +895,118 @@ const MerryHealthCaseStudy = () => {
         <Slide id="fallbacks" chapter="03" height="auto">
           <Kicker n="03" label="Designing for when things go wrong" />
           <Headline>
-            We treated failure states as part of <span className="em">normal operation</span>.
+            We treated things going wrong as <span className="em">a normal part of the job</span>.
           </Headline>
           <Lede wide>
-            Emergency operations cannot assume perfect connectivity or perfect user behaviour, so
-            the proposed workflow carries a fallback at every step. Listing the failures was not
-            the useful part. Each one needed a fallback and an owner, which is what makes a
-            fallback real rather than a note on a diagram.
+            In an emergency you cannot count on a perfect phone signal or on people doing
+            everything right. So our plan has a backup at every step. Listing what could go
+            wrong was not the useful part. Each problem needed a backup plan and a person in
+            charge of it. That is what makes a backup real, and not just a note on a drawing.
           </Lede>
 
           <EdgeGrid
             items={[
               {
                 when: 'The driver does not respond',
-                then: 'The pending response is tracked, and the assignment escalates to the next driver.',
+                then: 'The system keeps track of the missing reply, and the job goes to the next driver.',
                 owner: 'System',
               },
               {
                 when: 'The driver has no smartphone',
-                then: 'The assignment goes out over SMS, and operations updates the ride on their behalf.',
+                then: 'The job goes out by text message, and the operations team updates the ride for the driver.',
                 owner: 'Operations',
               },
               {
-                when: 'The network drops',
-                then: 'State is held and synced when connectivity returns, rather than lost at the handoff.',
+                when: 'The phone signal drops',
+                then: 'The ride details are kept and sent once the signal comes back, instead of getting lost.',
                 owner: 'System',
               },
               {
-                when: 'GPS becomes unavailable',
-                then: 'The system falls back to manual ETA updates and alerts operations.',
+                when: 'GPS stops working',
+                then: 'The system switches to arrival times typed in by hand, and warns the operations team.',
                 owner: 'Operations',
               },
               {
-                when: 'Critical information is missing',
-                then: 'The system asks for the one required field, and nothing else.',
+                when: 'Important details are missing',
+                then: 'The system asks for the one detail it needs, and nothing else.',
                 owner: 'System',
               },
               {
-                when: 'The ride is never closed',
-                then: 'A stationary driver raises an alert, and operations intervenes or reassigns.',
+                when: 'The ride is never marked as done',
+                then: 'If the driver stops moving, an alert goes off, and the operations team steps in or picks another driver.',
                 owner: 'Operations',
               },
               {
-                when: 'The hospital number is not mapped',
-                then: 'Operations picks the hospital manually, and the number is mapped so it resolves next time.',
+                when: 'The system does not know the hospital’s number',
+                then: 'The operations team picks the hospital by hand, and the number is saved so it works next time.',
                 owner: 'Operations',
               },
               {
                 when: 'The request arrives as a voice note or a photo',
-                then: 'Operations fills the missing fields, so the ride still enters the system as structured data rather than as an attachment.',
+                then: 'The operations team fills in the missing details, so the ride still goes into the system properly, not as a file nobody reads.',
                 owner: 'Operations',
               },
               {
-                when: 'A WhatsApp template fails to deliver',
-                then: 'Automatic retry, then SMS, then a dashboard alert, so a failed message never fails silently.',
+                when: 'A WhatsApp message does not get through',
+                then: 'It tries again, then sends a text message, then warns on the dashboard, so a failed message never goes unnoticed.',
                 owner: 'System',
               },
             ]}
           />
 
-          <div className="mt-12 border-l border-foreground p-6 pl-6 md:mt-16 md:p-8 md:pl-8">
-            <p className="label-strong">Triage was a rule, not a judgement call</p>
+          <div className="mt-break border-l border-foreground p-6 pl-6 md:p-8 md:pl-8">
+            <p className="label-strong">Deciding how urgent it is followed a rule, not a guess</p>
             <p className="mt-5 max-w-3xl text-base leading-[1.6] text-ink-600 md:text-lg">
-              A message containing accident, bleeding, chest pain, unconscious, stroke, cardiac,
-              head injury or ventilator classifies as P1 critical. An emergency without a critical
-              keyword is P2. Transfers, planned trips and non-emergencies are P3. Anything the
-              rules cannot classify goes to manual triage rather than being guessed at, because a
-              wrong automatic priority is worse than a slow human one.
+              A message with the words accident, bleeding, chest pain, unconscious, stroke,
+              cardiac, head injury or ventilator counts as P1, the most urgent. An emergency
+              without any of those words is P2. Transfers, planned trips and non-emergencies are
+              P3. Anything the rules cannot sort goes to a person to decide, instead of the system
+              guessing, because a wrong automatic choice is worse than a slow human one.
             </p>
           </div>
         </Slide>
 
         {/* ======================== 04, THE PRODUCT ========================= */}
         <Slide id="product" chapter="04" height="auto">
-          <Kicker n="04" label="The operating model defined the product" />
+          <Kicker n="04" label="How the service works decided the product" />
           <Headline>
-            Once the workflow was clear, the <span className="em">interfaces</span> were easier to
+            Once the way of working was clear, the <span className="em">screens</span> were easier to
             define.
           </Headline>
           <Lede wide>
-            Four surfaces came out of the operating model, and each one answers a single question.
-            None of them was the starting point.
+            Four screens came out of the new way of working, and each one answers one question.
+            None of them was where we started.
           </Lede>
 
-          <div className="mt-12 grid gap-8 md:mt-16 md:grid-cols-2 md:gap-10">
+          <div className="mt-break grid gap-8 md:grid-cols-2 md:gap-10">
             {[
               {
                 n: '01',
-                name: 'Fast intake',
-                body: 'Priority information first, map-based pickup, and the rest completed progressively while the ambulance moves.',
+                name: 'Fast request',
+                body: 'The most important details first, the pickup chosen on a map, and the rest filled in bit by bit while the ambulance moves.',
                 src: hifiBooking,
-                alt: 'The redesigned ambulance request screen: pickup and drop search above a full-width map with a dropped pin, and a ride details panel on the right carrying contact, emergency type, condition, ambulance type and facility chips',
+                alt: 'The new ambulance request screen: search boxes for pickup and drop-off above a big map with a pin on it, and a ride details panel on the right with contact, type of emergency, condition, type of ambulance and equipment tags',
               },
               {
                 n: '02',
                 name: 'Operations dashboard',
-                body: 'Active rides, alerts, quick actions and the rides that need attention.',
+                body: 'Rides happening now, alerts, quick actions and the rides that need attention.',
                 src: hifiDashboard,
-                alt: 'The redesigned operations dashboard: revenue and average response time cards, ongoing rides, live map and quick add tiles, a quick actions panel, and a ride list tabbed by all, completed and pending',
+                alt: 'The new operations dashboard: cards for money earned and average response time, rides happening now, a live map and quick add tiles, a quick actions panel, and a ride list with tabs for all, finished and waiting',
               },
               {
                 n: '03',
-                name: 'Live ride control',
-                body: 'Map, driver status, ETA, patient information, ride timeline and escalation, on one screen.',
+                name: 'Live ride view',
+                body: 'The map, the driver, arrival time, patient details, the ride timeline and a way to get help, on one screen.',
                 src: hifiTracking,
-                alt: 'The live ride view: a status bar carrying current status, ETA to pickup, last location update, distance remaining and driver status, above a live map, a trip timeline of six states, and a patient info panel',
+                alt: 'The live ride view: a bar showing the current step, time to pickup, last location update, distance left and the driver’s status, above a live map, a timeline of six steps, and a patient details panel',
               },
               {
                 n: '04',
                 name: 'Reporting',
-                body: 'Trip volume, response time, turnaround, billing and operational trends, derived from ride events rather than reconstructed later.',
+                body: 'Number of trips, response time, time until ready again, billing and trends, taken from what happened on each ride instead of pieced together later.',
                 src: hifiReports,
-                alt: 'The reporting module: date range, case type, status and ambulance type filters above total trips, billing, average response time and average turnaround, with trip volume, journey time and ride type charts',
+                alt: 'The reports screen: filters for dates, case type, status and ambulance type above total trips, billing, average response time and average time until ready again, with charts of trip numbers, trip times and ride types',
               },
             ].map((module) => (
               <div key={module.n}>
@@ -1023,12 +1027,12 @@ const MerryHealthCaseStudy = () => {
             ))}
           </div>
 
-          <div className="mt-14 grid gap-8 md:mt-20 lg:grid-cols-[1.4fr_1fr] lg:gap-12">
+          <div className="mt-stage grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:gap-12">
             <Plate
               src={wireframes}
-              alt="Hand-drawn wireframes of the active rides list, ride details and map view, showing alert rows, a ride timeline and ETA metrics"
+              alt="Hand-drawn sketches of the list of current rides, the ride details and the map, showing alert rows, a ride timeline and arrival times"
               label="Sketches"
-              caption="Active rides, ride details and the map view, worked out on paper before anything became a Figma file."
+              caption="Current rides, ride details and the map, worked out on paper before anything went into Figma."
               onOpen={open}
             />
             <div className="flex flex-col justify-center">
@@ -1037,20 +1041,20 @@ const MerryHealthCaseStudy = () => {
               </p>
               <Callouts
                 items={[
-                  'The ride list stopped being a record of what happened and became a queue of what needs attention: delayed, no signal, no update.',
-                  'Ride details gained a timeline, because the question was never what is the status, it was what has happened so far.',
-                  'Alerts moved from something you go looking for to something the system raises: halted over ten minutes, route deviation, no update in twenty.',
+                  'The ride list stopped being a record of what happened, and became a to-do list of what needs attention: late, no signal, no update.',
+                  'Ride details got a timeline, because the real question was never “what is happening?” but “what has happened so far?”',
+                  'Alerts stopped being something you look for, and became something the system tells you: stopped for over ten minutes, off route, no update in twenty.',
                 ]}
               />
             </div>
           </div>
 
           <Footnote>
-            The figures on the reporting screen are placeholder data from the design file. They are
-            not Merry Health&rsquo;s operating numbers, and nothing on this page should be read as
-            one. Better reporting depended on fixing the data upstream: once ride milestones are
-            structured events, response time and turnaround can be derived from what happened
-            rather than reconstructed from memory at the end of a shift.
+            The numbers on the reports screen are made-up examples from the design file. They
+            are not Merry Health’s real numbers, and nothing on this page should be read as one.
+            Better reports depended on fixing the data first: once each step of a ride is saved
+            as it happens, response time and turnaround can come from what really happened,
+            instead of being pieced together from memory at the end of a shift.
           </Footnote>
 
           {PROTOTYPE_URL ? (
@@ -1058,13 +1062,13 @@ const MerryHealthCaseStudy = () => {
               href={PROTOTYPE_URL}
               target="_blank"
               rel="noreferrer"
-              className="rule-link mt-12 inline-block text-lg md:mt-16 md:text-2xl"
+              className="rule-link mt-break inline-block text-lg md:text-2xl"
             >
-              Explore the prototype <span aria-hidden="true">&#8599;</span>
+              Try the clickable mock-up <span aria-hidden="true">&#8599;</span>
             </a>
           ) : (
             import.meta.env.DEV && (
-              <p className="label mt-12 inline-block border border-dashed border-border px-4 py-3 text-ink-500 md:mt-16">
+              <p className="label mt-break inline-block border border-dashed border-border px-4 py-3 text-ink-500">
                 Placeholder &middot; paste the Figma prototype URL into PROTOTYPE_URL to turn this
                 call to action on
               </p>
@@ -1075,34 +1079,34 @@ const MerryHealthCaseStudy = () => {
         <Slide id="dashboard" chapter="04" height="auto">
           <Kicker n="04" label="The operations dashboard" />
           <Headline>
-            From recording rides to <span className="em">managing live operations</span>.
+            From writing down rides to <span className="em">running them live</span>.
           </Headline>
           <Lede wide>
-            The redesigned dashboard was meant to answer one question: what is happening now, and
-            what needs attention? Instead of treating every ride equally, the hierarchy is new
-            requests, rides waiting for assignment, active rides, and the ones that are delayed or
-            unusual. Operational metrics still matter, but the job of the screen is to help the
-            team act.
+            The new dashboard was meant to answer one question: what is happening now, and what
+            needs attention? Instead of treating every ride the same, it shows new requests
+            first, then rides waiting for a driver, then rides happening now, and then the ones
+            that are late or unusual. The numbers still matter, but the screen’s job is to help
+            the team act.
           </Lede>
 
           <Plate
             src={hifiDashboard}
-            alt="The redesigned operations dashboard: revenue and average response time cards, ongoing rides, live map and quick add tiles, a quick actions panel, and a ride list tabbed by all, completed and pending"
-            className="mt-12 md:mt-16"
+            alt="The new operations dashboard: cards for money earned and average response time, rides happening now, a live map and quick add tiles, a quick actions panel, and a ride list with tabs for all, finished and waiting"
+            className="mt-break"
             onOpen={open}
           />
 
           <div className="mt-10 grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
             <Callouts
               items={[
-                'Quick actions is a standing queue: what needs attention, what raised an alert, what changed.',
-                'Ongoing rides carries a live count beside the map, so the first thing on the screen is how much is in the air.',
-                'The ride list is tabbed by all, completed and pending, so a stalled request is one click away.',
+                'Quick actions is a to-do list that is always there: what needs attention, what set off an alert, what changed.',
+                'Ongoing rides shows a live count next to the map, so the first thing you see is how many rides are happening.',
+                'The ride list has tabs for all, finished and waiting, so a stuck request is one click away.',
               ]}
             />
             <div className="flex flex-col justify-center">
               <Principle>
-                An operations screen should be answerable at a glance, not readable at leisure.
+                An operations screen should make sense in one look, not need a long read.
               </Principle>
             </div>
           </div>
@@ -1111,34 +1115,34 @@ const MerryHealthCaseStudy = () => {
         <Slide id="ride" chapter="04" height="auto">
           <Kicker n="04" label="The live ride" />
           <Headline>
-            One place to understand <span className="em">the full situation</span>.
+            One place to see <span className="em">everything about a ride</span>.
           </Headline>
           <Lede wide>
-            Reconstructing the state of a ride used to mean checking several channels and making a
-            call. This view holds the patient, the driver, the vehicle, the map, the ETA, the
-            timeline, the current state and the escalation in one place, and it is honest about
-            what it does not yet know.
+            Working out what was going on with a ride used to mean checking several channels and
+            making a call. This screen shows the patient, the driver, the vehicle, the map, the
+            arrival time, the timeline, the current step and a way to get help, all in one place.
+            It is also honest about what it does not know yet.
           </Lede>
 
           <Plate
             src={hifiTracking}
-            alt="The live ride view: a status bar carrying current status, ETA to pickup, last location update, distance remaining and driver status, above a live map, a trip timeline of six states, and a patient info panel"
-            className="mt-12 md:mt-16"
+            alt="The live ride view: a bar showing the current step, time to pickup, last location update, distance left and the driver’s status, above a live map, a timeline of six steps, and a patient details panel"
+            className="mt-break"
             onOpen={open}
           />
 
           <div className="mt-10 grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
             <Callouts
               items={[
-                'Current status, ETA, last location update, distance remaining and driver status, on one row.',
-                'The trip timeline shows every state and what is still pending, so what has happened so far has one answer.',
-                'Call driver and escalate are within reach, because the exception path should not be buried.',
+                'The current step, arrival time, last location update, distance left and the driver’s status, all on one row.',
+                'The timeline shows every step and what is still to come, so there is one answer to “what has happened so far?”',
+                'Call driver and get help are easy to reach, because what you do when things go wrong should not be hidden.',
               ]}
             />
             <div className="flex flex-col justify-center">
               <Principle>
-                Shown in its earliest state on purpose. No driver yet, so the map says what it is
-                waiting for instead of showing an empty grid.
+                Shown in its very first step on purpose. There is no driver yet, so the map says
+                what it is waiting for, instead of showing an empty grid.
               </Principle>
             </div>
           </div>
@@ -1148,16 +1152,16 @@ const MerryHealthCaseStudy = () => {
         <Slide id="before-after" chapter="05" height="auto">
           <Kicker n="05" label="Before and after" />
           <Headline>
-            The same ride, coordinated in <span className="em">two very different ways</span>.
+            The same ride, handled in <span className="em">two very different ways</span>.
           </Headline>
 
           <SystemPanes
             before={{
               label: 'Before',
-              verdict: 'People relayed the state.',
+              verdict: 'People passed the news along by hand.',
               steps: [
                 { text: 'Hospital calls' },
-                { text: 'Operations records the request', relay: true },
+                { text: 'Operations writes down the request', relay: true },
                 { text: 'Operations calls drivers', relay: true },
                 { text: 'Someone confirms' },
                 { text: 'Hospital asks for status', relay: true },
@@ -1169,16 +1173,16 @@ const MerryHealthCaseStudy = () => {
             }}
             after={{
               label: 'Proposed',
-              verdict: 'The ride state propagated through the system.',
+              verdict: 'The system passed the news to everyone.',
               steps: [
                 { text: 'Hospital requests through the channel it already uses' },
                 { text: 'Ride record created' },
-                { text: 'Assignment triggered' },
-                { text: 'Driver accepts, or it escalates' },
-                { text: 'Shared ride state updates' },
-                { text: 'Hospital and patient updates are generated' },
-                { text: 'Ride events captured as they happen' },
-                { text: 'Closure creates the reporting record' },
+                { text: 'Job sent to a driver' },
+                { text: 'Driver says yes, or it goes to the next one' },
+                { text: 'The shared ride record updates' },
+                { text: 'Updates go out to the hospital and the family' },
+                { text: 'Each step is saved as it happens' },
+                { text: 'Finishing the ride creates the report' },
               ],
             }}
           />
@@ -1187,41 +1191,41 @@ const MerryHealthCaseStudy = () => {
         <Slide id="targets" chapter="05" height="auto">
           <Kicker n="05" label="What we would measure" />
           <Headline>
-            Because the system was not deployed, these are{' '}
-            <span className="em">design targets</span>.
+            Because the system was never launched, these are{' '}
+            <span className="em">goals, not results</span>.
           </Headline>
           <Lede wide>
-            Nothing here is an outcome. These are the targets the design was aimed at, each with
-            the measurement that would confirm it or kill it. A number without that second half is
-            not worth putting on a page.
+            Nothing here is a result. These are the goals the design was aiming for, each with
+            the measurement that would prove it right or wrong. A number without that second
+            part is not worth putting on a page.
           </Lede>
 
           <Targets
             items={[
               {
                 figure: 'Under 3 min',
-                outcome: 'Request to a confirmed driver',
-                how: 'Against the 8 to 10 minutes observed in the mapped manual workflow. Measured automatically from request received to driver accepted, which the lifecycle now timestamps on its own.',
+                outcome: 'From request to a driver saying yes',
+                how: 'Compared with the 8 to 10 minutes we saw in the old way of working. Measured automatically, from request received to driver accepted, since the system now records both times itself.',
               },
               {
                 figure: 'Fewer calls',
-                outcome: 'Coordination calls per ride',
-                how: 'Automatic acknowledgement and milestone updates remove the reason for most of them. Measured as the number of calls required after dispatch starts.',
+                outcome: 'Phone calls needed per ride',
+                how: 'Automatic “got it” messages and step-by-step updates remove the reason for most of them. Measured as the number of calls needed after the ambulance is sent.',
               },
               {
-                figure: 'Higher completeness',
-                outcome: 'Rides that leave a full operational record',
-                how: 'Captured as a side effect of normal operation rather than typed in afterwards. Measured as the share of rides containing valid start and end events.',
+                figure: 'More complete records',
+                outcome: 'Rides that leave a full record behind',
+                how: 'Saved as the work happens, instead of typed in afterwards. Measured as the share of rides with a proper start and end time.',
               },
               {
-                figure: 'Shared visibility',
-                outcome: 'Status without anyone calling operations',
-                how: 'Measured as the share of rides where the hospital and the patient family received updates without an inbound status request.',
+                figure: 'Everyone can see it',
+                outcome: 'Updates without anyone calling the operations team',
+                how: 'Measured as the share of rides where the hospital and the family got updates without having to ask.',
               },
               {
-                figure: 'Usable reporting',
-                outcome: 'Response time and turnaround derived, not reconstructed',
-                how: 'Measured as the share of rides closed through lifecycle events rather than retrospective manual entry.',
+                figure: 'Reports you can trust',
+                outcome: 'Response time and turnaround worked out from real events, not pieced together',
+                how: 'Measured as the share of rides finished by real events, not typed in by hand afterwards.',
               },
             ]}
           />
@@ -1231,28 +1235,28 @@ const MerryHealthCaseStudy = () => {
           <Kicker n="05" label="What I worked on" />
           <Headline>My contribution</Headline>
           <Lede wide>
-            This was a team of five designers, on an MDes practicum apprenticeship with Merry
-            Health. The analysis, the operating model and the final proposal were developed
-            collaboratively, which is why the sections above say we.
+            This was a team of five designers, working with Merry Health as part of our
+            master’s degree. We worked out the research, the new way of working and the final
+            plan together, which is why this page says “we”.
           </Lede>
           <Lede wide>
-            My own work spanned research synthesis, systems thinking and design execution. I
-            contributed to auditing the platform and mapping the current dispatch workflow, to the
-            actor and opportunity mapping that produced the shared ride-state model, to the service
-            logic and the fallback scenarios, and to translating those decisions into the
-            interaction flows, wireframes and high-fidelity screens for the dashboard and the
-            messaging journeys.
+            My own work covered making sense of the research, seeing how the whole system fits
+            together, and designing the screens. I helped check the product and map how rides
+            were sent, and helped map the people and the chances to improve, which led to the
+            idea of one shared ride record. I worked on how the service works and the backup
+            plans, and I turned those choices into flows, sketches and finished screens for the
+            dashboard and the chat messages.
           </Lede>
 
-          <div className="mt-12 grid gap-px border border-border bg-border md:mt-16 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-break grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
             {[
               [
-                'Research and discovery',
+                'Research',
                 [
                   'Platform audit',
-                  'Current-workflow mapping',
-                  'Journey analysis across four actors',
-                  'Identifying the recurring breakdowns',
+                  'Mapping how the work was done',
+                  'Following the journeys of four groups of people',
+                  'Finding the problems that kept coming back',
                 ],
               ],
               [
@@ -1260,9 +1264,9 @@ const MerryHealthCaseStudy = () => {
                 [
                   'Actor mapping',
                   'Opportunity mapping',
-                  'The shared ride-state model',
+                  'The idea of one shared ride record',
                   'Service logic',
-                  'Fallback and degraded scenarios',
+                  'Backup plans for when things go wrong',
                 ],
               ],
               [
@@ -1272,7 +1276,7 @@ const MerryHealthCaseStudy = () => {
                   'Information architecture',
                   'Interaction flows',
                   'Wireframes',
-                  'High-fidelity UI',
+                  'Finished screen designs',
                 ],
               ],
               [
@@ -1280,7 +1284,7 @@ const MerryHealthCaseStudy = () => {
                 [
                   'Synthesis',
                   'Team reviews',
-                  'Integrating the individual journeys',
+                  'Joining up everyone’s journeys',
                   'Prototype refinement',
                   'Final storytelling',
                 ],
@@ -1303,27 +1307,27 @@ const MerryHealthCaseStudy = () => {
         <Slide id="outcome" chapter="05" height="auto">
           <Kicker n="05" label="Outcome" />
           <Headline>
-            A proposed end-to-end dispatch system, <span className="em">not a deployment</span>.
+            A full plan for sending ambulances, <span className="em">not a launched product</span>.
           </Headline>
 
           <Delivered
             delivered={{
               label: 'What we delivered',
-              note: 'Developed through platform analysis and workflow work with Merry Health.',
+              note: 'Made by studying the product and the way of working with Merry Health.',
               items: [
-                'Progressive ambulance intake',
-                'Structured driver assignment',
-                'A shared ride lifecycle',
-                'WhatsApp and SMS communication',
+                'Asking for ambulance details a little at a time',
+                'A clear way to choose a driver',
+                'Shared steps for every ride',
+                'Messages over WhatsApp and text',
                 'Live operations',
                 'Patient updates',
                 'Exception handling',
-                'Reporting based on operational events',
+                'Reports based on what really happened',
               ],
             }}
             withheld={{
-              label: 'What this case study does not claim',
-              note: 'It was never rolled out into live dispatch operations, so none of these were measured.',
+              label: 'What this study does not claim',
+              note: 'It was never used for real ambulance rides, so none of these were measured.',
               items: [
                 'Dispatch time',
                 'Call volume',
@@ -1334,39 +1338,38 @@ const MerryHealthCaseStudy = () => {
           />
 
           <Statement>
-            Those remain things the system would have to prove in the field.
+            The system would still have to prove these in real life.
           </Statement>
         </Slide>
 
         <Slide id="reflection" chapter="05" height="auto">
           <Kicker n="05" label="Reflection" />
           <Headline>
-            The screens only became clear after we changed{' '}
-            <span className="em">the workflow underneath them</span>.
+            The screens only made sense after we changed{' '}
+            <span className="em">the way of working underneath them</span>.
           </Headline>
           <Lede wide>
-            A cleaner dashboard would not have solved a dispatch process still being coordinated
-            through calls and WhatsApp. The more useful design work happened one level below the
-            interface.
+            A cleaner dashboard would not have fixed a service that still ran on calls and
+            WhatsApp. The more useful design work happened one level below the screens.
           </Lede>
 
-          <div className="mt-12 grid gap-x-16 gap-y-14 md:mt-20 md:grid-cols-2 md:gap-y-20">
+          <div className="mt-stage grid gap-x-16 gap-y-14 md:grid-cols-2 md:gap-y-20">
             {[
               [
-                'Defining what the shared state was',
-                'Everything else followed from one question: what is the single record that every channel reads from and writes to? Answer that and the dashboard, the messages and the reporting stop being separate problems.',
+                'Deciding what the shared record was',
+                'Everything else came from one question: what is the one record that every channel reads from and writes to? Answer that, and the dashboard, the messages and the reports stop being separate problems.',
               ],
               [
                 'Deciding when a person really needed to act',
-                'Most of the coordination work was somebody moving information between two places. Every reliable system event removed another call, another manual update, or another thing somebody had to remember under pressure.',
+                'Most of the work was somebody moving information from one place to another. Every step the system could handle by itself removed another call, another update by hand, or another thing somebody had to remember under pressure.',
               ],
               [
                 'Working with the channels people already used',
-                'Integrating with a familiar workflow turned out to be more effective than replacing it. WhatsApp had the one thing the product did not: everybody was already using it, and nobody had to be taught.',
+                'Working with the tools people already knew worked better than replacing them. WhatsApp had the one thing the product did not: everybody already used it, and nobody had to be taught.',
               ],
               [
-                'Making failure paths explicit',
-                'No network, missing GPS and an unresponsive driver are not theoretical in emergency operations. Designing the degraded paths first changed what the happy path was allowed to assume.',
+                'Planning clearly for things going wrong',
+                'No signal, no GPS and a driver who does not answer really happen in emergencies. Planning for those first changed what we could expect when everything goes right.',
               ],
             ].map(([title, body]) => (
               <div key={title} className="border-t-2 border-foreground pt-6">
@@ -1381,15 +1384,15 @@ const MerryHealthCaseStudy = () => {
           </div>
 
           <Statement>
-            Good operational UX often means removing work people should never have had to do
-            manually in the first place.
+            Good design for operations teams often means taking away work people should never
+            have had to do by hand in the first place.
           </Statement>
 
           <Footnote>
-            And the limit of all of it: the proposed system has not been tested in live emergency
-            operations. Everything above is reasoned from how the work runs today and from the
-            fallbacks the team could name, not from watching it hold up under real dispatch
-            pressure. The next step would be to run it there and see which assumptions hold.
+            And the limit of all of it: the plan has not been tested in real emergencies.
+            Everything above comes from how the work runs today and from the backup plans the
+            team could think of, not from watching it hold up under real pressure. The next step
+            would be to try it for real and see which ideas hold.
           </Footnote>
         </Slide>
 
@@ -1397,20 +1400,20 @@ const MerryHealthCaseStudy = () => {
           <p className="label text-ink-500">In closing</p>
 
           <p className="mt-10 max-w-[20ch] text-[2rem] leading-[1.05] md:text-[3.5rem]">
-            Design the coordination first. <span className="em">Then design the screens.</span>
+            Design how people work together first. <span className="em">Then design the screens.</span>
           </p>
 
           <p className="mt-12 max-w-3xl text-base leading-[1.6] text-ink-600 md:text-lg">
-            Merry Health started as a dashboard project. It became a systems-design project about
-            how one ambulance ride could stay consistent across hospitals, operations, drivers and
-            patient families.
+            Merry Health started as a dashboard project. It became a project about the whole
+            system: how one ambulance ride could stay the same for hospitals, the operations
+            team, drivers and patients’ families.
           </p>
 
-          <HeroComposition className="mt-16 w-full max-w-4xl md:mt-24" />
+          <HeroComposition className="mt-stage w-full max-w-4xl" />
 
           <nav
             aria-label="Other projects"
-            className="mt-16 flex flex-wrap gap-x-10 gap-y-4 border-t border-border pt-8 md:mt-20"
+            className="mt-stage flex flex-wrap gap-x-10 gap-y-4 border-t border-border pt-8"
           >
             <Link to="/#work" className="rule-link text-lg">
               Back to the work <span aria-hidden="true">&rarr;</span>

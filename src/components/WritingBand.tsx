@@ -23,7 +23,7 @@ const WritingBand = () => {
   const ref = useReveal<HTMLElement>();
 
   return (
-    <section ref={ref} className="reveal px-5 pb-24 md:px-8 md:pb-28 lg:px-12">
+    <section ref={ref} className="reveal px-gutter pb-section">
       <div className="border-t border-border pt-8">
         <div className="flex flex-wrap items-baseline justify-between gap-x-10 gap-y-3">
           <h2 className="label-strong">From the work</h2>

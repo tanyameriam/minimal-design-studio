@@ -1,17 +1,11 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import { StudyOpening } from '@/components/case-study/slides/StudyOpening';
 import Contact from '@/components/Contact';
-import ReadingProgress from '@/components/ReadingProgress';
-import SprintRail, { type SprintChapter } from '@/components/case-study/layrrrd/SprintRail';
-import {
-  StorylinePanel,
-  StorylineRail,
-  storylineOrder,
-  useActiveSlide,
-  type Storyline,
-} from '@/components/story/Storyline';
+import { RudolfPaw } from '@/components/case-study/layrrrd/Rudolf';
+import { type Storyline } from '@/components/story/Storyline';
+import { ReadingNav } from '@/design/ReadingNav';
 import {
   Slide,
   Kicker,
@@ -47,19 +41,14 @@ import { usePageMeta } from '@/hooks/use-page-meta';
 /**
  * Layrrrd, told as a product story rather than as a process report.
  *
- * The page runs on its own island of tokens (`.paper-layrrrd`, see
- * index.css): cream ground, near-black ink, hairlines, low radius. It
- * deliberately does not look like the BrynQ case study, because it is not
- * the same kind of work. BrynQ is a system being reshaped inside an
- * existing company; this is nine days of deciding under pressure.
- *
- * The island is paired here with `.paper-layrrrd-page`, which is what
- * carries the dark side of that palette. `.paper-layrrrd` alone is a fixed
- * cream swatch, correct for the cover chip on the home page and wrong for a
- * whole page, which has to follow the visitor's theme. With both classes the
- * study reads as the same paper in either mode, warm rather than the site's
- * blue-black, and the ink block flips to cream so the turns still land as a
- * reversal.
+ * It used to run on its own island of tokens: a warm cream ground, near-black
+ * ink, and a reversed block to mark the turns, all declared separately in
+ * index.css. It looked good and it was a second design language. A visitor
+ * moving from the home page into this study left the portfolio's palette
+ * entirely, which made the strongest piece of work on the site read as
+ * somebody else's. The page is now set in the portfolio's own palette like
+ * every other study, and the turns are marked with `.theme-invert`, the same
+ * device the other case studies use.
  *
  * ---------------------------------------------------------------------
  * STRUCTURE
@@ -112,12 +101,6 @@ import savePending from '@/assets/Layrrrd/layrrrd-save-pending.png';
 import saveProcessing from '@/assets/Layrrrd/layrrrd-save-processing.png';
 import telegramConnected from '@/assets/Layrrrd/layrrrd-telegram-connected.png';
 
-const chapters: SprintChapter[] = [
-  { n: '01', name: 'Finding the problem', target: 'behaviour' },
-  { n: '02', name: 'Learning from use', target: 'testing' },
-  { n: '03', name: 'Validating value', target: 'pricing' },
-];
-
 const storyline: Storyline = [
   {
     n: '00',
@@ -135,10 +118,10 @@ const storyline: Storyline = [
       { id: 'survey', title: 'The survey changed the problem' },
       { id: 'interviews', title: 'Why the behaviour happened' },
       { id: 'proposition', title: 'Testing the idea before building it' },
-      { id: 'direction', title: 'The direction changed mid-build' },
-      { id: 'scope', title: 'Defining the MVP' },
-      { id: 'loop', title: 'The core product loop' },
-      { id: 'brand', title: 'Giving the brand a role' },
+      { id: 'direction', title: 'We changed direction halfway' },
+      { id: 'scope', title: 'Deciding what to build first' },
+      { id: 'loop', title: 'How the app works' },
+      { id: 'brand', title: 'Giving the brand a job' },
     ],
   },
   {
@@ -146,14 +129,14 @@ const storyline: Storyline = [
     name: 'Learning from use',
     target: 'testing',
     slides: [
-      { id: 'testing', title: 'Eight usability sessions' },
-      { id: 'save-state', title: 'The save-state problem' },
+      { id: 'testing', title: 'Eight test sessions with users' },
+      { id: 'save-state', title: 'Did it save?' },
       { id: 'decisions', title: 'Four decisions that changed' },
     ],
   },
   {
     n: '03',
-    name: 'Validating value',
+    name: 'Proving people want it',
     target: 'pricing',
     slides: [
       { id: 'pricing', title: 'Asking people to pay' },
@@ -168,65 +151,67 @@ const storyline: Storyline = [
 const LayrrrdCaseStudy = () => {
   usePageMeta(
     'Layrrrd',
-    'Building and validating a content retrieval product. A zero-to-one product sprint: research, proposition, MVP, usability testing, design system, brand and paid validation in one continuous loop.'
+    'Building and testing an app that helps you find what you saved. A brand-new product in nine days: research, the idea, a first version, user tests, a design system, a brand, and real customers paying.'
   );
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const order = useMemo(() => storylineOrder(storyline), []);
-  const activeId = useActiveSlide(order);
-  const [storyOpen, setStoryOpen] = useState(false);
-  const closeStory = useCallback(() => setStoryOpen(false), []);
-
   return (
-    <div className="paper-layrrrd paper-layrrrd-page min-h-screen bg-background text-foreground rail-offset">
-      <ReadingProgress />
+    <div className="min-h-screen bg-background text-foreground">
       <Navigation />
 
-      <StorylineRail chapters={storyline} activeId={activeId} />
-      <SprintRail chapters={chapters} onOpenStoryline={() => setStoryOpen(true)} />
-      <StorylinePanel
+      {/*
+        One navigation, like every other case study.
+        This page used to carry three: the fifteen-rem storyline rail down
+        the left, a sticky sprint bar under the site nav naming the same
+        three chapters again, and the progress hairline above both. The paw
+        was the only thing the sprint bar had that nothing else did, so it
+        rides the shared progress line now and the bar is gone.
+      */}
+      <ReadingNav
         chapters={storyline}
-        activeId={activeId}
-        open={storyOpen}
-        onClose={closeStory}
+        marker={<RudolfPaw className="h-3.5 w-auto text-foreground" />}
       />
 
       <main>
         {/* ============================= 01 HERO ============================ */}
         <section id="top" className="border-t border-border">
-          <div className="mx-auto grid w-full max-w-[var(--shell)] gap-14 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-[1.15fr_1fr] lg:gap-20 lg:px-12">
+          <div className="mx-auto grid w-full max-w-[var(--shell)] gap-14 px-gutter py-section lg:grid-cols-[1.15fr_1fr] lg:gap-20">
             <div>
               <StudyOpening
                 slug="layrrrd"
-                client="Layrrrd · Zero-to-one product · 2026"
+                client="Layrrrd · A brand-new app · 2026"
                 headline={
                   <>
-                    Building and validating a <Em>content retrieval product.</Em>
+                    Building and testing an app that <Em>finds what you saved.</Em>
                   </>
                 }
+                takeaways={{
+                  problem:
+                    'People save articles all the time and almost never go back to them. Saving was easy. Finding things again was not.',
+                  did: 'Led a nine-day push from idea to a product people paid for, doing research, design and building all at once.',
+                  outcome:
+                    '126 free sign-ups and 15 paying customers by day nine. We kept building after the nine days.',
+                }}
               />
 
+              {/*
+                Three paragraphs, down to one.
+                The first said the problem, the second said what I did and the
+                third gave the numbers - which is precisely what the takeaway
+                block above now says, in a form a reader can take in without
+                reading. What is left is the only part the summary cannot
+                carry: where the idea came from, and what nine parallel days
+                actually felt like to work in.
+              */}
               <div className="mt-8 max-w-2xl space-y-5 text-base leading-[1.6] text-ink-600 md:text-lg">
-                {/* The disciplines on both sides used to be listed here and
-                    again in the metadata below, which is the same list twice
-                    before the reader has learned anything. Prose keeps the
-                    part the table cannot say: the streams ran at once. */}
                 <p>
-                  Layrrrd started with a behaviour we recognised in ourselves. We saved
-                  articles and links constantly, and rarely returned to them. We gave
-                  ourselves nine days to find out whether that was a problem worth building a
-                  product around.
-                </p>
-                <p>
-                  I led the team through the sprint. Everything happened at once, so
-                  decisions moved quickly between research, design and engineering.
-                </p>
-                <p>
-                  By day nine, Layrrrd had 126 freemium sign-ups and 15 paying customers. We
-                  carried on developing the product after the sprint.
+                  Layrrrd started with a habit we saw in ourselves. We gave ourselves nine days to
+                  find out if it was a problem worth building a product for. I led the team. We did
+                  everything at the same time, so research, design and coding choices changed in the
+                  same afternoon.
                 </p>
               </div>
 
@@ -244,9 +229,9 @@ const LayrrrdCaseStudy = () => {
                 card, was invisible inside two sentences of middots. */}
             <div className="flex flex-col gap-10">
               <div className="grid grid-cols-2 gap-x-8 gap-y-9">
-                <Metric figure="9 days" caption="Idea to paid validation" />
+                <Metric figure="9 days" caption="From idea to paying customers" />
                 <Metric figure="15" caption="Paying customers by day nine" />
-                <Metric figure="126" caption="Freemium sign-ups by day nine" />
+                <Metric figure="126" caption="Free sign-ups by day nine" />
               </div>
 
               <dl className="overflow-hidden rounded-[3px] bg-card">
@@ -257,7 +242,7 @@ const LayrrrdCaseStudy = () => {
                   </div>
                   <div>
                     <dt className="label mb-2.5 text-ink-500">Timeline</dt>
-                    <dd className="text-base md:text-lg">June 2026 to present</dd>
+                    <dd className="text-base md:text-lg">June 2026 to now</dd>
                   </div>
                 </div>
 
@@ -271,7 +256,7 @@ const LayrrrdCaseStudy = () => {
                     <ul className="space-y-2">
                       {[
                         'Product direction',
-                        'UX and interaction design',
+                        'Designing how the app works and feels',
                         'Research',
                         'Engineering',
                         'Product validation',
@@ -301,27 +286,27 @@ const LayrrrdCaseStudy = () => {
             steps={[
               {
                 name: 'Observation',
-                body: 'We were saving constantly and rarely returning.',
+                body: 'We saved things all the time and hardly ever went back.',
               },
               {
                 name: '86-person survey',
-                body: 'The stronger problem was retrieval, not saving.',
+                body: 'The bigger problem was finding things, not saving them.',
               },
               {
                 name: 'Interviews',
-                body: 'People wanted value without maintaining another organisation system.',
+                body: 'People wanted help without having to keep things tidy themselves.',
               },
               {
-                name: 'Proposition test',
-                body: 'We tested the idea before committing to the full product.',
+                name: 'Testing the idea',
+                body: 'We tested the idea before building the whole product.',
               },
               {
-                name: 'Working MVP',
-                body: 'Capture, retrieval, library and resurfacing.',
+                name: 'A first working version',
+                body: 'Saving, finding, a library, and bringing things back.',
               },
               {
-                name: '8 usability tests',
-                body: 'We changed onboarding, save feedback and navigation.',
+                name: '8 user tests',
+                body: 'We changed the first steps, the save message and the menus.',
               },
               {
                 name: 'Payment',
@@ -345,14 +330,14 @@ const LayrrrdCaseStudy = () => {
           <p className="label mt-6 text-ink-500">The remark we started from</p>
 
           <Lede wide>
-            We recognised it immediately. Our own browsers were full of open tabs and
+            We knew the feeling right away. Our own browsers were full of open tabs and
             bookmarks. We sent links to ourselves on Telegram and WhatsApp, took screenshots,
             and used several notes apps. Saving something took almost no effort. Finding it
-            again weeks later was different.
+            again weeks later was a different story.
           </Lede>
           <Lede wide>
-            Before turning that behaviour into a product idea, we needed to know whether it
-            was a habit a few of us shared, or something a lot of people struggled with.
+            Before turning that habit into a product idea, we needed to know if only a few of
+            us had it, or if lots of people struggled with it.
           </Lede>
 
           <SavedThenForgotten />
@@ -364,30 +349,30 @@ const LayrrrdCaseStudy = () => {
           <Headline>The survey told us that saving wasn&rsquo;t the main problem.</Headline>
 
           <Lede wide>
-            We surveyed 86 people about what they saved, where they saved it, whether they
-            returned to it, and how they wanted useful content to come back.
+            We asked 86 people what they saved, where they saved it, whether they went back to
+            it, and how they wanted useful things to come back to them.
           </Lede>
 
           <MetricRow>
-            <Metric figure="54%" caption="Rarely revisited what they saved" />
-            <Metric figure="59%" caption="Identified retrieval as an important need" />
-            <Metric figure="73%" caption="Trusted recommendations from familiar sources" />
-            <Metric figure="60%" caption="Selected WhatsApp as a preferred access point" />
+            <Metric figure="54%" caption="Hardly ever went back to what they saved" />
+            <Metric figure="59%" caption="Said finding things again really mattered" />
+            <Metric figure="73%" caption="Trusted tips from sources they knew" />
+            <Metric figure="60%" caption="Picked WhatsApp as a place they would like to use it" />
           </MetricRow>
 
           <Lede wide>
-            The important change for us was conceptual. We started by thinking about content
-            overload. The research showed that people already had plenty of ways to save
-            things. What was breaking was the journey afterwards: useful material disappeared
-            into different places and became difficult to retrieve when it mattered.
+            This changed how we thought about the problem. We started out thinking people had
+            too much to read. The research showed that people already had plenty of ways to
+            save things. What went wrong came afterwards: useful things got lost in different
+            places and were hard to find when they were needed.
           </Lede>
 
           {/* VISUAL 02 · the reframe, kept analytical rather than campaign-like. */}
           <Reframe
             steps={[
               { label: 'We started here', body: 'Too much content' },
-              { label: 'Research showed', body: 'Saving isn’t the difficult part' },
-              { label: 'We focused on', body: 'Returning to useful saved content' },
+              { label: 'Research showed', body: 'Saving isn’t the hard part' },
+              { label: 'We focused on', body: 'Getting back to useful things you saved' },
             ]}
           />
 
@@ -396,7 +381,7 @@ const LayrrrdCaseStudy = () => {
           <div className="mt-10 max-w-sm">
             <Shot
               src={surveyResults}
-              alt="The survey export: 86 responses rating how likely they would be to try a product like this, 43 per cent asking for early access, and articles and videos leading what people save."
+              alt="The survey results: 86 answers rating how likely people were to try an app like this, 43 per cent asking to try it early, and articles and videos as the things people save most."
               caption="The survey results"
               width={1391}
               height={1872}
@@ -404,8 +389,9 @@ const LayrrrdCaseStudy = () => {
           </div>
 
           <Note>
-            n = 86, self-selected respondents recruited through our own networks during the
-            sprint. Enough to redirect the work, not enough to size a market.
+            86 people answered. They chose to take part, and we found them through people we
+            knew during the nine days. That was enough to change our direction, but not enough
+            to say how big the market is.
           </Note>
         </Slide>
 
@@ -413,26 +399,26 @@ const LayrrrdCaseStudy = () => {
         <Slide id="interviews" chapter="01" height="auto">
           <Kicker label="The conversations" />
           <Headline>
-            The survey narrowed the problem. <Em>Conversations explained why it happened.</Em>
+            The survey showed us the problem. <Em>Talking to people showed us why.</Em>
           </Headline>
 
           <Beside>
             <div>
-              <Lede>We followed the survey with conversations about:</Lede>
+              <Lede>After the survey, we talked to people about:</Lede>
               <Points
                 items={[
                   'What people chose to save',
                   'When they expected to use something again',
                   'Where they looked when they could not find it',
-                  'Whether they wanted organisation, retrieval or recommendations',
-                  'How much maintenance they were willing to do',
+                  'Whether they wanted help sorting, finding, or getting tips',
+                  'How much tidying up they were willing to do',
                 ]}
               />
             </div>
             <div>
               <Lede>
-                A repeated behaviour was sending links to oneself, because messaging apps were
-                already part of daily life. Another was postponing organisation indefinitely.
+                Many people sent links to themselves, because they already used messaging apps
+                every day. Many also kept putting off sorting things, forever.
               </Lede>
               <Fragments
                 lines={[
@@ -445,8 +431,8 @@ const LayrrrdCaseStudy = () => {
             </div>
           </Beside>
 
-          <Decision label="Design implication">
-            The product needed to create value before asking anyone to organise anything.
+          <Decision label="What this meant for the design">
+            The product had to be useful before asking anyone to sort anything.
           </Decision>
 
           {/* VISUAL 03 · synthesis, reconstructed. The messy original sits
@@ -455,15 +441,15 @@ const LayrrrdCaseStudy = () => {
             columns={[
               {
                 label: 'Behaviour',
-                items: ['Send links to self', 'Save quickly', 'Postpone organisation'],
+                items: ['Send links to themselves', 'Save quickly', 'Put off sorting'],
               },
               {
                 label: 'Problem',
-                items: ['Fragmented storage', 'Weak recall', 'Effort required to return'],
+                items: ['Things saved in many places', 'Hard to remember', 'Hard work to go back'],
               },
               {
-                label: 'Design implication',
-                items: ['Meet existing habits', 'Minimise filing', 'Prioritise retrieval'],
+                label: 'What this meant for the design',
+                items: ['Fit habits people already have', 'Keep sorting to a minimum', 'Make finding things come first'],
               },
             ]}
           />
@@ -471,29 +457,28 @@ const LayrrrdCaseStudy = () => {
 
         {/* ========= 06 TESTING THE IDEA BEFORE BUILDING THE PRODUCT ======= */}
         <Slide id="proposition" chapter="01" height="auto">
-          <Kicker label="Testing the proposition" />
+          <Kicker label="Testing the idea" />
           <Headline>
-            We used the first marketing page to test{' '}
-            <Em>whether people understood the proposition.</Em>
+            We used the first version of our website to test{' '}
+            <Em>whether people understood the idea.</Em>
           </Headline>
 
           <Lede wide>
-            Before committing to the full MVP, we published an early version of the Layrrrd
-            landing page. The goal was not visual polish.
+            Before building the whole first version, we put an early Layrrrd website online.
+            The goal was not to make it look perfect.
           </Lede>
           <Lede wide>We wanted to see:</Lede>
           <Points
             items={[
-              'Whether someone unfamiliar with Layrrrd could explain what it did',
-              'Which part of the proposition they remembered',
+              'Whether someone new to Layrrrd could explain what it did',
+              'Which part of the idea they remembered',
               'What they expected to happen after signing up',
-              'Whether the wording created the wrong expectation',
+              'Whether the words made them expect the wrong thing',
               'Whether they were interested enough to leave their details',
             ]}
           />
           <Lede wide>
-            That gave us a cheaper way to test the proposition before putting more
-            engineering time behind it.
+            That was a cheaper way to test the idea before spending more coding time on it.
           </Lede>
         </Slide>
 
@@ -501,52 +486,52 @@ const LayrrrdCaseStudy = () => {
         <Slide id="direction" chapter="01" height="auto">
           <Kicker label="Changing direction" />
           <Headline>
-            We designed around scheduled resurfacing.{' '}
-            <Em>Research pushed us toward retrieval.</Em>
+            We designed around sending saved things back on a schedule.{' '}
+            <Em>Research pushed us toward finding things when you need them.</Em>
           </Headline>
 
           <Lede wide>
-            Our first concept centred on a scheduled digest: Layrrrd would periodically bring
-            saved content back to the user. Research showed that some people preferred to ask
-            for something when a need arose, instead of waiting for a scheduled delivery.
-            That changed the product hierarchy.
+            Our first idea was a regular digest: Layrrrd would send saved things back to you
+            every so often. Research showed that some people would rather ask for something when
+            they needed it, instead of waiting for a scheduled message. That changed what came
+            first in the product.
           </Lede>
 
           {/* VISUAL 05 · the shape of the change, not a description of it. */}
           <DirectionShift
             before={{
               label: 'Early idea',
-              chain: ['Saved content', 'Scheduled digest', 'User reads later'],
+              chain: ['Saved things', 'Regular digest', 'You read it later'],
             }}
             after={{
               label: 'After research',
-              chain: ['Saved content', 'Personal library'],
-              branches: ['Ask and retrieve', 'Recommendations', 'Digest'],
+              chain: ['Saved things', 'Your own library'],
+              branches: ['Ask and find', 'Tips', 'Digest'],
             }}
           />
 
           <Lede wide>
-            The research also showed that recommendations needed to feel relevant and grounded
-            in familiar sources, rather than simply popular. Those decisions affected the MVP,
-            the messaging, and the way we organised the experience.
+            Research also showed that tips needed to feel useful and come from sources people
+            knew, not just be popular. Those choices shaped the first version, the words we
+            used, and the way we organised the app.
           </Lede>
         </Slide>
 
         {/* ==================== 08 DEFINING THE MVP ======================== */}
         <Slide id="scope" chapter="01" height="auto">
-          <Kicker label="Scope" />
-          <Headline>We built only what was needed to test the core behaviour.</Headline>
+          <Kicker label="What to build first" />
+          <Headline>We built only what we needed to test the main habit.</Headline>
 
           <Lede wide>
-            With nine days, scope was part of the experiment. The first product needed to
-            answer three questions.
+            With only nine days, choosing what to build was part of the test. The first version
+            had to answer three questions.
           </Lede>
 
           <ol className="mt-10 grid gap-5 md:mt-12 md:grid-cols-3 md:gap-6">
             {[
               'Can saving something feel effortless?',
               'Can Layrrrd understand enough about it to make it useful later?',
-              'Will people come back to retrieve it?',
+              'Will people come back to find it?',
             ].map((question, i) => (
               <li key={question} className="border-t-2 border-foreground pt-5">
                 <span className="label tabular-nums text-ink-500">
@@ -559,7 +544,7 @@ const LayrrrdCaseStudy = () => {
 
           <ScopeBoundary
             inScope={[
-              'Capture from existing contexts',
+              'Saving from places people already use',
               'Automatic summaries',
               'A personal library',
               'Retrieval',
@@ -568,11 +553,11 @@ const LayrrrdCaseStudy = () => {
             ]}
             outScope={[
               'Advanced organisation',
-              'Large taxonomy systems',
+              'Big, complicated ways of sorting',
               'Social features',
               'Collaboration',
               'Deep customisation',
-              'Visual polish that did not help test the behaviour',
+              'Making things look perfect when it did not help the test',
             ]}
           />
         </Slide>
@@ -581,26 +566,26 @@ const LayrrrdCaseStudy = () => {
         <Slide id="loop" chapter="01" height="auto">
           <Kicker label="The product" />
           <Headline size="large">
-            Save it where you find it. Let Layrrrd do the organisation.{' '}
+            Save it where you find it. Let Layrrrd do the sorting.{' '}
             <Em>Return when you need it.</Em>
           </Headline>
 
-          <div className="mt-12 grid gap-8 md:mt-14 md:grid-cols-3 md:gap-10">
+          <div className="mt-break grid gap-8 md:grid-cols-3 md:gap-10">
             {[
               {
                 n: '01',
                 name: 'Capture',
-                body: 'People could save content from places they were already using.',
+                body: 'People could save things from places they already used.',
               },
               {
                 n: '02',
                 name: 'Understand',
-                body: 'Layrrrd processed the content into useful context: summary, topic, source.',
+                body: 'Layrrrd read each saved thing and added useful details: a summary, a topic and where it came from.',
               },
               {
                 n: '03',
                 name: 'Return',
-                body: 'Saved material came back through the library, retrieval, recommendations or the digest.',
+                body: 'Saved things came back through the library, a search, tips or the digest.',
               },
             ].map((stage) => (
               <div key={stage.name}>
@@ -615,23 +600,22 @@ const LayrrrdCaseStudy = () => {
             ))}
           </div>
 
-          <Decision label="The decision that shaped the loop">
-            Users did not have to construct an organisational system before receiving value.
+          <Decision label="The choice that shaped how it works">
+            Users did not have to set up a way of sorting things before the app was useful.
           </Decision>
         </Slide>
 
         {/* ============== 10 GIVING THE BRAND A ROLE ====================== */}
         <Slide id="brand" chapter="01" height="auto">
           <Kicker label="Brand" />
-          <Headline>Rudolf gave the product personality where it was useful.</Headline>
+          <Headline>Rudolf gave the app personality where it helped.</Headline>
 
           <Lede wide>
-            We designed Rudolf as part of the Layrrrd identity, and deliberately kept the core
-            interface restrained. The character appeared where personality or reassurance
-            helped: loading states, empty states, retrieval conversations in Telegram,
-            onboarding and membership communication. That let Layrrrd have a
-            recognisable character without turning every functional screen into a branded
-            illustration.
+            We designed Rudolf, a cartoon dog, as part of the Layrrrd brand, and kept the main
+            screens plain on purpose. Rudolf showed up where a bit of personality or comfort
+            helped: while things loaded, on empty screens, in chats in Telegram, in the first
+            steps, and in messages about membership. That gave Layrrrd a character people could
+            recognise, without turning every working screen into a drawing.
           </Lede>
 
         </Slide>
@@ -644,36 +628,36 @@ const LayrrrdCaseStudy = () => {
             <Em>we learned things interviews couldn&rsquo;t tell us.</Em>
           </Headline>
 
-          <Lede wide>We ran eight usability sessions on the working product.</Lede>
+          <Lede wide>We watched eight people use the working app.</Lede>
 
           <MetricRow>
             <Metric figure="86" caption="Survey responses" />
-            <Metric figure="8" caption="Usability tests" />
-            <Metric figure="32" caption="Product sign-ups at that point" />
+            <Metric figure="8" caption="User tests" />
+            <Metric figure="32" caption="Sign-ups at that point" />
             <Metric figure="37" caption="People on the waitlist at that point" />
           </MetricRow>
 
           <Note>
-            The sign-up and waitlist figures are a midway snapshot taken during usability
-            testing, not the day-nine totals.
+            The sign-up and waitlist numbers were taken partway through, during the user tests.
+            They are not the totals from day nine.
           </Note>
 
           <Verdicts
             worked={[
-              'Retrieving saved content felt easy',
+              'Finding saved things felt easy',
               'Saving required little effort',
-              'Recommendations felt relevant rather than generic',
+              'Tips felt personal, not generic',
             ]}
             broke={[
-              'Onboarding was too long',
-              'People could not always tell whether saving had succeeded',
-              'Reminders needed better judgment',
-              'Navigation asked too much of first-time users',
+              'The first steps took too long',
+              'People could not always tell if saving had worked',
+              'Reminders needed to be smarter about timing',
+              'The menus were confusing for first-time users',
             ]}
           />
 
-          <Decision label="What testing was actually for">
-            Not confirming the concept. Identifying where the main product loop still broke.
+          <Decision label="What testing was really for">
+            Not proving the idea was good. Finding where the app still broke.
           </Decision>
 
           {/* VISUAL 09 · what changed, as four before-and-afters. */}
@@ -681,31 +665,31 @@ const LayrrrdCaseStudy = () => {
             rows={[
               {
                 area: 'Onboarding',
-                before: 'Too many steps before the first save',
-                after: 'A shortened entry into the product',
+                before: 'Too many steps before you could save anything',
+                after: 'A shorter way in',
                 finding:
-                  'People wanted to save something before being asked to set the product up.',
+                  'People wanted to save something before being asked to set things up.',
               },
               {
-                area: 'Save feedback',
-                before: 'Processing happened silently',
-                after: 'An immediate pending state, resolving to saved',
+                area: 'Save message',
+                before: 'The app worked in silence',
+                after: 'A "saving…" sign right away, which turns into "saved"',
                 finding:
-                  'Without visible confirmation, testers repeated the save or assumed it had failed.',
+                  'With no sign that it worked, testers saved again or thought it had failed.',
               },
               {
                 area: 'Navigation',
                 before: 'Everything visible at once',
-                after: 'A simpler first-use hierarchy',
+                after: 'A simpler screen for first-timers',
                 finding:
-                  'First-time users had to decide what mattered before they had any content to judge it with.',
+                  'New users had to decide what mattered before they had saved anything to judge it by.',
               },
               {
                 area: 'Reminders',
-                before: 'Automatic resurfacing',
-                after: 'More selective, more relevant delivery',
+                before: 'Sending things back automatically',
+                after: 'Sending back fewer, better things',
                 finding:
-                  'Resurfacing something the user had already dealt with cost more trust than it earned.',
+                  'Sending back something the user had already dealt with made them trust the app less.',
               },
             ]}
           />
@@ -715,29 +699,28 @@ const LayrrrdCaseStudy = () => {
         <Slide id="save-state" chapter="02" height="auto">
           <Kicker label="A closer look" />
           <Headline>
-            The save was fast. <Em>The feedback wasn&rsquo;t clear enough.</Em>
+            The save was fast. <Em>But the app did not show it clearly.</Em>
           </Headline>
 
           <Lede wide>
-            One usability issue was especially revealing. The system could process a saved
-            link quickly, but the interface did not immediately show that anything had
-            happened. From the user&rsquo;s side that created a simple question: did that
-            save?
+            One problem taught us a lot. The app could handle a saved link quickly, but the
+            screen did not show right away that anything had happened. So people asked
+            themselves a simple question: did that save?
           </Lede>
 
           <TrustFlow
             before={{
               label: 'Before',
-              steps: ['Save', 'Processing happens silently', 'No immediate confirmation'],
+              steps: ['Save', 'The app works in silence', 'No sign that it worked'],
               end: 'Did that save?',
             }}
             after={{
               label: 'After',
               steps: [
                 'Save',
-                'Pending state appears immediately',
-                'Processing stays visible',
-                'The card resolves in place',
+                'A "saving…" sign appears right away',
+                'You can see it working',
+                'The card fills in where it is',
               ],
               end: 'Saved',
             }}
@@ -747,7 +730,7 @@ const LayrrrdCaseStudy = () => {
           {/* Three frames, not the four this grid used to hold open: two of
               those slots named the same file, and the recording shows one
               processing state, not two. */}
-          <div className="mt-12 grid items-start gap-4 sm:grid-cols-2 md:mt-16 lg:grid-cols-3">
+          <div className="mt-break grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <Shot
               src={savePending}
               alt="The library with an article URL pasted into the save field and the Save button not yet pressed."
@@ -757,7 +740,7 @@ const LayrrrdCaseStudy = () => {
             />
             <Shot
               src={saveProcessing}
-              alt="The same library a moment later: the new item is in place as a blank card still showing its raw URL while Layrrrd reads the page."
+              alt="The same library a moment later: the new item is there as a blank card, still showing its web address while Layrrrd reads the page."
               caption="Processing"
               width={1680}
               height={1050}
@@ -772,10 +755,9 @@ const LayrrrdCaseStudy = () => {
           </div>
 
           <Lede wide>
-            We also added explicit duplicate detection, so saving an existing item produced a
-            clear response instead of silently creating another copy. It was a small interface
-            change, and it solved a confidence problem without requiring the backend to become
-            faster.
+            We also made the app notice when you save something twice. Instead of quietly making
+            another copy, it now tells you clearly. It was a small change to the screen, and it
+            made people feel sure it worked, without making the app itself any faster.
           </Lede>
         </Slide>
 
@@ -789,31 +771,31 @@ const LayrrrdCaseStudy = () => {
               {
                 from: 'Empty library',
                 to: 'Useful first session',
-                problem: 'A new personal library has no value in it yet.',
+                problem: 'A new library has nothing useful in it yet.',
                 change:
-                  'Give people something useful immediately, instead of waiting for weeks of saved content.',
+                  'Give people something useful right away, instead of making them wait weeks for saved things to pile up.',
               },
               {
-                from: 'Scheduled delivery',
-                to: 'Retrieval first',
+                from: 'Sending on a schedule',
+                to: 'Finding things first',
                 problem:
                   'Some users wanted information when they needed it, not only on a schedule.',
-                change: 'Retrieval moved to the centre of the experience.',
+                change: 'Finding things became the heart of the app.',
               },
               {
-                from: 'Job-title audience',
-                to: 'Saving behaviour',
-                problem: 'The behaviour appeared across professions.',
+                from: 'Aiming at certain jobs',
+                to: 'Aiming at people who save a lot',
+                problem: 'People in all kinds of jobs had the same habit.',
                 change:
-                  'We stopped defining the initial audience mainly by profession, and focused on people who habitually save content.',
+                  'We stopped choosing our first users by their job, and focused on people who save things all the time.',
               },
               {
-                from: 'Subscription setup',
+                from: 'Monthly payments',
                 to: 'Founding Membership',
                 problem:
-                  'Recurring billing added overhead during a nine-day validation sprint.',
+                  'Setting up monthly payments was too much work for a nine-day test.',
                 change:
-                  'We used a limited one-time Founding Membership to test whether people were willing to pay.',
+                  'We offered a limited, one-time Founding Membership to see if people would pay.',
               },
             ]}
           />
@@ -821,14 +803,14 @@ const LayrrrdCaseStudy = () => {
 
         {/* ================== 14 ASKING PEOPLE TO PAY ===================== */}
         <Slide id="pricing" chapter="03" height="auto">
-          <Kicker n="03" label="Validating value" />
+          <Kicker n="03" label="Proving people want it" />
           <Headline>
-            Sign-ups showed interest. <Em>Payment tested commitment.</Em>
+            Sign-ups showed people were curious. <Em>Paying showed they really meant it.</Em>
           </Headline>
 
           <Lede wide>
-            We did not want to finish the sprint with only survey responses and people saying
-            they would use the product. The evidence became progressively harder.
+            We did not want to end the nine days with only survey answers and people saying they
+            would use the app. So each step asked people for a bit more.
           </Lede>
 
           <Chain steps={['Interest', 'Sign-up', 'Use', 'Payment']} />
@@ -836,22 +818,21 @@ const LayrrrdCaseStudy = () => {
           <Beside>
             <div>
               <Lede>
-                For the sprint we chose a limited Founding Membership rather than implementing
-                the full recurring subscription model. It gave us a simpler way to answer the
-                immediate question: did people care enough about this product to pay for it
-                now?
+                For the nine days we chose a limited Founding Membership instead of building full
+                monthly payments. It was a simpler way to answer the question we had right then:
+                did people care enough about this app to pay for it now?
               </Lede>
               <Points
                 items={[
                   'A limited cohort',
                   'One payment',
                   'Early access',
-                  'Influence over what we developed next',
+                  'A say in what we built next',
                 ]}
               />
               <Note>
-                This was a validation instrument for the sprint, not a statement of the
-                long-term commercial model.
+                This was a way to test people during the nine days. It was not our long-term plan
+                for making money.
               </Note>
             </div>
 
@@ -875,13 +856,13 @@ const LayrrrdCaseStudy = () => {
 
           <MetricRow>
             <Metric figure="15" caption="Paying customers" size="large" />
-            <Metric figure="126" caption="Freemium sign-ups" size="large" />
-            <Metric figure="9 days" caption="From first build to paid validation" size="large" />
+            <Metric figure="126" caption="Free sign-ups" size="large" />
+            <Metric figure="9 days" caption="From the first build to paying customers" size="large" />
           </MetricRow>
 
           <p className="mt-12 max-w-3xl text-base leading-[1.6] opacity-90 md:text-lg">
-            Fifteen people paying for a nine-day-old product gave us enough evidence to keep
-            building. The product did not stop at the sprint.
+            Fifteen people paying for an app that was only nine days old was enough proof to
+            keep building. The app did not stop after the nine days.
           </p>
 
           <Chain steps={['Day 1', 'Day 9', '15 paying customers']} dense />
@@ -889,31 +870,31 @@ const LayrrrdCaseStudy = () => {
 
         {/* ======================= 16 AFTER DAY NINE ====================== */}
         <Slide id="after" chapter="03" height="auto">
-          <Kicker label="After the sprint" />
+          <Kicker label="After the nine days" />
           <Headline>
-            The sprint ended. <Em>We kept building.</Em>
+            The nine days ended. <Em>We kept building.</Em>
           </Headline>
 
           <Lede wide>
-            Day nine answered whether there was enough early demand to continue. Afterwards,
-            the same core product expanded into more of the places people were already saving
-            and retrieving content.
+            Day nine showed there were enough early fans to keep going. After that, the same
+            app grew into more of the places where people were already saving and finding
+            things.
           </Lede>
 
           <ShippedSince
             items={[
               {
-                name: 'Published Chrome extension',
+                name: 'A Chrome add-on, now live',
                 note: 'Saving from the page someone is already reading.',
               },
               {
                 name: 'Both chat channels',
-                note: 'Telegram and WhatsApp, the two places people were already sending themselves links.',
+                note: 'Telegram and WhatsApp, the two places people already sent themselves links.',
               },
-              { name: 'Referral loops' },
+              { name: 'Ways to invite friends' },
               {
-                name: 'Trust and privacy work',
-                note: 'Including full account deletion that actually cascades.',
+                name: 'Work on trust and privacy',
+                note: 'Including deleting your account so that everything really goes with it.',
               },
             ]}
           />
@@ -922,31 +903,31 @@ const LayrrrdCaseStudy = () => {
         {/* ====================== 17 THE PRODUCT TODAY ==================== */}
         <Slide id="today" chapter="03" height="auto">
           <Kicker label="The product today" />
-          <Headline>Different entry points, one product underneath.</Headline>
+          <Headline>Different ways in, one app underneath.</Headline>
 
           <Lede wide>
-            Chrome, the web app and Telegram are not separate products. They are different
-            ways into the same loop: save, process, retrieve, refine. Someone can save a link
-            from one surface and return to it through another without learning a different
-            system each time.
+            Chrome, the web app and Telegram are not separate apps. They are different ways into
+            the same steps: save it, let Layrrrd read it, find it, improve it. You can save a link
+            in one place and come back to it in another, without learning something new each
+            time.
           </Lede>
 
           {/* VISUAL 13 · the four surfaces, two up. Every still here is 16:10,
               so the rows land level without cropping anything to make them,
               and `items-start` keeps a figure at its image's height rather
               than stretching it to its neighbour. */}
-          <div className="mt-12 grid items-start gap-4 md:mt-16 md:grid-cols-2 md:gap-5">
+          <div className="mt-break grid items-start gap-4 md:grid-cols-2 md:gap-5">
             <Shot
               src={libraryCurrent}
-              alt="The Layrrrd web library: saved articles as cards, each carrying its source, its reading time, key insights and a bookmark action."
+              alt="The Layrrrd web library: saved articles as cards, each showing where it came from, how long it takes to read, key points and a bookmark button."
               caption="The library"
               width={1680}
               height={1050}
             />
             <Shot
               src={chromeExtension}
-              alt="The Layrrrd browser extension open over a TechCrunch article, showing the page it has recognised above a single Save this page button."
-              caption="Chrome extension"
+              alt="The Layrrrd browser add-on open over a TechCrunch article, showing the page it found above one Save this page button."
+              caption="Chrome add-on"
               width={1680}
               height={1050}
             />
@@ -972,30 +953,30 @@ const LayrrrdCaseStudy = () => {
         {/* ======================= 18 REFLECTION ========================== */}
         <Slide id="reflection" chapter="03" height="auto">
           <Kicker label="Reflection" />
-          <Headline>What the nine days changed in how I work</Headline>
+          <Headline>How the nine days changed the way I work</Headline>
 
           <div className="mt-10 max-w-3xl space-y-6 text-base leading-[1.6] text-ink-600 md:mt-12 md:text-lg">
             <p>
-              The sprint compressed research, design, engineering, testing and commercial
-              validation into one continuous loop.
+              The nine days squeezed research, design, coding, testing and selling into one loop
+              that never stopped.
             </p>
             <p>
-              The biggest lesson for me was not that design can happen faster. It was that
-              speed makes the order of evidence more important.
+              The biggest lesson for me was not that design can happen faster. It was that when
+              you move fast, the order in which you collect proof matters even more.
             </p>
             <p>
-              We started with inexpensive evidence: observation, a survey and conversations.
-              We then increased the commitment gradually, through a proposition, a working
-              product, usability testing and finally payment.
+              We started with cheap proof: watching, a survey and conversations. Then we asked a
+              bit more of people each time: an idea, a working app, user tests and finally
+              paying.
             </p>
             <p>
-              Several parts of the product changed along the way, because the evidence
-              disagreed with our original assumptions. The product we were selling on day nine
-              was not quite the product we imagined on day one.
+              Many parts of the app changed along the way, because what we learned did not match
+              what we first believed. The app we were selling on day nine was not quite the app we
+              imagined on day one.
             </p>
             <p>
-              That is the part of the project I would keep. Move quickly, but make each
-              decision earn the next investment.
+              That is the part of the project I would keep. Move fast, but let each choice prove
+              itself before you spend more on the next one.
             </p>
           </div>
 

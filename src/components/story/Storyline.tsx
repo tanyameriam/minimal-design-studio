@@ -97,6 +97,16 @@ interface StorylineListProps {
   onSelect?: (id: string, event: MouseEvent) => void;
   /** Larger type for the sheet, where there is room. */
   size?: 'rail' | 'sheet';
+  /**
+   * Show slide titles only for the chapter being read.
+   *
+   * Set on the fixed rail, and deliberately not on the panel or the sheet.
+   * A reader who has deliberately opened the whole storyline wants the whole
+   * storyline; a reader who is reading the page wants to know where they
+   * are. Those are different questions and they had been getting the same
+   * eighteen-line answer.
+   */
+  focus?: boolean;
 }
 
 /**
@@ -108,6 +118,13 @@ interface StorylineListProps {
  * scale: read, current, still to come. The one after the current slide is
  * labelled, because "what am I about to get" is the question a rail like
  * this is really answering.
+ *
+ * In `focus` mode a chapter that is not being read collapses to its name and
+ * a count. This is the fix for the rail reading as the page again in a
+ * narrower column: on the longest study it takes the rail from forty-odd
+ * lines of slide titles - most of them headings the reader is about to meet
+ * anyway, a few inches to the left - down to three chapter names and the
+ * handful of beats in the one they are actually in.
  */
 export const StorylineList = ({
   chapters,
@@ -115,6 +132,7 @@ export const StorylineList = ({
   hrefFor,
   onSelect,
   size = 'rail',
+  focus = false,
 }: StorylineListProps) => {
   const order = useMemo(() => storylineOrder(chapters), [chapters]);
   const activeIndex = activeId ? order.indexOf(activeId) : -1;
@@ -128,37 +146,75 @@ export const StorylineList = ({
     el?.scrollIntoView({ block: 'nearest' });
   }, [activeId]);
 
+  // Which chapter the reader is in. In focus mode it is the only one that
+  // shows its slides; everywhere else it is just used for emphasis.
+  const openChapter = chapters.find((chapter) =>
+    chapter.slides.some((slide) => slide.id === activeId)
+  );
+
   let index = -1;
 
   return (
     <div ref={listRef} className="flex flex-col">
-      {chapters.map((chapter) => (
+      {chapters.map((chapter) => {
+        // With no active slide yet - the top of a page, before the observer
+        // has fired - the first chapter opens, so the rail is never a list of
+        // names with nothing under any of them.
+        const isOpen =
+          !focus || (openChapter ? chapter === openChapter : chapter === chapters[0]);
+        const label = (
+          <>
+            <span className="tabular-nums">{chapter.n}</span>
+            <span className="ml-2.5">{chapter.name}</span>
+          </>
+        );
+
+        return (
         <div key={chapter.n} className="border-t border-border first:border-t-0">
           {/* The chapter name jumps to its divider slide where the story
-              has one; otherwise it is a heading and nothing more. */}
-          {chapter.target ? (
+              has one; otherwise it is a heading and nothing more.
+
+              In focus mode the chapter being read is set in the foreground:
+              with most of the slide titles gone, the chapter name is now the
+              rail's primary line rather than a divider above one. */}
+          {/* An unnamed chapter is a flat list of sections - an essay, or a
+              data-driven study - so it renders no heading at all rather than
+              an empty line above its own contents. */}
+          {!chapter.name && !chapter.n ? null : chapter.target ? (
             <a
               href={hrefFor ? hrefFor(chapter.target) : `#${chapter.target}`}
               onClick={(event) => onSelect?.(chapter.target as string, event)}
-              className={`label block px-4 pb-2.5 pt-4 text-ink-500 transition-colors hover:text-foreground ${
+              /* No aria-current here. The chapter being read is always the
+                 open one, and the slide inside it already carries it; two
+                 current items in one nav is an ambiguity, not extra help. */
+              className={`label block px-4 pb-2.5 pt-4 transition-colors hover:text-foreground ${
                 size === 'sheet' ? 'md:px-6' : ''
-              }`}
+              } ${focus && isOpen ? 'text-foreground' : 'text-ink-500'}`}
             >
-              <span className="tabular-nums">{chapter.n}</span>
-              <span className="ml-2.5">{chapter.name}</span>
+              {label}
             </a>
           ) : (
             <p
-              className={`label px-4 pb-2.5 pt-4 text-ink-400 ${
-                size === 'sheet' ? 'md:px-6' : ''
+              className={`label px-4 pb-2.5 pt-4 ${size === 'sheet' ? 'md:px-6' : ''} ${
+                focus && isOpen ? 'text-foreground' : 'text-ink-400'
               }`}
             >
-              <span className="tabular-nums">{chapter.n}</span>
-              <span className="ml-2.5">{chapter.name}</span>
+              {label}
             </p>
           )}
 
-          <ol>
+          {/*
+            A closed chapter says how long it is and stops. That is the
+            question a collapsed chapter has to answer - how much is in
+            there, should I jump - and it takes one line rather than seven.
+          */}
+          {!isOpen && (
+            <p className={`label pb-3 pl-4 pr-4 text-ink-400 ${size === 'sheet' ? 'md:pl-6' : ''}`}>
+              {chapter.slides.length} {chapter.slides.length === 1 ? 'part' : 'parts'}
+            </p>
+          )}
+
+          <ol className={isOpen ? undefined : 'hidden'}>
             {chapter.slides.map((slide) => {
               index += 1;
               const position = index;
@@ -213,7 +269,8 @@ export const StorylineList = ({
             })}
           </ol>
         </div>
-      ))}
+        );
+      })}
     </div>
   );
 };
@@ -259,113 +316,17 @@ const RailHeading = ({
   </div>
 );
 
-const RAIL_STORAGE_KEY = 'storyline-rail-collapsed';
-const RAIL_WIDTH = { open: '15rem', collapsed: '3.5rem' };
-
-/**
- * The fixed rail, for the scrolling case studies.
+/*
+ * StorylineRail and StorylineChapterBar used to live here: a fifteen-rem
+ * bordered rail down the left of a case study, and a floating bar of chapter
+ * pills across the foot of the viewport. Every case study rendered both, so
+ * the same chapter names were on screen twice, and the rail additionally
+ * reserved a gutter the page had to pad for.
  *
- * Only appears where there is width to spare for it. Under that the same
- * storyline is reached through <StorylinePanel />, so the feature is never
- * desktop-only.
- *
- * It collapses to a spine of chapter numbers. A long case study is read at
- * least partly for its images, and on a 1280px screen fifteen rems of
- * permanent chrome is a real bite out of them; collapsed, the rail still
- * says which chapter you are in and still jumps, in a fraction of the width.
- * The choice is remembered, because someone who wants the room back wants it
- * back on the next case study too.
+ * Both are gone. src/design/ReadingNav.tsx is the one navigation now, and it
+ * reuses StorylineList and StorylinePanel below, which were always the parts
+ * doing the real work.
  */
-export const StorylineRail = ({
-  chapters,
-  activeId,
-}: {
-  chapters: Storyline;
-  activeId: string | null;
-}) => {
-  const order = storylineOrder(chapters);
-  const position = activeId ? order.indexOf(activeId) + 1 : 1;
-  const activeChapter = chapters.find((c) => c.slides.some((sl) => sl.id === activeId));
-
-  const [collapsed, setCollapsed] = useState(() => {
-    try {
-      return localStorage.getItem(RAIL_STORAGE_KEY) === 'true';
-    } catch {
-      return false;
-    }
-  });
-
-  // The page beside the rail reads --rail-w, so the reflow happens in CSS
-  // rather than every case study tracking this state for itself.
-  useEffect(() => {
-    document.documentElement.style.setProperty(
-      '--rail-w',
-      collapsed ? RAIL_WIDTH.collapsed : RAIL_WIDTH.open
-    );
-    return () => {
-      document.documentElement.style.removeProperty('--rail-w');
-    };
-  }, [collapsed]);
-
-  const toggle = useCallback(() => {
-    setCollapsed((prev) => {
-      const next = !prev;
-      try {
-        localStorage.setItem(RAIL_STORAGE_KEY, String(next));
-      } catch {
-        // Not remembered, but the session still honours it.
-      }
-      return next;
-    });
-  }, []);
-
-  return (
-    <nav
-      aria-label="Storyline"
-      style={{ width: collapsed ? RAIL_WIDTH.collapsed : RAIL_WIDTH.open }}
-      className="fixed bottom-0 left-0 top-[4.5rem] z-40 hidden flex-col border-r border-border bg-background transition-[width] duration-300 ease-smooth md:top-[5rem] xl:flex"
-    >
-      <RailHeading
-        position={Math.max(position, 1)}
-        total={order.length}
-        collapsed={collapsed}
-        onToggle={toggle}
-      />
-
-      <div className="min-h-0 flex-1 overflow-y-auto pb-8">
-        {collapsed ? (
-          // The spine: one number per chapter, the current one filled.
-          <ol className="flex flex-col items-center gap-1.5 pt-3">
-            {chapters.map((chapter) => {
-              const target = chapter.slides[0]?.id;
-              const isActive = chapter === activeChapter;
-
-              return (
-                <li key={chapter.n}>
-                  <a
-                    href={target ? `#${target}` : undefined}
-                    onClick={(event) => target && jumpToSlide(target, event)}
-                    title={chapter.name}
-                    aria-current={isActive ? 'true' : undefined}
-                    className={`label grid h-9 w-9 place-items-center rounded-md tabular-nums transition-colors ${
-                      isActive
-                        ? 'bg-foreground text-background'
-                        : 'text-ink-400 hover:text-foreground'
-                    }`}
-                  >
-                    {chapter.n}
-                  </a>
-                </li>
-              );
-            })}
-          </ol>
-        ) : (
-          <StorylineList chapters={chapters} activeId={activeId} onSelect={jumpToSlide} />
-        )}
-      </div>
-    </nav>
-  );
-};
 
 /**
  * The storyline as a full-screen panel, for every width below the rail's.
@@ -430,78 +391,5 @@ export const StorylinePanel = ({
         </div>
       </nav>
     </div>
-  );
-};
-
-/**
- * The sticky row that stands in for the rail below its breakpoint.
- *
- * It is also the upfront promise: visible from the first screen, it names
- * the chapter and the slide you are on, says how many there are in total,
- * and opens the whole list.
- */
-export const StorylineChapterBar = ({
-  chapters,
-  activeId,
-}: {
-  chapters: Storyline;
-  activeId: string | null;
-}) => {
-  const activeChapter = chapters.find((c) => c.slides.some((s) => s.id === activeId));
-
-  if (!chapters.length) return null;
-
-  return (
-    <nav
-      aria-label="Chapters"
-      className="pointer-events-none fixed inset-x-0 bottom-4 z-40 flex justify-center px-4 md:bottom-6"
-    >
-      {/*
-        The bar is only as wide as its chapters and scrolls inside itself on a
-        narrow screen, so it never becomes a full-width slab pinned over the
-        reading column. Right padding clears the back-to-top control.
-      */}
-      <div className="panel pointer-events-auto flex max-w-full items-center gap-1 overflow-x-auto rounded-full p-1.5 shadow-lg backdrop-blur-md md:mr-16">
-        {chapters.map((chapter) => {
-          const target = chapter.slides[0]?.id;
-          const isActive = chapter === activeChapter;
-
-          return (
-            <a
-              key={chapter.n}
-              href={target ? `#${target}` : undefined}
-              aria-current={isActive ? 'true' : undefined}
-              className={`whitespace-nowrap rounded-full px-4 py-2 text-sm transition-colors duration-300 ease-smooth md:text-base ${
-                isActive
-                  ? 'bg-foreground text-background'
-                  : 'text-ink-600 hover:text-foreground'
-              }`}
-            >
-              {chapter.name}
-            </a>
-          );
-        })}
-      </div>
-    </nav>
-  );
-};
-
-/**
- * Everything a scrolling case study needs: the rail where it fits, the bar
- * and panel where it does not, and the active-slide tracking behind all of
- * them.
- */
-export const StorylineNav = ({ chapters }: { chapters: Storyline }) => {
-  const order = useMemo(() => storylineOrder(chapters), [chapters]);
-  const activeId = useActiveSlide(order);
-  const [open, setOpen] = useState(false);
-  const close = useCallback(() => setOpen(false), []);
-
-  return (
-    <>
-      <StorylineRail chapters={chapters} activeId={activeId} />
-      <StorylineChapterBar chapters={chapters} activeId={activeId} />
-      <StorylinePanel chapters={chapters} activeId={activeId} open={open} onClose={close} />
-    </>
   );
 };
