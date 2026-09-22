@@ -33,8 +33,13 @@ const CursorLabel = () => {
       x = event.clientX;
       y = event.clientY;
 
-      const target = (event.target as Element | null)?.closest<HTMLElement>('[data-cursor]');
-      const next = target?.dataset.cursor ?? '';
+      const el = event.target as Element | null;
+      const target = el?.closest<HTMLElement>('[data-cursor]');
+      // Over a link or button inside the labelled area, the control's own text
+      // says what it does. A floating label saying something else would contradict it.
+      const control = el?.closest('a, button');
+      const overInnerControl = Boolean(control && target && control !== target && target.contains(control));
+      const next = overInnerControl ? '' : (target?.dataset.cursor ?? '');
       if (next !== current) {
         current = next;
         if (next) text.textContent = next;
