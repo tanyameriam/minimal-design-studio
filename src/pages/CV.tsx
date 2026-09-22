@@ -115,9 +115,10 @@ const CV = () => {
                 <h1>Tanya Sunny</h1>
                 <div class="title">Product Designer</div>
                 <div class="summary">
-                  Product Designer with <strong>5+ years of experience</strong> designing screens, finding what makes products hard to use, and planning how work flows.
-                  Now at BrynQ, making it easier to connect HR and payroll systems.
-                  Master's in UX design, focused on AI. Background in computer science.
+                  Product Designer with <strong>5+ years of experience</strong> in UX auditing, workflow and systems design, and interface design.
+                  At BrynQ, led the redesign of SalureConnect into the BrynQ integration platform.
+                  Experienced in <strong>AI-integrated workflows with Claude</strong>, from design systems in code to continuous delivery with developers.
+                  Master's in UX (AI specialisation); background in computer science.
                 </div>
               </div>
               <div class="header-right">
@@ -140,12 +141,13 @@ const CV = () => {
                     <div class="job-company">BrynQ, Netherlands</div>
                     <div class="job-date">2023 to Present</div>
                     <ul>
-                      <li>Designed a step-by-step planning tool and templates, so a connection that used to take <strong>~6 months could take ~2 weeks</strong> (our estimate)</li>
-                      <li>Design and improve the steps users go through, <strong>making hard setup tasks simpler</strong></li>
-                      <li>Check the product for problems (UX audits) and suggest improvements, step by step</li>
-                      <li>Look at the whole system when designing how data is matched and what each screen shows</li>
-                      <li>Led the design of a task-tracking feature the team uses</li>
-                      <li>Help design <strong>AI features</strong> that help people set things up and check them</li>
+                      <li>Led the complete redesign of <strong>SalureConnect into the BrynQ platform</strong>, from research and information architecture to the shipped interface</li>
+                      <li>Designed the template selection and guided setup experience, reducing the projected implementation cycle for a standard integration from <strong>~6 months to ~2 weeks</strong></li>
+                      <li>Responsible for UX audits across the platform and for updating designs based on the findings</li>
+                      <li>Apply systems thinking to improve the product holistically, across integration flows, data mappings and interface states</li>
+                      <li>Integrated the design system into the codebase using <strong>Claude Code</strong></li>
+                      <li>Run a continuous implementation loop with developers: iterations are implemented with Claude Code, then taken to production by the development team, for faster delivery</li>
+                      <li>Collaborate with Product Owners and Product Managers to align design with product priorities</li>
                     </ul>
                   </div>
 
@@ -154,8 +156,8 @@ const CV = () => {
                     <div class="job-company">Multiple Startups, India</div>
                     <div class="job-date">2022 to 2023</div>
                     <ul>
-                      <li>Designed screens for new products: Amphisoft Ventures, Lymdata Labs</li>
-                      <li>Made designs that are clear and consistent</li>
+                      <li>Designed user interfaces for early-stage web and mobile products: Amphisoft Ventures, Lymdata Labs</li>
+                      <li>Delivered consistent, usable visual designs from product requirements through to handoff</li>
                     </ul>
                   </div>
                   
@@ -164,7 +166,8 @@ const CV = () => {
                     <div class="job-company">Segments Cloud LLC, Dubai, UAE</div>
                     <div class="job-date">2021 to 2022</div>
                     <ul>
-                      <li>Designed screens for a Bitcoin mining and storage product</li>
+                      <li>Designed interfaces and page layouts for a Bitcoin mining and warehousing platform</li>
+                      <li>Translated business requirements into structured, visually consistent interfaces</li>
                     </ul>
                   </div>
                   
@@ -173,7 +176,8 @@ const CV = () => {
                     <div class="job-company">Curateus, Bangalore, India</div>
                     <div class="job-date">2021</div>
                     <ul>
-                      <li>Designed sketches and interactive prototypes for an app for finding good articles</li>
+                      <li>Designed wireframes, interactive prototypes and UI for a content curation product</li>
+                      <li>Designed a browser extension that let curators recommend articles without leaving the page, reducing the flow from seven steps to four</li>
                     </ul>
                   </div>
                   
@@ -182,8 +186,8 @@ const CV = () => {
                     <div class="job-company">SAP Ariba, Bangalore, India</div>
                     <div class="job-date">2018 to 2021</div>
                     <ul>
-                      <li>Helped business customers find and fix problems with their software</li>
-                      <li>Learned <strong>what frustrates people who use business software</strong></li>
+                      <li>Supported enterprise clients through system troubleshooting and incident resolution</li>
+                      <li>Developed a deep understanding of <strong>enterprise software behaviour and user pain points</strong></li>
                     </ul>
                   </div>
                 </div>
@@ -250,6 +254,7 @@ const CV = () => {
                     <span class="tag">Workflow & Process Design</span>
                     <span class="tag">UI & Interaction Design</span>
                     <span class="tag">AI-Integrated UX Workflows</span>
+                    <span class="tag">Claude Code</span>
                   </div>
                 </div>
                 
@@ -257,7 +262,7 @@ const CV = () => {
                   <div class="section-title">Community</div>
                   <div class="community-item">
                     <div class="community-name"><strong>Co-organiser</strong>, Design Reimagined Utrecht</div>
-                    <div class="skill-items">A group for designers that runs talks and workshops in the Netherlands</div>
+                    <div class="skill-items">Design community hosting sessions and workshops in the Netherlands</div>
                   </div>
                 </div>
               </div>
@@ -320,9 +325,11 @@ const CV = () => {
           <section className="mb-12">
             <h2 className="font-sans text-lg mb-4 pb-2 border-b border-border">Profile</h2>
             <p className="text-muted-foreground leading-relaxed">
-              Product Designer with 5 years of design work, and working in companies since 2018.
-              I design screens, find what makes products hard to use (UX audits), and plan how work flows. Now working on BrynQ,
-              a product that connects HR and payroll systems. Master's in UX design, focused on AI, finished in 2026. Background in computer science.
+              Product Designer with 5+ years of design experience and a professional background since 2018,
+              specialising in UX auditing, workflow and systems design, and interface design. At BrynQ, I led the
+              redesign of SalureConnect into the BrynQ integration platform. Experienced in AI-integrated workflows
+              with Claude, from integrating the design system into the codebase to a continuous implementation loop
+              with developers. Master's in UX with a specialisation in AI (2026); background in computer science.
             </p>
           </section>
 
@@ -330,7 +337,7 @@ const CV = () => {
           <section className="mb-12">
             <h2 className="font-sans text-lg mb-4 pb-2 border-b border-border">Key Competencies</h2>
             <div className="flex flex-wrap gap-2">
-              {['UX Auditing', 'Systems Thinking', 'Product Audit', 'Transactional Design', 'Workflow & Process Design', 'UI & Interaction Design', 'AI-Integrated UX Workflows'].map(skill => <span key={skill} className="px-3 py-1.5 bg-muted text-sm rounded-md">
+              {['UX Auditing', 'Systems Thinking', 'Product Audit', 'Transactional Design', 'Workflow & Process Design', 'UI & Interaction Design', 'AI-Integrated UX Workflows', 'Claude Code'].map(skill => <span key={skill} className="px-3 py-1.5 bg-muted text-sm rounded-md">
                   {skill}
                 </span>)}
             </div>
@@ -351,14 +358,13 @@ const CV = () => {
                   <span className="text-sm text-muted-foreground">2023 to Present</span>
                 </div>
                 <ul className="list-disc list-outside ml-5 text-muted-foreground text-sm space-y-1">
-                  <li>Designed a step-by-step planning tool and templates, so a connection that used to take ~6 months could take ~2 weeks. This is our estimate, not yet measured with real customers.</li>
-                  <li>Design and improve the steps users go through in BrynQ, making hard setup and everyday tasks simpler.</li>
-                  <li>Find what makes the product hard to use (UX audits) and suggest improvements, step by step.</li>
-                  <li>Look at the whole system when designing how data is matched, changed and shown on each screen.</li>
-                  <li>Keep the design files in Figma tidy and organised, and look after the design rules.</li>
-                  <li>Work with Product Owners and Product Managers so design work matches what matters most.</li>
-                  <li>Led the design of a task-tracking feature, so everyone can see what needs doing and who is doing it.</li>
-                  <li>Help design AI features that help users set things up and check them.</li>
+                  <li>Led the complete redesign of SalureConnect into the BrynQ platform, from research and information architecture to the shipped interface.</li>
+                  <li>Designed the template selection and guided setup experience, reducing the projected implementation cycle for a standard integration from ~6 months to ~2 weeks.</li>
+                  <li>Responsible for UX audits across the platform and for updating designs based on the findings.</li>
+                  <li>Apply systems thinking to improve the product holistically, across integration flows, data mappings and interface states.</li>
+                  <li>Integrated the design system into the codebase using Claude Code, closing the gap between design and implementation.</li>
+                  <li>Run a continuous implementation loop with developers: design iterations are implemented with Claude Code, then taken to production by the development team, for faster and more frequent delivery.</li>
+                  <li>Collaborate with Product Owners and Product Managers to align design work with product priorities.</li>
                 </ul>
               </div>
 
@@ -372,8 +378,8 @@ const CV = () => {
                   <span className="text-sm text-muted-foreground">2022 to 2023</span>
                 </div>
                 <ul className="list-disc list-outside ml-5 text-muted-foreground text-sm space-y-1">
-                  <li>Designed screens for new products, based on what each one needed.</li>
-                  <li>Made designs that are clear, consistent and easy to use.</li>
+                  <li>Designed user interfaces for early-stage web and mobile products, working from defined product requirements.</li>
+                  <li>Delivered consistent, usable visual designs through to development handoff.</li>
                   <li>Clients: Amphisoft Ventures · Lymdata Labs · Amphisoft (Stealth EdTech Product)</li>
                 </ul>
               </div>
@@ -388,8 +394,8 @@ const CV = () => {
                   <span className="text-sm text-muted-foreground">2021 to 2022</span>
                 </div>
                 <ul className="list-disc list-outside ml-5 text-muted-foreground text-sm space-y-1">
-                  <li>Designed screens and page layouts for a Bitcoin mining and storage product.</li>
-                  <li>Turned what the business needed into clear, consistent screens.</li>
+                  <li>Designed interfaces and page layouts for a Bitcoin mining and warehousing platform.</li>
+                  <li>Translated business requirements into structured, visually consistent interfaces.</li>
                 </ul>
               </div>
 
@@ -403,8 +409,9 @@ const CV = () => {
                   <span className="text-sm text-muted-foreground">2021</span>
                 </div>
                 <ul className="list-disc list-outside ml-5 text-muted-foreground text-sm space-y-1">
-                  <li>Designed screens, sketches and interactive prototypes for an app for finding good articles.</li>
-                  <li>Helped design quickly for websites and phone apps.</li>
+                  <li>Designed wireframes, interactive prototypes and UI for a content curation product across web and mobile.</li>
+                  <li>Designed a browser extension that let curators recommend articles without leaving the page, reducing the flow from seven steps to four.</li>
+                  <li>Worked with the Product Owner and three developers from early flows through to developer handoff.</li>
                 </ul>
               </div>
 
@@ -418,9 +425,9 @@ const CV = () => {
                   <span className="text-sm text-muted-foreground">2018 to 2021</span>
                 </div>
                 <ul className="list-disc list-outside ml-5 text-muted-foreground text-sm space-y-1">
-                  <li>Helped business customers find and fix problems with their software.</li>
-                  <li>Worked with engineers on problems with how the system and its steps worked.</li>
-                  <li>Learned how business software behaves, and what frustrates the people who use it.</li>
+                  <li>Supported enterprise clients through system troubleshooting and incident resolution.</li>
+                  <li>Collaborated with engineering teams on workflow and system-level issues.</li>
+                  <li>Developed a deep understanding of enterprise software behaviour and user pain points.</li>
                 </ul>
               </div>
             </div>
@@ -457,7 +464,7 @@ const CV = () => {
                 Design Reimagined Utrecht
               </a>
               <p className="text-sm text-muted-foreground mt-1">
-                A group for designers in the Netherlands that runs talks and workshops about what we learn.
+                A design community in the Netherlands hosting sessions and workshops on design practice.
               </p>
             </div>
           </section>
