@@ -11,7 +11,7 @@ import { useReveal } from '@/hooks/use-reveal';
  * runs on - body text does not go in a panel - four times over.
  *
  * What is left is a strip: two lines of fact, ruled rather than boxed, and
- * the practices named once, as a fourth column of the same row. Same information, a third of
+ * the practices named once on a single line. Same information, a third of
  * the words, no surfaces, and the top of the first project moves up a screen.
  *
  * Nothing here is a number, so nothing here needs an evidence label. The
@@ -23,10 +23,6 @@ const facts = [
   { label: 'Where I have worked', body: 'HR and payroll, healthcare, schools, and everyday apps' },
   { label: 'What I build', body: 'Software for businesses, services with many people involved, and brand-new products' },
   { label: 'What I am good at', body: 'Taking work people do over calls and spreadsheets, and building it into the product' },
-  {
-    label: 'What I do',
-    body: 'Planning how work flows, systems design, designing AI tools, interface and interaction design',
-  },
 ];
 
 /**
@@ -35,6 +31,8 @@ const facts = [
  * strength of EducAItors, where the work was deciding what the model rules
  * on and where a person still has to.
  */
+const practice = ['Workflow design', 'Systems design', 'AI system design', 'Interaction design'];
+
 const ProofRail = () => {
   const ref = useReveal<HTMLElement>();
 
@@ -49,7 +47,7 @@ const ProofRail = () => {
         raised surface to be grouped; a rule above them and a gap between
         them is the whole grouping.
       */}
-      <dl className="grid gap-x-10 gap-y-5 border-t border-border pt-5 sm:grid-cols-2 lg:grid-cols-4">
+      <dl className="grid gap-x-10 gap-y-5 border-t border-border pt-5 sm:grid-cols-3">
         {facts.map(({ label, body }) => (
           <div key={label}>
             <dt className="label text-ink-500">{label}</dt>
@@ -57,6 +55,21 @@ const ProofRail = () => {
           </div>
         ))}
       </dl>
+
+      {/* The skill set, on one line under the facts. */}
+      <p className="mt-5 flex flex-wrap items-baseline gap-x-2.5 gap-y-2 border-t border-border pt-5">
+        <span className="label mr-2 text-ink-500">What I do</span>
+        {practice.map((label, i) => (
+          <span key={label} className="text-base leading-snug text-ink-800">
+            {label}
+            {i < practice.length - 1 && (
+              <span aria-hidden="true" className="ml-2.5 text-ink-400">
+                /
+              </span>
+            )}
+          </span>
+        ))}
+      </p>
 
     </section>
   );
