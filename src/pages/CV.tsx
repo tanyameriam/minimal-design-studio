@@ -197,7 +197,7 @@ const CV = () => {
                   <div class="edu-item">
                     <div class="edu-title">Master's in UX (AI Specialization)</div>
                     <div class="edu-school">Jindal School of Art & Architecture</div>
-                    <div class="edu-date">2025 to 2026 &middot; Gold Medalist</div>
+                    <div class="edu-date">2025 to 2026 &middot; Graduated with distinction, ranked first in cohort</div>
                   </div>
                   <div class="edu-item">
                     <div class="edu-title">PG Programme in UX Design</div>
@@ -440,7 +440,7 @@ const CV = () => {
               <div>
                 <h3 className="font-medium text-lg">Master's in UX (Specialization: AI)</h3>
                 <p className="text-sm text-muted-foreground">
-                  Jindal School of Art &amp; Architecture, 2025 to 2026 &middot; Gold Medalist
+                  Jindal School of Art &amp; Architecture, 2025 to 2026 &middot; Graduated with distinction, ranked first in cohort
                 </p>
               </div>
               <div>
