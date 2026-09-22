@@ -37,7 +37,7 @@ const WritingBand = () => {
           </Link>
         </div>
 
-        <ul className="mt-7 grid gap-4 md:grid-cols-2">
+        <ul className="mt-8 grid items-stretch gap-6 md:mt-10 md:grid-cols-2 md:gap-7">
           {shown.map((slug) => {
             const article = summaries[slug];
             const href = `/writing/${article.slug}`;
@@ -46,7 +46,7 @@ const WritingBand = () => {
               <li
                 key={slug}
                 data-strand={article.category.strand}
-                className="panel panel-hover p-6 md:p-7"
+                className="panel panel-hover p-6 md:p-8"
               >
                 <Link
                   to={href}

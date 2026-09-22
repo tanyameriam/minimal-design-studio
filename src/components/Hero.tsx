@@ -143,7 +143,7 @@ const Hero = () => {
         The ground keeps the first screen from reading as a wireframe on a
         phone even before the portrait is scrolled to.
       */}
-      <div className="relative grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,15rem)] lg:gap-16 xl:grid-cols-[minmax(0,1fr)_minmax(0,17rem)]">
+      <div className="relative grid items-center gap-10 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-12">
         <div>
           <p className="reveal label flex items-center gap-2.5 text-ink-500" data-shown="true">
             {/* The one moving dot on the page, and the reason the status
@@ -200,7 +200,7 @@ const Hero = () => {
         */}
         <div
           ref={portrait}
-          className="reveal hero-portrait relative mx-auto w-full max-w-[12rem] sm:max-w-[14rem] lg:mx-0 lg:max-w-none"
+          className="reveal hero-portrait relative mx-auto w-full max-w-[12rem] sm:max-w-[14rem] lg:max-w-[16rem] xl:max-w-[18rem]"
           style={{ transitionDelay: '260ms' }}
           data-shown="true"
         >
@@ -210,7 +210,7 @@ const Hero = () => {
               alt="Tanya smiling in round goggles and a dark jacket, shown with a painterly photo filter."
               width={1200}
               height={1600}
-              sizes="(min-width: 1280px) 17rem, (min-width: 1024px) 15rem, 14rem"
+              sizes="(min-width: 1280px) 18rem, (min-width: 1024px) 16rem, 14rem"
               fetchPriority="high"
               decoding="async"
               className="aspect-[3/4] w-full object-cover grayscale-[0.85] contrast-[0.95] brightness-[0.95]"

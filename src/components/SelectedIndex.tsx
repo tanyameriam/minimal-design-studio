@@ -20,7 +20,7 @@ const SelectedIndex = () => {
 
   return (
     <div ref={ref} className="reveal mt-stage">
-      <div className="mb-2 flex flex-wrap items-baseline justify-between gap-x-10 gap-y-3">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-10 gap-y-3">
         <h3 className="label-strong">More work</h3>
         <Link
           to="/work"
@@ -32,7 +32,7 @@ const SelectedIndex = () => {
         </Link>
       </div>
 
-      <ul className="mt-4 grid items-stretch gap-4 md:grid-cols-2">
+      <ul className="mt-8 grid items-stretch gap-6 md:mt-10 md:grid-cols-2 md:gap-7">
         {indexProjects.map((project) => {
           const href = project.slug ? `/case-study/${project.slug}` : null;
 
@@ -65,7 +65,7 @@ const SelectedIndex = () => {
           // The whole card is the link when there is somewhere to go, as the
           // writing band's cards are.
           return (
-            <li key={project.title} className={`panel p-6 md:p-7 ${href ? 'panel-hover' : ''}`}>
+            <li key={project.title} className={`panel p-6 md:p-8 ${href ? 'panel-hover' : ''}`}>
               {href ? (
                 <Link
                   to={href}
