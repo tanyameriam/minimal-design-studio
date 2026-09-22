@@ -1,7 +1,6 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import type { MouseEvent, ReactNode } from 'react';
 import {
-  StorylinePanel,
   storylineOrder,
   useActiveSlide,
   type Storyline,
@@ -35,14 +34,10 @@ import {
  * ---------------------------------------------------------------------
  * WHAT IT IS
  *
- * One device, in two presentations of the same list, at every width.
+ * One device, at every width.
  *
- *   Control      A single small control at the foot of the viewport saying
- *                where you are and how far there is to go. One control, not
- *                a bar listing every chapter. Tapping it opens the full list.
- *
- *   Panel        The whole storyline, full screen, for a reader who has
- *                deliberately asked for it.
+ *   Bar          The page's headings as pills along the foot of the
+ *                viewport, the current one filled in, each a jump link.
  *
  * There used to be a third: a contents list fixed in the left gutter on very
  * wide screens. It came out so the long read has no sidebar at any width
@@ -131,50 +126,74 @@ const Progress = ({ marker }: { marker?: ReactNode }) => {
 };
 
 /* ------------------------------------------------------------------ *
- * The small control
+ * The bar of section headings
  * ------------------------------------------------------------------ */
 
 /**
- * One control, replacing the bar of chapter pills.
+ * Every heading of the page as a pill along the foot of the viewport, with
+ * the one being read filled in. One click jumps to it, and nothing has to be
+ * opened first to see where you are or what is left.
  *
- * The bar it replaces listed every chapter name across the foot of the
- * viewport, which is the left-hand rail again, horizontally, permanently on
- * top of the thing being read. This says the same three facts the rail's
- * heading said - what this is, which chapter, how far through - and opens
- * the full list on demand.
+ * The bar is only as wide as its pills and scrolls sideways inside itself on
+ * a narrow screen, keeping the current pill in view, so it never becomes a
+ * full-width slab over the reading column.
  */
-const Trigger = ({
-  chapterName,
-  position,
-  total,
-  onOpen,
+const HeadingBar = ({
+  items,
+  activeIndex,
 }: {
-  chapterName: string | null;
-  position: number;
-  total: number;
-  onOpen: () => void;
-}) => (
-  <div className="pointer-events-none fixed inset-x-0 bottom-4 z-40 flex justify-center px-4 md:bottom-6">
-    <button
-      type="button"
-      onClick={onOpen}
-      aria-haspopup="dialog"
-      /* Right margin clears the back-to-top control. */
-      className="panel pointer-events-auto flex max-w-full items-center gap-3 rounded-full py-2.5 pl-5 pr-4 shadow-lg backdrop-blur-md transition-colors hover:text-foreground md:mr-16"
+  items: { id: string; label: string }[];
+  activeIndex: number;
+}) => {
+  const track = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const bar = track.current;
+    const pill = bar?.querySelector<HTMLElement>('[aria-current="true"]');
+    if (!bar || !pill) return;
+    // Scroll only the bar, never the page.
+    bar.scrollTo({
+      left: pill.offsetLeft - bar.clientWidth / 2 + pill.clientWidth / 2,
+      behavior: 'smooth',
+    });
+  }, [activeIndex]);
+
+  const goTo = (event: MouseEvent, id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    event.preventDefault();
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+    history.replaceState(null, '', `#${id}`);
+  };
+
+  return (
+    <nav
+      aria-label="On this page"
+      className="pointer-events-none fixed inset-x-0 bottom-4 z-40 flex justify-center px-4 md:bottom-6"
     >
-      <span className="truncate text-sm text-ink-600 md:text-base">
-        {chapterName ?? 'Contents'}
-      </span>
-      <span className="label shrink-0 tabular-nums text-ink-400">
-        {position}/{total}
-      </span>
-      <span aria-hidden="true" className="text-ink-400">
-        &#9652;
-      </span>
-      <span className="sr-only">Open the contents</span>
-    </button>
-  </div>
-);
+      {/* Right margin clears the back-to-top control. */}
+      <div
+        ref={track}
+        className="panel pointer-events-auto flex max-w-full items-center gap-1 overflow-x-auto rounded-full p-1.5 shadow-lg backdrop-blur-md [scrollbar-width:none] max-md:mr-[5.5rem] md:mr-16"
+      >
+        {items.map((item, i) => (
+          <a
+            key={item.id}
+            href={`#${item.id}`}
+            onClick={(event) => goTo(event, item.id)}
+            aria-current={i === activeIndex ? 'true' : undefined}
+            className={`whitespace-nowrap rounded-full px-4 py-2 text-sm transition-colors duration-300 ease-smooth md:text-base ${
+              i === activeIndex ? 'bg-foreground text-background' : 'text-ink-600 hover:text-foreground'
+            }`}
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+    </nav>
+  );
+};
 
 /* ------------------------------------------------------------------ *
  * The component pages use
@@ -193,11 +212,25 @@ export interface ReadingNavProps {
 export const ReadingNav = ({ chapters, marker }: ReadingNavProps) => {
   const order = useMemo(() => storylineOrder(chapters), [chapters]);
   const activeId = useActiveSlide(order);
-  const [open, setOpen] = useState(false);
-  const close = useCallback(() => setOpen(false), []);
 
-  const position = activeId ? Math.max(order.indexOf(activeId) + 1, 1) : 1;
-  const activeChapter = chapters.find((c) => c.slides.some((s) => s.id === activeId));
+  // A page with real chapters gets one pill per chapter. A page with a
+  // single unnamed group (the essays, the long-form studies) gets one pill
+  // per section heading instead.
+  const byChapter = chapters.length > 1;
+  const items = useMemo(
+    () =>
+      byChapter
+        ? chapters
+            .filter((c) => c.slides.length)
+            .map((c) => ({ id: c.target ?? c.slides[0].id, label: c.name }))
+        : (chapters[0]?.slides ?? []).map((s) => ({ id: s.id, label: s.title })),
+    [chapters, byChapter]
+  );
+  const activeIndex = byChapter
+    ? chapters
+        .filter((c) => c.slides.length)
+        .findIndex((c) => c.slides.some((s) => s.id === activeId))
+    : items.findIndex((item) => item.id === activeId);
 
   // A page with nothing to list gets the progress hairline and no chrome.
   if (!order.length) return <Progress marker={marker} />;
@@ -205,13 +238,7 @@ export const ReadingNav = ({ chapters, marker }: ReadingNavProps) => {
   return (
     <>
       <Progress marker={marker} />
-      <Trigger
-        chapterName={activeChapter?.name ?? chapters[0]?.name ?? null}
-        position={position}
-        total={order.length}
-        onOpen={() => setOpen(true)}
-      />
-      <StorylinePanel chapters={chapters} activeId={activeId} open={open} onClose={close} />
+      <HeadingBar items={items} activeIndex={Math.max(activeIndex, 0)} />
     </>
   );
 };
