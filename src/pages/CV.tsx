@@ -142,7 +142,7 @@ const CV = () => {
                     <div class="job-date">2023 to Present</div>
                     <ul>
                       <li>Led the complete redesign of <strong>SalureConnect into the BrynQ platform</strong>, from research and information architecture to the shipped interface</li>
-                      <li>Designed the template selection and guided setup experience, reducing the projected implementation cycle for a standard integration from <strong>~6 months to ~2 weeks</strong></li>
+                      <li>Designed the template selection and guided setup experience, reducing the implementation cycle for a standard integration from <strong>~6 months to ~2 weeks</strong></li>
                       <li>Responsible for UX audits across the platform and for updating designs based on the findings</li>
                       <li>Apply systems thinking to improve the product holistically, across integration flows, data mappings and interface states</li>
                       <li>Integrated the design system into the codebase using <strong>Claude Code</strong></li>
@@ -254,7 +254,6 @@ const CV = () => {
                     <span class="tag">Workflow & Process Design</span>
                     <span class="tag">UI & Interaction Design</span>
                     <span class="tag">AI-Integrated UX Workflows</span>
-                    <span class="tag">Claude Code</span>
                   </div>
                 </div>
                 
@@ -337,7 +336,7 @@ const CV = () => {
           <section className="mb-12">
             <h2 className="font-sans text-lg mb-4 pb-2 border-b border-border">Key Competencies</h2>
             <div className="flex flex-wrap gap-2">
-              {['UX Auditing', 'Systems Thinking', 'Product Audit', 'Transactional Design', 'Workflow & Process Design', 'UI & Interaction Design', 'AI-Integrated UX Workflows', 'Claude Code'].map(skill => <span key={skill} className="px-3 py-1.5 bg-muted text-sm rounded-md">
+              {['UX Auditing', 'Systems Thinking', 'Product Audit', 'Transactional Design', 'Workflow & Process Design', 'UI & Interaction Design', 'AI-Integrated UX Workflows'].map(skill => <span key={skill} className="px-3 py-1.5 bg-muted text-sm rounded-md">
                   {skill}
                 </span>)}
             </div>
@@ -359,7 +358,7 @@ const CV = () => {
                 </div>
                 <ul className="list-disc list-outside ml-5 text-muted-foreground text-sm space-y-1">
                   <li>Led the complete redesign of SalureConnect into the BrynQ platform, from research and information architecture to the shipped interface.</li>
-                  <li>Designed the template selection and guided setup experience, reducing the projected implementation cycle for a standard integration from ~6 months to ~2 weeks.</li>
+                  <li>Designed the template selection and guided setup experience, reducing the implementation cycle for a standard integration from ~6 months to ~2 weeks.</li>
                   <li>Responsible for UX audits across the platform and for updating designs based on the findings.</li>
                   <li>Apply systems thinking to improve the product holistically, across integration flows, data mappings and interface states.</li>
                   <li>Integrated the design system into the codebase using Claude Code, closing the gap between design and implementation.</li>
