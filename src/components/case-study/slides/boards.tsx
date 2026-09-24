@@ -80,13 +80,16 @@ export const StepCard = ({
   Icon,
   title,
   points,
+  compact = false,
 }: {
   n: string;
   Icon: LucideIcon;
   title: string;
   points: string[];
+  /** Tighter padding for the story decks, where height is short. */
+  compact?: boolean;
 }) => (
-  <div className="panel flex flex-col p-6 md:p-8">
+  <div className={`panel flex flex-col ${compact ? 'p-5 md:p-6' : 'p-6 md:p-8'}`}>
     <div className="flex items-start justify-between gap-4">
       <span aria-hidden="true" className="panel-chip flex h-12 w-12 items-center justify-center">
         <Icon className="h-5 w-5" strokeWidth={1.5} />
@@ -97,7 +100,7 @@ export const StepCard = ({
         {n}
       </span>
     </div>
-    <p className="mt-6 text-xl leading-snug md:text-2xl">{title}</p>
+    <p className={`${compact ? 'mt-4' : 'mt-6'} text-xl leading-snug md:text-2xl`}>{title}</p>
     <span aria-hidden="true" className="mt-4 h-px w-full bg-border" />
     <CheckList items={points} />
   </div>
@@ -123,9 +126,16 @@ export const StepRail = () => (
  * line, and the result pill. The gather is decoration, so it hides on
  * mobile and the pill simply follows the stacked cards.
  */
-export const ConvergeFoot = ({ children }: { children: ReactNode }) => (
+export const ConvergeFoot = ({
+  children,
+  gather = true,
+}: {
+  children: ReactNode;
+  /** Off where height is short, as in the story decks: the pill alone. */
+  gather?: boolean;
+}) => (
   <div>
-    <div aria-hidden="true" className="hidden md:block">
+    <div aria-hidden="true" className={gather ? 'hidden md:block' : 'hidden'}>
       <div className="grid grid-cols-3">
         {[0, 1, 2].map((i) => (
           <span key={i} className="mx-auto flex flex-col items-center">
@@ -137,7 +147,7 @@ export const ConvergeFoot = ({ children }: { children: ReactNode }) => (
       <div className="mx-[16.65%] border-t border-dashed border-ink-400/70" />
       <span className="mx-auto block h-7 w-0 border-l border-dashed border-ink-400/70" />
     </div>
-    <div className="mt-6 flex justify-center md:mt-0">
+    <div className={`mt-6 flex justify-center ${gather ? 'md:mt-0' : ''}`}>
       <span className="panel inline-flex items-center gap-4 rounded-full py-3 pl-4 pr-7 md:py-3.5 md:pl-5 md:pr-8">
         <span
           aria-hidden="true"

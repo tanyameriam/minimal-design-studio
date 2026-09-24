@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Deck, { type DeckSlide } from '@/components/story/Deck';
-import { Em, Chapter, H, Body, Voice, Panel, Shot, ShotRow } from '@/components/story/primitives';
+import { Em, Chapter, H, Body, Voice, Panel, Shot, ShotRow, Spread } from '@/components/story/primitives';
 import { usePageMeta } from '@/hooks/use-page-meta';
 
 import legacyDashboard from '@/assets/merry-health-dashboard.png';
@@ -41,7 +41,7 @@ const ActorRow = ({ note }: { note: string }) => (
 );
 
 const CoverSlide = () => (
-  <div>
+  <Spread>
     <div className="flex flex-wrap items-center justify-between gap-4">
       <span className="label text-ink-500">
         Case study &middot; Merry Health &middot; Sending ambulances in an emergency
@@ -70,11 +70,11 @@ const CoverSlide = () => (
         </span>
       ))}
     </div>
-  </div>
+  </Spread>
 );
 
 const ContextSlide = () => (
-  <div>
+  <Spread>
     <Chapter n="01" label="The project and my role" />
     <H>
       A master’s degree project, <Em>done with the company, not just about it.</Em>
@@ -99,11 +99,11 @@ const ContextSlide = () => (
         a goal, and it says so.
       </Panel>
     </div>
-  </div>
+  </Spread>
 );
 
 const SituationSlide = () => (
-  <div>
+  <Spread>
     <Chapter n="02" label="The starting situation" />
     <H>
       The dashboard was there. <Em>The real work happened somewhere else.</Em>
@@ -125,11 +125,11 @@ const SituationSlide = () => (
     <Voice>
       The job looked like a dashboard redesign. But the dashboard was not where the work happened.
     </Voice>
-  </div>
+  </Spread>
 );
 
 const ResearchSlide = () => (
-  <div>
+  <Spread>
     <Chapter n="03" label="What the research found" />
     <H>
       Four problems, <Em>and not one of them was about the screens.</Em>
@@ -152,11 +152,11 @@ const ResearchSlide = () => (
         way to measure response time.
       </Panel>
     </div>
-  </div>
+  </Spread>
 );
 
 const ReframeSlide = () => (
-  <div>
+  <Spread>
     <Chapter n="04" label="A new way to see it" />
     <H>
       From redesigning screens to <Em>redesigning how ambulances get sent.</Em>
@@ -170,11 +170,11 @@ const ReframeSlide = () => (
     <Voice>
       The chance was to cut down the back and forth, not the clicks.
     </Voice>
-  </div>
+  </Spread>
 );
 
 const DecisionSlide = () => (
-  <div>
+  <Spread>
     <Chapter n="05" label="The decision" />
     <H>
       Do not replace WhatsApp. <Em>Make it part of the product.</Em>
@@ -200,7 +200,7 @@ const DecisionSlide = () => (
         alt="The hospital group chat in WhatsApp, showing the case number and each step of the ride posted as an update."
         width={519}
         height={1781}
-        maxH="max-h-[30vh]"
+        maxH="max-h-[24vh]"
         caption="Hospital. Every step in one chat, under one case number"
       />
       <Shot
@@ -208,18 +208,18 @@ const DecisionSlide = () => (
         alt="The driver chat in WhatsApp, showing a ride card with the case number, patient contact, pickup link, distance, and buttons to accept or decline."
         width={523}
         height={1168}
-        maxH="max-h-[30vh]"
+        maxH="max-h-[24vh]"
         caption="Driver. The case, the distance, the pickup link, accept or decline"
       />
     </ShotRow>
     <Voice>
       Before, the messages made the record. Now the record makes the messages.
     </Voice>
-  </div>
+  </Spread>
 );
 
 const SystemSlide = () => (
-  <div>
+  <Spread>
     <Chapter n="06" label="The system" />
     <H>
       One ride. <Em>One set of steps that updates itself.</Em>
@@ -239,11 +239,11 @@ const SystemSlide = () => (
       caption="Twelve steps across five groups, each with its data, its technology and its backup plan"
     />
     <ActorRow note="One change, four people see it, no phone call needed" />
-  </div>
+  </Spread>
 );
 
 const FailureSlide = () => (
-  <div>
+  <Spread>
     <Chapter n="07" label="Planning for the bad day" />
     <H>
       Emergency systems need <Em>backup plans, not perfect conditions.</Em>
@@ -257,11 +257,11 @@ const FailureSlide = () => (
     <Voice>
       What happens when things go wrong is the real product. When everything goes right is the easy half.
     </Voice>
-  </div>
+  </Spread>
 );
 
 const ProductSlide = () => (
-  <div>
+  <Spread>
     <Chapter n="08" label="What I designed" />
     <H>
       From keeping records <Em>to running things live.</Em>
@@ -293,11 +293,11 @@ const ProductSlide = () => (
       maxH="max-h-[32vh]"
       caption="The four questions, answered on one screen"
     />
-  </div>
+  </Spread>
 );
 
 const OutcomeSlide = () => (
-  <div>
+  <Spread>
     <Chapter n="09" label="What it is meant to change" />
     <H>
       Goals, <Em>clearly called goals.</Em>
@@ -323,11 +323,11 @@ const OutcomeSlide = () => (
       What we saw: 8 to 10 minutes to find a driver, in the old way of working. Everything else on this
       slide is a goal.
     </p>
-  </div>
+  </Spread>
 );
 
 const ReflectionSlide = () => (
-  <div>
+  <Spread>
     <Chapter n="10" label="What it demonstrates" />
     <H>
       The screens were <Em>only one part of it.</Em>
@@ -347,7 +347,7 @@ const ReflectionSlide = () => (
         Back to the work
       </Link>
     </div>
-  </div>
+  </Spread>
 );
 
 const slides: DeckSlide[] = [

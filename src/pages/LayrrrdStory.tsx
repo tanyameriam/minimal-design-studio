@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Deck, { type DeckSlide } from '@/components/story/Deck';
-import { Em, Chapter, H, Body, Voice, Panel } from '@/components/story/primitives';
+import { Em, Chapter, H, Body, Voice, Panel, Spread } from '@/components/story/primitives';
 import { usePageMeta } from '@/hooks/use-page-meta';
 
 /**
@@ -41,7 +41,7 @@ const MoveStrip = ({ active }: { active: number }) => (
 );
 
 const CoverSlide = () => (
-  <div>
+  <Spread>
     <div className="flex flex-wrap items-center justify-between gap-4">
       <span className="label text-ink-500">Case study · Layrrrd · Saving and finding things</span>
       <span className="label hidden text-ink-500 md:block">
@@ -80,11 +80,11 @@ const CoverSlide = () => (
         </span>
       ))}
     </div>
-  </div>
+  </Spread>
 );
 
 const GraveyardSlide = () => (
-  <div>
+  <Spread>
     <Chapter n="01" label="Where it started" />
     <H>
       Everyone saves. <Em>Almost nothing is opened again.</Em>
@@ -102,11 +102,11 @@ const GraveyardSlide = () => (
       </Panel>
     </div>
     <Voice>Before designing anything, we had to find out which half of that was really broken.</Voice>
-  </div>
+  </Spread>
 );
 
 const EvidenceSlide = () => (
-  <div>
+  <Spread>
     <Chapter n="02" label="What we already knew" />
     <H>
       Nine days is not enough time for a long research phase. So the research had to{' '}
@@ -126,11 +126,11 @@ const EvidenceSlide = () => (
       </Panel>
     </div>
     <Voice>You do not have a problem finding things. You have a problem going back to them.</Voice>
-  </div>
+  </Spread>
 );
 
 const PatternSlide = () => (
-  <div>
+  <Spread>
     <Chapter n="03" label="The awkward pattern" />
     <H>
       Every app like this answers with <Em>more sorting.</Em>
@@ -147,11 +147,11 @@ const PatternSlide = () => (
         A better storage box still just waits. Saving was never the problem. Going back was.
       </Panel>
     </div>
-  </div>
+  </Spread>
 );
 
 const BetSlide = () => (
-  <div>
+  <Spread>
     <Chapter n="04" label="The bet" />
     <H>
       Stop building a better storage box. <Em>Send things back to people instead.</Em>
@@ -171,11 +171,11 @@ const BetSlide = () => (
         first bet. Research later moved finding things to the centre.
       </Panel>
     </div>
-  </div>
+  </Spread>
 );
 
 const ConstraintSlide = () => (
-  <div>
+  <Spread>
     <Chapter n="05" label="The constraint" />
     <H>
       Nine days to prove it. What we built had <Em>one rule.</Em>
@@ -191,11 +191,11 @@ const ConstraintSlide = () => (
     </Body>
     <MoveStrip active={-1} />
     <Voice>We made our bet on day one. Every choice about what to build came from it.</Voice>
-  </div>
+  </Spread>
 );
 
 const CaptureSlide = () => (
-  <div>
+  <Spread>
     <Chapter n="06" label="Move one of four · Saving" />
     <H>
       Saving went <Em>where people already save.</Em>
@@ -245,11 +245,11 @@ const CaptureSlide = () => (
       </div>
     </div>
     <MoveStrip active={0} />
-  </div>
+  </Spread>
 );
 
 const DigestSlide = () => (
-  <div>
+  <Spread>
     <Chapter n="07" label="Move two of four · Finding things" />
     <H>
       We started with the digest. <Em>Research moved finding things to the centre.</Em>
@@ -271,11 +271,11 @@ const DigestSlide = () => (
     </div>
     <Voice>An app that promises to respect your attention cannot waste it.</Voice>
     <MoveStrip active={1} />
-  </div>
+  </Spread>
 );
 
 const PushbackSlide = () => (
-  <div>
+  <Spread>
     <Chapter n="08" label="Halfway · Testing with users" />
     <H>
       Testing during the nine days showed the plan was wrong <Em>in three places.</Em>
@@ -302,11 +302,11 @@ const PushbackSlide = () => (
       Acting on what we learned within nine days, instead of sticking to the plan, is the
       part of this project I would show a hiring team first.
     </Voice>
-  </div>
+  </Spread>
 );
 
 const SystemSlide = () => (
-  <div>
+  <Spread>
     <Chapter n="09" label="Move three of four · The system" />
     <H>
       Good taste cannot keep up with AI speed <Em>unless it is written down.</Em>
@@ -332,11 +332,11 @@ const SystemSlide = () => (
       These slides follow the same rules.
     </p>
     <MoveStrip active={2} />
-  </div>
+  </Spread>
 );
 
 const BrandSlide = () => (
-  <div>
+  <Spread>
     <Chapter n="10" label="Move three of four · The brand" />
     <H>
       One character, <Em>four jobs.</Em>
@@ -346,7 +346,7 @@ const BrandSlide = () => (
       kept a brand built in nine days feeling like one thing, while the app itself stayed
       plain on purpose.
     </Body>
-    <div className="mt-10 grid max-w-4xl gap-4 sm:grid-cols-2 md:grid-cols-4">
+    <div className="mt-10 grid max-w-4xl gap-4 sm:grid-cols-2">
       <Panel label="Job 01" title="The loading state">
         Rudolf keeps you company whenever the app is loading.
       </Panel>
@@ -362,11 +362,11 @@ const BrandSlide = () => (
       </Panel>
     </div>
     <MoveStrip active={2} />
-  </div>
+  </Spread>
 );
 
 const PricingSlide = () => (
-  <div>
+  <Spread>
     <Chapter n="11" label="Move four of four · Prices" />
     <H>
       Monthly payments are unfair for an app you use <Em>once a week.</Em>
@@ -391,11 +391,11 @@ const PricingSlide = () => (
       Payments went live during the nine days. That is what made day nine mean something.
     </Voice>
     <MoveStrip active={3} />
-  </div>
+  </Spread>
 );
 
 const ResultSlide = () => (
-  <div>
+  <Spread>
     <Chapter n="12" label="Day nine" />
     <H>
       The bet <Em>paid.</Em>
@@ -421,11 +421,11 @@ const ResultSlide = () => (
       Fifteen people paid real money for an app that was nine days old. No interview could
       have tested the bet better.
     </Voice>
-  </div>
+  </Spread>
 );
 
 const SinceThenSlide = () => (
-  <div>
+  <Spread>
     <Chapter n="13" label="Since then" />
     <H>
       Proving the idea was the start, <Em>not the whole story.</Em>
@@ -454,11 +454,11 @@ const SinceThenSlide = () => (
       </p>
     </div>
     <Voice>Writing down the limits before you hit them turns them into a to-do list, not a surprise.</Voice>
-  </div>
+  </Spread>
 );
 
 const LessonsSlide = () => (
-  <div>
+  <Spread>
     <Chapter n="14" label="What it changed for me" />
     <H>
       The lessons that survived <Em>day nine.</Em>
@@ -480,7 +480,7 @@ const LessonsSlide = () => (
       The app is not finished and does not pretend to be. Launching with a list of known
       problems is the part I enjoy most.
     </Voice>
-  </div>
+  </Spread>
 );
 
 const ThanksSlide = () => (

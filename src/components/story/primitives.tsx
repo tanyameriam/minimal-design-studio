@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { Children, isValidElement, type ReactNode } from 'react';
 
 /**
  * Shared slide fragments for the story decks. Each deck keeps its own
@@ -109,3 +109,78 @@ export const Shot = ({
 export const ShotRow = ({ children, cols = 2 }: { children: ReactNode; cols?: 2 | 3 }) => (
   <div className={`grid gap-4 ${cols === 3 ? 'sm:grid-cols-3' : 'sm:grid-cols-2'}`}>{children}</div>
 );
+
+/**
+ * Anything wrapped in Words sits in the left column of a Spread, under the
+ * paragraph, rather than with the evidence on the right. For a slide whose
+ * right-hand side would otherwise run taller than the frame.
+ */
+export const Words = ({ children }: { children: ReactNode }) => (
+  <div className="mt-8">{children}</div>
+);
+
+/**
+ * Anything wrapped in Below runs the full width of a Spread, under both
+ * columns. For evidence too wide to sit beside the words.
+ */
+export const Below = ({ children }: { children: ReactNode }) => (
+  <div className="mt-8">{children}</div>
+);
+
+/** The pieces of a slide that are its words rather than its evidence. */
+const TEXT_PARTS: unknown[] = [Body, Words, Voice];
+
+/**
+ * A slide as a spread: the headline across the top, then the words in a
+ * narrow column on the left and the evidence on the right.
+ *
+ * The deck is one fixed frame, wider than it is tall, so a single column of
+ * headline, paragraph, visual and closing line runs far past its height.
+ * Setting everything side by side fixed the height but squeezed the
+ * evidence into half the frame, where anything with its own columns folded
+ * into narrow strips. So the headline takes the full width and two lines,
+ * and the evidence gets two thirds of what is left.
+ *
+ * The chapter kicker and the headline span the frame; the paragraph, any
+ * Words and the narrator's closing line stack on the left; everything else,
+ * in its own order, goes on the right; Below runs full width underneath. A
+ * slide with no evidence, or no headline, stays one column, and one whose
+ * only words are its headline gives the evidence the whole width.
+ */
+export const Spread = ({ children }: { children: ReactNode }) => {
+  const top: ReactNode[] = [];
+  const below: ReactNode[] = [];
+  const words: ReactNode[] = [];
+  const evidence: ReactNode[] = [];
+
+  Children.forEach(children, (child) => {
+    if (isValidElement(child) && (child.type === Chapter || child.type === H)) top.push(child);
+    else if (isValidElement(child) && child.type === Below) below.push(child);
+    else if (isValidElement(child) && TEXT_PARTS.includes(child.type)) words.push(child);
+    else if (child != null && child !== false) evidence.push(child);
+  });
+
+  const hasHeadline = Children.toArray(children).some(
+    (child) => isValidElement(child) && child.type === H,
+  );
+
+  // A cover, or a slide that is all words, keeps its own single column.
+  if (!evidence.length || !hasHeadline) return <div>{children}</div>;
+
+  const stack = '[&>*+*]:!mt-6 [&>*:first-child]:!mt-0 [&>*]:max-w-none';
+
+  return (
+    <div>
+      <div className="[&>h2]:max-w-5xl">{top}</div>
+      {words.length ? (
+        <div className="mt-7 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:items-start lg:gap-14">
+          <div className="[&>*:first-child]:mt-0 lg:[&>div:last-child]:mt-8">{words}</div>
+          <div className={stack}>{evidence}</div>
+        </div>
+      ) : (
+        <div className={`mt-7 ${stack}`}>{evidence}</div>
+      )}
+      {below}
+    </div>
+  );
+};

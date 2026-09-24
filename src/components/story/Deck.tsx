@@ -1,4 +1,12 @@
-import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ReactNode,
+} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { type Storyline, type StorylineChapter } from '@/components/story/Storyline';
 
@@ -47,7 +55,7 @@ const SlideReveal = ({ children, immediate }: { children: ReactNode; immediate?:
     return () => cancelAnimationFrame(id);
   }, [immediate]);
   return (
-    <div className="reveal min-h-full" data-shown={shown}>
+    <div className="reveal" data-shown={shown}>
       {children}
     </div>
   );
@@ -77,6 +85,10 @@ const Deck = ({ label, exitHref, slides }: DeckProps) => {
   const [fullscreen, setFullscreen] = useState(false);
   const deckRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const rulerRef = useRef<HTMLDivElement>(null);
+  const [room, setRoom] = useState(0);
+  const [heights, setHeights] = useState<number[]>([]);
+  const [fits, setFits] = useState(false);
   const touchX = useRef<number | null>(null);
   const total = slides.length;
   const navigate = useNavigate();
@@ -101,7 +113,7 @@ const Deck = ({ label, exitHref, slides }: DeckProps) => {
     (delta: number) => {
       setIndex((i) => Math.min(total - 1, Math.max(0, i + delta)));
       scrollRef.current?.scrollTo({ top: 0 });
-    },
+          },
     [total],
   );
 
@@ -110,7 +122,7 @@ const Deck = ({ label, exitHref, slides }: DeckProps) => {
   const goTo = useCallback((id: string) => {
     setIndex(slides.findIndex((slide) => slide.id === id));
     scrollRef.current?.scrollTo({ top: 0 });
-  }, [slides]);
+      }, [slides]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -146,6 +158,43 @@ const Deck = ({ label, exitHref, slides }: DeckProps) => {
     }
   }, []);
 
+  /**
+   * One scale for the whole deck.
+   *
+   * Every slide is laid out once, invisibly, at the frame's width. The
+   * tallest of them sets the scale, so the type is the same size on every
+   * slide and nothing scrolls; a slide never shrinks just because it is
+   * longer than its neighbours. From md up only: on a phone the frame is
+   * too short for that to stay readable, so there the slide scrolls.
+   */
+  useLayoutEffect(() => {
+    const frame = scrollRef.current;
+    const ruler = rulerRef.current;
+    if (!frame || !ruler) return;
+
+    const wide = window.matchMedia('(min-width: 768px)');
+    const measure = () => {
+      setFits(wide.matches);
+      setRoom(frame.clientHeight);
+      setHeights(Array.from(ruler.children, (el) => (el as HTMLElement).offsetHeight));
+    };
+
+    measure();
+    // Images settle after the first layout, and the window can be resized.
+    const observer = new ResizeObserver(measure);
+    observer.observe(frame);
+    Array.from(ruler.children).forEach((el) => observer.observe(el));
+    wide.addEventListener('change', measure);
+    return () => {
+      observer.disconnect();
+      wide.removeEventListener('change', measure);
+    };
+  }, [slides]);
+
+  const tallest = Math.max(0, ...heights);
+  const scale = fits && room && tallest ? Math.min(1, room / tallest) : 1;
+  const top = fits && room ? Math.max(0, (room - (heights[index] ?? 0) * scale) / 2) : 0;
+
   const slide = slides[index];
 
   useEffect(() => {
@@ -156,13 +205,13 @@ const Deck = ({ label, exitHref, slides }: DeckProps) => {
   const upcoming = index < total - 1 ? slides[index + 1] : null;
 
   return (
-    <div className="fixed inset-0 z-[70]">
+    <div className="fixed inset-0 z-[70] flex items-center justify-center md:p-6 lg:p-8">
       {/* The previous screen stays a click away: the rim of backdrop around
           the deck closes it, the same move Escape makes. */}
       <div
         aria-hidden="true"
         onClick={exit}
-        className="absolute inset-0 bg-foreground/40 backdrop-blur-[2px]"
+        className="absolute inset-0 bg-black/55 backdrop-blur-[3px]"
       />
 
       <div
@@ -170,10 +219,10 @@ const Deck = ({ label, exitHref, slides }: DeckProps) => {
         role="dialog"
         aria-modal="true"
         aria-label={label}
-        className="deck-pop absolute inset-0 flex flex-col overflow-hidden bg-background text-foreground md:inset-4 md:rounded-[var(--radius)] md:border md:border-border md:shadow-2xl lg:inset-6"
+        className="deck-pop relative flex h-full w-full flex-col overflow-hidden bg-background text-foreground md:h-full md:max-w-[100rem] md:rounded-[var(--radius)] md:border md:border-border md:shadow-2xl"
       >
       {/* Deck chrome: title, storyline, fullscreen, exit. */}
-      <header className="flex shrink-0 items-center justify-between gap-4 border-b border-border px-5 py-4 md:px-8">
+      <header className="flex shrink-0 items-center justify-between gap-4 border-b border-border px-5 py-3 md:px-8">
         <span className="label truncate text-ink-800">{label}</span>
         <div className="flex shrink-0 items-center gap-5">
           <button
@@ -198,33 +247,49 @@ const Deck = ({ label, exitHref, slides }: DeckProps) => {
         </div>
       </header>
 
+      {/* Slide area. One fixed frame for every slide: the slide is laid out
+          at the frame's width and, when the deck runs taller than the frame, scaled
+          as one with every other slide rather than scrolled. */}
       <div className="flex min-h-0 flex-1">
-        {/* Slide area. Tall slides scroll inside it; the page never does. */}
-        <div className="relative min-w-0 flex-1">
+        <div
+          ref={scrollRef}
+          className="relative min-w-0 flex-1 overflow-y-auto overflow-x-clip md:overflow-hidden"
+          onTouchStart={(e) => {
+            touchX.current = e.touches[0].clientX;
+          }}
+          onTouchEnd={(e) => {
+            if (touchX.current === null) return;
+            const dx = e.changedTouches[0].clientX - touchX.current;
+            touchX.current = null;
+            if (Math.abs(dx) > 48) go(dx < 0 ? 1 : -1);
+          }}
+        >
+          {/* Every slide, laid out and never shown: the ruler the scale is
+              read from. */}
           <div
-            ref={scrollRef}
-            className="absolute inset-0 overflow-y-auto overflow-x-clip"
-            onTouchStart={(e) => {
-              touchX.current = e.touches[0].clientX;
-            }}
-            onTouchEnd={(e) => {
-              if (touchX.current === null) return;
-              const dx = e.changedTouches[0].clientX - touchX.current;
-              touchX.current = null;
-              if (Math.abs(dx) > 48) go(dx < 0 ? 1 : -1);
-            }}
+            ref={rulerRef}
+            aria-hidden="true"
+            className="pointer-events-none invisible absolute inset-x-0 top-0"
+          >
+            {slides.map((s) => (
+              <div key={s.id} className="mx-auto w-full max-w-[88rem] px-6 py-10 md:px-20 md:py-8">
+                {s.render()}
+              </div>
+            ))}
+          </div>
+
+          <div
+            className="absolute inset-x-0 top-0 origin-top"
+            style={{ transform: `translateY(${top}px) scale(${scale})` }}
           >
             <section
               key={slide.id}
               role="group"
               aria-roledescription="slide"
               aria-label={`Slide ${index + 1} of ${total}: ${slide.title}`}
-              className="min-h-full"
             >
               <SlideReveal immediate={index === 0}>
-                <div className="mx-auto flex min-h-full w-full max-w-6xl flex-col justify-center px-6 py-12 md:px-12 md:py-16">
-                  {slide.render()}
-                </div>
+                <div className="mx-auto w-full max-w-[88rem] px-6 py-10 md:px-20 md:py-8">{slide.render()}</div>
               </SlideReveal>
             </section>
           </div>
@@ -255,7 +320,7 @@ const Deck = ({ label, exitHref, slides }: DeckProps) => {
       </div>
 
       {/* Progress: the storyline strip and the counter. */}
-      <footer className="shrink-0 border-t border-border px-5 py-4 md:px-8">
+      <footer className="shrink-0 border-t border-border px-5 py-3 md:px-8">
         <div className="flex items-center gap-4 md:gap-6">
           {/* Touch screens get real buttons rather than only a swipe: a
               gesture with no visible control is not an affordance. */}
