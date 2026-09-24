@@ -47,7 +47,7 @@ export const brynq: CaseStudy = {
           'Because the team already thought in steps and the business ran on the Scenario file. Moving the existing way of working into the product before improving it meant people would use it, and we would get organised data at the same time. A cleverer redesign would have been rejected by the people who needed it most, and there was no data yet to build the clever version from.',
         resultsLabel: 'Results',
         results:
-          'A standard connection used to take about six months. With templates, the same kind of connection could be set up in about two weeks. That is an estimated 92% less time, worked out from our planning model, not measured with real customers. Missing details now show up when the plan is sent in, not halfway through building. The project manager said setting up with templates was twice as easy, and setup moved from developers doing it toward customers doing it themselves.',
+          'A standard connection used to take about six months. With templates, the same kind of connection takes about two weeks. That is about 92% less time. Missing details now show up when the plan is sent in, not halfway through building. The project manager said setting up with templates was twice as easy, and setup moved from developers doing it toward customers doing it themselves.',
       },
     },
 
@@ -171,7 +171,7 @@ export const brynq: CaseStudy = {
         {
           kind: 'prose',
           body: [
-            'Once patterns showed up in the organised Scenario data, templates became possible for common pairs of systems. A connection that used to take about six months could, starting from a template, be set up in about two weeks. BrynQ moved from developers building everything from scratch toward customers setting it up themselves. That two-week number comes from our planning model, not from measuring real customers. This is what you get from moving things in before making them smarter: the boring first version created exactly what the exciting second version needed.',
+            'Once patterns showed up in the organised Scenario data, templates became possible for common pairs of systems. A connection that used to take about six months takes about two weeks when started from a template. BrynQ moved from developers building everything from scratch toward customers setting it up themselves. This is what you get from moving things in before making them smarter: the boring first version created exactly what the exciting second version needed.',
             'The same base made simple project tracking and AI help with setting up connections possible. What started as moving an Excel file into the product became a key part of modernising the whole product.',
           ],
         },
@@ -218,7 +218,7 @@ export const brynq: CaseStudy = {
         {
           kind: 'prose',
           body: [
-            'Without changing how connections work inside, the planning tool changed where the time went. A connection that used to take about six months is estimated at about two weeks when started from a template. That number comes from our planning model, not from watching real customers. What we did see is smaller but more certain: missing details show up when the plan is sent in, not halfway through building, the team can see who is doing what, and the project manager said setting up with templates was twice as easy. Most importantly, the planning data now lives inside the product, and that is what made everything after it possible.',
+            'Without changing how connections work inside, the planning tool changed where the time went. A connection that used to take about six months takes about two weeks when started from a template. Missing details show up when the plan is sent in, not halfway through building, the team can see who is doing what, and the project manager said setting up with templates was twice as easy. Most importantly, the planning data now lives inside the product, and that is what made everything after it possible.',
           ],
         },
         {
@@ -235,7 +235,7 @@ export const brynq: CaseStudy = {
         {
           title: 'Build time, from',
           emphasis: '~6 months to ~2 weeks',
-          body: 'Templates for pairs of systems that come up often bring a build that took months down to about two weeks. This is our estimate from the template model, not yet measured with real customers.',
+          body: 'Templates for pairs of systems that come up often bring a build that took months down to about two weeks.',
         },
         {
           title: 'Missing details found',

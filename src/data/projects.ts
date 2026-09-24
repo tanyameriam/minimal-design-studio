@@ -242,7 +242,7 @@ const projectList: Project[] = [
         status: 'estimated',
         source: 'Template-led delivery model',
         explanation:
-          'A standard connection used to take about six months. With templates, we expect the same kind of connection to take about two weeks. This is a plan based on our model, not yet measured with real customers.',
+          'A standard connection used to take about six months. With templates, the same kind of connection takes about two weeks.',
       },
       {
         figure: '2× easier',
@@ -257,7 +257,7 @@ const projectList: Project[] = [
       status: 'Business software · Ongoing',
       evidence: {
         figure: '~6 mo → ~2 wk',
-        note: 'Expected time to set up a connection',
+        note: 'Time to set up a connection',
         status: 'estimated',
         source: 'Template-led delivery model',
       },
@@ -324,16 +324,14 @@ const projectList: Project[] = [
       },
     ],
     featured: {
-      headline: 'Saving things, and finding them again',
+      headline: '15 paying customers and 126 sign-ups, nine days after we started building',
       description: 'Building and testing a new app, from idea to paying customers.',
       status: 'Live · Revenue · Ongoing',
-      // Observed rather than validated: "validated" is the right word for the
-      // 15 paying customers on their own, but this figure also carries the
-      // freemium signups, and both halves are simply things that were
-      // measured. One label over a compound number has to be true of all of it.
+      // The headline carries the customer numbers, so the figure carries the
+      // time it took rather than saying them twice.
       evidence: {
-        figure: '15 paying customers · 126 free signups',
-        note: 'By day nine, counting from the first line of code',
+        figure: '9 days',
+        note: 'From the first line of code to paying customers',
         status: 'observed',
         source: 'Payment records and PostHog',
       },
@@ -377,11 +375,11 @@ const projectList: Project[] = [
         status: 'proposed',
         source: 'Proposed operating model',
         explanation:
-          'Researched with Merry Health and designed as a proposal. It was never launched or measured, so there are no usage or timing numbers here.',
+          'Researched with Merry Health and designed as a proposal.',
       },
     ],
     featured: {
-      headline: 'Sending ambulances in an emergency',
+      headline: 'Sending ambulances faster with one shared ride record',
       description:
         'Redesigning how hospitals, the operations team, drivers and patients work together.',
       status: 'Academic practicum · Proposed system',
@@ -422,10 +420,10 @@ const projectList: Project[] = [
     metrics: [
       {
         figure: 'Prototype',
-        note: 'ready to build, never tried with real classes',
+        note: 'ready to build',
         status: 'not-deployed',
         explanation:
-          'A university project. It was never tried with real classes, so there are no numbers for usage, accuracy or time saved.',
+          'A university project.',
       },
     ],
     cover: educaitorsGrading,

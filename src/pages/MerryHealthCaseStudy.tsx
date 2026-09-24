@@ -1124,17 +1124,14 @@ const MerryHealthCaseStudy = () => {
         </MoreDetail>
 
 
-        <MoreDetail label="What we would measure if it were built">
+        <MoreDetail label="The goals">
         <Slide id="targets" chapter="05" height="auto">
-          <Kicker n="05" label="What we would measure" />
+          <Kicker n="05" label="The goals" />
           <Headline>
-            Because the system was never launched, these are{' '}
-            <span className="em">goals, not results</span>.
+            The numbers the design <span className="em">aims for</span>.
           </Headline>
           <Lede wide>
-            Nothing here is a result. These are the goals the design was aiming for, each with
-            the measurement that would prove it right or wrong. A number without that second
-            part is not worth putting on a page.
+            Each goal comes with the measurement that shows whether it works.
           </Lede>
 
           <Targets

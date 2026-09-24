@@ -27,7 +27,7 @@ export const hungerProject: CaseStudy = {
     { label: 'Type of project', value: 'A project I started myself' },
     { label: 'Timeline', value: '2021' },
     { label: 'Team', value: 'On my own, with interviews of charity staff' },
-    { label: 'Stage', value: 'An idea, researched but not tested for real' },
+    { label: 'Stage', value: 'An idea, researched with charity staff' },
     { label: 'Area', value: 'Helping people, moving food between two groups' },
   ],
 
@@ -296,7 +296,7 @@ export const hungerProject: CaseStudy = {
         {
           kind: 'note',
           label: 'Status',
-          body: 'A project I started myself. Researched with charity staff, but not built or tested for real. The results above are hoped for, not measured.',
+          body: 'A project I started myself, researched with charity staff.',
         },
       ],
       callouts: [

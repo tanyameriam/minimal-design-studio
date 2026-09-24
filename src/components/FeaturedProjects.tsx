@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import EvidenceLabel from '@/components/EvidenceLabel';
 import FadeInImage from '@/components/FadeInImage';
 import { Button } from '@/components/ui/button';
 import { featuredProjects, type FeaturedProject } from '@/data/projects';
@@ -39,16 +38,16 @@ import { prefetchRoute } from '@/lib/prefetch';
  *   - The description went. With headings like "Self-service B2B
  *     integrations" sitting above "Redesigning how customers set up and
  *     manage integrations", the row was saying one idea twice in two type
- *     sizes. The heading and the number carry it.
- *   - The evidence lost its panel and its second button became a link. A
- *     number does not need a surface to register, and two filled buttons on
- *     one row is two next steps, which is none.
+ *     sizes. The heading carries it.
+ *   - The number went. The heading now states the outcome, so a figure under
+ *     it said the same thing a second time. The second button became a link:
+ *     two filled buttons on one row is two next steps, which is none.
  *
  * What is left reads in one pass: which project, what it was, what happened,
  * what it looked like, where to go.
  *
  * Hover and focus only add feedback. The image lifts and scales a little, the
- * number takes the accent, the arrow moves. None of it changes the row's
+ * arrow moves. None of it changes the row's
  * height or reveals anything, so nothing moves under the pointer and nothing
  * is unavailable without one.
  */
@@ -103,17 +102,18 @@ const Card = ({
   featured?: boolean;
 }) => {
   const { title, slug, year, storyHref, storyMinutes, featured: entry } = project;
-  const { headline, evidence } = entry;
+  const { headline } = entry;
 
   const caseHref = slug ? `/case-study/${slug}` : null;
   const number = String(index + 1).padStart(2, '0');
   const storyLabel = entry.storyLabel ?? `View ${storyMinutes ?? 2}-minute story`;
 
-  // A project with no slide story promotes its case study to primary rather
-  // than rendering a call to action that leads nowhere.
-  const primaryHref = storyHref ?? caseHref;
-  const primaryLabel = storyHref ? storyLabel : 'View detailed study';
-  const secondaryHref = storyHref ? caseHref : null;
+  // The detailed study is the way in: the button, and a click anywhere on the
+  // card. The two-minute story is the second link. A project with no study
+  // promotes its story rather than rendering a call to action that leads nowhere.
+  const primaryHref = caseHref ?? storyHref;
+  const primaryLabel = caseHref ? 'View detailed study' : storyLabel;
+  const secondaryHref = caseHref ? storyHref : null;
 
   const media = (
     <Media
@@ -164,19 +164,6 @@ const Card = ({
             {headline}
           </h4>
 
-          {/* The one number, led by a rule instead of sitting in a panel. */}
-          <div className="mt-6 border-l border-ink-400/40 pl-4">
-            <p className="em text-2xl leading-none tabular-nums text-foreground transition-colors duration-500 ease-smooth group-hover:text-link">
-              {evidence.figure}
-            </p>
-            <p className="mt-2.5 max-w-[36ch] text-base leading-snug text-ink-600">
-              {evidence.note}
-            </p>
-            <div className="mt-2.5">
-              <EvidenceLabel status={evidence.status} detail={evidence.source} />
-            </div>
-          </div>
-
           {/* Pinned to the bottom, so paired cards end on the same line. */}
           <div
             className={`flex flex-wrap items-center gap-3 ${featured ? 'mt-8' : 'mt-auto pt-7'}`}
@@ -187,7 +174,7 @@ const Card = ({
                 className="h-11 rounded-full bg-foreground px-5 text-sm font-medium text-background hover:bg-foreground/90"
               >
                 {/* Stretched over the whole card, so clicking anywhere on it opens
-                    the two-minute story. One real link, not a wrapper around
+                    the detailed study. One real link, not a wrapper around
                     another. */}
                 <Link
                   to={primaryHref}
@@ -208,7 +195,7 @@ const Card = ({
                 onFocus={() => prefetchRoute(secondaryHref)}
                 className="rule-link relative z-10 text-base text-ink-500 transition-colors hover:text-foreground"
               >
-                View detailed study
+                {storyLabel}
               </Link>
             )}
           </div>

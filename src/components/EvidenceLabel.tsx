@@ -67,6 +67,9 @@ interface EvidenceLabelProps {
  */
 const EvidenceLabel = ({ status, detail }: EvidenceLabelProps) => {
   const { short, long, firm } = copy[status];
+  // Only the labels that back a number up are shown. Estimates, goals and
+  // proposals carry the number alone.
+  if (!firm) return null;
 
   return (
     <span

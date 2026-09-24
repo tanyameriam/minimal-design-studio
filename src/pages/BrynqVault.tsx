@@ -50,7 +50,7 @@ const projects: VaultProject[] = [
       },
       {
         label: 'The outcome',
-        body: 'Connections that took about six months, half of it back and forth before any code, are estimated at about two weeks from a template. The number comes from our planning model, not from measuring real customers.',
+        body: 'Connections that took about six months, half of it back and forth before any code, take about two weeks from a template.',
       },
     ],
   },

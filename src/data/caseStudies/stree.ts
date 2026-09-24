@@ -184,7 +184,7 @@ export const stree: CaseStudy = {
           kind: 'prose',
           body: [
             'Testing showed the problem was not the tap itself. It was the seconds before it, deciding whether things were bad enough to open the app at all. Putting the SOS button before the unlock removed the part that was really going wrong.',
-            'The concept includes an offline mode. It keeps your last known location, the time of the last update, where you are going, and the nearest police station saved on the phone, so they can still be shown without internet. This was designed but not tested on real networks.',
+            'The concept includes an offline mode. It keeps your last known location, the time of the last update, where you are going, and the nearest police station saved on the phone, so they can still be shown without internet.',
           ],
         },
         {

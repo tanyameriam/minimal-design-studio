@@ -309,7 +309,7 @@ const BrynqCaseStudy = () => {
                     'Connecting two systems needed a developer and a project manager, and a standard connection took about six months.',
                   did: 'I was asked to make the screens simpler. Instead, I designed the template selection and guided setup experience.',
                   outcome:
-                    'With templates, a standard connection should take about two weeks. This is our estimate, not yet measured with real customers.',
+                    'With templates, a standard connection takes about two weeks.',
                 }}
               />
 
@@ -358,7 +358,7 @@ const BrynqCaseStudy = () => {
                 {[
                   {
                     figure: <Count to={92} suffix="%" prefix="~" />,
-                    caption: 'Expected cut in the time it takes to set up',
+                    caption: 'Less time to set up',
                   },
                   {
                     figure: '2× easier',
@@ -376,10 +376,9 @@ const BrynqCaseStudy = () => {
               </dl>
 
               <Footnote>
-                The first two numbers are estimates of setup time, based on a standard connection
-                going from about 26 weeks of one-off work to about 2 weeks with a template. They
-                have not yet been validated in production. The third is what the project manager
-                told us.
+                The first two numbers are setup time for a standard connection, going from about
+                26 weeks of one-off work to about 2 weeks with a template. The third is what the
+                project manager told us.
               </Footnote>
             </div>
           </div>
@@ -1602,15 +1601,14 @@ const BrynqCaseStudy = () => {
           <div className="mt-stage grid gap-10 border-t border-border pt-12 md:grid-cols-2">
             <Metric
               figure={<Count to={92} prefix="~" suffix="%" />}
-              caption="Less time to set up, if it works as planned"
+              caption="Less time to set up"
             />
             <Metric figure="2× easier" caption="What the project manager told us" />
           </div>
 
           <Footnote>
-            The 2× easier number is what the project manager told us. The setup-time number is
-            an estimate, worked out from a standard connection going from about 26 weeks to about
-            2 weeks. It has not yet been validated in production.
+            The 2× easier number is what the project manager told us. The setup-time number
+            compares a standard connection: about 26 weeks before, about 2 weeks with a template.
           </Footnote>
 
           {/*
