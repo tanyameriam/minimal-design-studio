@@ -1,6 +1,8 @@
 import { summaries } from './catalogue';
 import threeVariations from '@/assets/writing/ixd-three-workflow-variations.png';
-import detailedWorkflow from '@/assets/writing/ixd-detailed-workflow.png';
+import finalWorkflow from '@/assets/writing/ixd-final-workflow.png';
+import finalPrototype from '@/assets/writing/ixd-final-prototype.png';
+import sixUps from '@/assets/writing/ixd-six-ups.png';
 import type { Article } from './types';
 
 /**
@@ -13,10 +15,13 @@ export const interactionDesign: Article = {
   ...summaries['interaction-design-before-the-screen'],
   lead: {
     asset: 'ixd-final-prototype',
-    alt: 'A planning screen from the mock-up, showing the skills a project needs next to people who could do it, how much time they have, and warnings about clashes.',
+    alt: 'The final project details screen. On the left, the company plan item the project comes from. In the middle, the project with its priority and timeline, and a resource planning area where the AI suggests the skills needed and lists matching people with how busy they are next sprint. On the right, a live summary of the project with Save draft and Confirm project.',
     caption:
-      'The end of the chain: a planning screen where how busy people are, and any clashes, sit right next to the choice of who to put on the project, instead of showing up after it.',
-    ratio: '16 / 9',
+      'The end of the chain: the project details screen, where the skills needed, the people who match and how busy they are sit right next to the project, with a summary to check before confirming.',
+    ratio: '2961 / 1769',
+    src: finalPrototype,
+    width: 2961,
+    height: 1769,
   },
   intro: [
     'I used to think interaction design started when you turned a set of steps into screens.',
@@ -231,11 +236,11 @@ export const interactionDesign: Article = {
             // before resource suggestion, which is the point of the variant.
             alt: 'The chosen steps in full: company plan overview, project details, see possible clashes, AI suggests people, and project overview, with ten numbered error cases that send the user back to the screen where they can be fixed, and a column under each screen naming its goal, what it does, and the questions it left open.',
             caption:
-              'The chosen steps in full. Checking sits between looking around and committing, which is the whole idea of the project in one diagram.',
-            ratio: '6752 / 3344',
-            src: detailedWorkflow,
-            width: 6752,
-            height: 3344,
+              'The final steps in full. Checking sits between looking around and committing, which is the whole idea of the project in one diagram.',
+            ratio: '3452 / 1587',
+            src: finalWorkflow,
+            width: 3452,
+            height: 1587,
           },
         },
       ],
@@ -310,10 +315,13 @@ export const interactionDesign: Article = {
           kind: 'figure',
           figure: {
             asset: 'ixd-workflow-to-wireframe',
-            alt: 'One step shown three ways: the written step, six quick Six-Up layouts, and the final digital sketch.',
+            alt: 'Six numbered layouts for the same project details step, each with the same skill suggestions and matching people: 1, a form first; 2, sections in cards; 3, a step-by-step wizard; 4, a canvas with an AI helper panel; 5, review and edit with a project summary; 6, a small pop-up form.',
             caption:
-              'One step, seen from three heights. The Six-Ups are there to find out what the written step quietly left undecided.',
-            ratio: '16 / 8',
+              'Six layouts for one step. The final screen took the canvas from layout 4 and the summary panel from layout 5.',
+            ratio: '3840 / 1598',
+            src: sixUps,
+            width: 3840,
+            height: 1598,
           },
         },
       ],

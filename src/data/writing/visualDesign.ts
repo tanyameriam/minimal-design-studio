@@ -1,4 +1,6 @@
 import { summaries } from './catalogue';
+import finalDashboard from '@/assets/writing/vxd-final-dashboard.png';
+import dashboardOptions from '@/assets/writing/vxd-dashboard-options.png';
 import type { Article } from './types';
 
 /**
@@ -11,10 +13,13 @@ export const visualDesign: Article = {
   ...summaries['visual-design-is-a-decision-system'],
   lead: {
     asset: 'vxd-final-convergence',
-    alt: 'The final Biller Hero template dashboard, with the template status and system health at the top, the everyday details below, and billing for clients kept apart from the company’s own billing settings.',
+    alt: 'The final Biller Hero template dashboard. Along the top, five template status cards: 11 deployed, 1 needing attention, 2 published, 1 draft and 1 archived. Below, one chart comparing revenue and profit, next to the company’s own billing templates in their own list, and the popular client templates along the bottom.',
     caption:
-      'The final dashboard. Status and system health come first, because in this product the first thing a person needs to know is whether anything is already wrong.',
-    ratio: '16 / 9',
+      'The final dashboard. Template status comes first, because in this product the first thing a person needs to know is whether anything is already wrong.',
+    ratio: '3952 / 2270',
+    src: finalDashboard,
+    width: 3952,
+    height: 2270,
   },
   intro: [
     'A mood board can easily turn into a collection of pictures a designer likes.',
@@ -204,10 +209,13 @@ export const visualDesign: Article = {
           kind: 'figure',
           figure: {
             asset: 'vxd-hero-variations',
-            alt: 'Three options for the main template dashboard, each with notes on the idea it tested.',
+            alt: 'Two earlier versions of the template dashboard side by side. On the left, the first grey wireframe, with status counts, popular templates, one template’s details, and separate bar charts for revenue and profit. On the right, Layout B, which puts status next to quick actions, shows revenue and profit in one line chart, and moves the billing templates into a side column.',
             caption:
-              'Three options for the main screen, each with the question it was built to answer. The final design took something from all three.',
-            ratio: '16 / 8',
+              'Where it started, and one of the layouts tried on the way. The first wireframe split revenue and profit into two charts; later layouts joined them into one comparison.',
+            ratio: '4443 / 1592',
+            src: dashboardOptions,
+            width: 4443,
+            height: 1592,
           },
         },
       ],

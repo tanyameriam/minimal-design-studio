@@ -39,15 +39,15 @@ A second Make.com screenshot (`1st version.png`, the Claude variant) was
 PDF or Drive step, and it carries account usage, credit balance and an error
 history. If it is ever wanted, crop to the module row.
 
-## Article 2, `src/data/writing/interactionDesign.ts` — two of five
+## Article 2, `src/data/writing/interactionDesign.ts` — four of five
 
 | Asset | State |
 | --- | --- |
-| `ixd-final-prototype` | Lead, **owed.** A representative resource-planning or project-detail screen. |
+| `ixd-final-prototype` | Lead, **filled** 24 Sep 2026 with the final 2.0 project detail screen (`Roadmap Overview Wireframe-6.png` in Tanya's export). |
 | `ixd-brief-to-scenario` | **Owed.** BGPOSSTAL brief, experience and scenario map, consolidated scenario. Redraw for reading rather than exporting the source spreadsheet, which is illegible at page scale. Its caption already says so. |
 | `ixd-three-workflow-variations` | **Filled.** The three Figma variations, pulled from the IXD03 Notion page and composited into one stacked image at a common width. |
-| `ixd-detailed-workflow` | **Filled.** The full Variation 3 board from the same page: five screens, ten numbered error states, and a goal/description/questions column under each screen. |
-| `ixd-workflow-to-wireframe` | **Owed.** One stage at three levels: workflow statement, Six-Ups, converged wireframe. |
+| `ixd-detailed-workflow` | **Filled** with `ixd-final-workflow.png`, the final Variation 3 board supplied 24 Sep 2026: five screens, ten numbered error states, and a goal/description/questions column under each screen. Replaces the earlier `ixd-detailed-workflow.png` export, which is no longer used. |
+| `ixd-workflow-to-wireframe` | **Filled** 24 Sep 2026 with `ixd-six-ups.png`: the six 2.0 project detail variations composited into a numbered 3×2 grid. Caption and alt now describe the six layouts rather than the three-level view first planned. |
 
 The two owed process figures are on the **IXD04** Notion page, as Figma
 embeds Notion renders at 6752x3344 and 4289x7822. Both are reachable in a
@@ -55,13 +55,13 @@ browser but not by script: Notion now answers automated visits to that page
 with a Cloudflare human check, which is not something to work around. Export
 them from Figma, or open the page and save the two embed previews by hand.
 
-## Article 3, `src/data/writing/visualDesign.ts` — none of three
+## Article 3, `src/data/writing/visualDesign.ts` — two of three
 
 | Asset | State |
 | --- | --- |
-| `vxd-final-convergence` | Lead, **owed.** The final combined dashboard direction. |
+| `vxd-final-convergence` | Lead, **filled** 24 Sep 2026 with `vxd-final-dashboard.png`: Layout D (masonry / asymmetric grid), confirmed by Tanya as the final. |
 | `vxd-concept-directions` | **Owed.** Responsible Authority and Calm Assurance territories, with the chosen synthesis. |
-| `vxd-hero-variations` | **Owed.** The three hero-dashboard alternatives, each with the hypothesis it tested. |
+| `vxd-hero-variations` | **Filled** 24 Sep 2026 with `vxd-dashboard-options.png`: the first grey wireframe beside Layout B (operate vs configure). Caption rewritten to say what the pair shows rather than claim three options. |
 
 The two VXD Notion pages hold no images and no embeds at all, only headings
 and prose, so there is no source to pull from. These three have to come out
