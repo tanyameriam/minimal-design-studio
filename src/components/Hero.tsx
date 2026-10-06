@@ -28,12 +28,11 @@ import { Link } from 'react-router-dom';
  *
  * LESS TEXT. Four text blocks became two. The separate line about which
  * roles she is open to folded into the standfirst, where it was always the
- * same sentence, and the practices moved down to the strip that already
- * names them. One statement, one sentence under it, two ways on.
+ * same sentence. One statement, one sentence under it, two ways on.
  *
  * Still deliberately shorter than a viewport: the philosophy has to be
- * followed immediately by evidence, so the strip below and the top of the
- * first project sit inside the first screen.
+ * followed immediately by evidence, so the top of the first project sits
+ * inside the first screen.
  */
 
 /** The two ways on: the work first, the CV second. */
