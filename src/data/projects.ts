@@ -359,6 +359,7 @@ const projectList: Project[] = [
     status: 'concept',
     tier: 'flagship',
     disciplines: ['Service design', 'Systems design', 'Many groups of people'],
+    contributions: ['Service design', 'Systems design'],
     context: 'Emergency ambulance rides, researched with the company',
     role: 'Research, and designing how the whole service works',
     storyHref: '/case-study/merry-health/story',
