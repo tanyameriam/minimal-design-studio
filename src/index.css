@@ -516,20 +516,22 @@
    */
   .hero-field {
     isolation: isolate;
-    /*
-     * The wash is inset past the section's own edges so it does not end on a
-     * visible boundary, which on a viewport narrower than the shell would
-     * otherwise put a few per cent of gradient outside the page and hand the
-     * document a horizontal scrollbar. Clipped on one axis only, so the
-     * portrait's bloom still spills vertically.
-     */
-    overflow-x: clip;
   }
 
+  /*
+   * The wash spans the whole viewport, not the shell the hero sits in, so it
+   * has no edge on any screen width; it fades out at the window's own sides.
+   * The page wrapper (.page-ground) clips the horizontal overflow instead of
+   * the section, which used to cut the wash into a visible box on monitors
+   * wider than the shell.
+   */
   .hero-field::before {
     content: '';
     position: absolute;
-    inset: -6rem -10% 0;
+    top: -6rem;
+    bottom: 0;
+    left: calc(50% - 50vw);
+    right: calc(50% - 50vw);
     z-index: -1;
     pointer-events: none;
     background-image:
@@ -537,17 +539,15 @@
       radial-gradient(34rem 24rem at 82% 12%, hsl(var(--link) / 0.11), transparent 70%),
       radial-gradient(30rem 22rem at 62% 78%, hsl(var(--accent) / 0.07), transparent 72%);
     /* Fades out before the section ends, so the work below starts on the
-       plain ground rather than on the tail of a gradient, and fades out
-       toward both sides too. The section is clipped to the shell width, so
-       without the side fade a wide monitor showed the glow stopping on a
-       hard vertical edge. */
+       plain ground rather than on the tail of a gradient, and toward the
+       window's sides, so it never ends on an edge. */
     -webkit-mask-image:
       linear-gradient(to bottom, #000 45%, transparent 100%),
-      linear-gradient(to right, transparent 0%, #000 22%, #000 78%, transparent 100%);
+      linear-gradient(to right, transparent 0%, #000 18%, #000 82%, transparent 100%);
     -webkit-mask-composite: source-in;
     mask-image:
       linear-gradient(to bottom, #000 45%, transparent 100%),
-      linear-gradient(to right, transparent 0%, #000 22%, #000 78%, transparent 100%);
+      linear-gradient(to right, transparent 0%, #000 18%, #000 82%, transparent 100%);
     mask-composite: intersect;
     animation: hero-drift 26s ease-in-out infinite alternate;
   }
@@ -605,6 +605,9 @@
    * keeps the masthead from starting on a hard edge of colour.
    */
   .page-ground {
+    /* Clips the hero wash, which is as wide as the viewport, so it never
+       adds a horizontal scrollbar. */
+    overflow-x: clip;
     background-color: hsl(var(--background));
     background-image: linear-gradient(
       to bottom,
