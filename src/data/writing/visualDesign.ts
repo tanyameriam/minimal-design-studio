@@ -129,16 +129,6 @@ export const visualDesign: Article = {
           kind: 'p',
           text: 'That mix was important. Authority without calm can feel scary. Calm without authority can feel weak. The final direction needed both.',
         },
-        {
-          kind: 'figure',
-          figure: {
-            asset: 'vxd-concept-directions',
-            alt: 'The two theme directions, Responsible Authority and Calm Assurance, side by side, with the mix we chose underneath.',
-            caption:
-              'Two directions and the mix between them. The theme is most useful for what it says no to.',
-            ratio: '16 / 8',
-          },
-        },
       ],
     },
     {

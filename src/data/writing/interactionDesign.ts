@@ -100,16 +100,6 @@ export const interactionDesign: Article = {
           kind: 'p',
           text: 'That one story became the bridge between the big problem and ideas for the steps. It had enough detail to include risk and feelings, but was still open enough to allow several different ways for the system to work.',
         },
-        {
-          kind: 'figure',
-          figure: {
-            asset: 'ixd-brief-to-scenario',
-            alt: 'Three steps in a row: the BGPOSSTAL design plan, then the map of experiences and situations, then the one combined story we chose.',
-            caption:
-              'From the plan, to the map of situations, to one combined story. Redrawn so you can read it; the original spreadsheet is too small to read on a page and says less anyway.',
-            ratio: '16 / 7',
-          },
-        },
       ],
     },
     {
