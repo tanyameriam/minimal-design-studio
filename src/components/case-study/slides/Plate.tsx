@@ -39,6 +39,8 @@ interface PlateProps {
    * says once that these open.
    */
   dense?: boolean;
+  /** Let the caption run the full width of the image instead of a reading measure. */
+  wideCaption?: boolean;
 }
 
 export const Plate = ({
@@ -52,6 +54,7 @@ export const Plate = ({
   className = '',
   priority = false,
   dense = false,
+  wideCaption = false,
 }: PlateProps) => {
   const ref = useReveal<HTMLElement>();
 
@@ -87,7 +90,9 @@ export const Plate = ({
         (dense ? (
           <figcaption className="label mt-3 text-ink-500">{caption}</figcaption>
         ) : (
-          <figcaption className="mt-3 max-w-[68ch] text-sm leading-[1.55] text-ink-500">
+          <figcaption
+            className={`mt-3 ${wideCaption ? '' : 'max-w-[68ch] '}text-sm leading-[1.55] text-ink-500`}
+          >
             {caption}
             {onOpen && (
               <span className="label mt-3 block text-ink-500">Open full size to read it</span>

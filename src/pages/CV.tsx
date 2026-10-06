@@ -13,261 +13,127 @@ const CV = () => {
     if (printWindow) {
       printWindow.document.write(`
         <!DOCTYPE html>
-        <html>
+        <html lang="en">
         <head>
-          <title>Tanya Sunny - Product Designer</title>
+          <meta charset="utf-8" />
+          <title>Tanya Sunny - Product Designer - CV</title>
+          <!--
+            ATS version: one column, one page, plain text. Standard section
+            headings, no icons, tags, tables or two-column layout, so an
+            applicant tracking system reads it in the same order a person does.
+          -->
           <style>
-            @page { size: A4; margin: 0; }
+            @page { size: A4; margin: 13mm 15mm; }
             * { margin: 0; padding: 0; box-sizing: border-box; }
-            body { 
-              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-              font-size: 9pt; 
-              line-height: 1.35; 
-              color: #333; 
-              max-width: 210mm;
-              min-height: 297mm;
-              margin: 0 auto;
-              background: white;
+            body {
+              font-family: Arial, Helvetica, sans-serif;
+              font-size: 9.5pt;
+              line-height: 1.32;
+              color: #111;
+              background: #fff;
             }
-            .container { padding: 24px 28px; }
-            
-            /* Header */
-            .header { display: flex; justify-content: space-between; margin-bottom: 16px; }
-            .header-left { flex: 1; }
-            .header-right { text-align: right; font-size: 8.5pt; color: #555; }
-            .header-right a { color: #555; text-decoration: none; }
-            .header-right div { margin-bottom: 3px; display: flex; align-items: center; justify-content: flex-end; gap: 6px; }
-            h1 { font-size: 22pt; font-weight: 700; color: #1a1a1a; margin-bottom: 2px; letter-spacing: -0.5px; }
-            .title { font-size: 11pt; color: #666; margin-bottom: 8px; }
-            .summary { font-size: 8.5pt; color: #444; line-height: 1.4; max-width: 380px; }
-            .summary strong { font-weight: 600; }
-            
-            /* Two columns */
-            .columns { display: flex; gap: 28px; }
-            .left-col { flex: 1; }
-            .right-col { width: 200px; }
-            
-            /* Section headings */
-            .section-title { 
-              font-size: 10pt; 
-              font-weight: 700; 
-              color: #2a7ab8; 
-              text-transform: uppercase; 
-              letter-spacing: 0.5px;
-              margin-bottom: 10px; 
-              padding-bottom: 4px;
-              border-bottom: 2px solid #2a7ab8;
+            h1 { font-size: 19pt; font-weight: 700; letter-spacing: -0.2px; }
+            .role { font-size: 11pt; margin-top: 1px; }
+            .contact { font-size: 9pt; color: #333; margin-top: 4px; }
+            .contact a { color: #333; text-decoration: none; }
+            h2 {
+              font-size: 10pt;
+              font-weight: 700;
+              text-transform: uppercase;
+              letter-spacing: 0.4px;
+              border-bottom: 1px solid #111;
+              padding-bottom: 2px;
+              margin: 11px 0 6px;
             }
-            .section { margin-bottom: 14px; }
-            
-            /* Experience */
-            .job { margin-bottom: 10px; }
-            .job-title { font-size: 10pt; font-weight: 600; color: #1a1a1a; }
-            .job-company { font-size: 9pt; color: #555; }
-            .job-date { font-size: 8pt; color: #777; font-style: italic; margin-bottom: 3px; }
-            .job ul { margin-left: 14px; margin-top: 3px; }
-            .job li { margin-bottom: 2px; font-size: 8.5pt; color: #444; }
-            .job li strong { font-weight: 600; color: #333; }
-            
-            /* Education */
-            .edu-item { margin-bottom: 8px; }
-            .edu-title { font-size: 9.5pt; font-weight: 600; color: #1a1a1a; }
-            .edu-school { font-size: 8.5pt; color: #555; }
-            .edu-date { font-size: 8pt; color: #777; font-style: italic; }
-            
-            /* Languages */
-            .lang-grid { display: flex; flex-wrap: wrap; gap: 12px; }
-            .lang-item { }
-            .lang-name { font-size: 9pt; font-weight: 600; color: #333; }
-            .lang-level { font-size: 8pt; color: #666; font-style: italic; }
-            
-            /* Skills */
-            .skill-category { margin-bottom: 10px; }
-            .skill-label { font-size: 9pt; font-weight: 600; color: #333; margin-bottom: 3px; }
-            .skill-items { font-size: 8.5pt; color: #555; line-height: 1.4; }
-            
-            /* Tags */
-            .tags { display: flex; flex-wrap: wrap; gap: 5px; }
-            .tag { 
-              font-size: 8pt; 
-              color: #2a7ab8; 
-              border: 1px solid #d0e3f0; 
-              background: #f5f9fc;
-              padding: 2px 8px; 
-              border-radius: 3px; 
-            }
-            
-            /* Community */
-            .community-item { margin-bottom: 6px; }
-            .community-name { font-size: 9pt; color: #333; }
-            
-            @media print {
-              body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-              .container { padding: 20px 24px; }
-            }
+            p { margin: 0; }
+            .job { margin-bottom: 7px; }
+            .job-head { display: flex; justify-content: space-between; gap: 12px; }
+            .job-head strong { font-weight: 700; }
+            .date { white-space: nowrap; }
+            ul { margin: 2px 0 0 15px; }
+            li { margin-bottom: 1px; }
+            .line { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 2px; }
+            .skills p { margin-bottom: 2px; }
           </style>
         </head>
         <body>
-          <div class="container">
-            <!-- Header -->
-            <div class="header">
-              <div class="header-left">
-                <h1>Tanya Sunny</h1>
-                <div class="title">Product Designer</div>
-                <div class="summary">
-                  Product Designer with <strong>5+ years of experience</strong> in UX auditing, workflow and systems design, and interface design.
-                  At BrynQ, led the redesign of SalureConnect into the BrynQ integration platform.
-                  Experienced in <strong>AI-integrated workflows with Claude</strong>, from design systems in code to continuous delivery with developers.
-                  Master's in UX (AI specialisation); background in computer science.
-                </div>
-              </div>
-              <div class="header-right">
-                <div>+31 685 122 140 📞</div>
-                <div>tanyameriamsunny@gmail.com ✉</div>
-                <div>Netherlands 📍</div>
-                <div><a href="https://linkedin.com/in/tanya-sunny">linkedin.com/in/tanya-sunny</a> 🔗</div>
-              </div>
-            </div>
-            
-            <!-- Two Column Layout -->
-            <div class="columns">
-              <!-- Left Column -->
-              <div class="left-col">
-                <div class="section">
-                  <div class="section-title">Work Experience</div>
-                  
-                  <div class="job">
-                    <div class="job-title">Product Designer</div>
-                    <div class="job-company">BrynQ, Netherlands</div>
-                    <div class="job-date">2023 to Present</div>
-                    <ul>
-                      <li>Led the complete redesign of <strong>SalureConnect into the BrynQ platform</strong>, from research and information architecture to the shipped interface</li>
-                      <li>Designed the template selection and guided setup experience, reducing the implementation cycle for a standard integration from <strong>~6 months to ~2 weeks</strong></li>
-                      <li>Responsible for UX audits across the platform and for updating designs based on the findings</li>
-                      <li>Apply systems thinking to improve the product holistically, across integration flows, data mappings and interface states</li>
-                      <li>Integrated the design system into the codebase using <strong>Claude Code</strong></li>
-                      <li>Run a continuous implementation loop with developers: iterations are implemented with Claude Code, then taken to production by the development team, for faster delivery</li>
-                      <li>Collaborate with Product Owners and Product Managers to align design with product priorities</li>
-                    </ul>
-                  </div>
+          <h1>Tanya Sunny</h1>
+          <p class="role">Product Designer</p>
+          <p class="contact">
+            Netherlands | +31 685 122 140 | tanyameriamsunny@gmail.com |
+            <a href="https://www.linkedin.com/in/tanya-sunny/">linkedin.com/in/tanya-sunny</a>
+          </p>
 
-                  <div class="job">
-                    <div class="job-title">UI Designer (Contract)</div>
-                    <div class="job-company">Multiple Startups, India</div>
-                    <div class="job-date">2022 to 2023</div>
-                    <ul>
-                      <li>Designed user interfaces for early-stage web and mobile products: Amphisoft Ventures, Lymdata Labs</li>
-                      <li>Delivered consistent, usable visual designs from product requirements through to handoff</li>
-                    </ul>
-                  </div>
-                  
-                  <div class="job">
-                    <div class="job-title">UI Designer</div>
-                    <div class="job-company">Segments Cloud LLC, Dubai, UAE</div>
-                    <div class="job-date">2021 to 2022</div>
-                    <ul>
-                      <li>Designed interfaces and page layouts for a Bitcoin mining and warehousing platform</li>
-                      <li>Translated business requirements into structured, visually consistent interfaces</li>
-                    </ul>
-                  </div>
-                  
-                  <div class="job">
-                    <div class="job-title">UX/UI Intern</div>
-                    <div class="job-company">Curateus, Bangalore, India</div>
-                    <div class="job-date">2021</div>
-                    <ul>
-                      <li>Designed wireframes, interactive prototypes and UI for a content curation product</li>
-                      <li>Designed a browser extension that let curators recommend articles without leaving the page, reducing the flow from seven steps to four</li>
-                    </ul>
-                  </div>
-                  
-                  <div class="job">
-                    <div class="job-title">Technical Support Engineer</div>
-                    <div class="job-company">SAP Ariba, Bangalore, India</div>
-                    <div class="job-date">2018 to 2021</div>
-                    <ul>
-                      <li>Supported enterprise clients through system troubleshooting and incident resolution</li>
-                      <li>Developed a deep understanding of <strong>enterprise software behaviour and user pain points</strong></li>
-                    </ul>
-                  </div>
-                </div>
-                
-                <div class="section">
-                  <div class="section-title">Education</div>
-                  <div class="edu-item">
-                    <div class="edu-title">Master's in UX (AI Specialization)</div>
-                    <div class="edu-school">Jindal School of Art & Architecture</div>
-                    <div class="edu-date">2025 to 2026 &middot; Graduated with distinction, ranked first in cohort</div>
-                  </div>
-                  <div class="edu-item">
-                    <div class="edu-title">PG Programme in UX Design</div>
-                    <div class="edu-school">IDC, IIT Bombay</div>
-                    <div class="edu-date">2021 to 2022</div>
-                  </div>
-                  <div class="edu-item">
-                    <div class="edu-title">B.Tech in Computer Science</div>
-                    <div class="edu-school">University of Calicut</div>
-                    <div class="edu-date">2013 to 2017</div>
-                  </div>
-                </div>
-                
-                <div class="section">
-                  <div class="section-title">Languages</div>
-                  <div class="lang-grid">
-                    <div class="lang-item">
-                      <div class="lang-name">English</div>
-                      <div class="lang-level">Fluent</div>
-                    </div>
-                    <div class="lang-item">
-                      <div class="lang-name">Dutch</div>
-                      <div class="lang-level">Beginner</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Right Column -->
-              <div class="right-col">
-                <div class="section">
-                  <div class="section-title">Skills</div>
-                  <div class="skill-category">
-                    <div class="skill-label">UX Design:</div>
-                    <div class="skill-items">UX Auditing, User Research, Workflow Design, Information Architecture, Usability Testing</div>
-                  </div>
-                  <div class="skill-category">
-                    <div class="skill-label">UI Design:</div>
-                    <div class="skill-items">Interface Design, Visual Design, Prototyping, Design Systems, Responsive Design</div>
-                  </div>
-                  <div class="skill-category">
-                    <div class="skill-label">Methods:</div>
-                    <div class="skill-items">Systems Thinking, Problem Framing, Journey Mapping, Wireframing</div>
-                  </div>
-                </div>
-                
-                <div class="section">
-                  <div class="section-title">Key Strengths</div>
-                  <div class="tags">
-                    <span class="tag">UX Auditing</span>
-                    <span class="tag">Systems Thinking</span>
-                    <span class="tag">Product Audit</span>
-                    <span class="tag">Transactional Design</span>
-                    <span class="tag">Workflow & Process Design</span>
-                    <span class="tag">UI & Interaction Design</span>
-                    <span class="tag">AI-Integrated UX Workflows</span>
-                  </div>
-                </div>
-                
-                <div class="section">
-                  <div class="section-title">Community</div>
-                  <div class="community-item">
-                    <div class="community-name"><strong>Co-organiser</strong>, Design Reimagined Utrecht</div>
-                    <div class="skill-items">Design community hosting sessions and workshops in the Netherlands</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <h2>Summary</h2>
+          <p>
+            Product Designer with 5+ years of design experience and a professional background since 2018,
+            specialising in UX auditing, workflow and systems design, and interface design. At BrynQ, led the
+            redesign of SalureConnect into the BrynQ integration platform. Experienced in AI-integrated workflows
+            with Claude, from integrating the design system into the codebase to a continuous implementation loop
+            with developers. Master's in UX with a specialisation in AI (2026); background in computer science.
+          </p>
+
+          <h2>Work Experience</h2>
+          <div class="job">
+            <div class="job-head"><span><strong>Product Designer</strong>, BrynQ, Netherlands</span><span class="date">2023 to Present</span></div>
+            <ul>
+              <li>Led the complete redesign of SalureConnect into the BrynQ platform, from research and information architecture to the shipped interface.</li>
+              <li>Responsible for UX audits across the platform and for updating designs based on the findings.</li>
+              <li>Apply systems thinking to improve the product holistically, across integration flows, data mappings and interface states.</li>
+              <li>Integrated the design system into the codebase using Claude Code, closing the gap between design and implementation.</li>
+              <li>Run a continuous implementation loop with developers: design iterations are implemented with Claude Code, then taken to production by the development team, for faster and more frequent delivery.</li>
+              <li>Collaborate with Product Owners and Product Managers to align design work with product priorities.</li>
+            </ul>
           </div>
-          
+          <div class="job">
+            <div class="job-head"><span><strong>UI Designer (Contract)</strong>, Multiple Startups, India</span><span class="date">2022 to 2023</span></div>
+            <ul>
+              <li>Designed user interfaces for early-stage web and mobile products, working from defined product requirements, for Amphisoft Ventures and Lymdata Labs.</li>
+              <li>Delivered consistent, usable visual designs through to development handoff.</li>
+            </ul>
+          </div>
+          <div class="job">
+            <div class="job-head"><span><strong>UI Designer</strong>, Segments Cloud LLC, Dubai, UAE</span><span class="date">2021 to 2022</span></div>
+            <ul>
+              <li>Designed interfaces and page layouts for a Bitcoin mining and warehousing platform.</li>
+              <li>Translated business requirements into structured, visually consistent interfaces.</li>
+            </ul>
+          </div>
+          <div class="job">
+            <div class="job-head"><span><strong>UX/UI Intern</strong>, Curateus, Bangalore, India</span><span class="date">2021</span></div>
+            <ul>
+              <li>Designed wireframes, interactive prototypes and UI for a content curation product across web and mobile.</li>
+              <li>Designed a browser extension that let curators recommend articles without leaving the page, reducing the flow from seven steps to four.</li>
+              <li>Worked with the Product Owner and three developers from early flows through to developer handoff.</li>
+            </ul>
+          </div>
+          <div class="job">
+            <div class="job-head"><span><strong>Technical Support Engineer</strong>, SAP Ariba, Bangalore, India</span><span class="date">2018 to 2021</span></div>
+            <ul>
+              <li>Supported enterprise clients through system troubleshooting and incident resolution.</li>
+              <li>Collaborated with engineering teams on workflow and system-level issues.</li>
+              <li>Developed a deep understanding of enterprise software behaviour and user pain points.</li>
+            </ul>
+          </div>
+
+          <h2>Education</h2>
+          <div class="line"><span><strong>Master's in UX (Specialisation: AI)</strong>, Jindal School of Art &amp; Architecture. Graduated with distinction, ranked first in cohort</span><span class="date">2025 to 2026</span></div>
+          <div class="line"><span><strong>PGP in UX Design</strong>, IDC, Indian Institute of Technology Bombay</span><span class="date">2021 to 2022</span></div>
+          <div class="line"><span><strong>Bachelor of Technology in Computer Science</strong>, University of Calicut</span><span class="date">2013 to 2017</span></div>
+
+          <h2>Skills</h2>
+          <div class="skills">
+            <p><strong>UX Design:</strong> UX Auditing, User Research, Workflow Design, Information Architecture, Usability Testing</p>
+            <p><strong>UI Design:</strong> Interface Design, Visual Design, Interaction Design, Prototyping, Design Systems, Responsive Design</p>
+            <p><strong>Methods:</strong> Systems Thinking, Problem Framing, Journey Mapping, Wireframing, Product Audit, Transactional Design, AI-Integrated UX Workflows</p>
+          </div>
+
+          <h2>Community</h2>
+          <p><strong>Co-organiser</strong>, Design Reimagined Utrecht: a design community in the Netherlands hosting sessions and workshops on design practice.</p>
+
+          <h2>Languages</h2>
+          <p>English (Fluent), Dutch (Beginner)</p>
+
           <script>
             window.onload = function() { window.print(); }
           </script>
@@ -358,7 +224,6 @@ const CV = () => {
                 </div>
                 <ul className="list-disc list-outside ml-5 text-muted-foreground text-sm space-y-1">
                   <li>Led the complete redesign of SalureConnect into the BrynQ platform, from research and information architecture to the shipped interface.</li>
-                  <li>Designed the template selection and guided setup experience, reducing the implementation cycle for a standard integration from ~6 months to ~2 weeks.</li>
                   <li>Responsible for UX audits across the platform and for updating designs based on the findings.</li>
                   <li>Apply systems thinking to improve the product holistically, across integration flows, data mappings and interface states.</li>
                   <li>Integrated the design system into the codebase using Claude Code, closing the gap between design and implementation.</li>
@@ -443,7 +308,7 @@ const CV = () => {
                 </p>
               </div>
               <div>
-                <h3 className="font-medium text-lg">Post Graduate Programme in UX Design</h3>
+                <h3 className="font-medium text-lg">PGP in UX Design</h3>
                 <p className="text-sm text-muted-foreground">IDC, Indian Institute of Technology Bombay, 2021 to 2022</p>
               </div>
               <div>

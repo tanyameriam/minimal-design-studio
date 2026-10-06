@@ -255,14 +255,13 @@ export const Split = ({
 );
 
 /**
- * A quoted line from research, sized to be read from across the room.
- *
- * As a panel rather than a hairline-topped column, with the accent mark doing
- * the work the rule used to: three of these in a row now read as three
- * separate voices instead of as one three-column block of text. The gloss is
- * the finding under the quote, and it is deliberately set quieter, because
- * the sentence a user actually said is the evidence and the gloss is only my
- * reading of it.
+ * A quoted line from research, set as something a person said rather than
+ * as a card. No panel: a box made each response read as a feature tile, and
+ * three in a row read as a pricing table. The words sit in their own quote
+ * marks against an accent rule, the way a spoken response is set in a
+ * transcript, so the row reads as voices. The gloss is the finding under the
+ * quote, and it is deliberately set quieter, because the sentence a user
+ * actually said is the evidence and the gloss is only my reading of it.
  */
 export const Quote = ({
   children,
@@ -274,19 +273,12 @@ export const Quote = ({
   /** Who said it, by role rather than by name. */
   who?: string;
 }) => (
-  <figure className="panel flex h-full flex-col p-6 md:p-7">
-    <span
-      aria-hidden="true"
-      className="font-serif text-[3rem] leading-[0.6] text-accent"
-    >
-      &ldquo;
-    </span>
-
-    <blockquote className="mt-4 text-xl leading-[1.2] md:text-[1.625rem]">
-      {children}
+  <figure className="flex h-full flex-col border-l-2 border-accent pl-5 md:pl-6">
+    <blockquote className="text-xl leading-[1.25] md:text-[1.5rem]">
+      &ldquo;{children}&rdquo;
     </blockquote>
 
-    <figcaption className="mt-auto pt-5">
+    <figcaption className="mt-auto pt-4">
       {who && <p className="label mb-2 text-ink-500">{who}</p>}
       <p className="text-sm leading-snug text-ink-500 md:text-base">{gloss}</p>
     </figcaption>

@@ -571,19 +571,6 @@
   }
 
   /*
-   * The portrait's tilt. The angles come from the pointer (see Hero.tsx) and
-   * are applied here, so the transform, the perspective and the easing stay
-   * in one place and the component only ever writes two numbers.
-   */
-  .hero-portrait {
-    --tilt-x: 0deg;
-    --tilt-y: 0deg;
-    transform: perspective(60rem) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
-    transform-style: preserve-3d;
-    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  /*
    * The page ground.
    *
    * This used to paint a graph-paper grid from two hairline gradients, which
@@ -756,10 +743,6 @@
 
   .hero-ping {
     opacity: 0;
-  }
-
-  .hero-portrait {
-    transform: none !important;
   }
 }
 

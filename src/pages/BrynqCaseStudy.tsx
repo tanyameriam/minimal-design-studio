@@ -462,7 +462,7 @@ const BrynqCaseStudy = () => {
           */}
           <Reveal className="mt-24 md:mt-32">
             <Takeaway
-              label="The question changed"
+              label="I explored this instead"
               headline={
                 <>
                   What would BrynQ need to become{' '}
@@ -475,8 +475,8 @@ const BrynqCaseStudy = () => {
               next="Understand: why customers were not using BrynQ"
               nextHref="#ch-understand"
             >
-              That new question changed the project. It was no longer about redesigning screens.
-              It was about changing how BrynQ was set up and used.
+              This changed how I looked at the project. Instead of redesigning screens, I looked
+              at how BrynQ was set up and used.
             </Takeaway>
           </Reveal>
         </Slide>
@@ -487,7 +487,7 @@ const BrynqCaseStudy = () => {
           id="ch-understand"
           n="01"
           name="Understand"
-          title="Getting to know the product, and how it is organised"
+          title="Research"
           question="Why weren't customers using BrynQ?"
         />
 
@@ -598,22 +598,33 @@ const BrynqCaseStudy = () => {
             <p className="text-sm text-ink-500">Private ID numbers are hidden. Click either picture to open it.</p>
           </PlateAside>
 
-          <div className="sequence mt-stage grid gap-3 md:grid-cols-3 md:gap-4">
-            <Quote gloss="The words and steps came from how the tech team thought, not how customers thought.">
-              This feels technical
-            </Quote>
-            <Quote gloss="Nothing showed what mattered most or what to do next.">
-              I don&rsquo;t know what I&rsquo;m supposed to do
-            </Quote>
-            <Quote gloss="Developers and project managers still did most of the real setup work.">
-              Salure already does this for me
-            </Quote>
-          </div>
+          {/*
+            The responses and what they meant for the business, as one bento
+            group: what customers said down the left, the business reading of
+            it filling the column beside them, so the two read as cause and
+            consequence rather than as a row and a footnote.
+          */}
+          <div className="mt-stage grid gap-10 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:gap-12">
+            <div>
+              <p className="label mb-6 text-ink-500">What customers said</p>
+              <div className="sequence grid gap-8">
+                <Quote gloss="The words and steps came from how the tech team thought, not how customers thought.">
+                  This feels technical
+                </Quote>
+                <Quote gloss="Nothing showed what mattered most or what to do next.">
+                  I don&rsquo;t know what I&rsquo;m supposed to do
+                </Quote>
+                <Quote gloss="Developers and project managers still did most of the real setup work.">
+                  Salure already does this for me
+                </Quote>
+              </div>
+            </div>
 
-          <Pov kind="business">
-            If customers do not really use the product themselves, the business needs its own
-            team for every new customer. Every new customer means hiring more people.
-          </Pov>
+            <Pov kind="business" className="flex flex-col">
+              If customers do not really use the product themselves, the business needs its own
+              team for every new customer. Every new customer means hiring more people.
+            </Pov>
+          </div>
         </Slide>
 
 
@@ -682,7 +693,7 @@ const BrynqCaseStudy = () => {
           id="ch-reframe"
           n="02"
           name="Rethink"
-          title="Rethinking how connections get made"
+          title="Service design"
           question="Why were connections made outside the product?"
         />
 
@@ -730,45 +741,36 @@ const BrynqCaseStudy = () => {
           </div>
 
           {/*
-            The number, the span it covers and what it meant, in one block so
-            none of the three reads as a caption for the others.
+            The number and what it meant for the business, side by side. The
+            number card holds only the number and what it measures; the
+            business aside sits next to it as a bento pair. Its label sits
+            above its card, so on wide screens the row is a subgrid: labels in
+            the first track, both cards in the second, sharing a top edge and
+            a height.
           */}
-          <div className="panel mt-stage grid gap-10 p-6 md:p-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-14">
-            <div className="flex gap-5">
-              <span className="panel-chip flex h-11 w-11 shrink-0 items-center justify-center rounded-lg">
+          <div className="mt-stage grid gap-8 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-x-10 lg:gap-y-0">
+            <div className="panel flex gap-4 p-5 md:p-7 lg:col-start-1 lg:row-start-2">
+              <span className="panel-chip flex h-10 w-10 shrink-0 items-center justify-center rounded-lg">
                 <Clock aria-hidden="true" className="h-5 w-5 text-accent" strokeWidth={1.5} />
               </span>
 
               <div className="min-w-0 flex-1">
-                <p className="text-[2rem] leading-none md:text-[2.75rem]">~6 months</p>
+                <p className="text-[1.75rem] leading-none md:text-[2.25rem]">~6 months</p>
                 <p className="mt-3 text-sm leading-snug text-ink-600 md:text-base">
-                  From signing to a working connection, for a standard case
+                  For a working interface to be built
                 </p>
-
-                {/* The span drawn, so the number has a shape as well as a size. */}
-                <div aria-hidden="true" className="mt-7 flex items-center gap-3">
-                  <span className="label shrink-0 text-ink-500">Signature</span>
-                  <span className="h-px flex-1 border-t border-dashed border-border" />
-                  <span className="label shrink-0 text-ink-500">Live</span>
-                </div>
-
-                <div className="mt-6">
-                  <Evidence kind="observed" />
-                </div>
               </div>
             </div>
 
-            <p className="max-w-[28ch] self-center text-[1.375rem] leading-tight lg:border-l lg:border-border lg:pl-14 md:text-[1.75rem]">
-              The slow part was not writing code.{' '}
-              <Em>It was working out, again and again, what needed to be built.</Em>
-            </p>
+            <Pov
+              kind="business"
+              className="lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:grid lg:grid-rows-subgrid"
+            >
+              Every new sale meant months of setup work before the customer could really use the
+              product. Money came in late. And the number of people on the team, not the number of
+              customers who wanted it, set the limit on growth.
+            </Pov>
           </div>
-
-          <Pov kind="business">
-            Every new sale meant months of setup work before the customer could really use the
-            product. Money came in late. And the number of people on the team, not the number of
-            customers who wanted it, set the limit on growth.
-          </Pov>
         </Slide>
 
 
@@ -779,11 +781,6 @@ const BrynqCaseStudy = () => {
               <Headline level={3}>
                 The real work happened in <Em>a spreadsheet.</Em>
               </Headline>
-              <p className="mt-8 max-w-[34ch] text-base leading-[1.6] text-ink-600 md:mt-10 md:text-lg">
-                This is where each connection was planned. It held the rules, the matching fields and
-                the details about the customer. The customer, the project manager and the developers passed it back and forth.
-              </p>
-
             </div>
 
             {/*
@@ -809,6 +806,7 @@ const BrynqCaseStudy = () => {
             */}
             <Plate
               src={scenarioFile}
+              wideCaption
               alt="The scenario file: a spreadsheet fourteen columns wide, headed Scenario, Objective, Source system, Target system, Sync, Custom, Comments, Description source system, Technical field source system, Path source system, Field name target system, Technical name target system, Path target system and Field type. Row after row maps one field from the source system to the target system, with the team's working notes in the comments column."
               width={2516}
               height={1114}
@@ -823,35 +821,6 @@ const BrynqCaseStudy = () => {
               onOpen={open}
             />
           </div>
-
-          <ul className="mt-break grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              {
-                title: 'Every connection started here',
-                note: 'Before anything was built',
-                Icon: Table2,
-              },
-              { title: 'The agreement and the plan', note: 'In the same file' },
-              { title: 'The progress tracker too', note: 'Progress kept in its own columns' },
-              {
-                title: 'Filled in by three groups at once',
-                note: 'Project managers, developers and customers, and none of them were using the product',
-                Icon: Users,
-              },
-            ].map(({ title, note, Icon }) => (
-              <li key={title} className="panel flex flex-col p-5 md:p-6">
-                {Icon && (
-                  <Icon
-                    aria-hidden="true"
-                    className="mb-5 h-5 w-5 text-accent"
-                    strokeWidth={1.5}
-                  />
-                )}
-                <p className="text-base leading-snug md:text-lg">{title}</p>
-                <p className="mt-2 text-sm leading-snug text-ink-500">{note}</p>
-              </li>
-            ))}
-          </ul>
         </Slide>
 
         <MoreDetail label="What was different for each customer, and what repeated">
@@ -996,15 +965,6 @@ const BrynqCaseStudy = () => {
               </div>,
             ])}
           </div>
-
-          <Pov kind="business">
-            Most customers were paying for know-how the company already had. That money came
-            from doing work by hand, when it could have come from the product.
-          </Pov>
-
-          <p className="mt-stage max-w-[24ch] text-[1.75rem] leading-tight md:text-[3rem]">
-            What if that know-how became <Em>part of the product?</Em>
-          </p>
         </Slide>
 
 
@@ -1014,7 +974,7 @@ const BrynqCaseStudy = () => {
           id="ch-explore"
           n="03"
           name="Explore"
-          title="Setting up connections with the help of AI"
+          title="Exploration"
           question="Could a chat take away the technical hard parts?"
         />
 
@@ -1025,61 +985,72 @@ const BrynqCaseStudy = () => {
             <Em>just by chatting?</Em>
           </Headline>
 
-          <div className="mt-stage grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-14">
-            <div>
-              <Pov kind="mine">
-                Once we saw how much technical work was hidden in the setup, I started to explore
-                whether we could hide all of it, so that users could simply describe what they
-                wanted to connect in their own words.
-              </Pov>
+          <p className="mt-8 max-w-[60ch] text-base leading-[1.6] text-ink-600 md:mt-10 md:text-lg">
+            Once we saw how much technical work was hidden in the setup, I started to explore
+            whether we could hide all of it, so that users could simply describe what they wanted to
+            connect in their own words.
+          </p>
 
-              <div className="mt-break">
-                <p className="label-strong">What the chat would take care of</p>
-                <div className="mt-6">
-                  <IconList
-                    connected
-                    items={[
-                      { text: 'Choosing the HR and payroll apps' },
-                      { text: 'Giving the details needed to connect' },
-                      { text: 'Seeing which data will be sent' },
-                      { text: 'Checking which fields match' },
-                      { text: 'Spotting fields with no match' },
-                      { text: 'Changing data into the right format' },
-                      { text: 'Checking the final setup' },
-                    ]}
-                  />
-                </div>
-              </div>
-            </div>
+          {/* Drawn from the design rather than exported from it: the concept
+              needs the conversation and the mapping visible at once, which
+              no single real frame shows. Full width, so the conversation and
+              the mapping each get room. The real concept boards run at the
+              foot of this slide. */}
+          <div className="mt-stage">
+            <MappingCanvas
+              source="HR system"
+              target="Payroll system"
+              turns={[
+                { who: 'User', said: 'Connect our HR system to payroll.' },
+                {
+                  who: 'BrynQ',
+                  said: 'Here is the employee data I found, and the payroll fields it needs to fill.',
+                },
+              ]}
+              rows={[
+                { from: 'First name', to: 'First name', state: 'auto' },
+                { from: 'Surname', to: 'Last name', state: 'input' },
+                { from: 'Employee ID', to: 'Employee number', state: 'auto' },
+                { from: 'Department', to: 'Cost centre', state: 'input' },
+                { from: 'Hire date', to: 'Start date', state: 'auto' },
+              ]}
+              actions={['Change', 'Match', 'Check']}
+            />
+            <p className="label mt-4 text-ink-500">
+              Idea · the chat and the data sit on one screen
+            </p>
+          </div>
 
-            {/* Drawn from the design rather than exported from it: the concept
-                needs the conversation and the mapping visible at once, which
-                no single real frame shows. The real concept boards run at the
-                foot of this slide. */}
-            <div>
-              <MappingCanvas
-                source="HR system"
-                target="Payroll system"
-                turns={[
-                  { who: 'User', said: 'Connect our HR system to payroll.' },
-                  {
-                    who: 'BrynQ',
-                    said: 'Here is the employee data I found, and the payroll fields it needs to fill.',
-                  },
-                ]}
-                rows={[
-                  { from: 'First name', to: 'First name', state: 'auto' },
-                  { from: 'Surname', to: 'Last name', state: 'input' },
-                  { from: 'Employee ID', to: 'Employee number', state: 'auto' },
-                  { from: 'Department', to: 'Cost centre', state: 'input' },
-                  { from: 'Hire date', to: 'Start date', state: 'auto' },
-                ]}
-                actions={['Change', 'Match', 'Check']}
+          {/*
+            What the chat would take care of, as the setup reads in order: one
+            row of numbered steps across the full width, joined by a dashed
+            line, rather than a tall list down one column. Wraps to fewer
+            columns on narrower screens, where the line is dropped.
+          */}
+          <div className="mt-break">
+            <p className="label-strong">What the chat would take care of</p>
+            <ol className="relative mt-8 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 lg:grid-cols-7 lg:gap-x-4">
+              <span
+                aria-hidden="true"
+                className="absolute left-5 right-[calc((100%_-_6rem)_/_7_-_1.25rem)] top-5 hidden border-t border-dashed border-ink-400/70 lg:block"
               />
-              <p className="label mt-4 text-ink-500">
-                Idea · the chat and the data sit on one screen
-              </p>
-            </div>
+              {[
+                'Choosing the HR and payroll apps',
+                'Giving the details needed to connect',
+                'Seeing which data will be sent',
+                'Checking which fields match',
+                'Spotting fields with no match',
+                'Changing data into the right format',
+                'Checking the final setup',
+              ].map((step, i) => (
+                <li key={step} className="relative">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full border border-accent bg-background font-mono text-sm tabular-nums text-accent">
+                    {i + 1}
+                  </span>
+                  <p className="mt-4 text-base leading-snug md:text-lg">{step}</p>
+                </li>
+              ))}
+            </ol>
           </div>
 
           {/*
@@ -1102,27 +1073,68 @@ const BrynqCaseStudy = () => {
             asks what happens after it, which turned out to be the harder
             half and the reason the model needed a summary and an error path
             before it needed better copy.
+
+            One frame, not two plates: both are pages of the same FigJam file,
+            so they share one canvas, split by an angled slash rather than set
+            as separate figures. The frame's ground matches the FigJam canvas
+            so the boards sit on it without their own edges showing. Each half
+            still opens full size, because the sticky notes need it.
           */}
-          <div className="mt-stage space-y-10 md:space-y-12">
-            <Plate
-              src={aiConceptSketches}
-              alt="Five rough sketches of the BrynQ home page, each putting a chat panel in a different place over the dashboard, with sticky notes underneath saying what each version is for."
-              width={2924}
-              height={659}
-              label="Exploration"
-              caption="Five places to put the same idea. The notes under each sketch say what that version is for: suggest topics, confirm, clear things up, ask related questions, or walk the user through making a connection."
-              onOpen={open}
-            />
-            <Plate
-              src={aiConceptFlow}
-              alt="A drawing of the chat idea from start to end: the home page, the chat opening, three numbered summary steps, and arrows looping back for error logs and fixes."
-              width={2591}
-              height={873}
-              label="The idea, start to end"
-              caption="The same idea drawn from start to end. The chat starts things off, but the summary panel does most of the work: three steps for the run, and two loops back for errors and fixed data. The chat was never meant to be the whole screen."
-              onOpen={open}
-            />
-          </div>
+          <figure className="mt-stage">
+            <div className="relative grid overflow-hidden rounded-[var(--radius)] border border-border bg-[#f4f4f4] md:grid-cols-2">
+              {[
+                {
+                  src: aiConceptSketches,
+                  alt: 'Five rough sketches of the BrynQ home page, each putting a chat panel in a different place over the dashboard, with sticky notes underneath saying what each version is for.',
+                  width: 2924,
+                  height: 659,
+                },
+                {
+                  src: aiConceptFlow,
+                  alt: 'A drawing of the chat idea from start to end: the home page, the chat opening, three numbered summary steps, and arrows looping back for error logs and fixes.',
+                  width: 2591,
+                  height: 873,
+                },
+              ].map((board, i) => (
+                <button
+                  key={board.src}
+                  type="button"
+                  onClick={() => open(board.src, board.alt)}
+                  aria-label={`Enlarge: ${board.alt}`}
+                  className={`flex cursor-zoom-in items-center justify-center p-4 md:p-8 ${
+                    i === 1 ? 'border-t border-black/10 md:border-t-0' : ''
+                  }`}
+                >
+                  <FadeInImage
+                    src={board.src}
+                    alt={board.alt}
+                    width={board.width}
+                    height={board.height}
+                    loading="lazy"
+                    className="w-full"
+                  />
+                </button>
+              ))}
+
+              {/* The slash between the two boards. */}
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 100"
+                preserveAspectRatio="none"
+                className="pointer-events-none absolute inset-y-0 left-1/2 hidden h-full w-6 -translate-x-1/2 text-black/25 md:block"
+              >
+                <line
+                  x1="20"
+                  y1="0"
+                  x2="4"
+                  y2="100"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  vectorEffect="non-scaling-stroke"
+                />
+              </svg>
+            </div>
+          </figure>
         </Slide>
 
         <MoreDetail label="How the chat worked, step by step">
@@ -1331,7 +1343,7 @@ const BrynqCaseStudy = () => {
           id="ch-productise"
           n="04"
           name="Build it in"
-          title="Templates: doing it yourself, with help"
+          title="Product design"
           question="How could the team’s repeated know-how become ready-made templates?"
         />
 

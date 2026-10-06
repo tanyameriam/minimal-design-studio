@@ -160,32 +160,37 @@ export const Statement = ({ children }: { children: ReactNode }) => (
  * designer's read, `business` is what it meant commercially. Distinct
  * treatments, so a scanner can tell them apart without reading them.
  *
- * `business` is the loudest block on its slide, and it used to be the
- * quietest: a hairline box with copy set smaller and greyer than everything
- * around it. That had the emphasis exactly backwards. This is the answer to
- * "why is this worth solving at all", which is the root the rest of the case
- * study grows from, so it inverts against the page and takes the largest
- * type in the section.
+ * `business` is a small aside set to the right: the label sits above the
+ * card rather than inside it, and the card is the page's own dark surface,
+ * a step lighter than the ground, not an inverted white band. It used to
+ * run full width with the largest type in the section, which made a side
+ * note shout over the slide it belongs to.
  *
- * Both run the full width of whatever holds them, so the asides share one
- * edge with the slide rather than each stopping somewhere different. The cap
- * is on the paragraph instead: the card is a full-width band, the line length
- * inside it stays readable. Two of these sit inside narrow grid columns
- * rather than at slide level, which is why the width lives on the text and
- * not on a breakpoint, and why there is no two-column label treatment here.
+ * `mine` runs the full width of whatever holds it, with the cap on the
+ * paragraph so the line length stays readable. Two `business` asides sit
+ * inside narrow grid columns, where `w-full` lets them fill the column.
  */
-export const Pov = ({ kind, children }: { kind: 'mine' | 'business'; children: ReactNode }) =>
+export const Pov = ({
+  kind,
+  children,
+  className = 'mt-break ml-auto max-w-md',
+}: {
+  kind: 'mine' | 'business';
+  children: ReactNode;
+  /** `business` only: where the aside sits. Override it when a row places it. */
+  className?: string;
+}) =>
   kind === 'mine' ? (
     <div className="panel mt-break border-l-4 border-l-foreground p-5 md:p-6 lg:p-8">
       <p className="label mb-3 text-ink-500">What I think</p>
       <p className="max-w-[72ch] text-lg leading-[1.45] md:text-2xl">{children}</p>
     </div>
   ) : (
-    <div className="theme-invert panel mt-break bg-card p-6 md:p-8 lg:p-10">
-      <p className="label mb-4 text-accent">Why this mattered to the business</p>
-      <p className="max-w-[72ch] text-xl leading-[1.35] text-foreground md:text-[1.625rem]">
-        {children}
-      </p>
+    <div className={`w-full ${className}`}>
+      <p className="label mb-3 text-accent">Why this mattered to the business</p>
+      <div className="panel flex-1 p-5 md:p-6">
+        <p className="text-base leading-[1.5] text-foreground md:text-lg">{children}</p>
+      </div>
     </div>
   );
 

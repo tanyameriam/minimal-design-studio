@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 /**
@@ -21,9 +20,11 @@ import { Link } from 'react-router-dom';
  * and stays as a static wash.
  *
  * A FACE. The portrait was on /about and nowhere a first-time visitor would
- * see it. It sits in the masthead now, in a panel that tilts very slightly
- * and straightens when the pointer is near it, so the first screen responds
- * to being looked at.
+ * see it. It sits in the masthead now as a small round avatar beside the
+ * greeting, the way a person introduces themselves, rather than as a large
+ * tilting panel competing with the statement. Everything is centred: the
+ * greeting with the face, the statement under it, then the sentence and the
+ * two ways on.
  *
  * LESS TEXT. Four text blocks became two. The separate line about which
  * roles she is open to folded into the standfirst, where it was always the
@@ -34,59 +35,6 @@ import { Link } from 'react-router-dom';
  * followed immediately by evidence, so the strip below and the top of the
  * first project sit inside the first screen.
  */
-
-/**
- * The portrait's response to the pointer.
- *
- * A few degrees of tilt, driven from the pointer's position over the frame
- * and written to custom properties so the transform itself stays in CSS.
- * Deliberately tiny: the point is that the surface is aware of the cursor,
- * not that it performs. Skipped entirely on coarse pointers and under
- * reduced motion, where the frame simply sits still.
- */
-const useTilt = () => {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!fine || still) return;
-
-    let frame = 0;
-
-    const onMove = (e: PointerEvent) => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        const box = el.getBoundingClientRect();
-        // -1 to 1 across each axis, clamped so a pointer far from the frame
-        // does not keep pushing the tilt further.
-        const x = Math.max(-1, Math.min(1, (e.clientX - (box.left + box.width / 2)) / box.width));
-        const y = Math.max(-1, Math.min(1, (e.clientY - (box.top + box.height / 2)) / box.height));
-        el.style.setProperty('--tilt-x', `${(-y * 3.5).toFixed(2)}deg`);
-        el.style.setProperty('--tilt-y', `${(x * 4.5).toFixed(2)}deg`);
-      });
-    };
-
-    const onLeave = () => {
-      cancelAnimationFrame(frame);
-      el.style.setProperty('--tilt-x', '0deg');
-      el.style.setProperty('--tilt-y', '0deg');
-    };
-
-    window.addEventListener('pointermove', onMove, { passive: true });
-    window.addEventListener('pointerleave', onLeave);
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener('pointermove', onMove);
-      window.removeEventListener('pointerleave', onLeave);
-    };
-  }, []);
-
-  return ref;
-};
 
 /** The two ways on: the work first, the CV second. */
 const Cta = ({
@@ -128,98 +76,78 @@ const Cta = ({
   );
 };
 
-const Hero = () => {
-  const portrait = useTilt();
+const Hero = () => (
+  <section
+    id="hero"
+    className="hero-field relative px-gutter pb-break pt-[clamp(6.5rem,min(5rem+2vw,13vh),8.5rem)]"
+  >
+    <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
+      <p className="reveal label flex items-center gap-2.5 text-ink-500" data-shown="true">
+        {/* The one moving dot on the page, and the reason the status
+            line reads as current rather than as a claim left up. */}
+        <span aria-hidden="true" className="relative flex h-1.5 w-1.5">
+          <span className="hero-ping absolute inline-flex h-full w-full rounded-full bg-accent" />
+          <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
+        </span>
+        Available for work
+      </p>
 
-  return (
-    <section
-      id="hero"
-      className="hero-field relative px-gutter pb-break pt-[clamp(6.5rem,min(5rem+2vw,13vh),8.5rem)]"
-    >
-      {/*
-        The statement and the face, side by side from lg. Below that the
-        portrait follows the text rather than preceding it: on a phone the
-        first thing in the viewport should be the sentence, not the picture.
-        The ground keeps the first screen from reading as a wireframe on a
-        phone even before the portrait is scrolled to.
-      */}
-      <div className="relative grid items-center gap-10 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-12">
-        <div>
-          <p className="reveal label flex items-center gap-2.5 text-ink-500" data-shown="true">
-            {/* The one moving dot on the page, and the reason the status
-                line reads as current rather than as a claim left up. */}
-            <span aria-hidden="true" className="relative flex h-1.5 w-1.5">
-              <span className="hero-ping absolute inline-flex h-full w-full rounded-full bg-accent" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
-            </span>
-            Available for work
-          </p>
+      {/* The greeting, with the face beside it as a small avatar. */}
+      <p
+        className="reveal mt-6 flex items-center gap-3 text-lg text-foreground md:text-xl"
+        style={{ transitionDelay: '60ms' }}
+        data-shown="true"
+      >
+        <img
+          src="/tanya-portrait.jpg"
+          alt="Tanya smiling in round goggles and a dark jacket."
+          width={1200}
+          height={1600}
+          sizes="2.75rem"
+          fetchPriority="high"
+          decoding="async"
+          className="h-10 w-10 shrink-0 rounded-full object-cover object-[50%_25%] ring-1 ring-border grayscale-[0.85] contrast-[0.95] brightness-[0.95] md:h-11 md:w-11"
+        />
+        Hi, I&rsquo;m Tanya
+      </p>
 
-          <h1
-            className="reveal mt-5 max-w-[19ch] font-medium leading-[0.98] md:mt-6"
-            style={{
-              fontSize: 'clamp(2.25rem, 3.3vw + 0.7rem, 4rem)',
-              letterSpacing: '-0.035em',
-              transitionDelay: '80ms',
-            }}
-            data-shown="true"
-          >
-            Hi, I&rsquo;m Tanya. Product Designer for human-centered experiences
-            <span aria-hidden="true" className="text-accent">
-              .
-            </span>
-          </h1>
+      <h1
+        className="reveal mt-5 max-w-[20ch] font-medium leading-[0.98] md:mt-6"
+        style={{
+          fontSize: 'clamp(2.25rem, 3.3vw + 0.7rem, 4rem)',
+          letterSpacing: '-0.035em',
+          transitionDelay: '100ms',
+        }}
+        data-shown="true"
+      >
+        Product Designer for human-centered experiences
+        <span aria-hidden="true" className="text-accent">
+          .
+        </span>
+      </h1>
 
-          {/* One sentence, where there used to be two paragraphs. */}
-          <p
-            className="reveal mt-5 max-w-[46ch] text-xl leading-[1.45] text-ink-600"
-            style={{ transitionDelay: '140ms' }}
-            data-shown="true"
-          >
-            Five years designing products, now advocating for human-centered AI in the automation
-            era. Based in Utrecht, open to medior and senior product-design roles.
-          </p>
+      {/* One sentence, where there used to be two paragraphs. */}
+      <p
+        className="reveal mt-5 max-w-[46ch] text-xl leading-[1.45] text-ink-600"
+        style={{ transitionDelay: '160ms' }}
+        data-shown="true"
+      >
+        Five years designing products, now advocating for human-centered AI in the automation era.
+        Based in Utrecht, open to medior and senior product-design roles.
+      </p>
 
-          <div
-            className="reveal mt-7 flex flex-wrap items-center gap-3"
-            style={{ transitionDelay: '200ms' }}
-            data-shown="true"
-          >
-            <Cta to="#work" primary>
-              Explore my work
-            </Cta>
-            <Cta to="/cv">View CV</Cta>
-          </div>
-        </div>
-
-        {/*
-          The portrait. A panel rather than a bare image, so it belongs to
-          the same surface language as everything below it. Kept small, with
-          no glow and its colour muted, so it introduces the work instead of
-          competing with it.
-        */}
-        <div
-          ref={portrait}
-          className="reveal hero-portrait relative mx-auto w-full max-w-[12rem] sm:max-w-[14rem] lg:max-w-[16rem] xl:max-w-[18rem]"
-          style={{ transitionDelay: '260ms' }}
-          data-shown="true"
-        >
-          <div className="panel overflow-hidden shadow-md">
-            <img
-              src="/tanya-portrait.jpg"
-              alt="Tanya smiling in round goggles and a dark jacket, shown with a painterly photo filter."
-              width={1200}
-              height={1600}
-              sizes="(min-width: 1280px) 18rem, (min-width: 1024px) 16rem, 14rem"
-              fetchPriority="high"
-              decoding="async"
-              className="aspect-[3/4] w-full object-cover grayscale-[0.85] contrast-[0.95] brightness-[0.95]"
-            />
-          </div>
-        </div>
+      <div
+        className="reveal mt-7 flex flex-wrap items-center justify-center gap-3"
+        style={{ transitionDelay: '220ms' }}
+        data-shown="true"
+      >
+        <Cta to="#work" primary>
+          Explore my work
+        </Cta>
+        <Cta to="/cv">View CV</Cta>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Hero;
