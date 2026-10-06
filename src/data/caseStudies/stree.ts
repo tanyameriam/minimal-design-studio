@@ -5,7 +5,7 @@ import persona from '@/assets/stree-persona.png';
 import storyboard from '@/assets/stree-storyboard.png';
 import sosFlow from '@/assets/stree-sos-flow.png';
 import lockscreen from '@/assets/stree-lockscreen-1.png';
-import hifi from '@/assets/stree-hifi-8.png';
+import hifi from '@/assets/stree-hifi-12.png';
 
 export const stree: CaseStudy = {
   slug: 'stree-safety-app',
@@ -25,12 +25,11 @@ export const stree: CaseStudy = {
   meta: [
     {
       label: 'Role',
-      value: '[NEED: team roles and what I owned; confirmed team project]',
-      fallback: 'Team project',
+      value: 'UX Researcher (team member): contextual interviews and affinity mapping',
     },
     { label: 'Type of project', value: 'Final project for my design course at IDC, IIT Bombay' },
     { label: 'Timeline', value: '1 month' },
-    { label: 'Team', value: 'Reviews with a mentor, 15 women interviewed' },
+    { label: 'Team', value: 'Team project with a team lead, reviewed by a mentor' },
     { label: 'Stage', value: 'An idea, tested with 4 users' },
     { label: 'Area', value: 'Personal safety, phone app' },
   ],
@@ -225,8 +224,8 @@ export const stree: CaseStudy = {
           items: [
             {
               src: hifi,
-              alt: 'A finished screen showing trip status, arrival time and what contacts can see',
-              caption: 'Fig 6. Trip status. What contacts can see is shown clearly, not left to guess.',
+              alt: 'The trip screen: when you left, where you are now, arrival time, and photos of the contacts following the trip',
+              caption: 'Fig 6. Trip status. When you left, where you are, when you will arrive, and who is following along.',
             },
           ],
         },
@@ -236,8 +235,25 @@ export const stree: CaseStudy = {
           body: 'Four people took part, enough to find where people got confused. Claims about how fast SOS is are left to be measured later, which is the right order: first make sure people understand it, then measure speed once the design is settled.',
         },
         {
-          kind: 'todo',
-          body: 'Trace at least one finding through to a specific design change. The contact-visibility thread is the strongest: what exactly did you change after hearing it? That link from evidence to decision is currently missing.',
+          kind: 'points',
+          items: [
+            {
+              title: 'Faces instead of phone numbers',
+              body: 'In the wireframes, contacts were a list of names and phone numbers. In the final trip screen, each contact is a photo with a name, so you can see at a glance who is following your trip.',
+            },
+            {
+              title: 'The trip, step by step',
+              body: 'The trip screen shows when you left, where you are now and when you should arrive, instead of a plain map.',
+            },
+            {
+              title: 'A clear message after SOS',
+              body: 'After pressing SOS, the screen says “Your contacts have been informed” and shows everyone who was alerted, including the police (101).',
+            },
+            {
+              title: 'A reason for every permission',
+              body: 'Each permission says why it is needed, like “Reach your emergency contacts” for the phone and “Keep your loved ones in the loop” for location.',
+            },
+          ],
         },
       ],
     },
@@ -271,10 +287,6 @@ export const stree: CaseStudy = {
             { outcome: 'Users understand what contacts actually receive', metric: 'A quick check of understanding after a task, since this was the biggest confusion in testing' },
             { outcome: 'Not deleted for being a reminder of fear', metric: 'How many people still use it after 30 days, among those who had nothing happen' },
           ],
-        },
-        {
-          kind: 'todo',
-          body: 'Count the taps to SOS in the original flow against your redesign. That number is sitting in your Figma file and it belongs on the project card.',
         },
       ],
       callouts: [

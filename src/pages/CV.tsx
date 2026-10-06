@@ -205,8 +205,8 @@ const cvDocument = (print: boolean) => `<!DOCTYPE html>
       <h2>Education</h2>
       <div class="entry">
         <p class="title">Master's in UX (Specialisation: AI)</p>
-        <p class="meta">Jindal School of Art &amp; Architecture</p>
-        <p class="meta">2025 – 2026 · Distinction, first in cohort</p>
+        <p class="meta">Jindal School of Design &amp; Architecture</p>
+        <p class="meta">2025 – 2026 · Distinction, CGPA 7.0/8</p>
       </div>
       <div class="entry">
         <p class="title">PGP in UX Design</p>

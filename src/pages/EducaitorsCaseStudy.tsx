@@ -7,6 +7,7 @@ import Lightbox from '@/components/case-study/Lightbox';
 import { useLightbox } from '@/hooks/use-lightbox';
 import { type Storyline } from '@/components/story/Storyline';
 import { ReadingNav } from '@/design/ReadingNav';
+import { showDrafts } from '@/data/drafts';
 import {
   Footnote,
   Headline,
@@ -167,13 +168,23 @@ const EducaitorsCaseStudy = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navigation />
-      <ReadingNav chapters={storyline} />
+      {/*
+        Work in progress. The live site shows a teaser: the opening, the
+        "what if", and the home screen. Everything else, including the
+        chapter nav, only renders under `npm run dev` until it is rewritten.
+      */}
+      {showDrafts && <ReadingNav chapters={storyline} />}
 
       <main>
         {/* ============================== HERO ============================== */}
         <section id="top" className="border-t border-border">
           <div className="mx-auto w-full max-w-[var(--shell)] px-gutter py-section">
-            <div className="grid gap-14 lg:grid-cols-[1.05fr_minmax(0,1fr)] lg:gap-20">
+            {/*
+              Same shape as the BrynQ opening: the argument on the left, and
+              the result in one panel on the right with the facts listed
+              quietly under it.
+            */}
+            <div className="grid gap-10 lg:grid-cols-[minmax(0,1.45fr)_minmax(0,0.8fr)] lg:gap-16">
               <div>
                 <StudyOpening
                   slug="educaitors"
@@ -186,74 +197,79 @@ const EducaitorsCaseStudy = () => {
                   }
                   takeaways={{
                     problem:
-                      'Faster grading was only useful if instructors could understand and review the suggested scores.',
-                    did: 'Led the part where teachers review grades: reviewing the evidence behind a suggested grade, comparing scores, changing grades and approving the final grade.',
-                    outcome:
-                      'An interactive prototype where the AI suggests and the teacher decides. A university project, never launched.',
+                      'Teachers graded unclearly, and grades could not be traced back to the student’s work. So students could not see where they were falling short.',
+                    did: 'Led the team designing a flow where AI checks the work first, then the teacher rechecks it, confirms the grade and adds feedback before publishing.',
                   }}
+                  hidePillsLabel
+                  hideTakeawaysTitle
                 />
 
-                <div className="mt-8 max-w-2xl space-y-5 text-base leading-[1.6] text-ink-600 md:text-lg">
-                  <p>
-                    EducAItors was a university project about how AI could help with grading in
-                    colleges. The whole product had three connected parts: checking that student work
-                    is ready, teachers reviewing and approving grades, and learning from the results to
-                    get better over time.
+                <p className="mt-8 max-w-2xl text-base leading-[1.55] text-ink-600 md:text-lg">
+                  EducAItors had three parts: checking student work, teachers reviewing grades, and
+                  learning from the results. My team owned the middle one. Talking to teachers in
+                  Indian colleges changed where we took it.
+                </p>
+
+                <p className="mt-6 max-w-2xl text-lg leading-snug text-foreground md:text-xl">
+                  What if AI checked the work first, and the teacher confirmed every grade, with
+                  the proof and feedback attached, before it reached students?
+                </p>
+
+                <dl className="mt-10 grid max-w-3xl gap-x-10 gap-y-5 border-t border-border pt-6 sm:grid-cols-[auto_1fr]">
+                  <div>
+                    <dt className="label mb-3 text-ink-500">Role</dt>
+                    <dd className="text-base text-ink-600">Team lead and product designer</dd>
+                  </div>
+                  <div>
+                    <dt className="label mb-3 text-ink-500">Scope</dt>
+                    <dd className="text-base leading-snug text-ink-600">
+                      Research &middot; Seeing the whole system &middot; Planning how work flows
+                      &middot; Designing how it works &middot; Leading the team
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+
+              <div className="lg:pt-16">
+                <div className="panel p-6 md:p-7">
+                  <p className="mb-4 text-base text-ink-600 md:text-lg">Outcome</p>
+                  <p className="text-[2rem] leading-[1.05] md:text-[2.5rem]">
+                    AI checks <span className="text-ink-400">&rarr;</span> teacher confirms
                   </p>
-                  <p className="text-foreground">
-                    I led the team working on the teacher review part. That is where teachers look at
-                    the proof, compare scores, deal with unclear cases, change grades and approve the
-                    final ones.
+                  <p className="mt-3 text-sm leading-snug text-ink-600">
+                    An interactive prototype: setup, a practice round, grading, regrade requests and
+                    results
                   </p>
-                  {/* What this paragraph said - that the problem was not speed
-                      but accountability - is now the takeaway's first line. The
-                      provenance is the part worth keeping: it came out of the
-                      research, not out of the brief. */}
-                  <p>Talking to teachers in Indian colleges changed the direction of the work.</p>
                 </div>
 
-                <div className="mt-12 flex flex-wrap items-baseline gap-x-10 gap-y-4">
-                  <PrototypeLink href={PROTOTYPE_URL} className="text-lg md:text-xl">
-                    Try the interactive prototype
+                <dl className="mt-6 divide-y divide-border border-y border-border">
+                  {[
+                    { term: 'Context', value: 'Master’s degree project, never launched' },
+                    { term: 'Team', value: '6 people: me as team lead, a principal designer, a researcher, workflow, strategy and UI' },
+                  ].map(({ term, value }) => (
+                    <div
+                      key={term}
+                      className="grid grid-cols-[6.5rem_minmax(0,1fr)] items-baseline gap-x-4 py-3.5"
+                    >
+                      <dt className="label text-ink-500">{term}</dt>
+                      <dd className="text-sm leading-snug text-ink-600">{value}</dd>
+                    </div>
+                  ))}
+                </dl>
+
+                <div className="mt-8 flex flex-wrap items-baseline gap-x-8 gap-y-4">
+                  <PrototypeLink href={PROTOTYPE_URL} className="text-lg">
+                    Try the prototype
                   </PrototypeLink>
-                  <a href="#overview" className="rule-link text-lg text-ink-600">
-                    Keep reading <span aria-hidden="true">&darr;</span>
-                  </a>
+                  {showDrafts && (
+                    <a href="#overview" className="rule-link text-lg text-ink-600">
+                      Keep reading <span aria-hidden="true">&darr;</span>
+                    </a>
+                  )}
                 </div>
               </div>
 
-              <dl className="grid gap-x-10 gap-y-7 border-t border-border pt-8 sm:grid-cols-2 lg:border-l lg:border-t-0 lg:pl-14 lg:pt-2">
-                <div className="sm:col-span-2">
-                  <dt className="label mb-2.5 text-ink-500">Role</dt>
-                  <dd className="text-base leading-snug md:text-lg">
-                    Team lead and product designer, teacher review and approval
-                  </dd>
-                </div>
-                <div className="sm:col-span-2">
-                  <dt className="label mb-2.5 text-ink-500">Scope</dt>
-                  <dd className="text-base leading-snug md:text-lg">
-                    Research &middot; Seeing the whole system &middot; Planning how work flows &middot;
-                    Designing how it works &middot; Leading the team &middot; Joining the parts up
-                  </dd>
-                </div>
-                <div>
-                  <dt className="label mb-2.5 text-ink-500">Context</dt>
-                  <dd className="text-base leading-snug md:text-lg">A master’s degree project</dd>
-                </div>
-                <div>
-                  <dt className="label mb-2.5 text-ink-500">Team</dt>
-                  <dd className="text-base leading-snug md:text-lg">Designers working across all three parts</dd>
-                </div>
-                <div className="sm:col-span-2">
-                  <dt className="label mb-2.5 text-ink-500">Outcome</dt>
-                  <dd className="text-base leading-snug md:text-lg">
-                    An interactive prototype covering setup, a practice round, grading, regrade requests
-                    and what the results show
-                  </dd>
-                </div>
-              </dl>
-
-              <CaseStudyEntry scanMinutes={5} readMinutes={13} />
+              {showDrafts && <CaseStudyEntry scanMinutes={5} readMinutes={13} />}
             </div>
 
             <Plate
@@ -267,6 +283,7 @@ const EducaitorsCaseStudy = () => {
               onOpen={open}
             />
 
+            {showDrafts && (
             <div className="mt-6 grid gap-6 md:mt-8 md:grid-cols-3 md:gap-8">
               <Plate
                 src={calibration}
@@ -293,9 +310,18 @@ const EducaitorsCaseStudy = () => {
                 onOpen={open}
               />
             </div>
+            )}
+
+            {!showDrafts && (
+              <p className="label mt-stage text-ink-500">
+                Work in progress &middot; The full case study is coming soon
+              </p>
+            )}
           </div>
         </section>
 
+        {showDrafts && (
+          <>
         {/* ========================= 01, THE WORK =========================== */}
         <Slide id="overview" chapter="01" height="auto">
           <Kicker n="01" label="The project in 30 seconds" />
@@ -1030,6 +1056,8 @@ const EducaitorsCaseStudy = () => {
             </PrototypeLink>
           </nav>
         </Slide>
+          </>
+        )}
         <ReadNext slug="educaitors" />
       </main>
 

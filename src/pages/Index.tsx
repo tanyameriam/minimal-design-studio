@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
-import ProofRail from '@/components/ProofRail';
 import Work from '@/components/Work';
 import WritingBand from '@/components/WritingBand';
 import Contact from '@/components/Contact';
@@ -37,7 +36,6 @@ const Index = () => {
       <div className="page-ground">
         <main id="main" className="shell min-h-screen">
           <Hero />
-          <ProofRail />
           <Work />
           <WritingBand />
         </main>

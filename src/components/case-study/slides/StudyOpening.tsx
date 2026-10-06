@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { projects } from '@/data/projects';
 import { Takeaways } from '@/design/reading';
 
@@ -135,12 +135,24 @@ export const StudyOpening = ({
   hideTakeawaysTitle = false,
 }: StudyOpeningProps) => {
   const pills = contributions ?? contributionsFor(slug);
+  const navigate = useNavigate();
+
+  // Back goes where the visitor came from on this site (the home page, the
+  // work page, another study). Arriving straight from a link or a search,
+  // there is nowhere on the site to go back to, so it falls through to home.
+  const goBack = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const idx = (window.history.state as { idx?: number } | null)?.idx ?? 0;
+    if (idx > 0) {
+      e.preventDefault();
+      navigate(-1);
+    }
+  };
 
   return (
     <div>
-      {/* Back to the work, not to the home page: that is where they came from. */}
       <Link
-        to="/work"
+        to="/"
+        onClick={goBack}
         className="rule-link group inline-flex items-center gap-2 text-base text-ink-500 transition-colors hover:text-foreground"
       >
         <span

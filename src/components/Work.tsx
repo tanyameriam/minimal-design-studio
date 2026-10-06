@@ -13,7 +13,7 @@ import SelectedIndex from '@/components/SelectedIndex';
  * /work still renders every project at full weight.
  */
 const Work = () => (
-  <section id="work" className="scroll-mt-24 overflow-x-clip px-gutter pb-section">
+  <section id="work" className="scroll-mt-24 overflow-x-clip px-gutter pb-section pt-break">
     <h2 className="label-strong">Selected work</h2>
     <FeaturedProjects />
     <SelectedIndex />

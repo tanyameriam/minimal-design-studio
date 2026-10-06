@@ -406,7 +406,7 @@ const projectList: Project[] = [
   {
     slug: 'educaitors',
     title: 'EducAItors',
-    qualifier: 'Academic practicum',
+    qualifier: 'Academic practicum · Work in progress',
     year: '2026',
     status: 'concept',
     tier: 'selected',

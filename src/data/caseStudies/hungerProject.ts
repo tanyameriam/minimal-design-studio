@@ -26,7 +26,7 @@ export const hungerProject: CaseStudy = {
     { label: 'Role', value: 'Research, planning the whole system, screen design' },
     { label: 'Type of project', value: 'A project I started myself' },
     { label: 'Timeline', value: '2021' },
-    { label: 'Team', value: 'On my own, with interviews of charity staff' },
+    { label: 'Team', value: 'On my own, with an interview with an NGO coordinator in Bangalore' },
     { label: 'Stage', value: 'An idea, researched with charity staff' },
     { label: 'Area', value: 'Helping people, moving food between two groups' },
   ],
@@ -47,7 +47,7 @@ export const hungerProject: CaseStudy = {
           'Because neither side was the problem. The problem was the hand-off between them. What matters is not how many apps there are, but that both sides see the same information and that someone is clearly in charge at every step. That is what fixes what the charities told us.',
         resultsLabel: 'Intended results',
         results:
-          'Food collected while it is still safe to eat, charities able to plan because they know what is coming, and problems that get caught instead of food quietly going to waste. Researched with charity staff and fully planned out; each hoped-for result comes with the number that would prove it.',
+          'Food collected while it is still safe to eat, charities able to plan because they know what is coming, and problems that get caught instead of food quietly going to waste. Based on an interview with an NGO coordinator and fully planned out; each hoped-for result comes with the number that would prove it.',
       },
     },
 
@@ -61,18 +61,19 @@ export const hungerProject: CaseStudy = {
         {
           kind: 'prose',
           body: [
-            'Interviews with charity staff, including Manav Charities, who collect leftover food from weddings, parties and company events and take it to places where people are hungry. Their problems were very similar, and none of them were about not wanting to help.',
+            'One interview, with the main coordinator of an NGO in Bangalore that collects leftover food from weddings, parties and company events and takes it to places where people are hungry. They talked about two things: how hard it is to get the food, and how much of it goes to waste. None of it was about not wanting to help.',
+            'A lot of food is left over after every big event, and it usually becomes available late at night. Storing it is hard. Moving it is harder: there are not enough people to cover the city, or to take in food when a request comes at the last minute.',
           ],
         },
         {
           kind: 'quote',
           text: 'There have been a lot of instances when we could not collect food from parties because they were informed at odd timings.',
-          source: 'Charity staff',
+          source: 'NGO coordinator, Bangalore',
         },
         {
           kind: 'quote',
           text: 'The logistics in transporting the food on time to reach the hunger hotspots was very difficult to arrange and manage.',
-          source: 'Charity staff',
+          source: 'NGO coordinator, Bangalore',
         },
         {
           kind: 'points',
@@ -83,7 +84,7 @@ export const hungerProject: CaseStudy = {
             },
             {
               title: 'No way to move the food',
-              body: 'Most charities have no van or staff to collect food across the city. Even when they hear about it, they cannot get there in time.',
+              body: 'There are not enough people to collect food across the city, and nowhere to store it when it arrives late at night. Even when they hear about it, they cannot get there in time.',
             },
             {
               title: 'No way to match food to need',
@@ -98,11 +99,7 @@ export const hungerProject: CaseStudy = {
         {
           kind: 'note',
           label: 'What this research did not cover',
-          body: 'The restaurant side. The research here only heard from one side, which matters for a product that is all about the hand-off between two sides.',
-        },
-        {
-          kind: 'todo',
-          body: 'Confirm how many NGO conversations and with whom. The quotes are strong enough that naming the sample size only helps you.',
+          body: 'The restaurant side, and other charities. The research here is one conversation with one side, which matters for a product that is all about the hand-off between two sides.',
         },
       ],
     },

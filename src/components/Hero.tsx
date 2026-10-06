@@ -71,12 +71,25 @@ const Cta = ({
   );
 };
 
+/** What I practise, as tags. Part of the hero so they sit above the fold. */
+const practice = ['Workflow design', 'Systems design', 'AI system design', 'Interaction design'];
+
+/*
+ * Above the fold on every screen. The section is one viewport tall, and the
+ * type and the gaps between lines scale with the viewport's height as well
+ * as its width, so a short laptop screen or a phone held sideways shrinks
+ * the hero rather than pushing the CTAs and the tags below the fold.
+ */
+const gap = (min: number, vh: number, max: number) => ({
+  marginTop: `clamp(${min}rem, ${vh}vh, ${max}rem)`,
+});
+
 const Hero = () => (
   <section
     id="hero"
-    className="hero-field relative px-gutter pb-break pt-[clamp(6.5rem,min(5rem+2vw,13vh),8.5rem)]"
+    className="hero-field relative flex min-h-[100svh] flex-col px-gutter pb-[clamp(1.25rem,4vh,3rem)] pt-[clamp(4.5rem,11vh,8.5rem)]"
   >
-    <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
+    <div className="relative mx-auto flex max-w-4xl flex-1 flex-col items-center justify-center text-center">
       <p className="reveal label flex items-center gap-2.5 text-ink-500" data-shown="true">
         {/* The one moving dot on the page, and the reason the status
             line reads as current rather than as a claim left up. */}
@@ -88,17 +101,22 @@ const Hero = () => (
       </p>
 
       <p
-        className="reveal mt-6 text-lg text-foreground md:text-xl"
-        style={{ transitionDelay: '60ms' }}
+        className="reveal text-foreground"
+        style={{
+          ...gap(0.75, 2.5, 1.5),
+          fontSize: 'clamp(1rem, 2.4vh, 1.25rem)',
+          transitionDelay: '60ms',
+        }}
         data-shown="true"
       >
         Hi, I&rsquo;m Tanya
       </p>
 
       <h1
-        className="reveal mt-5 max-w-[20ch] font-medium leading-[0.98] md:mt-6"
+        className="reveal max-w-[20ch] font-medium leading-[0.98]"
         style={{
-          fontSize: 'clamp(2.25rem, 3.3vw + 0.7rem, 4rem)',
+          ...gap(0.75, 2.5, 1.5),
+          fontSize: 'clamp(2rem, min(3.3vw + 0.7rem, 7.2vh), 4rem)',
           letterSpacing: '-0.035em',
           transitionDelay: '100ms',
         }}
@@ -112,8 +130,12 @@ const Hero = () => (
 
       {/* One sentence, where there used to be two paragraphs. */}
       <p
-        className="reveal mt-5 max-w-[46ch] text-xl leading-[1.45] text-ink-600"
-        style={{ transitionDelay: '160ms' }}
+        className="reveal max-w-[46ch] leading-[1.45] text-ink-600"
+        style={{
+          ...gap(0.75, 2.5, 1.25),
+          fontSize: 'clamp(1rem, min(1.2vw + 0.75rem, 2.6vh), 1.25rem)',
+          transitionDelay: '160ms',
+        }}
         data-shown="true"
       >
         Five years designing products, now advocating for human-centered AI in the automation era.
@@ -121,8 +143,8 @@ const Hero = () => (
       </p>
 
       <div
-        className="reveal mt-7 flex flex-wrap items-center justify-center gap-3"
-        style={{ transitionDelay: '220ms' }}
+        className="reveal flex flex-wrap items-center justify-center gap-3"
+        style={{ ...gap(1, 3.5, 1.75), transitionDelay: '220ms' }}
         data-shown="true"
       >
         <Cta to="#work" primary>
@@ -131,6 +153,19 @@ const Hero = () => (
         <Cta to="/cv">View CV</Cta>
       </div>
     </div>
+
+    <ul
+      aria-label="What I do"
+      className="reveal relative mx-auto flex max-w-4xl flex-wrap justify-center gap-2"
+      style={{ ...gap(1.25, 4, 3), transitionDelay: '280ms' }}
+      data-shown="true"
+    >
+      {practice.map((label) => (
+        <li key={label} className="label rounded-full border border-border px-3 py-1.5 text-ink-500">
+          {label}
+        </li>
+      ))}
+    </ul>
   </section>
 );
 
