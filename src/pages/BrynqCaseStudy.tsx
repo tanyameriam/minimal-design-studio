@@ -306,10 +306,12 @@ const BrynqCaseStudy = () => {
                   </>
                 }
                 takeaways={{
-                  problem: 'A standard connection took about six months and needed a developer.',
-                  did: 'Asked to simplify screens, I designed templates and guided setup instead.',
-                  outcome: 'A standard connection now takes about two weeks.',
+                  problem:
+                    'Each connection took months to build, so few got built. Developers were overloaded and sales slowed.',
+                  did: 'Asked to redesign the screens, I mapped the whole process, found where it broke, and redesigned the system.',
                 }}
+                hidePillsLabel
+                hideTakeawaysTitle
               />
 
               <p className="mt-8 max-w-2xl text-base leading-[1.55] text-ink-600 md:text-lg">
@@ -360,7 +362,6 @@ const BrynqCaseStudy = () => {
               rather than as three more panels of equal weight.
             */}
             <div className="lg:pt-16">
-              <p className="label mb-5 text-ink-500">Design overview</p>
               <div className="panel p-6 md:p-7">
                 <p className="mb-4 text-base text-ink-600 md:text-lg">Implementation cycle</p>
                 <p className="text-[2.5rem] leading-none md:text-[3.25rem]">
@@ -379,7 +380,7 @@ const BrynqCaseStudy = () => {
                   },
                   {
                     figure: '2× easier',
-                    caption: 'What the project manager told us after templates arrived',
+                    caption: 'To set up an interface',
                   },
                 ].map(({ figure, caption }) => (
                   <div

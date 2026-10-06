@@ -69,8 +69,8 @@ export interface StudyTakeaways {
   problem: string;
   /** What I did about it. One line, and the verb is mine. */
   did: string;
-  /** What changed. A number where there is one, honestly labelled. */
-  outcome: string;
+  /** What changed. A number where there is one, honestly labelled. Optional. */
+  outcome?: string;
 }
 
 interface StudyOpeningProps {
@@ -95,6 +95,10 @@ interface StudyOpeningProps {
    * underneath it optional rather than a demand.
    */
   takeaways?: StudyTakeaways;
+  /** Drops the "What I did" label above the pills. */
+  hidePillsLabel?: boolean;
+  /** Drops the "In short" line above the takeaways. */
+  hideTakeawaysTitle?: boolean;
 }
 
 /**
@@ -103,13 +107,19 @@ interface StudyOpeningProps {
  * call site so that all five case studies ask the reader the same three
  * things in the same order.
  */
-const StudyTakeawayBlock = ({ items }: { items: StudyTakeaways }) => (
+const StudyTakeawayBlock = ({
+  items,
+  showTitle,
+}: {
+  items: StudyTakeaways;
+  showTitle: boolean;
+}) => (
   <Takeaways
-    title="In short"
+    title={showTitle ? 'In short' : null}
     items={[
       { label: 'The problem', body: items.problem },
       { label: 'What I did', body: items.did },
-      { label: 'What happened', body: items.outcome },
+      ...(items.outcome ? [{ label: 'What happened', body: items.outcome }] : []),
     ]}
   />
 );
@@ -121,6 +131,8 @@ export const StudyOpening = ({
   children,
   contributions,
   takeaways,
+  hidePillsLabel = false,
+  hideTakeawaysTitle = false,
 }: StudyOpeningProps) => {
   const pills = contributions ?? contributionsFor(slug);
 
@@ -151,7 +163,7 @@ export const StudyOpening = ({
         {headline}
       </h1>
 
-      {takeaways && <StudyTakeawayBlock items={takeaways} />}
+      {takeaways && <StudyTakeawayBlock items={takeaways} showTitle={!hideTakeawaysTitle} />}
 
       {children}
 
@@ -161,8 +173,8 @@ export const StudyOpening = ({
           weight metadata deserves. */}
       {pills.length > 0 && (
         <div className="mt-10 md:mt-12">
-          <p className="label text-ink-500">What I did</p>
-          <ContributionPills items={pills} className="mt-4" />
+          {!hidePillsLabel && <p className="label mb-4 text-ink-500">What I did</p>}
+          <ContributionPills items={pills} />
         </div>
       )}
     </div>

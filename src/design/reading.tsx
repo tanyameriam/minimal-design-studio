@@ -179,15 +179,17 @@ export const Takeaways = ({
   title = 'In short',
 }: {
   items: TakeawayItem[];
-  /** The line above the block. Every case study uses the same one. */
-  title?: string;
+  /** The line above the block. Every case study uses the same one; null hides it. */
+  title?: string | null;
 }) => {
   const ref = useReveal<HTMLDivElement>();
 
   return (
     <div ref={ref} className="reveal mt-10 border-y border-border py-7">
-      <p className="label-strong">{title}</p>
-      <dl className="mt-6 grid gap-x-10 gap-y-6 sm:grid-cols-3">
+      {title && <p className="label-strong mb-6">{title}</p>}
+      <dl
+        className={`grid gap-x-10 gap-y-6 ${items.length === 2 ? 'sm:grid-cols-2' : 'sm:grid-cols-3'}`}
+      >
         {items.map((item) => (
           <div key={item.label}>
             <dt className="label text-ink-500">{item.label}</dt>
