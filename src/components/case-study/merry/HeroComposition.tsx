@@ -5,7 +5,7 @@ import tracking from '@/assets/merry-hifi-tracking.png';
 import patient from '@/assets/merry-whatsapp-patient.png';
 
 /**
- * The hero visual: the operations dashboard, a live ride, and the message
+ * The hero visual: the hospital dashboard, a live ride, and the message
  * a family gets, overlapping in one composition.
  *
  * The project's own cover asset is the Merry Health logo on white, which
@@ -21,8 +21,8 @@ export const HeroComposition = ({ className = '' }: { className?: string }) => {
   const ref = useReveal<HTMLDivElement>('-4% 0px');
 
   const frames = [
-    { src: dashboard, alt: 'The redesigned Merry Health operations dashboard, showing active rides, quick actions and the ride list' },
-    { src: tracking, alt: 'The live ride view, showing current status, ETA, trip timeline and patient details' },
+    { src: dashboard, alt: 'The redesigned Merry Health hospital dashboard, showing the key numbers, rides coming to the hospital, live ride updates and the ride list' },
+    { src: tracking, alt: 'The live ride view, showing current status, ETA, the trip timeline and the patient’s condition' },
     { src: patient, alt: 'A WhatsApp thread where a patient party receives the driver details, ETA and a tracking link' },
   ];
 
@@ -41,8 +41,8 @@ export const HeroComposition = ({ className = '' }: { className?: string }) => {
         </div>
       </div>
 
-      <div className="relative hidden aspect-[4/3.2] w-full sm:block">
-        {/* Operations dashboard. The ground the other two sit on. */}
+      <div className="relative hidden aspect-[4/3] w-full sm:block">
+        {/* Hospital dashboard. The ground the other two sit on. */}
         <figure className="absolute left-0 top-0 aspect-[16/11] w-[78%] overflow-hidden border border-border bg-card">
           <FadeInImage
             src={frames[0].src}
@@ -51,17 +51,19 @@ export const HeroComposition = ({ className = '' }: { className?: string }) => {
           />
         </figure>
 
-        {/* One live ride, over the corner of the dashboard. */}
-        <figure className="absolute bottom-[4%] right-0 aspect-[4/5] w-[44%] overflow-hidden border border-border bg-card">
+        {/* One live ride, over the corner of the dashboard. The screen is
+            landscape (1440 x 1024), so the frame keeps that shape whole
+            instead of cropping a portrait slice out of the middle. */}
+        <figure className="absolute bottom-[3%] right-0 aspect-[1440/1024] w-[54%] overflow-hidden border border-border bg-card shadow-lg">
           <FadeInImage
             src={frames[1].src}
             alt={frames[1].alt}
-            className="h-full w-full object-cover object-top"
+            className="h-full w-full object-cover object-left-top"
           />
         </figure>
 
         {/* The channel the family is actually on. */}
-        <figure className="absolute bottom-0 left-[6%] aspect-[9/16] w-[19%] overflow-hidden border border-border bg-card">
+        <figure className="absolute bottom-0 left-[6%] aspect-[9/16] w-[19%] overflow-hidden border border-border bg-card shadow-lg">
           <FadeInImage
             src={frames[2].src}
             alt={frames[2].alt}
@@ -71,7 +73,7 @@ export const HeroComposition = ({ className = '' }: { className?: string }) => {
       </div>
 
       <p className="label mt-6 text-ink-500">
-        Operations dashboard &middot; Live ride &middot; Patient updates
+        Hospital dashboard &middot; Live ride &middot; Patient updates
       </p>
     </div>
   );

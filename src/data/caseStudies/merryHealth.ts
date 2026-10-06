@@ -7,6 +7,10 @@ import whatsappHospital from '@/assets/merry-whatsapp-hospital.png';
 import whatsappPatient from '@/assets/merry-whatsapp-patient.png';
 import hifiTracking from '@/assets/merry-hifi-tracking.png';
 import hifiDashboard from '@/assets/merry-hifi-dashboard.png';
+import deckHandover from '@/assets/merry-deck-handover.jpg';
+import deckDriverSms from '@/assets/merry-deck-driver-sms.jpg';
+import deckFamilyFallback from '@/assets/merry-deck-family-fallback.jpg';
+import deckParallelRequests from '@/assets/merry-deck-parallel-requests.jpg';
 
 export const merryHealth: CaseStudy = {
   slug: 'merry-health',
@@ -14,20 +18,20 @@ export const merryHealth: CaseStudy = {
   headline:
     'Turning the WhatsApp chats that ambulance rides already ran on into a system that keeps a record',
   qualifier: 'Apprenticeship',
-  year: '2026',
+  year: '2025',
   status: 'concept',
   tagline: 'Healthcare . Sending ambulances . Smaller cities in India',
   cover,
 
   intro: [
-    'Merry Health arranges emergency ambulance rides between hospitals, drivers and patients, mostly in smaller Indian cities where not many people use digital tools and hospital staff are very busy. About 95 percent of requests come in by phone or WhatsApp. Only about 5 percent come through a form on the dashboard.',
-    'Four groups of people were involved, and nobody had the same information. A patient’s family calls in a panic and describes a condition they cannot judge. A hospital admin passes it to a driver in a separate chat. The driver arrives at an address with no floor number. The Merry Health team only finds out the trip happened when somebody remembers to mention it. Every hand-off lost information, added minutes, and left nothing behind to look back on.',
+    'Merry Health arranges emergency ambulance rides between hospitals, drivers and patients, mostly in smaller Indian cities where not many people use digital tools and hospital staff are very busy. Hospital admins relied on WhatsApp in emergencies. The dashboard was rarely used.',
+    'Four groups of people were involved, and nobody had the same information. A patient’s family calls in a panic and describes a condition they cannot judge. A hospital admin passes it to a driver in a separate chat. The driver arrives at an address with no floor number. The ride is closed, if at all, when somebody remembers. Every hand-off lost information, added minutes, and left nothing behind to look back on.',
   ],
 
   meta: [
     { label: 'Role', value: 'Product Designer' },
-    { label: 'Type of project', value: 'A master’s degree project with Merry Health, at JSAA' },
-    { label: 'Timeline', value: '2026' },
+    { label: 'Type of project', value: 'An apprenticeship with Career Reactor, for the client Merry Health' },
+    { label: 'Timeline', value: '2025' },
     { label: 'Team', value: 'Team of 5 designers' },
     { label: 'Stage', value: 'Proposed system, researched not rolled out' },
     { label: 'Area', value: 'Emergency healthcare operations' },
@@ -42,14 +46,14 @@ export const merryHealth: CaseStudy = {
         'Short on time? The pitch above is the whole story. The journey below is how it really went.',
       summary: {
         problems:
-          'Four groups work together across twelve steps with no shared record. An unclear address, a missing floor number, a trip nobody marked as started. Information gets lost at every hand-off, and looking back at what went wrong is impossible because nothing was written down.',
+          'Four groups work together with no shared record. An unclear address, a missing floor number, a trip nobody marked as started. Information gets lost at every hand-off, and looking back at what went wrong is impossible because nothing was written down.',
         solution:
-          'Collecting details step by step inside WhatsApp, not next to it, a dashboard for the operations team that does not ask hospitals to change anything, and backup plans for the problems that stop ambulances getting sent. Only the details needed at each hand-off, not the full record.',
+          'Collecting details step by step inside WhatsApp, not next to it, a dashboard that gives hospital admins the full record of every ride, and backup plans for the problems that stop ambulances getting sent. A ride only closes after a checked handover.',
         why:
-          'Because 95 percent of requests already come by phone or WhatsApp. Asking busy hospital staff in smaller cities to learn a new tool during an emergency is a design that fails on the first day. The system had to live inside the app people already trusted, and create organised records just by being used.',
+          'Because hospital admins already relied on WhatsApp in emergencies. Asking busy hospital staff in smaller cities to learn a new tool during an emergency is a design that fails on the first day. The system had to live inside the app people already trusted, and create organised records just by being used.',
         resultsLabel: 'Intended results',
         results:
-          'Taking requests without needing a call to ask questions, every trip leaving a record you can check, and hand-offs that still work when GPS or WhatsApp fails. An idea only earns its claims by naming the number that would prove it wrong, so each hoped-for result here comes with its proof.',
+          'Taking requests without needing a call to ask questions, every trip leaving a record you can check, and a dashboard that still works when WhatsApp fails. Nothing was measured. An idea only earns its claims by naming the number that would prove it wrong, so each hoped-for result here comes with its proof.',
       },
     },
 
@@ -63,7 +67,7 @@ export const merryHealth: CaseStudy = {
         {
           kind: 'prose',
           body: [
-            'We checked every piece of information in the process against three questions: who owns it, who starts it, and what choice it helps someone make. That covered four groups of people across twelve steps. For each piece of information we wrote down where it comes from, who uses it, what it is for, how often it appears, and how it goes wrong.',
+            'We checked every piece of information in the process against three questions: who owns it, who starts it, and what choice it helps someone make. That covered four groups of people across every step of a ride. For each piece of information we wrote down where it comes from, who uses it, what it is for, how often it appears, and how it goes wrong.',
             'What we found pointed the opposite way to what we were asked to do. WhatsApp was the only part of the system that everybody used, and that was because it asked nothing of them. No login, no training, no strong internet. It was not a workaround. It was the thing everything ran on.',
           ],
         },
@@ -76,11 +80,11 @@ export const merryHealth: CaseStudy = {
           items: [
             {
               title: 'The dashboard was not designed for emergencies',
-              body: 'It expected a calm person with time to type.',
+              body: '“Add Ride” was too slow, so admins skipped fields or went back to WhatsApp.',
             },
             {
               title: 'Ride details were scattered',
-              body: 'Spread across chats, calls and people’s memories, with no single true version.',
+              body: 'Spread across chats, calls and people’s memories, so records were missing or wrong.',
             },
             {
               title: 'Nobody could see what was happening live',
@@ -88,11 +92,11 @@ export const merryHealth: CaseStudy = {
             },
             {
               title: 'It could not cope when it got busy',
-              body: 'A way of working that copes with three ambulances at once falls apart at fifteen.',
+              body: 'Several requests arriving within minutes got mixed up in the same chats.',
             },
             {
               title: 'No proper handover',
-              body: 'When one shift ended and the next began, all the details were lost.',
+              body: 'Nothing checked that the patient was really handed over at the hospital, so rides were closed late or not at all.',
             },
           ],
         },
@@ -108,10 +112,6 @@ export const merryHealth: CaseStudy = {
           ],
           width: 'wide',
         },
-        {
-          kind: 'todo',
-          body: 'Name the three handoffs that accounted for most of the failure, and say whether you observed live dispatch or reconstructed the flow from interviews. Stating the limit of your evidence is stronger than leaving it open.',
-        },
       ],
     },
 
@@ -126,7 +126,8 @@ export const merryHealth: CaseStudy = {
         {
           kind: 'prose',
           body: [
-            'Information was not lost because people were careless. It was lost because a scared caller was being asked open questions. Simple step-by-step questions replaced free text, in the app people already used. So the details needed to send an ambulance are collected once, at the moment someone is ready to answer.',
+            'Information was not lost because people were careless. It was lost because a scared caller was being asked open questions. Simple step-by-step questions replaced free text, in the app people already used. The system asks for five things: location, patient condition, patient contact, ambulance type and facilities required. If one is missing, it asks for just that one.',
+            'Several requests can arrive within minutes. Each one gets its own Case ID and its own updates, so none get mixed up.',
             'Building inside WhatsApp, and not next to it, meant living with its limits, and we chose that on purpose.',
           ],
         },
@@ -149,14 +150,19 @@ export const merryHealth: CaseStudy = {
           kind: 'figures',
           items: [
             {
+              src: deckParallelRequests,
+              alt: 'The hospital admin’s WhatsApp chat with several requests at once, each with its own Case ID, the system asking for a missing patient contact, and the list of five details to send',
+              caption: 'Fig 2. Several requests at once. Each gets its own Case ID.',
+            },
+            {
               src: whatsappHospital,
-              alt: 'A WhatsApp chat showing how a hospital admin asks for an ambulance',
-              caption: 'Fig 2. How a hospital admin asks for an ambulance, as it really happens.',
+              alt: 'The read-only announcement group for Felix Hospital, showing case MH-REQ-1342 posted step by step from request received to request closed',
+              caption: 'Fig 3. The read-only hospital group. Everyone gets the same updates, with no replies or clutter.',
             },
             {
               src: whatsappPatient,
               alt: 'A WhatsApp chat showing how the patient’s family gets ambulance updates',
-              caption: 'Fig 3. The family’s side of the same ride.',
+              caption: 'Fig 4. The family’s side of the same ride.',
             },
           ],
         },
@@ -173,7 +179,7 @@ export const merryHealth: CaseStudy = {
         {
           kind: 'prose',
           body: [
-            'We listed six ways things could go wrong: a WhatsApp message not arriving, GPS not working, unclear or mixed-up information, a driver who cannot be reached, the same patient booked twice, and a hospital group that cannot be reached. We planned for things to keep working, not for them to be perfect. So each problem needed a backup plan, a person in charge and a warning message, before any screen needed a design.',
+            'We listed six ways things could go wrong: a WhatsApp message not arriving, GPS not working, unclear or mixed-up information, a driver who cannot be reached, several requests at once, and a hospital group that cannot be reached. We planned for things to keep working, not for them to be perfect. So each problem needed a backup plan, a person in charge and a warning message, before any screen needed a design.',
           ],
         },
         {
@@ -193,9 +199,16 @@ export const merryHealth: CaseStudy = {
             },
             {
               title: 'The driver cannot be reached',
-              body: 'The system keeps track of replies it is waiting for, and if there is no reply within two minutes, the job goes to the next driver. A driver with no smartphone or no signal gets a phone call, and the operations team updates the ride for them.',
+              body: 'The system keeps track of replies it is waiting for, and if there is no reply, the job goes to the next driver. A driver with no smartphone gets the job by SMS, and replies 1 to accept or 2 to reject.',
             },
-            { title: 'Duplicate bookings for the same patient', body: '[NEED: the reconciliation rule]' },
+            {
+              title: 'The family cannot use WhatsApp',
+              body: 'They get the ambulance details by SMS, plus an automated call in their own regional language.',
+            },
+            {
+              title: 'Several requests at once',
+              body: 'Each request gets its own Case ID, so the same patient is not booked twice by mistake.',
+            },
             {
               title: 'A hospital group cannot be reached',
               body: 'If the system does not know a hospital’s number, the operations team picks the hospital by hand and saves the number for next time. A hospital with no WhatsApp calls Merry Health, and the trip is added to the same record.',
@@ -206,9 +219,24 @@ export const merryHealth: CaseStudy = {
           kind: 'figures',
           items: [
             {
+              src: deckDriverSms,
+              alt: 'The driver’s WhatsApp chat next to the SMS version for drivers without a smartphone, ending with Send 1 to accept and 2 to reject',
+              caption: 'Fig 5. No smartphone? The driver gets an SMS and replies 1 or 2.',
+            },
+            {
+              src: deckFamilyFallback,
+              alt: 'The family’s WhatsApp chat next to an SMS with the same ambulance details and an automated IVR call in the regional language',
+              caption: 'Fig 6. Families also get an SMS and an automated call in their own language.',
+            },
+          ],
+        },
+        {
+          kind: 'figures',
+          items: [
+            {
               src: proposedWorkflow,
               alt: 'A diagram of the backup plans, from the hospital admin all the way to the message sent to the family',
-              caption: 'Fig 4. All the backup plans, including what happens when the main way of sending messages fails.',
+              caption: 'Fig 7. All the backup plans, including what happens when the main way of sending messages fails.',
               reveal: true,
             },
           ],
@@ -220,15 +248,15 @@ export const merryHealth: CaseStudy = {
       kind: 'step',
       id: 'step-03',
       index: '03',
-      nav: '03 The operations dashboard',
-      problem: 'The operations team could not see a system they were responsible for',
-      intervention: 'so the dashboard was built for the operations team, not for hospitals',
+      nav: '03 The hospital dashboard',
+      problem: 'Hospital admins could not see their rides in one place',
+      intervention: 'so the dashboard became the full record of every ride, for hospital admins',
       blocks: [
         {
           kind: 'prose',
           body: [
-            'Hospitals stay where they are. The operations team can see everything without forcing anyone to change, which is the only version of this that works at a busy hospital desk. Live tracking and route maps answered the “where is it now?” question that used to cost a phone call for every ride.',
-            'Twelve scattered steps become one shared timeline that all four groups read from, each seeing the part that matters to them.',
+            'WhatsApp stays the fast channel. The dashboard is the full record, and it still works when WhatsApp fails. It has seven parts: home, add ride, ride list, ride details, handover, track ambulance and reports. Every part also works on a phone. Live tracking answered the “where is it now?” question that used to cost a phone call for every ride.',
+            'A ride only closes after three checks: hospital staff confirmed, driver handover done, and admin verified. Then the admin presses Mark Handover. So records are no longer filled in afterwards.',
           ],
         },
         {
@@ -236,8 +264,13 @@ export const merryHealth: CaseStudy = {
           items: [
             {
               src: hifiDashboard,
-              alt: 'The operations dashboard showing the rides happening now and what step each one is on',
-              caption: 'Fig 5. The operations dashboard. Everything visible, without making hospitals change tools.',
+              alt: 'The hospital dashboard showing key numbers, a map of rides coming to the hospital, live ride updates and the ride list',
+              caption: 'Fig 8. The hospital dashboard. Every ride coming to the hospital, in one place.',
+            },
+            {
+              src: deckHandover,
+              alt: 'The handover dialog: arrival details, three required checks for hospital staff, driver and admin, and the Mark Handover button',
+              caption: 'Fig 9. Three required checks, then Mark Handover.',
             },
           ],
         },
@@ -263,7 +296,7 @@ export const merryHealth: CaseStudy = {
             {
               src: hifiTracking,
               alt: 'Live ambulance tracking, showing the route, the arrival time and the trip status',
-              caption: 'Fig 6. Live tracking. One answer to “where is it now?”',
+              caption: 'Fig 10. Live tracking. One answer to “where is it now?”',
             },
           ],
         },
@@ -277,11 +310,11 @@ export const merryHealth: CaseStudy = {
       items: [
         {
           option: 'The dashboard first, with WhatsApp as a backup',
-          why: 'The obvious answer, and the one the product assumed. We said no because it gets it backwards. Ninety-five percent of requests already came through WhatsApp, and asking panicking staff to switch tools in the middle of an emergency is asking them to stop using the system.',
+          why: 'The obvious answer, and the one the product assumed. We said no because it gets it backwards. Admins already relied on WhatsApp in emergencies, and asking panicking staff to switch tools in the middle of an emergency is asking them to stop using the system.',
         },
         {
           option: 'Collect every detail when the request comes in',
-          why: 'Better reports and cleaner records. We said no because every extra question is a chance for the request to get stuck. Instead, we asked only for what each hand-off needs, and accepted weaker reports as the price.',
+          why: 'Better reports and cleaner records. We said no because every extra question is a chance for the request to get stuck. Instead, we asked only for the essentials up front, and showed a count of what is still missing so the record gets filled in.',
         },
         {
           option: 'A separate app for drivers',
@@ -324,12 +357,12 @@ export const merryHealth: CaseStudy = {
             alt: 'A diagram of the new way, with one shared timeline for all four groups of people',
           },
           caption:
-            'Fig 7. Sending an ambulance, before and after. Four groups with no shared information, then one timeline all four read from.',
+            'Fig 11. Sending an ambulance, before and after. Four groups with no shared information, then one timeline all four read from.',
         },
       ],
       callouts: [
         {
-          title: 'Twelve steps became',
+          title: 'Scattered steps became',
           emphasis: 'one shared timeline',
           body: 'Four groups reading the same record, instead of four separate chats.',
         },
@@ -357,7 +390,7 @@ export const merryHealth: CaseStudy = {
         },
         {
           kind: 'quote',
-          text: 'The screens are only 30 percent of the answer. The other 70 percent is how the work flows, how systems connect, and what the system can and cannot do.',
+          text: 'The screens are only part of the answer. The rest is how the work flows, how systems connect, and what the system can and cannot do.',
         },
         {
           kind: 'prose',

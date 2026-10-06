@@ -66,13 +66,22 @@ import hifiBooking from '@/assets/merry-hifi-booking.png';
 import hifiDashboard from '@/assets/merry-hifi-dashboard.png';
 import hifiTracking from '@/assets/merry-hifi-tracking.png';
 import hifiReports from '@/assets/merry-hifi-reports.png';
+import hifiTripStarted from '@/assets/merry-hifi-trip-started.png';
+import hifiTrackAmbulance from '@/assets/merry-hifi-track-ambulance.png';
+import deckHandover from '@/assets/merry-deck-handover.jpg';
+import deckFamilyFallback from '@/assets/merry-deck-family-fallback.jpg';
+import deckDriverSms from '@/assets/merry-deck-driver-sms.jpg';
+import deckParallelRequests from '@/assets/merry-deck-parallel-requests.jpg';
+import deckAddRide from '@/assets/merry-deck-add-ride.jpg';
+import deckRideDetails from '@/assets/merry-deck-ride-details.jpg';
+import deckMobile from '@/assets/merry-deck-mobile.jpg';
 
 /*
  * ASSET WEIGHT
  *
  * Every image below the hero is lazy-loaded and decoded off the main
  * thread, but two source files are far heavier than they need to be:
- * merry-wireframes.png is 2.5 MB and merry-hifi-booking.png is 1.1 MB.
+ * merry-wireframes.png is 2.5 MB and merry-hifi-dashboard.png is 1.7 MB (5000px wide).
  * Both are photographs or map-heavy screenshots saved as PNG. Re-export
  * them at about 1600px wide as JPEG or WebP and the page drops roughly
  * 3 MB without any visible loss. There is no image tooling in this repo,
@@ -100,9 +109,11 @@ import hifiReports from '@/assets/merry-hifi-reports.png';
  *
  * Three rules govern the writing, unchanged.
  *
- * 1. Nothing here was deployed. This was an MDes practicum apprenticeship
- *    with the company, so every forward-looking number is labelled a design
- *    target and never appears as an achieved result.
+ * 1. Nothing here was deployed. This was an apprenticeship with Career
+ *    Reactor, for the client Merry Health, so every forward-looking claim is
+ *    labelled a design aim and never appears as an achieved result. The
+ *    client delivery deck (Nov 2025) is the source of truth for what was
+ *    designed; it carries no measured numbers, so this page has none either.
  *
  * 2. Ownership is exact. The team was five designers, so the analysis and
  *    the operating model are "we". Tanya's own execution is first person.
@@ -144,7 +155,8 @@ const storyline: Storyline = [
     name: 'The product',
     target: 'product',
     slides: [
-      { id: 'product', title: 'Four screens' },
+      { id: 'product', title: 'Seven parts, one dashboard' },
+      { id: 'handover', title: 'Closing a ride properly' },
     ],
   },
   {
@@ -171,7 +183,7 @@ const MerryHealthCaseStudy = () => {
 
   usePageMeta(
     'Merry Health',
-    'Redesigning how emergency ambulances get sent. A redesign of the Merry Health service, so nothing gets dropped, the patient is picked up, and everyone can see the ride as it happens: hospitals, the operations team, drivers and families in smaller Indian cities.'
+    'Redesigning how emergency ambulances get sent. A redesign of the Merry Health service, with a dashboard for hospital admins and WhatsApp updates, so everyone can see the ride as it happens: hospitals, drivers and families in smaller Indian cities.'
   );
 
   useEffect(() => {
@@ -190,30 +202,33 @@ const MerryHealthCaseStudy = () => {
             <div>
               <StudyOpening
                 slug="merry-health"
-                client="Merry Health &middot; Emergency ambulances &middot; 2026"
+                client="Merry Health &middot; Emergency ambulances &middot; 2025"
                 headline={
                   <>
-                    Redesigning how <span className="em">emergency ambulances get sent</span>.
+                    Redesigning the hospital admin&rsquo;s experience for{' '}
+                    <span className="em">real-time ambulance coordination</span>.
                   </>
                 }
                 takeaways={{
                   problem:
-                    'Rides were arranged over calls, WhatsApp, paper and a dashboard, so four groups each had a different idea of the same ride.',
-                  did: 'Proposed one shared record for each ride, with people still using WhatsApp. Defined recovery paths and responsibilities for key failure scenarios.',
+                    'Admins ran emergencies on scattered WhatsApp chats and calls, so help took too long to reach the patient.',
+                  did: 'Structured WhatsApp and made the dashboard the full record of every ride, so an ambulance can be sent without chasing anyone.',
                   outcome:
-                    'Nine hand-offs by phone become one shared record. This is a proposal, researched with the company and never launched.',
+                    'Designed so help reaches the patient sooner, with an accurate record of every ride. Delivered, not launched.',
                 }}
+                hidePillsLabel
               />
 
               <div className="mt-8 max-w-2xl space-y-5 text-base leading-[1.6] text-ink-600 md:text-lg">
                 <p>
-                  Merry Health arranges ambulance rides between hospitals, its operations team,
-                  drivers and patients’ families in smaller cities across India.
+                  Merry Health arranges ambulance rides for hospitals in smaller cities across
+                  India. Our goal: help hospitals send ambulances successfully, and keep every
+                  ride&rsquo;s record accurate.
                 </p>
                 <p>
-                  At first we treated it as a product redesign. Then we mapped how a ride was really
-                  sent out, and found that most of the work happened outside the dashboard: in phone
-                  calls, WhatsApp, paper notes and chasing people again and again.
+                  At first we treated it as a dashboard redesign. Then we mapped how a ride was
+                  really sent out, and found that most of the work happened outside the dashboard:
+                  on WhatsApp, in phone calls and in people&rsquo;s memory.
                 </p>
                 {/* The paragraph that used to close this block described the
                     dispatch model, which is what "What I did" now says three
@@ -254,7 +269,7 @@ const MerryHealthCaseStudy = () => {
                 <div>
                   <dt className="label mb-2.5 text-ink-500">Context</dt>
                   <dd className="text-base leading-snug md:text-lg">
-                    A master’s degree project with Merry Health, at JSAA
+                    An apprenticeship with Career Reactor, for the client Merry Health
                   </dd>
                 </div>
                 <div>
@@ -306,7 +321,7 @@ const MerryHealthCaseStudy = () => {
                 actor: 'Merry Health operations',
                 act: 'Calls drivers one by one to find someone free',
                 via: 'Phone',
-                repeat: '3 to 4 calls, until somebody picks up and confirms',
+                repeat: 'Call after call, until somebody picks up and confirms',
               },
               { actor: 'Driver', act: 'Confirms and starts the trip', via: 'Phone' },
               {
@@ -397,7 +412,7 @@ const MerryHealthCaseStudy = () => {
                 actors: 'Operations, driver',
                 breaks:
                   'Nobody could see what was happening right now. Finding a driver took call after call, which was slow and hard to predict.',
-                opportunity: 'Send the job to a driver, watch for a reply, and move on if the timer runs out.',
+                opportunity: 'Send the job to a driver, watch for a reply, and move on if nobody answers.',
               },
               {
                 name: 'On the way',
@@ -408,10 +423,10 @@ const MerryHealthCaseStudy = () => {
               },
               {
                 name: 'Handover and finish',
-                actors: 'Driver, operations',
+                actors: 'Driver, hospital admin',
                 breaks:
-                  'The product wanted neat forms, staff made quick calls, and records were filled in late.',
-                opportunity: 'Finish the ride when something actually happens, not when somebody remembers.',
+                  'There was no proper handover step. Staff made quick calls, and records were filled in late.',
+                opportunity: 'Close the ride only when the handover is checked, not when somebody remembers.',
               },
             ]}
           />
@@ -483,8 +498,8 @@ const MerryHealthCaseStudy = () => {
           <Footnote>
             These are working boards, kept small on purpose, and you can read them at full
             size. We built the before-maps with the Merry Health team, from how they really
-            worked. That is why the numbers on this page say we saw them there, and not that
-            we measured them across the whole product.
+            worked. They show what we saw there. They are not measurements across the whole
+            product.
           </Footnote>
         </Slide>
         </MoreDetail>
@@ -500,32 +515,25 @@ const MerryHealthCaseStudy = () => {
               {
                 title: 'The product asked for too much, too soon',
                 body: 'The old way wanted a complete form before anything could happen. That does not fit an emergency, where staff want to get an ambulance moving first and fill in the details later.',
-                quote: 'We can’t fill long forms when a patient is critical.',
+                finding: '“Add Ride” was not built for emergency speed, so admins skipped fields or went back to WhatsApp.',
               },
               {
                 title: 'Finding a driver meant calling again and again',
-                body: 'The operations team called drivers one after another until someone answered. So how fast an ambulance left depended on who picked up, not on a clear way of choosing a driver.',
-                quote: 'I call 3 to 4 drivers before one confirms.',
+                body: 'Drivers got jobs through scattered messages and calls. So how fast an ambulance left depended on who picked up, not on a clear way of choosing a driver.',
+                finding: 'Admins had to chase drivers on calls to find out what was happening.',
               },
               {
                 title: 'Nobody could see the same live update',
-                body: 'Nobody could easily see when the ambulance would arrive or how the ride was going, so hospitals and families called to ask. The operations team then called the driver and passed the answer back.',
-                quote: 'Families keep calling us to ask when the ambulance will arrive.',
+                body: 'Nobody could easily see when the ambulance would arrive or how the ride was going, so hospitals and families called to ask. Then someone had to call the driver and pass the answer back.',
+                finding: 'With no live view of the ride status, ETA or handover, people kept making follow-up calls.',
               },
               {
                 title: 'Records were filled in after it was all over',
-                body: 'Information moved between paper, WhatsApp, calls and the dashboard. When records were filled in later, the times on them no longer showed what had really happened.',
-                quote: 'We update records at the end of the day.',
+                body: 'Information moved between paper, WhatsApp, calls and the dashboard. There was no proper handover step, so rides were closed late and the times on them no longer showed what had really happened.',
+                finding: 'Ride details were spread across chats, calls and memory, so records were missing or wrong.',
               },
             ]}
           />
-
-          <Footnote>
-            One number on the old dashboard shows the fourth problem by itself. The product’s
-            own average response time says 23:41:14. That is not how long an ambulance took.
-            It is what the number turns into when rides are marked done at the end of the day,
-            instead of when they really end.
-          </Footnote>
         </Slide>
 
         {/* ======================== 02, THE REFRAME ========================= */}
@@ -543,12 +551,12 @@ const MerryHealthCaseStudy = () => {
           </Lede>
 
           <ActorHub
-            hub="MH-REQ-1342"
-            hubNote="One record that every channel reads from and writes to. Four groups, one version of the ride."
+            hub="One Case ID per ride"
+            hubNote="Every ride gets its own Case ID, like MH-REQ-1342. Every channel reads from and writes to that one record, so four groups see one version of the ride. Look for it in the screens below."
             actors={[
               {
                 name: 'Hospital admin',
-                needs: 'To send a request quickly, and know it got through.',
+                needs: 'To send a request quickly, see every ride coming in, and close it with a proper handover.',
               },
               {
                 name: 'Merry Health operations',
@@ -575,7 +583,8 @@ const MerryHealthCaseStudy = () => {
             Hospital staff already used it because it was familiar, fast and always there in an
             emergency. Asking them to switch to a new app would have meant learning something new
             at exactly the wrong moment. So we split the service into two layers: the chat people
-            use could stay the same, and the system behind it would be the same every time.
+            use could stay the same, and the system behind it would be the same every time. When
+            WhatsApp fails, the admin can still add the ride on the dashboard.
           </Lede>
 
           <div className="mt-stage">
@@ -628,15 +637,15 @@ const MerryHealthCaseStudy = () => {
           <div className="mt-stage grid gap-6 sm:grid-cols-2 lg:grid-cols-4 md:gap-8">
             <Plate
               src={whatsappAdmin}
-              alt="The Merry Health operations WhatsApp chat, showing a request typed in normal words, a case number added automatically, and a message saying the patient contact is missing, please update"
-              caption="Operations. The system replies asking for the one missing detail, not the whole form."
+              alt="The hospital admin’s WhatsApp chat with Merry Health: a request typed in plain words gets its own Case ID, a second request gets another Case ID and a note that the patient contact is missing, and a plain hello gets the list of five details to send"
+              caption="Hospital admin. Each request gets its own Case ID. The system asks only for what is missing."
               onOpen={open}
               imageClassName="aspect-[9/16] object-cover object-top"
             />
             <Plate
               src={whatsappHospital}
-              alt="The hospital group chat, showing the case number and each step of the ride posted as an update"
-              caption="Hospital. Every step lands in one chat, under one case number."
+              alt="The read-only announcement group for Felix Hospital and Merry Health: case MH-REQ-1342 posted step by step, from request received to request closed, with a note that only admins can send messages"
+              caption="Announcement group. Read-only, so everyone gets the same updates, with no replies or clutter."
               onOpen={open}
               imageClassName="aspect-[9/16] object-cover object-top"
             />
@@ -649,8 +658,8 @@ const MerryHealthCaseStudy = () => {
             />
             <Plate
               src={whatsappPatient}
-              alt="The family chat, showing the driver’s details, the ambulance number, a countdown to arrival and a tracking link"
-              caption="Patient’s family. The driver, the ambulance, arrival time, a tracking link, arrival."
+              alt="The family chat, showing the driver’s details, the ambulance number, the time to arrival, a tracking link, and then a message that the ambulance has arrived"
+              caption="Patient’s family. The driver, the ambulance, arrival time and a tracking link."
               onOpen={open}
               imageClassName="aspect-[9/16] object-cover object-top"
             />
@@ -678,8 +687,9 @@ const MerryHealthCaseStudy = () => {
               items: [
                 'Location',
                 'Patient condition',
-                'Contact',
-                'Ambulance requirement',
+                'Patient contact',
+                'Ambulance type',
+                'Facilities required',
               ],
             }}
             later={{
@@ -699,20 +709,26 @@ const MerryHealthCaseStudy = () => {
               {
                 who: 'Hospital sends',
                 lines: [
-                  'Emergency, ambulance needed',
-                  'Patient contact',
-                  'Location',
-                  'Condition',
+                  'Pregnant lady, pickup at old bus stand, Hazratganj',
+                  'Need oxygen and stretcher',
                 ],
               },
               {
                 who: 'System replies',
                 lines: [
-                  'Request MH-REQ-1342 received.',
-                  'Please confirm the required ambulance type.',
+                  'New request MH-REQ-1343 received.',
+                  'Patient contact is missing, please update.',
                 ],
               },
             ]}
+          />
+
+          <Plate
+            src={deckParallelRequests}
+            alt="The hospital admin’s WhatsApp chat with several requests arriving within minutes: each one gets its own Case ID and its own updates, the system asks for a missing patient contact, and a hello is answered with the five details to send: location, patient condition, patient contact, ambulance type and facilities required"
+            caption="Several requests at once. Each gets its own Case ID, so none get mixed up."
+            className="mt-break max-w-md"
+            onOpen={open}
           />
 
           <Principle>
@@ -728,17 +744,17 @@ const MerryHealthCaseStudy = () => {
             Finding a driver became <span className="em">something the system tracks</span>, not a phone call.
           </Headline>
           <Lede wide>
-            Before, the operations team called drivers one at a time until somebody answered.
-            In the new plan, the system sends the job and a timer decides when to try the next
-            driver. The driver gets the case number, the patient’s contact, the distance, the
-            pickup link, the equipment the trip needs, and two buttons.
+            Before, finding a driver meant calling one at a time until somebody answered. In the
+            new plan, the system sends the job and waits for a reply. The driver gets the case
+            number, the patient’s contact, the distance, the pickup link, the equipment the trip
+            needs, and two buttons: accept or decline.
           </Lede>
 
           <AssignmentLoop
             before={{
               label: 'Before',
               steps: ['Call a driver', 'Wait', 'No answer', 'Call the next one'],
-              loop: 'Back to the start, 3 to 4 times, until somebody says yes',
+              loop: 'Back to the start, again and again, until somebody says yes',
             }}
             after={{
               label: 'Proposed',
@@ -746,10 +762,10 @@ const MerryHealthCaseStudy = () => {
               branches: [
                 {
                   on: 'Driver accepts',
-                  then: 'The same ride record updates for the operations team, the hospital and the patient’s family.',
+                  then: 'The same ride record updates for the hospital, the dashboard and the patient’s family.',
                 },
                 {
-                  on: 'No reply before the timer runs out',
+                  on: 'No reply',
                   then: 'The job goes to the next driver, and the wait is written down, not kept in somebody’s head.',
                 },
               ],
@@ -829,7 +845,7 @@ const MerryHealthCaseStudy = () => {
               {
                 phase: 'Handover',
                 state: 'Reached hospital',
-                captures: 'Arrival time, how long the trip took, distance travelled',
+                captures: 'Arrival time, distance from the gate, the three handover checks',
               },
               {
                 phase: 'Close',
@@ -846,9 +862,9 @@ const MerryHealthCaseStudy = () => {
           <div className="mt-break grid gap-6 sm:grid-cols-2 lg:max-w-2xl">
             <Artifact
               src={proposedWorkflow}
-              alt="The proposed system: twelve numbered steps across the hospital admin, WhatsApp, the operations team, the driver and the patient’s family, with the data, the technology and the backup plan for each step"
+              alt="The proposed system: numbered steps across the hospital admin, WhatsApp, the operations team, the driver and the patient’s family, with the data, the technology and the backup plan for each step"
               title="How the whole system works"
-              note="Twelve steps, with the data, how it works and the backup plan for each one."
+              note="Every step, with the data, how it works and the backup plan for each one."
               onOpen={open}
             />
             <Artifact
@@ -883,8 +899,23 @@ const MerryHealthCaseStudy = () => {
               },
               {
                 when: 'The driver has no smartphone',
-                then: 'The job goes out by text message, and the operations team updates the ride for the driver.',
-                owner: 'Operations',
+                then: 'The job goes out as an SMS. The driver replies 1 to accept or 2 to reject.',
+                owner: 'System',
+              },
+              {
+                when: 'The family cannot use WhatsApp',
+                then: 'They get the ambulance details by SMS, plus an automated call in their own regional language.',
+                owner: 'System',
+              },
+              {
+                when: 'WhatsApp fails at the hospital',
+                then: 'The admin adds the ride on the dashboard in seconds, and it joins the same record.',
+                owner: 'Hospital admin',
+              },
+              {
+                when: 'Several requests arrive at once',
+                then: 'Each request gets its own Case ID and its own updates, so none get mixed up or booked twice.',
+                owner: 'System',
               },
               {
                 when: 'The phone signal drops',
@@ -902,9 +933,9 @@ const MerryHealthCaseStudy = () => {
                 owner: 'System',
               },
               {
-                when: 'The ride is never marked as done',
-                then: 'If the driver stops moving, an alert goes off, and the operations team steps in or picks another driver.',
-                owner: 'Operations',
+                when: 'A ride is late or critical',
+                then: 'An alert shows on the ride, and the admin can press Escalate to get help fast.',
+                owner: 'Hospital admin',
               },
               {
                 when: 'The system does not know the hospital’s number',
@@ -924,15 +955,19 @@ const MerryHealthCaseStudy = () => {
             ]}
           />
 
-          <div className="mt-break border-l border-foreground p-6 pl-6 md:p-8 md:pl-8">
-            <p className="label-strong">Deciding how urgent it is followed a rule, not a guess</p>
-            <p className="mt-5 max-w-3xl text-base leading-[1.6] text-ink-600 md:text-lg">
-              A message with the words accident, bleeding, chest pain, unconscious, stroke,
-              cardiac, head injury or ventilator counts as P1, the most urgent. An emergency
-              without any of those words is P2. Transfers, planned trips and non-emergencies are
-              P3. Anything the rules cannot sort goes to a person to decide, instead of the system
-              guessing, because a wrong automatic choice is worse than a slow human one.
-            </p>
+          <div className="mt-break grid gap-6 md:grid-cols-2 md:gap-8">
+            <Plate
+              src={deckDriverSms}
+              alt="The driver’s WhatsApp chat with a ride card and Accept and Decline buttons, next to the SMS version for drivers without a smartphone: patient contact, oxygen cylinder needed, pickup location, and Send 1 to accept and 2 to reject"
+              caption="Driver without a smartphone. The same job by SMS. Reply 1 to accept, 2 to reject."
+              onOpen={open}
+            />
+            <Plate
+              src={deckFamilyFallback}
+              alt="The family’s WhatsApp chat with driver details, arrival time and a tracking link, next to the SMS version of the same details and an automated IVR call with the ambulance information in the regional language"
+              caption="Family without WhatsApp. An SMS, plus an automated call in their own language."
+              onOpen={open}
+            />
           </div>
         </Slide>
 
@@ -944,39 +979,40 @@ const MerryHealthCaseStudy = () => {
             define.
           </Headline>
           <Lede wide>
-            Four screens came out of the new way of working, and each one answers one question.
-            None of them was where we started.
+            The hospital dashboard has seven parts: home, add ride, ride list, ride details,
+            handover, track ambulance and reports. Each part answers one question. Four of them
+            are below.
           </Lede>
 
           <div className="mt-break grid gap-8 md:grid-cols-2 md:gap-10">
             {[
               {
                 n: '01',
-                name: 'Fast request',
-                body: 'The most important details first, the pickup chosen on a map, and the rest filled in bit by bit while the ambulance moves.',
+                name: 'Add ride',
+                body: 'Only the essentials up front, with pickup and drop set on a map. The fields change with the request type: Emergency, Referral, Hospital Transfer or Other. Ambulance type and equipment are quick tags. A count shows what is still missing, for cleaner data.',
                 src: hifiBooking,
-                alt: 'The new ambulance request screen: search boxes for pickup and drop-off above a big map with a pin on it, and a ride details panel on the right with contact, type of emergency, condition, type of ambulance and equipment tags',
+                alt: 'The new add ride screen: pickup and drop-off with a map, and on the right the patient contact, type of request and emergency, type of ambulance, equipment tags, and a folded section for optional details showing how many are still missing',
               },
               {
                 n: '02',
-                name: 'Operations dashboard',
-                body: 'Rides happening now, alerts, quick actions and the rides that need attention.',
+                name: 'Hospital dashboard',
+                body: 'Made for the hospital admin. The key numbers, a map of rides coming to the hospital, a live feed of updates, and every ride in one list.',
                 src: hifiDashboard,
-                alt: 'The new operations dashboard: cards for money earned and average response time, rides happening now, a live map and quick add tiles, a quick actions panel, and a ride list with tabs for all, finished and waiting',
+                alt: 'The new hospital dashboard: four key numbers across the top (average response time, rides completed on time, how complete the ride details are, total rides), a map of rides coming to the hospital next to a live feed of ride updates, and a ride list with tabs for all, ongoing, pending and completed rides',
               },
               {
                 n: '03',
-                name: 'Live ride view',
+                name: 'Ride details',
                 body: 'The map, the driver, arrival time, patient details, the ride timeline and a way to get help, on one screen.',
                 src: hifiTracking,
-                alt: 'The live ride view: a bar showing the current step, time to pickup, last location update, distance left and the driver’s status, above a live map, a timeline of six steps, and a patient details panel',
+                alt: 'The live ride view for a ride that is en route: a bar showing the current status, time to pickup, last location update, distance left, the driver’s status and the patient’s condition, above a live map and a trip timeline, with Call driver and Escalate buttons and an alert that the arrival time went up',
               },
               {
                 n: '04',
-                name: 'Reporting',
-                body: 'Number of trips, response time, time until ready again, billing and trends, taken from what happened on each ride instead of pieced together later.',
+                name: 'Reports',
+                body: 'Number of trips, response time, time until ready again, billing and trends, taken from what happened on each ride. Download as CSV, PDF or Excel.',
                 src: hifiReports,
-                alt: 'The reports screen: filters for dates, case type, status and ambulance type above total trips, billing, average response time and average time until ready again, with charts of trip numbers, trip times and ride types',
+                alt: 'The analytics report: filters for date range, case type, status and ambulance type, then total trips, billing, average response time and average time until ready again, each compared with the last period, above charts of trip volume and trip times',
               },
             ].map((module) => (
               <div key={module.n}>
@@ -997,6 +1033,21 @@ const MerryHealthCaseStudy = () => {
             ))}
           </div>
 
+          <div className="mt-stage grid items-start gap-6 md:grid-cols-[2fr_1fr] md:gap-8">
+            <Plate
+              src={deckAddRide}
+              alt="The Add Ride screen with numbered notes: pickup and drop set on a map, the patient contact, a request type list of Emergency, Referral, Hospital Transfer and Other, tags for ambulance type and facilities, and a folded optional section showing 5 missing"
+              caption="Add ride. Only the essentials up front; optional details fold away, with a count of what is missing."
+              onOpen={open}
+            />
+            <Plate
+              src={deckMobile}
+              alt="The hospital dashboard on a phone, with the Felix Hospitals logo, an Add Ride button, key numbers for the week and a map of rides coming to the hospital"
+              caption="Every part also works on a phone, so admins can manage rides without a desktop."
+              onOpen={open}
+            />
+          </div>
+
           <div className="mt-stage grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:gap-12">
             <Plate
               src={wireframes}
@@ -1013,7 +1064,7 @@ const MerryHealthCaseStudy = () => {
                 items={[
                   'The ride list stopped being a record of what happened, and became a to-do list of what needs attention: late, no signal, no update.',
                   'Ride details got a timeline, because the real question was never “what is happening?” but “what has happened so far?”',
-                  'Alerts stopped being something you look for, and became something the system tells you: stopped for over ten minutes, off route, no update in twenty.',
+                  'Alerts stopped being something you look for, and became something the system tells you, like “8 minutes ETA increased”.',
                 ]}
               />
             </div>
@@ -1046,23 +1097,44 @@ const MerryHealthCaseStudy = () => {
           )}
         </Slide>
 
-        <MoreDetail label="The operations dashboard in detail">
+        <Slide id="handover" chapter="04" height="auto">
+          <Kicker n="04" label="Handing over the patient" />
+          <Headline>
+            A ride only closes once <span className="em">the handover is checked</span>.
+          </Headline>
+          <Lede wide>
+            Records used to be filled in after it was all over. Now, when the ambulance reaches
+            the hospital, the admin sees the arrival time and how far it is from the gate. Three
+            checks must be ticked: hospital staff confirmed, driver handover done, and admin
+            verified. Only then can the admin press Mark Handover and close the ride. So every
+            record ends complete and correct.
+          </Lede>
+
+          <Plate
+            src={deckHandover}
+            alt="The handover dialog for ride MH-2031, arrived at hospital: drop location, arrival time and distance from the gate, then three required checks, hospital staff confirmation, driver handover completed and admin verification, above the Mark Handover button"
+            caption="Three required checks, then Mark Handover. A ride cannot close half-done."
+            className="mt-break max-w-md"
+            onOpen={open}
+          />
+        </Slide>
+
+        <MoreDetail label="The hospital dashboard in detail">
         <Slide id="dashboard" chapter="04" height="auto">
-          <Kicker n="04" label="The operations dashboard" />
+          <Kicker n="04" label="The hospital dashboard" />
           <Headline>
             From writing down rides to <span className="em">running them live</span>.
           </Headline>
           <Lede wide>
-            The new dashboard was meant to answer one question: what is happening now, and what
-            needs attention? Instead of treating every ride the same, it shows new requests
-            first, then rides waiting for a driver, then rides happening now, and then the ones
-            that are late or unusual. The numbers still matter, but the screen’s job is to help
-            the team act.
+            The new dashboard is made for the hospital admin, with the hospital’s own name on
+            it. It answers one question: what is happening now, and what needs attention? The
+            numbers still matter, but the screen’s job is to help the admin act. It is the full
+            record of every ride, and it still works when WhatsApp fails.
           </Lede>
 
           <Plate
             src={hifiDashboard}
-            alt="The new operations dashboard: cards for money earned and average response time, rides happening now, a live map and quick add tiles, a quick actions panel, and a ride list with tabs for all, finished and waiting"
+            alt="The new hospital dashboard: four key numbers across the top (average response time, rides completed on time, how complete the ride details are, total rides), a map of rides coming to the hospital next to a live feed of ride updates, and a ride list with tabs for all, ongoing, pending and completed rides"
             className="mt-break"
             onOpen={open}
           />
@@ -1070,14 +1142,14 @@ const MerryHealthCaseStudy = () => {
           <div className="mt-10 grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
             <Callouts
               items={[
-                'Quick actions is a to-do list that is always there: what needs attention, what set off an alert, what changed.',
-                'Ongoing rides shows a live count next to the map, so the first thing you see is how many rides are happening.',
-                'The ride list has tabs for all, finished and waiting, so a stuck request is one click away.',
+                'Four numbers across the top: response time, rides on time, how complete the ride details are, and total rides, each compared with last week.',
+                'A map of rides coming to the hospital sits next to a live feed of updates, so the first thing you see is what is moving right now.',
+                'The ride list has tabs for all, ongoing, pending and completed rides, with search and filters, so a stuck request is one click away.',
               ]}
             />
             <div className="flex flex-col justify-center">
               <Principle>
-                An operations screen should make sense in one look, not need a long read.
+                A screen used in an emergency should make sense in one look, not need a long read.
               </Principle>
             </div>
           </div>
@@ -1099,7 +1171,7 @@ const MerryHealthCaseStudy = () => {
 
           <Plate
             src={hifiTracking}
-            alt="The live ride view: a bar showing the current step, time to pickup, last location update, distance left and the driver’s status, above a live map, a timeline of six steps, and a patient details panel"
+            alt="The live ride view for a ride that is en route: a bar showing the current status, time to pickup, last location update, distance left, the driver’s status and the patient’s condition, above a live map and a trip timeline, with Call driver and Escalate buttons and an alert that the arrival time went up"
             className="mt-break"
             onOpen={open}
           />
@@ -1107,17 +1179,41 @@ const MerryHealthCaseStudy = () => {
           <div className="mt-10 grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
             <Callouts
               items={[
+                'The patient’s details and condition sit up front, so the hospital can get ready sooner.',
                 'The current step, arrival time, last location update, distance left and the driver’s status, all on one row.',
                 'The timeline shows every step and what is still to come, so there is one answer to “what has happened so far?”',
-                'Call driver and get help are easy to reach, because what you do when things go wrong should not be hidden.',
+                'Call driver is one tap away. Escalate is there for rides that are critical or late.',
               ]}
             />
             <div className="flex flex-col justify-center">
               <Principle>
-                Shown in its very first step on purpose. There is no driver yet, so the map says
-                what it is waiting for, instead of showing an empty grid.
+                The screen changes with the ride. Escalate only switches on once something can go
+                wrong, and an alert explains why, like “8 minutes ETA increased”.
               </Principle>
             </div>
+          </div>
+
+          <Plate
+            src={deckRideDetails}
+            alt="The ride details screen with numbered notes: Call driver and Escalate buttons, a status row with the patient’s condition, a live map, the trip timeline, and an alert that the arrival time went up by 8 minutes"
+            caption="Ride details, with the six things it adds: timeline, live map, patient summary, status, Call driver and Escalate."
+            className="mt-10"
+            onOpen={open}
+          />
+
+          <div className="mt-10 grid gap-6 md:grid-cols-2 md:gap-8">
+            <Plate
+              src={hifiTripStarted}
+              alt="The same ride a few minutes earlier, just after the trip started: the timeline is filled in up to Trip started, and Escalate and Mark handover are still switched off"
+              caption="Earlier in the same ride. Escalate stays off until it is needed."
+              onOpen={open}
+            />
+            <Plate
+              src={hifiTrackAmbulance}
+              alt="The track ambulance screen: a search bar to find a place, a large map, and a legend for pickup, ongoing and completed rides"
+              caption="Track ambulance. Every ambulance on one map, coloured by where it is in the ride."
+              onOpen={open}
+            />
           </div>
         </Slide>
         </MoreDetail>
@@ -1127,38 +1223,30 @@ const MerryHealthCaseStudy = () => {
         <Slide id="targets" chapter="05" height="auto">
           <Kicker n="05" label="The goals" />
           <Headline>
-            The numbers the design <span className="em">aims for</span>.
+            What the design <span className="em">aims for</span>.
           </Headline>
           <Lede wide>
-            Each goal comes with the measurement that shows whether it works.
+            Nothing here was measured. Each goal comes with the measurement that would show
+            whether it works.
           </Lede>
 
+          {/* The three impacts the client deck promised, each with how it would be measured. */}
           <Targets
             items={[
               {
-                figure: 'Under 3 min',
-                outcome: 'From request to a driver saying yes',
-                how: 'Compared with the 8 to 10 minutes we saw in the old way of working. Measured automatically, from request received to driver accepted, since the system now records both times itself.',
+                figure: 'Faster emergency handling',
+                outcome: 'Admins can add a ride straight away, even when WhatsApp fails',
+                how: 'Measured from request received to driver accepted, since the system now records both times itself.',
               },
               {
-                figure: 'Fewer calls',
-                outcome: 'Phone calls needed per ride',
-                how: 'Automatic “got it” messages and step-by-step updates remove the reason for most of them. Measured as the number of calls needed after the ambulance is sent.',
+                figure: 'More rides completed',
+                outcome: 'Live tracking, alerts and a checked handover mean fewer rides drop off',
+                how: 'Measured as the share of rides that reach a checked handover, and the calls needed per ride.',
               },
               {
-                figure: 'More complete records',
-                outcome: 'Rides that leave a full record behind',
-                how: 'Saved as the work happens, instead of typed in afterwards. Measured as the share of rides with a proper start and end time.',
-              },
-              {
-                figure: 'Everyone can see it',
-                outcome: 'Updates without anyone calling the operations team',
-                how: 'Measured as the share of rides where the hospital and the family got updates without having to ask.',
-              },
-              {
-                figure: 'Reports you can trust',
-                outcome: 'Response time and turnaround worked out from real events, not pieced together',
-                how: 'Measured as the share of rides finished by real events, not typed in by hand afterwards.',
+                figure: 'Accurate records and reports',
+                outcome: 'One complete record per ride, so hospitals can download accurate reports any time',
+                how: 'Measured as the share of rides closed by real events, not typed in by hand afterwards.',
               },
             ]}
           />
@@ -1169,8 +1257,8 @@ const MerryHealthCaseStudy = () => {
           <Kicker n="05" label="What I worked on" />
           <Headline>My contribution</Headline>
           <Lede wide>
-            This was a team of five designers, working with Merry Health as part of our
-            master’s degree. We worked out the research, the new way of working and the final
+            This was a team of five designers, working for the client Merry Health during an
+            apprenticeship with Career Reactor. We worked out the research, the new way of working and the final
             plan together, which is why this page says “we”.
           </Lede>
           <Lede wide>
@@ -1251,6 +1339,8 @@ const MerryHealthCaseStudy = () => {
               items: [
                 'Asking for ambulance details a little at a time',
                 'A clear way to choose a driver',
+                'A hospital dashboard with seven parts, also on mobile',
+                'Handover checks before a ride can close',
                 'Shared steps for every ride',
                 'Messages over WhatsApp and text',
                 'Live operations',
@@ -1318,7 +1408,7 @@ const MerryHealthCaseStudy = () => {
           </div>
 
           <Statement>
-            Good design for operations teams often means taking away work people should never
+            Good design for busy teams often means taking away work people should never
             have had to do by hand in the first place.
           </Statement>
 

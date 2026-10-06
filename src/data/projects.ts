@@ -282,6 +282,58 @@ const projectList: Project[] = [
     published: true,
   },
   {
+    slug: 'merry-health',
+    title: 'Merry Health',
+    qualifier: 'Apprenticeship',
+    year: '2025',
+    status: 'concept',
+    tier: 'flagship',
+    disciplines: ['Service design', 'Systems design', 'Many groups of people'],
+    contributions: ['Service design', 'Systems design'],
+    context: 'Emergency ambulance rides, for the client Merry Health',
+    role: 'Research, and designing how the whole service works',
+    storyHref: '/case-study/merry-health/story',
+    storyMinutes: 2,
+    headline: 'Four groups of people. One shared record of each ride.',
+    decision:
+      'Ambulance rides were arranged over phone calls, WhatsApp, paper and a dashboard. So hospitals, drivers and families each had a different idea of the same ride. Hospitals were not going to stop using WhatsApp in an emergency. So we kept WhatsApp for fast updates, and connected it to one shared record of each ride, with a dashboard for hospital admins. We planned backups for when things go wrong.',
+    oneLine:
+      'Proposed one shared ride record and a hospital dashboard, while people keep using WhatsApp.',
+    metrics: [
+      {
+        figure: '4 parties',
+        note: 'kept up to date by one change',
+        status: 'proposed',
+        source: 'Proposed operating model',
+        explanation:
+          'Designed for Merry Health as a proposal, during an apprenticeship with Career Reactor.',
+      },
+    ],
+    featured: {
+      headline: 'Sending ambulances faster with one shared ride record',
+      description:
+        'Redesigning how hospitals, drivers and patients work together.',
+      status: 'Apprenticeship · Proposed system',
+      storyLabel: 'Read the project story',
+      evidence: {
+        figure: '1 shared record',
+        note: 'Proposed a shared ride record to reduce manual coordination',
+        status: 'proposed',
+        source: 'Proposed operating model, never deployed',
+      },
+      media: {
+        src: merryHifiDashboard,
+        alt: 'The proposed Merry Health hospital dashboard: four key numbers across the top, a map of rides coming to the hospital next to a live feed of ride updates, and a ride list with tabs for all, ongoing, pending and completed rides.',
+        width: 5000,
+        height: 3992,
+        position: 'object-top',
+      },
+    },
+    cover: merryHifiDashboard,
+    stack: [merryHifiTracking, merryWhatsappPatient],
+    published: true,
+  },
+  {
     slug: 'layrrrd',
     title: 'Layrrrd',
     year: '2026',
@@ -349,58 +401,6 @@ const projectList: Project[] = [
         background: '#f7f6f3',
       },
     },
-    published: true,
-  },
-  {
-    slug: 'merry-health',
-    title: 'Merry Health',
-    qualifier: 'Apprenticeship',
-    year: '2026',
-    status: 'concept',
-    tier: 'flagship',
-    disciplines: ['Service design', 'Systems design', 'Many groups of people'],
-    contributions: ['Service design', 'Systems design'],
-    context: 'Emergency ambulance rides, researched with the company',
-    role: 'Research, and designing how the whole service works',
-    storyHref: '/case-study/merry-health/story',
-    storyMinutes: 2,
-    headline: 'Four groups of people. One shared record of each ride.',
-    decision:
-      'Ambulance rides were arranged over phone calls, WhatsApp, paper and a dashboard. So hospitals, the operations team, drivers and families each had a different idea of the same ride. Hospitals were not going to stop using WhatsApp in an emergency. So we kept WhatsApp, and connected it to one shared record of each ride. We defined recovery paths and responsibilities for key failure scenarios.',
-    oneLine:
-      'Proposed one shared ride record to reduce nine hand-offs over the phone, while people keep using WhatsApp.',
-    metrics: [
-      {
-        figure: '4 parties',
-        note: 'kept up to date by one change',
-        status: 'proposed',
-        source: 'Proposed operating model',
-        explanation:
-          'Researched with Merry Health and designed as a proposal.',
-      },
-    ],
-    featured: {
-      headline: 'Sending ambulances faster with one shared ride record',
-      description:
-        'Redesigning how hospitals, the operations team, drivers and patients work together.',
-      status: 'Academic practicum · Proposed system',
-      storyLabel: 'Read the project story',
-      evidence: {
-        figure: '9 manual handoffs',
-        note: 'Proposed a shared ride record to reduce manual coordination',
-        status: 'proposed',
-        source: 'Proposed operating model, never deployed',
-      },
-      media: {
-        src: merryHifiDashboard,
-        alt: 'The proposed Merry Health operations dashboard: revenue and average response time across the top, quick actions for alerts and summaries, and a ride list giving each ride an id, an assigned ambulance, a route and a status.',
-        width: 1371,
-        height: 1371,
-        position: 'object-top',
-      },
-    },
-    cover: merryHifiDashboard,
-    stack: [merryHifiTracking, merryWhatsappPatient],
     published: true,
   },
   {

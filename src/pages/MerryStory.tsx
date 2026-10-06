@@ -8,23 +8,30 @@ import whatsappHospital from '@/assets/merry-whatsapp-hospital.png';
 import whatsappDriver from '@/assets/merry-whatsapp-driver.png';
 import proposedWorkflow from '@/assets/merry-proposed-workflow.jpg';
 import hifiDashboard from '@/assets/merry-hifi-dashboard.png';
+import deckHandover from '@/assets/merry-deck-handover.jpg';
+import deckAddRide from '@/assets/merry-deck-add-ride.jpg';
+import deckRideDetails from '@/assets/merry-deck-ride-details.jpg';
+import deckDriverSms from '@/assets/merry-deck-driver-sms.jpg';
+import deckFamilyFallback from '@/assets/merry-deck-family-fallback.jpg';
+import deckMobile from '@/assets/merry-deck-mobile.jpg';
 
 /**
  * Merry Health as a slide story.
  *
  * The long-form page is a twenty-minute systems argument. This is the same
- * argument at reading speed: what the service actually did, what broke, the
- * decision not to fight the behaviour, and the operating model that came out
- * of it. Every fact here is lifted from the case study rather than restated
- * more confidently, and the one rule that governs both pages holds here too:
- * nothing was deployed, so nothing forward-looking is written as a result.
+ * argument at reading speed: the hospital admin's experience, what broke,
+ * the decision not to fight WhatsApp, and the dashboard that came out of it.
+ * Every fact here is lifted from the case study and the client delivery
+ * deck (Nov 2025), rather than restated more confidently, and the one rule
+ * that governs both pages holds here too: it was delivered to the client and
+ * never launched, so nothing forward-looking is written as a result.
  *
- * Facts are quoted from the research on the long-form page. They are not
- * paraphrased into stronger claims.
+ * The client deck carries no measured numbers, so this deck has none either,
+ * and no invented quotes. It is always called the hospital dashboard.
  */
 
 /** The four parties the whole project is about. Recurs across slides. */
-const ACTORS = ['Hospital', 'Operations', 'Driver', 'Patient family'];
+const ACTORS = ['Hospital admin', 'Merry Health team', 'Driver', 'Patient’s family'];
 
 const ActorRow = ({ note }: { note: string }) => (
   <div className="mt-break">
@@ -44,7 +51,7 @@ const CoverSlide = () => (
   <Spread>
     <div className="flex flex-wrap items-center justify-between gap-4">
       <span className="label text-ink-500">
-        Case study &middot; Merry Health &middot; Sending ambulances in an emergency
+        Case study &middot; Merry Health &middot; Emergency ambulances
       </span>
       <span className="label hidden text-ink-500 md:block">
         Tanya Sunny &middot; tanyameriamsunny@gmail.com
@@ -52,19 +59,21 @@ const CoverSlide = () => (
     </div>
 
     <h1 className="mt-stage max-w-4xl text-[2.5rem] leading-[1.02] md:text-[4.25rem]">
-      Four groups of people. <Em>One shared record of each ride.</Em>
+      Redesigning the hospital admin&rsquo;s experience for{' '}
+      <Em>real-time ambulance coordination.</Em>
     </h1>
 
     <p className="mt-8 max-w-2xl text-base leading-[1.55] text-ink-600 md:text-lg">
-      Emergency rides were arranged over calls, WhatsApp, paper and a dashboard. So
-      hospitals, the operations team, drivers and families each had a different idea of the
-      same ride. This is how we redesigned the system to work with that, not against it.
+      Admins ran emergencies on scattered WhatsApp chats and calls, so help took too long to
+      reach the patient. The dashboard was rarely used, and records were missing or wrong.
+      This is how we kept WhatsApp, gave it structure, and made the dashboard the full record
+      of every ride.
     </p>
 
-    <ActorRow note="One change updates all four" />
+    <ActorRow note="One ride, one record, the same update for all four" />
 
     <div className="mt-break flex flex-wrap gap-3">
-      {['2026', 'A team of five designers', 'A proposal, never launched'].map((chip) => (
+      {['2025', 'A team of 5 designers', 'Delivered, never launched'].map((chip) => (
         <span key={chip} className="label border border-border px-3 py-2 text-ink-500">
           {chip}
         </span>
@@ -77,26 +86,26 @@ const ContextSlide = () => (
   <Spread>
     <Chapter n="01" label="The project and my role" />
     <H>
-      A master’s degree project, <Em>done with the company, not just about it.</Em>
+      An apprenticeship project, <Em>done for a real client.</Em>
     </H>
     <Body>
-      Merry Health connects hospitals, the people who send ambulances, drivers and patients’
-      families in smaller cities across India. We worked with the company for the whole
-      project. A team of five designers came up with the research and the new way of working,
-      which is why the story says “we”. Where the work was mine, it says “I”.
+      Merry Health arranges ambulance rides for hospitals in smaller cities across India. We
+      designed for them as the client, during an apprenticeship with Career Reactor in 2025.
+      A team of 5 designers came up with the research and the new way of working, which is
+      why the story says “we”. Where the work was mine, it says “I”.
     </Body>
     <div className="mt-10 grid max-w-4xl gap-4 md:grid-cols-3">
       <Panel label="What I did" title="From research to screens">
         Mapping the service, finding where the work broke down, spotting chances to improve,
         the new way of working, and then the steps and the screens.
       </Panel>
-      <Panel label="The team" title="Five designers">
+      <Panel label="The team" title="5 designers">
         Making sense of the research, the new way of working and the final system were team
         work. How I carried out my part was my own.
       </Panel>
-      <Panel label="Status" title="A proposal, never launched">
-        Nothing here was launched or measured. Every number about the future on this page is
-        a goal, and it says so.
+      <Panel label="Status" title="Delivered, never launched">
+        We handed the full design to the client. It was never launched or measured, so every
+        result in these slides is a goal, and it says so.
       </Panel>
     </div>
   </Spread>
@@ -109,9 +118,9 @@ const SituationSlide = () => (
       The dashboard was there. <Em>The real work happened somewhere else.</Em>
     </H>
     <Body>
-      In an emergency, hospital staff grabbed the fastest tool nearby. Calls were quicker.
-      WhatsApp was familiar. Staff were already walking, talking and holding three things at
-      once. The official product was there, but most of the real work happened outside it.
+      In an emergency, hospital admins grabbed the fastest tool nearby. WhatsApp was
+      familiar. Calls were quicker. The dashboard was rarely used, so the real story of each
+      ride lived in chats, calls and people&rsquo;s memory.
     </Body>
     <Shot
       className="mt-10 max-w-4xl"
@@ -135,21 +144,20 @@ const ResearchSlide = () => (
       Four problems, <Em>and not one of them was about the screens.</Em>
     </H>
     <div className="mt-break grid max-w-5xl gap-4 md:grid-cols-2">
-      <Panel label="Not built for emergencies" title="&ldquo;We can&rsquo;t fill long forms when a patient is critical.&rdquo;">
-        The system wanted every detail filled in before anyone could move. Under pressure,
-        staff got the ambulance moving first and filled in the gaps later.
+      <Panel label="Not built for emergencies" title="&ldquo;Add Ride&rdquo; was too slow for an emergency.">
+        So admins skipped fields or went back to WhatsApp. Staff got the ambulance moving
+        first and filled in the gaps later.
       </Panel>
-      <Panel label="Everything done by hand" title="&ldquo;I call 3 to 4 drivers before one confirms.&rdquo;">
-        How fast an ambulance left depended on who happened to be free, not on the system.
+      <Panel label="Everything done by hand" title="Admins chased drivers on calls.">
+        How fast an ambulance left depended on who happened to pick up, not on the system.
       </Panel>
-      <Panel label="Nobody could see what was happening" title="&ldquo;Families keep calling us for ETA updates.&rdquo;">
+      <Panel label="Nobody could see what was happening" title="No live view of status, ETA or handover.">
         Nobody could see where the ambulance was or when it would arrive, so everyone filled
-        the silence with a phone call. Every call pulled the operations team away from
-        sending ambulances.
+        the silence with another phone call.
       </Panel>
-      <Panel label="Unreliable records" title="&ldquo;We update records at the end of the day.&rdquo;">
-        Information was copied between channels or filled in later, so there was no honest
-        way to measure response time.
+      <Panel label="Unreliable records" title="Ride details were spread across chats, calls and memory.">
+        There was no proper handover step, so records were missing or wrong, and reports
+        could not be trusted.
       </Panel>
     </div>
   </Spread>
@@ -162,7 +170,7 @@ const ReframeSlide = () => (
       From redesigning screens to <Em>redesigning how ambulances get sent.</Em>
     </H>
     <Body>
-      The way of working did not fit how people act in an emergency. Nine hand-offs were
+      The way of working did not fit how people act in an emergency. Every hand-off was
       held together by phone calls between four groups who could not see what the others
       knew. Fixing the screens would have left every one of those hand-offs exactly where
       it was.
@@ -177,31 +185,32 @@ const DecisionSlide = () => (
   <Spread>
     <Chapter n="05" label="The decision" />
     <H>
-      Do not replace WhatsApp. <Em>Make it part of the product.</Em>
+      Do not replace WhatsApp. <Em>Give it structure.</Em>
     </H>
     <Body>
-      Moving hospitals off WhatsApp would have meant learning something new in the middle
-      of an emergency. So we stopped treating it as a workaround, and split the service into
-      two layers instead.
+      Moving admins off WhatsApp would have meant learning something new in the middle of an
+      emergency. So we kept it, and split it into clear chats: one for the driver, one for
+      the family, one for the hospital admin, and a read-only announcement group. Behind
+      them sits the hospital dashboard.
     </Body>
     <div className="mt-break grid max-w-4xl gap-4 md:grid-cols-2">
-      <Panel label="The part people see" title="WhatsApp and text messages">
-        Where hospitals, drivers and families already are. Nobody has to learn anything new
-        in an emergency.
+      <Panel label="The part people see" title="Structured WhatsApp chats">
+        Automatic updates for every step, sent to the driver, the family, the hospital admin
+        and the announcement group. No more typing the same news by hand.
       </Panel>
-      <Panel label="The part behind it" title="The Merry Health platform" strong>
-        Neat ride records, rules for choosing a driver, one shared ride record, live
-        operations, handling problems, reports and checks.
+      <Panel label="The part behind it" title="The hospital dashboard" strong>
+        The full record of every ride, from adding it to the handover and the reports. And the
+        backup when WhatsApp fails: the admin adds the ride here instead.
       </Panel>
     </div>
     <ShotRow>
       <Shot
         src={whatsappHospital}
-        alt="The hospital group chat in WhatsApp, showing the case number and each step of the ride posted as an update."
+        alt="The read-only announcement group for Felix Hospital in WhatsApp, showing case MH-REQ-1342 and each step of the ride posted as an update."
         width={519}
         height={1781}
         maxH="max-h-[24vh]"
-        caption="Hospital. Every step in one chat, under one case number"
+        caption="Announcement group. Read-only, so everyone gets the same updates"
       />
       <Shot
         src={whatsappDriver}
@@ -222,23 +231,24 @@ const SystemSlide = () => (
   <Spread>
     <Chapter n="06" label="The system" />
     <H>
-      One ride. <Em>One set of steps that updates itself.</Em>
+      One ride. <Em>One Case ID that every channel shares.</Em>
     </H>
     <Body>
-      Everyone works from the same ride record, and everything they do is saved to it. A
-      driver saying yes, an ambulance leaving, an arrival: each one moves the ride to its
-      next step and sends the update to whoever needs it, in the app they already use.
+      Every ride gets its own Case ID, like MH-REQ-1342. WhatsApp, SMS and the dashboard all
+      use it, so everyone sees the same ride. A driver saying yes, an ambulance leaving, an
+      arrival: each one moves the ride to its next step and sends the update to whoever needs
+      it.
     </Body>
     <Shot
       className="mt-10 max-w-5xl"
       src={proposedWorkflow}
-      alt="The proposed system: twelve numbered steps across the hospital admin, WhatsApp, the operations team, the driver and the patient’s family, with the data, the technology and the backup plan for each step."
+      alt="The proposed system: numbered steps across the hospital admin, WhatsApp, the Merry Health team, the driver and the patient’s family, with the data, the technology and the backup plan for each step."
       width={1600}
       height={564}
       maxH="max-h-[30vh]"
-      caption="Twelve steps across five groups, each with its data, its technology and its backup plan"
+      caption="Every step, with its data, its technology and its backup plan"
     />
-    <ActorRow note="One change, four people see it, no phone call needed" />
+    <ActorRow note="One change, four groups see it, no phone call needed" />
   </Spread>
 );
 
@@ -249,11 +259,28 @@ const FailureSlide = () => (
       Emergency systems need <Em>backup plans, not perfect conditions.</Em>
     </H>
     <Body>
-      A system for sending ambulances that only works when everything goes right is not
-      good enough. So we defined recovery paths and responsibilities for key failure
-      scenarios, such as no driver saying yes, an ambulance breaking down or a message
-      never arriving, instead of an error message and a shrug.
+      If WhatsApp fails, the admin adds the ride on the dashboard. A driver without a
+      smartphone gets the job by SMS and replies 1 to accept or 2 to reject. A family without
+      WhatsApp gets an SMS, plus an automated call (IVR) in their own regional language.
     </Body>
+    <ShotRow>
+      <Shot
+        src={deckDriverSms}
+        alt="The driver’s WhatsApp ride card with Accept and Decline buttons, next to the SMS version for drivers without a smartphone, ending with Send 1 to accept and 2 to reject."
+        width={1013}
+        height={1432}
+        maxH="max-h-[40vh]"
+        caption="Driver without a smartphone. Reply 1 to accept, 2 to reject"
+      />
+      <Shot
+        src={deckFamilyFallback}
+        alt="The family’s WhatsApp chat with driver details, arrival time and a tracking link, next to the SMS version and an automated IVR call in the regional language."
+        width={1125}
+        height={1395}
+        maxH="max-h-[40vh]"
+        caption="Family without WhatsApp. An SMS, plus a call in their own language"
+      />
+    </ShotRow>
     <Voice>
       What happens when things go wrong is the real product. When everything goes right is the easy half.
     </Voice>
@@ -267,68 +294,101 @@ const ProductSlide = () => (
       From keeping records <Em>to running things live.</Em>
     </H>
     <Body>
-      The old dashboard reported on rides that were already over. The new one is built
-      around the four questions an operations team needs answered the moment they look at
-      it.
+      The hospital dashboard is made for the hospital admin. It has 7 parts: home, add ride,
+      ride list, ride details, handover, track ambulance and reports. Every part also works on
+      a phone. Add Ride asks only for the essentials, so a ride can be sent fast.
     </Body>
-    <div className="mt-break grid max-w-4xl gap-4 sm:grid-cols-2 md:grid-cols-4">
-      {[
-        ['What is happening now', 'Rides on the move, by step'],
-        ['What needs attention', 'Problems shown up front, not hidden'],
-        ['Where are the ambulances', 'Live location and arrival time'],
-        ['What changed', 'A live list of everything that happens'],
-      ].map(([title, body]) => (
-        <Panel key={title} label={title} >
-          {body}
-        </Panel>
-      ))}
-    </div>
-
     <Shot
       className="mt-10 max-w-4xl"
       src={hifiDashboard}
-      alt="The new operations dashboard: cards for money earned and average response time, rides happening now, a live map and quick add tiles, a quick actions panel, and a ride list with tabs for all, finished and waiting."
-      width={1371}
-      height={1371}
-      maxH="max-h-[32vh]"
-      caption="The four questions, answered on one screen"
+      alt="The new hospital dashboard: four key numbers across the top, a map of rides coming to the hospital next to a live feed of ride updates, and a ride list with tabs for all, ongoing, pending and completed rides."
+      width={5000}
+      height={3992}
+      maxH="max-h-[30vh]"
+      caption="Home. What is moving now, and what needs attention"
     />
+    <div className="mt-6 grid max-w-4xl items-start gap-4 sm:grid-cols-[2fr_1fr]">
+      <Shot
+        src={deckAddRide}
+        alt="The Add Ride screen: pickup and drop set on a map, the patient contact, a request type list, tags for ambulance type and facilities, and a folded optional section showing what is missing."
+        width={1395}
+        height={987}
+        maxH="max-h-[24vh]"
+        caption="Add Ride. Only the essentials up front"
+      />
+      <Shot
+        src={deckMobile}
+        alt="The hospital dashboard on a phone, with an Add Ride button, key numbers for the week and a map of rides coming to the hospital."
+        width={962}
+        height={1520}
+        maxH="max-h-[24vh]"
+        caption="On a phone, too"
+      />
+    </div>
+  </Spread>
+);
+
+const HandoverSlide = () => (
+  <Spread>
+    <Chapter n="09" label="Tracking and handover" />
+    <H>
+      Watch the ride live. <Em>Close it only after a checked handover.</Em>
+    </H>
+    <Body>
+      Ride details show the live map, the driver, the arrival time and every step so far, so
+      nobody has to call to ask. When the ambulance reaches the hospital, three checks must be
+      ticked. Only then can the admin press Mark Handover and close the ride.
+    </Body>
+    <ShotRow>
+      <Shot
+        src={deckRideDetails}
+        alt="The ride details screen: Call driver and Escalate buttons, a status row with the patient’s condition, a live map, the trip timeline, and an alert that the arrival time went up."
+        width={1353}
+        height={888}
+        maxH="max-h-[40vh]"
+        caption="Live tracking. The map, the timeline, and help one tap away"
+      />
+      <Shot
+        src={deckHandover}
+        alt="The handover dialog: arrival details, three required checks for hospital staff confirmation, driver handover completed and admin verification, and the Mark Handover button."
+        width={925}
+        height={1470}
+        maxH="max-h-[40vh]"
+        caption="Three required checks, then Mark Handover"
+      />
+    </ShotRow>
+    <Voice>A ride cannot close half-done, so every record ends complete.</Voice>
   </Spread>
 );
 
 const OutcomeSlide = () => (
   <Spread>
-    <Chapter n="09" label="What it is meant to change" />
+    <Chapter n="10" label="What it is meant to change" />
     <H>
       Goals, <Em>clearly called goals.</Em>
     </H>
     <Body>
-      Nothing here was launched or measured, so none of this is a result. These are the
-      numbers the system was designed to change, and how each one would be measured if it
-      were built.
+      We delivered the design to Merry Health, but it was never launched or measured, so none
+      of this is a result. These are the three things it was designed to change.
     </Body>
     <div className="mt-break grid max-w-5xl gap-4 md:grid-cols-3">
-      <Panel label="Goal" title="Under 3 min" strong>
-        From request to a driver saying yes, compared with the 8 to 10 minutes we saw in the
-        old way. The system records this time by itself.
+      <Panel label="Goal" title="Faster emergency handling" strong>
+        Designed so admins can add a ride in seconds, even when WhatsApp fails.
       </Panel>
-      <Panel label="Goal" title="Fewer phone calls">
-        Automatic “got it” messages and step-by-step updates remove the reason for most of them.
+      <Panel label="Goal" title="More rides completed">
+        Designed so live tracking, alerts and a checked handover mean fewer rides drop off.
       </Panel>
-      <Panel label="Goal" title="Records that fill themselves in">
-        Saved as the work happens, instead of typed in at the end of the day.
+      <Panel label="Goal" title="Accurate records and reports">
+        Designed so every ride has one complete record, and hospitals can download accurate
+        reports any time.
       </Panel>
     </div>
-    <p className="label mt-8 text-ink-500">
-      What we saw: 8 to 10 minutes to find a driver, in the old way of working. Everything else on this
-      slide is a goal.
-    </p>
   </Spread>
 );
 
 const ReflectionSlide = () => (
   <Spread>
-    <Chapter n="10" label="What it demonstrates" />
+    <Chapter n="11" label="What it demonstrates" />
     <H>
       The screens were <Em>only one part of it.</Em>
     </H>
@@ -352,18 +412,19 @@ const ReflectionSlide = () => (
 
 const slides: DeckSlide[] = [
   // Opening
-  { id: 'cover', chapter: 'Opening', title: 'Four groups, one shared ride record', render: CoverSlide },
+  { id: 'cover', chapter: 'Opening', title: 'The hospital admin’s experience, redesigned', render: CoverSlide },
   // The situation
-  { id: 'context', chapter: 'The situation', title: 'A university project with the company', render: ContextSlide },
+  { id: 'context', chapter: 'The situation', title: 'An apprenticeship project for a client', render: ContextSlide },
   { id: 'situation', chapter: 'The situation', title: 'The real work happened outside the dashboard', render: SituationSlide },
   { id: 'research', chapter: 'The situation', title: 'Four problems, none of them about screens', render: ResearchSlide },
   // The reframe
   { id: 'reframe', chapter: 'A new view', title: 'From screens to the whole system', render: ReframeSlide },
-  { id: 'decision', chapter: 'A new view', title: 'Do not replace WhatsApp, build on it', render: DecisionSlide },
+  { id: 'decision', chapter: 'A new view', title: 'Do not replace WhatsApp, give it structure', render: DecisionSlide },
   // The system
-  { id: 'system', chapter: 'The system', title: 'One ride, one set of steps', render: SystemSlide },
+  { id: 'system', chapter: 'The system', title: 'One ride, one Case ID', render: SystemSlide },
   { id: 'failure', chapter: 'The system', title: 'Emergency systems need backup plans', render: FailureSlide },
-  { id: 'product', chapter: 'The system', title: 'From keeping records to running things live', render: ProductSlide },
+  { id: 'product', chapter: 'The system', title: 'The hospital dashboard, in 7 parts', render: ProductSlide },
+  { id: 'handover', chapter: 'The system', title: 'Live tracking and a checked handover', render: HandoverSlide },
   // What it changes
   { id: 'outcome', chapter: 'What it changes', title: 'Goals, clearly called goals', render: OutcomeSlide },
   { id: 'reflection', chapter: 'What it changes', title: 'The screens were only one part of it', render: ReflectionSlide },
@@ -372,12 +433,12 @@ const slides: DeckSlide[] = [
 const MerryStory = () => {
   usePageMeta(
     'Merry Health · The story in slides',
-    'A redesign of how emergency ambulances get sent: someone in charge of every hand-off, the ride visible as it happens, and WhatsApp connected to one shared ride record. A proposal, never launched.'
+    'Redesigning the hospital admin’s experience for real-time ambulance coordination: structured WhatsApp, one Case ID per ride, and the hospital dashboard as the full record. Delivered to the client, never launched.'
   );
 
   return (
     <Deck
-      label="Merry Health · One shared ride record"
+      label="Merry Health · Real-time ambulance coordination"
       exitHref="/case-study/merry-health"
       slides={slides}
     />

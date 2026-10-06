@@ -75,7 +75,9 @@ const Cta = ({
 const practice = ['Workflow design', 'Systems design', 'AI system design', 'Interaction design'];
 
 /*
- * Above the fold on every screen. The section is one viewport tall, and the
+ * Above the fold on every screen. The section is one viewport tall, capped
+ * at 46rem so a big monitor does not leave a band of empty space above the
+ * text (the first projects peek in below instead), and the
  * type and the gaps between lines scale with the viewport's height as well
  * as its width, so a short laptop screen or a phone held sideways shrinks
  * the hero rather than pushing the CTAs and the tags below the fold.
@@ -87,7 +89,7 @@ const gap = (min: number, vh: number, max: number) => ({
 const Hero = () => (
   <section
     id="hero"
-    className="hero-field relative flex min-h-[100svh] flex-col px-gutter pb-[clamp(1.25rem,4vh,3rem)] pt-[clamp(4.5rem,11vh,8.5rem)]"
+    className="hero-field relative flex min-h-[min(100svh,46rem)] flex-col px-gutter pb-[clamp(1.25rem,4vh,3rem)] pt-[clamp(4.5rem,11vh,8.5rem)]"
   >
     <div className="relative mx-auto flex max-w-4xl flex-1 flex-col items-center justify-center text-center">
       <p className="reveal label flex items-center gap-2.5 text-ink-500" data-shown="true">

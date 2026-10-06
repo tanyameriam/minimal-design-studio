@@ -179,6 +179,15 @@ const EducaitorsCaseStudy = () => {
         {/* ============================== HERO ============================== */}
         <section id="top" className="border-t border-border">
           <div className="mx-auto w-full max-w-[var(--shell)] px-gutter py-section">
+            {/* Said up front, not at the foot of the page: the reader should know
+                before reading that this study is still being written. */}
+            <p className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-accent/40 bg-accent/10 px-4 py-2 text-sm text-foreground">
+              <span aria-hidden="true" className="relative flex h-2 w-2">
+                <span className="hero-ping absolute inline-flex h-full w-full rounded-full bg-accent" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+              </span>
+              Work in progress. The full case study is coming soon.
+            </p>
             {/*
               Same shape as the BrynQ opening: the argument on the left, and
               the result in one panel on the right with the facts listed
@@ -313,9 +322,18 @@ const EducaitorsCaseStudy = () => {
             )}
 
             {!showDrafts && (
-              <p className="label mt-stage text-ink-500">
-                Work in progress &middot; The full case study is coming soon
-              </p>
+              <div className="mt-stage rounded-[var(--radius)] border border-accent/40 bg-accent/10 p-6 md:p-8">
+                <p className="text-xl text-foreground md:text-2xl">
+                  This case study is still being written.
+                </p>
+                <p className="mt-2 text-base text-ink-600">
+                  The research, the grading flow and what we learnt are coming soon. Until then, the
+                  prototype shows how it works.
+                </p>
+                <PrototypeLink href={PROTOTYPE_URL} className="mt-5 text-lg">
+                  Try the prototype
+                </PrototypeLink>
+              </div>
             )}
           </div>
         </section>

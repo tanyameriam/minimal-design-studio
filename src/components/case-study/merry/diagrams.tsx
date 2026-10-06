@@ -58,7 +58,7 @@ export const Plate = ({
           type="button"
           onClick={() => onOpen(src, alt)}
           aria-label={`Enlarge: ${alt}`}
-          className="block w-full cursor-zoom-in overflow-hidden border border-border bg-card"
+          className="block w-full cursor-zoom-in overflow-hidden rounded-[var(--radius)] border border-border bg-card shadow-xs"
         >
           <FadeInImage
             src={src}
@@ -69,7 +69,7 @@ export const Plate = ({
           />
         </button>
       ) : (
-        <div className="overflow-hidden border border-border bg-card">
+        <div className="overflow-hidden rounded-[var(--radius)] border border-border bg-card shadow-xs">
           <FadeInImage
             src={src}
             alt={alt}
@@ -253,8 +253,8 @@ export const ActorHub = ({
 }) => (
   <div className="mt-break grid gap-px border border-border bg-border md:grid-cols-3 md:grid-rows-2">
     <div className="order-first bg-background p-6 md:order-none md:col-start-2 md:row-span-2 md:row-start-1 md:flex md:flex-col md:justify-center md:p-8">
-      <p className="label text-ink-500">The backbone</p>
-      <p className="mt-5 text-2xl leading-none md:text-[2rem]">{hub}</p>
+      <p className="label text-ink-500">The shared record</p>
+      <p className="mt-5 text-2xl leading-tight md:text-[2rem]">{hub}</p>
       <p className="mt-4 text-sm leading-[1.5] text-ink-600 md:text-base">{hubNote}</p>
     </div>
 
@@ -461,14 +461,14 @@ export const EdgeGrid = ({
 
 /**
  * The four structural failures, set as a stack of full-width rows rather
- * than a card grid. The quote is the evidence and gets the display size,
- * because on this project the sharpest research finding was somebody
- * saying plainly why they were not using the product.
+ * than a card grid. The finding is the gap named in the client deck and
+ * gets the display size. It is a plain statement, not a quote, so it is
+ * not set in quotation marks.
  */
 export const Failures = ({
   items,
 }: {
-  items: { title: string; body: string; quote: string }[];
+  items: { title: string; body: string; finding: string }[];
 }) => (
   <ol className="mt-break divide-y divide-border border-y border-border">
     {items.map((item, i) => (
@@ -485,9 +485,7 @@ export const Failures = ({
           </p>
         </div>
         <blockquote className="border-l border-foreground pl-5 md:pl-6">
-          <p className="text-xl leading-[1.2] md:text-[1.75rem]">
-            &ldquo;{item.quote}&rdquo;
-          </p>
+          <p className="text-xl leading-[1.2] md:text-[1.75rem]">{item.finding}</p>
         </blockquote>
       </li>
     ))}

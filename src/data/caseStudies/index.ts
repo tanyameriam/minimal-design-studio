@@ -21,8 +21,8 @@ export * from './types';
  */
 export const caseStudyList: CaseStudy[] = [
   brynq,
-  layrrrd,
   merryHealth,
+  layrrrd,
   ...(showDrafts ? [curateus] : []),
   educaitors,
   // Concept work sits at the end, in the same order as the home page.

@@ -62,7 +62,9 @@ import templatePicker from '@/assets/brynq/template-picker.png';
  *
  * Figures are standardised with the long page: ~6 months of custom
  * implementation, observed; ~2 weeks under the template model;
- * ~92% shorter setup. Shown as plain numbers, without estimate labels.
+ * ~92% less time to set up; 2× easier to set up an interface. Shown as
+ * plain numbers, without estimate labels. The 2× is not attributed to
+ * anyone, and the setup time is never restated in weeks-before form.
  */
 
 /** The transition, in order. Each milestone deepens on the long case study. */
@@ -74,7 +76,7 @@ const milestones = [
   { year: '', label: 'An AI chat for setting up connections launches, and gets tested with customers.' },
   { year: '', label: 'Setting up a connection is redesigned around templates.' },
   { year: '', label: 'The AI moves behind the scenes: it now helps developers build templates faster.' },
-  { year: 'Today', label: 'Six months of setup becomes about two weeks with templates.' },
+  { year: 'Today', label: 'With templates, about six months of setup can become about two weeks.' },
 ];
 
 const CoverSlide = () => (
@@ -91,15 +93,16 @@ const CoverSlide = () => (
     </h1>
 
     <p className="mt-8 max-w-2xl text-base leading-[1.55] text-ink-600 md:text-lg">
-      BrynQ connects HR and payroll systems. When I joined, every connection was built by
-      hand, and customers never touched the product. This is the story of how that changed.
+      BrynQ connects HR and payroll systems. Each connection took months to build, so few got
+      built. Developers were overloaded and sales slowed. Asked to redesign the screens, I
+      mapped the whole process, found where it broke, and redesigned the system.
     </p>
 
     <div className="mt-12 grid max-w-2xl gap-x-12 gap-y-8 sm:grid-cols-2">
       <div>
-        <p className="text-[3rem] leading-none md:text-[3.75rem]">6 mo</p>
+        <p className="text-[3rem] leading-none md:text-[3.75rem]">~6 mo</p>
         <p className="mt-3 text-sm leading-snug text-ink-600 md:text-base">
-          per connection when I joined, three months of it before any code
+          to set up a standard connection when I joined
         </p>
       </div>
       <div>
@@ -127,10 +130,27 @@ const ProjectsSlide = () => (
       BrynQ is one big change told through <Em>four projects.</Em>
     </H>
     <Body>
-      Everything from here happened after the product got its new name. The slides tell
-      the projects in story order, the same order as the detailed study: the experiment
-      came before the templates. Each one is told in full in the detailed study.
+      I started by making the product easier to use. Then I moved on to bigger questions,
+      each one leading to the next. The slides follow the same order as the detailed study.
     </Body>
+    <Words>
+      <ol className="text-base leading-[1.55] text-foreground md:text-lg">
+        {[
+          'How do connections get made?',
+          'How can the team’s know-how become ready-made templates?',
+          'How can customers do more on their own, with real people there when they want help?',
+        ].map((question, i) => (
+          <li key={question}>
+            {i > 0 && (
+              <span aria-hidden className="block py-1 pl-1 text-ink-400">
+                &darr;
+              </span>
+            )}
+            {question}
+          </li>
+        ))}
+      </ol>
+    </Words>
     <div className="mt-10 grid max-w-4xl gap-4 sm:grid-cols-2 md:grid-cols-4">
       <Panel label="Project 01" title="Platform redesign">
         A new structure, a clearer order, a new brand.
@@ -181,8 +201,8 @@ const ArrivalSlide = () => (
       />
     </div>
     <Voice>
-      The job was a redesign. My first task was understanding why nobody used the thing I
-      was redesigning.
+      I was asked to redesign the screens. My first task was understanding why nobody used
+      the thing I was redesigning.
     </Voice>
   </Spread>
 );
@@ -281,13 +301,13 @@ const CostSlide = () => (
     </H>
     <Body>
       After a sale, developers and the project manager got on calls to collect technical
-      details, passwords and which fields and values match. About three months of back and
-      forth before any code was written, then about three more to build it.
+      details, passwords and which fields and values match. Most of the time went on this
+      back and forth, before any code was written. Then the developers built it by hand.
     </Body>
     <div className="mt-10 grid max-w-4xl gap-4 md:grid-cols-2">
       <div className="panel p-5 md:p-6">
         <p className="label text-ink-500">Before any code</p>
-        <p className="mt-3 text-[2.5rem] leading-none md:text-[3rem]">~3 months</p>
+        <p className="mt-3 text-[2.5rem] leading-none md:text-[3rem]">Most of it</p>
         <MiniFlow
           steps={[
             'Calls after the sale',
@@ -299,7 +319,7 @@ const CostSlide = () => (
       </div>
       <div className="panel border-l-4 border-l-foreground p-5 md:p-6">
         <p className="label text-ink-500">Then the build</p>
-        <p className="mt-3 text-[2.5rem] leading-none md:text-[3rem]">~3 months</p>
+        <p className="mt-3 text-[2.5rem] leading-none md:text-[3rem]">The rest</p>
         <MiniFlow
           steps={[
             'Built by hand by developers',
@@ -317,9 +337,11 @@ const CostSlide = () => (
       width={2516}
       height={1114}
       maxH="max-h-[22vh]"
-      caption="What three months of calls produced: one spreadsheet, per customer, per connection"
+      caption="What months of calls produced: one spreadsheet, per customer, per connection"
     />
-    <Voice>Every new customer cost months of developer time. That cannot keep growing.</Voice>
+    <Voice>
+      So few connections got built. Developers were overloaded, and sales slowed.
+    </Voice>
   </Spread>
 );
 
@@ -637,7 +659,7 @@ const TemplateResultSlide = () => (
       The repeated setup happens once, in the template. Customers add only what is theirs.
     </p>
     <p className="mt-5 max-w-2xl text-sm leading-relaxed text-ink-500">
-      The project manager called setting up with templates twice as easy.
+      And setting up an interface became 2× easier.
     </p>
     <Shot
       className="mt-10 max-w-4xl"
@@ -659,15 +681,17 @@ const ScaleSlide = () => (
   <Spread>
     <Chapter n="05" label="Grow · What could change for the business" />
     <H>
-      Setup could drop from about 26 weeks <Em>to about 2 weeks.</Em>
+      Setting up a connection could take <Em>about 92% less time.</Em>
     </H>
     <Body>
-      Shorter setup does not by itself mean the team can take on more customers: that also
+      Faster setup means developers spend less time on each customer, so more connections can
+      get built. It does not by itself mean the team can take on more customers: that also
       depends on staffing, how many projects run at once, and demand.
     </Body>
 
-    <div className="mt-12 max-w-sm border-t border-border pt-10">
-      <Metric figure="~92%" caption="Less setup time for a standard connection" />
+    <div className="mt-12 grid max-w-2xl gap-10 border-t border-border pt-10 sm:grid-cols-2">
+      <Metric figure="~92%" caption="Less time to set up" />
+      <Metric figure="2× easier" caption="To set up an interface" />
     </div>
   </Spread>
 );
