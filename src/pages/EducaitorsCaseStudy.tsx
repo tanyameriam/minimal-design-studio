@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import { StudyOpening } from '@/components/case-study/slides/StudyOpening';
 import Contact from '@/components/Contact';
+import { ReadNext } from '@/components/case-study/ReadNext';
 import Lightbox from '@/components/case-study/Lightbox';
 import { useLightbox } from '@/hooks/use-lightbox';
 import { type Storyline } from '@/components/story/Storyline';
@@ -31,7 +31,6 @@ import {
   SignalMap,
   SmallQuote,
 } from '@/components/case-study/educaitors/diagrams';
-import { adjacentCaseStudies } from '@/data/caseStudies';
 import { usePageMeta } from '@/hooks/use-page-meta';
 
 import home from '@/assets/educaitors-home.jpg';
@@ -155,7 +154,6 @@ const PROTOTYPE_URL = 'https://wed-one-livid.vercel.app/dashboard';
 
 const EducaitorsCaseStudy = () => {
   const { figure, open, close } = useLightbox();
-  const { prev, next } = adjacentCaseStudies('educaitors');
 
   usePageMeta(
     'EducAItors',
@@ -1030,21 +1028,9 @@ const EducaitorsCaseStudy = () => {
             <PrototypeLink href={PROTOTYPE_URL} className="text-lg">
               Try the interactive prototype
             </PrototypeLink>
-            <Link to="/#work" className="rule-link text-lg text-ink-600">
-              Back to the work <span aria-hidden="true">&rarr;</span>
-            </Link>
-            {prev && (
-              <Link to={`/case-study/${prev.slug}`} className="rule-link text-lg text-ink-600">
-                {prev.title} <span aria-hidden="true">&rarr;</span>
-              </Link>
-            )}
-            {next && (
-              <Link to={`/case-study/${next.slug}`} className="rule-link text-lg text-ink-600">
-                {next.title} <span aria-hidden="true">&rarr;</span>
-              </Link>
-            )}
           </nav>
         </Slide>
+        <ReadNext slug="educaitors" />
       </main>
 
       <Contact />

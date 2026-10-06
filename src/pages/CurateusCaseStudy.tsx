@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import { StudyOpening } from '@/components/case-study/slides/StudyOpening';
 import Contact from '@/components/Contact';
+import { ReadNext } from '@/components/case-study/ReadNext';
 import { type Storyline } from '@/components/story/Storyline';
 import { ReadingNav } from '@/design/ReadingNav';
 import {
@@ -972,16 +972,8 @@ const CurateusCaseStudy = () => {
           </div>
 
           <PluginComposition className="mt-stage w-full max-w-4xl" />
-
-          <div className="mt-14 flex flex-wrap gap-x-8 gap-y-3">
-            <Link to="/#work" className="rule-link text-lg">
-              Back to the work <span aria-hidden="true">&rarr;</span>
-            </Link>
-            <Link to="/case-study/layrrrd" className="rule-link text-lg text-ink-600">
-              Layrrrd, five years later <span aria-hidden="true">&rarr;</span>
-            </Link>
-          </div>
         </Slide>
+        <ReadNext slug="curateus" />
       </main>
 
       <Contact />

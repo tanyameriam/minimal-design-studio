@@ -16,6 +16,7 @@ import {
   RoleSplit,
 } from '@/components/case-study/slides/DataPanels';
 import Contact from '@/components/Contact';
+import { ReadNext } from '@/components/case-study/ReadNext';
 import FadeInImage from '@/components/FadeInImage';
 import { type Storyline } from '@/components/story/Storyline';
 import { ReadingNav } from '@/design/ReadingNav';
@@ -1716,6 +1717,7 @@ const BrynqCaseStudy = () => {
           </div>
         </Slide>
 
+        <ReadNext slug="brynq" />
       </main>
 
       <Lightbox figure={figure} onClose={close} />

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import { StudyOpening } from '@/components/case-study/slides/StudyOpening';
 import Contact from '@/components/Contact';
+import { ReadNext } from '@/components/case-study/ReadNext';
 import { RudolfPaw } from '@/components/case-study/layrrrd/Rudolf';
 import { type Storyline } from '@/components/story/Storyline';
 import { ReadingNav } from '@/design/ReadingNav';
@@ -907,11 +908,9 @@ const LayrrrdCaseStudy = () => {
             <Link to="/case-study/layrrrd/story" className="rule-link text-lg">
               The same story as slides <span aria-hidden="true">&rarr;</span>
             </Link>
-            <Link to="/#work" className="rule-link text-lg text-ink-600">
-              Back to the work <span aria-hidden="true">&rarr;</span>
-            </Link>
           </div>
         </Slide>
+        <ReadNext slug="layrrrd" />
       </main>
 
       <Contact />

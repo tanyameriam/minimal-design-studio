@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import { StudyOpening } from '@/components/case-study/slides/StudyOpening';
 import Contact from '@/components/Contact';
+import { ReadNext } from '@/components/case-study/ReadNext';
 import Lightbox from '@/components/case-study/Lightbox';
 import { useLightbox } from '@/hooks/use-lightbox';
 import { type Storyline } from '@/components/story/Storyline';
@@ -40,7 +40,6 @@ import {
   Targets,
 } from '@/components/case-study/merry/diagrams';
 import HeroComposition from '@/components/case-study/merry/HeroComposition';
-import { adjacentCaseStudies } from '@/data/caseStudies';
 import { usePageMeta } from '@/hooks/use-page-meta';
 
 import legacyDashboard from '@/assets/merry-health-dashboard.png';
@@ -169,7 +168,6 @@ const PROTOTYPE_URL: string = '';
 
 const MerryHealthCaseStudy = () => {
   const { figure, open, close } = useLightbox();
-  const { prev, next } = adjacentCaseStudies('merry-health');
 
   usePageMeta(
     'Merry Health',
@@ -1331,27 +1329,7 @@ const MerryHealthCaseStudy = () => {
             would be to try it for real and see which ideas hold.
           </Footnote>
         </Slide>
-
-        <Slide id="closing" height="auto">
-          <nav
-            aria-label="Other projects"
-            className="flex flex-wrap gap-x-10 gap-y-4"
-          >
-            <Link to="/#work" className="rule-link text-lg">
-              Back to the work <span aria-hidden="true">&rarr;</span>
-            </Link>
-            {prev && (
-              <Link to={`/case-study/${prev.slug}`} className="rule-link text-lg text-ink-600">
-                {prev.title} <span aria-hidden="true">&rarr;</span>
-              </Link>
-            )}
-            {next && (
-              <Link to={`/case-study/${next.slug}`} className="rule-link text-lg text-ink-600">
-                {next.title} <span aria-hidden="true">&rarr;</span>
-              </Link>
-            )}
-          </nav>
-        </Slide>
+        <ReadNext slug="merry-health" />
       </main>
 
       <Contact />

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Contact from '@/components/Contact';
+import { ReadNext } from '@/components/case-study/ReadNext';
 import { ReadingNav, sectionsToChapters } from '@/design/ReadingNav';
 import CaseStudyBody from '@/components/case-study/CaseStudyBody';
 import CaseStudyHero from '@/components/case-study/CaseStudyHero';
@@ -147,53 +148,9 @@ const CaseStudy = ({ slug: slugProp }: { slug?: string } = {}) => {
 
             <CaseStudyBody study={study} onOpenFigure={openFigure} />
 
-            {/* Prev / next. Headlines create a reason to keep reading. */}
-            {(prev || next) && (
-              <nav
-                aria-label="Other projects"
-                className="mt-16 flex justify-between gap-8 border-t border-border pt-8"
-              >
-                <div className="max-w-[45%]">
-                  {prev && (
-                    <Link
-                      to={`/case-study/${prev.slug}`}
-                      aria-keyshortcuts="ArrowLeft"
-                      className="group block"
-                    >
-                      <span className="label text-ink-500 mb-2 block">Previous</span>
-                      <span className="text-lg rule-link">{prev.title}</span>
-                      <span className="mt-2 block text-sm leading-snug text-ink-500 line-clamp-2">
-                        {prev.headline}
-                      </span>
-                    </Link>
-                  )}
-                </div>
-                <span
-                  aria-hidden="true"
-                  className="label hidden self-center text-ink-500 md:block"
-                  title="Navigate with the arrow keys"
-                >
-                  &larr; &rarr;
-                </span>
-                <div className="max-w-[45%] text-right">
-                  {next && (
-                    <Link
-                      to={`/case-study/${next.slug}`}
-                      aria-keyshortcuts="ArrowRight"
-                      className="group block"
-                    >
-                      <span className="label text-ink-500 mb-2 block">Next project</span>
-                      <span className="text-lg rule-link">{next.title}</span>
-                      <span className="mt-2 block text-sm leading-snug text-ink-500 line-clamp-2">
-                        {next.headline}
-                      </span>
-                    </Link>
-                  )}
-                </div>
-              </nav>
-            )}
           </div>
         </article>
+        {study && <ReadNext slug={study.slug} />}
       </main>
 
       <Contact />
