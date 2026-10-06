@@ -306,21 +306,37 @@ const BrynqCaseStudy = () => {
                   </>
                 }
                 takeaways={{
-                  problem:
-                    'Connecting two systems needed a developer and a project manager, and a standard connection took about six months.',
-                  did: 'I was asked to make the screens simpler. Instead, I designed the template selection and guided setup experience.',
-                  outcome:
-                    'With templates, a standard connection takes about two weeks.',
+                  problem: 'A standard connection took about six months and needed a developer.',
+                  did: 'Asked to simplify screens, I designed templates and guided setup instead.',
+                  outcome: 'A standard connection now takes about two weeks.',
                 }}
               />
 
               <p className="mt-8 max-w-2xl text-base leading-[1.55] text-ink-600 md:text-lg">
                 When I joined BrynQ, customers still needed developers and project managers to
-                connect their systems for them. I started by making the product easier to use. Then
-                I moved on to bigger questions: how connections get made, how the team’s know-how
-                could become ready-made templates, and how customers could do more on their own
-                while still getting help from real people when they wanted it.
+                connect their systems for them. I started by making the product easier to use.
               </p>
+
+              {/* The questions are a progression, so each one leads into the next with an arrow. */}
+              <p className="mt-5 max-w-2xl text-base leading-[1.55] text-ink-600 md:text-lg">
+                Then I moved on to bigger questions:
+              </p>
+              <ol className="mt-3 max-w-2xl text-base leading-[1.55] text-foreground md:text-lg">
+                {[
+                  'How do connections get made?',
+                  'How can the team’s know-how become ready-made templates?',
+                  'How can customers do more on their own, with real people there when they want help?',
+                ].map((question, i) => (
+                  <li key={question}>
+                    {i > 0 && (
+                      <span aria-hidden className="block py-1 pl-1 text-ink-400">
+                        &darr;
+                      </span>
+                    )}
+                    {question}
+                  </li>
+                ))}
+              </ol>
 
               <dl className="mt-10 grid max-w-3xl gap-x-10 gap-y-5 border-t border-border pt-6 sm:grid-cols-[auto_1fr]">
                 <div>
@@ -375,12 +391,6 @@ const BrynqCaseStudy = () => {
                   </div>
                 ))}
               </dl>
-
-              <Footnote>
-                The first two numbers are setup time for a standard connection, going from about
-                26 weeks of one-off work to about 2 weeks with a template. The third is what the
-                project manager told us.
-              </Footnote>
             </div>
           </div>
           </div>

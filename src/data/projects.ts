@@ -222,7 +222,7 @@ const projectList: Project[] = [
     year: '2023 - 26',
     status: 'shipped',
     tier: 'flagship',
-    disciplines: ['Systems design', 'Service design', 'Business software'],
+    disciplines: ['Systems design', 'Service design'],
     context: 'Software that connects HR and payroll systems for businesses',
     role: 'Product designer, one part of an ongoing job',
     headline: 'Helping customers set up integrations with less developer support',
