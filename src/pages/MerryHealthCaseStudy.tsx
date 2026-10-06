@@ -224,12 +224,23 @@ const MerryHealthCaseStudy = () => {
                 <p className="text-foreground">That changed the project.</p>
               </div>
 
-              <dl className="mt-12 grid max-w-2xl gap-x-10 gap-y-7 border-t border-border pt-8 sm:grid-cols-2">
+              <CaseStudyEntry
+                storyHref="/case-study/merry-health/story"
+                scanMinutes={5}
+                readMinutes={15}
+              />
+            </div>
+
+            {/* The picture, with the project facts under it on the right. */}
+            <div className="flex flex-col justify-center">
+              <HeroComposition />
+
+              <dl className="mt-12 grid gap-x-10 gap-y-7 border-t border-border pt-8 sm:grid-cols-2">
                 <div className="sm:col-span-2">
                   <dt className="label mb-2.5 text-ink-500">Role</dt>
                   <dd className="text-base leading-snug md:text-lg">
-                    Research &middot; Seeing the whole system &middot; Design planning &middot;
-                    Designing how it works &middot; Screen design
+                    Research &middot; Systems thinking &middot; Design strategy &middot; Service
+                    design &middot; UI design
                   </dd>
                 </div>
                 <div>
@@ -255,16 +266,6 @@ const MerryHealthCaseStudy = () => {
                   </dd>
                 </div>
               </dl>
-
-              <CaseStudyEntry
-                storyHref="/case-study/merry-health/story"
-                scanMinutes={5}
-                readMinutes={15}
-              />
-            </div>
-
-            <div className="flex flex-col justify-center">
-              <HeroComposition />
             </div>
           </div>
         </section>
