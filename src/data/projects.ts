@@ -291,7 +291,7 @@ const projectList: Project[] = [
     // The pills on the case study, kept separate from `disciplines` so the
     // /work filters still find this under design systems while the page
     // itself only claims what Tanya led.
-    contributions: ['Brand-new product', 'Product strategy', 'UX research', 'Product validation'],
+    contributions: ['Product strategy', 'UX research', 'Product validation'],
     context: 'An app for saving things to read, tested in nine days',
     role: 'Team lead: I led the product, the design and the research',
     headline: 'From the first line of code to paying customers in nine days',

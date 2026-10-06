@@ -202,7 +202,6 @@ const Deck = ({ label, exitHref, slides }: DeckProps) => {
       ?.querySelector('[data-current]')
       ?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   }, [index]);
-  const upcoming = index < total - 1 ? slides[index + 1] : null;
 
   return (
     <div className="fixed inset-0 z-[70] flex items-center justify-center md:p-6 lg:p-8">
@@ -221,7 +220,8 @@ const Deck = ({ label, exitHref, slides }: DeckProps) => {
         aria-label={label}
         className="deck-pop relative flex h-full w-full flex-col overflow-hidden bg-background text-foreground md:h-full md:max-w-[100rem] md:rounded-[var(--radius)] md:border md:border-border md:shadow-2xl"
       >
-      {/* Deck chrome: title, storyline, fullscreen, exit. */}
+      {/* Deck chrome: title, fullscreen, exit. The way into the detailed
+          study is the call to action in the footer. */}
       <header className="flex shrink-0 items-center justify-between gap-4 border-b border-border px-5 py-3 md:px-8">
         <span className="label truncate text-ink-800">{label}</span>
         <div className="flex shrink-0 items-center gap-5">
@@ -232,15 +232,6 @@ const Deck = ({ label, exitHref, slides }: DeckProps) => {
           >
             {fullscreen ? 'Exit fullscreen' : 'Fullscreen'}
           </button>
-          {/* The way out of the short version and into the long one. It is
-              the only control here set in full contrast, and it is the only
-              one that survives a phone width: a reader who wants the depth
-              should never have to reach the last slide to find the door. */}
-          <Link to={exitHref} className="rule-link label text-foreground">
-            <span className="hidden sm:inline">Read the detailed study</span>
-            <span className="sm:hidden">Detailed study</span>{' '}
-            <span aria-hidden="true">&rarr;</span>
-          </Link>
           <button type="button" onClick={exit} aria-keyshortcuts="Escape" className="rule-link label text-ink-500">
             Close <span aria-hidden="true" className="hidden md:inline">· Esc</span>
           </button>
@@ -387,18 +378,27 @@ const Deck = ({ label, exitHref, slides }: DeckProps) => {
             </ol>
           </nav>
 
-          {!upcoming && (
-            <Link
-              to={exitHref}
-              className="rule-link label hidden shrink-0 text-foreground md:block"
-            >
-              Read the detailed study <span aria-hidden="true">&rarr;</span>
-            </Link>
-          )}
-
           <span className="label shrink-0 tabular-nums text-ink-500">
             {index + 1} / {total}
           </span>
+
+          {/* The way out of the short version and into the long one, on
+              every slide, bottom right, as the one filled button in the
+              deck: a reader who wants the depth should never have to reach
+              the last slide to find the door. */}
+          <Link
+            to={exitHref}
+            className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-foreground px-4 py-2.5 text-sm text-background transition-colors duration-300 hover:bg-foreground/90"
+          >
+            <span className="hidden sm:inline">Read the full study</span>
+            <span className="sm:hidden">Full study</span>
+            <span
+              aria-hidden="true"
+              className="transition-transform duration-500 ease-smooth group-hover:translate-x-1"
+            >
+              &rarr;
+            </span>
+          </Link>
         </div>
       </footer>
 
