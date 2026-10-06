@@ -8,11 +8,11 @@
   /*
    * The light palette. Declared once for three cases: the document when the
    * theme is light, an explicit `.light` island (the story decks, print
-   * views), and a `.theme-invert` region on a dark page.
+   * views). A `.theme-invert` region on a dark page no longer flips to this
+   * palette; see the softer lift after the dark palette below.
    */
   :root,
-  .light,
-  .dark .theme-invert {
+  .light {
     color-scheme: light;
 
     /*
@@ -164,6 +164,22 @@
     --shadow-lg: 0 12px 28px -8px hsl(var(--shadow-color) / 0.6);
     --shadow-xl: 0 20px 44px -12px hsl(var(--shadow-color) / 0.65);
     --shadow-2xl: 0 32px 64px -16px hsl(var(--shadow-color) / 0.7);
+  }
+
+  /*
+   * A `.theme-invert` region on a dark page. It used to flip to the full
+   * light palette, which put a glaring white band between chapters. It now
+   * stays in the dark palette and lifts the ground a few steps, so the
+   * section still reads as set apart without being heavy on the eye.
+   * ink-400 still clears 4.5:1 on this ground.
+   */
+  .dark .theme-invert {
+    --background: 240 5% 12%;
+    --card: 240 5% 16%;
+    --secondary: 240 4% 18%;
+    --muted: 240 4% 18%;
+    --border: 240 4% 22%;
+    --input: 240 4% 22%;
   }
 
   /*

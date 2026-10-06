@@ -19,12 +19,8 @@ import { Link } from 'react-router-dom';
  * are light rather than instructions. Under prefers-reduced-motion it stops
  * and stays as a static wash.
  *
- * A FACE. The portrait was on /about and nowhere a first-time visitor would
- * see it. It sits in the masthead now as a small round avatar beside the
- * greeting, the way a person introduces themselves, rather than as a large
- * tilting panel competing with the statement. Everything is centred: the
- * greeting with the face, the statement under it, then the sentence and the
- * two ways on.
+ * NO FACE. The small round portrait beside the greeting came out; the
+ * greeting stands on its own, centred above the statement.
  *
  * LESS TEXT. Four text blocks became two. The separate line about which
  * roles she is open to folded into the standfirst, where it was always the
@@ -91,22 +87,11 @@ const Hero = () => (
         Available for work
       </p>
 
-      {/* The greeting, with the face beside it as a small avatar. */}
       <p
-        className="reveal mt-6 flex items-center gap-3 text-lg text-foreground md:text-xl"
+        className="reveal mt-6 text-lg text-foreground md:text-xl"
         style={{ transitionDelay: '60ms' }}
         data-shown="true"
       >
-        <img
-          src="/tanya-portrait.jpg"
-          alt="Tanya smiling in round goggles and a dark jacket."
-          width={1200}
-          height={1600}
-          sizes="2.75rem"
-          fetchPriority="high"
-          decoding="async"
-          className="h-10 w-10 shrink-0 rounded-full object-cover object-[50%_25%] ring-1 ring-border grayscale-[0.85] contrast-[0.95] brightness-[0.95] md:h-11 md:w-11"
-        />
         Hi, I&rsquo;m Tanya
       </p>
 
