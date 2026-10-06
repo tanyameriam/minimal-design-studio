@@ -7,6 +7,8 @@ import { useReveal } from '@/hooks/use-reveal';
  * ruled rather than boxed, and the practices named on one line under them.
  * The facts went; the practices stay, as chips centred under the hero, so
  * the four names read at a glance and the first project moves up again.
+ * Set as tags, not buttons: no fill, a hairline, the small label type and
+ * muted ink, so nothing about them suggests they can be pressed.
  *
  * AI system design sits here on the strength of EducAItors, where the work
  * was deciding what the model rules on and where a person still has to.
@@ -22,7 +24,7 @@ const ProofRail = () => {
         {practice.map((label) => (
           <li
             key={label}
-            className="panel-chip rounded-full px-4 py-1.5 text-sm leading-snug text-ink-800 md:text-base"
+            className="label rounded-full border border-border px-3 py-1.5 text-ink-500"
           >
             {label}
           </li>
