@@ -843,3 +843,21 @@
     box-shadow: none !important;
   }
 }
+
+/* The thank-you emoji in the Dutch lesson box pops in. */
+@keyframes dutch-pop {
+  0% { transform: scale(0.3) rotate(-20deg); opacity: 0; }
+  60% { transform: scale(1.25) rotate(8deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0); }
+}
+.dutch-pop { animation: dutch-pop 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+@keyframes dutch-wiggle {
+  0%, 80%, 100% { transform: rotate(0); }
+  85% { transform: rotate(-14deg); }
+  90% { transform: rotate(12deg); }
+  95% { transform: rotate(-6deg); }
+}
+.dutch-wiggle { animation: dutch-wiggle 3s ease-in-out infinite; transform-origin: 50% 70%; }
+@media (prefers-reduced-motion: reduce) {
+  .dutch-pop, .dutch-wiggle { animation: none; }
+}

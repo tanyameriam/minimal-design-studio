@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Contact from '@/components/Contact';
+import DutchLesson from '@/components/DutchLesson';
 import { usePageMeta } from '@/hooks/use-page-meta';
 import { useReveal } from '@/hooks/use-reveal';
 import { prefetchRoute } from '@/lib/prefetch';
@@ -31,7 +32,7 @@ const Em = ({ children }: { children: React.ReactNode }) => (
 
 /** Practical facts, all of them already on the CV. Nothing new is claimed here. */
 const details = [
-  { label: 'Based in', body: 'The Netherlands' },
+  { label: 'Based in', body: 'The Netherlands, since November 2022' },
   { label: 'Open to', body: 'Mid-level and senior product design jobs' },
   { label: 'Education', body: "Master's in UX design, focused on AI, 2026" },
   { label: 'Languages', body: 'English, fluent. Dutch, beginner.' },
@@ -81,24 +82,31 @@ const About = () => {
                 </span>
               </h1>
 
+              {/* The bio on the left, the Dutch lesson card beside it on wide screens. */}
+              <div className="mt-10 grid items-start gap-10 md:mt-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-16 xl:gap-24">
               <div
                 ref={bioRef}
-                className="reveal mt-10 max-w-[42rem] space-y-5 text-lg leading-[1.55] text-ink-600 md:mt-12"
+                className="reveal space-y-5 text-lg leading-[1.55] text-ink-600"
               >
+                {/* The person, not the CV. The work lives on /cv and in the case studies. */}
                 <p>
-                  I&rsquo;m a product designer. I work on products where the screens are only one
-                  part of the problem.
+                  Product designer by day. I love <Em>dogs</Em>, and animals in general. I love to{' '}
+                  <Em>hike</Em> and I love to talk, though sometimes I&rsquo;m the quiet one too. A
+                  bit of an <Em>ambivert</Em>.
                 </p>
                 <p>
-                  At <Em>BrynQ</Em>, customers needed a developer every time they connected two
-                  systems. I designed the template selection and guided setup experience, so they
-                  need less developer support. In my work I do a bit of everything: I talk to people, plan how
-                  the work flows, design the screens, and help the team build them.
+                  I love sports. I&rsquo;m not always the best at them, but I always give it my
+                  best, and that&rsquo;s what I love most. I&rsquo;m up for anything. Sometimes that
+                  means a <Em>hula hoop</Em>.
                 </p>
                 <p>
-                  Before I became a designer, I spent three years helping business customers with
-                  their software at <Em>SAP Ariba</Em>. There I saw how much badly designed software
-                  hurts the people who have to use it every day.
+                  I moved to the Netherlands with my husband in November 2022. What I miss most is my
+                  dog, <Em>Bacardi</Em>. He lives with my mom in India now.
+                </p>
+                <p>
+                  I&rsquo;m also learning <Em>Dutch</Em>. I&rsquo;ve finished my inburgering exams
+                  with the gemeente, and now I&rsquo;m working towards the Staatsexamen. Whenever I
+                  have time, I try to read things in Dutch.
                 </p>
                 <p className="text-base text-ink-500">
                   Outside work I help run{' '}
@@ -112,6 +120,9 @@ const About = () => {
                   </a>
                   , a group for designers that runs talks and workshops in the Netherlands.
                 </p>
+              </div>
+
+              <DutchLesson />
               </div>
             </div>
 
@@ -173,8 +184,8 @@ const About = () => {
               className="group block"
             >
               <p className="max-w-2xl text-lg leading-[1.55] text-ink-600">
-                Charcoal drawings, character sketches and 3D experiments. Drawing often keeps me quick
-                at the parts of design that are not screens.
+                Sometimes I draw too, depending on the mood. It&rsquo;s been a while, but charcoal is
+                still my favourite.
               </p>
 
               <ul className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
