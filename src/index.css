@@ -537,9 +537,18 @@
       radial-gradient(34rem 24rem at 82% 12%, hsl(var(--link) / 0.11), transparent 70%),
       radial-gradient(30rem 22rem at 62% 78%, hsl(var(--accent) / 0.07), transparent 72%);
     /* Fades out before the section ends, so the work below starts on the
-       plain ground rather than on the tail of a gradient. */
-    -webkit-mask-image: linear-gradient(to bottom, #000 45%, transparent 100%);
-    mask-image: linear-gradient(to bottom, #000 45%, transparent 100%);
+       plain ground rather than on the tail of a gradient, and fades out
+       toward both sides too. The section is clipped to the shell width, so
+       without the side fade a wide monitor showed the glow stopping on a
+       hard vertical edge. */
+    -webkit-mask-image:
+      linear-gradient(to bottom, #000 45%, transparent 100%),
+      linear-gradient(to right, transparent 0%, #000 22%, #000 78%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to bottom, #000 45%, transparent 100%),
+      linear-gradient(to right, transparent 0%, #000 22%, #000 78%, transparent 100%);
+    mask-composite: intersect;
     animation: hero-drift 26s ease-in-out infinite alternate;
   }
 
