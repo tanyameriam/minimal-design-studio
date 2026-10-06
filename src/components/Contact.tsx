@@ -40,9 +40,9 @@ const Contact = () => {
   return (
     <footer id="contact" ref={ref} className="reveal shell scroll-mt-24 px-gutter pb-16">
       <div className="border-t border-border pt-break">
-        <h2 className="max-w-[18ch] text-5xl">
-          Let&rsquo;s connect. I&rsquo;m always up for a{' '}
-          <span className="em">chat</span>.
+        <h2 className="max-w-[20ch] text-5xl">
+          Seen something interesting? Let&rsquo;s{' '}
+          <span className="em">catch up</span>.
         </h2>
 
         <div className="mt-8 flex flex-wrap items-baseline gap-x-5 gap-y-2">
