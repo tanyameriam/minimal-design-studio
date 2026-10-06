@@ -212,9 +212,8 @@ const MerryHealthCaseStudy = () => {
                 takeaways={{
                   problem:
                     'Admins ran emergencies on scattered WhatsApp chats and calls, so help took too long to reach the patient.',
-                  did: 'Structured WhatsApp and made the dashboard the full record of every ride, so an ambulance can be sent without chasing anyone.',
-                  outcome:
-                    'Designed so help reaches the patient sooner, with an accurate record of every ride. Delivered, not launched.',
+                  didLabel: 'Our solution',
+                  did: 'We kept WhatsApp but gave it structure, and made the hospital dashboard the full record of every ride. Now an ambulance can be sent without chasing anyone, so help reaches the patient sooner. Delivered to the client, not launched.',
                 }}
                 hidePillsLabel
               />

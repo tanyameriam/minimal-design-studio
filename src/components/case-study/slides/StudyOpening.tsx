@@ -69,6 +69,8 @@ export interface StudyTakeaways {
   problem: string;
   /** What I did about it. One line, and the verb is mine. */
   did: string;
+  /** Overrides the "What I did" label, e.g. "Our solution" on a team project. */
+  didLabel?: string;
   /** What changed. A number where there is one, honestly labelled. Optional. */
   outcome?: string;
 }
@@ -118,7 +120,7 @@ const StudyTakeawayBlock = ({
     title={showTitle ? 'In short' : null}
     items={[
       { label: 'The problem', body: items.problem },
-      { label: 'What I did', body: items.did },
+      { label: items.didLabel ?? 'What I did', body: items.did },
       ...(items.outcome ? [{ label: 'What happened', body: items.outcome }] : []),
     ]}
   />
