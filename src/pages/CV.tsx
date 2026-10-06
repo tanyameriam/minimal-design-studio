@@ -8,10 +8,12 @@ import { usePageMeta } from '@/hooks/use-page-meta';
  * The CV, as one document.
  *
  * The same HTML is the on-page preview and the PDF, so what a visitor reads
- * is exactly what they download. It is written for applicant tracking
- * systems first: one column, real text in reading order, standard section
- * names, no tables, icons or images. The look is type, spacing and one
- * quiet accent. European conventions: A4, en-dash date ranges, an
+ * is exactly what they download. Two columns: experience on the left, and a
+ * tinted side panel on the right for contact, skills, education and the
+ * rest, so the page scans as blocks rather than one long run of text. It is
+ * still real text with standard section names, and the main column comes
+ * first in the source, so applicant tracking systems read experience before
+ * the side panel. European conventions: A4, en-dash date ranges, an
  * international phone number in Dutch grouping, reverse chronological.
  */
 const PRINT_SCRIPT = `<script>
@@ -25,21 +27,17 @@ const cvDocument = (print: boolean) => `<!DOCTYPE html>
 <head>
   <meta charset="utf-8" />
   <title>Tanya Sunny - Product Designer - CV</title>
-  <!--
-    One page, one column, real text. Applicant tracking systems read
-    it top to bottom in the same order a person does: standard section
-    names, no tables, icons, images or text in graphics. The look
-    comes from type, spacing and one quiet accent colour, none of
-    which a parser has to understand.
-  -->
   <style>
-    @page { size: A4; margin: 14mm 16mm 12mm; }
+    @page { size: A4; margin: 0; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    :root { --ink: #16181d; --muted: #5b616e; --rule: #d9dce1; --accent: #24527a; }
+    :root {
+      --ink: #16181d; --muted: #5b616e; --rule: #d9dce1;
+      --accent: #24527a; --panel: #eef2f7; --panel-rule: #d3dbe5;
+    }
     body {
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-size: 9.2pt;
-      line-height: 1.3;
+      line-height: 1.35;
       color: var(--ink);
       background: #fff;
       -webkit-print-color-adjust: exact;
@@ -47,143 +45,198 @@ const cvDocument = (print: boolean) => `<!DOCTYPE html>
     }
     a { color: inherit; text-decoration: none; }
     strong { font-weight: 600; }
+    ul { list-style: none; }
 
-    header { padding-bottom: 9px; border-bottom: 1.5px solid var(--ink); }
-    h1 { font-size: 22pt; font-weight: 600; letter-spacing: -0.4px; line-height: 1.05; }
-    .role { font-size: 11pt; color: var(--accent); margin-top: 3px; }
-    .contact { font-size: 8.8pt; color: var(--muted); margin-top: 6px; }
-    .contact .sep { color: var(--rule); margin: 0 6px; }
+    /* The sheet: main column and a tinted side panel, full A4 height. */
+    .sheet {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 64mm;
+      width: 100%;
+      min-height: 297mm;
+    }
+    main { padding: 15mm 10mm 12mm 15mm; }
+    aside { background: var(--panel); padding: 15mm 9mm 12mm 9mm; }
 
-    section { margin-top: 11px; }
+    h1 { font-size: 24pt; font-weight: 700; letter-spacing: -0.5px; line-height: 1.05; color: var(--accent); }
+    .role { font-size: 11.5pt; color: #2b2f37; margin-top: 4px; }
+    .summary { color: #2b2f37; margin-top: 10px; }
+
+    section { margin-top: 15px; }
     h2 {
-      display: flex;
-      align-items: center;
-      gap: 8px;
       font-size: 8.5pt;
       font-weight: 700;
       letter-spacing: 1.4px;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 6px;
+      padding-bottom: 4px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid var(--rule);
     }
-    h2::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+    aside h2 { border-color: var(--panel-rule); }
+    aside section:first-child { margin-top: 0; }
 
-    .summary { color: #2b2f37; }
-
-    .job { margin-bottom: 7px; break-inside: avoid; }
+    /* Jobs: company on one line, role and dates under it. */
+    .job { margin-bottom: 10px; break-inside: avoid; }
     .job:last-child { margin-bottom: 0; }
-    .head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
-    .head .what { font-weight: 600; }
-    .head .where { color: var(--muted); font-weight: 400; }
+    .company { font-weight: 700; }
+    .head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; color: #2b2f37; }
     .date { font-size: 8.6pt; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
-    ul { margin: 2px 0 0 13px; }
-    li { margin-bottom: 1px; padding-left: 2px; }
-    li::marker { color: var(--accent); }
+    .job ul { margin-top: 3px; }
+    .job li { position: relative; padding-left: 11px; margin-bottom: 2px; }
+    .job li::before { content: ""; position: absolute; left: 1px; top: 0.55em; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
 
-    .row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 3px; }
-    .row:last-child { margin-bottom: 0; }
-    .note { color: var(--muted); }
-    .skills p { margin-bottom: 2px; }
-    .skills p:last-child { margin-bottom: 0; }
-    .skills strong { color: var(--ink); }
+    /* Side panel. */
+    aside { font-size: 8.8pt; }
+    aside li { margin-bottom: 3px; }
+    .group + .group { margin-top: 8px; }
+    .group-label { font-style: italic; color: var(--muted); margin-bottom: 3px; }
+    .entry + .entry { margin-top: 8px; }
+    .entry .title { font-weight: 600; }
+    .entry .meta { color: var(--muted); }
 
-    /* On screen the document is the preview on /cv: the page margins
-       become padding, and narrow screens let the date rows wrap. */
-    @media screen {
-      body { padding: 14mm 16mm; }
-    }
-    @media screen and (max-width: 560px) {
-      body { padding: 28px 20px; }
-      .head, .row { flex-wrap: wrap; row-gap: 0; }
-      .contact .sep { margin: 0 4px; }
+    @media screen and (max-width: 640px) {
+      .sheet { grid-template-columns: 1fr; min-height: 0; }
+      main, aside { padding: 28px 20px; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Tanya Sunny</h1>
-    <p class="role">Product Designer</p>
-    <p class="contact">
-      Utrecht, Netherlands<span class="sep">|</span>+31 6 8512 2140<span class="sep">|</span>tanyameriamsunny@gmail.com<span class="sep">|</span><a href="https://www.linkedin.com/in/tanya-sunny/" target="_blank" rel="noopener noreferrer">linkedin.com/in/tanya-sunny</a>
-    </p>
-  </header>
+<div class="sheet">
+  <main>
+    <header>
+      <h1>Tanya Sunny</h1>
+      <p class="role">Product Designer</p>
+      <p class="summary">
+        Product Designer with 5+ years of design experience, focused on UX auditing, workflow and systems
+        design, and interface design. Led the redesign of SalureConnect into the BrynQ integration platform,
+        and works with Claude Code to bring the design system into the codebase. Master's in UX with a
+        specialisation in AI; background in computer science.
+      </p>
+    </header>
 
-  <section>
-    <h2>Summary</h2>
-    <p class="summary">
-      Product Designer with 5+ years of design experience (working professionally since 2018), specialising
-      in UX auditing, workflow and systems design, and interface design. Led the redesign of SalureConnect
-      into the BrynQ integration platform. Experienced in AI-integrated workflows with Claude, from a design
-      system in code to a continuous implementation loop with developers. Master's in UX with a
-      specialisation in AI (2026); background in computer science.
-    </p>
-  </section>
+    <section>
+      <h2>Work Experience</h2>
+      <div class="job">
+        <p class="company">BrynQ, Netherlands</p>
+        <div class="head"><span>Product Designer</span><span class="date">2023 – present</span></div>
+        <ul>
+          <li>Led the redesign of SalureConnect into the BrynQ platform, from research and information architecture to the shipped interface.</li>
+          <li>Designed integration templates and guided setup, cutting a standard connection from about six months to about two weeks.</li>
+          <li>Run UX audits across the platform and apply systems thinking to integration flows, data mappings and states.</li>
+          <li>Brought the design system into the codebase with Claude Code; iterations are built there, then shipped by developers.</li>
+          <li>Work with Product Owners and Product Managers to align design with product priorities.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <p class="company">Multiple Startups, India</p>
+        <div class="head"><span>UI Designer (Contract)</span><span class="date">2022 – 2023</span></div>
+        <ul>
+          <li>Designed web and mobile interfaces for Amphisoft Ventures and Lymdata Labs, from product requirements to development handoff.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <p class="company">Segments Cloud LLC, Dubai, UAE</p>
+        <div class="head"><span>UI Designer</span><span class="date">2021 – 2022</span></div>
+        <ul>
+          <li>Designed interfaces and page layouts for a Bitcoin mining and warehousing platform.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <p class="company">Curateus, Bangalore, India</p>
+        <div class="head"><span>UX/UI Intern</span><span class="date">2021</span></div>
+        <ul>
+          <li>Designed wireframes, prototypes and UI for a content curation product across web and mobile.</li>
+          <li>Designed a browser extension for recommending articles, cutting the flow from seven steps to four.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <p class="company">SAP Ariba, Bangalore, India</p>
+        <div class="head"><span>Technical Support Engineer</span><span class="date">2018 – 2021</span></div>
+        <ul>
+          <li>Supported enterprise clients through troubleshooting and incident resolution, working with engineering on workflow and system issues.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
 
-  <section>
-    <h2>Work Experience</h2>
-    <div class="job">
-      <div class="head"><span><span class="what">Product Designer</span> <span class="where">· BrynQ, Netherlands</span></span><span class="date">2023 – present</span></div>
+  <aside>
+    <section>
+      <h2>Contact</h2>
       <ul>
-        <li>Led the redesign of SalureConnect into the BrynQ platform, from research and information architecture to the shipped interface.</li>
-        <li>Run UX audits across the platform and update designs based on the findings.</li>
-        <li>Apply systems thinking across integration flows, data mappings and interface states.</li>
-        <li>Integrated the design system into the codebase with Claude Code, closing the gap between design and build.</li>
-        <li>Run a continuous implementation loop: iterations built with Claude Code, then taken to production by developers.</li>
-        <li>Work with Product Owners and Product Managers to align design with product priorities.</li>
+        <li>Utrecht, Netherlands</li>
+        <li>+31 6 8512 2140</li>
+        <li>tanyameriamsunny@gmail.com</li>
+        <li><a href="https://www.linkedin.com/in/tanya-sunny/" target="_blank" rel="noopener noreferrer">linkedin.com/in/tanya-sunny</a></li>
       </ul>
-    </div>
-    <div class="job">
-      <div class="head"><span><span class="what">UI Designer (Contract)</span> <span class="where">· Multiple Startups, India</span></span><span class="date">2022 – 2023</span></div>
-      <ul>
-        <li>Designed user interfaces for early-stage web and mobile products for Amphisoft Ventures and Lymdata Labs, working from defined product requirements.</li>
-        <li>Delivered consistent, usable visual designs through to development handoff.</li>
-      </ul>
-    </div>
-    <div class="job">
-      <div class="head"><span><span class="what">UI Designer</span> <span class="where">· Segments Cloud LLC, Dubai, UAE</span></span><span class="date">2021 – 2022</span></div>
-      <ul>
-        <li>Designed interfaces and page layouts for a Bitcoin mining and warehousing platform.</li>
-        <li>Translated business requirements into structured, visually consistent interfaces.</li>
-      </ul>
-    </div>
-    <div class="job">
-      <div class="head"><span><span class="what">UX/UI Intern</span> <span class="where">· Curateus, Bangalore, India</span></span><span class="date">2021</span></div>
-      <ul>
-        <li>Designed wireframes, interactive prototypes and UI for a content curation product across web and mobile.</li>
-        <li>Designed a browser extension for recommending articles without leaving the page, cutting the flow from seven steps to four.</li>
-        <li>Worked with the Product Owner and three developers from early flows through to developer handoff.</li>
-      </ul>
-    </div>
-    <div class="job">
-      <div class="head"><span><span class="what">Technical Support Engineer</span> <span class="where">· SAP Ariba, Bangalore, India</span></span><span class="date">2018 – 2021</span></div>
-      <ul>
-        <li>Supported enterprise clients through system troubleshooting and incident resolution.</li>
-        <li>Collaborated with engineering teams on workflow and system-level issues.</li>
-        <li>Developed a deep understanding of enterprise software behaviour and user pain points.</li>
-      </ul>
-    </div>
-  </section>
+    </section>
 
-  <section>
-    <h2>Education</h2>
-    <div class="row"><span><strong>Master's in UX (Specialisation: AI)</strong> <span class="note">· Jindal School of Art &amp; Architecture · Distinction, first in cohort</span></span><span class="date">2025 – 2026</span></div>
-    <div class="row"><span><strong>PGP in UX Design</strong> <span class="note">· IDC, Indian Institute of Technology Bombay</span></span><span class="date">2021 – 2022</span></div>
-    <div class="row"><span><strong>B.Tech in Computer Science</strong> <span class="note">· University of Calicut</span></span><span class="date">2013 – 2017</span></div>
-  </section>
+    <section>
+      <h2>Skills</h2>
+      <div class="group">
+        <p class="group-label">UX Design</p>
+        <ul>
+          <li>UX Auditing</li>
+          <li>User Research</li>
+          <li>Workflow Design</li>
+          <li>Information Architecture</li>
+          <li>Usability Testing</li>
+        </ul>
+      </div>
+      <div class="group">
+        <p class="group-label">UI Design</p>
+        <ul>
+          <li>Interface and Visual Design</li>
+          <li>Interaction Design</li>
+          <li>Prototyping</li>
+          <li>Design Systems</li>
+        </ul>
+      </div>
+      <div class="group">
+        <p class="group-label">Methods</p>
+        <ul>
+          <li>Systems Thinking</li>
+          <li>Journey Mapping</li>
+          <li>AI-Integrated UX Workflows</li>
+        </ul>
+      </div>
+    </section>
 
-  <section class="skills">
-    <h2>Skills</h2>
-    <p><strong>UX Design:</strong> UX Auditing, User Research, Workflow Design, Information Architecture, Usability Testing</p>
-    <p><strong>UI Design:</strong> Interface Design, Visual Design, Interaction Design, Prototyping, Design Systems, Responsive Design</p>
-    <p><strong>Methods:</strong> Systems Thinking, Problem Framing, Journey Mapping, Wireframing, Product Audit, AI-Integrated UX Workflows</p>
-    <p><strong>Languages:</strong> English (Fluent), Dutch (Beginner)</p>
-  </section>
+    <section>
+      <h2>Education</h2>
+      <div class="entry">
+        <p class="title">Master's in UX (Specialisation: AI)</p>
+        <p class="meta">Jindal School of Art &amp; Architecture</p>
+        <p class="meta">2025 – 2026 · Distinction, first in cohort</p>
+      </div>
+      <div class="entry">
+        <p class="title">PGP in UX Design</p>
+        <p class="meta">IDC, IIT Bombay</p>
+        <p class="meta">2021 – 2022</p>
+      </div>
+      <div class="entry">
+        <p class="title">B.Tech in Computer Science</p>
+        <p class="meta">University of Calicut</p>
+        <p class="meta">2013 – 2017</p>
+      </div>
+    </section>
 
-  <section>
-    <h2>Community</h2>
-    <p><strong>Co-organiser, Design Reimagined Utrecht</strong> <span class="note">· a design community in the Netherlands hosting sessions and workshops on design practice</span></p>
-  </section>
+    <section>
+      <h2>Languages</h2>
+      <ul>
+        <li>English (Fluent)</li>
+        <li>Dutch (Beginner)</li>
+      </ul>
+    </section>
 
+    <section>
+      <h2>Community</h2>
+      <div class="entry">
+        <p class="title">Co-organiser, Design Reimagined Utrecht</p>
+        <p class="meta">Sessions and workshops on design practice</p>
+      </div>
+    </section>
+  </aside>
+</div>
 ${print ? PRINT_SCRIPT : ''}
 </body>
 </html>
