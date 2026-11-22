@@ -10,7 +10,7 @@
  * and paste the output into BRYNQ_HASH.
  */
 export const BRYNQ_STORAGE_KEY = 'nda-brynq';
-export const BRYNQ_HASH = '1581e27de87bffae0bd4d745cd7964e68528d7a83e2e4c259a782d275df6f558';
+export const BRYNQ_HASH = '7817342db6c511520955989e173cc82e68250d03a00e263a7ba9fa73027bd6c8';
 
 export const isBrynqUnlocked = (): boolean => {
   try {
