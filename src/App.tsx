@@ -1,9 +1,11 @@
 import { Suspense, lazy, useEffect, useRef } from 'react';
 import { showDrafts } from '@/data/drafts';
 import { TooltipProvider } from '@/components/ui/tooltip';
-import { BrowserRouter, Routes, Route, useLocation, type Location } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation, type Location } from 'react-router-dom';
 import BackToTop from '@/components/BackToTop';
 import CursorLabel from '@/components/CursorLabel';
+import BrynqGate from '@/components/BrynqGate';
+import { isBrynqUnlocked } from '@/lib/brynqAccess';
 import Index from './pages/Index';
 
 // Split the heavy routes out of the landing bundle.
@@ -96,8 +98,23 @@ const AppRoutes = () => {
             <Route path="/case-study/layrrrd/deep" element={<CaseStudy slug="layrrrd" />} />
             {/* The slide narrative is BrynQ's canonical case study; the
                 data-driven long-form version keeps its own address. */}
-            <Route path="/case-study/brynq" element={<BrynqCaseStudy />} />
-            <Route path="/case-study/brynq/deep" element={<CaseStudy slug="brynq" />} />
+            {/* Every BrynQ page sits behind one password (see lib/brynqAccess). */}
+            <Route
+              path="/case-study/brynq"
+              element={
+                <BrynqGate>
+                  <BrynqCaseStudy />
+                </BrynqGate>
+              }
+            />
+            <Route
+              path="/case-study/brynq/deep"
+              element={
+                <BrynqGate>
+                  <CaseStudy slug="brynq" />
+                </BrynqGate>
+              }
+            />
             <Route path="/case-study/brynq/vault" element={<BrynqVault />} />
             {/* The scroll case study is Curateus's canonical page; the
                 data-driven draft keeps its own address. */}
@@ -140,7 +157,13 @@ const AppRoutes = () => {
       <Suspense fallback={null}>
         <Routes>
           <Route path="/case-study/layrrrd/story" element={<LayrrrdStory />} />
-          <Route path="/case-study/brynq/story" element={<BrynqStory />} />
+          {/* Locked, the deck sends the reader to the gate on the case study page. */}
+          <Route
+            path="/case-study/brynq/story"
+            element={
+              isBrynqUnlocked() ? <BrynqStory /> : <Navigate to="/case-study/brynq" replace />
+            }
+          />
           <Route path="/case-study/merry-health/story" element={<MerryStory />} />
           <Route path="*" element={null} />
         </Routes>

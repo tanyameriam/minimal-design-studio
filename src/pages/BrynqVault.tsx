@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import NdaGate from '@/components/NdaGate';
+import { BRYNQ_HASH, BRYNQ_STORAGE_KEY } from '@/lib/brynqAccess';
 import { usePageMeta } from '@/hooks/use-page-meta';
 
 /**
@@ -10,9 +11,8 @@ import { usePageMeta } from '@/hooks/use-page-meta';
  * slot in here as they clear NDA review. New projects append to
  * `projects` and get a tab for free.
  *
- * Password: see NdaGate for how the hash works and how to rotate it.
+ * Password: shared with every BrynQ page, see lib/brynqAccess.
  */
-const NDA_HASH = '1581e27de87bffae0bd4d745cd7964e68528d7a83e2e4c259a782d275df6f558';
 
 interface VaultProject {
   tab: string;
@@ -99,8 +99,9 @@ const BrynqVault = () => {
       <main id="main" className="shell min-h-screen bg-background px-gutter pt-masthead">
         <div className="mx-auto max-w-6xl pb-24">
           <NdaGate
-            storageKey="nda-brynq"
-            hash={NDA_HASH}
+            storageKey={BRYNQ_STORAGE_KEY}
+            hash={BRYNQ_HASH}
+            project="BrynQ detailed studies"
             label="BrynQ · Detailed studies"
           >
             <div className="flex flex-wrap items-baseline justify-between gap-4">
