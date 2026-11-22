@@ -1,21 +1,14 @@
-# This site is not meant to appear in search results.
-#
-# Crawling is deliberately left open: every page and file is served with
-# "X-Robots-Tag: noindex" (vercel.json) and a robots noindex meta tag
-# (index.html). A search engine has to be able to fetch a page to see that
-# instruction; blocking it here would stop it reading the noindex, and it
-# could still list the bare address if someone links to it.
-#
-# AI training crawlers are refused outright.
+User-agent: Googlebot
+Allow: /
 
-User-agent: GPTBot
-Disallow: /
+User-agent: Bingbot
+Allow: /
 
-User-agent: CCBot
-Disallow: /
+User-agent: Twitterbot
+Allow: /
 
-User-agent: Google-Extended
-Disallow: /
+User-agent: facebookexternalhit
+Allow: /
 
 User-agent: *
 Allow: /
